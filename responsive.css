@@ -1,0 +1,133 @@
+.conteudo-principal{
+    flex-direction:column;
+    align-items:center;
+    padding:0 24px;
+}
+
+.bloco-texto{
+    width:100%;
+    padding-left:0;
+    margin-top:40px;
+    text-align:center;
+}
+
+.bloco-imagem{
+    width:100%;
+    justify-content:center;
+}
+
+.bloco-imagem img{
+    width:100%;
+    max-width:340px;
+    margin-top:30px;
+}
+
+.titulo-destaque{
+    font-size:34px;
+}
+
+.texto-menor,
+.frase-underground{
+    justify-content:center;
+}
+
+.texto-quebrado{
+    text-align:center;
+}
+.cards-artigos{
+    flex-direction:column;
+    gap:30px;
+}
+
+.card-artigo{
+    width:100%;
+    height:auto;
+}
+
+.imagem-artigo{
+    width:100%;
+    height:auto;
+}
+.camisetas{
+    flex-direction:column;
+}
+
+.camisetas-conteudo,
+.camisetas-imagem{
+    width:100%;
+    text-align:center;
+}
+
+.camisetas-imagem img{
+    width:100%;
+    max-width:340px;
+    height:auto;
+}
+.sobre-nos{
+    flex-direction:column;
+}
+
+.sobre-conteudo,
+.sobre-imagem{
+    width:100%;
+    text-align:center;
+}
+
+.sobre-imagem img{
+    width:100%;
+    max-width:320px;
+    height:auto;
+}
+.spotify-section{
+    flex-direction:column;
+}
+
+.spotify-conteudo{
+    width:100%;
+    text-align:center;
+}
+
+.spotify-card{
+    width:100%;
+    height:auto;
+    padding:32px;
+}
+.newsletter{
+    flex-direction:column;
+}
+
+.newsletter-esquerda,
+.newsletter-direita{
+    width:100%;
+    text-align:center;
+}
+
+.newsletter-form{
+    flex-direction:column;
+}
+
+.newsletter-form button{
+    width:100%;
+}
+.footer{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:40px;
+}
+
+.footer-menu{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.footer-ilustracao{
+    padding-right:0;
+    justify-content:center;
+}
+
+.footer-ilustracao img{
+    width:100%;
+    max-width:320px;
+    height:auto;
+}

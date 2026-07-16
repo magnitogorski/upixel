@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Artigo | Upixel</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="meu-header">
+
+    <div class="logo">
+        <img src="logobranca.png" alt="Upixel">
+    </div>
+
+
+     <nav class="menu">
+    <a href="index.html" >Home</a>
+    <a href="artigos.html">Artigos</a>
+    <a href="camisetas.html">Camisetas</a>
+    <a href="contato.html">Contato</a>
+</nav>
+
+
+</header>
+
+
+
+<main class="pagina-artigo">
+
+
+<a href="index.html" class="voltar">
+
+<svg viewBox="0 0 24 24" fill="none">
+
+<path 
+d="M19 12H5M5 12L11 6M5 12L11 18"
+stroke="currentColor"
+stroke-width="1.5"
+stroke-linecap="round"
+stroke-linejoin="round"/>
+
+</svg>
+
+Voltar
+
+</a>
+
+
+
+
+<span class="categoria-artigo" id="categoria">
+UI DESIGN
+</span>
+
+
+
+<h1 class="titulo-artigo" id="titulo">
+
+Infiniiiiite Scroll
+
+</h1>
+
+
+
+
+<div class="info-artigo">
+
+<span id="data">
+09 JUL 2026
+</span>
+
+<span>
+•
+</span>
+
+<span>
+Upixel
+</span>
+
+
+</div>
+
+
+
+
+<article class="texto-artigo" id="texto">
+
+
+<p>
+Fomos engolidos por um buraco negro digital.
+Acostume-se.
+</p>
+
+
+<p>
+Durante anos acreditamos que a internet seria um lugar infinito
+de descobertas, criatividade e possibilidades.
+</p>
+
+
+<h2>
+O começo do fim
+</h2>
+
+
+<p>
+
+O problema é que criamos máquinas capazes de prender nossa atenção
+por horas sem perceber.
+
+</p>
+
+
+<p>
+
+Cada rolagem entrega uma nova recompensa.
+Um novo vídeo.
+Uma nova imagem.
+Uma nova distração.
+
+</p>
+
+
+</article>
+
+
+
+<section class="leia-tambem">
+
+<h2>
+Leia também
+</h2>
+
+
+<div class="cards-artigos">
+
+
+<article class="card-artigo">
+
+<img src="artigo2.png" alt="Artigo">
+
+<span class="categoria">
+Era uma vez...
+</span>
+
+<h3>
+Essa Fada. A mentira das vagas de seis dígitos
+</h3>
+
+<p>
+O mundo perfeito só existe pra quem vende os cursos...
+</p>
+
+<a href="artigo.html?id=2" class="leia-mais">
+Leia mais
+</a>
+
+</article>
+
+
+
+<article class="card-artigo">
+
+<img src="artigo3.png" alt="Artigo">
+
+<span class="categoria">
+Ego nas alturas
+</span>
+
+<h3>
+Muita estrela pra pouca constelação
+</h3>
+
+<p>
+Se Mamãe visse meu Linkedin iria dizer...
+</p>
+
+<a href="artigo.html?id=3" class="leia-mais">
+Leia mais
+</a>
+
+</article>
+<article class="card-artigo">
+
+<img src="artigo4.png" alt="Artigo">
+
+<span class="categoria">
+Curiosidades
+</span>
+
+<h3>
+Os limites criam criatividade
+</h3>
+
+<p>
+A limitação de hardware acabou criando alguns dos estilos mais marcantes da história.
+</p>
+
+<a href="artigo.html?id=4" class="leia-mais">
+Leia mais
+</a>
+
+</article>
+
+
+
+<article class="card-artigo">
+
+<img src="artigo1.png" alt="Artigo">
+
+<span class="categoria">
+UI Design
+</span>
+
+<h3>
+Infiniiiiite Scroll
+</h3>
+
+<p>
+Fomos engolidos por um buraco negro digital. Acostume-se.
+</p>
+
+<a href="artigo.html?id=1" class="leia-mais">
+Leia mais
+</a>
+
+</article>
+
+</div>
+
+</section>
+
+
+
+</main>
+
+
+
+<script>
+
+
+const artigos = {
+
+
+1:{
+
+
+categoria:"UI Design",
+
+titulo:"Infiniiiiite Scroll",
+
+texto:`
+
+<p>
+Fomos engolidos por um buraco negro digital. Acostume-se.
+</p>
+
+<p>
+Durante anos acreditamos que a internet seria um lugar infinito de descobertas.
+</p>
+
+
+<h2>
+O começo do fim
+</h2>
+
+
+<p>
+Cada rolagem entrega uma nova recompensa.
+Uma nova distração.
+Um novo motivo para continuar.
+</p>
+
+
+`
+
+
+},
+
+
+
+
+2:{
+
+
+categoria:"Era uma vez...",
+
+titulo:"Essa Fada. A mentira das vagas de seis dígitos",
+
+texto:`
+
+<p>
+O mundo perfeito só existe pra quem vende os cursos.
+</p>
+
+<h2>
+A promessa impossível
+</h2>
+
+<p>
+Existe uma indústria inteira vendendo atalhos.
+</p>
+
+
+`
+
+
+},
+
+
+
+
+3:{
+
+
+categoria:"Ego nas alturas",
+
+titulo:"Muita estrela pra pouca constelação",
+
+texto:`
+
+<p>
+Se Mamãe visse meu Linkedin diria:
+é verdade esse bilete.
+</p>
+
+
+<h2>
+A era do especialista em tudo
+</h2>
+
+
+<p>
+Muito título.
+Pouca experiência.
+</p>
+
+`
+
+
+},
+
+
+
+
+4:{
+
+
+categoria:"Curiosidades",
+
+titulo:"Os limites criam criatividade",
+
+texto:`
+
+<p>
+A limitação de hardware acabou criando alguns dos estilos mais marcantes da história.
+</p>
+
+
+<h2>
+Quando menos era mais
+</h2>
+
+
+<p>
+Os pixels nasceram da necessidade.
+E viraram linguagem.
+</p>
+
+`
+
+}
+
+
+};
+
+
+
+const urlParams = new URLSearchParams(window.location.search);
+
+const id = urlParams.get("id") || 1;
+
+
+document.getElementById("categoria").innerHTML = artigos[id].categoria;
+
+document.getElementById("titulo").innerHTML = artigos[id].titulo;
+
+document.getElementById("texto").innerHTML = artigos[id].texto;
+
+
+
+</script>
+
+<div class="divisor-secao"></div>
+
+<footer class="footer">
+
+    <div class="footer-esquerda">
+
+        <img src="logobranca.png" alt="Upixel" class="footer-logo">
+
+        <p class="copyright">
+            Upixel. Todos os direitos reservados.
+        </p>
+
+    </div>
+
+    <div class="footer-centro">
+
+        <nav class="footer-menu">
+
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="camisetas.html">Camisetas</a>
+            <a href="contato.html">Contato</a>
+
+        </nav>
+
+    </div>
+
+</footer>
+
+<div class="footer-ilustracao">
+
+    <img src="rodape.png" alt="Ilustração Footer">
+
+</div>
+
+</body>
+
+</html>

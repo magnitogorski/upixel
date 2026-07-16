@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site do Figma</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+    <header class="meu-header">
+        <div class="logo">
+            <img src="logobranca.png" alt="Logotipo do meu site"> 
+        </div>
+        
+       <nav class="menu">
+    <a href="index.html" class="ativo">Home</a>
+    <a href="artigos.html">Artigos</a>
+    <a href="camisetas.html">Camisetas</a>
+    <a href="contato.html">Contato</a>
+</nav>
+    </header>
+    <main class="conteudo-principal">
+        
+        <div class="bloco-texto">
+            <span class="texto-menor"><img src="raio.png" alt="Raio" class="icone-raio">Design em pixel arte</span>
+
+            <h1 class="titulo-destaque">No início, <br> era só pixel <br>isso aqui</h1>
+
+            <div class="frase-underground">
+                <img src="sua-logo.png" alt="Logo menor" class="logo-pequena">
+                <p class="texto-quebrado">
+                    No underground<br>dos 8 bits.
+                </p>
+            </div>
+
+            <div class="container-botao">
+                <a href="artigos.html" class="botao-artigos">
+                    Ver artigos
+                    <svg class="seta-fina" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="bloco-imagem">
+            <img src="IMG1.png" alt="Primeira imagem" class="imagem-direita">
+        </div>
+
+    </main>
+
+    <hr class="divisor-secao">
+
+<section class="artigos-recentes">
+
+    <div class="titulo-secao">
+
+        <div class="titulo-esquerda">
+            <img src="raioartigos.png" alt="Ícone" class="icone-titulo">
+            <h2>
+                <span>Artigos</span>
+                <span>recentes</span>
+            </h2>
+        </div>
+
+        <a href="artigos.html" class="ver-todos">
+            Ver todos
+            <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12H19M19 12L13 6M19 12L13 18"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+        </a>
+
+    </div>
+
+    <div class="cards-artigos">
+
+        <article class="card-artigo">
+
+            <img src="artigo1.png" alt="Artigo 1">
+
+            <span class="categoria">Ui Design</span>
+
+            <h3>Infiniiiiite Scroll</h3>
+
+            <p>
+                Fomos engolidos por um buraco negro digital. Acostume-se.
+            </p>
+
+        <a href="artigo.html?id=1" class="leia-mais">Leia mais</a>
+        </article>
+
+        <article class="card-artigo">
+
+            <img src="artigo2.png" alt="Artigo 2">
+
+            <span class="categoria">Era uma vez...</span>
+
+            <h3>Essa Fada. A mentira das vagas de Seis Dígitos</h3>
+
+            <p>
+                O mundo perfeito só existe pra quem vende os cursos a preços de Pós Graduação...
+            </p>
+
+            <a href="artigo.html?id=2" class="leia-mais">Leia mais</a>
+
+        </article>
+
+        <article class="card-artigo">
+
+            <img src="artigo3.png" alt="Artigo 3">
+
+            <span class="categoria">Ego nas alturas</span>
+
+            <h3>Muita estrela pra pouca constelação</h3>
+
+            <p>
+                Se Mamãe se me visse no linkedin iria dizer que é verdade esse bilete. 
+            </p>
+
+            <a href="artigo.html?id=3" class="leia-mais">Leia mais</a>
+
+        </article>
+
+        <article class="card-artigo">
+
+            <img src="artigo4.png" alt="Artigo 4">
+
+            <span class="categoria">Curiosidades</span>
+
+            <h3>Os limites criam criatividade</h3>
+
+            <p>
+                A limitação de hardware acabou criando alguns dos estilos mais marcantes da história.
+            </p>
+
+            <a href="artigo.html?id=4" class="leia-mais">Leia mais</a>
+
+        </article>
+
+    </div>
+
+</section>
+
+<hr class="divisor-secao">
+
+<section class="camisetas">
+
+    <div class="camisetas-conteudo">
+
+        <span class="texto-menor">
+            <img src="raio.png" alt="Raio" class="icone-raio">
+            Vista a ideia
+        </span>
+
+        <h2 class="titulo-camisetas">
+            Camisetas para <br> Designers & Devs
+        </h2>
+
+        <p class="descricao-camisetas">
+            Camisetas com atitude, <br> pra quem cria, codifica <br> ou só bagunça mesmo.
+        </p>
+
+        <div class="container-botao">
+            <a href="camisetas.html" class="botao-artigos">
+                Ver coleção
+
+                <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+                </svg>
+
+            </a>
+        </div>
+
+    </div>
+
+
+    <div class="camisetas-imagem">
+
+        <img src="camisetas.png" alt="Camisetas">
+
+    </div>
+
+</section>
+<hr class="divisor-secao">
+
+<section class="sobre-nos">
+
+    <div class="sobre-conteudo">
+
+        <span class="texto-menor">
+            <img src="raio.png" alt="Raio" class="icone-raio">
+            Sobre nós
+        </span>
+
+
+        <h2 class="titulo-sobre">
+            Talvez seja<br>
+            só um pixel
+        </h2>
+
+
+        <p class="descricao-sobre">
+            Mas é incrível a quantidade <br> de coisas que podem <br> nascer dele...
+        </p>
+
+
+    </div>
+
+
+    <div class="sobre-imagem">
+
+        <img src="logogrande.png" alt="Sobre nós">
+
+    </div>
+
+
+</section>
+
+<hr class="divisor-secao">
+
+<section class="spotify-section">
+
+    <div class="spotify-conteudo">
+
+        <span class="texto-menor">
+            <img src="raio.png" alt="Raio" class="icone-raio">
+            Ou algum lugar por aí
+        </span>
+
+        <h2 class="titulo-spotify">
+            Me encontre<br>
+            no Linkedin <br> ou no Spotify
+        </h2>
+
+        <p class="descricao-spotify">
+            A internet é rápida. <br> As pessoas tem pressa. <br> E no fim, tudo vira memória. 
+
+        </p>
+
+    </div>
+
+    <div class="spotify-card">
+
+        <span class="playlist-label">
+            Playlist Upixel
+        </span>
+
+        <h3>
+            Um pouco do universo<br>
+            musical do Upixel
+        </h3>
+
+        <ul class="playlist">
+            <li>1 - Blitzkrieg Bop (The Ramones)</li>
+            <li>2 - Holiday in Cambodia (Dead Kennedys)</li>
+            <li>3 - My Way (Sex Pistols)</li>
+            <li>4 - London Calling (The Clash)</li>
+            <li>5 - Carbona's not Glue (The Ramones)</li>
+        </ul>
+
+        <div class="social-links">
+
+    <a href="https://open.spotify.com/playlist/SEU_LINK"
+       class="spotify-link"
+       target="_blank">
+
+        <img src="logosolitaria.png" alt="Spotify">
+
+        Spotify
+
+    </a>
+
+    <a href="https://www.linkedin.com/in/SEU_PERFIL"
+       class="spotify-link"
+       target="_blank">
+
+        <img src="logosolitaria.png" alt="LinkedIn">
+
+        LinkedIn
+
+    </a>
+
+</div>
+
+</section>
+
+<hr class="divisor-secao">
+
+<section class="newsletter">
+
+    <div class="newsletter-esquerda">
+
+        <h2 class="titulo-newsletter">
+            Não é só um blog.<br>
+            É um ponto de encontro.
+        </h2>
+
+    </div>
+
+    <div class="newsletter-direita">
+
+        <span class="newsletter-texto">
+            Newsletter. É sério que você quer isso?
+        </span>
+
+        <form class="newsletter-form">
+
+            <input
+                type="email"
+                placeholder="Digite seu e-mail">
+
+            <button type="submit">
+                Assinar
+            </button>
+
+        </form>
+
+    </div>
+
+
+    
+</section>
+<hr class="divisor-secao">
+
+<footer class="footer">
+
+    <div class="footer-esquerda">
+
+        <img src="logobranca.png" alt="Upixel" class="footer-logo">
+
+        <p class="copyright">
+            Upixel. Todos os direitos reservados.
+        </p>
+
+    </div>
+
+    <div class="footer-centro">
+
+        <nav class="footer-menu">
+
+             <a href="index.html" class="ativo">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="camisetas.html">Camisetas</a>
+            <a href="contato.html">Contato</a>
+
+        </nav>
+
+    </div>
+
+</footer>
+
+<div class="footer-ilustracao">
+
+    <img src="rodape.png" alt="Ilustração Footer">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,2714 @@
+/* 1. Reset de fábrica */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Definindo o fundo e tamanho padrão da página */
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000000; 
+    font-family: sans-serif;
+}
+
+/* 3. Estrutura do Header com os Paddings (28px topo e 60px lados) */
+.meu-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;            
+    padding-top: 28px;     
+    padding-left: 60px;    
+    padding-right: 60px;   
+    padding-bottom: 28px;  
+    background-color: #000000; 
+    border-bottom: 2px solid #161616; /* 2px de espessura, linha contínua, cor branca */
+}
+
+/* 4. Controle do tamanho da LOGO */
+.logo img {
+    height: 70px; 
+    width: auto;  
+    display: block;
+}
+
+/* 5. O Menu com 112px de distância */
+.menu {
+    display: flex;
+    gap: 112px; 
+}
+
+/* 6. Os Links com a fonte Pixelify Sans corrigida */
+.menu a {
+    text-decoration: none;
+    color: #ffffff; 
+    font-weight: bold;
+    font-family: 'Pixelify Sans', sans-serif !important; /* CORRIGIDO AQUI */
+}
+
+.menu a:hover {
+    color: #FA397A; 
+}
+
+
+
+
+
+
+/* 7. SEÇÃO PRINCIPAL: Alinhamento do Texto e Imagem */
+.conteudo-principal {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;  /* CORRIGIDO: Alinha os elementos pelo TOPO, não pelo centro! */
+    width: 100%;
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;         
+}
+
+/* Bloco do Texto (Lado Esquerdo) */
+.bloco-texto {
+    flex: 1;                        
+    padding-left: 60px;       /* Mantém os 60px de margem esquerda */
+    margin-top: 120px;        /* TESTE: Deixei 120px. Como agora alinha pelo topo, vai funcionar! Se achar alto, mude para 20px */
+
+}
+
+.titulo-destaque {
+   
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; 
+    font-size: 48px;                          
+    font-weight: 700; 
+    color: #ffffff;   
+    text-align: left;
+    line-height: 1.2;                         
+}
+
+/* Bloco da Imagem (Lado Direito colado na borda) */
+.bloco-imagem {
+    flex: 1;                        
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.bloco-imagem img {
+    width: 760px;             /* Tamanho da sua imagem do Figma */
+    max-width: 100%;                
+    height: auto;
+    display: block; 
+    margin-top: 42px;         /* CORRIGIDO: Erro de digitação que estava antes */
+}
+/* Estilo para o texto pequeno de cima */
+.texto-menor {
+    display: flex;                  /* Alinha o raio e o texto lado a lado */
+    align-items: center;            /* Centraliza o raio verticalmente com as letras */
+    gap: 8px;                       /* Distância exata entre o raio e o texto */
+    font-size: 14px;                 /* Ajuste o tamanho conforme o seu Figma */
+    font-weight: 600;                
+    color: #FA397A;                  /* Cor de destaque */
+    text-transform: uppercase;       /* Deixa tudo em maiúsculo */
+    letter-spacing: 2px;             /* Espaçamento entre as letras */
+    margin-bottom: 80px;              /* Distância entre ele e o título grande */
+    /* Controle do tamanho do seu PNG */
+}
+.icone-raio {
+    width: 11px;                    /* Ajuste a largura do raio por aqui se achar pequeno ou grande */
+    height: auto;
+    display: block;
+
+}
+/* Container da nova frase abaixo do título */
+
+.frase-underground {
+    display: flex;                  
+    align-items: center;            /* Alinha a logo no centro vertical das duas linhas de texto */
+    justify-content: flex-start;    /* Mantém alinhado à esquerda seguindo o fluxo do seu bloco de texto */
+    gap: 12px;                      /* Distância entre a logo pequena e o texto */
+    margin-top: 80px;               /* Distância segura abaixo do título grande */
+}
+
+/* Estilo do texto quebrado em duas linhas */
+.texto-quebrado {
+    font-family: "Segoe UI", sans-serif; 
+    font-size: 14px;                 /* Mesmo tamanho do texto menor do topo */
+    font-weight: 600;                
+    color: #FA397A;                  /* Mesma cor rosa */
+    text-transform: uppercase;       
+    letter-spacing: 2px;             
+    line-height: 1.4;               /* Espaçamento perfeito entre as duas linhas */
+    text-align: left;               
+}
+
+/* Tamanho da logo pequena */
+.logo-pequena {
+    width: 70px;                    /* Mesmo tamanho que você usou no raio */
+    height: auto;
+    display: block;
+}
+
+/* Container isolador para forçar o alinhamento à esquerda */
+.container-botao {
+    width: 100%;
+    display: block;
+    text-align: left; /* Obriga qualquer conteúdo interno a começar na esquerda */
+}
+
+/* Estilização do Botão Quadrado */
+.botao-artigos {
+    display: inline-flex; /* Faz o botão ter apenas o tamanho dele */
+    align-items: center;
+    justify-content: center;
+    gap: 16px;                      
+    
+    /* Tamanho exato do Figma */
+    width: 314px;
+    height: 94px;
+    
+    /* Margem para empurrar para baixo */
+    margin-top: 60px;               
+    
+    /* Estilo Visual */
+    background-color: transparent;  
+    border: 2px solid #FA397A;      
+    color: #FA397A;                 
+    
+    /* Tipografia */
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;          
+    transition: all 0.3s ease;     
+}
+
+/* Efeito de Hover */
+.botao-artigos:hover {
+    background-color: #FA397A;
+    color: #000000;                 
+}
+
+/* Seta fina em SVG */
+.seta-fina {
+    width: 20px;
+    height: 20px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.botao-artigos:hover .seta-fina {
+    transform: translateX(4px);
+}
+
+
+
+
+
+
+
+
+/* Linha divisória entre as seções */
+.divisor-secao {
+    display: block;                 /* Força o navegador a tratar como um elemento próprio */
+    width: 100%;                     /* De ponta a ponta na tela */
+    height: 2px;                    /* Espessura de 2 pixels */
+    background-color: #161616;      /* Cor cinza escura do seu header */
+    border: none;                   /* Remove bordas padrões */
+    margin-top: 80px;               /* Dá um espaço de 80px abaixo da imagem/botão antes da linha aparecer */
+    margin-bottom: 40px;            /* Dá um espaço de 80px abaixo da linha para a nova seção não colar nela */
+}
+
+
+
+
+
+
+/* ========================= */
+/* ARTIGOS RECENTES */
+/* ========================= */
+
+.artigos-recentes{
+
+    margin:80px 60px;
+
+}
+
+.titulo-secao{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+
+}
+
+.titulo-esquerda{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.titulo-esquerda h2{
+    display:flex;
+    flex-direction:column;
+
+    margin:0;
+
+    color:#F93877;
+    font-size:36px;
+    font-weight:700;
+    line-height:1;
+}
+
+.titulo-esquerda h2 span{
+    display:block;
+}
+
+.icone-titulo{
+    width:24px;
+    height:auto;
+
+    transform:translateY(2px);
+} 
+
+
+
+.ver-todos{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    text-decoration:none;
+    color:#F93877;
+
+    font-size:18px;
+    font-weight:500;
+
+}
+
+.ver-todos .seta-fina{
+
+    width:18px;
+    height:18px;
+
+}
+
+.cards-artigos{
+    display:flex;
+    gap:24px;
+}
+
+.card-artigo{
+    width:312px;
+    height:578px;
+
+    background-color:#131313;   /* Cor interna */
+    border:1px solid #575757;   /* Stroke cinza */
+
+    border-radius:8px;
+    overflow:hidden;
+}
+
+/* Imagem do card */
+.imagem-artigo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Categoria */
+.card-artigo .categoria{
+    display:block;
+
+    margin:10px 20px 8px;
+
+    font-size:20px;
+    font-weight:400;
+    color:#F93877;
+}
+
+/* Título */
+.card-artigo h3{
+    margin:0 20px;
+
+    font-size:24px;
+    font-weight:700;
+    line-height:1.3;
+
+    color:#FFFFFF;
+}
+
+/* Texto */
+.card-artigo p{
+    margin:18px 20px;
+
+    font-size:16px;
+    line-height:1.6;
+
+    color:#B5B5B5;
+}
+
+/* Leia mais */
+.card-artigo a{
+    margin:0 20px;
+
+    text-decoration:none;
+
+    font-weight:700;
+    color:#F93877;
+}
+/* ========================= */
+/* CAMISETAS */
+/* ========================= */
+
+.camisetas{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 60px 80px 60px;
+}
+
+
+.camisetas-conteudo{
+
+    width:50%;
+
+}
+
+
+.titulo-camisetas{
+
+    margin-top:24px;
+
+    color:#FFFFFF;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+
+.descricao-camisetas{
+
+    margin-top:24px;
+
+    color:#C8C8C8;
+
+    font-size:40px;
+
+    line-height:1.6;
+
+    max-width:560px;
+
+}
+
+
+.camisetas-imagem{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    width:50%;
+
+}
+
+
+.camisetas-imagem img{
+
+    width:790px;
+
+    height:440px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+
+
+
+
+/* ========================= */
+/* SOBRE NÓS */
+/* ========================= */
+
+.sobre-nos{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 60px 80px 60px;
+}
+
+
+.sobre-conteudo{
+
+    width:50%;
+
+}
+
+
+.titulo-sobre{
+
+    margin-top:24px;
+
+    color:#FFFFFF;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    line-height:1.15;
+
+}
+
+
+.descricao-sobre{
+
+    margin-top:32px;
+
+    color:#FFFFFF;
+
+    font-size:40px;
+
+    font-weight:400;
+
+    line-height:1.3;
+
+    max-width:650px;
+
+}
+
+
+
+.sobre-imagem{
+
+    width:50%;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+
+
+.sobre-imagem img{
+
+    width:614px;
+
+    height:592px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+/* ========================= */
+/* SPOTIFY */
+/* ========================= */
+
+.spotify-section{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:80px 60px;
+
+}
+
+.spotify-conteudo{
+
+    width:50%;
+
+}
+
+.titulo-spotify{
+
+    margin-top:24px;
+
+    color:#FFFFFF;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    line-height:1.15;
+
+}
+
+.descricao-spotify{
+
+    margin-top:32px;
+
+    color:#FFFFFF;
+
+    font-size:40px;
+
+    line-height:1.3;
+
+    max-width:650px;
+
+}
+
+.spotify-card{
+
+    width:614px;
+    height:553px;
+
+    background:#FA397A;
+
+    padding:48px;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:space-between;
+
+}
+.social-links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.playlist-label{
+
+    font-size:14px;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-weight:700;
+
+    color:#000;
+
+}
+
+.spotify-card h3{
+
+    color:#000;
+
+    font-size:34px;
+
+    line-height:1.2;
+
+    margin-top:12px;
+
+}
+
+.playlist{
+
+    list-style:none;
+
+    margin-top:32px;
+
+    padding:0;
+
+}
+
+.playlist li{
+
+    font-size:22px;
+
+    color:#000;
+
+    margin-bottom:14px;
+
+    line-height:1.4;
+
+}
+
+.spotify-link{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    text-decoration:none;
+
+    color:#000;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.spotify-link img{
+
+    width:32px;
+
+    height:32px;
+
+}
+
+
+
+
+
+
+/* ========================= */
+/* NEWSLETTER */
+/* ========================= */
+
+.newsletter{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:80px 60px;
+
+}
+
+.newsletter-esquerda{
+
+    width:50%;
+
+}
+
+.titulo-newsletter{
+
+    color:#FFFFFF;
+
+    font-size:56px;
+
+    font-weight:700;
+
+    line-height:1.15;
+
+    max-width:620px;
+
+}
+
+.newsletter-direita{
+
+    width:50%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+.newsletter-texto{
+
+    color:#FA397A;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    margin-bottom:24px;
+
+}
+
+.newsletter-form{
+
+    display:flex;
+
+    gap:16px;
+
+    width:100%;
+
+}
+
+.newsletter-form input{
+
+    flex:1;
+
+    height:72px;
+
+    background:#111111;
+
+    border:2px solid #333333;
+
+    color:#FFFFFF;
+
+    padding:0 24px;
+
+    font-size:18px;
+
+    outline:none;
+
+}
+
+.newsletter-form input::placeholder{
+
+    color:#777777;
+
+}
+
+.newsletter-form input:focus{
+
+    border-color:#FA397A;
+
+}
+
+.newsletter-form button{
+
+    width:170px;
+
+    height:72px;
+
+    border:none;
+
+    background:#FA397A;
+
+    color:#000000;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.newsletter-form button:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+
+}
+
+
+
+
+
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+.footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    padding:80px 60px 40px;
+
+}
+
+.footer-esquerda{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.footer-logo{
+
+    width:220px;
+
+    height:auto;
+
+}
+
+.copyright{
+
+    margin-top:12px;
+
+    font-size:12px;
+
+    color:#6D6D6D;
+
+    letter-spacing:1px;
+
+}
+
+.footer-centro{
+
+    display:flex;
+
+    align-items:flex-start;
+
+}
+
+.footer-menu{
+
+    display:flex;
+
+    gap:72px;
+
+}
+
+.footer-menu a{
+
+    text-decoration:none;
+
+    color:#FFFFFF;
+
+    font-family:'Pixelify Sans', sans-serif;
+
+    font-size:18px;
+
+    transition:.25s;
+
+}
+
+.footer-menu a:hover{
+
+    color:#FA397A;
+
+}
+
+/* Ilustração no canto inferior direito */
+
+.footer-ilustracao{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    padding-right:60px;
+
+}
+
+.footer-ilustracao img{
+
+    width:511px;
+
+    height:204px;
+
+    display:block;
+
+}
+
+
+
+
+/* ========================= */
+/* PÁGINA DE ARTIGOS */
+/* ========================= */
+
+.pagina-artigos {
+    max-width: 1320px;
+    margin: 0 auto;
+    width:100%;
+    margin:80px 0;
+    padding-left:60px;
+    padding-right:60px;
+}
+
+.botao-voltar{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:60px;
+
+    color:#FA397A;
+
+    text-decoration:none;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.botao-voltar:hover{
+
+    opacity:.8;
+
+}
+
+.titulo-listagem{
+
+    margin-top:24px;
+
+    color:#FFFFFF;
+
+    font-size:64px;
+
+    line-height:1.1;
+
+}
+
+.descricao-listagem{
+
+    margin-top:24px;
+
+    color:#9D9D9D;
+
+    font-size:24px;
+
+    margin-bottom:70px;
+
+}
+
+/* ========================= */
+/* PÁGINA DE ARTIGOS */
+/* ========================= */
+
+
+.cards-artigos-grid {
+
+    display:grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap:32px;
+
+}
+
+
+.cards-artigos-grid .card-artigo {
+
+    width:100%;
+    min-width:0;
+
+}
+
+/* =======================================================
+   PÁGINA DO ARTIGO
+======================================================= */
+
+.pagina-artigo{
+    max-width: 1320px;
+    margin: 80px auto;
+    padding: 0 60px;
+    box-sizing: border-box;
+}
+
+.voltar {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: fit-content;
+
+    text-decoration: none;
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    margin-bottom: 100px;
+
+    transition: .25s;
+
+}
+
+.voltar:hover {
+    opacity: .7;
+}
+
+.voltar svg {
+    width: 22px;
+    height: 22px;
+}
+
+
+/* Categoria */
+
+.categoria-artigo {
+
+    display: block;
+
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #FA397A;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* Título */
+
+.titulo-artigo {
+
+    font-family: "Segoe UI", sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 25px;
+
+}
+
+
+/* Data */
+
+.info-artigo {
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    color: #9d9d9d;
+
+    font-size: 16px;
+
+    margin-bottom: 45px;
+
+}
+
+/* Texto */
+
+.texto-artigo {
+
+    font-size: 22px;
+
+    line-height: 2;
+
+    color: #d6d6d6;
+
+}
+
+
+.texto-artigo p {
+
+    margin-bottom: 32px;
+
+}
+
+/* Destaque */
+
+.texto-artigo strong {
+
+    color: #fff;
+
+}
+
+
+/* Lista */
+
+.texto-artigo ul {
+
+    margin: 25px 0;
+
+    padding-left: 28px;
+
+}
+
+.texto-artigo li {
+
+    margin-bottom: 12px;
+
+}
+
+
+/* Leia também */
+
+.leia-tambem {
+
+    margin-top: 120px;
+
+}
+
+
+
+.leia-tambem h2 {
+
+    font-family: "Pixelify Sans", sans-serif;
+
+    font-size: 42px;
+
+    margin-bottom: 40px;
+
+}
+
+
+.cards-relacionados {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 30px;
+
+}
+
+
+.card-relacionado {
+
+    text-decoration: none;
+
+    color: inherit;
+
+    transition: .25s;
+
+}
+
+
+.card-relacionado:hover {
+
+    transform: translateY(-8px);
+
+}
+
+
+.card-relacionado img {
+
+    width: 200px;
+    height: auto;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.card-relacionado span {
+
+    display: block;
+
+    color: #8d8d8d;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+
+.card-relacionado h3 {
+
+    font-size: 24px;
+
+    line-height: 1.4;
+
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width:900px){
+
+.pagina-artigo{
+
+padding:0 30px;
+
+}
+
+.titulo-artigo{
+
+font-size:48px;
+
+}
+
+.cards-relacionados{
+
+grid-template-columns:1fr;
+
+}
+
+.texto-artigo{
+
+font-size:20px;
+
+}
+}
+
+
+@media (max-width:600px)
+
+.pagina-artigo{
+
+padding:0 20px;
+
+}
+
+.titulo-artigo{
+
+font-size:38px;
+
+}
+
+.info-artigo{
+
+font-size:14px;
+
+}
+
+.texto-artigo{
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+.leia-tambem .cards-artigos {
+
+    display:grid;
+
+    grid-template-columns:repeat(3, 1fr);
+
+    gap:24px;
+
+}
+
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+/* seu código do footer continua aqui */
+
+/* =====================================================
+   PÁGINA DA CAMISETA
+===================================================== */
+
+.pagina-camiseta {
+    max-width: 1320px;
+    margin: 80px auto;
+    padding: 0 60px;
+}
+
+.voltar-camisetas {
+    
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:60px;
+    color:#FA397A;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom: 60px;
+    transition: .3s;
+    margin-top:80px;
+    
+}
+
+.voltar-camisetas:hover {
+    color: #FA397A;
+    
+}
+
+.produto-camiseta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 70px;
+}
+
+.imagem-produto {
+    flex: 1;
+}
+
+.imagem-produto img {
+    width: 100%;
+    max-width: 620px;
+    border-radius: 10px;
+    display: block;
+}
+
+.info-produto {
+    flex: 1;
+}
+
+.categoria-produto {
+    color: #FA397A;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.info-produto h1 {
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.descricao-produto {
+    color: #B5B5B5;
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.especificacoes {
+    background: #131313;
+    border: 1px solid #2A2A2A;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.especificacoes h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.especificacoes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.especificacoes li {
+    color: #B5B5B5;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.botao-comprar {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 72px;
+    border: 2px solid #FA397A;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.botao-comprar:hover {
+    background: #FA397A;
+}
+
+/* =====================================================
+   VOCÊ TAMBÉM PODE GOSTAR
+===================================================== */
+
+.relacionados {
+    margin-top: 120px;
+}
+
+.relacionados h2 {
+    font-size: 40px;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.grid-relacionados {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.card-relacionado {
+    background: #131313;
+    border: 1px solid #2A2A2A;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.card-relacionado:hover {
+    transform: translateY(-8px);
+    border-color: #FA397A;
+}
+
+.card-relacionado img {
+    width: 100%;
+    display: block;
+}
+
+.card-relacionado h3 {
+    font-size: 22px;
+    color: #fff;
+    margin: 20px;
+}
+
+.card-relacionado p {
+    color: #B5B5B5;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 20px 20px;
+}
+
+.card-relacionado a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    height: 56px;
+    border: 2px solid #FA397A;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.card-relacionado a:hover {
+    background: #FA397A;
+}
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width:1100px){
+
+    .produto-camiseta{
+        flex-direction:column;
+    }
+
+    .grid-relacionados{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media (max-width:768px){
+
+    .pagina-camiseta{
+        padding:0 24px;
+    }
+
+    .info-produto h1{
+        font-size:36px;
+    }
+
+    .descricao-produto{
+        font-size:18px;
+    }
+
+    .grid-relacionados{
+        grid-template-columns:1fr;
+    }
+
+    .botao-comprar{
+        width:100%;
+    }
+
+}
+@media (max-width:768px){
+
+    .bloco-texto{
+
+        width:100%;
+        text-align:center;
+        align-items:center;
+        margin-top:40px;
+
+    }
+
+}
+.catalogo-camisetas {
+
+    margin-left:60px;
+    margin-right:60px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3, 312px);
+
+    gap:24px;
+
+}
+
+
+.card-camiseta {
+
+    width:312px;
+    height:578px;
+
+    background:#131313;
+
+    border:1px solid #575757;
+
+    border-radius:8px;
+
+    padding:10px;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+
+.card-camiseta img {
+
+    width:292px;
+    height:292px;
+
+    object-fit:cover;
+
+}
+.card-camiseta .categoria-camiseta {
+
+    margin-top:10px;
+
+    color:#FA397A;
+
+    font-size:16px;
+
+}
+
+
+.card-camiseta h3 {
+
+    margin-top:8px;
+
+    color:#FFFFFF;
+
+    font-size:24px;
+
+    line-height:1.2;
+
+}
+
+
+.card-camiseta p {
+
+    margin-top:12px;
+
+    color:#B5B5B5;
+
+    font-size:16px;
+
+    line-height:1.4;
+
+}
+
+
+.card-camiseta .botao-comprar {
+
+    margin-top:auto;
+
+    width:100%;
+
+    height:56px;
+
+    font-size:16px;
+
+}
+.cabecalho-camisetas {
+
+    margin-left:60px;
+    margin-right:60px;
+
+}
+
+.titulo-galeria {
+    margin-left: 60px;
+}
+
+/* ===========================================
+   PÁGINA DO ARTIGO - LEIA TAMBÉM
+=========================================== */
+
+.pagina-artigo{
+    margin: 80px 60px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.pagina-artigo .leia-tambem{
+    margin-top: 80px;
+}
+
+.pagina-artigo .cards-artigos{
+    display: grid;
+    grid-template-columns: repeat(4, 280px);
+    justify-content: space-between;
+    gap: 0;
+}
+
+.pagina-artigo .card-artigo{
+    width: 280px;
+    height: 540px;
+    background: #131313;
+    border: 1px solid #575757;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.pagina-artigo .card-artigo img{
+    width: 260px;
+    height: 260px;
+    display: block;
+    margin: 10px auto 0;
+    object-fit: cover;
+}
+
+.pagina-artigo .card-artigo .categoria,
+.pagina-artigo .card-artigo h3,
+.pagina-artigo .card-artigo p,
+.pagina-artigo .card-artigo a{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* =====================================================
+   PÁGINA FALE CONOSCO
+===================================================== */
+
+.pagina-contato{
+
+    margin:80px 60px;
+    max-width:720px;
+
+}
+
+.pagina-contato .botao-voltar{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    text-decoration:none;
+
+    color:#FA397A;
+
+    font-size:18px;
+    font-weight:600;
+
+    margin-bottom:60px;
+
+    transition:.25s;
+
+}
+
+.pagina-contato .botao-voltar:hover{
+
+    opacity:.7;
+
+}
+
+.titulo-contato{
+
+    color:#FFFFFF;
+
+    font-size:64px;
+
+    font-weight:700;
+
+    line-height:1.1;
+
+    margin-bottom:24px;
+
+}
+
+.descricao-contato{
+
+    color:#9D9D9D;
+
+    font-size:24px;
+
+    line-height:1.7;
+
+    margin-bottom:60px;
+
+}
+
+.contato-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+.contato-form input,
+.contato-form textarea{
+
+    width:100%;
+
+    background:#131313;
+
+    border:1px solid #575757;
+
+    border-radius:8px;
+
+    padding:20px;
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-family:"Segoe UI", sans-serif;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.contato-form input:focus,
+.contato-form textarea:focus{
+
+    border-color:#FA397A;
+
+}
+
+.contato-form input::placeholder,
+.contato-form textarea::placeholder{
+
+    color:#6F6F6F;
+
+}
+
+.contato-form textarea{
+
+    min-height:220px;
+
+    resize:vertical;
+
+}
+
+.contato-form button{
+
+    width:220px;
+
+    height:72px;
+
+    background:transparent;
+
+    border:2px solid #FA397A;
+
+    color:#FA397A;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.contato-form button:hover{
+
+    background:#FA397A;
+
+    color:#000000;
+
+}
+.menu a{
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.menu a:hover,
+.menu a.ativo{
+    color: #FA397A;
+}
+.footer-menu a{
+    color:#FFFFFF;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.footer-menu a:hover,
+.footer-menu a.ativo{
+    color:#FA397A;
+}
+/* =====================================================
+   RESPONSIVIDADE GERAL - UPIXEL
+===================================================== */
+
+@media (max-width:1024px){
+
+    .conteudo-principal,
+    .camisetas,
+    .sobre-nos,
+    .spotify-section,
+    .newsletter,
+    .produto-camiseta{
+
+        flex-direction:column;
+        gap:60px;
+
+    }
+
+    .bloco-texto,
+    .camisetas-conteudo,
+    .sobre-conteudo,
+    .spotify-conteudo,
+    .newsletter-esquerda,
+    .newsletter-direita,
+    .imagem-produto,
+    .info-produto{
+
+        width:100%;
+
+    }
+
+    .cards-artigos-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .catalogo-camisetas{
+
+        grid-template-columns:repeat(2,1fr);
+
+        margin:0 40px;
+
+    }
+
+}
+
+/* =========================
+   RESPONSIVIDADE INDEX
+   ========================= */
+
+@media (max-width:768px){
+
+
+/* HEADER */
+
+.meu-header{
+
+    padding:20px 24px;
+
+}
+
+
+.logo img{
+
+    height:50px;
+
+}
+
+
+/* MENU */
+
+.menu{
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    justify-content:flex-end;
+
+}
+
+.menu a{
+
+    font-size:14px;
+
+}
+
+
+
+/* HERO PRINCIPAL */
+
+.conteudo-principal{
+
+    flex-direction:column;
+
+    padding:0 24px;
+
+}
+
+
+.titulo-destaque{
+
+    font-size:36px;
+
+}
+
+
+
+/* IMAGEM PRINCIPAL */
+
+.bloco-imagem{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+
+.bloco-imagem img{
+
+    width:90%;
+
+    margin-top:20px;
+
+}
+
+
+
+/* FRASES */
+
+.texto-menor{
+
+    margin-bottom:40px;
+
+}
+
+
+.frase-underground{
+
+    margin-top:40px;
+
+}
+
+
+
+/* BOTÃO */
+
+.botao-artigos{
+
+    width:100%;
+
+    height:70px;
+
+}
+
+
+
+/* LINHA */
+
+.divisor-secao{
+
+    margin-top:50px;
+
+}
+
+
+
+/* ARTIGOS */
+
+.artigos-recentes{
+
+    margin:50px 24px;
+
+}
+
+
+.titulo-esquerda h2{
+
+    font-size:28px;
+
+}
+
+
+.cards-artigos{
+
+    flex-direction:column;
+
+    gap:40px;
+
+}
+
+
+.card-artigo{
+
+    width:100%;
+
+    height:auto;
+
+    background:transparent;
+
+    border:none;
+
+}
+
+
+.imagem-artigo{
+
+    width:180px;
+
+    height:180px;
+
+    object-fit:cover;
+
+    margin:0 auto;
+
+}
+/* IMAGENS GRANDES - MOBILE */
+
+.bloco-imagem img {
+
+    width: 70%;
+    max-width: 320px;
+
+}
+
+
+.camisetas-imagem img {
+
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+
+}
+
+
+.sobre-imagem img {
+
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+
+}
+
+/* AJUSTES FINOS MOBILE */
+
+.bloco-texto {
+
+    width:100%;
+    text-align:center;
+    align-items:center;
+    margin-top:40px;
+
+}
+
+
+.titulo-destaque {
+
+    font-size:32px;
+    text-align:center;
+
+}
+
+
+.bloco-imagem {
+
+    justify-content:center;
+    width:100%;
+
+}
+
+
+.texto-menor {
+
+    justify-content:center;
+    text-align:center;
+
+}
+
+
+.frase-underground {
+
+    justify-content:center;
+    text-align:center;
+
+}
+
+
+.texto-quebrado {
+
+    text-align:center;
+
+}
+
+
+.camisetas-conteudo,
+.sobre-conteudo,
+.spotify-conteudo,
+.newsletter-esquerda,
+.newsletter-direita {
+
+    text-align:center;
+
+}
+
+
+.titulo-camisetas,
+.titulo-sobre,
+.titulo-spotify {
+
+    font-size:32px;
+
+}
+
+
+.descricao-camisetas,
+.descricao-sobre,
+.descricao-spotify {
+
+    font-size:22px;
+
+}
+/* HEADER MOBILE */
+
+.meu-header {
+
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+
+}
+
+
+.menu {
+
+    width:100%;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+
+}
+
+
+.menu a {
+
+    font-size:12px;
+
+}
+}
+/* ===========================================
+   MOBILE - AJUSTES DOS ARTIGOS
+=========================================== */
+
+@media (max-width:768px){
+
+    .artigos-recentes,
+    .pagina-artigo .leia-tambem{
+        margin:50px 24px;
+    }
+
+    .cards-artigos,
+    .cards-artigos-grid,
+    .pagina-artigo .cards-artigos{
+
+        display:flex !important;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:32px;
+
+    }
+
+    .card-artigo,
+    .pagina-artigo .card-artigo{
+
+        width:100%;
+        max-width:320px;
+        height:auto;
+
+        text-align:center;
+
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+
+    }
+
+    .card-artigo img,
+    .imagem-artigo,
+    .pagina-artigo .card-artigo img{
+
+        width:180px !important;
+        height:180px !important;
+        object-fit:cover;
+        margin:20px auto;
+
+    }
+
+    .card-artigo h3,
+    .card-artigo p,
+    .card-artigo .categoria,
+    .pagina-artigo .card-artigo h3,
+    .pagina-artigo .card-artigo p,
+    .pagina-artigo .card-artigo .categoria{
+
+        text-align:center;
+
+    }
+
+    .card-artigo a,
+    .pagina-artigo .card-artigo a{
+
+        margin:20px auto;
+
+    }
+.card-artigo .categoria,
+.pagina-artigo .card-artigo .categoria{
+
+    font-size:14px;
+
+}
+
+.card-artigo h3,
+.pagina-artigo .card-artigo h3{
+
+    font-size:20px;
+    line-height:1.3;
+
+}
+
+.card-artigo p,
+.pagina-artigo .card-artigo p{
+
+    font-size:14px;
+    line-height:1.6;
+
+}
+}
+/* ===========================================
+   MOBILE - SEÇÃO SPOTIFY
+=========================================== */
+
+@media (max-width:768px){
+
+    .spotify-section{
+        flex-direction:column;
+        padding:50px 24px;
+        gap:40px;
+        text-align:center;
+    }
+
+    .spotify-conteudo{
+        width:100%;
+    }
+
+    .titulo-spotify{
+        font-size:30px;
+    }
+
+    .descricao-spotify{
+        font-size:20px;
+        max-width:100%;
+    }
+
+    .spotify-card{
+        width:100%;
+        max-width:340px;
+        height:auto;
+        padding:28px;
+        margin:0 auto;
+    }
+
+    .playlist-label{
+        font-size:12px;
+    }
+
+    .spotify-card h3{
+        font-size:22px;
+    }
+
+    .playlist li{
+        font-size:16px;
+        line-height:1.5;
+    }
+
+    .social-links{
+        justify-content:center;
+        gap:20px;
+        flex-wrap:wrap;
+    }
+
+    .spotify-link{
+        font-size:16px;
+    }
+
+    .spotify-link img{
+        width:24px;
+        height:24px;
+    }
+
+}
+/* ===========================================
+   MOBILE - FOOTER
+=========================================== */
+
+@media (max-width:768px){
+
+    .footer{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:30px;
+        padding:40px 24px;
+        text-align:center;
+    }
+
+    .footer-esquerda,
+    .footer-centro{
+        width:100%;
+        text-align:center;
+    }
+
+    .footer-logo{
+        width:140px;
+        height:auto;
+        margin:0 auto 20px;
+        display:block;
+    }
+
+    .copyright{
+        font-size:14px;
+        line-height:1.5;
+    }
+
+    .footer-menu{
+        display:flex;
+        flex-direction:column;
+        gap:16px;
+        align-items:center;
+    }
+
+    .footer-menu a{
+        font-size:16px;
+    }
+
+    .footer-ilustracao{
+        text-align:center;
+        margin-top:30px;
+    }
+
+    .footer-ilustracao img{
+        width:90%;
+        max-width:320px;
+        height:auto;
+        display:block;
+        margin:0 auto;
+    }
+
+}
+@media (max-width:768px){
+
+    .footer-centro{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        width:100%;
+    }
+
+    .footer-menu{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        width:100%;
+        margin:0 auto;
+        padding:0;
+    }
+
+    .footer-menu a{
+        display:block;
+        width:100%;
+        text-align:center;
+        margin:0;
+    }
+
+}
+@media (max-width:768px){
+
+    .newsletter{
+
+        flex-direction:column;
+        padding:50px 24px;
+        gap:40px;
+        text-align:center;
+
+    }
+
+
+    .newsletter-esquerda,
+    .newsletter-direita{
+
+        width:100%;
+
+    }
+
+
+    .titulo-newsletter{
+
+        font-size:32px;
+        line-height:1.2;
+        max-width:100%;
+
+    }
+
+
+    .newsletter-direita{
+
+        align-items:center;
+
+    }
+
+
+    .newsletter-form{
+
+        flex-direction:column;
+
+    }
+
+
+    .newsletter-form input{
+
+        height:72px;
+        font-size:16px;
+
+    }
+
+
+    .newsletter-form button{
+
+        height:60px;
+        font-size:16px;
+
+    }
+
+}
+/* AJUSTE FINAL NEWSLETTER MOBILE */
+
+@media (max-width:768px){
+
+    .newsletter{
+
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        padding:60px 24px;
+        gap:35px;
+
+    }
+
+
+    .newsletter-esquerda{
+
+        width:100%;
+        text-align:center;
+
+    }
+
+
+    .titulo-newsletter{
+
+        font-size:32px;
+        line-height:1.2;
+        max-width:100%;
+        text-align:center;
+
+    }
+
+
+    .newsletter-direita{
+
+        width:100%;
+        align-items:center;
+
+    }
+
+
+    .newsletter-texto{
+
+        font-size:13px;
+        letter-spacing:1.5px;
+        text-align:center;
+        margin-bottom:20px;
+
+    }
+
+
+   .newsletter-form{
+
+    width:100%;
+    max-width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+
+}
+
+
+    .newsletter-form input{
+
+    width:100%;
+    height:56px;
+    font-size:15px;
+    padding:0 18px;
+    box-sizing:border-box;
+
+}
+
+
+    .newsletter-form button{
+
+        width:100%;
+        height:56px;
+        font-size:16px;
+
+    }
+
+}
+/* ===========================
+   RESPONSIVIDADE - CAMISETAS
+=========================== */
+
+@media (max-width:768px){
+
+    .cabecalho-camisetas{
+        margin:0 24px;
+        text-align:center;
+    }
+
+    .titulo-galeria{
+        margin:0;
+        text-align:center;
+        font-size:36px;
+    }
+
+    .catalogo-camisetas{
+
+        margin:40px 24px;
+
+        display:grid;
+
+        grid-template-columns:1fr;
+
+        justify-items:center;
+
+        gap:32px;
+
+    }
+
+    .card-camiseta{
+
+        width:100%;
+        max-width:320px;
+        height:auto;
+
+        align-items:center;
+
+        text-align:center;
+
+    }
+
+    .card-camiseta img{
+
+        width:100%;
+        max-width:292px;
+        height:auto;
+
+        object-fit:cover;
+
+    }
+
+    .card-camiseta .categoria-camiseta{
+
+        font-size:16px;
+        text-align:center;
+
+    }
+
+    .card-camiseta h3{
+
+        font-size:24px;
+        text-align:center;
+        line-height:1.2;
+
+    }
+
+    .card-camiseta p{
+
+        font-size:16px;
+        line-height:1.5;
+        text-align:center;
+
+    }
+
+    .card-camiseta .botao-comprar{
+
+        width:100%;
+        margin-top:24px;
+
+    }
+
+}
+.leia-tambem .card-artigo{
+
+    background:none;
+    border:none;
+    border-radius:0;
+    box-shadow:none;
+
+    padding:0;
+
+    width:100%;
+    height:auto;
+
+}
+/* ===========================================
+   AJUSTE FINAL - PÁGINA ARTIGOS (MOBILE)
+=========================================== */
+
+@media (max-width:768px){
+
+    .pagina-artigos{
+
+        padding:0 24px;
+        margin:50px auto;
+
+    }
+
+    .titulo-listagem{
+
+        font-size:36px !important;
+        line-height:1.2;
+        text-align:center;
+
+    }
+
+    .descricao-listagem{
+
+        font-size:18px !important;
+        line-height:1.6;
+        text-align:center;
+        margin-bottom:40px;
+
+    }
+
+}

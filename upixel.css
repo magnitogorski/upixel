@@ -1,0 +1,36 @@
+/* 1. As primeiras linhas (Reset de fábrica) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Definindo o fundo e tamanho padrão da página */
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000000; /* Um fundo cinza claro para você ver a página */
+    font-family: sans-serif;
+}
+
+/* 3. Estilo do Header (Alinhamento igual ao Figma) */
+.meu-header {
+    display: flex;
+    justify-content: space-between; /* Logo na esquerda, menu na direita */
+    align-items: center;            /* Alinha verticalmente no centro */
+    padding: 20px 40px;             /* Espaço interno */
+    background-color: #000000;      /* Fundo branco para o topo destacar */
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1); /* Uma sombra de leve */
+}
+
+/* 4. Estilo dos links do menu */
+.menu a {
+    text-decoration: none;
+    color: #333333;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    color: #0070f3; /* Muda de cor quando passa o mouse por cima */
+}
