@@ -2766,3 +2766,55 @@ line-height:1.8;
     }
 
 }
+.compartilhar-linkedin{
+
+    max-width:700px;
+    margin:100px auto 80px;
+    text-align:center;
+
+}
+
+.compartilhar-linkedin h2{
+
+    color:#FFFFFF;
+    font-size:32px;
+    margin-bottom:20px;
+
+}
+
+.compartilhar-linkedin p{
+
+    color:#B5B5B5;
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:40px;
+
+}
+
+.botao-linkedin{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    width:300px;
+    height:72px;
+
+    border:2px solid #FA397A;
+    border-radius:8px;
+
+    color:#FFFFFF;
+    text-decoration:none;
+
+    font-weight:700;
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.botao-linkedin:hover{
+
+    background:#FA397A;
+
+}
