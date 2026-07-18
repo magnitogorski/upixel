@@ -2818,3 +2818,109 @@ line-height:1.8;
     background:#FA397A;
 
 }
+/* ===========================
+   MAIS ARTIGOS
+=========================== */
+
+.mais-artigos{
+
+    max-width:700px;
+    margin:100px auto 80px;
+
+    text-align:center;
+
+}
+
+.mais-artigos h2{
+
+    color:#FA397A;
+    font-size:36px;
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+.mais-artigos p{
+
+    color:#FFFFFF;
+    font-size:20px;
+    line-height:1.6;
+
+    margin-bottom:40px;
+
+}
+
+.botao-mais-artigos{
+
+    width:320px;
+    height:82px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    border:2px solid #FA397A;
+    border-radius:8px;
+
+    color:#FFFFFF;
+    text-decoration:none;
+
+    font-size:20px;
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.botao-mais-artigos:hover{
+
+    background:#FA397A;
+
+}
+
+.botao-mais-artigos .seta-fina{
+
+    width:24px;
+    height:24px;
+
+}
+/* ===========================
+   MAIS ARTIGOS - MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+    .mais-artigos{
+
+        margin:60px 24px;
+
+    }
+
+    .mais-artigos h2{
+
+        font-size:28px;
+
+    }
+
+    .mais-artigos p{
+
+        font-size:16px;
+        line-height:1.5;
+
+    }
+
+    .botao-mais-artigos{
+
+        width:100%;
+        max-width:320px;
+        height:70px;
+
+        font-size:18px;
+
+    }
+
+}
