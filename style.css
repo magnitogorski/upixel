@@ -566,7 +566,7 @@ body {
     width:614px;
     height:553px;
 
-    background:#FA397A;
+    background:none;
 
     padding:48px;
 
@@ -2921,6 +2921,44 @@ line-height:1.8;
 
         font-size:18px;
 
+    }
+
+}
+/* LINKEDIN */
+
+.linkedin-botao{
+    display:inline-block;
+    margin-top:30px;
+    padding:16px 34px;
+    background:#FA397A;
+    color:#fff;
+    text-decoration:none;
+    border-radius:6px;
+    font-size:18px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.linkedin-botao:hover{
+    opacity:.85;
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+    .spotify-section{
+        flex-direction:column;
+    }
+
+    .spotify-conteudo,
+    .spotify-card{
+        width:100%;
+        max-width:100%;
+    }
+
+    .spotify-card iframe{
+        width:100%;
     }
 
 }
