@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
+<!--------------------------------------------------------------->
+Newsletter
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <!-- ==========================================================
      CABEÇALHO (HEAD) DA PÁGINA
 
@@ -343,8 +345,8 @@
         </span>
 
         <h2 class="titulo-spotify">
-          Conecte-se no Linkedin.<br>
-          Ouça no Spotify
+            Conecte-se no Linkedin.<br>
+            Ouça no Spotify
         </h2>
 
         <p class="descricao-spotify">
@@ -400,17 +402,70 @@
             Newsletter. É sério que você quer isso?
         </span>
 
-        <form class="newsletter-form">
+        <div class="sib-form" style="text-align:center; background-color:#EFF2F7;">
+  <div id="sib-form-container" class="sib-form-container">
 
-            <input
-                type="email"
-                placeholder="Digite seu e-mail">
+    <div id="error-message" class="sib-form-message-panel">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        Sua assinatura não pôde ser validada.
+      </div>
+    </div>
 
-            <button type="submit">
-                Assinar
-            </button>
+    <div id="success-message" class="sib-form-message-panel">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        Você fez sua assinatura com sucesso.
+      </div>
+    </div>
 
-        </form>
+    <div id="sib-container" class="sib-container--large sib-container--vertical">
+
+      <form id="sib-form"
+            method="POST"
+            action="https://8c95e98a.sibforms.com/serve/MUIFAMJ_yL5wZnkIkvzqwcs7hchlvkDdm_MwRnh3Zr99-RwrQaxhBHoRqOA-34XbxstQkH1OyKucYcpPY1nPj0p5lB5SAgGgXAy4VEIuY0jKD-9_ZkgFSaxYXUnYKtRI94RelbXi7N_XJcyDOrEAQ0Je6EbT6IK9ZErDUrb5Mx7_HM0ifyrMwNgGfN_gMqs6Cp68rwj6RdOUGncAeg=="
+            data-type="subscription">
+
+        <div class="sib-form-block">
+          <p>Newsletter Upixel</p>
+        </div>
+
+        <div class="sib-form-block">
+          <p>É sério que você quer isso?</p>
+        </div>
+
+        <div class="sib-input sib-form-block">
+          <label for="EMAIL">
+            Agora é só inserir um e-mail válido
+          </label>
+
+          <input
+              type="email"
+              id="EMAIL"
+              name="EMAIL"
+              placeholder="EMAIL"
+              required
+              autocomplete="email">
+
+          <label class="entry__error entry__error--primary"></label>
+
+          <label class="entry__specification">
+            Forneça seu e-mail para assinar.
+          </label>
+        </div>
+
+        <div class="sib-form-block">
+          <button type="submit">
+            ASSINAR
+          </button>
+        </div>
+
+        <input type="text" name="email_address_check" class="input--hidden">
+        <input type="hidden" name="locale" value="pt">
+
+      </form>
+
+    </div>
+  </div>
+</div>
 
     </div>
 
@@ -453,3 +508,5 @@
 </div>
 </body>
 </html>
+
+
