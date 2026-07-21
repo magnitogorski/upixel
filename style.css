@@ -2962,3 +2962,167 @@ line-height:1.8;
     }
 
 }
+/* ---------- BREVO NEWSLETTER ---------- */
+
+.sib-form{
+
+    background:transparent !important;
+    padding:0 !important;
+
+}
+
+#sib-form-container{
+
+    max-width:none !important;
+
+}
+
+#sib-container{
+
+    background:transparent !important;
+    border:none !important;
+    max-width:none !important;
+    width:100% !important;
+    padding:0 !important;
+
+}
+
+#sib-container p{
+
+    margin:0;
+
+}
+
+.sib-form-block:first-child{
+
+    display:none;
+
+}
+
+.sib-form-block:nth-child(2){
+
+    display:none;
+
+}
+
+.entry__label{
+
+    display:none !important;
+
+}
+
+.entry__specification{
+
+    display:none !important;
+
+}
+
+.entry__field{
+
+    width:100%;
+
+}
+
+#EMAIL{
+
+    width:100% !important;
+    height:54px !important;
+
+    padding:0 18px !important;
+
+    border:2px solid #2B2B2B !important;
+
+    background:#111 !important;
+
+    color:#FFF !important;
+
+    font-size:16px !important;
+
+    border-radius:8px !important;
+
+    box-sizing:border-box;
+
+}
+
+#EMAIL::placeholder{
+
+    color:#777;
+
+}
+
+.sib-form-block__button{
+
+    margin-top:18px !important;
+
+    width:100% !important;
+
+    height:54px !important;
+
+    background:#FA397A !important;
+
+    border:none !important;
+
+    border-radius:8px !important;
+
+    color:#FFF !important;
+
+    font-weight:700 !important;
+
+    cursor:pointer;
+
+}
+
+.sib-form-block__button:hover{
+
+    opacity:.9;
+
+}
+
+.sib-form-message-panel{
+
+    margin-bottom:20px;
+
+}
+/* BOTÃO NEWSLETTER */
+
+#sib-form button,
+.sib-form button,
+input[type="submit"] {
+    background-color: #FA397A;
+    color: #000000;
+    border: none;
+    padding: 14px 35px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+#sib-form button:hover,
+.sib-form button:hover,
+input[type="submit"]:hover {
+    background-color: #ffffff;
+    color: #FA397A;
+}
+/* NEWSLETTER */
+
+.newsletter form{
+    width: 100%;
+    max-width: 482px;
+}
+
+.newsletter input{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.newsletter button{
+    width: 100%;
+    height: 48px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
