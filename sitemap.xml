@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    SITEMAP.XML — Upixel
+
+    Esse arquivo é uma lista de páginas do site pro Google
+    (e outros buscadores) achar tudo mais rápido, sem precisar
+    ficar clicando link por link.
+
+    ONDE COLOCAR: na raiz do site, junto com o index.html.
+    Precisa ficar acessível em https://upixel.com.br/sitemap.xml
+
+    COMO MANTER ATUALIZADO:
+    Toda vez que você criar uma página nova (um artigo novo,
+    por exemplo), copie um bloco <url>...</url> abaixo e troque
+    o <loc> pelo endereço da página nova. Não precisa fazer nada
+    além disso — nem precisa avisar ninguém, o Google relê esse
+    arquivo sozinho de tempos em tempos (ou você pode forçar uma
+    releitura na Search Console).
+
+    <priority> é só uma dica pro Google (1.0 = mais importante,
+    0.1 = menos importante). <changefreq> é uma dica de quão
+    frequentemente a página muda.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://upixel.com.br/index.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/artigos.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/artigotheoffice.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/artigo5w2h.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/artigoinfluencer.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/artigonielsen.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/artigoinfinitescroll.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/artigoessafada.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/artigopainel.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/feed-aberto.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/contato.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+</urlset>

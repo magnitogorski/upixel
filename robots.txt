@@ -1,0 +1,19 @@
+# ==========================================================
+# ROBOTS.TXT — Upixel
+#
+# Esse arquivo diz pros robôs de busca (Google, Bing, etc.)
+# que eles podem visitar e indexar TODAS as páginas do site.
+#
+# "User-agent: *"  -> vale para todos os robôs
+# "Allow: /"       -> libera tudo, sem bloquear nada
+# "Sitemap:"       -> aponta onde está a lista de páginas do site
+#
+# IMPORTANTE: este arquivo precisa ficar na RAIZ do site,
+# no mesmo lugar do index.html — ou seja, acessível em:
+# https://upixel.com.br/robots.txt
+# ==========================================================
+
+User-agent: *
+Allow: /
+
+Sitemap: https://upixel.com.br/sitemap.xml
