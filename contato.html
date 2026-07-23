@@ -5,266 +5,170 @@
 
 <!-- ==========================================================
      CABEÇALHO (HEAD) DA PÁGINA
-
-     Tudo o que estiver dentro da tag <head> NÃO aparece
-     para o visitante.
-
-     Esta área contém:
-     • Configurações básicas da página
-     • SEO (Google e Bing)
-     • Compartilhamento em redes sociais
-     • Fontes
-     • Favicon
-     • Arquivos CSS
-     • Google Analytics
-     • Outros scripts futuros
-
-     IMPORTANTE:
-     • Não apagar nem mover este conteúdo sem necessidade.
-     • Ao criar novas páginas, copie esta estrutura e altere
-       apenas os títulos, descrições e URLs específicas.
-     ========================================================== -->
-
-
-<!-- ==========================================================
-     CONFIGURAÇÕES BÁSICAS
+     Mesma estrutura padrão das outras páginas do site.
      ========================================================== -->
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fale Conosco | Upixel | Pixel Art, UI, UX, Design e Cultura Digital</title>
+<title>Contato | Upixel</title>
 
-
-<!-- ==========================================================
-     SEO
-     Informações utilizadas pelos mecanismos de busca.
-     ========================================================== -->
-
-<meta name="description" content="Entre em contato com a Upixel. Envie dúvidas, sugestões, ideias ou mensagens sobre Pixel Art, UI, UX, Design e Cultura Digital.">
-
-<meta name="keywords" content="contato, fale conosco, upixel, pixel art, ux, ui, design, cultura digital">
-
+<meta name="description" content="Fale com a Upixel. Mande uma mensagem direta ou me chame no LinkedIn e no WhatsApp.">
+<meta name="keywords" content="contato, fale conosco, upixel, linkedin, whatsapp">
 <meta name="author" content="Upixel">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#000000">
 
 <link rel="canonical" href="https://upixel.com.br/contato.html">
 
-
-<!-- ==========================================================
-     OPEN GRAPH
-     Informações utilizadas quando alguém compartilha
-     a página no WhatsApp, LinkedIn, Facebook, Discord etc.
-     ========================================================== -->
-
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Upixel">
-<meta property="og:title" content="Fale Conosco | Upixel">
-<meta property="og:description" content="Entre em contato com a Upixel para enviar dúvidas, sugestões ou conversar sobre design, tecnologia e cultura digital.">
+<meta property="og:title" content="Contato | Upixel">
+<meta property="og:description" content="Fale com a Upixel. Mande uma mensagem direta ou me chame no LinkedIn e no WhatsApp.">
 <meta property="og:url" content="https://upixel.com.br/contato.html">
-<meta property="og:image" content="https://upixel.com.br/imagens/capa-social.jpg">
-
-
-<!-- ==========================================================
-     TWITTER / X
-     Também utilizado por diversos aplicativos de mensagens.
-     ========================================================== -->
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fale Conosco | Upixel">
-<meta name="twitter:description" content="Entre em contato com a Upixel e envie sua mensagem.">
-<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.jpg">
-
-
-<!-- ==========================================================
-     FONTES
-     Fontes utilizadas pela Upixel.
-     ========================================================== -->
+<meta name="twitter:title" content="Contato | Upixel">
+<meta name="twitter:description" content="Fale com a Upixel. Mande uma mensagem direta ou me chame no LinkedIn e no WhatsApp.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-
-
-<!-- ==========================================================
-     FAVICON
-     Ícone exibido na aba do navegador.
-     ========================================================== -->
 
 <link rel="icon" type="image/png" href="favicon.png">
 
-
-<!-- ==========================================================
-     ESTILOS (CSS)
-     style.css → Estilos principais do site.
-     ========================================================== -->
-
 <link rel="stylesheet" href="style.css">
-
-
-<!-- ==========================================================
-     GOOGLE ANALYTICS 4 (GA4)
-
-     Monitoramento de visitantes da Upixel.
-
-     IMPORTANTE:
-     • Manter este código em TODAS as páginas.
-     • Não alterar o ID de medição sem necessidade.
-     • Copiar este bloco ao criar novas páginas.
-     ========================================================== -->
+<link rel="stylesheet" href="mobile.css">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
-
   gtag('config', 'G-EXQS02C898');
 </script>
-
-
-
-<!-- ==========================================================
-     ESPAÇO RESERVADO PARA FUTURAS INTEGRAÇÕES
-
-     Exemplos:
-     • Microsoft Clarity (Heatmaps e gravações)
-     • Google Search Console
-     • Meta Pixel
-     • Outros scripts de monitoramento
-
-     Manter esta organização facilita a manutenção do site.
-     ========================================================== -->
 
 </head>
 
 <body>
 
 <header class="meu-header">
-
     <div class="logo">
-        <a href="index.html">
-            <img src="logobranca.png" alt="Upixel">
-        </a>
+        <img src="logobranca.png" alt="Upixel">
     </div>
 
-         <nav class="menu">
-    <a href="index.html">Home</a>
-    <a href="artigos.html">Artigos</a>
-    <a href="camisetas.html">Camisetas</a>
-    <a href="contato.html" class="ativo">Contato</a>
-</nav>
-
+    <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="feed-aberto.html">Besteirol</a>
+        <a href="contato.html" class="ativo">Contato</a>
+    </nav>
 </header>
+
 
 <main class="pagina-contato">
 
     <a href="index.html" class="botao-voltar">
-
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-
-            <path d="M19 12H5M5 12L11 6M5 12L11 18"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-
-        </svg>
-
-        Voltar
-
+        ← Voltar
     </a>
 
-    <span class="texto-menor">
+    <h1 class="titulo-contato">Fale comigo</h1>
 
-        <img src="raio.png" class="icone-raio">
+    <p class="descricao-contato">
+        Dúvida, ideia, proposta ou só quer mandar um oi:
+        escreve aqui embaixo que eu respondo. Se preferir
+        algo mais rápido, me chama direto pelos links abaixo.
+    </p>
 
-        FALE CONOSCO
+    <!-- ==========================================================
+         ATALHO RÁPIDO (menor esforço possível pra falar comigo)
+         Usa a mesma classe .social-links já utilizada na
+         seção do Spotify — reaproveitando os ícones que você
+         já tem em outras páginas do feed.
+         ========================================================== -->
 
-    </span>
+    <div class="social-links" style="margin-bottom: 50px;">
 
+        <a href="https://www.linkedin.com/in/bruno-ito-gorski/" target="_blank" title="Meu LinkedIn">
+            <img src="linkedin-161-svgrepo-com.svg" alt="LinkedIn" style="width:26px; height:26px;">
+            
+        </a>
 
-    <form class="contato-form">
+        <a href="https://wa.me/5535988424451" target="_blank" title="Meu WhatsApp">
+            <img src="whatsapp-svgrepo-com.svg" alt="WhatsApp" style="width:26px; height:26px;">
+            
+        </a>
 
-        <input
-            type="text"
-            name="nome"
-            placeholder="Seu nome"
-            required>
+    </div>
 
-        <input
-            type="email"
-            name="email"
-            placeholder="Seu e-mail"
-            required>
+    <!-- ==========================================================
+         FORMULÁRIO DE CONTATO
 
-        <input
-            type="text"
-            name="assunto"
-            placeholder="Assunto"
-            required>
+         Usa o Web3Forms (web3forms.com) — serviço gratuito que
+         envia o conteúdo do formulário direto pro seu e-mail,
+         sem precisar de servidor, login ou cartão de crédito.
 
-        <textarea
-            name="mensagem"
-            placeholder="Escreva sua mensagem..."
-            rows="8"
-            required></textarea>
+         COMO ATIVAR (leva ~2 minutos):
+         1. Acesse https://web3forms.com
+         2. Digite o seu e-mail e clique em "Create Access Key"
+         3. Você vai receber uma chave (algo como
+            "a1b2c3d4-e5f6-...") por e-mail
+         4. Cole essa chave no lugar de
+            "COLE_SUA_ACCESS_KEY_AQUI" logo abaixo
+         5. Pronto — toda mensagem enviada nesse formulário
+            vai cair direto na sua caixa de entrada.
 
-        <button type="submit">
+         Enquanto você não configurar a chave, o formulário
+         não vai enviar e-mail nenhum (mas continua funcionando
+         visualmente).
+         ========================================================== -->
 
-            Enviar
+    <form class="contato-form" action="https://api.web3forms.com/submit" method="POST">
 
-        </button>
+        <input type="hidden" name="access_key" value="COLE_SUA_ACCESS_KEY_AQUI">
+        <input type="hidden" name="subject" value="Nova mensagem pelo site Upixel">
+        <input type="text" name="botcheck" style="display:none">
+
+        <input type="text" name="nome" placeholder="Seu nome" required>
+
+        <input type="email" name="email" placeholder="Seu e-mail" required>
+
+        <input type="text" name="rede_social" placeholder="Seu LinkedIn, Instagram ou Facebook (opcional)">
+
+        <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
+
+        <button type="submit">Enviar mensagem</button>
 
     </form>
 
 </main>
 
-<hr class="divisor-secao">
+<div class="divisor-secao"></div>
 
 <footer class="footer">
 
     <div class="footer-esquerda">
-
         <img src="logobranca.png" alt="Upixel" class="footer-logo">
-
         <p class="copyright">
-
             Upixel. Todos os direitos reservados.
-
         </p>
-
     </div>
 
     <div class="footer-centro">
-
         <nav class="footer-menu">
-
-            <nav class="footer-menu">
-
-    <a href="index.html">Home</a>
-    <a href="artigos.html">Artigos</a>
-    <a href="camisetas.html">Camisetas</a>
-    <a href="contato.html" class="ativo">Contato</a>
-
-</nav>
-
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="feed-aberto.html">Besteirol</a>
+            <a href="contato.html" class="ativo">Contato</a>
         </nav>
-
     </div>
 
 </footer>
 
 <div class="footer-ilustracao">
-
     <img src="rodape.png" alt="Ilustração Footer">
-
 </div>
 
-
-
 </body>
+
 </html>
