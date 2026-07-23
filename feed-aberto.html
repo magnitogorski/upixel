@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<!-- ==========================================================
+     CABEÇALHO (HEAD) DA PÁGINA
+
+     Tudo o que estiver dentro da tag <head> NÃO aparece
+     para o visitante.
+
+     Esta área contém:
+     • Configurações básicas da página
+     • SEO (Google e Bing)
+     • Compartilhamento em redes sociais
+     • Fontes
+     • Favicon
+     • Arquivos CSS
+     • Google Analytics
+     • Outros scripts futuros
+
+     IMPORTANTE:
+     • Não apagar nem mover este conteúdo sem necessidade.
+     • Ao criar novas páginas, copie esta estrutura e altere
+       apenas os títulos, descrições e URLs específicas.
+     ========================================================== -->
+
+
+<!-- ==========================================================
+     CONFIGURAÇÕES BÁSICAS
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Infinite Scroll | Upixel</title>
+
+
+<!-- ==========================================================
+     SEO
+     Informações utilizadas pelos mecanismos de busca.
+     ========================================================== -->
+
+<meta name="description" content="Entenda como o Infinite Scroll mudou a forma como consumimos conteúdo na internet e por que esse recurso mantém nossa atenção por muito mais tempo.">
+
+<meta name="keywords" content="infinite scroll, ux, ui, design de interfaces, redes sociais, comportamento digital, experiência do usuário">
+
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/artigoinfinitescroll.html">
+
+
+<!-- ==========================================================
+     OPEN GRAPH
+     Informações utilizadas quando alguém compartilha
+     a página no WhatsApp, LinkedIn, Facebook, Discord etc.
+     ========================================================== -->
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:title" content="Infinite Scroll | Upixel">
+<meta property="og:description" content="Descubra como o Infinite Scroll influencia nosso comportamento digital e por que ele se tornou um dos recursos mais poderosos das redes sociais.">
+<meta property="og:url" content="https://upixel.com.br/artigoinfinitescroll.html">
+
+
+<!-- ==========================================================
+     TWITTER / X
+     Também utilizado por diversos aplicativos de mensagens.
+     ========================================================== -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Infinite Scroll | Upixel">
+<meta name="twitter:description" content="Descubra como o Infinite Scroll influencia nosso comportamento digital e mantém nossa atenção por muito mais tempo.">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.jpg">
+
+
+<!-- ==========================================================
+     FONTES
+     Fontes utilizadas pela Upixel.
+     ========================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+
+<!-- ==========================================================
+     FAVICON
+     Ícone exibido na aba do navegador.
+     ========================================================== -->
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+
+<!-- ==========================================================
+     ESTILOS (CSS)
+     style.css → Estilos principais do site.
+     ========================================================== -->
+
+<link rel="stylesheet" href="style.css">
+
+
+<!-- ==========================================================
+     GOOGLE ANALYTICS 4 (GA4)
+
+     Monitoramento de visitantes da Upixel.
+
+     IMPORTANTE:
+     • Manter este código em TODAS as páginas.
+     • Não alterar o ID de medição sem necessidade.
+     • Copiar este bloco ao criar novas páginas.
+     ========================================================== -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BSCJB0HD2"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-1BSCJB0HD2');
+</script>
+
+
+<!-- ==========================================================
+     ESPAÇO RESERVADO PARA FUTURAS INTEGRAÇÕES
+
+     Exemplos:
+     • Microsoft Clarity (Heatmaps e gravações)
+     • Google Search Console
+     • Meta Pixel
+     • Outros scripts de monitoramento
+
+     Manter esta organização facilita a manutenção do site.
+     ========================================================== -->
+</head>
+
+
+<body>
+
+
+<header class="meu-header">
+
+
+    <div class="logo">
+        <img src="logobranca.png" alt="Upixel">
+    </div>
+
+
+     <nav class="menu">
+    <a href="index.html" >Home</a>
+    <a href="artigos.html">Artigos</a>
+    <a href="feed-aberto.html" class="ativo">Besteirol</a>
+    <a href="contato.html">Contato</a>
+</nav>
+
+
+</header>
+
+<main class="pagina-feed-aberto">
+
+<a href="index.html" class="voltar">
+
+<svg viewBox="0 0 24 24" fill="none">
+
+<path 
+d="M19 12H5M5 12L11 6M5 12L11 18"
+stroke="currentColor"
+stroke-width="1.5"
+stroke-linecap="round"
+stroke-linejoin="round"/>
+
+</svg>
+
+Voltar
+
+</a>
+
+
+<!-- ==========================================================
+     LISTA DE POSTS (VÍDEOS)
+
+     Este bloco começa vazio de propósito.
+     O JavaScript lá no final da página (script #feed-paginado)
+     é quem preenche esse espaço, lendo o array POSTS_FEED.
+
+     Para adicionar/trocar vídeos, você NÃO mexe aqui.
+     Vá direto no array POSTS_FEED, no <script> no fim do arquivo.
+     ========================================================== -->
+
+<div id="lista-posts" class="lista-posts">
+    <!-- Os posts (vídeo + comentário + ícones) são gerados aqui pelo JS -->
+</div>
+
+
+<!-- ==========================================================
+     PAGINAÇÃO
+
+     Os botões de página (1, 2, 3, Anterior, Próxima) também
+     são gerados automaticamente pelo JavaScript, com base em
+     quantos posts existem no array POSTS_FEED.
+     ========================================================== -->
+
+<nav class="paginacao-feed" id="paginacao-feed" aria-label="Paginação do feed">
+    <!-- Botões de página gerados aqui pelo JS -->
+</nav>
+
+
+</main>
+
+
+
+<div class="divisor-secao"></div>
+
+<footer class="footer">
+
+    <div class="footer-esquerda">
+
+        <img src="logobranca.png" alt="Upixel" class="footer-logo">
+
+        <p class="copyright">
+            Upixel. Todos os direitos reservados.
+        </p>
+
+    </div>
+
+    <div class="footer-centro">
+
+        <nav class="footer-menu">
+
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="feed-aberto.html" class="ativo">Besteirol</a>
+            <a href="contato.html">Contato</a>
+
+        </nav>
+
+    </div>
+
+</footer>
+
+<div class="footer-ilustracao">
+
+    <img src="rodape.png" alt="Ilustração Footer">
+
+</div>
+
+
+<!-- ==========================================================
+     SCRIPT: FEED PAGINADO DE VÍDEOS
+     id: #feed-paginado
+
+     COMO EDITAR:
+     1. Para adicionar, trocar ou remover um vídeo, mexa SÓ no
+        array POSTS_FEED logo abaixo. Cada vídeo é um objeto
+        { video, categoria, comentario }.
+     2. Se você ainda não tem vídeos suficientes, pode repetir
+        o mesmo arquivo .mp4 em vários objetos — é só pra
+        preencher o feed até você ter mais prontos.
+     3. POSTS_POR_PAGINA controla quantos vídeos aparecem em
+        cada página (o pedido foi 5).
+     4. Nada mais neste script precisa ser alterado no dia a dia.
+     ========================================================== -->
+
+<script id="feed-paginado">
+
+// ----------------------------------------------------------
+// 1. DADOS DOS VÍDEOS (edite aqui para trocar o conteúdo)
+// ----------------------------------------------------------
+const POSTS_FEED = [
+    {
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784757497/amoEAXV_460sv_kv48tq.mp4",
+        categoria: "User",
+        comentario: "Quando o usuário resolve criar um caminho que não existia no protótipo. O designer..."
+    },
+    {
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784762078/aqyqGzp_460sv_hchmrb.mp4",
+        categoria: "UX",
+        comentario: "Quando ignoramos o teste de usabilidade e lançamos o produto."
+    },
+    {
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784762695/aLnyvnA_460sv_s9asok.mp4",
+        categoria: "COMPORTAMENTO",
+        comentario: "Não precisamos mais desses designers... Deixa que eu desenho o protótipo."
+    },
+    {
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784762940/a0e249L_460sv_t5ivry.mp4",
+        categoria: "UI DESIGN",
+        comentario: "Meuuu é fácinho usar essa plataforma. Deixa eu te mostrar como faz!"
+    },
+    {
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784763140/ae9vgdW_460sv_byrkq8.mp4",
+        categoria: "compricado",
+        comentario: "Digo Bóra que tem post novo nesse upixel"
+    },
+    {
+        video: "teste.mp4",
+        categoria: "COMPORTAMENTO",
+        comentario: "Repare em quantas vezes você abre um app só pra 'dar uma olhada rápida'."
+    },
+    {
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784763388/a5Q81or_460sv_mxudzf.mp4",
+        categoria: "Responsivo",
+        comentario: "Quero uma interface completamente flexível e responsiva."
+    }
+];
+
+// ----------------------------------------------------------
+// 2. CONFIGURAÇÃO DA PAGINAÇÃO
+// ----------------------------------------------------------
+const POSTS_POR_PAGINA = 5;
+let paginaAtual = 1;
+
+const listaPosts = document.getElementById("lista-posts");
+const paginacaoFeed = document.getElementById("paginacao-feed");
+
+// ----------------------------------------------------------
+// 3. MONTA O HTML DE UM POST
+//    Ordem: vídeo > comentário Upixel > ícones
+// ----------------------------------------------------------
+function criarHtmlPost(post) {
+    return `
+        <article class="post-video">
+
+            <div class="midia-principal">
+                <span class="categoria-feed sobre-midia">${post.categoria}</span>
+                <span class="tag-formato">vídeo</span>
+                <video src="${post.video}" muted autoplay loop playsinline>
+                    Seu navegador não suporta vídeo em HTML5.
+                </video>
+            </div>
+
+            <section class="comentario-upixel">
+                <div class="titulo-comentario">
+                    <img src="logosolitaria.png" alt="Upixel">
+                    <h2>Comentário Upixel</h2>
+                </div>
+                <p>${post.comentario}</p>
+            </section>
+
+            <div class="meta-feed">
+
+                <span class="categoria-feed">${post.categoria}</span>
+
+                <div class="compartilhar-mini">
+
+                    <a href="#" title="Compartilhar no LinkedIn">
+                        <img src="linkedin-161-svgrepo-com.svg" alt="LinkedIn">
+                    </a>
+
+
+                    <button title="Copiar link">
+                        <img src="copy.svg" alt="Copiar link">
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+    `;
+}
+
+// ----------------------------------------------------------
+// 4. RENDERIZA OS POSTS DA PÁGINA ATUAL
+// ----------------------------------------------------------
+function renderizarPosts() {
+    const inicio = (paginaAtual - 1) * POSTS_POR_PAGINA;
+    const fim = inicio + POSTS_POR_PAGINA;
+    const postsDaPagina = POSTS_FEED.slice(inicio, fim);
+
+    listaPosts.innerHTML = postsDaPagina.map(criarHtmlPost).join("");
+}
+
+// ----------------------------------------------------------
+// 5. RENDERIZA OS BOTÕES DE PAGINAÇÃO
+// ----------------------------------------------------------
+function renderizarPaginacao() {
+    const totalPaginas = Math.ceil(POSTS_FEED.length / POSTS_POR_PAGINA);
+
+    if (totalPaginas <= 1) {
+        paginacaoFeed.innerHTML = "";
+        return;
+    }
+
+    let html = "";
+
+    html += `<button ${paginaAtual === 1 ? "disabled" : ""} data-pagina="anterior">‹ Anterior</button>`;
+
+    for (let i = 1; i <= totalPaginas; i++) {
+        html += `<button class="${i === paginaAtual ? "pagina-ativa" : ""}" data-pagina="${i}">${i}</button>`;
+    }
+
+    html += `<button ${paginaAtual === totalPaginas ? "disabled" : ""} data-pagina="proxima">Próxima ›</button>`;
+
+    paginacaoFeed.innerHTML = html;
+}
+
+// ----------------------------------------------------------
+// 6. TROCA DE PÁGINA (clique nos botões)
+// ----------------------------------------------------------
+paginacaoFeed.addEventListener("click", function (evento) {
+    const botao = evento.target.closest("button");
+    if (!botao) return;
+
+    const totalPaginas = Math.ceil(POSTS_FEED.length / POSTS_POR_PAGINA);
+    const alvo = botao.dataset.pagina;
+
+    if (alvo === "anterior") {
+        paginaAtual = Math.max(1, paginaAtual - 1);
+    } else if (alvo === "proxima") {
+        paginaAtual = Math.min(totalPaginas, paginaAtual + 1);
+    } else {
+        paginaAtual = Number(alvo);
+    }
+
+    renderizarPosts();
+    renderizarPaginacao();
+
+    document.querySelector(".pagina-feed-aberto").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+// ----------------------------------------------------------
+// 7. INICIALIZA O FEED
+// ----------------------------------------------------------
+renderizarPosts();
+renderizarPaginacao();
+
+</script>
+
+</body>
+
+</html>
