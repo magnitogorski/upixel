@@ -33,23 +33,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Infinite Scroll | Upixel</title>
+<title>Besteirol | Upixel — Memes de UX/UI em vídeo</title>
 
 
 <!-- ==========================================================
      SEO
      Informações utilizadas pelos mecanismos de busca.
+
+     CORRIGIDO: esta página é o feed "Besteirol" (vídeos curtos
+     e engraçados sobre UX/UI), e os metadados antigos estavam
+     copiados da página do artigo "Infinite Scroll" por engano.
+     Título, descrição, canonical e URLs agora refletem o
+     conteúdo real desta página.
      ========================================================== -->
 
-<meta name="description" content="Entenda como o Infinite Scroll mudou a forma como consumimos conteúdo na internet e por que esse recurso mantém nossa atenção por muito mais tempo.">
+<meta name="description" content="Feed de vídeos curtos e engraçados sobre UX, UI e o dia a dia de quem trabalha com design de produto. Memes e comentários da Upixel sobre comportamento digital.">
 
-<meta name="keywords" content="infinite scroll, ux, ui, design de interfaces, redes sociais, comportamento digital, experiência do usuário">
+<meta name="keywords" content="upixel, besteirol, memes de ux, memes de ui, design de interfaces, comportamento digital, humor design, feed de vídeos, ux design, ui design">
 
 <meta name="author" content="Upixel">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#000000">
 
-<link rel="canonical" href="https://upixel.com.br/artigoinfinitescroll.html">
+<link rel="canonical" href="https://upixel.com.br/feed-aberto.html">
+
+<!-- Perfil profissional do responsável pela Upixel (usado por
+     buscadores e redes para associar a página a um perfil real) -->
+<link rel="me" href="https://www.linkedin.com/in/bruno-ito-gorski/">
 
 
 <!-- ==========================================================
@@ -58,11 +68,13 @@
      a página no WhatsApp, LinkedIn, Facebook, Discord etc.
      ========================================================== -->
 
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="Upixel">
-<meta property="og:title" content="Infinite Scroll | Upixel">
-<meta property="og:description" content="Descubra como o Infinite Scroll influencia nosso comportamento digital e por que ele se tornou um dos recursos mais poderosos das redes sociais.">
-<meta property="og:url" content="https://upixel.com.br/artigoinfinitescroll.html">
+<meta property="og:title" content="Besteirol | Upixel — Memes de UX/UI em vídeo">
+<meta property="og:description" content="Vídeos curtos e engraçados sobre o universo de UX/UI, comentados pela Upixel. Dá um scroll e se divirta.">
+<meta property="og:url" content="https://upixel.com.br/feed-aberto.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-social.jpg">
+<meta property="og:locale" content="pt_BR">
 
 
 <!-- ==========================================================
@@ -71,9 +83,41 @@
      ========================================================== -->
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Infinite Scroll | Upixel">
-<meta name="twitter:description" content="Descubra como o Infinite Scroll influencia nosso comportamento digital e mantém nossa atenção por muito mais tempo.">
+<meta name="twitter:title" content="Besteirol | Upixel — Memes de UX/UI em vídeo">
+<meta name="twitter:description" content="Vídeos curtos e engraçados sobre o universo de UX/UI, comentados pela Upixel.">
 <meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.jpg">
+
+
+<!-- ==========================================================
+     DADOS ESTRUTURADOS (JSON-LD)
+
+     Isso ajuda o Google a entender que essa página pertence à
+     Upixel e quem é o responsável por ela. O LinkedIn aqui entra
+     como "sameAs" (perfil oficial ligado à marca), e não como
+     link de compartilhamento — compartilhamento de cada vídeo é
+     feito pelos botões, mais abaixo.
+     ========================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Besteirol | Upixel",
+  "url": "https://upixel.com.br/feed-aberto.html",
+  "description": "Feed de vídeos curtos sobre UX/UI comentados pela Upixel.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Upixel",
+    "url": "https://upixel.com.br"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Upixel",
+    "sameAs": [
+      "https://www.linkedin.com/in/bruno-ito-gorski/"
+    ]
+  }
+}
+</script>
 
 
 <!-- ==========================================================
@@ -101,6 +145,53 @@
      ========================================================== -->
 
 <link rel="stylesheet" href="style.css">
+
+
+<!-- ==========================================================
+     ESTILOS NOVOS (logo sobre o vídeo + feedback de "copiado")
+
+     Coloquei aqui embutido para não mexer no seu style.css.
+     Se quiser, depois é só mover esse bloco para lá — funciona
+     do mesmo jeito nos dois lugares.
+
+     IMPORTANTE SOBRE PESO: a logo usada aqui (logosolitaria.png)
+     já é carregada em outro ponto da página (no "Comentário
+     Upixel"). O navegador reaproveita o arquivo do cache, então
+     essa logo extra sobre o vídeo NÃO adiciona nenhum download
+     novo — custo de peso é praticamente zero.
+     ========================================================== -->
+<style>
+    /* Seletor com a mesma "força" da regra já existente no seu
+       style.css para .midia-principal img/video (2 classes + tag),
+       só que mais específico ainda (3 classes + tag), pra garantir
+       que a logo NÃO herde o width:100%/object-fit:cover do vídeo. */
+    .pagina-feed-aberto .midia-principal img.logo-sobre-midia {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        width: 30px !important;
+        height: 30px !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        padding: 6px;
+        background: rgba(0, 0, 0, 0.45);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    /* Feedback visual temporário quando o link é copiado */
+    .compartilhar-mini button.copiado img {
+        filter: brightness(0) saturate(100%) invert(56%) sepia(93%) saturate(1000%) hue-rotate(75deg);
+    }
+
+    /* Destaque temporário quando alguém chega direto num vídeo
+       através de um link compartilhado (#post-XX) */
+    .post-video.post-destacado {
+        outline: 2px solid #fff;
+        outline-offset: 4px;
+    }
+</style>
 
 
 <!-- ==========================================================
@@ -175,7 +266,7 @@ stroke-linejoin="round"/>
 
 </svg>
 
-Voltar
+Home
 
 </a>
 
@@ -193,6 +284,15 @@ Voltar
 
 <div id="lista-posts" class="lista-posts">
     <!-- Os posts (vídeo + comentário + ícones) são gerados aqui pelo JS -->
+</div>
+
+
+<!-- Aviso curtinho e discreto que aparece por 2s ao copiar o link -->
+<div id="aviso-copiado" role="status" aria-live="polite"
+     style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+            background:#000; color:#fff; padding:10px 18px; border-radius:8px;
+            font-size:14px; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s; z-index:999;">
+    Link copiado! Cole onde quiser pra compartilhar 🎉
 </div>
 
 
@@ -256,13 +356,18 @@ Voltar
      COMO EDITAR:
      1. Para adicionar, trocar ou remover um vídeo, mexa SÓ no
         array POSTS_FEED logo abaixo. Cada vídeo é um objeto
-        { video, categoria, comentario }.
-     2. Se você ainda não tem vídeos suficientes, pode repetir
+        { id, video, categoria, comentario }.
+     2. O campo "id" é o que gera o link de compartilhamento
+        (ex: feed-aberto.html#post-03). NUNCA mude o id de um
+        vídeo que já foi compartilhado, senão o link antigo para
+        de funcionar. Ao adicionar um vídeo novo, é só criar um
+        id novo e único (post-08, post-09, ...).
+     3. Se você ainda não tem vídeos suficientes, pode repetir
         o mesmo arquivo .mp4 em vários objetos — é só pra
         preencher o feed até você ter mais prontos.
-     3. POSTS_POR_PAGINA controla quantos vídeos aparecem em
+     4. POSTS_POR_PAGINA controla quantos vídeos aparecem em
         cada página (o pedido foi 5).
-     4. Nada mais neste script precisa ser alterado no dia a dia.
+     5. Nada mais neste script precisa ser alterado no dia a dia.
      ========================================================== -->
 
 <script id="feed-paginado">
@@ -272,36 +377,43 @@ Voltar
 // ----------------------------------------------------------
 const POSTS_FEED = [
     {
+        id: "post-01",
         video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784757497/amoEAXV_460sv_kv48tq.mp4",
         categoria: "User",
         comentario: "Quando o usuário resolve criar um caminho que não existia no protótipo. O designer..."
     },
     {
+        id: "post-02",
         video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784762078/aqyqGzp_460sv_hchmrb.mp4",
         categoria: "UX",
         comentario: "Quando ignoramos o teste de usabilidade e lançamos o produto."
     },
     {
+        id: "post-03",
         video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784762695/aLnyvnA_460sv_s9asok.mp4",
         categoria: "COMPORTAMENTO",
         comentario: "Não precisamos mais desses designers... Deixa que eu desenho o protótipo."
     },
     {
+        id: "post-04",
         video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784762940/a0e249L_460sv_t5ivry.mp4",
         categoria: "UI DESIGN",
         comentario: "Meuuu é fácinho usar essa plataforma. Deixa eu te mostrar como faz!"
     },
     {
+        id: "post-05",
         video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784763140/ae9vgdW_460sv_byrkq8.mp4",
         categoria: "compricado",
         comentario: "Digo Bóra que tem post novo nesse upixel"
     },
     {
+        id: "post-06",
         video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784766804/teste_xlkvo3.mp4",
         categoria: "COMPORTAMENTO",
         comentario: "Repare em quantas vezes você abre um app só pra 'dar uma olhada rápida'."
     },
     {
+        id: "post-07",
         video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784763388/a5Q81or_460sv_mxudzf.mp4",
         categoria: "Responsivo",
         comentario: "A interface é completamente flexível e responsiva."
@@ -309,13 +421,17 @@ const POSTS_FEED = [
 ];
 
 // ----------------------------------------------------------
-// 2. CONFIGURAÇÃO DA PAGINAÇÃO
+// 2. CONFIGURAÇÃO GERAL
 // ----------------------------------------------------------
 const POSTS_POR_PAGINA = 5;
 let paginaAtual = 1;
 
+// URL base da página (usada para montar o link de cada vídeo)
+const URL_BASE = window.location.origin + window.location.pathname;
+
 const listaPosts = document.getElementById("lista-posts");
 const paginacaoFeed = document.getElementById("paginacao-feed");
+const avisoCopiado = document.getElementById("aviso-copiado");
 
 // ----------------------------------------------------------
 // 3. MONTA O HTML DE UM POST
@@ -323,10 +439,10 @@ const paginacaoFeed = document.getElementById("paginacao-feed");
 // ----------------------------------------------------------
 function criarHtmlPost(post) {
     return `
-        <article class="post-video">
+        <article class="post-video" id="${post.id}">
 
             <div class="midia-principal">
-                <span class="categoria-feed sobre-midia">${post.categoria}</span>
+                <img class="logo-sobre-midia" src="logosolitaria.png" alt="Upixel">
                 <span class="tag-formato">vídeo</span>
                 <video src="${post.video}" muted autoplay loop playsinline>
                     Seu navegador não suporta vídeo em HTML5.
@@ -347,12 +463,12 @@ function criarHtmlPost(post) {
 
                 <div class="compartilhar-mini">
 
-                    <a href="#" title="Compartilhar no LinkedIn">
+                    <a href="#" title="Compartilhar no LinkedIn" data-acao="linkedin" data-post-id="${post.id}">
                         <img src="linkedin-161-svgrepo-com.svg" alt="LinkedIn">
                     </a>
 
 
-                    <button title="Copiar link">
+                    <button title="Copiar link" data-acao="copiar" data-post-id="${post.id}">
                         <img src="copy.svg" alt="Copiar link">
                     </button>
 
@@ -424,10 +540,102 @@ paginacaoFeed.addEventListener("click", function (evento) {
 });
 
 // ----------------------------------------------------------
-// 7. INICIALIZA O FEED
+// 7. COMPARTILHAMENTO (Copiar link e LinkedIn)
+//
+//    Delegação de evento: como os posts são recriados a cada
+//    troca de página, o clique é "escutado" no container pai
+//    (#lista-posts), e não em cada botão individualmente.
+// ----------------------------------------------------------
+function mostrarAvisoCopiado() {
+    avisoCopiado.style.opacity = "1";
+    avisoCopiado.style.transform = "translateX(-50%) translateY(0)";
+    clearTimeout(mostrarAvisoCopiado._timer);
+    mostrarAvisoCopiado._timer = setTimeout(() => {
+        avisoCopiado.style.opacity = "0";
+        avisoCopiado.style.transform = "translateX(-50%) translateY(20px)";
+    }, 2200);
+}
+
+function copiarTexto(texto) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(texto);
+    }
+    // Fallback para navegadores/contextos sem Clipboard API
+    const area = document.createElement("textarea");
+    area.value = texto;
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand("copy");
+    document.body.removeChild(area);
+    return Promise.resolve();
+}
+
+listaPosts.addEventListener("click", function (evento) {
+    const elemento = evento.target.closest("[data-acao]");
+    if (!elemento) return;
+
+    evento.preventDefault();
+
+    const postId = elemento.dataset.postId;
+    const linkDoVideo = `${URL_BASE}#${postId}`;
+
+    if (elemento.dataset.acao === "copiar") {
+        const textoParaCompartilhar = `Vi isso no Upixel 👀 ${linkDoVideo}`;
+
+        copiarTexto(textoParaCompartilhar).then(() => {
+            mostrarAvisoCopiado();
+
+            // feedback visual rápido no próprio botão
+            elemento.classList.add("copiado");
+            setTimeout(() => elemento.classList.remove("copiado"), 1500);
+        });
+    }
+
+    if (elemento.dataset.acao === "linkedin") {
+        // Compartilhamento oficial do LinkedIn: ele usa as tags
+        // Open Graph da própria página para montar a prévia.
+        // Não é possível enviar um texto customizado por aqui —
+        // o LinkedIn removeu esse parâmetro em 2020.
+        const urlCompartilhamento =
+            "https://www.linkedin.com/sharing/share-offsite/?url=" +
+            encodeURIComponent(linkDoVideo);
+
+        window.open(urlCompartilhamento, "_blank", "noopener,noreferrer,width=600,height=600");
+    }
+});
+
+// ----------------------------------------------------------
+// 8. ABRIR DIRETO NO VÍDEO COMPARTILHADO (via #post-XX na URL)
+// ----------------------------------------------------------
+function abrirPostDoLink() {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+
+    const indice = POSTS_FEED.findIndex((post) => post.id === hash);
+    if (indice === -1) return;
+
+    paginaAtual = Math.floor(indice / POSTS_POR_PAGINA) + 1;
+    renderizarPosts();
+    renderizarPaginacao();
+
+    // pequena espera pro DOM terminar de montar antes de rolar até o post
+    setTimeout(() => {
+        const elementoPost = document.getElementById(hash);
+        if (!elementoPost) return;
+        elementoPost.scrollIntoView({ behavior: "smooth", block: "center" });
+        elementoPost.classList.add("post-destacado");
+        setTimeout(() => elementoPost.classList.remove("post-destacado"), 2500);
+    }, 50);
+}
+
+// ----------------------------------------------------------
+// 9. INICIALIZA O FEED
 // ----------------------------------------------------------
 renderizarPosts();
 renderizarPaginacao();
+abrirPostDoLink();
 
 </script>
 
