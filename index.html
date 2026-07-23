@@ -40,11 +40,15 @@ Newsletter
 <!-- ==========================================================
      SEO
      Informações utilizadas pelos mecanismos de busca.
+
+     OBS: acrescentei "humor", "feed", "memes" e "pixel feed"
+     nas keywords, já que agora a home também linka pro Pixel
+     Feed (conteúdo de humor), e não só pros artigos sérios.
      ========================================================== -->
 
-<meta name="description" content="A Upixel reúne artigos sobre Pixel Art, UI, UX, design digital, criatividade, cultura gamer, interfaces, dashboards e tecnologia, além de camisetas inspiradas no universo dos pixels.">
+<meta name="description" content="A Upixel reúne artigos sobre Pixel Art, UI, UX, design digital, criatividade, cultura gamer, interfaces, dashboards e tecnologia, o Pixel Feed (nosso lado de humor) e camisetas inspiradas no universo dos pixels.">
 
-<meta name="keywords" content="pixel art, pixels, ui, ux, design, arte digital, 8 bits, videogames, criatividade, dashboards, interfaces, cultura digital, camisetas geek">
+<meta name="keywords" content="pixel art, pixels, ui, ux, design, arte digital, 8 bits, videogames, criatividade, dashboards, interfaces, cultura digital, camisetas geek, humor, memes, pixel feed, feed de humor">
 
 <meta name="author" content="Upixel">
 <meta name="robots" content="index, follow">
@@ -62,7 +66,7 @@ Newsletter
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Upixel">
 <meta property="og:title" content="Upixel | Pixel Art, UI, UX, Design e Cultura Digital">
-<meta property="og:description" content="Artigos sobre Pixel Art, design, UX, criatividade, dashboards, cultura digital e muito mais.">
+<meta property="og:description" content="Artigos sobre Pixel Art, design, UX, criatividade, dashboards, cultura digital, além do nosso Pixel Feed de humor.">
 <meta property="og:url" content="https://upixel.com.br/">
 <meta property="og:image" content="https://upixel.com.br/imagens/capa-social.png">
 
@@ -74,7 +78,7 @@ Newsletter
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Upixel | Pixel Art, UI, UX, Design e Cultura Digital">
-<meta name="twitter:description" content="Artigos sobre Pixel Art, UX, design, criatividade e cultura digital.">
+<meta name="twitter:description" content="Artigos sobre Pixel Art, UX, design, criatividade, cultura digital e nosso Pixel Feed de humor.">
 <meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.png">
 
 
@@ -152,7 +156,7 @@ Newsletter
        <nav class="menu">
     <a href="index.html" class="ativo">Home</a>
     <a href="artigos.html">Artigos</a>
-    <a href="camisetas.html">Camisetas</a>
+    <a href="feed-aberto.html">Besteirol</a>
     <a href="contato.html">Contato</a>
 </nav>
     </header>
@@ -256,26 +260,37 @@ Newsletter
 
 <hr class="divisor-secao">
 
-<section class="camisetas">
+<!-- ==========================================================
+     PIXEL FEED (antes era a seção de CAMISETAS)
 
-    <div class="camisetas-conteudo">
+     Substitui a antiga seção de camisetas na home.
+     Leva para upixelfeed.html — o feed de humor/memes do site.
+
+     Imagem: encostada na borda direita da tela, no mesmo
+     espírito da imagem do hero (seção .conteudo-principal).
+     Troque "pixelfeed.png" pela sua arte quando tiver pronta.
+     ========================================================== -->
+
+<section class="pixelfeed-secao">
+
+    <div class="pixelfeed-conteudo">
 
         <span class="texto-menor">
             <img src="raio.png" alt="Raio" class="icone-raio">
-            Vista a ideia
+            Humor do Tiozão
         </span>
 
-        <h2 class="titulo-camisetas">
-            Camisetas para <br> Designers & Devs
+        <h2 class="titulo-pixelfeed">
+            Besteirol, pois nesse site é a <span class="destaque-rosa">única coisa séria</span>.
         </h2>
 
-        <p class="descricao-camisetas">
-            Camisetas com atitude, <br> pra quem cria, codifica <br> ou só bagunça mesmo.
+        <p class="descricao-pixelfeed">
+            Não consigo devolver seus minutos perdidos com os posts. Só posso garantir que vão valer a pena.
         </p>
 
         <div class="container-botao">
-            <a href="camisetas.html" class="botao-artigos">
-                Ver coleção
+            <a href="feed-aberto.html" class="botao-artigos">
+                Entrar no Feed
 
                 <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
                     <path d="M5 12H19M19 12L13 6M19 12L13 18"
@@ -291,13 +306,14 @@ Newsletter
     </div>
 
 
-    <div class="camisetas-imagem">
+    <div class="pixelfeed-imagem">
 
-        <img src="camisetas.png" alt="Camisetas">
+        <img src="besteirol.png" alt="Pixel Feed">
 
     </div>
 
 </section>
+
 <hr class="divisor-secao">
 
 <section class="sobre-nos">
@@ -320,6 +336,11 @@ Newsletter
             Mas é incrível a quantidade <br> de coisas que podem <br> nascer dele...
         </p>
 
+        <div class="container-botao">
+            <a href="contato.html" class="botao-contato-mini">
+                Fale comigo
+            </a>
+        </div>
 
     </div>
 
@@ -492,7 +513,7 @@ Newsletter
 
              <a href="index.html" class="ativo">Home</a>
             <a href="artigos.html">Artigos</a>
-            <a href="camisetas.html">Camisetas</a>
+            <a href="feed-aberto.html">Besteirol</a>
             <a href="contato.html">Contato</a>
 
         </nav>
@@ -508,5 +529,3 @@ Newsletter
 </div>
 </body>
 </html>
-
-
