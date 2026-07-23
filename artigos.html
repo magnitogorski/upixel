@@ -82,7 +82,7 @@
      ========================================================== -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 
@@ -151,13 +151,13 @@
      <nav class="menu">
      <a href="index.html">Home</a>
     <a href="artigos.html" class="ativo">Artigos</a>
-    <a href="camisetas.html">Camisetas</a>
+    <a href="feed-aberto.html">Besteirol</a>
     <a href="contato.html">Contato</a>
 </nav>
 </header>
 
-<section class="pagina-artigos">
-
+<section class="pagina-artigos pagina-artigos-ajuste">
+     
 <a href="index.html" class="botao-voltar">
 
 <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
@@ -193,78 +193,24 @@ Do mais recente para o mais antigo.
 
 </p>
 
-<div class="cards-artigos-grid">
-<!-- LINHA 1 -->
+<!-- ==========================================================
+     GRADE DE ARTIGOS
 
-<article class="card-artigo">
-<img src="imagem-hospital.png" class="imagem-artigo" alt="Artigo">
-<span class="categoria">Raro mas acontece</span>
-<h3>Pronto-Socorro do 5W2H</h3>
-<p>Atendimento imediato para projetos que esqueceram quem faz o quê.</p>
-<a href="artigo5w2h.html" class="leia-mais">Leia mais</a>
-</article>
+     Esse bloco começa vazio de propósito. O script no fim da
+     página (#feed-artigos) é quem preenche esse espaço, lendo
+     o array ARTIGOS logo abaixo dele.
 
+     Para adicionar, remover ou editar um artigo, você NÃO mexe
+     aqui — vai direto no array ARTIGOS, no final do arquivo.
+     ========================================================== -->
 
-<article class="card-artigo">
-<img src="imagem-influencer.png" class="imagem-artigo" alt="Artigo">
-<span class="categoria">influenciável?</span>
-<h3>O Influencer é só a Interface</h3>
-<p>Bonito por fora (nem sempre). Persuasivo por dentro. E quase sempre vendendo alguma coisa.</p>
-<a href="artigoinfluencer.html" class="leia-mais">Leia mais</a>
-</article>
-
-<article class="card-artigo">
-<img src="artigo4.png" class="imagem-artigo" alt="Artigo">
-<span class="categoria">Humor</span>
-<h3>Como NÃO aplicar as 10 heurísticas de Nielsen</h3>
- <p>
- Se o usuário conseguir usar, você fez alguma coisa errada.
-</p>
-<a href="artigonielsen.html" class="leia-mais">Leia mais</a>
-</article>
-
-<article class="card-artigo">
-<img src="artigo1.png" class="imagem-artigo" alt="Artigo">
-<span class="categoria">UI Design</span>
-<h3>Infiniiiiite Scroll</h3>
-<p>Fomos engolidos por um buraco negro digital.</p>
-<a href="artigoinfinitescroll.html" class="leia-mais">Leia mais</a>
-</article>
-
-<!-- LINHA 2 -->
-
-<article class="card-artigo">
-<img src="artigo2.png" class="imagem-artigo" alt="Artigo">
-<span class="categoria">Era uma vez...</span>
-<h3>Essa Fada. A mentira das vagas de cinco Dígitos</h3>
-<p>O mundo perfeito só existe pra quem vende os cursos a preços de Pós Graduação...</p>
-<a href="artigoessafada.html" class="leia-mais">Leia mais</a>
-</article>
-
-
-<article class="card-artigo">
-<img src="artigo3.png" alt="Artigo 3">
-<span class="categoria">É pavê?</span>
-<h3>Informação demais, visualização de menos</h3>
-<p>
- Mais dados não significam mais respostas
-</p>
-<a href="artigopainel.html" class="leia-mais">Leia mais</a>
-</article>
-
-<!-- LINHA 3 -->
-
-
-
-<!-- LINHA 4 -->
-
-
-
-<!-- LINHA 5 -->
-
-
-
+<div id="lista-artigos" class="cards-artigos-grid">
+    <!-- Os cards de artigo são gerados aqui pelo JavaScript -->
 </div>
+
+<nav class="paginacao-feed" id="paginacao-artigos" aria-label="Paginação de artigos">
+    <!-- Botões de página gerados aqui pelo JavaScript -->
+</nav>
 
 <div class="divisor-secao"></div>
 
@@ -286,7 +232,7 @@ Do mais recente para o mais antigo.
 
     <a href="index.html">Home</a>
     <a href="artigos.html" class="ativo">Artigos</a>
-    <a href="camisetas.html">Camisetas</a>
+    <a href="feed-aberto.html">Besteirol</a>
     <a href="contato.html">Contato</a>
 
 
@@ -303,6 +249,200 @@ Do mais recente para o mais antigo.
 </div>
 
 </section>
+
+
+<!-- ==========================================================
+     SCRIPT: GRADE DE ARTIGOS PAGINADA
+     id: #feed-artigos
+
+     COMO EDITAR:
+     1. Para adicionar, trocar ou remover um artigo, mexa SÓ no
+        array ARTIGOS logo abaixo. Cada artigo é um objeto
+        { imagem, categoria, titulo, texto, link }.
+     2. Desktop mostra 12 artigos por página, mobile mostra 4
+        (o corte acontece nos mesmos 768px do resto do site).
+        Se quiser mudar essas quantidades, é só editar
+        ITENS_POR_PAGINA_DESKTOP e ITENS_POR_PAGINA_MOBILE.
+     3. Nada mais neste script precisa ser alterado no dia a dia.
+     ========================================================== -->
+
+<script id="feed-artigos">
+
+// ----------------------------------------------------------
+// 1. DADOS DOS ARTIGOS (edite aqui para adicionar/remover)
+// ----------------------------------------------------------
+const ARTIGOS = [
+    {
+        imagem: "imagem-hospital.png",
+        categoria: "Raro mas acontece",
+        titulo: "Pronto-Socorro do 5W2H",
+        texto: "Atendimento imediato para projetos que esqueceram quem faz o quê.",
+        link: "artigo5w2h.html"
+    },
+    {
+        imagem: "imagem-influencer.png",
+        categoria: "influenciável?",
+        titulo: "O Influencer é só a Interface",
+        texto: "Bonito por fora (nem sempre). Persuasivo por dentro. E quase sempre vendendo alguma coisa.",
+        link: "artigoinfluencer.html"
+    },
+    {
+        imagem: "artigo4.png",
+        categoria: "Humor",
+        titulo: "Como NÃO aplicar as 10 heurísticas de Nielsen",
+        texto: "Se o usuário conseguir usar, você fez alguma coisa errada.",
+        link: "artigonielsen.html"
+    },
+    {
+        imagem: "artigo1.png",
+        categoria: "UI Design",
+        titulo: "Infiniiiiite Scroll",
+        texto: "Fomos engolidos por um buraco negro digital.",
+        link: "artigoinfinitescroll.html"
+    },
+    {
+        imagem: "artigo2.png",
+        categoria: "Era uma vez...",
+        titulo: "Essa Fada. A mentira das vagas de cinco Dígitos",
+        texto: "O mundo perfeito só existe pra quem vende os cursos a preços de Pós Graduação...",
+        link: "artigoessafada.html"
+    },
+    {
+        imagem: "artigo1.png",
+        categoria: "É pavê?",
+        titulo: "Informação demais, visualização de menos",
+        texto: "Mais dados não significam mais respostas.",
+        link: "artigopainel.html"
+    }
+    
+];
+
+// ----------------------------------------------------------
+// 2. CONFIGURAÇÃO DA PAGINAÇÃO
+// ----------------------------------------------------------
+const ITENS_POR_PAGINA_DESKTOP = 12;
+const ITENS_POR_PAGINA_MOBILE = 4;
+const BREAKPOINT_MOBILE = "(max-width: 768px)";
+
+let paginaAtual = 1;
+let itensPorPaginaAnterior = itensPorPaginaAtual();
+
+const listaArtigos = document.getElementById("lista-artigos");
+const paginacaoArtigos = document.getElementById("paginacao-artigos");
+
+// ----------------------------------------------------------
+// 3. QUANTOS ITENS MOSTRAR, DE ACORDO COM O TAMANHO DA TELA
+// ----------------------------------------------------------
+function itensPorPaginaAtual() {
+    return window.matchMedia(BREAKPOINT_MOBILE).matches
+        ? ITENS_POR_PAGINA_MOBILE
+        : ITENS_POR_PAGINA_DESKTOP;
+}
+
+// ----------------------------------------------------------
+// 4. MONTA O HTML DE UM CARD DE ARTIGO
+// ----------------------------------------------------------
+function criarHtmlArtigo(artigo) {
+    return `
+        <article class="card-artigo">
+            <img src="${artigo.imagem}" class="imagem-artigo" alt="Artigo">
+            <span class="categoria">${artigo.categoria}</span>
+            <h3>${artigo.titulo}</h3>
+            <p>${artigo.texto}</p>
+            <a href="${artigo.link}" class="leia-mais">Leia mais</a>
+        </article>
+    `;
+}
+
+// ----------------------------------------------------------
+// 5. RENDERIZA OS ARTIGOS DA PÁGINA ATUAL
+// ----------------------------------------------------------
+function renderizarArtigos() {
+    const itensPorPagina = itensPorPaginaAtual();
+    const totalPaginas = Math.max(1, Math.ceil(ARTIGOS.length / itensPorPagina));
+
+    paginaAtual = Math.min(paginaAtual, totalPaginas);
+
+    const inicio = (paginaAtual - 1) * itensPorPagina;
+    const fim = inicio + itensPorPagina;
+    const itensDaPagina = ARTIGOS.slice(inicio, fim);
+
+    listaArtigos.innerHTML = itensDaPagina.map(criarHtmlArtigo).join("");
+
+    renderizarPaginacao(totalPaginas);
+}
+
+// ----------------------------------------------------------
+// 6. RENDERIZA OS BOTÕES DE PAGINAÇÃO
+// ----------------------------------------------------------
+function renderizarPaginacao(totalPaginas) {
+    if (totalPaginas <= 1) {
+        paginacaoArtigos.innerHTML = "";
+        return;
+    }
+
+    let html = "";
+
+    html += `<button ${paginaAtual === 1 ? "disabled" : ""} data-pagina="anterior">‹ Anterior</button>`;
+
+    for (let i = 1; i <= totalPaginas; i++) {
+        html += `<button class="${i === paginaAtual ? "pagina-ativa" : ""}" data-pagina="${i}">${i}</button>`;
+    }
+
+    html += `<button ${paginaAtual === totalPaginas ? "disabled" : ""} data-pagina="proxima">Próxima ›</button>`;
+
+    paginacaoArtigos.innerHTML = html;
+}
+
+// ----------------------------------------------------------
+// 7. TROCA DE PÁGINA (clique nos botões)
+// ----------------------------------------------------------
+paginacaoArtigos.addEventListener("click", function (evento) {
+    const botao = evento.target.closest("button");
+    if (!botao) return;
+
+    const itensPorPagina = itensPorPaginaAtual();
+    const totalPaginas = Math.ceil(ARTIGOS.length / itensPorPagina);
+    const alvo = botao.dataset.pagina;
+
+    if (alvo === "anterior") {
+        paginaAtual = Math.max(1, paginaAtual - 1);
+    } else if (alvo === "proxima") {
+        paginaAtual = Math.min(totalPaginas, paginaAtual + 1);
+    } else {
+        paginaAtual = Number(alvo);
+    }
+
+    renderizarArtigos();
+
+    document.querySelector(".pagina-artigos").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+// ----------------------------------------------------------
+// 8. REAGE À MUDANÇA DE TAMANHO DE TELA
+//    Só reinicia a paginação quando o número de itens por
+//    página realmente muda (ex: girar o celular de retrato
+//    pra paisagem não deve resetar a página à toa).
+// ----------------------------------------------------------
+let temporizadorRedimensionamento;
+window.addEventListener("resize", function () {
+    clearTimeout(temporizadorRedimensionamento);
+    temporizadorRedimensionamento = setTimeout(function () {
+        const itensAgora = itensPorPaginaAtual();
+        if (itensAgora !== itensPorPaginaAnterior) {
+            itensPorPaginaAnterior = itensAgora;
+            paginaAtual = 1;
+        }
+        renderizarArtigos();
+    }, 200);
+});
+
+// ----------------------------------------------------------
+// 9. INICIALIZA A GRADE DE ARTIGOS
+// ----------------------------------------------------------
+renderizarArtigos();
+
+</script>
 
 </body>
 
