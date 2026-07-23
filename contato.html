@@ -40,6 +40,36 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="mobile.css">
 
+<!-- ==========================================================
+     Logo centralizada no topo da página de contato.
+
+     Reaproveita o mesmo arquivo "logobranca.png" já usado no
+     header e no footer — ou seja, o navegador já tem ele em
+     cache quando chega aqui, sem nenhum peso extra.
+
+     Se quiser mudar o tamanho depois, é só ajustar o "width"
+     em .logo-contato img abaixo (240px hoje).
+     ========================================================== -->
+<style>
+    .logo-contato {
+        text-align: center;
+        margin: 10px 0 50px;
+    }
+
+    .logo-contato img {
+        width: 240px;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+        .logo-contato img {
+            width: 180px;
+        }
+    }
+</style>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -69,16 +99,15 @@
 <main class="pagina-contato">
 
     <a href="index.html" class="botao-voltar">
-        ← Voltar
+        ← Home
     </a>
 
-    <h1 class="titulo-contato">Fale comigo</h1>
+    <div class="logo-contato">
+        <img src="logomaior.png" alt="Upixel">
+    </div>
 
-    <p class="descricao-contato">
-        Dúvida, ideia, proposta ou só quer mandar um oi:
-        escreve aqui embaixo que eu respondo. Se preferir
-        algo mais rápido, me chama direto pelos links abaixo.
-    </p>
+    <h1 class="titulo-contato">Fala que eu te escuto</h1>
+
 
     <!-- ==========================================================
          ATALHO RÁPIDO (menor esforço possível pra falar comigo)
@@ -87,7 +116,7 @@
          já tem em outras páginas do feed.
          ========================================================== -->
 
-    <div class="social-links" style="margin-bottom: 50px;">
+    <div class="social-links" style="margin-bottom: 50px; justify-content: center;">
 
         <a href="https://www.linkedin.com/in/bruno-ito-gorski/" target="_blank" title="Meu LinkedIn">
             <img src="linkedin-161-svgrepo-com.svg" alt="LinkedIn" style="width:26px; height:26px;">
@@ -143,32 +172,3 @@
 
 </main>
 
-<div class="divisor-secao"></div>
-
-<footer class="footer">
-
-    <div class="footer-esquerda">
-        <img src="logobranca.png" alt="Upixel" class="footer-logo">
-        <p class="copyright">
-            Upixel. Todos os direitos reservados.
-        </p>
-    </div>
-
-    <div class="footer-centro">
-        <nav class="footer-menu">
-            <a href="index.html">Home</a>
-            <a href="artigos.html">Artigos</a>
-            <a href="feed-aberto.html">Besteirol</a>
-            <a href="contato.html" class="ativo">Contato</a>
-        </nav>
-    </div>
-
-</footer>
-
-<div class="footer-ilustracao">
-    <img src="rodape.png" alt="Ilustração Footer">
-</div>
-
-</body>
-
-</html>
