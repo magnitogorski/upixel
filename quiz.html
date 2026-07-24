@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<!-- ==========================================================
+     CABEÇALHO (HEAD) DA PÁGINA
+     Mesma estrutura padrão das outras páginas do site.
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz de UX | Upixel</title>
+
+<meta name="description" content="Teste seus conhecimentos de UX, UI e tecnologia com o quiz da Upixel.">
+<meta name="keywords" content="quiz, ux, ui, tecnologia, upixel, teste de conhecimento">
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/quiz.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:title" content="Quiz de UX | Upixel">
+<meta property="og:description" content="Teste seus conhecimentos de UX, UI e tecnologia com o quiz da Upixel.">
+<meta property="og:url" content="https://upixel.com.br/quiz.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quiz de UX | Upixel">
+<meta name="twitter:description" content="Teste seus conhecimentos de UX, UI e tecnologia com o quiz da Upixel.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="stylesheet" href="style.css">
+
+
+<!-- ==========================================================
+     ESTILOS DO QUIZ
+
+     Embutido aqui pra não mexer no seu style.css. Reaproveita
+     as mesmas cores e fontes do resto do site (#FA397A, fundo
+     preto, Pixelify Sans) pra ficar no mesmo estilo visual.
+     Se quiser, depois é só mover pro style.css — funciona igual.
+     ========================================================== -->
+<style>
+
+    .pagina-quiz {
+        max-width: 720px;
+        margin: 80px auto;
+        padding: 0 24px;
+    }
+
+    .quiz-cabecalho {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .quiz-cabecalho h1 {
+        color: #FFFFFF;
+        font-size: 44px;
+        font-weight: 700;
+        margin-bottom: 14px;
+    }
+
+    .quiz-cabecalho p {
+        color: #9D9D9D;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    /* ---------- FILTRO DE CATEGORIAS ----------
+       Gerado dinamicamente pelo JS (função carregarCategorias),
+       com um botão por tag encontrada em QUESTOES.
+       Reaproveita a mesma linguagem visual das pílulas de
+       categoria já usadas no Pixel Feed (.categoria-feed). */
+
+    .quiz-categorias {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 32px;
+    }
+
+    .categoria-filtro {
+        border: 1px solid #222;
+        background: transparent;
+        padding: 8px 18px;
+        border-radius: 30px;
+        color: #999;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 14px;
+        cursor: pointer;
+        transition: .25s;
+    }
+
+    .categoria-filtro:hover {
+        border-color: #FA397A;
+        color: #fff;
+    }
+
+    .categoria-filtro.ativa {
+        color: #fff;
+        border-color: #FA397A;
+        background-color: #FA397A;
+    }
+
+    /* ---------- CARD DA PERGUNTA ---------- */
+
+    .quiz-card {
+        background: #080808;
+        border: 1px solid #161616;
+        border-radius: 16px;
+        padding: 32px;
+    }
+
+    .quiz-tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .quiz-tag {
+        display: inline-block;
+        border: 1px solid #FA397A;
+        color: #FA397A;
+        border-radius: 20px;
+        padding: 4px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: "Pixelify Sans", sans-serif;
+    }
+
+    .quiz-pergunta {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.4;
+        margin-bottom: 28px;
+    }
+
+    .quiz-respostas {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .quiz-resposta {
+        display: block;
+        width: 100%;
+        text-align: left;
+        background: #131313;
+        border: 1px solid #2A2A2A;
+        border-radius: 10px;
+        padding: 16px 20px;
+        color: #E5E5E5;
+        font-size: 16px;
+        font-family: "Segoe UI", sans-serif;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+    .quiz-resposta:hover:not(:disabled) {
+        border-color: #FA397A;
+    }
+
+    .quiz-resposta:disabled {
+        cursor: default;
+    }
+
+    .quiz-resposta.correta {
+        background: rgba(47, 190, 122, 0.15);
+        border-color: #2FBE7A;
+        color: #fff;
+    }
+
+    .quiz-resposta.errada {
+        background: rgba(250, 57, 57, 0.12);
+        border-color: #FA3939;
+        color: #fff;
+    }
+
+    .quiz-feedback {
+        margin-top: 24px;
+        padding: 18px 20px;
+        border-radius: 10px;
+        background: #111;
+        color: #B5B5B5;
+        font-size: 15px;
+        line-height: 1.6;
+        display: none;
+    }
+
+    .quiz-feedback.visivel {
+        display: block;
+    }
+
+    .quiz-rodape-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 28px;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .quiz-progresso {
+        color: #777;
+        font-size: 14px;
+    }
+
+    .botao-proxima {
+        display: none;
+        background: #FA397A;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 24px;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        transition: .25s;
+    }
+
+    .botao-proxima.visivel {
+        display: inline-block;
+    }
+
+    .botao-proxima:hover {
+        opacity: .85;
+    }
+
+    /* ---------- TELA FINAL DO QUIZ ---------- */
+
+    .quiz-fim {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .quiz-fim h2 {
+        color: #FA397A;
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .quiz-fim p {
+        color: #B5B5B5;
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+
+    .quiz-fim-stats {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+    }
+
+    .stat-item {
+        background: #131313;
+        border: 1px solid #2A2A2A;
+        border-radius: 10px;
+        padding: 18px 26px;
+        min-width: 120px;
+    }
+
+    .stat-numero {
+        display: block;
+        color: #fff;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .stat-legenda {
+        display: block;
+        color: #999;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .quiz-fim-botoes {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .botao-refazer,
+    .botao-outra-categoria {
+        border-radius: 8px;
+        padding: 12px 24px;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        transition: .25s;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    .botao-refazer {
+        background: #FA397A;
+        color: #000;
+        border: none;
+    }
+
+    .botao-refazer:hover {
+        opacity: .85;
+    }
+
+    .botao-outra-categoria {
+        background: transparent;
+        color: #FA397A;
+        border: 2px solid #FA397A;
+    }
+
+    .botao-outra-categoria:hover {
+        background: #FA397A;
+        color: #000;
+    }
+
+    /* ---------- ÍCONE DISCRETO: COMPARTILHAR NO LINKEDIN ----------
+       Fica pequeno e discreto, abaixo dos botões principais da
+       tela final — não é um botão grande, só um ícone clicável. */
+
+    .compartilhar-linkedin-discreto {
+        display: flex;
+        justify-content: center;
+        margin-top: 22px;
+    }
+
+    .icone-linkedin {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        opacity: .55;
+        transition: .25s;
+    }
+
+    .icone-linkedin:hover {
+        opacity: 1;
+        background: rgba(250, 57, 122, 0.12);
+    }
+
+    .icone-linkedin svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    @media (max-width: 600px) {
+        .quiz-cabecalho h1 {
+            font-size: 32px;
+        }
+
+        .quiz-card {
+            padding: 22px;
+        }
+
+        .quiz-pergunta {
+            font-size: 20px;
+        }
+
+        .quiz-fim-stats {
+            gap: 10px;
+        }
+
+        .stat-item {
+            min-width: 100px;
+            padding: 14px 18px;
+        }
+    }
+
+</style>
+
+
+<!-- ==========================================================
+     GOOGLE ANALYTICS 4 (GA4)
+     Copiar este bloco em qualquer página nova do site.
+     ========================================================== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BSCJB0HD2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1BSCJB0HD2');
+</script>
+
+</head>
+
+<body>
+
+<header class="meu-header">
+
+    <div class="logo">
+        <img src="logobranca.png" alt="Upixel">
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="feed-aberto.html">Besteirol</a>
+        <a href="quiz.html" class="ativo">Quiz</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+
+</header>
+
+
+<main class="pagina-quiz">
+
+    <div class="quiz-cabecalho">
+        <h1>Quiz de UX</h1>
+        <p>Escolha uma categoria e teste o que você sabe.</p>
+    </div>
+
+
+    <!-- ==========================================================
+         FILTRO DE CATEGORIAS
+         Fica vazio no HTML de propósito — o JS (carregarCategorias)
+         preenche esse bloco automaticamente com um botão para
+         um botão para cada tag que existir em QUESTOES.
+         Não é preciso editar esse <div> pra adicionar categorias.
+         ========================================================== -->
+    <div class="quiz-categorias" id="quiz-categorias"></div>
+
+
+    <!-- ==========================================================
+         CARD DA PERGUNTA
+         ========================================================== -->
+    <div class="quiz-card" id="quiz-card">
+        <!-- Conteúdo montado pelo JavaScript (ver QUESTOES abaixo) -->
+    </div>
+
+</main>
+
+
+<div class="divisor-secao"></div>
+
+<footer class="footer">
+
+    <div class="footer-esquerda">
+        <img src="logobranca.png" alt="Upixel" class="footer-logo">
+        <p class="copyright">
+            Upixel. Todos os direitos reservados.
+        </p>
+    </div>
+
+    <div class="footer-centro">
+        <nav class="footer-menu">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="feed-aberto.html">Besteirol</a>
+            <a href="quiz.html" class="ativo">Quiz</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </div>
+
+</footer>
+
+<div class="footer-ilustracao">
+    <img src="rodape.png" alt="Ilustração Footer">
+</div>
+
+
+<!-- ==========================================================
+     SCRIPT DO QUIZ
+     id: #quiz-app
+
+     COMO EDITAR:
+     1. Pra adicionar/trocar perguntas, mexa SÓ no array
+        QUESTOES logo abaixo. Cada pergunta é um objeto:
+        { id, tags: [...], pergunta, respostas: [...],
+          correta: índice da resposta certa (0 a 4),
+          explicacao: texto que aparece depois de responder }
+     2. As categorias (botões de filtro) são geradas
+        automaticamente a partir das tags usadas em QUESTOES.
+        Pra criar uma categoria nova, basta usar essa tag em
+        alguma pergunta — nenhum outro código precisa mudar.
+     3. PONTOS_POR_ACERTO controla quantos pontos cada acerto vale
+        na tela final. Não há login nem ranking — é só o placar
+        da rodada atual (some ao recarregar a página).
+     ========================================================== -->
+
+<script id="quiz-app">
+
+// ----------------------------------------------------------
+// 1. PERGUNTAS
+//
+// >>> ADICIONE NOVAS PERGUNTAS AQUI DENTRO, NO ARRAY QUESTOES <<<
+// ----------------------------------------------------------
+const QUESTOES = [
+
+    // ---------- UI/UX ----------
+    {
+id:"ux-01",
+tags:["UX"],
+pergunta:"Qual princípio de Jakob Nielsen indica que o sistema deve sempre informar o usuário sobre o que está acontecendo?",
+respostas:[
+"Prevenção de erros",
+"Visibilidade do status do sistema",
+"Flexibilidade",
+"Controle de cores",
+"Consistência visual"
+],
+correta:1,
+explicacao:"O usuário precisa receber feedback sobre ações e estados do sistema."
+},
+
+{
+id:"ux-02",
+tags:["UX"],
+pergunta:"Qual ferramenta é muito usada para criar protótipos de interfaces?",
+respostas:[
+"Photoshop",
+"Excel",
+"Figma",
+"Word",
+"Premiere"
+],
+correta:2,
+explicacao:"O Figma é uma das ferramentas mais usadas para prototipação de interfaces."
+},
+
+{
+id:"ux-03",
+tags:["UX"],
+pergunta:"O que significa UX?",
+respostas:[
+"User Experience",
+"Universal XML",
+"User Extension",
+"User Execution",
+"Visual Experience"
+],
+correta:0,
+explicacao:"UX significa Experiência do Usuário."
+},
+
+{
+id:"ux-04",
+tags:["UX"],
+pergunta:"Um wireframe representa principalmente:",
+respostas:[
+"O código final do sistema",
+"A estrutura e organização da interface",
+"As campanhas de marketing",
+"O banco de dados",
+"O servidor"
+],
+correta:1,
+explicacao:"Wireframes mostram estrutura antes do design final."
+},
+
+{
+id:"ux-05",
+tags:["UX"],
+pergunta:"Qual é o objetivo principal de um teste de usabilidade?",
+respostas:[
+"Encontrar usuários famosos",
+"Validar se pessoas conseguem usar o produto",
+"Escolher cores",
+"Criar campanhas",
+"Programar funcionalidades"
+],
+correta:1,
+explicacao:"Testes de usabilidade revelam problemas reais de uso."
+},
+
+{
+id:"ux-06",
+tags:["UX"],
+pergunta:"UI significa:",
+respostas:[
+"User Interface",
+"Universal Internet",
+"User Information",
+"Unique Interaction",
+"User Intelligence"
+],
+correta:0,
+explicacao:"UI significa Interface do Usuário."
+},
+
+{
+id:"ux-07",
+tags:["UX"],
+pergunta:"Um botão deve parecer clicável principalmente através de:",
+respostas:[
+"Hierarquia visual e padrões conhecidos",
+"Texto gigante sempre",
+"Muitas cores",
+"Animações exageradas",
+"Som obrigatório"
+],
+correta:0,
+explicacao:"Usuários reconhecem padrões visuais."
+},
+
+{
+id:"ux-08",
+tags:["UX"],
+pergunta:"Persona em UX é:",
+respostas:[
+"Um personagem fictício baseado em usuários reais",
+"Um programador",
+"Uma tela do sistema",
+"Uma ferramenta de código",
+"Um banco de dados"
+],
+correta:0,
+explicacao:"Personas representam perfis de usuários."
+},
+
+{
+id:"ux-09",
+tags:["UX"],
+pergunta:"Design responsivo significa:",
+respostas:[
+"Um site que funciona apenas no computador",
+"Um site que se adapta a diferentes telas",
+"Um site sem imagens",
+"Um aplicativo pago",
+"Um site com animações"
+],
+correta:1,
+explicacao:"Responsividade adapta layouts para vários dispositivos."
+},
+
+{
+id:"ux-10",
+tags:["UX"],
+pergunta:"A melhor interface geralmente é aquela que:",
+respostas:[
+"Tem muitos recursos",
+"É difícil de aprender",
+"Resolve o problema do usuário com simplicidade",
+"Tem muitos efeitos",
+"Usa muitas cores"
+],
+correta:2,
+explicacao:"Bom UX reduz esforço e facilita objetivos."
+},
+
+    // ---------- The Office ----------
+    {
+id:"office-01",
+tags:["The Office"],
+pergunta:"Qual é o nome da empresa onde se passa The Office?",
+respostas:[
+"Dunder Mifflin",
+"Scranton Paper",
+"Michael Scott Paper",
+"Office World",
+"Pennsylvania Company"
+],
+correta:0,
+explicacao:"A série acompanha a filial Scranton da Dunder Mifflin."
+},
+
+{
+id:"office-02",
+tags:["The Office"],
+pergunta:"Quem é o gerente da filial de Scranton durante grande parte da série?",
+respostas:[
+"Jim Halpert",
+"Dwight Schrute",
+"Michael Scott",
+"Stanley Hudson",
+"Toby Flenderson"
+],
+correta:2,
+explicacao:"Michael Scott é o chefe carismático e caótico da filial."
+},
+
+{
+id:"office-03",
+tags:["The Office"],
+pergunta:"Qual personagem é conhecido por ser extremamente competitivo e obcecado por regras?",
+respostas:[
+"Kevin",
+"Dwight",
+"Creed",
+"Andy",
+"Oscar"
+],
+correta:1,
+explicacao:"Dwight é conhecido por sua obsessão por autoridade e regras."
+},
+
+{
+id:"office-04",
+tags:["The Office"],
+pergunta:"Qual casal é um dos principais romances da série?",
+respostas:[
+"Michael e Jan",
+"Jim e Pam",
+"Dwight e Angela",
+"Ryan e Kelly",
+"Stanley e Phyllis"
+],
+correta:1,
+explicacao:"Jim e Pam são o casal mais famoso da série."
+},
+
+{
+id:"office-05",
+tags:["The Office"],
+pergunta:"Qual é o nome do documentário fictício dentro da série?",
+respostas:[
+"The Office Files",
+"People Working",
+"Dunder Stories",
+"The Office",
+"Scranton Life"
+],
+correta:3,
+explicacao:"A série é apresentada como um documentário sobre o escritório."
+},
+
+{
+id:"office-06",
+tags:["The Office"],
+pergunta:"Qual frase é uma das marcas de Michael Scott?",
+respostas:[
+"Winter is coming",
+"That's what she said",
+"I am the danger",
+"How you doin?",
+"Bazinga"
+],
+correta:1,
+explicacao:"That's what she said virou a piada clássica de Michael."
+},
+
+{
+id:"office-07",
+tags:["The Office"],
+pergunta:"Qual personagem trabalha no RH e é frequentemente ignorado por Michael?",
+respostas:[
+"Toby",
+"Creed",
+"Meredith",
+"Kevin",
+"Stanley"
+],
+correta:0,
+explicacao:"Michael demonstra grande antipatia pelo Toby."
+},
+
+{
+id:"office-08",
+tags:["The Office"],
+pergunta:"Dwight trabalha principalmente como:",
+respostas:[
+"Contador",
+"Vendedor",
+"Gerente regional assistente",
+"Fotógrafo",
+"Diretor"
+],
+correta:2,
+explicacao:"Dwight é Assistant Regional Manager (segundo ele)."
+},
+
+{
+id:"office-09",
+tags:["The Office"],
+pergunta:"Qual personagem é famoso por seu humor extremamente seco?",
+respostas:[
+"Jim",
+"Kevin",
+"Creed",
+"Stanley",
+"Oscar"
+],
+correta:0,
+explicacao:"Jim usa muito sarcasmo e quebra a quarta parede."
+},
+
+{
+id:"office-10",
+tags:["The Office"],
+pergunta:"Onde fica a filial principal retratada na série?",
+respostas:[
+"Nova York",
+"Scranton, Pensilvânia",
+"Chicago",
+"Los Angeles",
+"Boston"
+],
+correta:1,
+explicacao:"A série se passa na filial de Scranton."
+},
+
+    // ---------- Tecnologia ----------
+    {
+id:"tec-01",
+tags:["Tecnologia"],
+pergunta:"O que significa a sigla HTML?",
+respostas:[
+"HyperText Markup Language",
+"High Technology Machine Language",
+"Hyper Transfer Main Link",
+"Home Tool Management Language",
+"Hyperlink Text Mode Language"
+],
+correta:0,
+explicacao:"HTML é a linguagem usada para estruturar páginas web."
+},
+
+{
+id:"tec-02",
+tags:["Tecnologia"],
+pergunta:"Qual linguagem é usada principalmente para criar interações em páginas web?",
+respostas:[
+"HTML",
+"CSS",
+"JavaScript",
+"SQL",
+"Python"
+],
+correta:2,
+explicacao:"JavaScript adiciona comportamentos e interações."
+},
+
+{
+id:"tec-03",
+tags:["Tecnologia"],
+pergunta:"O que significa CSS?",
+respostas:[
+"Computer Style System",
+"Cascading Style Sheets",
+"Creative Software System",
+"Code Style Source",
+"Central Style Service"
+],
+correta:1,
+explicacao:"CSS controla a aparência e o layout das páginas."
+},
+
+{
+id:"tec-04",
+tags:["Tecnologia"],
+pergunta:"Qual empresa criou o sistema operacional Android?",
+respostas:[
+"Microsoft",
+"Apple",
+"Google",
+"Samsung",
+"Intel"
+],
+correta:2,
+explicacao:"O Android foi desenvolvido pela Google e pela Open Handset Alliance."
+},
+
+{
+id:"tec-05",
+tags:["Tecnologia"],
+pergunta:"O que significa IA?",
+respostas:[
+"Internet Avançada",
+"Inteligência Artificial",
+"Interface Automática",
+"Informação Aplicada",
+"Integração Analítica"
+],
+correta:1,
+explicacao:"IA significa Inteligência Artificial."
+},
+
+{
+id:"tec-06",
+tags:["Tecnologia"],
+pergunta:"Qual destes é um banco de dados?",
+respostas:[
+"Photoshop",
+"MySQL",
+"Figma",
+"Chrome",
+"Windows"
+],
+correta:1,
+explicacao:"MySQL é um sistema de gerenciamento de banco de dados."
+},
+
+{
+id:"tec-07",
+tags:["Tecnologia"],
+pergunta:"O que significa URL?",
+respostas:[
+"Universal Resource Locator",
+"User Random Link",
+"Unified Remote Login",
+"Universal Robot Language",
+"User Route Line"
+],
+correta:0,
+explicacao:"URL é o endereço usado para localizar recursos na internet."
+},
+
+{
+id:"tec-08",
+tags:["Tecnologia"],
+pergunta:"Qual empresa desenvolve o Windows?",
+respostas:[
+"Google",
+"Apple",
+"Microsoft",
+"Adobe",
+"Amazon"
+],
+correta:2,
+explicacao:"O Windows é desenvolvido pela Microsoft."
+},
+
+{
+id:"tec-09",
+tags:["Tecnologia"],
+pergunta:"O que é um navegador de internet?",
+respostas:[
+"Um programa para acessar sites",
+"Um antivírus",
+"Um banco de dados",
+"Um editor de imagens",
+"Uma linguagem de programação"
+],
+correta:0,
+explicacao:"Navegadores permitem acessar páginas da web."
+},
+
+{
+id:"tec-10",
+tags:["Tecnologia"],
+pergunta:"Qual destes é um serviço de armazenamento em nuvem?",
+respostas:[
+"Google Drive",
+"Paint",
+"Bloco de Notas",
+"Calculadora",
+"BIOS"
+],
+correta:0,
+explicacao:"Google Drive permite armazenar arquivos na nuvem."
+},
+
+    // ---------- Memes ----------
+    {
+id:"meme-01",
+tags:["Memes"],
+pergunta:"No universo dos memes, o termo 'LOL' significa:",
+respostas:[
+"Lots Of Laughs",
+"League Of Legends",
+"Look Online Later",
+"Level Of Logic",
+"Link Over Load"
+],
+correta:0,
+explicacao:"LOL é uma abreviação usada para indicar risada."
+},
+
+{
+id:"meme-02",
+tags:["Memes"],
+pergunta:"O meme 'This is fine' normalmente representa:",
+respostas:[
+"Uma situação perfeita",
+"Alguém tranquilo enquanto tudo está dando errado",
+"Uma comemoração",
+"Um cachorro famoso",
+"Uma mensagem motivacional"
+],
+correta:1,
+explicacao:"O meme mostra alguém fingindo normalidade no caos."
+},
+
+{
+id:"meme-03",
+tags:["Memes"],
+pergunta:"O que significa 'cringe' na internet?",
+respostas:[
+"Algo muito engraçado",
+"Algo considerado vergonhoso ou constrangedor",
+"Uma tecnologia nova",
+"Uma tendência de moda",
+"Um jogo online"
+],
+correta:1,
+explicacao:"Cringe descreve algo que causa vergonha alheia."
+},
+
+{
+id:"meme-04",
+tags:["Memes"],
+pergunta:"O termo 'viralizar' na internet significa:",
+respostas:[
+"Apagar uma postagem",
+"Um conteúdo se espalhar rapidamente",
+"Instalar um antivírus",
+"Criar um aplicativo",
+"Ficar offline"
+],
+correta:1,
+explicacao:"Um conteúdo viral se espalha rapidamente entre usuários."
+},
+
+{
+id:"meme-05",
+tags:["Memes"],
+pergunta:"O meme 'Doge' ficou famoso por apresentar:",
+respostas:[
+"Um gato astronauta",
+"Um cachorro Shiba Inu com frases engraçadas",
+"Um robô inteligente",
+"Um personagem de jogo",
+"Um político famoso"
+],
+correta:1,
+explicacao:"Doge usa a imagem de um cachorro Shiba Inu."
+},
+
+{
+id:"meme-06",
+tags:["Memes"],
+pergunta:"Quando alguém responde 'é sobre isso', normalmente quer dizer:",
+respostas:[
+"Discordo totalmente",
+"Concordo ou me identifico com a situação",
+"Não entendi nada",
+"Vou sair da conversa",
+"É uma informação falsa"
+],
+correta:1,
+explicacao:"A expressão indica identificação ou aprovação."
+},
+
+{
+id:"meme-07",
+tags:["Memes"],
+pergunta:"O termo 'bug' nos memes geralmente é usado para:",
+respostas:[
+"Uma comida estranha",
+"Um erro inesperado",
+"Uma atualização",
+"Um personagem",
+"Um filme"
+],
+correta:1,
+explicacao:"Bug significa falha ou comportamento inesperado."
+},
+
+{
+id:"meme-08",
+tags:["Memes"],
+pergunta:"A expressão 'expectativa x realidade' geralmente mostra:",
+respostas:[
+"Uma comparação entre o que era esperado e o que aconteceu",
+"Uma aula de matemática",
+"Uma notícia falsa",
+"Uma propaganda",
+"Uma previsão do tempo"
+],
+correta:0,
+explicacao:"O meme compara idealização e resultado real."
+},
+
+{
+id:"meme-09",
+tags:["Memes"],
+pergunta:"O meme 'Stonks' brinca principalmente com:",
+respostas:[
+"Decisões financeiras absurdas apresentadas como sucesso",
+"Programação",
+"Culinária",
+"Esportes",
+"Viagens"
+],
+correta:0,
+explicacao:"Stonks ironiza decisões ruins tratadas como grandes negócios."
+},
+
+{
+id:"meme-10",
+tags:["Memes"],
+pergunta:"Na internet, 'relatable' significa:",
+respostas:[
+"Algo difícil de entender",
+"Algo com que muitas pessoas se identificam",
+"Algo proibido",
+"Algo antigo",
+"Algo sem graça"
+],
+correta:1,
+explicacao:"Relatable é algo que representa uma experiência comum."
+},
+
+    // ---------- Séries / Breaking Bad ----------
+    {
+id:"bb-01",
+tags:["Breaking Bad"],
+pergunta:"Qual é o nome do protagonista de Breaking Bad?",
+respostas:[
+    "Jesse Pinkman",
+    "Walter White",
+    "Saul Goodman",
+    "Hank Schrader",
+    "Gus Fring"
+],
+correta:1,
+explicacao:"Walter White é o professor de química que começa a produzir metanfetamina."
+},
+
+{
+id:"bb-02",
+tags:["Breaking Bad"],
+pergunta:"Qual era a profissão de Walter White antes do crime?",
+respostas:[
+    "Advogado",
+    "Policial",
+    "Professor de química",
+    "Médico",
+    "Engenheiro"
+],
+correta:2,
+explicacao:"Walter era professor de química em uma escola."
+},
+
+{
+id:"bb-03",
+tags:["Breaking Bad"],
+pergunta:"Qual é o apelido de Walter White no mundo das drogas?",
+respostas:[
+    "Heisenberg",
+    "El Patrón",
+    "Mr. Blue",
+    "Capitão Cook",
+    "The King"
+],
+correta:0,
+explicacao:"Heisenberg é o nome usado por Walter no submundo."
+},
+
+{
+id:"bb-04",
+tags:["Breaking Bad"],
+pergunta:"Quem é o parceiro de Walter White na produção de drogas?",
+respostas:[
+    "Saul Goodman",
+    "Jesse Pinkman",
+    "Hank Schrader",
+    "Mike Ehrmantraut",
+    "Tuco Salamanca"
+],
+correta:1,
+explicacao:"Jesse Pinkman é o antigo aluno que vira parceiro de Walter."
+},
+
+{
+id:"bb-05",
+tags:["Breaking Bad"],
+pergunta:"Qual é a profissão de Saul Goodman?",
+respostas:[
+    "Químico",
+    "Policial",
+    "Advogado",
+    "Empresário",
+    "Jornalista"
+],
+correta:2,
+explicacao:"Saul é o advogado especialista em resolver problemas ilegais."
+},
+
+{
+id:"bb-06",
+tags:["Breaking Bad"],
+pergunta:"Qual objeto ficou famoso como símbolo de Breaking Bad?",
+respostas:[
+    "Um chapéu preto",
+    "Uma máscara de gás",
+    "Uma guitarra",
+    "Um carro vermelho",
+    "Uma faca"
+],
+correta:1,
+explicacao:"A máscara de gás aparece na famosa imagem promocional da série."
+},
+
+{
+id:"bb-07",
+tags:["Breaking Bad"],
+pergunta:"Quem é Hank Schrader na série?",
+respostas:[
+    "Um traficante",
+    "Um professor",
+    "Um agente da DEA",
+    "Um advogado",
+    "Um cientista"
+],
+correta:2,
+explicacao:"Hank trabalha combatendo o tráfico de drogas pela DEA."
+},
+
+{
+id:"bb-08",
+tags:["Breaking Bad"],
+pergunta:"Qual é a famosa frase de Walter White?",
+respostas:[
+    "I am the danger",
+    "Winter is coming",
+    "Why so serious?",
+    "Hasta la vista",
+    "You talking to me?"
+],
+correta:0,
+explicacao:"A frase representa a transformação de Walter em Heisenberg."
+},
+
+{
+id:"bb-09",
+tags:["Breaking Bad"],
+pergunta:"Em qual estado americano se passa principalmente Breaking Bad?",
+respostas:[
+    "Texas",
+    "Califórnia",
+    "Novo México",
+    "Flórida",
+    "Nevada"
+],
+correta:2,
+explicacao:"A história acontece principalmente em Albuquerque, Novo México."
+},
+
+{
+id:"bb-10",
+tags:["Breaking Bad"],
+pergunta:"Qual é o principal produto fabricado por Walter e Jesse?",
+respostas:[
+    "Cocaína",
+    "Heroína",
+    "Metanfetamina",
+    "Remédios",
+    "Álcool"
+],
+correta:2,
+explicacao:"A dupla produz metanfetamina de alta pureza."
+},
+{
+id:"games-01",
+tags:["Games"],
+pergunta:"Qual personagem é o mascote oficial da Nintendo?",
+respostas:[
+    "Sonic",
+    "Mario",
+    "Link",
+    "Kirby",
+    "Donkey Kong"
+],
+correta:1,
+explicacao:"Mario é o personagem mais famoso da Nintendo e seu principal símbolo."
+},
+
+{
+id:"games-02",
+tags:["Games"],
+pergunta:"Em qual jogo aparece o personagem Link?",
+respostas:[
+    "Final Fantasy",
+    "Minecraft",
+    "The Legend of Zelda",
+    "Pokémon",
+    "Metroid"
+],
+correta:2,
+explicacao:"Link é o protagonista da famosa franquia The Legend of Zelda."
+},
+
+{
+id:"games-03",
+tags:["Games"],
+pergunta:"Qual empresa criou o PlayStation?",
+respostas:[
+    "Microsoft",
+    "Nintendo",
+    "Sony",
+    "Sega",
+    "Atari"
+],
+correta:2,
+explicacao:"O PlayStation foi criado pela Sony e lançado em 1994."
+},
+
+{
+id:"games-04",
+tags:["Games"],
+pergunta:"Qual jogo ficou famoso por permitir construir usando blocos?",
+respostas:[
+    "Fortnite",
+    "Minecraft",
+    "Terraria",
+    "Roblox",
+    "The Sims"
+],
+correta:1,
+explicacao:"Minecraft permite explorar e construir mundos usando blocos."
+},
+
+{
+id:"games-05",
+tags:["Games"],
+pergunta:"Qual personagem é conhecido por capturar criaturas chamadas Pokémon?",
+respostas:[
+    "Mario",
+    "Ash Ketchum",
+    "Kratos",
+    "Master Chief",
+    "Geralt"
+],
+correta:1,
+explicacao:"Ash Ketchum é um dos personagens mais conhecidos do universo Pokémon."
+},
+
+{
+id:"games-06",
+tags:["Games"],
+pergunta:"Qual jogo apresenta o personagem Kratos?",
+respostas:[
+    "God of War",
+    "Halo",
+    "Doom",
+    "Resident Evil",
+    "Dark Souls"
+],
+correta:0,
+explicacao:"Kratos é o protagonista da série God of War."
+},
+
+{
+id:"games-07",
+tags:["Games"],
+pergunta:"Qual empresa criou o Xbox?",
+respostas:[
+    "Sony",
+    "Nintendo",
+    "Microsoft",
+    "Sega",
+    "Valve"
+],
+correta:2,
+explicacao:"O Xbox foi lançado pela Microsoft em 2001."
+},
+
+{
+id:"games-08",
+tags:["Games"],
+pergunta:"Em qual jogo o jogador enfrenta zumbis e administra recursos para sobreviver?",
+respostas:[
+    "The Last of Us",
+    "FIFA",
+    "Mario Kart",
+    "Forza Horizon",
+    "Animal Crossing"
+],
+correta:0,
+explicacao:"The Last of Us mistura sobrevivência, ação e uma história pós-apocalíptica."
+},
+
+{
+id:"games-09",
+tags:["Games"],
+pergunta:"Qual personagem da Sega é conhecido por sua grande velocidade?",
+respostas:[
+    "Crash Bandicoot",
+    "Sonic",
+    "Mega Man",
+    "Pac-Man",
+    "Ryu"
+],
+correta:1,
+explicacao:"Sonic ficou famoso por sua velocidade e é o mascote da Sega."
+},
+
+{
+id:"games-10",
+tags:["Games"],
+pergunta:"Qual jogo popularizou o gênero battle royale com construção?",
+respostas:[
+    "Counter-Strike",
+    "Fortnite",
+    "Street Fighter",
+    "League of Legends",
+    "World of Warcraft"
+],
+correta:1,
+explicacao:"Fortnite popularizou o battle royale combinado com construção."
+},
+];
+
+const PONTOS_POR_ACERTO = 10;
+
+// ----------------------------------------------------------
+// 2. ESTADO DO QUIZ
+// ----------------------------------------------------------
+let categoriaAtual = "";       // categoria selecionada no filtro
+let questoesFiltradas = [];    // perguntas da categoria atual
+let indiceAtual = 0;           // pergunta atual dentro de questoesFiltradas
+let acertosSessao = 0;         // acertos na rodada atual (reseta a cada categoria/refazer)
+
+const cardQuiz = document.getElementById("quiz-card");
+const areaCategorias = document.getElementById("quiz-categorias");
+
+// ----------------------------------------------------------
+// 3. CATEGORIAS
+//    obterCategorias() lê todas as tags usadas em QUESTOES e
+//    monta a lista de categorias automaticamente — é por isso
+//    que uma tag nova em QUESTOES já vira categoria sem
+//    precisar editar mais nada.
+// ----------------------------------------------------------
+function obterCategorias() {
+    const tags = new Set();
+    QUESTOES.forEach(questao => {
+        questao.tags.forEach(tag => tags.add(tag));
+    });
+    return Array.from(tags).sort((a, b) => a.localeCompare(b, "pt-BR"));
+}
+
+function carregarCategorias() {
+    const categorias = obterCategorias();
+
+    areaCategorias.innerHTML = categorias
+        .map(categoria => `
+            <button
+                class="categoria-filtro${categoria === categoriaAtual ? " ativa" : ""}"
+                data-categoria="${categoria}"
+            >${categoria}</button>
+        `)
+        .join("");
+
+    document.querySelectorAll(".categoria-filtro").forEach(botao => {
+        botao.addEventListener("click", () => {
+            selecionarCategoria(botao.dataset.categoria);
+        });
+    });
+
+    // nenhuma categoria escolhida ainda -> seleciona a primeira automaticamente
+    if (!categoriaAtual && categorias.length > 0) {
+        selecionarCategoria(categorias[0]);
+    }
+}
+
+function selecionarCategoria(categoria) {
+    categoriaAtual = categoria;
+
+    document.querySelectorAll(".categoria-filtro").forEach(botao => {
+        botao.classList.toggle("ativa", botao.dataset.categoria === categoria);
+    });
+
+    filtrarQuestoes(categoria);
+    iniciarQuiz();
+}
+
+// ----------------------------------------------------------
+// 4. FILTRAR QUESTÕES PELA CATEGORIA ESCOLHIDA
+// ----------------------------------------------------------
+function filtrarQuestoes(categoria) {
+    questoesFiltradas = QUESTOES.filter(questao => questao.tags.includes(categoria));
+}
+
+// ----------------------------------------------------------
+// 5. INICIAR / REINICIAR O QUIZ
+// ----------------------------------------------------------
+function iniciarQuiz() {
+    indiceAtual = 0;
+    acertosSessao = 0;
+    renderizarPergunta();
+}
+
+// ----------------------------------------------------------
+// 6. MONTA A PERGUNTA NA TELA
+// ----------------------------------------------------------
+function renderizarPergunta() {
+
+    if (questoesFiltradas.length === 0) {
+        cardQuiz.innerHTML = `
+            <div class="quiz-fim">
+                <h2>Ainda não tem perguntas aqui 😅</h2>
+                <p>Essa categoria ainda não tem perguntas cadastradas. Escolha outra categoria no filtro acima.</p>
+            </div>
+        `;
+        return;
+    }
+
+    if (indiceAtual >= questoesFiltradas.length) {
+        finalizarQuiz();
+        return;
+    }
+
+    const questao = questoesFiltradas[indiceAtual];
+    const ultimaPergunta = indiceAtual === questoesFiltradas.length - 1;
+    const textoBotao = ultimaPergunta ? "Finalizar quiz →" : "Próxima pergunta →";
+
+    const tagsHtml = questao.tags.map(t => `<span class="quiz-tag">${t}</span>`).join("");
+
+    const respostasHtml = questao.respostas
+        .map((resposta, i) => `
+            <button class="quiz-resposta" data-indice="${i}">${resposta}</button>
+        `)
+        .join("");
+
+    cardQuiz.innerHTML = `
+        <div class="quiz-tags">${tagsHtml}</div>
+        <div class="quiz-pergunta">${questao.pergunta}</div>
+        <div class="quiz-respostas">${respostasHtml}</div>
+        <div class="quiz-feedback" id="quiz-feedback">${questao.explicacao}</div>
+        <div class="quiz-rodape-card">
+            <span class="quiz-progresso">Pergunta ${indiceAtual + 1} de ${questoesFiltradas.length}</span>
+            <button class="botao-proxima" id="botao-proxima">${textoBotao}</button>
+        </div>
+    `;
+
+    document.querySelectorAll(".quiz-resposta").forEach(botao => {
+        botao.addEventListener("click", () => responderPergunta(botao, questao));
+    });
+
+    document.getElementById("botao-proxima").addEventListener("click", () => {
+        indiceAtual++;
+        renderizarPergunta();
+    });
+}
+
+// ----------------------------------------------------------
+// 7. RESPONDE A PERGUNTA (marca certo/errado)
+// ----------------------------------------------------------
+function responderPergunta(botaoClicado, questao) {
+    const indiceEscolhido = Number(botaoClicado.dataset.indice);
+    const acertou = indiceEscolhido === questao.correta;
+
+    document.querySelectorAll(".quiz-resposta").forEach(botao => {
+        botao.disabled = true;
+        if (Number(botao.dataset.indice) === questao.correta) {
+            botao.classList.add("correta");
+        } else if (botao === botaoClicado) {
+            botao.classList.add("errada");
+        }
+    });
+
+    document.getElementById("quiz-feedback").classList.add("visivel");
+    document.getElementById("botao-proxima").classList.add("visivel");
+
+    if (acertou) {
+        acertosSessao++;
+    }
+}
+
+// ----------------------------------------------------------
+// 8. TELA FINAL DO QUIZ (dessa categoria)
+//    Mostra acertos, percentual e pontos da rodada, os botões
+//    "Refazer" / "Escolher outra categoria" e, discreto embaixo,
+//    o ícone de compartilhar no LinkedIn.
+// ----------------------------------------------------------
+function finalizarQuiz() {
+    const total = questoesFiltradas.length;
+    const percentual = total > 0 ? Math.round((acertosSessao / total) * 100) : 0;
+    const pontosGanhos = acertosSessao * PONTOS_POR_ACERTO;
+
+    cardQuiz.innerHTML = `
+        <div class="quiz-fim">
+            <h2>Quiz finalizado! 🎉</h2>
+            <p>Categoria: <strong>${categoriaAtual}</strong></p>
+
+            <div class="quiz-fim-stats">
+                <div class="stat-item">
+                    <span class="stat-numero">${acertosSessao}/${total}</span>
+                    <span class="stat-legenda">Acertos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-numero">${percentual}%</span>
+                    <span class="stat-legenda">Aproveitamento</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-numero">${pontosGanhos}</span>
+                    <span class="stat-legenda">Pontos ganhos</span>
+                </div>
+            </div>
+
+            <div class="quiz-fim-botoes">
+                <button class="botao-refazer" id="botao-refazer">Refazer</button>
+                <button class="botao-outra-categoria" id="botao-outra-categoria">Escolher outra categoria</button>
+            </div>
+
+            <div class="compartilhar-linkedin-discreto">
+                <button class="icone-linkedin" id="botao-linkedin-icone" title="Compartilhar no LinkedIn" aria-label="Compartilhar no LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="#FA397A">
+                        <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.getElementById("botao-refazer").addEventListener("click", iniciarQuiz);
+
+    document.getElementById("botao-outra-categoria").addEventListener("click", () => {
+        areaCategorias.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+
+    document.getElementById("botao-linkedin-icone").addEventListener("click", compartilharNoLinkedIn);
+}
+
+// ----------------------------------------------------------
+// 9. COMPARTILHAR A PÁGINA DO QUIZ NO LINKEDIN
+//    Abre a caixa de compartilhamento oficial do LinkedIn com
+//    o link da própria página do quiz. O LinkedIn não permite
+//    preencher o texto do post via URL (regra deles), então
+//    quem for postar escreve o texto na hora.
+// ----------------------------------------------------------
+function compartilharNoLinkedIn() {
+    const urlPagina = encodeURIComponent(window.location.href);
+    const urlCompartilhamento = `https://www.linkedin.com/sharing/share-offsite/?url=${urlPagina}`;
+
+    window.open(urlCompartilhamento, "_blank", "noopener,noreferrer,width=600,height=600");
+}
+
+// ----------------------------------------------------------
+// 10. INICIALIZA A PÁGINA
+//     carregarCategorias() já seleciona a primeira categoria
+//     automaticamente e dispara o quiz.
+// ----------------------------------------------------------
+carregarCategorias();
+
+</script>
+
+</body>
+
+</html>
