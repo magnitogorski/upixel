@@ -1,2790 +1,662 @@
-/* 1. Reset de fábrica */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* 2. Definindo o fundo e tamanho padrão da página */
-body {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #000000; 
-    font-family: sans-serif;
-}
-
-/* 3. Estrutura do Header com os Paddings (28px topo e 60px lados) */
-.meu-header {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;            
-    padding-top: 28px;     
-    padding-left: 60px;    
-    padding-right: 60px;   
-    padding-bottom: 28px;  
-    background-color: #000000; 
-    border-bottom: 2px solid #161616;
-}
-
-/* 4. Controle do tamanho da LOGO */
-.logo img {
-    height: 70px; 
-    width: auto;  
-    display: block;
-}
-
-/* 5. O Menu com 112px de distância */
-.menu {
-    display: flex;
-    gap: 112px; 
-}
-
-/* 6. Os Links com a fonte Pixelify Sans corrigida */
-.menu a {
-    text-decoration: none;
-    color: #ffffff; 
-    font-weight: bold;
-    font-family: 'Pixelify Sans', sans-serif !important;
-    transition: 0.3s;
-}
-
-.menu a:hover,
-.menu a.ativo {
-    color: #FA397A; 
-}
-
-/* 7. SEÇÃO PRINCIPAL: Alinhamento do Texto e Imagem */
-.conteudo-principal {
-    display: flex;
-    justify-content: space-between; 
-    align-items: flex-start;
-    width: 100%;
-    margin: 0;
-    padding: 0; 
-    box-sizing: border-box;         
-}
-
-/* Bloco do Texto (Lado Esquerdo) */
-.bloco-texto {
-    flex: 1;                        
-    padding-left: 60px;       
-    margin-top: 120px;        
-}
-
-.titulo-destaque {
-    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; 
-    font-size: 48px;                          
-    font-weight: 700; 
-    color: #ffffff;   
-    text-align: left;
-    line-height: 1.2;                         
-}
-
-/* Bloco da Imagem (Lado Direito colado na borda) */
-.bloco-imagem {
-    flex: 1;                        
-    display: flex;
-    justify-content: flex-end; 
-}
-
-.bloco-imagem img {
-    width: 760px;             
-    max-width: 100%;                
-    height: auto;
-    display: block; 
-    margin-top: 42px;         
-}
-
-/* Estilo para o texto pequeno de cima */
-.texto-menor {
-    display: flex;                  
-    align-items: center;            
-    gap: 8px;                       
-    font-size: 14px;                 
-    font-weight: 600;                
-    color: #FA397A;                  
-    text-transform: uppercase;       
-    letter-spacing: 2px;             
-    margin-bottom: 80px;              
-}
-
-.icone-raio {
-    width: 11px;                    
-    height: auto;
-    display: block;
-}
-
-/* Container da nova frase abaixo do título */
-.frase-underground {
-    display: flex;                  
-    align-items: center;            
-    justify-content: flex-start;    
-    gap: 12px;                      
-    margin-top: 80px;               
-}
-
-/* Estilo do texto quebrado em duas linhas */
-.texto-quebrado {
-    font-family: "Segoe UI", sans-serif; 
-    font-size: 14px;                 
-    font-weight: 600;                
-    color: #FA397A;                  
-    text-transform: uppercase;       
-    letter-spacing: 2px;             
-    line-height: 1.4;               
-    text-align: left;               
-}
-
-/* Tamanho da logo pequena */
-.logo-pequena {
-    width: 70px;                    
-    height: auto;
-    display: block;
-}
-
-/* Container isolador para forçar o alinhamento à esquerda */
-.container-botao {
-    width: 100%;
-    display: block;
-    text-align: left; 
-}
-
-/* Estilização do Botão Quadrado */
-.botao-artigos {
-    display: inline-flex; 
-    align-items: center;
-    justify-content: center;
-    gap: 16px;                      
-    width: 314px;
-    height: 94px;
-    margin-top: 60px;               
-    background-color: transparent;  
-    border: 2px solid #FA397A;      
-    color: #FA397A;                 
-    font-family: "Segoe UI", sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-decoration: none;          
-    transition: all 0.3s ease;     
-}
-
-.botao-artigos:hover {
-    background-color: #FA397A;
-    color: #000000;                 
-}
-
-/* Seta fina em SVG */
-.seta-fina {
-    width: 20px;
-    height: 20px;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.botao-artigos:hover .seta-fina {
-    transform: translateX(4px);
-}
-
-/* Linha divisória entre as seções */
-.divisor-secao {
-    display: block;                 
-    width: 100%;                     
-    height: 2px;                    
-    background-color: #161616;      
-    border: none;                   
-    margin-top: 80px;               
-    margin-bottom: 40px;            
-}
-
-/* ========================= */
-/* ARTIGOS RECENTES */
-/* ========================= */
-
-.artigos-recentes {
-    margin: 80px 60px;
-}
-
-.titulo-secao {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.titulo-esquerda {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.titulo-esquerda h2 {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    color: #F93877;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1;
-}
-
-.titulo-esquerda h2 span {
-    display: block;
-}
-
-.icone-titulo {
-    width: 24px;
-    height: auto;
-    transform: translateY(2px);
-}
-
-.ver-todos {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: #F93877;
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.ver-todos .seta-fina {
-    width: 18px;
-    height: 18px;
-}
-
-.cards-artigos {
-    display: flex;
-    gap: 24px;
-}
-
-.card-artigo {
-    width: 312px;
-    height: 578px;
-    background-color: #050505;
-    border: 1px solid #161616;
-    border-radius: 8px;
-    overflow: hidden;
-    padding: 22px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.card-artigo:hover {
-    transform: translateY(-6px);
-    border-color: #FA397A;
-}
-
-/* Imagem do card */
-.imagem-artigo {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Categoria */
-.card-artigo .categoria {
-    display: block;
-    margin: 10px 20px 8px;
-    font-size: 20px;
-    font-weight: 400;
-    color: #F93877;
-}
-
-/* Título */
-.card-artigo h3 {
-    margin: 0 20px;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.3;
-    color: #FFFFFF;
-}
-
-/* Texto */
-.card-artigo p {
-    margin: 18px 20px;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #B5B5B5;
-}
-
-/* Leia mais */
-.card-artigo a {
-    margin: 0 20px;
-    text-decoration: none;
-    font-weight: 700;
-    color: #F93877;
-}
-
-/* ========================= */
-/* CAMISETAS */
-/* ========================= */
-
-.camisetas {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 60px 80px 60px;
-}
-
-.camisetas-conteudo {
-    width: 50%;
-}
-
-.titulo-camisetas {
-    margin-top: 24px;
-    color: #FFFFFF;
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.descricao-camisetas {
-    margin-top: 24px;
-    color: #C8C8C8;
-    font-size: 40px;
-    line-height: 1.6;
-    max-width: 560px;
-}
-
-.camisetas-imagem {
-    display: flex;
-    justify-content: flex-end;
-    width: 50%;
-}
-
-.camisetas-imagem img {
-    width: 790px;
-    height: 440px;
-    object-fit: cover;
-    display: block;
-}
-
-/* ========================= */
-/* PIXEL FEED (seção da home) */
-/* Layout parecido com o hero: imagem encostada
-   na borda direita da tela, sem padding no lado direito. */
-/* ========================= */
-
-.pixelfeed-secao {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0 80px 60px;
-}
-
-.pixelfeed-conteudo {
-    width: 50%;
-    padding-right: 40px;
-    box-sizing: border-box;
-}
-
-.titulo-pixelfeed {
-    margin-top: 24px;
-    color: #FFFFFF;
-    font-size: 56px;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.titulo-pixelfeed .destaque-rosa {
-    color: #FA397A;
-}
-
-.descricao-pixelfeed {
-    margin-top: 24px;
-    color: #C8C8C8;
-    font-size: 20px;
-    line-height: 1.6;
-    max-width: 460px;
-}
-
-.pixelfeed-imagem {
-    display: flex;
-    justify-content: flex-end;
-    width: 50%;
-}
-
-.pixelfeed-imagem img {
-    width: 100%;
-    max-width: 700px;
-    height: auto;
-    display: block;
-}
-
-/* ========================= */
-/* SOBRE NÓS */
-/* ========================= */
-
-.sobre-nos {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 60px 80px 60px;
-}
-
-.sobre-conteudo {
-    width: 50%;
-}
-
-.titulo-sobre {
-    margin-top: 24px;
-    color: #FFFFFF;
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1.15;
-}
-
-.descricao-sobre {
-    margin-top: 32px;
-    color: #FFFFFF;
-    font-size: 40px;
-    font-weight: 400;
-    line-height: 1.3;
-    max-width: 650px;
-}
-
-.sobre-imagem {
-    width: 50%;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.sobre-imagem img {
-    width: 614px;
-    height: 592px;
-    object-fit: cover;
-    display: block;
-}
-
-/* ========================= */
-/* SPOTIFY */
-/* ========================= */
-
-.spotify-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 80px 60px;
-}
-
-.spotify-conteudo {
-    width: 50%;
-}
-
-.titulo-spotify {
-    margin-top: 24px;
-    color: #FFFFFF;
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1.15;
-}
-
-.descricao-spotify {
-    margin-top: 32px;
-    color: #FFFFFF;
-    font-size: 40px;
-    line-height: 1.3;
-    max-width: 650px;
-}
-
-.spotify-card {
-    width: 614px;
-    height: 553px;
-    background: none;
-    padding: 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.social-links {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    align-items: center;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.playlist-label {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
-    color: #000;
-}
-
-.spotify-card h3 {
-    color: #000;
-    font-size: 34px;
-    line-height: 1.2;
-    margin-top: 12px;
-}
-
-.playlist {
-    list-style: none;
-    margin-top: 32px;
-    padding: 0;
-}
-
-.playlist li {
-    font-size: 22px;
-    color: #000;
-    margin-bottom: 14px;
-    line-height: 1.4;
-}
-
-.spotify-link {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    text-decoration: none;
-    color: #000;
-    font-size: 22px;
-    font-weight: 700;
-}
-
-.spotify-link img {
-    width: 32px;
-    height: 32px;
-}
-
-/* ========================= */
-/* NEWSLETTER */
-/* ========================= */
-
-.newsletter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 80px 60px;
-}
-
-.newsletter-esquerda {
-    width: 50%;
-}
-
-.titulo-newsletter {
-    color: #FFFFFF;
-    font-size: 56px;
-    font-weight: 700;
-    line-height: 1.15;
-    max-width: 620px;
-}
-
-.newsletter-direita {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.newsletter-texto {
-    color: #FA397A;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 24px;
-}
-
-.newsletter-form,
-.newsletter form {
-    display: flex;
-    gap: 16px;
-    width: 100%;
-    max-width: 482px;
-}
-
-.newsletter-form input,
-.newsletter input {
-    flex: 1;
-    height: 72px;
-    background: #111111;
-    border: 2px solid #333333;
-    color: #FFFFFF;
-    padding: 0 24px;
-    font-size: 18px;
-    outline: none;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.newsletter-form input::placeholder {
-    color: #777777;
-}
-
-.newsletter-form input:focus {
-    border-color: #FA397A;
-}
-
-.newsletter-form button,
-.newsletter button {
-    width: 170px;
-    height: 72px;
-    border: none;
-    background: #FA397A;
-    color: #000000;
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: .25s;
-    box-sizing: border-box;
-}
-
-.newsletter-form button:hover {
-    transform: translateY(-2px);
-    opacity: .9;
-}
-
-/* ========================= */
-/* FOOTER */
-/* ========================= */
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 80px 60px 40px;
-}
-
-.footer-esquerda {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-logo {
-    width: 220px;
-    height: auto;
-}
-
-.copyright {
-    margin-top: 12px;
-    font-size: 12px;
-    color: #6D6D6D;
-    letter-spacing: 1px;
-}
-
-.footer-centro {
-    display: flex;
-    align-items: flex-start;
-}
-
-.footer-menu {
-    display: flex;
-    gap: 72px;
-}
-
-.footer-menu a {
-    text-decoration: none;
-    color: #FFFFFF;
-    font-family: 'Pixelify Sans', sans-serif;
-    font-size: 18px;
-    transition: .25s;
-}
-
-.footer-menu a:hover,
-.footer-menu a.ativo {
-    color: #FA397A;
-}
-
-/* Ilustração no canto inferior direito */
-.footer-ilustracao {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 60px;
-}
-
-.footer-ilustracao img {
-    width: 511px;
-    height: 204px;
-    display: block;
-}
-
-/* ========================= */
-/* PÁGINA DE ARTIGOS (listagem) */
-/* ========================= */
-
-.pagina-artigos {
-    max-width: 1320px;
-    margin: 80px auto;
-    width: 100%;
-    padding-left: 60px;
-    padding-right: 60px;
-}
-
-.botao-voltar {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 60px;
-    color: #FA397A;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.botao-voltar:hover {
-    opacity: .8;
-}
-
-.titulo-listagem {
-    margin-top: 24px;
-    color: #FFFFFF;
-    font-size: 64px;
-    line-height: 1.1;
-}
-
-.descricao-listagem {
-    margin-top: 24px;
-    color: #9D9D9D;
-    font-size: 24px;
-    margin-bottom: 70px;
-}
-
-.cards-artigos-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 32px;
-    align-items: start;
-}
-
-.cards-artigos-grid .card-artigo {
-    width: 100%;
-    min-width: 0;
-}
-
-/* =======================================================
-   PÁGINA DO ARTIGO
-======================================================= */
-
-.pagina-artigo {
-    max-width: 1320px;
-    margin: 80px auto;
-    padding: 0 60px;
-    box-sizing: border-box;
-}
-
-.voltar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: fit-content;
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 100px;
-    transition: .25s;
-}
-
-.voltar:hover {
-    opacity: .7;
-}
-
-.voltar svg {
-    width: 22px;
-    height: 22px;
-}
-
-/* Categoria */
-.categoria-artigo {
-    display: block;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #FA397A;
-    margin-bottom: 20px;
-}
-
-/* Título */
-.titulo-artigo {
-    font-family: "Segoe UI", sans-serif;
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 1.05;
-    color: #fff;
-    margin-bottom: 25px;
-}
-
-/* Data */
-.info-artigo {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    color: #9d9d9d;
-    font-size: 16px;
-    margin-bottom: 45px;
-}
-
-/* Texto */
-.texto-artigo {
-    font-size: 22px;
-    line-height: 2;
-    color: #d6d6d6;
-}
-
-.texto-artigo p {
-    margin-bottom: 32px;
-}
-
-.texto-artigo strong {
-    color: #fff;
-}
-
-.texto-artigo ul {
-    margin: 25px 0;
-    padding-left: 28px;
-}
-
-.texto-artigo li {
-    margin-bottom: 12px;
-}
-
-/* Leia também */
-.leia-tambem {
-    margin-top: 120px;
-}
-
-.leia-tambem h2 {
-    font-family: "Pixelify Sans", sans-serif;
-    font-size: 42px;
-    margin-bottom: 40px;
-}
-
-.pagina-artigo .leia-tambem {
-    margin-top: 80px;
-}
-
-.pagina-artigo .cards-artigos {
-    display: grid;
-    grid-template-columns: repeat(4, 280px);
-    justify-content: space-between;
-    gap: 0;
-}
-
-.pagina-artigo .card-artigo {
-    width: 280px;
-    height: 540px;
-    background: #131313;
-    border: 1px solid #575757;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.pagina-artigo .card-artigo img {
-    width: 260px;
-    height: 260px;
-    display: block;
-    margin: 10px auto 0;
-    object-fit: cover;
-}
-
-.pagina-artigo .card-artigo .categoria,
-.pagina-artigo .card-artigo h3,
-.pagina-artigo .card-artigo p,
-.pagina-artigo .card-artigo a {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.leia-tambem .card-artigo {
-    background: none;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0;
-    width: 100%;
-    height: auto;
-}
-
-/* Cards relacionados (página de artigo) */
-.cards-relacionados {
-    width: min(1400px, calc(100% - 120px));
-    margin: 60px auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-}
-
-.card-relacionado {
-    text-decoration: none;
-    color: inherit;
-    transition: .25s;
-    background: #131313;
-    border: 1px solid #2A2A2A;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.card-relacionado:hover {
-    transform: translateY(-8px);
-    border-color: #FA397A;
-}
-
-.card-relacionado img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-    border-radius: 14px 14px 0 0;
-}
-
-.card-relacionado span {
-    display: block;
-    color: #8d8d8d;
-    font-size: 14px;
-    margin: 18px 20px 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.card-relacionado h3 {
-    font-size: 22px;
-    color: #fff;
-    line-height: 1.4;
-    margin: 0 20px 20px;
-}
-
-.card-relacionado p {
-    color: #B5B5B5;
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0 20px 20px;
-}
-
-.card-relacionado a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    height: 56px;
-    border: 2px solid #FA397A;
-    border-radius: 8px;
-    color: #fff;
-    text-decoration: none;
-    transition: .3s;
-}
-
-.card-relacionado a:hover {
-    background: #FA397A;
-}
-
-.cards-relacionados .card-feed {
-    width: 100%;
-    max-width: none;
-}
-
-.cards-relacionados .midia-feed img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-/* =====================================================
-   PÁGINA DA CAMISETA
-===================================================== */
-
-.pagina-camiseta {
-    max-width: 1320px;
-    margin: 80px auto;
-    padding: 0 60px;
-}
-
-.voltar-camisetas {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    color: #FA397A;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 80px;
-    margin-bottom: 60px;
-    transition: .3s;
-}
-
-.voltar-camisetas:hover {
-    opacity: .8;
-}
-
-.produto-camiseta {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 70px;
-}
-
-.imagem-produto {
-    flex: 1;
-}
-
-.imagem-produto img {
-    width: 100%;
-    max-width: 620px;
-    border-radius: 10px;
-    display: block;
-}
-
-.info-produto {
-    flex: 1;
-}
-
-.categoria-produto {
-    color: #FA397A;
-    font-size: 20px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.info-produto h1 {
-    font-size: 48px;
-    color: #fff;
-    margin-bottom: 30px;
-}
-
-.descricao-produto {
-    color: #B5B5B5;
-    font-size: 20px;
-    line-height: 1.8;
-    margin-bottom: 40px;
-}
-
-.especificacoes {
-    background: #131313;
-    border: 1px solid #2A2A2A;
-    border-radius: 10px;
-    padding: 30px;
-    margin-bottom: 40px;
-}
-
-.especificacoes h2 {
-    font-size: 24px;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.especificacoes ul {
-    list-style: none;
-    padding: 0;
-}
-
-.especificacoes li {
-    color: #B5B5B5;
-    margin-bottom: 15px;
-    font-size: 18px;
-}
-
-.botao-comprar {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 320px;
-    height: 72px;
-    border: 2px solid #FA397A;
-    border-radius: 8px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 600;
-    transition: .3s;
-}
-
-.botao-comprar:hover {
-    background: #FA397A;
-}
-
-/* =====================================================
-   VOCÊ TAMBÉM PODE GOSTAR
-===================================================== */
-
-.relacionados {
-    margin-top: 120px;
-}
-
-.relacionados h2 {
-    font-size: 40px;
-    margin-bottom: 50px;
-    color: #fff;
-}
-
-.grid-relacionados {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-}
-
-.catalogo-camisetas {
-    margin-left: 60px;
-    margin-right: 60px;
-    display: grid;
-    grid-template-columns: repeat(3, 312px);
-    gap: 24px;
-}
-
-.card-camiseta {
-    width: 312px;
-    height: 578px;
-    background: #131313;
-    border: 1px solid #575757;
-    border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-camiseta img {
-    width: 292px;
-    height: 292px;
-    object-fit: cover;
-}
-
-.card-camiseta .categoria-camiseta {
-    margin-top: 10px;
-    color: #FA397A;
-    font-size: 16px;
-}
-
-.card-camiseta h3 {
-    margin-top: 8px;
-    color: #FFFFFF;
-    font-size: 24px;
-    line-height: 1.2;
-}
-
-.card-camiseta p {
-    margin-top: 12px;
-    color: #B5B5B5;
-    font-size: 16px;
-    line-height: 1.4;
-}
-
-.card-camiseta .botao-comprar {
-    margin-top: auto;
-    width: 100%;
-    height: 56px;
-    font-size: 16px;
-}
-
-.cabecalho-camisetas {
-    margin-left: 60px;
-    margin-right: 60px;
-}
-
-.titulo-galeria {
-    margin-left: 60px;
-}
-
-/* =====================================================
-   PÁGINA FALE CONOSCO
-===================================================== */
-
-.pagina-contato {
-    margin: 80px 60px;
-    max-width: 720px;
-}
-
-.pagina-contato .botao-voltar {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: #FA397A;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 60px;
-    transition: .25s;
-}
-
-.pagina-contato .botao-voltar:hover {
-    opacity: .7;
-}
-
-.titulo-contato {
-    color: #FFFFFF;
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 24px;
-}
-
-.descricao-contato {
-    color: #9D9D9D;
-    font-size: 24px;
-    line-height: 1.7;
-    margin-bottom: 60px;
-}
-
-.contato-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.contato-form input,
-.contato-form textarea {
-    width: 100%;
-    background: #131313;
-    border: 1px solid #575757;
-    border-radius: 8px;
-    padding: 20px;
-    color: #FFFFFF;
-    font-size: 18px;
-    font-family: "Segoe UI", sans-serif;
-    outline: none;
-    transition: .25s;
-}
-
-.contato-form input:focus,
-.contato-form textarea:focus {
-    border-color: #FA397A;
-}
-
-.contato-form input::placeholder,
-.contato-form textarea::placeholder {
-    color: #6F6F6F;
-}
-
-.contato-form textarea {
-    min-height: 220px;
-    resize: vertical;
-}
-
-.contato-form button {
-    width: 220px;
-    height: 72px;
-    background: transparent;
-    border: 2px solid #FA397A;
-    color: #FA397A;
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: .25s;
-}
-
-.contato-form button:hover {
-    background: #FA397A;
-    color: #000000;
-}
-
-/* ==========================================================
-   PIXEL FEED
-========================================================== */
-
-.card-feed {
-    background-color: #080808;
-    border: 1px solid #161616;
-    border-radius: 12px;
-    padding: 22px;
-    display: flex;
-    flex-direction: column;
-    min-height: 430px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.card-feed:hover {
-    transform: translateY(-6px);
-    border-color: #FA397A;
-}
-
-.midia-feed {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-    border-radius: 12px;
-    margin-bottom: 20px;
-}
-
-.midia-feed img,
-.midia-feed video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.card-feed .categoria,
-.categoria-feed {
-    display: inline-block;
-    font-family: "Pixelify Sans", sans-serif;
-}
-
-.card-feed .categoria {
-    color: #FA397A;
-    font-size: 14px;
-    margin-bottom: 12px;
-}
-
-.card-feed h3 {
-    font-family: "Segoe UI", sans-serif;
-    font-size: 24px;
-    line-height: 1.2;
-    color: white;
-    margin-bottom: 12px;
-    min-height: 52px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.card-feed p {
-    color: #999;
-    font-family: "Segoe UI", sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    min-height: 48px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.comentario-feed {
-    color: #cccccc;
-}
-
-.card-feed .leia-mais {
-    display: inline-block;
-    margin-top: auto;
-    color: #FA397A;
-    font-family: "Pixelify Sans", sans-serif;
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-}
-
-.card-feed .leia-mais:hover {
-    opacity: 0.7;
-}
-
-/* Categorias do feed (filtros) */
-.feed-categorias {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 35px;
-}
-
-.categoria-feed {
-    border: 1px solid #222;
-    padding: 8px 18px;
-    border-radius: 30px;
-    color: #999;
-    text-decoration: none;
-    font-size: 15px;
-    transition: all 0.3s ease;
-}
-
-.categoria-feed:hover,
-.categoria-feed.ativo {
-    color: white;
-    border-color: #FA397A;
-    background-color: #FA397A;
-}
-
-.texto-feed {
-    margin-top: 35px;
-    display: block;
-    color: #999;
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* ==========================================================
-   UPIXEL FEED ABERTO (post individual)
-========================================================== */
-
-.pagina-feed-aberto {
-    max-width: 760px;
-    margin: 0 auto;
-}
-
-.pagina-feed-aberto .midia-principal {
-    position: relative;
-    width: 100%;
-    margin: 30px 0 20px;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #000;
-}
-
-.pagina-feed-aberto .midia-principal img,
-.pagina-feed-aberto .midia-principal video {
-    width: 100%;
-    max-height: 520px;
-    object-fit: contain;
-    display: block;
-}
-
-.tag-formato {
-    position: absolute;
-    bottom: 14px;
-    right: 14px;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 6px;
-    z-index: 2;
-}
-
-.pagina-feed-aberto .voltar {
-    margin: 35px 0;
-}
-
-.pagina-feed-aberto .categoria-feed {
-    display: table;
-    margin: 20px auto;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background: #FA397A;
-    color: #000;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.pagina-feed-aberto .categoria-feed.sobre-midia {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    margin: 0;
-    z-index: 2;
-}
-
-.pagina-feed-aberto .titulo-feed {
-    text-align: left;
-    color: white;
-    margin: 0 auto 16px;
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 1.4;
-    width: min(650px, calc(100% - 40px));
-}
-
-.pagina-feed-aberto .conteudo-feed {
-    color: white;
-    line-height: 1.7;
-}
-
-.pagina-feed-aberto .resumo-feed {
-    text-align: center;
-    font-size: 21px;
-    margin-bottom: 40px;
-    color: #cccccc;
-    line-height: 1.5;
-}
-
-.pagina-feed-aberto .comentario-upixel,
-.comentario-upixel {
-    background: #080808;
-    border: 1px solid #161616;
-    border-left: 3px solid #FA397A;
-    border-radius: 12px;
-    padding: 25px;
-    margin: 40px 0;
-}
-
-.pagina-feed-aberto .comentario-upixel h2 {
-    color: #FA397A;
-    font-family: "Pixelify Sans", sans-serif;
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.comentario-upixel p {
-    color: #ffffff;
-    line-height: 1.7;
-}
-
-.titulo-comentario {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.titulo-comentario img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    transform: translateY(-8px);
-}
-
-.titulo-comentario h2 {
-    margin: 0;
-    line-height: 1.2;
-}
-
-/* Comentários / compartilhar */
-.comentarios-feed,
-.compartilhar-feed {
-    width: min(650px, calc(100% - 40px));
-    margin: 70px auto;
-}
-
-.comentarios-feed h2,
-.compartilhar-feed h2 {
-    font-family: "Segoe UI", sans-serif;
-    color: white;
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-.comentario-intro,
-.compartilhar-feed p {
-    color: #999;
-    font-size: 17px;
-    line-height: 1.6;
-}
-
-.comentario-box {
-    margin-top: 30px;
-    padding: 25px;
-    border: 1px solid #161616;
-    border-radius: 16px;
-    background: #080808;
-}
-
-.comentario-box p {
-    color: white;
-    margin-bottom: 10px;
-}
-
-.comentario-box span {
-    color: #777;
-    font-size: 14px;
-}
-
-.botoes-compartilhar {
-    display: flex;
-    gap: 12px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.botao-compartilhar {
-    padding: 12px 22px;
-    border-radius: 30px;
-    border: 1px solid #FA397A;
-    background: transparent;
-    color: #FA397A;
-    text-decoration: none;
-    font-family: "Pixelify Sans", sans-serif;
-    cursor: pointer;
-    transition: .3s;
-}
-
-.botao-compartilhar:hover {
-    background: #FA397A;
-    color: #000;
-}
-
-.pagina-feed-aberto .mais-feed {
-    width: min(650px, calc(100% - 40px));
-    margin: 70px auto 0;
-    text-align: center;
-}
-
-.pagina-feed-aberto .mais-feed h2 {
-    margin-bottom: 20px;
-}
-
-.pagina-feed-aberto .mais-feed p {
-    margin: 0 auto 35px;
-    max-width: 500px;
-    line-height: 1.6;
-    color: #999;
-}
-
-.pagina-feed-aberto .botao-mais-artigos {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-/* Barra de ações / meta do feed */
-.barra-feed,
-.meta-feed {
-    width: min(650px, calc(100% - 40px));
-    margin: 18px auto 35px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.botao-feed {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 16px;
-    border: 1px solid #252525;
-    border-radius: 999px;
-    color: #d8d8d8;
-    text-decoration: none;
-    font-size: 13px;
-    transition: .25s;
-}
-
-.botao-feed:hover {
-    border-color: #FA397A;
-    color: #FA397A;
-}
-
-.barra-feed .categoria-feed,
-.meta-feed .categoria-feed {
-    margin: 0 !important;
-}
-
-.compartilhar-mini {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.compartilhar-mini a,
-.compartilhar-mini button {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
-.compartilhar-mini img {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    opacity: .7;
-}
-
-.compartilhar-mini img:hover {
-    opacity: 1;
-    transform: translateY(-2px);
-}
-
-/* Reações (estilo humor/9gag) */
-.reacoes-feed {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: min(650px, calc(100% - 40px));
-    margin: 0 auto 30px;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.reacoes-esquerda {
-    display: flex;
-    gap: 10px;
-}
-
-.reacao-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #111;
-    border: 1px solid #222;
-    border-radius: 20px;
-    padding: 8px 14px;
-    color: #d8d8d8;
-    font-size: 14px;
-    font-family: "Segoe UI", sans-serif;
-    cursor: pointer;
-    transition: .25s;
-}
-
-.reacao-btn:hover,
-.reacao-btn.ativa {
-    border-color: #FA397A;
-    color: #FA397A;
-}
-
-.contador-comentarios {
-    color: #9d9d9d;
-    font-size: 14px;
-}
-
-/* ==========================================================
-   FEED - MÚLTIPLOS POSTS EM VÍDEO POR PÁGINA
-   Cada post repete a estrutura: vídeo > comentário Upixel > ícones.
-   O JS injeta essa estrutura dentro de #lista-posts.
-========================================================== */
-
-.lista-posts {
-    width: 100%;
-}
-
-.post-video {
-    width: 100%;
-}
-
-/* Espaço e linha separando um post do outro (menos no primeiro) */
-.post-video + .post-video {
-    margin-top: 80px;
-    padding-top: 80px;
-    border-top: 1px solid #161616;
-}
-
-/* Paginação */
-.paginacao-feed {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 70px auto 40px;
-    flex-wrap: wrap;
-    width: min(650px, calc(100% - 40px));
-}
-
-.paginacao-feed button {
-    min-width: 42px;
-    height: 42px;
-    padding: 0 14px;
-    border-radius: 999px;
-    border: 1px solid #252525;
-    background: transparent;
-    color: #d8d8d8;
-    font-size: 14px;
-    font-family: "Segoe UI", sans-serif;
-    cursor: pointer;
-    transition: .25s;
-}
-
-.paginacao-feed button:hover:not(:disabled) {
-    border-color: #FA397A;
-    color: #FA397A;
-}
-
-.paginacao-feed button.pagina-ativa {
-    background: #FA397A;
-    border-color: #FA397A;
-    color: #000000;
-    font-weight: 700;
-}
-
-.paginacao-feed button:disabled {
-    opacity: .3;
-    cursor: not-allowed;
-}
-
-/* ===========================
-   LINKEDIN / COMPARTILHAR ARTIGO
-=========================== */
-
-.compartilhar-linkedin {
-    max-width: 700px;
-    margin: 100px auto 80px;
-    text-align: center;
-}
-
-.compartilhar-linkedin h2 {
-    color: #FFFFFF;
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-.compartilhar-linkedin p {
-    color: #B5B5B5;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 40px;
-}
-
-.botao-linkedin {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-    height: 72px;
-    border: 2px solid #FA397A;
-    border-radius: 8px;
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 18px;
-    transition: .3s;
-}
-
-.botao-linkedin:hover {
-    background: #FA397A;
-}
-
-.linkedin-botao {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 16px 34px;
-    background: #FA397A;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: 600;
-    transition: .3s;
-}
-
-.linkedin-botao:hover {
-    opacity: .85;
-}
-
-.botao-contato-mini {
-    display: inline-block;
-    margin-top: 32px;
-    padding: 16px 34px;
-    background: transparent;
-    border: 2px solid #FA397A;
-    color: #FFFFFF;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: 600;
-    transition: .3s;
-}
-
-.botao-contato-mini:hover {
-    background: #FA397A;
-    color: #000000;
-}
-
-/* ===========================
-   MAIS ARTIGOS
-=========================== */
-
-.mais-artigos {
-    max-width: 700px;
-    margin: 100px auto 80px;
-    text-align: center;
-}
-
-.mais-artigos h2 {
-    color: #FA397A;
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 18px;
-}
-
-.mais-artigos p {
-    color: #FFFFFF;
-    font-size: 20px;
-    line-height: 1.6;
-    margin-bottom: 40px;
-}
-
-.botao-mais-artigos {
-    width: 320px;
-    height: 82px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    border: 2px solid #FA397A;
-    border-radius: 8px;
-    color: #FFFFFF;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 700;
-    transition: .3s;
-}
-
-.botao-mais-artigos:hover {
-    background: #FA397A;
-}
-
-.botao-mais-artigos .seta-fina {
-    width: 24px;
-    height: 24px;
-}
-
-/* ---------- BREVO NEWSLETTER ---------- */
-
-.sib-form {
-    background: transparent !important;
-    padding: 0 !important;
-}
-
-#sib-form-container {
-    max-width: none !important;
-}
-
-#sib-container {
-    background: transparent !important;
-    border: none !important;
-    max-width: none !important;
-    width: 100% !important;
-    padding: 0 !important;
-}
-
-#sib-container p {
-    margin: 0;
-}
-
-.sib-form-block:first-child,
-.sib-form-block:nth-child(2) {
-    display: none;
-}
-
-.entry__label,
-.entry__specification {
-    display: none !important;
-}
-
-.entry__field {
-    width: 100%;
-}
-
-#EMAIL {
-    width: 100% !important;
-    height: 54px !important;
-    padding: 0 18px !important;
-    border: 2px solid #2B2B2B !important;
-    background: #111 !important;
-    color: #FFF !important;
-    font-size: 16px !important;
-    border-radius: 8px !important;
-    box-sizing: border-box;
-}
-
-#EMAIL::placeholder {
-    color: #777;
-}
-
-.sib-form-block__button {
-    margin-top: 18px !important;
-    width: 100% !important;
-    height: 54px !important;
-    background: #FA397A !important;
-    border: none !important;
-    border-radius: 8px !important;
-    color: #FFF !important;
-    font-weight: 700 !important;
-    cursor: pointer;
-}
-
-.sib-form-block__button:hover {
-    opacity: .9;
-}
-
-.sib-form-message-panel {
-    margin-bottom: 20px;
-}
-
-#sib-form button,
-.sib-form button,
-input[type="submit"] {
-    background-color: #FA397A;
-    color: #ffffff;
-    border: none;
-    padding: 14px 35px;
-    font-family: "Segoe UI", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 20px;
-    transition: 0.3s;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-#sib-form button:hover,
-.sib-form button:hover,
-input[type="submit"]:hover {
-    background-color: #ffffff;
-    color: #FA397A;
-}
-
-/* =====================================================================
-   RESPONSIVIDADE >= tablet (1024px)
-===================================================================== */
-
-@media (max-width:1024px) {
-
-    .conteudo-principal,
-    .camisetas,
-    .pixelfeed-secao,
-    .sobre-nos,
-    .spotify-section,
-    .newsletter,
-    .produto-camiseta {
-        flex-direction: column;
-        gap: 60px;
-    }
-
-    .bloco-texto,
-    .camisetas-conteudo,
-    .pixelfeed-conteudo,
-    .sobre-conteudo,
-    .spotify-conteudo,
-    .newsletter-esquerda,
-    .newsletter-direita,
-    .imagem-produto,
-    .info-produto {
-        width: 100%;
-    }
-
-    .cards-artigos-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .catalogo-camisetas {
-        grid-template-columns: repeat(2, 1fr);
-        margin: 0 40px;
-    }
-
-    .grid-relacionados {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+<head>
 
-/* =====================================================================
-   RESPONSIVIDADE MOBILE (<= 768px)
-   Bloco único: cada seletor aparece apenas uma vez para não ter
-   regras se sobrescrevendo por engano.
-===================================================================== */
-
-@media (max-width:768px) {
-
-    /* ---------- HEADER ---------- */
-    .meu-header {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 24px;
-        padding: 20px;
-    }
-
-    .logo img {
-        height: 50px;
-    }
+<!-- ==========================================================
+     CABEÇALHO (HEAD) DA PÁGINA
+
+     Tudo o que estiver dentro da tag <head> NÃO aparece
+     para o visitante.
+
+     Esta área contém:
+     • Configurações básicas da página
+     • SEO (Google e Bing)
+     • Compartilhamento em redes sociais
+     • Fontes
+     • Favicon
+     • Arquivos CSS
+     • Google Analytics
+     • Outros scripts futuros
+
+     IMPORTANTE:
+     • Não apagar nem mover este conteúdo sem necessidade.
+     • Ao criar novas páginas, copie esta estrutura e altere
+       apenas os títulos, descrições e URLs específicas.
+     ========================================================== -->
+
+
+<!-- ==========================================================
+     CONFIGURAÇÕES BÁSICAS
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Besteirol | Upixel — Memes de UX/UI em vídeo</title>
+
+
+<!-- ==========================================================
+     SEO
+     Informações utilizadas pelos mecanismos de busca.
 
-    .menu {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 18px;
-        width: 100%;
-    }
+     CORRIGIDO: esta página é o feed "Besteirol" (vídeos curtos
+     e engraçados sobre UX/UI), e os metadados antigos estavam
+     copiados da página do artigo "Infinite Scroll" por engano.
+     Título, descrição, canonical e URLs agora refletem o
+     conteúdo real desta página.
+     ========================================================== -->
 
-    .menu a {
-        font-size: 14px;
-    }
+<meta name="description" content="Feed de vídeos curtos e engraçados sobre UX, UI e o dia a dia de quem trabalha com design de produto. Memes e comentários da Upixel sobre comportamento digital.">
 
-    /* ---------- HERO / CONTEÚDO PRINCIPAL ---------- */
-    .conteudo-principal {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 0 24px;
-        gap: 40px;
-    }
+<meta name="keywords" content="upixel, besteirol, memes de ux, memes de ui, design de interfaces, comportamento digital, humor design, feed de vídeos, ux design, ui design">
 
-    .bloco-texto {
-        width: 100%;
-        padding-left: 0;
-        margin-top: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000000">
 
-    .titulo-destaque {
-        font-size: 32px;
-        line-height: 1.15;
-        text-align: center;
-    }
+<link rel="canonical" href="https://upixel.com.br/feed-aberto.html">
 
-    .texto-menor {
-        justify-content: center;
-        text-align: center;
-        margin-bottom: 40px;
-    }
+<!-- Perfil profissional do responsável pela Upixel (usado por
+     buscadores e redes para associar a página a um perfil real) -->
+<link rel="me" href="https://www.linkedin.com/in/bruno-ito-gorski/">
 
-    .frase-underground {
-        justify-content: center;
-        text-align: center;
-        margin-top: 40px;
-    }
 
-    .texto-quebrado {
-        text-align: center;
-    }
+<!-- ==========================================================
+     OPEN GRAPH
+     Informações utilizadas quando alguém compartilha
+     a página no WhatsApp, LinkedIn, Facebook, Discord etc.
+     ========================================================== -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:title" content="Besteirol | Upixel — Memes de UX/UI em vídeo">
+<meta property="og:description" content="Vídeos curtos e engraçados sobre o universo de UX/UI, comentados pela Upixel. Dá um scroll e se divirta.">
+<meta property="og:url" content="https://upixel.com.br/feed-aberto.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-social.jpg">
+<meta property="og:locale" content="pt_BR">
+
+
+<!-- ==========================================================
+     TWITTER / X
+     Também utilizado por diversos aplicativos de mensagens.
+     ========================================================== -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Besteirol | Upixel — Memes de UX/UI em vídeo">
+<meta name="twitter:description" content="Vídeos curtos e engraçados sobre o universo de UX/UI, comentados pela Upixel.">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.jpg">
+
+
+<!-- ==========================================================
+     DADOS ESTRUTURADOS (JSON-LD)
+
+     Isso ajuda o Google a entender que essa página pertence à
+     Upixel e quem é o responsável por ela. O LinkedIn aqui entra
+     como "sameAs" (perfil oficial ligado à marca), e não como
+     link de compartilhamento — compartilhamento de cada vídeo é
+     feito pelos botões, mais abaixo.
+     ========================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Besteirol | Upixel",
+  "url": "https://upixel.com.br/feed-aberto.html",
+  "description": "Feed de vídeos curtos sobre UX/UI comentados pela Upixel.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Upixel",
+    "url": "https://upixel.com.br"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Upixel",
+    "sameAs": [
+      "https://www.linkedin.com/in/bruno-ito-gorski/"
+    ]
+  }
+}
+</script>
+
+
+<!-- ==========================================================
+     FONTES
+     Fontes utilizadas pela Upixel.
+     ========================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
 
-    .container-botao {
-        display: flex;
-        justify-content: center;
-    }
+<!-- ==========================================================
+     FAVICON
+     Ícone exibido na aba do navegador.
+     ========================================================== -->
 
-    .bloco-imagem {
-        width: 100%;
-        justify-content: center;
-    }
+<link rel="icon" type="image/png" href="favicon.png">
 
-    .bloco-imagem img {
-        display: block;
-        width: 70%;
-        max-width: 320px;
-        margin: 20px auto 0;
-    }
 
-    .botao-artigos {
-        width: 100%;
-        max-width: 320px;
-        height: 70px;
-        margin: 40px auto 0;
-    }
+<!-- ==========================================================
+     ESTILOS (CSS)
+     style.css → Estilos principais do site.
+     ========================================================== -->
 
-    /* ---------- LINHA DIVISÓRIA ---------- */
-    .divisor-secao {
-        margin-top: 50px;
-    }
+<link rel="stylesheet" href="style.css">
 
-    /* ---------- ARTIGOS RECENTES ---------- */
-    .artigos-recentes,
-    .pagina-artigo .leia-tambem {
-        margin: 50px 24px;
-    }
 
-    .titulo-secao {
-        gap: 12px;
-    }
+<!-- ==========================================================
+     ESTILOS NOVOS (logo sobre o vídeo + feedback de "copiado")
 
-    .titulo-esquerda h2 {
-        font-size: 24px;
-    }
+     Coloquei aqui embutido para não mexer no seu style.css.
+     Se quiser, depois é só mover esse bloco para lá — funciona
+     do mesmo jeito nos dois lugares.
 
-    .ver-todos {
-        font-size: 14px;
+     IMPORTANTE SOBRE PESO: a logo usada aqui (logosolitaria.png)
+     já é carregada em outro ponto da página (no "Comentário
+     Upixel"). O navegador reaproveita o arquivo do cache, então
+     essa logo extra sobre o vídeo NÃO adiciona nenhum download
+     novo — custo de peso é praticamente zero.
+     ========================================================== -->
+<style>
+    /* Seletor com a mesma "força" da regra já existente no seu
+       style.css para .midia-principal img/video (2 classes + tag),
+       só que mais específico ainda (3 classes + tag), pra garantir
+       que a logo NÃO herde o width:100%/object-fit:cover do vídeo. */
+    .pagina-feed-aberto .midia-principal img.logo-sobre-midia {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        width: 30px !important;
+        height: 30px !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        padding: 6px;
+        background: rgba(0, 0, 0, 0.45);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 2;
     }
 
-    .cards-artigos,
-    .cards-artigos-grid,
-    .pagina-artigo .cards-artigos {
-        display: grid !important;
-        grid-template-columns: 1fr;
-        justify-items: center;
-        align-items: center;
-        text-align: center;
-        gap: 40px;
-        margin-left: auto;
-        margin-right: auto;
+    /* Feedback visual temporário quando o link é copiado */
+    .compartilhar-mini button.copiado img {
+        filter: brightness(0) saturate(100%) invert(56%) sepia(93%) saturate(1000%) hue-rotate(75deg);
     }
 
-    .card-artigo,
-    .pagina-artigo .card-artigo {
-        width: 100%;
-        max-width: 340px;
-        height: auto;
-        background: #050505;
-        border: 1px solid #161616;
-        border-radius: 8px;
-        padding: 24px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
+    /* Destaque temporário quando alguém chega direto num vídeo
+       através de um link compartilhado (#post-XX) */
+    .post-video.post-destacado {
+        outline: 2px solid #fff;
+        outline-offset: 4px;
     }
+</style>
 
-    .card-artigo img,
-    .imagem-artigo,
-    .pagina-artigo .card-artigo img {
-        width: 180px !important;
-        height: 180px !important;
-        object-fit: cover;
-        border-radius: 8px;
-        margin: 0 auto 20px;
-    }
 
-    .card-artigo h3,
-    .card-artigo p,
-    .card-artigo .categoria,
-    .pagina-artigo .card-artigo h3,
-    .pagina-artigo .card-artigo p,
-    .pagina-artigo .card-artigo .categoria {
-        text-align: center;
-        margin-left: 0;
-        margin-right: 0;
-    }
+<!-- ==========================================================
+     GOOGLE ANALYTICS 4 (GA4)
 
-    .card-artigo .categoria,
-    .pagina-artigo .card-artigo .categoria {
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
+     Monitoramento de visitantes da Upixel.
 
-    .card-artigo h3,
-    .pagina-artigo .card-artigo h3 {
-        font-size: 20px;
-        line-height: 1.3;
-        margin-bottom: 14px;
-    }
+     IMPORTANTE:
+     • Manter este código em TODAS as páginas.
+     • Não alterar o ID de medição sem necessidade.
+     • Copiar este bloco ao criar novas páginas.
+     ========================================================== -->
 
-    .card-artigo p,
-    .pagina-artigo .card-artigo p {
-        font-size: 14px;
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BSCJB0HD2"></script>
 
-    .card-artigo a,
-    .pagina-artigo .card-artigo a {
-        display: inline-block;
-        margin-top: 8px;
-    }
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
 
-    /* ---------- CAMISETAS ---------- */
-    .camisetas {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-        padding: 60px 24px;
-    }
+gtag('config', 'G-1BSCJB0HD2');
+</script>
 
-    .camisetas-imagem img {
-        width: 80%;
-        max-width: 340px;
-        height: auto;
-        margin: 0 auto;
-    }
 
-    /* ---------- PIXEL FEED ---------- */
-    .pixelfeed-secao {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-        padding: 60px 24px;
-    }
+<!-- ==========================================================
+     ESPAÇO RESERVADO PARA FUTURAS INTEGRAÇÕES
 
-    .pixelfeed-conteudo {
-        padding-right: 0;
-    }
+     Exemplos:
+     • Microsoft Clarity (Heatmaps e gravações)
+     • Google Search Console
+     • Meta Pixel
+     • Outros scripts de monitoramento
 
-    .pixelfeed-imagem img {
-        width: 80%;
-        max-width: 340px;
-        margin: 0 auto;
-    }
+     Manter esta organização facilita a manutenção do site.
+     ========================================================== -->
+</head>
 
-    .titulo-pixelfeed {
-        font-size: 32px;
-    }
 
-    .descricao-pixelfeed {
-        font-size: 18px;
-        max-width: 100%;
-    }
+<body>
 
-    /* ---------- SOBRE ---------- */
-    .sobre-nos {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-        padding: 60px 24px;
-    }
 
-    .sobre-imagem img {
-        width: 80%;
-        max-width: 340px;
-        height: auto;
-        margin: 0 auto;
-    }
+<header class="meu-header">
 
-    .camisetas-conteudo,
-    .pixelfeed-conteudo,
-    .sobre-conteudo,
-    .spotify-conteudo,
-    .newsletter-esquerda,
-    .newsletter-direita {
-        text-align: center;
-    }
 
-    .titulo-camisetas,
-    .titulo-sobre,
-    .titulo-spotify {
-        font-size: 30px;
-    }
+    <div class="logo">
+        <img src="logobranca.png" alt="Upixel">
+    </div>
 
-    .descricao-camisetas,
-    .descricao-sobre,
-    .descricao-spotify {
-        font-size: 20px;
-        max-width: 100%;
-    }
 
-    .acoes-spotify {
-        justify-content: center;
-    }
+     <nav class="menu">
+    <a href="index.html" >Home</a>
+    <a href="artigos.html">Artigos</a>
+    <a href="feed-aberto.html" class="ativo">Besteirol</a>
+    <a href="contato.html">Contato</a>
+</nav>
 
-    .botao-contato-mini {
-        display: block;
-        width: 100%;
-        max-width: 320px;
-        margin: 32px auto 0;
-        text-align: center;
-        box-sizing: border-box;
-    }
 
-    /* ---------- SPOTIFY ---------- */
-    .spotify-section {
-        flex-direction: column;
-        padding: 60px 24px;
-        gap: 40px;
-        text-align: center;
-    }
+</header>
 
-    .spotify-conteudo {
-        width: 100%;
-    }
+<main class="pagina-feed-aberto">
 
-    .spotify-card {
-        width: 100%;
-        max-width: 340px;
-        height: auto;
-        padding: 28px;
-        margin: 0 auto;
-    }
+<a href="index.html" class="voltar">
 
-    .spotify-card iframe {
-        width: 100%;
-    }
+<svg viewBox="0 0 24 24" fill="none">
 
-    .playlist-label {
-        font-size: 12px;
-    }
+<path 
+d="M19 12H5M5 12L11 6M5 12L11 18"
+stroke="currentColor"
+stroke-width="1.5"
+stroke-linecap="round"
+stroke-linejoin="round"/>
 
-    .spotify-card h3 {
-        font-size: 22px;
-    }
+</svg>
 
-    .playlist li {
-        font-size: 16px;
-        line-height: 1.5;
-    }
+Home
 
-    .social-links {
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
+</a>
 
-    .spotify-link {
-        font-size: 16px;
-    }
 
-    .spotify-link img {
-        width: 24px;
-        height: 24px;
-    }
+<!-- ==========================================================
+     LISTA DE POSTS (VÍDEOS)
 
-    /* ---------- NEWSLETTER ---------- */
-    .newsletter {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 60px 24px;
-        gap: 35px;
-        text-align: center;
-    }
+     Este bloco começa vazio de propósito.
+     O JavaScript lá no final da página (script #feed-paginado)
+     é quem preenche esse espaço, lendo o array POSTS_FEED.
 
-    .newsletter-esquerda {
-        width: 100%;
-        text-align: center;
-    }
+     Para adicionar/trocar vídeos, você NÃO mexe aqui.
+     Vá direto no array POSTS_FEED, no <script> no fim do arquivo.
+     ========================================================== -->
 
-    .titulo-newsletter {
-        font-size: 32px;
-        line-height: 1.2;
-        max-width: 100%;
-        text-align: center;
-    }
+<div id="lista-posts" class="lista-posts">
+    <!-- Os posts (vídeo + comentário + ícones) são gerados aqui pelo JS -->
+</div>
 
-    .newsletter-direita {
-        width: 100%;
-        align-items: center;
-    }
 
-    .newsletter-texto {
-        font-size: 13px;
-        letter-spacing: 1.5px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
+<!-- Aviso curtinho e discreto que aparece por 2s ao copiar o link -->
+<div id="aviso-copiado" role="status" aria-live="polite"
+     style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+            background:#000; color:#fff; padding:10px 18px; border-radius:8px;
+            font-size:14px; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s; z-index:999;">
+    Link copiado! Cole onde quiser pra compartilhar 🎉
+</div>
 
-    .newsletter-form,
-    .newsletter form {
-        width: 100%;
-        max-width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
 
-    .newsletter-form input,
-    .newsletter input {
-        width: 100%;
-        height: 56px;
-        font-size: 15px;
-        padding: 0 18px;
-        box-sizing: border-box;
-    }
+<!-- ==========================================================
+     PAGINAÇÃO
 
-    .newsletter-form button,
-    .newsletter button {
-        width: 100%;
-        height: 56px;
-        font-size: 16px;
-    }
+     Os botões de página (1, 2, 3, Anterior, Próxima) também
+     são gerados automaticamente pelo JavaScript, com base em
+     quantos posts existem no array POSTS_FEED.
+     ========================================================== -->
 
-    /* ---------- FOOTER ---------- */
-    .footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        padding: 40px 24px;
-        text-align: center;
-    }
+<nav class="paginacao-feed" id="paginacao-feed" aria-label="Paginação do feed">
+    <!-- Botões de página gerados aqui pelo JS -->
+</nav>
 
-    .footer-esquerda {
-        width: 100%;
-        text-align: center;
-    }
 
-    .footer-logo {
-        width: 140px;
-        height: auto;
-        margin: 0 auto 20px;
-        display: block;
-    }
+</main>
 
-    .copyright {
-        font-size: 14px;
-        line-height: 1.5;
-    }
 
-    .footer-centro {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        text-align: center;
-    }
 
-    .footer-menu {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-        width: 100%;
-        margin: 0 auto;
-        padding: 0;
-    }
+<div class="divisor-secao"></div>
 
-    .footer-menu a {
-        display: block;
-        width: 100%;
-        text-align: center;
-        margin: 0;
-        font-size: 16px;
-    }
+<footer class="footer">
 
-    .footer-ilustracao {
-        text-align: center;
-        margin-top: 30px;
-    }
+    <div class="footer-esquerda">
 
-    .footer-ilustracao img {
-        width: 90%;
-        max-width: 320px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-    }
+        <img src="logobranca.png" alt="Upixel" class="footer-logo">
 
-    /* ---------- PÁGINA DE ARTIGOS (listagem) ---------- */
-    .pagina-artigos {
-        padding: 0 24px;
-        margin: 50px auto;
-    }
+        <p class="copyright">
+            Upixel. Todos os direitos reservados.
+        </p>
 
-    .titulo-listagem {
-        font-size: 36px !important;
-        line-height: 1.2;
-        text-align: center;
-    }
+    </div>
 
-    .descricao-listagem {
-        font-size: 18px !important;
-        line-height: 1.6;
-        text-align: center;
-        margin-bottom: 40px;
-    }
+    <div class="footer-centro">
 
-    /* ---------- GALERIA DE CAMISETAS ---------- */
-    .cabecalho-camisetas {
-        margin: 0 24px;
-        text-align: center;
-    }
+        <nav class="footer-menu">
 
-    .titulo-galeria {
-        margin: 0;
-        text-align: center;
-        font-size: 36px;
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="feed-aberto.html" class="ativo">Besteirol</a>
+            <a href="contato.html">Contato</a>
+
+        </nav>
+
+    </div>
+
+</footer>
+
+<div class="footer-ilustracao">
+
+    <img src="rodape.png" alt="Ilustração Footer">
+
+</div>
+
+
+<!-- ==========================================================
+     SCRIPT: FEED PAGINADO DE VÍDEOS
+     id: #feed-paginado
+
+     COMO EDITAR:
+     1. Para adicionar, trocar ou remover um vídeo, mexa SÓ no
+        array POSTS_FEED logo abaixo. Cada vídeo é um objeto
+        { id, video, categoria, comentario }.
+     2. O campo "id" é o que gera o link de compartilhamento
+        (ex: feed-aberto.html#post-03). NUNCA mude o id de um
+        vídeo que já foi compartilhado, senão o link antigo para
+        de funcionar. Ao adicionar um vídeo novo, é só criar um
+        id novo e único (post-08, post-09, ...).
+     3. Se você ainda não tem vídeos suficientes, pode repetir
+        o mesmo arquivo .mp4 em vários objetos — é só pra
+        preencher o feed até você ter mais prontos.
+     4. POSTS_POR_PAGINA controla quantos vídeos aparecem em
+        cada página (o pedido foi 5).
+     5. Nada mais neste script precisa ser alterado no dia a dia.
+     ========================================================== -->
+
+<script id="feed-paginado">
+
+// ----------------------------------------------------------
+// 1. DADOS DOS VÍDEOS (edite aqui para trocar o conteúdo)
+// ----------------------------------------------------------
+const POSTS_FEED = [
+    {
+        id: "post-10",
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784838531/a6Z0VAL_460sv_yyfzlt.mp4",
+        categoria: "Dev",
+        comentario: "O sistema era perfeito até encontrar um usuário de verdade"
+    },
+    {
+        id: "post-09",
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784836471/ae9LEqq_460sv_tcfvbl.mp4",
+        categoria: "Bug",
+        comentario: "Interface pronta. Só falta resolver uns buguizinhos de programação"
+    },
+    {
+        id: "post-08",
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784812231/azx02xB_460sv_yb7z9p.mp4",
+        categoria: "late requirement",
+        comentario: "Depois de seguir todas etapas do teste grátis e aparece: insira os dados do cartão"
+    },
+    {
+        id: "post-01",
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784757497/amoEAXV_460sv_kv48tq.mp4",
+        categoria: "User",
+        comentario: "Quando o usuário resolve criar um caminho que não existia no protótipo. O designer..."
+    },
+    {
+        id: "post-02",
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784762078/aqyqGzp_460sv_hchmrb.mp4",
+        categoria: "UX",
+        comentario: "Quando ignoramos o teste de usabilidade e lançamos o produto."
+    },
+    {
+        id: "post-03",
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784762695/aLnyvnA_460sv_s9asok.mp4",
+        categoria: "COMPORTAMENTO",
+        comentario: "Não precisamos mais desses designers... Deixa que eu desenho o protótipo."
+    },
+    {
+        id: "post-04",
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784762940/a0e249L_460sv_t5ivry.mp4",
+        categoria: "UI DESIGN",
+        comentario: "Meuuu é fácinho usar essa plataforma. Deixa eu te mostrar como faz!"
+    },
+    {
+        id: "post-05",
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784763140/ae9vgdW_460sv_byrkq8.mp4",
+        categoria: "compricado",
+        comentario: "Digo Bóra que tem post novo nesse upixel"
+    },
+    {
+        id: "post-06",
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784766804/teste_xlkvo3.mp4",
+        categoria: "COMPORTAMENTO",
+        comentario: "Repare em quantas vezes você abre um app só pra 'dar uma olhada rápida'."
+    },
+    {
+        id: "post-07",
+        video: "https://res.cloudinary.com/zaxtet3x/video/upload/v1784763388/a5Q81or_460sv_mxudzf.mp4",
+        categoria: "Responsivo",
+        comentario: "A interface é completamente flexível e responsiva."
     }
+];
 
-    .catalogo-camisetas {
-        margin: 40px 24px;
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-items: center;
-        gap: 32px;
-    }
+// ----------------------------------------------------------
+// 2. CONFIGURAÇÃO GERAL
+// ----------------------------------------------------------
+const POSTS_POR_PAGINA = 5;
+let paginaAtual = 1;
 
-    .card-camiseta {
-        width: 100%;
-        max-width: 320px;
-        height: auto;
-        align-items: center;
-        text-align: center;
-    }
+// URL base da página (usada para montar o link de cada vídeo)
+const URL_BASE = window.location.origin + window.location.pathname;
 
-    .card-camiseta img {
-        width: 100%;
-        max-width: 292px;
-        height: auto;
-        object-fit: cover;
-    }
+const listaPosts = document.getElementById("lista-posts");
+const paginacaoFeed = document.getElementById("paginacao-feed");
+const avisoCopiado = document.getElementById("aviso-copiado");
 
-    .card-camiseta .categoria-camiseta {
-        font-size: 16px;
-        text-align: center;
-    }
+// ----------------------------------------------------------
+// 3. MONTA O HTML DE UM POST
+//    Ordem: vídeo > comentário Upixel > ícones
+// ----------------------------------------------------------
+function criarHtmlPost(post) {
+    return `
+        <article class="post-video" id="${post.id}">
 
-    .card-camiseta h3 {
-        font-size: 24px;
-        text-align: center;
-        line-height: 1.2;
-    }
+            <div class="midia-principal">
+                <img class="logo-sobre-midia" src="logosolitaria.png" alt="Upixel">
+                <span class="tag-formato">vídeo</span>
+                <video src="${post.video}" muted autoplay loop playsinline>
+                    Seu navegador não suporta vídeo em HTML5.
+                </video>
+            </div>
 
-    .card-camiseta p {
-        font-size: 16px;
-        line-height: 1.5;
-        text-align: center;
-    }
+            <section class="comentario-upixel">
+                <div class="titulo-comentario">
+                    <img src="logosolitaria.png" alt="Upixel">
+                    <h2>Comentário Upixel</h2>
+                </div>
+                <p>${post.comentario}</p>
+            </section>
 
-    .card-camiseta .botao-comprar {
-        width: 100%;
-        margin-top: 24px;
-    }
+            <div class="meta-feed">
 
-    /* ---------- PÁGINA DA CAMISETA ---------- */
-    .pagina-camiseta {
-        padding: 0 24px;
-    }
+                <span class="categoria-feed">${post.categoria}</span>
 
-    .info-produto h1 {
-        font-size: 36px;
-    }
+                <div class="compartilhar-mini">
 
-    .descricao-produto {
-        font-size: 18px;
-    }
+                    <a href="#" title="Compartilhar no LinkedIn" data-acao="linkedin" data-post-id="${post.id}">
+                        <img src="linkedin-161-svgrepo-com.svg" alt="LinkedIn">
+                    </a>
 
-    .grid-relacionados {
-        grid-template-columns: 1fr;
-    }
 
-    .botao-comprar {
-        width: 100%;
-    }
+                    <button title="Copiar link" data-acao="copiar" data-post-id="${post.id}">
+                        <img src="Copy.svg" alt="Copiar link">
+                    </button>
 
-    /* ---------- MAIS ARTIGOS ---------- */
-    .mais-artigos {
-        margin: 60px 24px;
-    }
+                </div>
 
-    .mais-artigos h2 {
-        font-size: 28px;
-    }
+            </div>
 
-    .mais-artigos p {
-        font-size: 16px;
-        line-height: 1.5;
-    }
+        </article>
+    `;
+}
 
-    .botao-mais-artigos {
-        width: 100%;
-        max-width: 320px;
-        height: 70px;
-        font-size: 18px;
-    }
+// ----------------------------------------------------------
+// 4. RENDERIZA OS POSTS DA PÁGINA ATUAL
+// ----------------------------------------------------------
+function renderizarPosts() {
+    const inicio = (paginaAtual - 1) * POSTS_POR_PAGINA;
+    const fim = inicio + POSTS_POR_PAGINA;
+    const postsDaPagina = POSTS_FEED.slice(inicio, fim);
 
-    /* ---------- FEED ---------- */
-    .card-feed {
-        padding: 18px;
-    }
+    listaPosts.innerHTML = postsDaPagina.map(criarHtmlPost).join("");
+}
 
-    .card-feed .imagem-artigo,
-    .midia-feed {
-        height: 180px;
-    }
+// ----------------------------------------------------------
+// 5. RENDERIZA OS BOTÕES DE PAGINAÇÃO
+// ----------------------------------------------------------
+function renderizarPaginacao() {
+    const totalPaginas = Math.ceil(POSTS_FEED.length / POSTS_POR_PAGINA);
 
-    .card-feed h3 {
-        font-size: 22px;
+    if (totalPaginas <= 1) {
+        paginacaoFeed.innerHTML = "";
+        return;
     }
 
-    .feed-categorias {
-        gap: 8px;
-    }
+    let html = "";
 
-    .categoria-feed {
-        font-size: 14px;
-        padding: 7px 14px;
-    }
+    html += `<button ${paginaAtual === 1 ? "disabled" : ""} data-pagina="anterior">‹ Anterior</button>`;
 
-    /* ---------- COMENTÁRIOS / COMPARTILHAR (feed) ---------- */
-    .comentarios-feed,
-    .compartilhar-feed {
-        width: calc(100% - 40px);
+    for (let i = 1; i <= totalPaginas; i++) {
+        html += `<button class="${i === paginaAtual ? "pagina-ativa" : ""}" data-pagina="${i}">${i}</button>`;
     }
 
-    .botoes-compartilhar {
-        flex-direction: column;
-    }
+    html += `<button ${paginaAtual === totalPaginas ? "disabled" : ""} data-pagina="proxima">Próxima ›</button>`;
 
-    .botao-compartilhar {
-        text-align: center;
-    }
+    paginacaoFeed.innerHTML = html;
+}
 
-    .pagina-feed-aberto {
-        width: calc(100% - 40px);
-    }
+// ----------------------------------------------------------
+// 6. TROCA DE PÁGINA (clique nos botões)
+// ----------------------------------------------------------
+paginacaoFeed.addEventListener("click", function (evento) {
+    const botao = evento.target.closest("button");
+    if (!botao) return;
 
-    .pagina-feed-aberto .midia-principal img,
-    .pagina-feed-aberto .midia-principal video {
-        max-height: 320px;
-    }
+    const totalPaginas = Math.ceil(POSTS_FEED.length / POSTS_POR_PAGINA);
+    const alvo = botao.dataset.pagina;
 
-    .pagina-feed-aberto .titulo-feed {
-        font-size: 18px;
+    if (alvo === "anterior") {
+        paginaAtual = Math.max(1, paginaAtual - 1);
+    } else if (alvo === "proxima") {
+        paginaAtual = Math.min(totalPaginas, paginaAtual + 1);
+    } else {
+        paginaAtual = Number(alvo);
     }
 
-    .reacoes-feed {
-        justify-content: center;
-        text-align: center;
-    }
+    renderizarPosts();
+    renderizarPaginacao();
 
-    .post-video + .post-video {
-        margin-top: 50px;
-        padding-top: 50px;
-    }
+    document.querySelector(".pagina-feed-aberto").scrollIntoView({ behavior: "smooth", block: "start" });
+});
 
-    .paginacao-feed {
-        margin: 50px auto 30px;
-        gap: 8px;
-    }
+// ----------------------------------------------------------
+// 7. COMPARTILHAMENTO (Copiar link e LinkedIn)
+//
+//    Delegação de evento: como os posts são recriados a cada
+//    troca de página, o clique é "escutado" no container pai
+//    (#lista-posts), e não em cada botão individualmente.
+// ----------------------------------------------------------
+function mostrarAvisoCopiado() {
+    avisoCopiado.style.opacity = "1";
+    avisoCopiado.style.transform = "translateX(-50%) translateY(0)";
+    clearTimeout(mostrarAvisoCopiado._timer);
+    mostrarAvisoCopiado._timer = setTimeout(() => {
+        avisoCopiado.style.opacity = "0";
+        avisoCopiado.style.transform = "translateX(-50%) translateY(20px)";
+    }, 2200);
+}
 
-    .paginacao-feed button {
-        min-width: 38px;
-        height: 38px;
-        font-size: 13px;
+function copiarTexto(texto) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(texto);
     }
+    // Fallback para navegadores/contextos sem Clipboard API
+    const area = document.createElement("textarea");
+    area.value = texto;
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand("copy");
+    document.body.removeChild(area);
+    return Promise.resolve();
 }
 
-/* ===========================================================
-   RESPONSIVO - PÁGINA DO ARTIGO (breakpoints próprios: 900px / 600px)
-=========================================================== */
+listaPosts.addEventListener("click", function (evento) {
+    const elemento = evento.target.closest("[data-acao]");
+    if (!elemento) return;
 
-@media (max-width:900px) {
+    evento.preventDefault();
 
-    .pagina-artigo {
-        padding: 0 30px;
-    }
+    const postId = elemento.dataset.postId;
+    const linkDoVideo = `${URL_BASE}#${postId}`;
 
-    .titulo-artigo {
-        font-size: 48px;
-    }
+    if (elemento.dataset.acao === "copiar") {
+        const textoParaCompartilhar = `Vi isso no Upixel 👀 ${linkDoVideo}`;
 
-    .cards-relacionados {
-        grid-template-columns: 1fr;
-    }
+        copiarTexto(textoParaCompartilhar).then(() => {
+            mostrarAvisoCopiado();
 
-    .texto-artigo {
-        font-size: 20px;
+            // feedback visual rápido no próprio botão
+            elemento.classList.add("copiado");
+            setTimeout(() => elemento.classList.remove("copiado"), 1500);
+        });
     }
-}
-
-@media (max-width:600px) {
 
-    .pagina-artigo {
-        padding: 0 20px;
-    }
+    if (elemento.dataset.acao === "linkedin") {
+        // Compartilhamento oficial do LinkedIn: ele usa as tags
+        // Open Graph da própria página para montar a prévia.
+        // Não é possível enviar um texto customizado por aqui —
+        // o LinkedIn removeu esse parâmetro em 2020.
+        const urlCompartilhamento =
+            "https://www.linkedin.com/sharing/share-offsite/?url=" +
+            encodeURIComponent(linkDoVideo);
 
-    .titulo-artigo {
-        font-size: 38px;
+        window.open(urlCompartilhamento, "_blank", "noopener,noreferrer,width=600,height=600");
     }
+});
 
-    .info-artigo {
-        font-size: 14px;
-    }
+// ----------------------------------------------------------
+// 8. ABRIR DIRETO NO VÍDEO COMPARTILHADO (via #post-XX na URL)
+// ----------------------------------------------------------
+function abrirPostDoLink() {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
 
-    .texto-artigo {
-        font-size: 18px;
-        line-height: 1.8;
-    }
+    const indice = POSTS_FEED.findIndex((post) => post.id === hash);
+    if (indice === -1) return;
 
-    .leia-tambem .cards-artigos {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-    }
-}
+    paginaAtual = Math.floor(indice / POSTS_POR_PAGINA) + 1;
+    renderizarPosts();
+    renderizarPaginacao();
 
-/* =====================================================
-   RESPONSIVO - CARDS RELACIONADOS (feed)
-===================================================== */
-
-@media (max-width: 900px) {
-    .cards-relacionados {
-        width: calc(100% - 40px);
-        grid-template-columns: repeat(2, 1fr);
-    }
+    // pequena espera pro DOM terminar de montar antes de rolar até o post
+    setTimeout(() => {
+        const elementoPost = document.getElementById(hash);
+        if (!elementoPost) return;
+        elementoPost.scrollIntoView({ behavior: "smooth", block: "center" });
+        elementoPost.classList.add("post-destacado");
+        setTimeout(() => elementoPost.classList.remove("post-destacado"), 2500);
+    }, 50);
 }
 
-@media (max-width: 600px) {
-    .cards-relacionados {
-        width: calc(100% - 40px);
-        grid-template-columns: 1fr;
-        margin: 40px auto;
-    }
+// ----------------------------------------------------------
+// 9. INICIALIZA O FEED
+// ----------------------------------------------------------
+renderizarPosts();
+renderizarPaginacao();
+abrirPostDoLink();
 
-    .cards-relacionados .midia-feed img {
-        height: auto;
-    }
-}
+</script>
 
-/* =====================================================
-   RESPONSIVO - PRODUTO CAMISETA / RELACIONADOS (1100px)
-===================================================== */
+</body>
 
-@media (max-width:1100px) {
-    .produto-camiseta {
-        flex-direction: column;
-    }
-}
+</html>
