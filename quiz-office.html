@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz de The Office | Upixel</title>
+
+<meta name="description" content="Teste seus conhecimentos de The Office com o quiz da Upixel.">
+<meta name="keywords" content="quiz, The Office, upixel, teste de conhecimento">
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/quiz-office.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:title" content="Quiz de The Office | Upixel">
+<meta property="og:description" content="Responda perguntas sobre The Office e descubra quanto você realmente sabe.">
+<meta property="og:url" content="https://upixel.com.br/quiz-office.html">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quiz de The Office | Upixel">
+<meta name="twitter:description" content="Responda perguntas sobre The Office e descubra quanto você realmente sabe.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="quiz.css">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BSCJB0HD2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1BSCJB0HD2');
+</script>
+
+</head>
+
+<body>
+
+<header class="meu-header">
+
+    <div class="logo">
+        <img src="logobranca.png" alt="Upixel">
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="feed-aberto.html">Besteirol</a>
+        <a href="quiz.html" class="ativo">Quiz</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+
+</header>
+
+
+<main class="pagina-quiz">
+
+    <div class="quiz-cabecalho">
+        <h1>Quiz de The Office</h1>
+        <p>Responda as perguntas, corra contra o tempo e veja sua pontuação no final.</p>
+    </div>
+
+    <!-- ==========================================================
+         CARD DA PERGUNTA
+         Montado pelo JS de quiz-app.js, usando as perguntas de
+         quiz-data.js filtradas pela categoria "The Office".
+         ========================================================== -->
+    <div class="quiz-card" id="quiz-card"></div>
+
+</main>
+
+
+<div class="divisor-secao"></div>
+
+<footer class="footer">
+
+    <div class="footer-esquerda">
+        <img src="logobranca.png" alt="Upixel" class="footer-logo">
+        <p class="copyright">
+            Upixel. Todos os direitos reservados.
+        </p>
+    </div>
+
+    <div class="footer-centro">
+        <nav class="footer-menu">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="feed-aberto.html">Besteirol</a>
+            <a href="quiz.html" class="ativo">Quiz</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </div>
+
+</footer>
+
+<div class="footer-ilustracao">
+    <img src="rodape.png" alt="Ilustração Footer">
+</div>
+
+
+<!-- ==========================================================
+     ESTA PÁGINA SÓ RODA O QUIZ DA CATEGORIA "The Office".
+     A lógica (perguntas, cronômetro, pontuação) está toda em
+     quiz-data.js e quiz-app.js — não precisa mexer aqui pra
+     alterar o comportamento do quiz.
+     ========================================================== -->
+<script>
+    const CATEGORIA_PAGINA = "The Office";
+</script>
+<script src="quiz-data.js"></script>
+<script src="quiz-app.js"></script>
+
+</body>
+
+</html>
