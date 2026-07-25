@@ -29,6 +29,156 @@
 const QUESTOES = [
 
 // ---------- WCAG ----------
+{
+    id:"ia-01",
+    tags:["IA"],
+    pergunta:"O que é Inteligência Artificial (IA)?",
+    respostas:[
+        "Um sistema capaz de executar tarefas que normalmente exigem inteligência humana",
+        "Um computador mais rápido",
+        "Uma linguagem de programação",
+        "Um tipo de banco de dados",
+        "Um antivírus"
+    ],
+    correta:0,
+    explicacao:"IA é a área da computação dedicada ao desenvolvimento de sistemas capazes de aprender, interpretar informações e tomar decisões."
+},
+
+{
+    id:"ia-02",
+    tags:["IA"],
+    pergunta:"Quem cunhou o termo 'Inteligência Artificial' em 1956?",
+    respostas:[
+        "Alan Turing",
+        "John McCarthy",
+        "Elon Musk",
+        "Bill Gates",
+        "Tim Berners-Lee"
+    ],
+    correta:1,
+    explicacao:"John McCarthy utilizou o termo Inteligência Artificial durante a conferência de Dartmouth em 1956."
+},
+
+{
+    id:"ia-03",
+    tags:["IA"],
+    pergunta:"O que é Machine Learning?",
+    respostas:[
+        "Uma forma de computador aprender com dados sem ser explicitamente programado para cada tarefa",
+        "Um computador que nunca erra",
+        "Uma linguagem de programação",
+        "Um tipo de processador",
+        "Uma rede social"
+    ],
+    correta:0,
+    explicacao:"Machine Learning permite que algoritmos aprendam padrões a partir de dados."
+},
+
+{
+    id:"ia-04",
+    tags:["IA"],
+    pergunta:"O que caracteriza uma IA generativa?",
+    respostas:[
+        "Criar novos conteúdos como textos, imagens, músicas ou códigos",
+        "Apenas armazenar arquivos",
+        "Fazer backup automático",
+        "Aumentar a velocidade da internet",
+        "Detectar vírus"
+    ],
+    correta:0,
+    explicacao:"Modelos generativos produzem novos conteúdos baseados em padrões aprendidos."
+},
+
+{
+    id:"ia-05",
+    tags:["IA"],
+    pergunta:"O que significa a sigla LLM?",
+    respostas:[
+        "Large Language Model",
+        "Local Language Machine",
+        "Long Learning Method",
+        "Logical Language Memory",
+        "Linear Learning Module"
+    ],
+    correta:0,
+    explicacao:"LLM significa Large Language Model, um modelo treinado para compreender e gerar linguagem natural."
+},
+
+{
+    id:"ia-06",
+    tags:["IA"],
+    pergunta:"Qual é a principal função de um chatbot baseado em IA?",
+    respostas:[
+        "Conversar e responder perguntas em linguagem natural",
+        "Aumentar a velocidade da internet",
+        "Criar redes Wi-Fi",
+        "Instalar programas automaticamente",
+        "Substituir processadores"
+    ],
+    correta:0,
+    explicacao:"Chatbots utilizam IA para compreender solicitações e gerar respostas relevantes."
+},
+
+{
+    id:"ia-07",
+    tags:["IA"],
+    pergunta:"Deep Learning é baseado principalmente em:",
+    respostas:[
+        "Redes neurais artificiais",
+        "Planilhas eletrônicas",
+        "Arquivos ZIP",
+        "Servidores FTP",
+        "Linguagem HTML"
+    ],
+    correta:0,
+    explicacao:"Deep Learning utiliza redes neurais profundas para aprender padrões complexos."
+},
+
+{
+    id:"ia-08",
+    tags:["IA"],
+    pergunta:"Qual é um dos principais desafios éticos da IA?",
+    respostas:[
+        "Viés nos dados utilizados para treinamento",
+        "Peso do computador",
+        "Cor do monitor",
+        "Velocidade do mouse",
+        "Tamanho do teclado"
+    ],
+    correta:0,
+    explicacao:"Modelos podem reproduzir preconceitos presentes nos dados de treinamento."
+},
+
+{
+    id:"ia-09",
+    tags:["IA"],
+    pergunta:"O que é um prompt?",
+    respostas:[
+        "A instrução enviada para uma IA",
+        "Um vírus",
+        "Uma placa de vídeo",
+        "Uma memória RAM",
+        "Um navegador"
+    ],
+    correta:0,
+    explicacao:"Prompt é o texto ou comando utilizado para orientar a resposta da IA."
+},
+
+{
+    id:"ia-10",
+    tags:["IA"],
+    pergunta:"O que significa dizer que uma IA 'alucinou'?",
+    respostas:[
+        "Gerou uma resposta incorreta apresentada como verdadeira",
+        "Travou completamente",
+        "Foi desligada",
+        "Perdeu conexão com a internet",
+        "Entrou em modo de economia de energia"
+    ],
+    correta:0,
+    explicacao:"Alucinação ocorre quando o modelo inventa informações com aparente confiança."
+},    
+// ---------- WCAG ----------
 
 {
     id:"wcag-01",
@@ -1244,6 +1394,7 @@ const PONTOS_POR_ACERTO = 10;
 
 // Slug de cada categoria -> usado no nome do arquivo (quiz-<slug>.html)
 const CATEGORIA_SLUGS = {
+    "IA": "ia",
     "WCAG": "wcag",
     "UX": "ux",
     "Interfaces UI": "interfaceui",
