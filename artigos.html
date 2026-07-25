@@ -104,6 +104,39 @@
 
 
 <!-- ==========================================================
+     DESTAQUE DO ARTIGO MAIS RECENTE
+
+     Bloco novo, isolado do resto do CSS: só estiliza o selo
+     "Novo" e a borda rosa do card marcado com a classe
+     "card-artigo--novo" (aplicada pelo script lá embaixo só no
+     primeiro item do array ARTIGOS). Nada mais no site é afetado.
+     ========================================================== -->
+<style>
+    .card-artigo--novo {
+        position: relative;
+        border: 1px solid #FA397A;
+        box-shadow: 0 0 0 1px rgba(250, 57, 122, 0.25);
+    }
+
+    .selo-novo {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 2;
+        background: #FA397A;
+        color: #fff;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        border-radius: 20px;
+    }
+</style>
+
+
+<!-- ==========================================================
      GOOGLE ANALYTICS 4 (GA4)
 
      Monitoramento de visitantes da Upixel.
@@ -265,7 +298,10 @@ Do mais recente para o mais antigo.
         (o corte acontece nos mesmos 768px do resto do site).
         Se quiser mudar essas quantidades, é só editar
         ITENS_POR_PAGINA_DESKTOP e ITENS_POR_PAGINA_MOBILE.
-     3. Nada mais neste script precisa ser alterado no dia a dia.
+     3. O selo "Novo" é sempre aplicado ao PRIMEIRO item do array
+        ARTIGOS (o mais recente), não importa em qual página da
+        paginação ele caia. Nada mais neste script precisa ser
+        alterado no dia a dia.
      ========================================================== -->
 
 <script id="feed-artigos">
@@ -351,10 +387,17 @@ function itensPorPaginaAtual() {
 
 // ----------------------------------------------------------
 // 4. MONTA O HTML DE UM CARD DE ARTIGO
+//    indiceGlobal é a posição do artigo dentro do array ARTIGOS
+//    inteiro (não só dentro da página atual) — é assim que dá
+//    pra saber se esse é o artigo mais recente (índice 0) e
+//    mostrar o selo "Novo" nele, em qualquer página.
 // ----------------------------------------------------------
-function criarHtmlArtigo(artigo) {
+function criarHtmlArtigo(artigo, indiceGlobal) {
+    const ehMaisRecente = indiceGlobal === 0;
+
     return `
-        <article class="card-artigo">
+        <article class="card-artigo${ehMaisRecente ? " card-artigo--novo" : ""}">
+            ${ehMaisRecente ? '<span class="selo-novo">Novo</span>' : ""}
             <img src="${artigo.imagem}" class="imagem-artigo" alt="Artigo">
             <span class="categoria">${artigo.categoria}</span>
             <h3>${artigo.titulo}</h3>
@@ -377,7 +420,9 @@ function renderizarArtigos() {
     const fim = inicio + itensPorPagina;
     const itensDaPagina = ARTIGOS.slice(inicio, fim);
 
-    listaArtigos.innerHTML = itensDaPagina.map(criarHtmlArtigo).join("");
+    listaArtigos.innerHTML = itensDaPagina
+        .map((artigo, i) => criarHtmlArtigo(artigo, inicio + i))
+        .join("");
 
     renderizarPaginacao(totalPaginas);
 }
