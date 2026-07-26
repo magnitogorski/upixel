@@ -28,7 +28,156 @@
 
 const QUESTOES = [
 
-// ---------- WCAG ----------
+{
+    id:"cachorro-01",
+    tags:["cachorros"],
+    pergunta:"Qual destas raças acredita que é um cachorro de colo, mesmo pesando quase 80 kg?",
+    respostas:[
+        "São Bernardo",
+        "Pinscher",
+        "Pug",
+        "Shih Tzu",
+        "Chihuahua"
+    ],
+    correta:0,
+    explicacao:"O São Bernardo frequentemente tenta sentar no colo do dono sem perceber que pesa quase o equivalente a uma geladeira pequena."
+},
+
+{
+    id:"cachorro-02",
+    tags:["cachorros"],
+    pergunta:"Qual raça é conhecida por tremer mais que Wi-Fi em dia de chuva?",
+    respostas:[
+        "Chihuahua",
+        "Labrador",
+        "Golden Retriever",
+        "Akita",
+        "Fila Brasileiro"
+    ],
+    correta:0,
+    explicacao:"Os Chihuahuas são famosos pelos tremores, que podem ocorrer por frio, ansiedade ou simplesmente porque decidiram tremer."
+},
+
+{
+    id:"cachorro-03",
+    tags:["cachorros"],
+    pergunta:"Qual destas raças provavelmente venderia sua alma por um pedaço de pão?",
+    respostas:[
+        "Labrador",
+        "Husky Siberiano",
+        "Border Collie",
+        "Pastor Alemão",
+        "Doberman"
+    ],
+    correta:0,
+    explicacao:"Labradores são extremamente motivados por comida. Um petisco costuma resolver praticamente qualquer negociação."
+},
+
+{
+    id:"cachorro-04",
+    tags:["cachorros"],
+    pergunta:"Qual raça costuma conversar mais do que obedecer?",
+    respostas:[
+        "Husky Siberiano",
+        "Beagle",
+        "Poodle",
+        "Boxer",
+        "Bulldog Francês"
+    ],
+    correta:0,
+    explicacao:"Huskies são conhecidos pelos 'discursos' intermináveis. Muitos donos juram que eles respondem às broncas."
+},
+
+{
+    id:"cachorro-05",
+    tags:["cachorros"],
+    pergunta:"Qual destas raças foi criada para pastorear e acaba tentando organizar até as crianças da casa?",
+    respostas:[
+        "Border Collie",
+        "Pug",
+        "Dachshund",
+        "Maltês",
+        "Lhasa Apso"
+    ],
+    correta:0,
+    explicacao:"Border Collies têm um instinto tão forte de pastoreio que às vezes tentam 'controlar' tudo o que se move."
+},
+
+{
+    id:"cachorro-06",
+    tags:["cachorros"],
+    pergunta:"Qual raça tem fama de latir para uma folha caindo a três quarteirões de distância?",
+    respostas:[
+        "Pinscher",
+        "Golden Retriever",
+        "São Bernardo",
+        "Basset Hound",
+        "Shar Pei"
+    ],
+    correta:0,
+    explicacao:"O Pinscher pode ser pequeno, mas sua autoconfiança faz parecer que ele está protegendo um castelo medieval."
+},
+
+{
+    id:"cachorro-07",
+    tags:["cachorros"],
+    pergunta:"Qual raça parece ter um doutorado em cara de triste mesmo estando feliz?",
+    respostas:[
+        "Basset Hound",
+        "Spitz Alemão",
+        "Labrador",
+        "Pastor Belga",
+        "Whippet"
+    ],
+    correta:0,
+    explicacao:"As orelhas longas e os olhos caídos do Basset Hound dão a impressão de que ele acabou de assistir ao final de um filme dramático."
+},
+
+{
+    id:"cachorro-08",
+    tags:["cachorros"],
+    pergunta:"Qual raça solta tanto pelo que você passa a considerar comprar um aspirador industrial?",
+    respostas:[
+        "Golden Retriever",
+        "Pug",
+        "Boston Terrier",
+        "Fox Paulistinha",
+        "Galgo"
+    ],
+    correta:0,
+    explicacao:"Golden Retrievers trocam de pelo praticamente o ano inteiro. Você limpa a casa... e cinco minutos depois já tem outro tapete."
+},
+
+{
+    id:"cachorro-09",
+    tags:["cachorros"],
+    pergunta:"Qual destas raças foi criada para caçar texugos entrando em tocas?",
+    respostas:[
+        "Dachshund",
+        "Rottweiler",
+        "Akita",
+        "Poodle",
+        "Bulldog Inglês"
+    ],
+    correta:0,
+    explicacao:"O Dachshund, famoso 'salsicha', foi desenvolvido na Alemanha para entrar em tocas e caçar texugos."
+},
+
+{
+    id:"cachorro-10",
+    tags:["cachorros"],
+    pergunta:"Qual é a única raça capaz de fazer você dizer 'não sobe no sofá' e cinco segundos depois estar dormindo no seu travesseiro?",
+    respostas:[
+        "Todas as anteriores",
+        "Nenhuma",
+        "Apenas o Labrador",
+        "Somente o Pug",
+        "Só acontece com gatos"
+    ],
+    correta:0,
+    explicacao:"Independentemente da raça, muitos cães têm um talento impressionante para ignorar regras quando existe um sofá confortável envolvido."
+},
+// ---------- IA ----------
 {
     id:"ia-01",
     tags:["IA"],
@@ -1394,6 +1543,7 @@ const PONTOS_POR_ACERTO = 10;
 
 // Slug de cada categoria -> usado no nome do arquivo (quiz-<slug>.html)
 const CATEGORIA_SLUGS = {
+    "Raças de Cachorros": "raças-de-cachorros",
     "IA": "ia",
     "WCAG": "wcag",
     "UX": "ux",
