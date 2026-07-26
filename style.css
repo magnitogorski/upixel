@@ -3139,3 +3139,34 @@ input[type="submit"]:hover {
         padding: 14px 18px;
     }
 }
+
+
+
+
+
+
+
+/* ==========================================================
+   HEADER — RESPONSIVIDADE MOBILE (Etapa 3)
+
+   Só afeta telas até 768px. Não remove, renomeia ou cria
+   nenhum item do menu — apenas empilha o que já existe.
+   O desktop (acima de 768px) continua exatamente como está.
+   ========================================================== */
+@media (max-width: 768px) {
+
+    .meu-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .meu-header .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+}
