@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<!-- ==========================================================
+     Página: GAMES
+
+     Central de jogos da Upixel. Reaproveita a MESMA estrutura
+     de página de listagem já usada em artigos.html
+     (.pagina-artigos / .botao-voltar / .texto-menor /
+     .titulo-listagem / .descricao-listagem / .cards-artigos-grid),
+     em vez do padrão de seção da home — por isso o
+     alinhamento e o tamanho de fonte agora seguem certinho o
+     que já existe no site, sem CSS novo.
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Games | Upixel</title>
+
+<meta name="description" content="Experiências interativas inspiradas em UI, UX, tecnologia e interfaces digitais. Aprenda conceitos de design jogando.">
+<meta name="keywords" content="games, ux, ui, design, heurísticas de nielsen, jogos de design, upixel">
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/games.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:title" content="Games | Upixel">
+<meta property="og:description" content="Experiências interativas inspiradas em UI, UX, tecnologia e interfaces digitais.">
+<meta property="og:url" content="https://upixel.com.br/games.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Games | Upixel">
+<meta name="twitter:description" content="Experiências interativas inspiradas em UI, UX, tecnologia e interfaces digitais.">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Mesmos arquivos de estilo do restante do site. Nenhuma regra foi alterada. -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+</head>
+<body>
+
+    <!-- ======================================================
+         HEADER — idêntico ao de index.html / artigos.html
+         ====================================================== -->
+    <header class="meu-header">
+        <div class="logo">
+            <img src="logobranca.png" alt="Logotipo do meu site">
+        </div>
+
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="feed-aberto.html">Besteirol</a>
+            <a href="games.html" class="ativo">Games</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <!-- ======================================================
+         PÁGINA GAMES
+
+         Reaproveita a estrutura de artigos.html
+         (.pagina-artigos / .botao-voltar / .texto-menor /
+         .titulo-listagem / .descricao-listagem), então herda
+         o mesmo espaçamento, centralização e tamanho de fonte
+         que já funcionam nessa página, sem precisar de CSS novo.
+         ====================================================== -->
+    <section class="pagina-artigos pagina-games">
+
+        <a href="index.html" class="botao-voltar">
+            <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
+                <path d="M19 12H5M5 12L11 6M5 12L11 18"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+            Voltar
+        </a>
+
+        <span class="texto-menor">
+            <img src="raio.png" class="icone-raio" alt="Raio">
+            Central de jogos
+        </span>
+
+        <h1 class="titulo-listagem">
+            Games
+        </h1>
+
+        <p class="descricao-listagem">
+            Experiências interativas inspiradas em UI, UX, tecnologia e interfaces digitais. Aprenda conceitos de design jogando.
+        </p>
+
+        <!-- ==================================================
+             LISTA DE JOGOS
+
+             Reaproveita a mesma grade de cards de artigos.html
+             (.cards-artigos-grid / .card-artigo). Para adicionar
+             um novo jogo, copie o bloco <article class="card-artigo">
+             abaixo e ajuste imagem, nome, descrição e o link.
+             ================================================== -->
+        <div class="cards-artigos-grid" id="lista-jogos">
+
+            <!-- JOGO 1: UX Repair Lab -->
+            <article class="card-artigo">
+                <!-- imagem provisória, troque pela thumbnail do jogo -->
+                <img src="ux-repair-lab-thumb.png" class="imagem-artigo" alt="UX Repair Lab">
+                <span class="categoria">UX / UI</span>
+                <h3>UX Repair Lab</h3>
+                <p>Conserte interfaces quebradas aplicando princípios de UX e heurísticas de Nielsen.</p>
+                <a href="ux-repair-game.html" class="leia-mais">Jogar agora</a>
+            </article>
+
+            <!-- >>> NOVOS JOGOS: adicione aqui o próximo <article class="card-artigo"> -->
+
+        </div>
+
+        <div class="divisor-secao"></div>
+
+        <!-- ==================================================
+             FOOTER — idêntico ao de artigos.html
+             ================================================== -->
+        <footer class="footer">
+
+            <div class="footer-esquerda">
+                <img src="logobranca.png" alt="Upixel" class="footer-logo">
+                <p class="copyright">
+                    Upixel. Todos os direitos reservados.
+                </p>
+            </div>
+
+            <div class="footer-centro">
+                <nav class="footer-menu">
+                    <a href="index.html">Home</a>
+                    <a href="artigos.html">Artigos</a>
+                    <a href="feed-aberto.html">Besteirol</a>
+                    <a href="games.html" class="ativo">Games</a>
+                    <a href="quiz.html">Quiz</a>
+                    <a href="contato.html">Contato</a>
+                </nav>
+            </div>
+
+        </footer>
+
+        <div class="footer-ilustracao">
+            <img src="rodape.png" alt="Ilustração Footer">
+        </div>
+
+    </section>
+
+</body>
+</html>
