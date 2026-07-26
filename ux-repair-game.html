@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<!-- ==========================================================
+     UX REPAIR LAB — jogo da área Games da Upixel
+
+     10 fases, uma para cada heurística de Nielsen.
+     Não usa imagens externas, bibliotecas nem frameworks.
+     Apenas HTML + CSS + JavaScript puro. Progresso salvo
+     somente via localStorage do navegador.
+
+     ORGANIZAÇÃO DESTE ARQUIVO:
+     1. <style>             → visual do jogo (pixel/cyber, preto + rosa)
+     2. PHASES (no script)  → onde editar/adicionar fases e problemas
+     3. HEURISTICS (script) → onde editar as 10 heurísticas de Nielsen
+     4. SCORING (script)    → onde editar pontuação, bônus e penalidade
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UX Repair Lab | Upixel Games</title>
+<meta name="description" content="Conserte interfaces quebradas aplicando as 10 heurísticas de Nielsen — um laboratório interativo da Upixel.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+<style>
+    :root {
+        --rl-bg: #050505;
+        --rl-bg-panel: #111114;
+        --rl-pink: #FA397A;
+        --rl-pink-soft: rgba(250, 57, 122, 0.25);
+        --rl-text: #f2f2f2;
+        --rl-text-dim: #9a9aa0;
+        --rl-green: #34e3a1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body.rl-body {
+        margin: 0;
+        background: var(--rl-bg);
+        color: var(--rl-text);
+        font-family: "Courier New", monospace;
+        min-height: 100vh;
+    }
+
+    h1, h2, .rl-tag, .rl-btn-check, .rl-btn-next, .rl-voltar, .rl-draggable {
+        font-family: "Pixelify Sans", sans-serif;
+    }
+
+    .rl-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 18px 28px;
+        border-bottom: 1px solid #1e1e22;
+    }
+
+    .rl-voltar {
+        color: var(--rl-text);
+        text-decoration: none;
+        font-size: 14px;
+        padding: 10px 18px;
+        border: 1px solid var(--rl-pink);
+        border-radius: 999px;
+        transition: background 0.2s ease;
+    }
+    .rl-voltar:hover { background: var(--rl-pink-soft); }
+
+    .rl-score-hud {
+        display: flex;
+        gap: 20px;
+        font-size: 13px;
+        color: var(--rl-text-dim);
+    }
+    .rl-score-hud strong { color: var(--rl-pink); font-size: 15px; }
+
+    .rl-hero { text-align: center; padding: 36px 20px 10px; }
+    .rl-tag {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--rl-pink);
+        border: 1px solid var(--rl-pink);
+        border-radius: 999px;
+        padding: 4px 14px;
+        margin-bottom: 14px;
+    }
+    .rl-hero h1 { font-size: 28px; margin: 0 0 8px; }
+    #rlPhaseInfo { color: var(--rl-text-dim); margin: 0; font-size: 14px; }
+    #rlRecordNote { color: var(--rl-text-dim); font-size: 13px; margin-top: 6px; }
+
+    .rl-lab {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 24px 28px 60px;
+    }
+
+    .rl-stage {
+        position: relative;
+        width: min(92vw, 480px);
+        height: 420px;
+        background: linear-gradient(180deg, #0c0c10, #08080a);
+        border: 1px solid #232228;
+        border-radius: 18px;
+        box-shadow: 0 0 0 1px #000, 0 0 30px rgba(250, 57, 122, 0.06);
+        overflow: hidden;
+        touch-action: none;
+    }
+
+    .rl-panel {
+        width: min(92vw, 320px);
+        background: var(--rl-bg-panel);
+        border: 1px solid #232228;
+        border-radius: 18px;
+        padding: 22px;
+    }
+    .rl-panel h2 { font-size: 16px; margin: 0 0 10px; color: var(--rl-pink); }
+    .rl-panel p { font-size: 14px; line-height: 1.5; color: var(--rl-text-dim); }
+
+    .rl-btn-check, .rl-btn-next {
+        display: inline-block;
+        width: 100%;
+        margin-top: 14px;
+        padding: 12px;
+        background: var(--rl-pink);
+        color: #08080a;
+        border: none;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .rl-btn-check:disabled { opacity: 0.35; cursor: not-allowed; }
+    .rl-btn-next { background: transparent; border: 1px solid var(--rl-pink); color: var(--rl-pink); }
+
+    .rl-feedback {
+        margin-top: 14px;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    .rl-feedback.ok { background: rgba(52, 227, 161, 0.1); border: 1px solid var(--rl-green); color: var(--rl-green); }
+    .rl-feedback.warn { background: rgba(250, 57, 122, 0.1); border: 1px solid var(--rl-pink); color: var(--rl-pink); }
+
+    .rl-draggable {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        cursor: grab;
+        user-select: none;
+        border-radius: 8px;
+        font-size: 12px;
+        padding: 4px 8px;
+        line-height: 1.2;
+    }
+    .rl-draggable:active { cursor: grabbing; }
+    .rl-draggable.rl-solved { box-shadow: 0 0 0 2px var(--rl-green); }
+
+    .rl-target-zone {
+        position: absolute;
+        border: 1px dashed rgba(250, 57, 122, 0.35);
+        border-radius: 8px;
+        pointer-events: none;
+    }
+
+    .rl-static-label {
+        position: absolute;
+        color: var(--rl-text-dim);
+        font-size: 12px;
+    }
+
+    .rl-item { cursor: pointer; user-select: none; transition: opacity 0.2s ease, transform 0.2s ease; }
+    .rl-item.rl-removido { opacity: 0; transform: scale(0.8); pointer-events: none; }
+
+    .rl-progress-dots { display: flex; gap: 6px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+    .rl-dot { width: 8px; height: 8px; border-radius: 50%; background: #2a2a30; }
+    .rl-dot.rl-dot-done { background: var(--rl-pink); }
+
+    .rl-summary {
+        max-width: 480px;
+        margin: 0 auto 60px;
+        text-align: center;
+        padding: 30px;
+        background: var(--rl-bg-panel);
+        border: 1px solid var(--rl-pink);
+        border-radius: 18px;
+    }
+    .rl-summary h2 { color: var(--rl-pink); }
+    .rl-summary .rl-summary-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin: 20px 0;
+        font-size: 13px;
+        color: var(--rl-text-dim);
+    }
+    .rl-summary .rl-summary-grid strong { display: block; font-size: 20px; color: var(--rl-text); }
+</style>
+</head>
+<body class="rl-body">
+
+    <div class="rl-topbar">
+        <a href="games.html" class="rl-voltar">← Voltar para Games</a>
+        <div class="rl-score-hud">
+            <span>Pontuação: <strong id="rlScore">0</strong></span>
+            <span>Recorde: <strong id="rlRecord">0</strong></span>
+        </div>
+    </div>
+
+    <header class="rl-hero">
+        <span class="rl-tag">UX Repair Lab</span>
+        <h1>Console de reparo de interfaces</h1>
+        <p id="rlPhaseInfo">Carregando fase...</p>
+        <p id="rlRecordNote"></p>
+        <div class="rl-progress-dots" id="rlDots"></div>
+    </header>
+
+    <main class="rl-lab" id="rlLab">
+        <div class="rl-stage" id="rlStage"></div>
+
+        <aside class="rl-panel">
+            <h2 id="rlProblemTitle">Problema</h2>
+            <p id="rlProblemText"></p>
+            <div class="rl-feedback" id="rlFeedback" hidden></div>
+            <button class="rl-btn-check" id="rlCheckBtn">Verificar correção</button>
+            <button class="rl-btn-next" id="rlNextBtn" hidden>Continuar →</button>
+        </aside>
+    </main>
+
+    <section class="rl-summary" id="rlSummary" hidden>
+        <h2>Interface totalmente reparada!</h2>
+        <p id="rlSummaryText"></p>
+        <div class="rl-summary-grid">
+            <div>Problemas corrigidos<strong id="rlSummaryProblems">0</strong></div>
+            <div>Heurísticas aplicadas<strong id="rlSummaryHeuristics">0</strong></div>
+            <div>Pontuação final<strong id="rlSummaryScore">0</strong></div>
+            <div>Recorde UX<strong id="rlSummaryRecord">0</strong></div>
+        </div>
+        <button class="rl-btn-check" id="rlRestartBtn">Jogar novamente</button>
+        <a href="games.html" class="rl-voltar" style="display:inline-block;margin-top:12px;">← Voltar para Games</a>
+    </section>
+
+<script>
+(function () {
+    "use strict";
+
+    /* ==========================================================
+       PONTUAÇÃO — edite os valores aqui para rebalancear o jogo
+       ========================================================== */
+    var SCORING = {
+        pointsPerPhase: 100,       // pontos base por fase concluída
+        speedBonusPoints: 30,      // bônus se corrigir dentro do tempo abaixo
+        speedBonusSeconds: 15,     // limite de tempo para ganhar o bônus
+        errorPenaltyPoints: 10,    // pontos perdidos a cada tentativa errada
+        storageKeyBest: "upixelUxRepairLab_bestScore",
+        storageKeyTotal: "upixelUxRepairLab_totalScoreAllTime",
+        storageKeyPhases: "upixelUxRepairLab_phasesCompletedAllTime",
+        storageKeyCorrections: "upixelUxRepairLab_correctionsAllTime"
+    };
+
+    /* ==========================================================
+       AS 10 HEURÍSTICAS DE NIELSEN
+       Para adicionar/editar uma heurística, mexa aqui e
+       referencie a chave correspondente nas fases abaixo.
+       ========================================================== */
+    var HEURISTICS = {
+        h1: "1. Visibilidade do status do sistema",
+        h2: "2. Correspondência entre sistema e mundo real",
+        h3: "3. Controle e liberdade do usuário",
+        h4: "4. Consistência e padrões",
+        h5: "5. Prevenção de erros",
+        h6: "6. Reconhecimento em vez de memorização",
+        h7: "7. Flexibilidade e eficiência de uso",
+        h8: "8. Estética e design minimalista",
+        h9: "9. Ajudar os usuários a reconhecer, diagnosticar e corrigir erros",
+        h10: "10. Ajuda e documentação"
+    };
+
+    /* ==========================================================
+       ESTADO DO JOGO
+       ========================================================== */
+    var state = {
+        phaseIndex: 0,
+        score: 0,
+        problemsFixed: 0,
+        heuristicsUsed: new Set(),
+        currentCheck: null,
+        phaseStartTime: 0
+    };
+
+    var elScore = document.getElementById("rlScore");
+    var elRecord = document.getElementById("rlRecord");
+    var elRecordNote = document.getElementById("rlRecordNote");
+    var elPhaseInfo = document.getElementById("rlPhaseInfo");
+    var elDots = document.getElementById("rlDots");
+    var elStage = document.getElementById("rlStage");
+    var elProblemTitle = document.getElementById("rlProblemTitle");
+    var elProblemText = document.getElementById("rlProblemText");
+    var elFeedback = document.getElementById("rlFeedback");
+    var elCheckBtn = document.getElementById("rlCheckBtn");
+    var elNextBtn = document.getElementById("rlNextBtn");
+    var elLab = document.getElementById("rlLab");
+    var elSummary = document.getElementById("rlSummary");
+
+    /* ==========================================================
+       MOTORES DE INTERAÇÃO (reutilizados pelas fases abaixo)
+       ========================================================== */
+
+    // ---- 1) Arrastar (mouse + toque, via Pointer Events) ----
+    function makeDraggable(stage, el, onDrop) {
+        var offsetX = 0, offsetY = 0;
+        el.addEventListener("pointerdown", function (e) {
+            if (el.classList.contains("rl-solved")) return;
+            el.setPointerCapture(e.pointerId);
+            var rect = el.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            el.style.zIndex = 10;
+        });
+        el.addEventListener("pointermove", function (e) {
+            if (e.buttons !== 1 && e.pointerType === "mouse") return;
+            if (!el.hasPointerCapture || !el.hasPointerCapture(e.pointerId)) return;
+            var stageRect = stage.getBoundingClientRect();
+            var elW = el.offsetWidth, elH = el.offsetHeight;
+            var x = e.clientX - stageRect.left - offsetX;
+            var y = e.clientY - stageRect.top - offsetY;
+            x = Math.max(0, Math.min(x, stage.clientWidth - elW));
+            y = Math.max(0, Math.min(y, stage.clientHeight - elH));
+            el.style.left = x + "px";
+            el.style.top = y + "px";
+        });
+        el.addEventListener("pointerup", function () {
+            el.style.zIndex = "";
+            if (onDrop) onDrop();
+        });
+    }
+
+    // Cria um par arrastável + zona-alvo. A validação exige que o
+    // elemento esteja dentro da tolerância da posição-alvo (não
+    // aceita "qualquer lugar").
+    function addDragTarget(stage, opts) {
+        var target = document.createElement("div");
+        target.className = "rl-target-zone";
+        target.style.left = opts.target.x + "px";
+        target.style.top = opts.target.y + "px";
+        target.style.width = opts.target.w + "px";
+        target.style.height = opts.target.h + "px";
+        stage.appendChild(target);
+
+        var el = document.createElement("div");
+        el.className = "rl-draggable";
+        el.style.left = opts.start.x + "px";
+        el.style.top = opts.start.y + "px";
+        el.style.width = opts.target.w + "px";
+        el.style.height = opts.target.h + "px";
+        el.style.background = opts.color || "#232228";
+        el.style.color = "#fff";
+        el.style.border = "1px solid #3a3a42";
+        el.textContent = opts.label;
+        stage.appendChild(el);
+
+        var tol = 26;
+        function isInTarget() {
+            var ex = parseFloat(el.style.left), ey = parseFloat(el.style.top);
+            return Math.abs(ex - opts.target.x) < tol && Math.abs(ey - opts.target.y) < tol;
+        }
+
+        makeDraggable(stage, el, function () {
+            if (isInTarget()) {
+                el.style.left = opts.target.x + "px";
+                el.style.top = opts.target.y + "px";
+                el.classList.add("rl-solved");
+            }
+        });
+
+        return { isSolved: function () { return el.classList.contains("rl-solved"); } };
+    }
+
+    function addStaticLabel(stage, text, x, y) {
+        var lbl = document.createElement("div");
+        lbl.className = "rl-static-label";
+        lbl.style.left = x + "px";
+        lbl.style.top = y + "px";
+        lbl.textContent = text;
+        stage.appendChild(lbl);
+        return lbl;
+    }
+
+    // ---- 2) Clicar para corrigir (texto/estilo confuso -> correto) ----
+    function addClickFix(stage, opts) {
+        var el = document.createElement("div");
+        el.className = "rl-item";
+        el.style.cssText = "position:absolute;left:" + opts.x + "px;top:" + opts.y + "px;width:" + opts.w + "px;height:" + opts.h + "px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;border-radius:8px;cursor:pointer;padding:6px;" + (opts.styleBefore || "background:#232228;border:1px solid #3a3a42;color:#fff;");
+        el.textContent = opts.textBefore;
+        var fixed = false;
+        el.addEventListener("click", function () {
+            if (fixed) return;
+            fixed = true;
+            el.textContent = opts.textAfter;
+            el.style.cssText = "position:absolute;left:" + opts.x + "px;top:" + opts.y + "px;width:" + opts.w + "px;height:" + opts.h + "px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;border-radius:8px;cursor:default;padding:6px;" + (opts.styleAfter || "background:rgba(52,227,161,0.12);border:1px solid #34e3a1;color:#34e3a1;");
+        });
+        stage.appendChild(el);
+        return { isSolved: function () { return fixed; } };
+    }
+
+    // ---- 3) Remover elementos em excesso ----
+    function addDeclutterSet(stage, items) {
+        var elements = items.map(function (item) {
+            var el = document.createElement("div");
+            el.className = "rl-item" + (item.necessario ? " rl-necessario" : "");
+            el.style.cssText = "position:absolute;left:" + item.x + "px;top:" + item.y + "px;width:" + (item.w || 130) + "px;height:" + (item.h || 50) + "px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;background:" +
+                (item.necessario ? "rgba(52,227,161,0.12);border:1px solid #34e3a1;" : "rgba(250,57,122,0.12);border:1px solid #FA397A;");
+            el.textContent = item.label;
+            el.dataset.necessario = item.necessario ? "1" : "0";
+            el.addEventListener("click", function () { el.classList.toggle("rl-removido"); });
+            stage.appendChild(el);
+            return el;
+        });
+        return function check() {
+            return elements.every(function (el) {
+                var necessario = el.dataset.necessario === "1";
+                var removido = el.classList.contains("rl-removido");
+                return necessario ? !removido : removido;
+            });
+        };
+    }
+
+    /* ==========================================================
+       FASES — uma para cada heurística de Nielsen.
+       Para adicionar uma nova fase, inclua um objeto com:
+       title, problem, text, heuristic, problemsFixed e um
+       setup(stage) que monta a tela e retorna checkFn().
+       ========================================================== */
+    var PHASES = [
+
+        // ---------- 1. Visibilidade do status do sistema ----------
+        {
+            title: "Fase 1 — " + HEURISTICS.h1,
+            problem: "Botão salvar sem retorno",
+            text: "O botão \"SALVAR\" não dá nenhum retorno ao usuário. Arraste o aviso \"Salvo com sucesso\" para a zona logo abaixo do botão.",
+            heuristic: HEURISTICS.h1,
+            problemsFixed: 1,
+            setup: function (stage) {
+                addStaticLabel(stage, "Formulário", 20, 20);
+                var salvar = document.createElement("div");
+                salvar.style.cssText = "position:absolute;left:20px;top:50px;width:140px;height:40px;background:#FA397A;color:#08080a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;";
+                salvar.textContent = "SALVAR";
+                stage.appendChild(salvar);
+
+                var aviso = addDragTarget(stage, {
+                    label: "✔ Salvo com sucesso",
+                    color: "#34e3a1",
+                    start: { x: 260, y: 320 },
+                    target: { x: 20, y: 106, w: 200, h: 40 }
+                });
+                return function check() { return aviso.isSolved(); };
+            }
+        },
+
+        // ---------- 2. Correspondência entre sistema e mundo real ----------
+        {
+            title: "Fase 2 — " + HEURISTICS.h2,
+            problem: "Linguagem técnica demais",
+            text: "O texto do botão usa termos técnicos que o usuário comum não entende. Clique nele para trocar por uma linguagem simples.",
+            heuristic: HEURISTICS.h2,
+            problemsFixed: 1,
+            setup: function (stage) {
+                var fix = addClickFix(stage, {
+                    x: 140, y: 180, w: 200, h: 50,
+                    textBefore: "Executar protocolo",
+                    textAfter: "Enviar pedido"
+                });
+                return function check() { return fix.isSolved(); };
+            }
+        },
+
+        // ---------- 3. Controle e liberdade do usuário ----------
+        {
+            title: "Fase 3 — " + HEURISTICS.h3,
+            problem: "Sem opção de desfazer",
+            text: "O usuário não tem como voltar atrás. Arraste o botão \"Desfazer\" para perto da ação principal.",
+            heuristic: HEURISTICS.h3,
+            problemsFixed: 1,
+            setup: function (stage) {
+                addStaticLabel(stage, "Ação aplicada", 20, 20);
+                var acao = document.createElement("div");
+                acao.style.cssText = "position:absolute;left:20px;top:50px;width:160px;height:40px;background:#232228;border:1px solid #3a3a42;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;";
+                acao.textContent = "Arquivo movido";
+                stage.appendChild(acao);
+
+                var desfazer = addDragTarget(stage, {
+                    label: "Desfazer",
+                    color: "#FA397A",
+                    start: { x: 280, y: 320 },
+                    target: { x: 190, y: 50, w: 100, h: 40 }
+                });
+                return function check() { return desfazer.isSolved(); };
+            }
+        },
+
+        // ---------- 4. Consistência e padrões ----------
+        {
+            title: "Fase 4 — " + HEURISTICS.h4,
+            problem: "Botões inconsistentes",
+            text: "Os 3 botões \"Salvar\" têm estilos diferentes. Clique em cada um para padronizá-los.",
+            heuristic: HEURISTICS.h4,
+            problemsFixed: 1,
+            setup: function (stage) {
+                var estilos = [
+                    "background:#333;color:#fff;border-radius:2px;",
+                    "background:#FA397A;color:#000;border-radius:20px;",
+                    "background:transparent;color:#FA397A;border:1px solid #FA397A;border-radius:0;"
+                ];
+                var botoes = estilos.map(function (estilo, i) {
+                    var b = document.createElement("div");
+                    b.className = "rl-item";
+                    b.style.cssText = "position:absolute;left:20px;top:" + (20 + i * 60) + "px;width:120px;height:40px;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;" + estilo;
+                    b.textContent = "Salvar";
+                    var fixed = false;
+                    b.addEventListener("click", function () {
+                        fixed = true;
+                        b.style.cssText = "position:absolute;left:20px;top:" + (20 + i * 60) + "px;width:120px;height:40px;display:flex;align-items:center;justify-content:center;font-size:12px;background:#FA397A;color:#08080a;border-radius:10px;font-weight:700;";
+                    });
+                    b.dataset.check = "0";
+                    b.addEventListener("click", function () { b.dataset.check = fixed ? "1" : b.dataset.check; });
+                    stage.appendChild(b);
+                    return { el: b, isFixed: function () { return fixed; } };
+                });
+                return function check() { return botoes.every(function (b) { return b.isFixed(); }); };
+            }
+        },
+
+        // ---------- 5. Prevenção de erros ----------
+        {
+            title: "Fase 5 — " + HEURISTICS.h5,
+            problem: "Exclusão sem confirmação",
+            text: "O botão \"Excluir arquivo\" apaga na hora, sem confirmar. Clique nele para ativar a confirmação de segurança.",
+            heuristic: HEURISTICS.h5,
+            problemsFixed: 1,
+            setup: function (stage) {
+                var fix = addClickFix(stage, {
+                    x: 140, y: 180, w: 220, h: 50,
+                    textBefore: "Excluir arquivo",
+                    textAfter: "Excluir (confirmação ativada)",
+                    styleBefore: "background:rgba(250,57,122,0.15);border:1px solid #FA397A;color:#FA397A;font-weight:700;"
+                });
+                return function check() { return fix.isSolved(); };
+            }
+        },
+
+        // ---------- 6. Reconhecimento em vez de memorização ----------
+        {
+            title: "Fase 6 — " + HEURISTICS.h6,
+            problem: "Usuário precisa memorizar",
+            text: "O campo pede que o usuário lembre o código do produto de cabeça. Arraste a lista de produtos visível para perto do campo.",
+            heuristic: HEURISTICS.h6,
+            problemsFixed: 1,
+            setup: function (stage) {
+                addStaticLabel(stage, "Código do produto:", 20, 20);
+                var campo = document.createElement("div");
+                campo.style.cssText = "position:absolute;left:20px;top:44px;width:200px;height:34px;border:1px solid #3a3a42;border-radius:6px;";
+                stage.appendChild(campo);
+
+                var lista = addDragTarget(stage, {
+                    label: "📋 Lista de produtos",
+                    color: "#232228",
+                    start: { x: 260, y: 320 },
+                    target: { x: 20, y: 96, w: 200, h: 60 }
+                });
+                return function check() { return lista.isSolved(); };
+            }
+        },
+
+        // ---------- 7. Flexibilidade e eficiência de uso ----------
+        {
+            title: "Fase 7 — " + HEURISTICS.h7,
+            problem: "Processo longo demais",
+            text: "Esse processo tem passos redundantes. Remova os passos desnecessários e deixe só o essencial + o atalho rápido.",
+            heuristic: HEURISTICS.h7,
+            problemsFixed: 1,
+            setup: function (stage) {
+                var check = addDeclutterSet(stage, [
+                    { label: "Passo 1: Iniciar", necessario: true, x: 20, y: 20 },
+                    { label: "Passo 2: repetir", necessario: false, x: 170, y: 20 },
+                    { label: "Passo 3: repetir", necessario: false, x: 20, y: 80 },
+                    { label: "Passo 4: repetir", necessario: false, x: 170, y: 80 },
+                    { label: "Atalho rápido", necessario: true, x: 20, y: 140 }
+                ]);
+                return check;
+            }
+        },
+
+        // ---------- 8. Estética e design minimalista ----------
+        {
+            title: "Fase 8 — " + HEURISTICS.h8,
+            problem: "Tela poluída",
+            text: "Excesso de banners e avisos. Remova tudo o que não for conteúdo essencial, mantendo só os 2 cards.",
+            heuristic: HEURISTICS.h8,
+            problemsFixed: 1,
+            setup: function (stage) {
+                var check = addDeclutterSet(stage, [
+                    { label: "Banner", necessario: false, x: 20, y: 20 },
+                    { label: "Popup", necessario: false, x: 180, y: 20 },
+                    { label: "Aviso", necessario: false, x: 300, y: 20 },
+                    { label: "Card 1", necessario: true, x: 20, y: 90 },
+                    { label: "Card 2", necessario: true, x: 220, y: 90 },
+                    { label: "Banner", necessario: false, x: 20, y: 180 }
+                ]);
+                return check;
+            }
+        },
+
+        // ---------- 9. Ajudar a reconhecer, diagnosticar e corrigir erros ----------
+        {
+            title: "Fase 9 — " + HEURISTICS.h9,
+            problem: "Mensagem de erro confusa",
+            text: "O erro \"Erro 402\" não ajuda em nada. Clique nele para trocar por uma mensagem clara com solução.",
+            heuristic: HEURISTICS.h9,
+            problemsFixed: 1,
+            setup: function (stage) {
+                var fix = addClickFix(stage, {
+                    x: 100, y: 180, w: 260, h: 60,
+                    textBefore: "Erro 402",
+                    textAfter: "E-mail inválido. Verifique o formato e tente novamente.",
+                    styleBefore: "background:rgba(250,57,122,0.15);border:1px solid #FA397A;color:#FA397A;font-weight:700;"
+                });
+                return function check() { return fix.isSolved(); };
+            }
+        },
+
+        // ---------- 10. Ajuda e documentação ----------
+        {
+            title: "Fase 10 — " + HEURISTICS.h10,
+            problem: "Sem orientação para o usuário",
+            text: "O usuário não sabe como usar essa tela. Arraste o ícone de ajuda \"?\" para o canto da interface.",
+            heuristic: HEURISTICS.h10,
+            problemsFixed: 1,
+            setup: function (stage) {
+                addStaticLabel(stage, "Painel de configurações", 20, 20);
+                var ajuda = addDragTarget(stage, {
+                    label: "?",
+                    color: "#FA397A",
+                    start: { x: 20, y: 320 },
+                    target: { x: 400, y: 20, w: 40, h: 40 }
+                });
+                return function check() { return ajuda.isSolved(); };
+            }
+        }
+    ];
+
+    /* ==========================================================
+       LOCALSTORAGE — recorde e estatísticas gerais
+       ========================================================== */
+    function getStored(key, fallback) {
+        var v = localStorage.getItem(key);
+        return v === null ? fallback : parseInt(v, 10);
+    }
+    function setStored(key, value) {
+        try { localStorage.setItem(key, value); } catch (e) { /* localStorage indisponível: segue sem salvar */ }
+    }
+
+    function showRecordNote() {
+        var best = getStored(SCORING.storageKeyBest, 0);
+        elRecord.textContent = best;
+        elRecordNote.textContent = best > 0 ? ("Seu recorde UX: " + best + " pontos") : "Ainda sem recorde — essa pode ser a primeira run.";
+    }
+
+    function renderDots() {
+        elDots.innerHTML = "";
+        for (var i = 0; i < PHASES.length; i++) {
+            var dot = document.createElement("span");
+            dot.className = "rl-dot" + (i < state.phaseIndex ? " rl-dot-done" : "");
+            elDots.appendChild(dot);
+        }
+    }
+
+    /* ==========================================================
+       MOTOR DO JOGO
+       ========================================================== */
+    function renderPhase(index) {
+        var phase = PHASES[index];
+        elStage.innerHTML = "";
+        elFeedback.hidden = true;
+        elFeedback.className = "rl-feedback";
+        elNextBtn.hidden = true;
+        elCheckBtn.hidden = false;
+        elCheckBtn.disabled = false;
+
+        elPhaseInfo.textContent = "Fase " + (index + 1) + " de " + PHASES.length + " — " + phase.problem;
+        elProblemTitle.textContent = phase.title;
+        elProblemText.textContent = phase.text;
+
+        state.currentCheck = phase.setup(elStage);
+        state.phaseStartTime = Date.now();
+        renderDots();
+    }
+
+    function handleCheck() {
+        var phase = PHASES[state.phaseIndex];
+        var solved = state.currentCheck && state.currentCheck();
+
+        if (solved) {
+            var elapsedSeconds = (Date.now() - state.phaseStartTime) / 1000;
+            var bonus = elapsedSeconds <= SCORING.speedBonusSeconds ? SCORING.speedBonusPoints : 0;
+            var earned = SCORING.pointsPerPhase + bonus;
+
+            state.score += earned;
+            state.problemsFixed += phase.problemsFixed;
+            state.heuristicsUsed.add(phase.heuristic);
+            elScore.textContent = state.score;
+
+            setStored(SCORING.storageKeyTotal, getStored(SCORING.storageKeyTotal, 0) + earned);
+            setStored(SCORING.storageKeyPhases, getStored(SCORING.storageKeyPhases, 0) + 1);
+            setStored(SCORING.storageKeyCorrections, getStored(SCORING.storageKeyCorrections, 0) + phase.problemsFixed);
+
+            elFeedback.hidden = false;
+            elFeedback.className = "rl-feedback ok";
+            elFeedback.textContent = "Problema corrigido! +" + SCORING.pointsPerPhase + " pontos" +
+                (bonus ? (" (+" + bonus + " bônus de velocidade)") : "") +
+                ". Heurística: " + phase.heuristic + ".";
+            elCheckBtn.hidden = true;
+            elNextBtn.hidden = false;
+        } else {
+            state.score = Math.max(0, state.score - SCORING.errorPenaltyPoints);
+            elScore.textContent = state.score;
+            elFeedback.hidden = false;
+            elFeedback.className = "rl-feedback warn";
+            elFeedback.textContent = "Ainda existe um problema de usabilidade nessa tela. (-" + SCORING.errorPenaltyPoints + " pontos)";
+        }
+    }
+
+    function handleNext() {
+        state.phaseIndex++;
+        if (state.phaseIndex >= PHASES.length) {
+            finishGame();
+        } else {
+            renderPhase(state.phaseIndex);
+        }
+    }
+
+    function finishGame() {
+        elLab.hidden = true;
+        elSummary.hidden = false;
+        renderDots();
+
+        var best = getStored(SCORING.storageKeyBest, 0);
+        var isNewRecord = state.score > best;
+        if (isNewRecord) setStored(SCORING.storageKeyBest, state.score);
+
+        document.getElementById("rlSummaryText").textContent = isNewRecord
+            ? "Novo recorde UX! Todas as 10 heurísticas aplicadas."
+            : "Todas as 10 heurísticas aplicadas.";
+        document.getElementById("rlSummaryProblems").textContent = state.problemsFixed;
+        document.getElementById("rlSummaryHeuristics").textContent = state.heuristicsUsed.size;
+        document.getElementById("rlSummaryScore").textContent = state.score;
+        document.getElementById("rlSummaryRecord").textContent = Math.max(best, state.score);
+    }
+
+    function restartGame() {
+        state.phaseIndex = 0;
+        state.score = 0;
+        state.problemsFixed = 0;
+        state.heuristicsUsed = new Set();
+        elScore.textContent = "0";
+        elSummary.hidden = true;
+        elLab.hidden = false;
+        showRecordNote();
+        renderPhase(0);
+    }
+
+    elCheckBtn.addEventListener("click", handleCheck);
+    elNextBtn.addEventListener("click", handleNext);
+    document.getElementById("rlRestartBtn").addEventListener("click", restartGame);
+
+    // ---------- Início ----------
+    showRecordNote();
+    renderPhase(0);
+
+})();
+</script>
+
+</body>
+</html>
