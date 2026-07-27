@@ -4,15 +4,56 @@
 
 <!-- ==========================================================
      UX BIRD — Sobrevivendo ao Design Ruim
-     Jogo em arquivo único: HTML + CSS + JavaScript puro.
-     Física e obstáculos são desenhados em <canvas>. As telas de
-     início/fim são HTML sobrepostas ao canvas.
+     Jogo em arquivo único: HTML + CSS + JavaScript puro. Física
+     e obstáculos são desenhados em <canvas>. Telas de início/fim
+     são HTML sobrepostas ao canvas.
      Sem imagens, sem fontes externas, sem bibliotecas.
      ========================================================== -->
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>UX Bird — Sobrevivendo ao Design Ruim</title>
+<title>UX Bird — Sobrevivendo ao Design Ruim | Upixel Games</title>
+<meta name="description" content="UX Bird: desvie de pop-ups, banners de cookie e telas de erro nesse jogo estilo flappy bird sobre os pecados capitais do design de interfaces. Um jogo da Upixel.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#030303">
+<!-- Ajuste o domínio abaixo para a URL real de produção -->
+<link rel="canonical" href="https://upixel.com.br/games/gameuxbird.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel Games">
+<meta property="og:title" content="UX Bird — Sobrevivendo ao Design Ruim">
+<meta property="og:description" content="Desvie de pop-ups, banners de cookie e telas de erro nesse jogo sobre os pecados capitais do design de interfaces.">
+<meta property="og:url" content="https://upixel.com.br/games/gameuxbird.html">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UX Bird — Sobrevivendo ao Design Ruim">
+<meta name="twitter:description" content="Desvie de pop-ups, banners de cookie e telas de erro nesse jogo sobre os pecados capitais do design de interfaces.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "UX Bird — Sobrevivendo ao Design Ruim",
+  "description": "Jogo no estilo flappy bird em que o jogador desvia de obstáculos que representam problemas comuns de UX, como pop-ups, banners de cookie e telas de erro.",
+  "genre": "Arcade",
+  "gamePlatform": "Web Browser",
+  "applicationCategory": "Game",
+  "inLanguage": "pt-BR",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Upixel"
+  }
+}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
 
 <style>
 
@@ -49,9 +90,6 @@
 
     /* ==========================================================
        ÁREA DO JOGO
-       Container que ocupa a tela inteira. O canvas fica dentro
-       dele e é redimensionado via JS pra acompanhar o tamanho
-       real da tela (desktop ou celular).
        ========================================================== */
     #area-jogo {
         position: relative;
@@ -69,6 +107,35 @@
         height: 100%;
         display: block;
     }
+
+    /* ---------- Botão voltar (fixo, sempre visível) ----------
+       BUGFIX: antes esse botão não tinha NENHUM estilo (ficava
+       como texto azul padrão de link, sem posição definida) e
+       além disso o clique era interceptado pelo listener global
+       de "flap" da área do jogo, que chamava preventDefault() e
+       cancelava a navegação. Ver aoInteragir() no JS: agora ele
+       ignora cliques que caem em cima de um <a>.
+       ---------------------------------------------------------- */
+    .botao-voltar {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        z-index: 20;
+        font-family: var(--fonte-titulo);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        color: #fff;
+        text-decoration: none;
+        background: rgba(13, 13, 13, 0.85);
+        border: 2px solid var(--rosa);
+        border-radius: 999px;
+        padding: 8px 16px;
+        box-shadow: 0 0 10px rgba(250, 57, 122, 0.25);
+        transition: background .2s ease, transform .08s ease;
+    }
+    .botao-voltar:hover { background: rgba(250, 57, 122, 0.25); }
+    .botao-voltar:active { transform: scale(0.96); }
 
     /* ---------- HUD (pontuação + barra de progresso do recorde) ---------- */
     #hud-jogo {
@@ -262,6 +329,16 @@
         50%      { opacity: .7; transform: scale(1.05); }
     }
 
+    /* BUGFIX: esse botão existia no HTML mas não tinha nenhuma
+       regra própria — dependia só de .botao-pixel, o que deixava
+       sublinhado de link por cima e sem espaçamento da pontuação
+       acima dele. */
+    .botao-voltar-games {
+        display: inline-block;
+        margin-top: 14px;
+        text-decoration: none;
+    }
+
     /* ---------- FRASES AMBIENTE (flutuam durante o jogo) ---------- */
     #area-frases-flutuantes {
         position: absolute;
@@ -304,7 +381,7 @@
 <div id="area-jogo">
 
     <!-- Botão voltar -->
-<a href="games.html" class="botao-voltar">← Voltar</a>
+    <a href="games.html" class="botao-voltar">← Voltar</a>
 
     <canvas id="canvas-jogo"></canvas>
 
@@ -352,9 +429,7 @@
         <p id="aviso-novo-recorde" class="oculto">🏆 Novo recorde!</p>
 
         <button class="botao-pixel" id="botao-jogar-de-novo">Jogar novamente</button>
-        <a href="games.html" class="botao-pixel botao-voltar-games">
-    Voltar aos jogos
-</a>
+        <a href="games.html" class="botao-pixel botao-voltar-games">Sair para Games</a>
     </div>
 
 </div>
@@ -371,17 +446,13 @@
 
 // ----------------------------------------------------------
 // ÁREA DO JOGO
-// Canvas ocupa 100% do container. É redimensionado sempre que
-// a tela mudar de tamanho (rotação de celular, redimensionar
-// janela), usando devicePixelRatio pra ficar nítido em telas
-// de alta densidade (retina).
 // ----------------------------------------------------------
 const areaJogo = document.getElementById("area-jogo");
 const canvas = document.getElementById("canvas-jogo");
 const ctx = canvas.getContext("2d");
 
-let largura = 0;   // largura "lógica" (em pixels CSS) do jogo
-let altura = 0;     // altura "lógica" do jogo
+let largura = 0;
+let altura = 0;
 
 function redimensionarCanvas() {
     const dpr = window.devicePixelRatio || 1;
@@ -399,9 +470,6 @@ redimensionarCanvas();
 
 // ----------------------------------------------------------
 // ESTADOS DO JOGO
-// "inicio"  -> tela de título, jogo parado
-// "jogando" -> física e obstáculos ativos
-// "fim"     -> colidiu com alguma coisa, mostra resultado
 // ----------------------------------------------------------
 let estado = "inicio";
 
@@ -425,20 +493,17 @@ document.getElementById("recorde-inicio").textContent = lerRecorde();
 
 // ----------------------------------------------------------
 // FÍSICA DO PERSONAGEM
-// O jogador é um cursor de mouse desenhado com um caminho de
-// canvas (sem nenhuma imagem). Ele sofre gravidade constante;
-// cada clique/toque aplica um impulso pra cima ("flap").
 // ----------------------------------------------------------
-const GRAVIDADE = 1500;        // aceleração pra baixo, px/s²
-const IMPULSO_FLAP = -430;     // velocidade aplicada pra cima a cada clique
-const TAMANHO_CURSOR = 26;     // altura aproximada do cursor desenhado
+const GRAVIDADE = 1500;
+const IMPULSO_FLAP = -430;
+const TAMANHO_CURSOR = 26;
 
 const jogador = {
     x: 0,
     y: 0,
-    vy: 0,       // velocidade vertical atual
-    raio: 11,    // usado só pra colisão (círculo aproximado em volta do cursor)
-    angulo: 0    // inclinação visual (sobe = aponta pra cima, cai = aponta pra baixo)
+    vy: 0,
+    raio: 11,
+    angulo: 0
 };
 
 function reiniciarJogador() {
@@ -507,10 +572,16 @@ function desenharJogador() {
 
 // ----------------------------------------------------------
 // SISTEMA DE OBSTÁCULOS
-// Cada obstáculo é um par de blocos (topo/base) com uma folga
-// (gap) no meio, igual ao Flappy Bird — só que a "skin" de cada
-// par é sorteada entre problemas clássicos de UX. A física de
-// colisão é sempre a mesma; só o desenho muda por tipo.
+//
+// BUGFIX DE VISIBILIDADE: os 5 tipos de obstáculo usavam cores
+// de preenchimento quase idênticas ao fundo (#1a0d14, #241d0a,
+// #08181c, #1c0a0a, #12121a contra um fundo #030303), o que os
+// deixava praticamente invisíveis — em especial o "popup". Agora
+// cada tipo usa um preenchimento translúcido na cor de destaque
+// do próprio tipo + uma borda neon grossa com brilho (glow), o
+// que cria um contorno bem definido contra o fundo escuro. Além
+// disso cada tipo ganhou um rótulo de texto (POP-UP, COOKIES,
+// LOADING) pra ficar claro o que é, sem depender só da cor.
 // ----------------------------------------------------------
 const TIPOS_OBSTACULO = ["popup", "cookie", "loading", "erro", "menu"];
 
@@ -599,21 +670,37 @@ function desenharObstaculo(o) {
     }
 }
 
-function blocoBase(x, y, w, h, cor) {
+// Bloco base com contorno neon + brilho, pra sempre se destacar
+// contra o fundo escuro, não importa o tipo de obstáculo.
+function blocoBase(x, y, w, h, cor, corBorda) {
+    ctx.save();
+    ctx.shadowColor = corBorda || "#000";
+    ctx.shadowBlur = 6;
     ctx.fillStyle = cor;
-    ctx.strokeStyle = "#000";
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = corBorda || "#000";
+    ctx.lineWidth = 3;
     ctx.fillRect(x, y, w, h);
     ctx.strokeRect(x, y, w, h);
+    ctx.restore();
+}
+
+function blocoComRotulo(x, y, w, h, corFill, corBorda, rotulo) {
+    blocoBase(x, y, w, h, corFill, corBorda);
+    if (rotulo && h > 30) {
+        ctx.save();
+        ctx.fillStyle = corBorda;
+        ctx.font = "bold 10px monospace";
+        ctx.textAlign = "center";
+        ctx.shadowColor = corBorda;
+        ctx.shadowBlur = 4;
+        ctx.fillText(rotulo, x + w / 2, y + h / 2 + 4);
+        ctx.restore();
+    }
 }
 
 function desenharTipoPopup(o, hTopo, yBase, hBase) {
-    ctx.save();
-    ctx.shadowColor = "#FA397A";
-    ctx.shadowBlur = 10;
-    blocoBase(o.x, 0, LARGURA_OBSTACULO, hTopo, "#1a0d14");
-    blocoBase(o.x, yBase, LARGURA_OBSTACULO, hBase, "#1a0d14");
-    ctx.restore();
+    blocoComRotulo(o.x, 0, LARGURA_OBSTACULO, hTopo, "rgba(250, 57, 122, 0.22)", "#FA397A", "POP-UP");
+    blocoComRotulo(o.x, yBase, LARGURA_OBSTACULO, hBase, "rgba(250, 57, 122, 0.22)", "#FA397A", "POP-UP");
 
     const cx = o.x + LARGURA_OBSTACULO / 2;
     const cy = 16 + o.deslocamentoFechar * Math.max(0, hTopo - 32);
@@ -622,40 +709,33 @@ function desenharTipoPopup(o, hTopo, yBase, hBase) {
         ctx.arc(cx, cy, 9, 0, Math.PI * 2);
         ctx.fillStyle = "#FA3939";
         ctx.fill();
+        ctx.strokeStyle = "#fff";
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
         ctx.fillStyle = "#fff";
         ctx.font = "bold 11px monospace";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText("X", cx, cy + 1);
+        ctx.textBaseline = "alphabetic";
     }
 }
 
 function desenharTipoCookie(o, hTopo, yBase, hBase) {
-    ctx.save();
-    ctx.shadowColor = "#F5D742";
-    ctx.shadowBlur = 8;
-    blocoBase(o.x, 0, LARGURA_OBSTACULO, hTopo, "#241d0a");
-    blocoBase(o.x, yBase, LARGURA_OBSTACULO, hBase, "#241d0a");
-    ctx.restore();
-
-    if (hBase > 24) {
-        ctx.fillStyle = "#F5D742";
-        ctx.font = "9px monospace";
-        ctx.textAlign = "center";
-        ctx.fillText("COOKIES", o.x + LARGURA_OBSTACULO / 2, yBase + 18);
-    }
+    blocoComRotulo(o.x, 0, LARGURA_OBSTACULO, hTopo, "rgba(245, 215, 66, 0.20)", "#F5D742", "COOKIES");
+    blocoComRotulo(o.x, yBase, LARGURA_OBSTACULO, hBase, "rgba(245, 215, 66, 0.20)", "#F5D742", "COOKIES");
 }
 
 function desenharTipoLoading(o, hTopo, yBase, hBase) {
-    blocoBase(o.x, 0, LARGURA_OBSTACULO, hTopo, "#08181c");
-    blocoBase(o.x, yBase, LARGURA_OBSTACULO, hBase, "#08181c");
+    blocoComRotulo(o.x, 0, LARGURA_OBSTACULO, hTopo, "rgba(57, 233, 250, 0.18)", "#39E9FA", "LOADING");
+    blocoComRotulo(o.x, yBase, LARGURA_OBSTACULO, hBase, "rgba(57, 233, 250, 0.18)", "#39E9FA", "LOADING");
 
     ctx.save();
     ctx.beginPath();
     ctx.rect(o.x, 0, LARGURA_OBSTACULO, altura);
     ctx.clip();
 
-    ctx.strokeStyle = "#39E9FA";
+    ctx.strokeStyle = "rgba(57, 233, 250, 0.55)";
     ctx.lineWidth = 6;
     const deslocamento = (tempoTotalJogo * 90) % 24;
 
@@ -671,25 +751,25 @@ function desenharTipoLoading(o, hTopo, yBase, hBase) {
 function desenharTipoErro(o, hTopo, yBase, hBase) {
     const glitch = Math.sin(tempoTotalJogo * 30 + o.x) * 1.5;
 
-    ctx.save();
-    ctx.shadowColor = "#FA3939";
-    ctx.shadowBlur = 10;
-    blocoBase(o.x + glitch, 0, LARGURA_OBSTACULO, hTopo, "#1c0a0a");
-    blocoBase(o.x - glitch, yBase, LARGURA_OBSTACULO, hBase, "#1c0a0a");
-    ctx.restore();
+    blocoBase(o.x + glitch, 0, LARGURA_OBSTACULO, hTopo, "rgba(250, 57, 57, 0.22)", "#FA3939");
+    blocoBase(o.x - glitch, yBase, LARGURA_OBSTACULO, hBase, "rgba(250, 57, 57, 0.22)", "#FA3939");
 
+    ctx.save();
     ctx.fillStyle = "#FA3939";
     ctx.font = "bold 16px monospace";
     ctx.textAlign = "center";
+    ctx.shadowColor = "#FA3939";
+    ctx.shadowBlur = 8;
     if (hTopo > 20) ctx.fillText("!", o.x + LARGURA_OBSTACULO / 2, hTopo - 10);
     if (hBase > 20) ctx.fillText("!", o.x + LARGURA_OBSTACULO / 2, yBase + 22);
+    ctx.restore();
 }
 
 function desenharTipoMenu(o, hTopo, yBase, hBase) {
-    blocoBase(o.x, 0, LARGURA_OBSTACULO, hTopo, "#12121a");
-    blocoBase(o.x, yBase, LARGURA_OBSTACULO, hBase, "#12121a");
+    blocoBase(o.x, 0, LARGURA_OBSTACULO, hTopo, "rgba(139, 139, 214, 0.20)", "#8b8bd6");
+    blocoBase(o.x, yBase, LARGURA_OBSTACULO, hBase, "rgba(139, 139, 214, 0.20)", "#8b8bd6");
 
-    ctx.strokeStyle = "#8b8bd6";
+    ctx.strokeStyle = "#c2c2f0";
     ctx.lineWidth = 3;
 
     function linhasMenu(yInicio, altura) {
@@ -711,9 +791,6 @@ function desenharTipoMenu(o, hTopo, yBase, hBase) {
 
 // ----------------------------------------------------------
 // PONTUAÇÃO
-// Some 1 ponto a cada obstáculo atravessado. A barrinha do HUD
-// mostra o quão perto (ou quanto já passou) o jogador está do
-// próprio recorde salvo.
 // ----------------------------------------------------------
 let pontuacao = 0;
 const hudPontuacao = document.getElementById("hud-pontuacao");
@@ -739,8 +816,6 @@ function atualizarBarraRecorde() {
 
 // ----------------------------------------------------------
 // FRASES ENGRAÇADAS
-// Aparecem flutuando de vez em quando durante o jogo (efeito
-// "toast") e uma delas é escolhida pra tela de fim.
 // ----------------------------------------------------------
 const FRASES_UX = [
     "Você clicou no botão errado.",
@@ -881,11 +956,17 @@ function finalizarJogo() {
 
 // ----------------------------------------------------------
 // CONTROLE DE TOQUE / CLIQUE
-// Um único gesto (clique do mouse ou toque na tela) sempre
-// significa "flap". Na tela de início ele começa o jogo;
-// jogando, ele impulsiona o cursor pra cima.
+//
+// BUGFIX: esse listener global de "flap" ficava no #area-jogo,
+// que é o pai de TODOS os botões de link (voltar, sair). Como
+// ele sempre chamava preventDefault(), qualquer clique nesses
+// links era cancelado e o link nunca navegava — na prática, os
+// botões "← Voltar" e "Sair para Games" pareciam não fazer nada.
+// Agora, se o alvo do clique for (ou estiver dentro de) um <a>,
+// deixamos o navegador seguir o link normalmente.
 // ----------------------------------------------------------
 function aoInteragir(evento) {
+    if (evento.target.closest("a")) return;
     evento.preventDefault();
     flap();
 }
@@ -912,8 +993,6 @@ document.getElementById("botao-jogar-de-novo").addEventListener("click", functio
 
 // ----------------------------------------------------------
 // LOOP PRINCIPAL
-// requestAnimationFrame com deltaTime, pra física se comportar
-// igual em qualquer taxa de atualização de tela.
 // ----------------------------------------------------------
 let ultimoQuadro = null;
 
