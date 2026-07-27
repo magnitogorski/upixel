@@ -1402,12 +1402,12 @@ body {
    UPIXEL FEED ABERTO (post individual)
 ========================================================== */
 
-.pagina-feed-aberto {
+.pagina-besteirol {
     max-width: 760px;
     margin: 0 auto;
 }
 
-.pagina-feed-aberto .midia-principal {
+.pagina-besteirol .midia-principal {
     position: relative;
     width: 100%;
     margin: 30px 0 20px;
@@ -1416,8 +1416,8 @@ body {
     background: #000;
 }
 
-.pagina-feed-aberto .midia-principal img,
-.pagina-feed-aberto .midia-principal video {
+.pagina-besteirol .midia-principal img,
+.pagina-besteirol .midia-principal video {
     width: 100%;
     max-height: 520px;
     object-fit: contain;
@@ -1436,11 +1436,11 @@ body {
     z-index: 2;
 }
 
-.pagina-feed-aberto .voltar {
+.pagina-besteirol .voltar {
     margin: 35px 0;
 }
 
-.pagina-feed-aberto .categoria-feed {
+.pagina-besteirol .categoria-feed {
     display: table;
     margin: 20px auto;
     padding: 6px 14px;
@@ -1451,7 +1451,7 @@ body {
     font-weight: 600;
 }
 
-.pagina-feed-aberto .categoria-feed.sobre-midia {
+.pagina-besteirol .categoria-feed.sobre-midia {
     position: absolute;
     top: 14px;
     left: 14px;
@@ -1459,7 +1459,7 @@ body {
     z-index: 2;
 }
 
-.pagina-feed-aberto .titulo-feed {
+.pagina-besteirol .titulo-feed {
     text-align: left;
     color: white;
     margin: 0 auto 16px;
@@ -1469,12 +1469,12 @@ body {
     width: min(650px, calc(100% - 40px));
 }
 
-.pagina-feed-aberto .conteudo-feed {
+.pagina-besteirol .conteudo-feed {
     color: white;
     line-height: 1.7;
 }
 
-.pagina-feed-aberto .resumo-feed {
+.pagina-besteirol .resumo-feed {
     text-align: center;
     font-size: 21px;
     margin-bottom: 40px;
@@ -1482,7 +1482,7 @@ body {
     line-height: 1.5;
 }
 
-.pagina-feed-aberto .comentario-upixel,
+.pagina-besteirol .comentario-upixel,
 .comentario-upixel {
     background: #080808;
     border: 1px solid #161616;
@@ -1492,7 +1492,7 @@ body {
     margin: 40px 0;
 }
 
-.pagina-feed-aberto .comentario-upixel h2 {
+.pagina-besteirol .comentario-upixel h2 {
     color: #FA397A;
     font-family: "Pixelify Sans", sans-serif;
     font-size: 20px;
@@ -1586,24 +1586,24 @@ body {
     color: #000;
 }
 
-.pagina-feed-aberto .mais-feed {
+.pagina-besteirol .mais-feed {
     width: min(650px, calc(100% - 40px));
     margin: 70px auto 0;
     text-align: center;
 }
 
-.pagina-feed-aberto .mais-feed h2 {
+.pagina-besteirol .mais-feed h2 {
     margin-bottom: 20px;
 }
 
-.pagina-feed-aberto .mais-feed p {
+.pagina-besteirol .mais-feed p {
     margin: 0 auto 35px;
     max-width: 500px;
     line-height: 1.6;
     color: #999;
 }
 
-.pagina-feed-aberto .botao-mais-artigos {
+.pagina-besteirol .botao-mais-artigos {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2672,16 +2672,16 @@ input[type="submit"]:hover {
         text-align: center;
     }
 
-    .pagina-feed-aberto {
+    .pagina-besteirol {
         width: calc(100% - 40px);
     }
 
-    .pagina-feed-aberto .midia-principal img,
-    .pagina-feed-aberto .midia-principal video {
+    .pagina-besteirol .midia-principal img,
+    .pagina-besteirol .midia-principal video {
         max-height: 320px;
     }
 
-    .pagina-feed-aberto .titulo-feed {
+    .pagina-besteirol .titulo-feed {
         font-size: 18px;
     }
 
