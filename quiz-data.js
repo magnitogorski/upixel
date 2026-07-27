@@ -30,7 +30,7 @@ const QUESTOES = [
 
 {
     id:"cachorro-01",
-    tags:["cachorros"],
+    tags:["Raças de cachorro"],
     pergunta:"Qual destas raças acredita que é um cachorro de colo, mesmo pesando quase 80 kg?",
     respostas:[
         "São Bernardo",
@@ -45,7 +45,7 @@ const QUESTOES = [
 
 {
     id:"cachorro-02",
-    tags:["cachorros"],
+    tags:["Raças de cachorro"],
     pergunta:"Qual raça é conhecida por tremer mais que Wi-Fi em dia de chuva?",
     respostas:[
         "Chihuahua",
@@ -60,7 +60,7 @@ const QUESTOES = [
 
 {
     id:"cachorro-03",
-    tags:["cachorros"],
+    tags:["Raças de cachorro"],
     pergunta:"Qual destas raças provavelmente venderia sua alma por um pedaço de pão?",
     respostas:[
         "Labrador",
@@ -75,7 +75,7 @@ const QUESTOES = [
 
 {
     id:"cachorro-04",
-    tags:["cachorros"],
+    tags:["Raças de cachorro"],
     pergunta:"Qual raça costuma conversar mais do que obedecer?",
     respostas:[
         "Husky Siberiano",
@@ -90,7 +90,7 @@ const QUESTOES = [
 
 {
     id:"cachorro-05",
-    tags:["cachorros"],
+    tags:["Raças de cachorro"],
     pergunta:"Qual destas raças foi criada para pastorear e acaba tentando organizar até as crianças da casa?",
     respostas:[
         "Border Collie",
@@ -105,7 +105,7 @@ const QUESTOES = [
 
 {
     id:"cachorro-06",
-    tags:["cachorros"],
+    tags:["Raças de cachorro"],
     pergunta:"Qual raça tem fama de latir para uma folha caindo a três quarteirões de distância?",
     respostas:[
         "Pinscher",
@@ -120,7 +120,7 @@ const QUESTOES = [
 
 {
     id:"cachorro-07",
-    tags:["cachorros"],
+    tags:["Raças de cachorro"],
     pergunta:"Qual raça parece ter um doutorado em cara de triste mesmo estando feliz?",
     respostas:[
         "Basset Hound",
@@ -135,7 +135,7 @@ const QUESTOES = [
 
 {
     id:"cachorro-08",
-    tags:["cachorros"],
+    tags:["Raças de cachorro"],
     pergunta:"Qual raça solta tanto pelo que você passa a considerar comprar um aspirador industrial?",
     respostas:[
         "Golden Retriever",
@@ -150,7 +150,7 @@ const QUESTOES = [
 
 {
     id:"cachorro-09",
-    tags:["cachorros"],
+    tags:["Raças de cachorro"],
     pergunta:"Qual destas raças foi criada para caçar texugos entrando em tocas?",
     respostas:[
         "Dachshund",
@@ -165,7 +165,7 @@ const QUESTOES = [
 
 {
     id:"cachorro-10",
-    tags:["cachorros"],
+    tags:["Raças de cachorro"],
     pergunta:"Qual é a única raça capaz de fazer você dizer 'não sobe no sofá' e cinco segundos depois estar dormindo no seu travesseiro?",
     respostas:[
         "Todas as anteriores",
@@ -1543,16 +1543,16 @@ const PONTOS_POR_ACERTO = 10;
 
 // Slug de cada categoria -> usado no nome do arquivo (quiz-<slug>.html)
 const CATEGORIA_SLUGS = {
-    "Raças de Cachorros": "raças-de-cachorros",
+    "Raças de Cachorro": "raças-de-cachorro",
     "IA": "ia",
     "WCAG": "wcag",
     "UX": "ux",
-    "Interfaces UI": "interfaceui",
-    "The Office": "office",
+    "Interfaces UI": "design-de-interface",
+    "The Office": "voce-conhece-the-office",
     "Tecnologia": "tecnologia",
     "Memes": "memes",
     "Breaking Bad": "breaking-bad",
-    "Games": "games"
+    "Games": "cultura-gamer"
 };
 
 // Lê todas as tags usadas em QUESTOES (usado por quiz.html para
