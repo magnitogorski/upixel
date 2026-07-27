@@ -2788,3 +2788,385 @@ input[type="submit"]:hover {
         flex-direction: column;
     }
 }
+/* ==============================================================
+   ESTILOS DO QUIZ
+
+   Compartilhado por quiz.html e por todas as páginas
+   quiz-<categoria>.html. Reaproveita as mesmas cores e fontes do
+   resto do site (#FA397A, fundo preto, Pixelify Sans).
+   ============================================================== */
+
+.pagina-quiz {
+    max-width: 720px;
+    margin: 80px auto;
+    padding: 0 24px;
+}
+
+.quiz-cabecalho {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.quiz-cabecalho h1 {
+    color: #FFFFFF;
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.quiz-cabecalho p {
+    color: #9D9D9D;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* ---------- SELEÇÃO DE CATEGORIA (quiz.html) ----------
+   Grade de cards, um por categoria, montada pelo JS a partir
+   de quiz-data.js. Cada card leva pra quiz-<slug>.html. */
+
+.categoria-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.categoria-picker-item {
+    display: block;
+    text-decoration: none;
+    background: #080808;
+    border: 1px solid #161616;
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.categoria-picker-item:hover {
+    border-color: #FA397A;
+    color: #FA397A;
+}
+
+.categoria-picker-item .categoria-picker-contagem {
+    display: block;
+    color: #9D9D9D;
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 8px;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* ---------- CARD DA PERGUNTA ---------- */
+
+.quiz-card {
+    background: #080808;
+    border: 1px solid #161616;
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.quiz-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.quiz-tag {
+    display: inline-block;
+    border: 1px solid #FA397A;
+    color: #FA397A;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.quiz-pergunta {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 28px;
+}
+
+.quiz-respostas {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.quiz-resposta {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: #131313;
+    border: 1px solid #2A2A2A;
+    border-radius: 10px;
+    padding: 16px 20px;
+    color: #E5E5E5;
+    font-size: 16px;
+    font-family: "Segoe UI", sans-serif;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.quiz-resposta:hover:not(:disabled) {
+    border-color: #FA397A;
+}
+
+.quiz-resposta:disabled {
+    cursor: default;
+}
+
+.quiz-resposta.correta {
+    background: rgba(47, 190, 122, 0.15);
+    border-color: #2FBE7A;
+    color: #fff;
+}
+
+.quiz-resposta.errada {
+    background: rgba(250, 57, 57, 0.12);
+    border-color: #FA3939;
+    color: #fff;
+}
+
+.quiz-feedback {
+    margin-top: 24px;
+    padding: 18px 20px;
+    border-radius: 10px;
+    background: #111;
+    color: #B5B5B5;
+    font-size: 15px;
+    line-height: 1.6;
+    display: none;
+}
+
+.quiz-feedback.visivel {
+    display: block;
+}
+
+.quiz-rodape-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.quiz-progresso {
+    color: #777;
+    font-size: 14px;
+}
+
+.quiz-progresso #quiz-cronometro {
+    color: #FA397A;
+    font-weight: 700;
+}
+
+.botao-proxima {
+    display: none;
+    background: #FA397A;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.botao-proxima.visivel {
+    display: inline-block;
+}
+
+.botao-proxima:hover {
+    opacity: .85;
+}
+
+/* ---------- TELA FINAL DO QUIZ ---------- */
+
+.quiz-fim {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.quiz-fim h2 {
+    color: #FA397A;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.quiz-fim p {
+    color: #B5B5B5;
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+.quiz-fim-stats {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.stat-item {
+    background: #131313;
+    border: 1px solid #2A2A2A;
+    border-radius: 10px;
+    padding: 18px 26px;
+    min-width: 120px;
+}
+
+.stat-numero {
+    display: block;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.stat-legenda {
+    display: block;
+    color: #999;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.quiz-fim-botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.botao-refazer,
+.botao-outra-categoria {
+    display: inline-block;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .25s;
+    font-family: "Segoe UI", sans-serif;
+    text-decoration: none;
+}
+
+.botao-refazer {
+    background: #FA397A;
+    color: #000;
+    border: none;
+}
+
+.botao-refazer:hover {
+    opacity: .85;
+}
+
+.botao-outra-categoria {
+    background: transparent;
+    color: #FA397A;
+    border: 2px solid #FA397A;
+}
+
+.botao-outra-categoria:hover {
+    background: #FA397A;
+    color: #000;
+}
+
+/* ---------- ÍCONE DISCRETO: COMPARTILHAR NO LINKEDIN ---------- */
+
+.compartilhar-linkedin-discreto {
+    display: flex;
+    justify-content: center;
+    margin-top: 22px;
+}
+
+.icone-linkedin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: .55;
+    transition: .25s;
+}
+
+.icone-linkedin:hover {
+    opacity: 1;
+    background: rgba(250, 57, 122, 0.12);
+}
+
+.icone-linkedin svg {
+    width: 18px;
+    height: 18px;
+}
+
+@media (max-width: 600px) {
+    .quiz-cabecalho h1 {
+        font-size: 32px;
+    }
+
+    .quiz-card {
+        padding: 22px;
+    }
+
+    .quiz-pergunta {
+        font-size: 20px;
+    }
+
+    .quiz-fim-stats {
+        gap: 10px;
+    }
+
+    .stat-item {
+        min-width: 100px;
+        padding: 14px 18px;
+    }
+}
+
+
+
+
+
+
+
+/* ==========================================================
+   HEADER — RESPONSIVIDADE MOBILE (Etapa 3)
+
+   Só afeta telas até 768px. Não remove, renomeia ou cria
+   nenhum item do menu — apenas empilha o que já existe.
+   O desktop (acima de 768px) continua exatamente como está.
+   ========================================================== */
+@media (max-width: 768px) {
+
+    .meu-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .meu-header .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+}
