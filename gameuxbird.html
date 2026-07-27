@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<!-- ==========================================================
+     UX BIRD — Sobrevivendo ao Design Ruim
+     Jogo em arquivo único: HTML + CSS + JavaScript puro.
+     Física e obstáculos são desenhados em <canvas>. As telas de
+     início/fim são HTML sobrepostas ao canvas.
+     Sem imagens, sem fontes externas, sem bibliotecas.
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>UX Bird — Sobrevivendo ao Design Ruim</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
+
+    :root {
+        --preto: #030303;
+        --carta: #0d0d0d;
+        --borda: #262626;
+        --rosa: #FA397A;
+        --ciano: #39E9FA;
+        --amarelo: #F5D742;
+        --vermelho: #FA3939;
+        --texto: #FFFFFF;
+        --texto-fraco: #9D9D9D;
+        --fonte: "Segoe UI", Verdana, sans-serif;
+        --fonte-titulo: "Courier New", Consolas, monospace;
+    }
+
+    html, body {
+        width: 100%;
+        height: 100%;
+        background: var(--preto);
+        overflow: hidden;
+        font-family: var(--fonte);
+        color: var(--texto);
+    }
+
+    /* ==========================================================
+       ÁREA DO JOGO
+       Container que ocupa a tela inteira. O canvas fica dentro
+       dele e é redimensionado via JS pra acompanhar o tamanho
+       real da tela (desktop ou celular).
+       ========================================================== */
+    #area-jogo {
+        position: relative;
+        width: 100%;
+        height: 100dvh;
+        overflow: hidden;
+        touch-action: none;
+    }
+
+    #canvas-jogo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    /* ---------- HUD (pontuação + barra de progresso do recorde) ---------- */
+    #hud-jogo {
+        position: absolute;
+        top: 18px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    #hud-pontuacao {
+        font-family: var(--fonte-titulo);
+        font-size: 42px;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 0 12px var(--rosa), 0 0 24px rgba(250, 57, 122, .5);
+    }
+
+    #hud-recorde-caixa {
+        width: min(220px, 60%);
+        height: 6px;
+        background: rgba(255, 255, 255, .08);
+        border-radius: 999px;
+        overflow: hidden;
+    }
+
+    #hud-recorde-barra {
+        height: 100%;
+        width: 0%;
+        background: var(--ciano);
+        box-shadow: 0 0 8px var(--ciano);
+        transition: width .2s linear, background-color .3s;
+        border-radius: 999px;
+    }
+
+    #hud-recorde-barra.superado {
+        background: var(--amarelo);
+        box-shadow: 0 0 10px var(--amarelo);
+    }
+
+    /* ---------- TELAS DE OVERLAY (início / fim) ---------- */
+    .tela-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 24px;
+        background: rgba(3, 3, 3, .78);
+        backdrop-filter: blur(2px);
+    }
+
+    .oculto {
+        display: none !important;
+    }
+
+    #tela-inicio h1 {
+        font-family: var(--fonte-titulo);
+        font-size: clamp(28px, 7vw, 48px);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #fff;
+        text-shadow: 0 0 14px var(--rosa);
+        margin-bottom: 8px;
+    }
+
+    #tela-inicio h1 span {
+        color: var(--rosa);
+    }
+
+    .subtitulo-jogo {
+        color: var(--ciano);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 22px;
+    }
+
+    .instrucoes-jogo {
+        color: var(--texto-fraco);
+        font-size: 15px;
+        max-width: 380px;
+        line-height: 1.6;
+        margin-bottom: 26px;
+    }
+
+    .recorde-linha {
+        color: var(--texto-fraco);
+        font-size: 13px;
+        margin-top: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .recorde-linha strong {
+        color: var(--amarelo);
+        font-size: 16px;
+    }
+
+    /* ---------- BOTÃO PIXEL (mesmo estilo do resto do site) ---------- */
+    .botao-pixel {
+        font-family: var(--fonte-titulo);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: var(--rosa);
+        color: #000;
+        border: 3px solid #000;
+        box-shadow: 5px 5px 0 var(--borda);
+        padding: 16px 30px;
+        font-size: 16px;
+        cursor: pointer;
+        touch-action: manipulation;
+        transition: transform .08s, box-shadow .08s;
+    }
+
+    .botao-pixel:active {
+        transform: translate(4px, 4px);
+        box-shadow: 1px 1px 0 var(--borda);
+    }
+
+    /* ---------- TELA DE FIM ---------- */
+    #tela-fim h2 {
+        font-family: var(--fonte-titulo);
+        font-size: clamp(24px, 6vw, 36px);
+        color: var(--vermelho);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        text-shadow: 0 0 12px rgba(250, 57, 57, .5);
+    }
+
+    .frase-morte {
+        color: var(--texto-fraco);
+        font-style: italic;
+        font-size: 15px;
+        max-width: 380px;
+        margin-bottom: 22px;
+        min-height: 20px;
+    }
+
+    .estatisticas-fim {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .estat-item {
+        background: var(--carta);
+        border: 3px solid #000;
+        box-shadow: 4px 4px 0 var(--borda);
+        padding: 14px 22px;
+        min-width: 110px;
+    }
+
+    .estat-item strong {
+        display: block;
+        font-family: var(--fonte-titulo);
+        font-size: 26px;
+        color: var(--ciano);
+        margin-bottom: 4px;
+    }
+
+    .estat-item span {
+        font-size: 11px;
+        color: var(--texto-fraco);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    #aviso-novo-recorde {
+        color: var(--amarelo);
+        font-family: var(--fonte-titulo);
+        font-size: 14px;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px rgba(245, 215, 66, .6);
+        animation: pulsarRecorde 1s ease-in-out infinite;
+    }
+
+    @keyframes pulsarRecorde {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50%      { opacity: .7; transform: scale(1.05); }
+    }
+
+    /* ---------- FRASES AMBIENTE (flutuam durante o jogo) ---------- */
+    #area-frases-flutuantes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 6;
+        overflow: hidden;
+    }
+
+    .frase-flutuante-toast {
+        position: absolute;
+        top: 90px;
+        right: 16px;
+        max-width: 220px;
+        background: var(--carta);
+        border: 2px solid var(--rosa);
+        color: #fff;
+        font-size: 12px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        box-shadow: 0 0 14px rgba(250, 57, 122, .35);
+        animation: entrarSairToast 2.6s ease-in-out forwards;
+    }
+
+    @keyframes entrarSairToast {
+        0%   { opacity: 0; transform: translateX(30px); }
+        12%  { opacity: 1; transform: translateX(0); }
+        85%  { opacity: 1; transform: translateX(0); }
+        100% { opacity: 0; transform: translateX(30px); }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div id="area-jogo">
+
+    <!-- Botão voltar -->
+<a href="games.html" class="botao-voltar">← Voltar</a>
+
+    <canvas id="canvas-jogo"></canvas>
+
+    <!-- HUD: pontuação ao vivo + barrinha de progresso até bater o recorde -->
+    <div id="hud-jogo" class="oculto">
+        <div id="hud-pontuacao">0</div>
+        <div id="hud-recorde-caixa">
+            <div id="hud-recorde-barra"></div>
+        </div>
+    </div>
+
+    <!-- frases engraçadas que flutuam durante a partida -->
+    <div id="area-frases-flutuantes"></div>
+
+    <!-- ================= TELA DE INÍCIO ================= -->
+    <div class="tela-overlay" id="tela-inicio">
+        <h1>UX <span>Bird</span></h1>
+        <p class="subtitulo-jogo">Sobrevivendo ao Design Ruim</p>
+        <p class="instrucoes-jogo">
+            Clique, toque ou aperte espaço pra fazer o cursor subir.
+            Sem interação, ele cai — igual qualquer usuário largado
+            numa interface ruim. Atravesse pop-ups, banners de cookie
+            e outras armadilhas de UX.
+        </p>
+        <button class="botao-pixel" id="botao-comecar">Começar</button>
+        <p class="recorde-linha">Recorde: <strong id="recorde-inicio">0</strong></p>
+    </div>
+
+    <!-- ================= TELA DE FIM DE JOGO ================= -->
+    <div class="tela-overlay oculto" id="tela-fim">
+        <h2>Sessão encerrada</h2>
+        <p class="frase-morte" id="frase-morte"></p>
+
+        <div class="estatisticas-fim">
+            <div class="estat-item">
+                <strong id="fim-pontuacao">0</strong>
+                <span>Pontuação</span>
+            </div>
+            <div class="estat-item">
+                <strong id="fim-recorde">0</strong>
+                <span>Recorde</span>
+            </div>
+        </div>
+
+        <p id="aviso-novo-recorde" class="oculto">🏆 Novo recorde!</p>
+
+        <button class="botao-pixel" id="botao-jogar-de-novo">Jogar novamente</button>
+        <a href="games.html" class="botao-pixel botao-voltar-games">
+    Voltar aos jogos
+</a>
+    </div>
+
+</div>
+
+
+<script>
+
+// ==========================================================
+// UX BIRD — lógica do jogo
+// Seções: Área do jogo · Física do personagem · Sistema de
+// obstáculos · Pontuação · Controle de toque/clique · Estados
+// ==========================================================
+
+
+// ----------------------------------------------------------
+// ÁREA DO JOGO
+// Canvas ocupa 100% do container. É redimensionado sempre que
+// a tela mudar de tamanho (rotação de celular, redimensionar
+// janela), usando devicePixelRatio pra ficar nítido em telas
+// de alta densidade (retina).
+// ----------------------------------------------------------
+const areaJogo = document.getElementById("area-jogo");
+const canvas = document.getElementById("canvas-jogo");
+const ctx = canvas.getContext("2d");
+
+let largura = 0;   // largura "lógica" (em pixels CSS) do jogo
+let altura = 0;     // altura "lógica" do jogo
+
+function redimensionarCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    largura = areaJogo.clientWidth;
+    altura = areaJogo.clientHeight;
+
+    canvas.width = largura * dpr;
+    canvas.height = altura * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+window.addEventListener("resize", redimensionarCanvas);
+redimensionarCanvas();
+
+
+// ----------------------------------------------------------
+// ESTADOS DO JOGO
+// "inicio"  -> tela de título, jogo parado
+// "jogando" -> física e obstáculos ativos
+// "fim"     -> colidiu com alguma coisa, mostra resultado
+// ----------------------------------------------------------
+let estado = "inicio";
+
+const hudJogo = document.getElementById("hud-jogo");
+const telaInicio = document.getElementById("tela-inicio");
+const telaFim = document.getElementById("tela-fim");
+const areaFrasesFlutuantes = document.getElementById("area-frases-flutuantes");
+
+const CHAVE_RECORDE = "uxbird-recorde";
+
+function lerRecorde() {
+    return parseInt(localStorage.getItem(CHAVE_RECORDE) || "0", 10);
+}
+
+function salvarRecorde(valor) {
+    localStorage.setItem(CHAVE_RECORDE, String(valor));
+}
+
+document.getElementById("recorde-inicio").textContent = lerRecorde();
+
+
+// ----------------------------------------------------------
+// FÍSICA DO PERSONAGEM
+// O jogador é um cursor de mouse desenhado com um caminho de
+// canvas (sem nenhuma imagem). Ele sofre gravidade constante;
+// cada clique/toque aplica um impulso pra cima ("flap").
+// ----------------------------------------------------------
+const GRAVIDADE = 1500;        // aceleração pra baixo, px/s²
+const IMPULSO_FLAP = -430;     // velocidade aplicada pra cima a cada clique
+const TAMANHO_CURSOR = 26;     // altura aproximada do cursor desenhado
+
+const jogador = {
+    x: 0,
+    y: 0,
+    vy: 0,       // velocidade vertical atual
+    raio: 11,    // usado só pra colisão (círculo aproximado em volta do cursor)
+    angulo: 0    // inclinação visual (sobe = aponta pra cima, cai = aponta pra baixo)
+};
+
+function reiniciarJogador() {
+    jogador.x = largura * 0.26;
+    jogador.y = altura / 2;
+    jogador.vy = 0;
+    jogador.angulo = 0;
+}
+
+function atualizarFisica(dt) {
+    jogador.vy += GRAVIDADE * dt;
+    jogador.y += jogador.vy * dt;
+
+    const anguloAlvo = Math.max(-0.5, Math.min(1.1, jogador.vy / 500));
+    jogador.angulo += (anguloAlvo - jogador.angulo) * 0.15;
+
+    if (jogador.y - jogador.raio <= 0) {
+        jogador.y = jogador.raio;
+        colidir();
+    }
+    if (jogador.y + jogador.raio >= altura) {
+        jogador.y = altura - jogador.raio;
+        colidir();
+    }
+}
+
+function flap() {
+    if (estado === "inicio") {
+        iniciarJogo();
+        return;
+    }
+    if (estado === "fim") return;
+
+    jogador.vy = IMPULSO_FLAP;
+    criarEfeitoClique(jogador.x, jogador.y);
+}
+
+function desenharJogador() {
+    ctx.save();
+    ctx.translate(jogador.x, jogador.y);
+    ctx.rotate(jogador.angulo * 0.5);
+    ctx.scale(TAMANHO_CURSOR / 20, TAMANHO_CURSOR / 20);
+
+    ctx.shadowColor = "#FA397A";
+    ctx.shadowBlur = 16;
+
+    ctx.beginPath();
+    ctx.moveTo(-6, -10);
+    ctx.lineTo(-6, 8);
+    ctx.lineTo(-2, 4.5);
+    ctx.lineTo(1.5, 11);
+    ctx.lineTo(4.5, 9.7);
+    ctx.lineTo(1.2, 3.2);
+    ctx.lineTo(6.5, 3.2);
+    ctx.closePath();
+
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.lineWidth = 1.4;
+    ctx.strokeStyle = "#FA397A";
+    ctx.stroke();
+
+    ctx.restore();
+}
+
+
+// ----------------------------------------------------------
+// SISTEMA DE OBSTÁCULOS
+// Cada obstáculo é um par de blocos (topo/base) com uma folga
+// (gap) no meio, igual ao Flappy Bird — só que a "skin" de cada
+// par é sorteada entre problemas clássicos de UX. A física de
+// colisão é sempre a mesma; só o desenho muda por tipo.
+// ----------------------------------------------------------
+const TIPOS_OBSTACULO = ["popup", "cookie", "loading", "erro", "menu"];
+
+const LARGURA_OBSTACULO = 74;
+const MARGEM_VERTICAL = 60;
+
+let obstaculos = [];
+let tempoDesdeUltimoObstaculo = 0;
+
+function dificuldadeAtual() {
+    return {
+        velocidade: Math.min(430, 230 + pontuacao * 7),
+        gap: Math.max(148, 210 - pontuacao * 3),
+        intervalo: Math.max(1.05, 1.7 - pontuacao * 0.018)
+    };
+}
+
+function criarObstaculo() {
+    const dif = dificuldadeAtual();
+    const gapY = MARGEM_VERTICAL + Math.random() * (altura - MARGEM_VERTICAL * 2 - dif.gap);
+
+    obstaculos.push({
+        x: largura + LARGURA_OBSTACULO,
+        gapY: gapY,
+        gapAltura: dif.gap,
+        tipo: TIPOS_OBSTACULO[Math.floor(Math.random() * TIPOS_OBSTACULO.length)],
+        passou: false,
+        deslocamentoFechar: Math.random()
+    });
+}
+
+function atualizarObstaculos(dt) {
+    const dif = dificuldadeAtual();
+
+    tempoDesdeUltimoObstaculo += dt;
+    if (tempoDesdeUltimoObstaculo >= dif.intervalo) {
+        tempoDesdeUltimoObstaculo = 0;
+        criarObstaculo();
+    }
+
+    obstaculos.forEach(obstaculo => {
+        obstaculo.x -= dif.velocidade * dt;
+
+        if (!obstaculo.passou && obstaculo.x + LARGURA_OBSTACULO < jogador.x) {
+            obstaculo.passou = true;
+            somarPonto();
+        }
+    });
+
+    obstaculos = obstaculos.filter(o => o.x + LARGURA_OBSTACULO > -20);
+}
+
+function verificarColisaoObstaculos() {
+    for (const obstaculo of obstaculos) {
+        const dentroDaFaixaX =
+            jogador.x + jogador.raio > obstaculo.x &&
+            jogador.x - jogador.raio < obstaculo.x + LARGURA_OBSTACULO;
+
+        if (!dentroDaFaixaX) continue;
+
+        const acimaDoGap = jogador.y - jogador.raio < obstaculo.gapY;
+        const abaixoDoGap = jogador.y + jogador.raio > obstaculo.gapY + obstaculo.gapAltura;
+
+        if (acimaDoGap || abaixoDoGap) {
+            colidir();
+            return;
+        }
+    }
+}
+
+function desenharObstaculos() {
+    obstaculos.forEach(obstaculo => desenharObstaculo(obstaculo));
+}
+
+function desenharObstaculo(o) {
+    const topoAltura = o.gapY;
+    const baseY = o.gapY + o.gapAltura;
+    const baseAltura = altura - baseY;
+
+    switch (o.tipo) {
+        case "popup":   desenharTipoPopup(o, topoAltura, baseY, baseAltura); break;
+        case "cookie":  desenharTipoCookie(o, topoAltura, baseY, baseAltura); break;
+        case "loading": desenharTipoLoading(o, topoAltura, baseY, baseAltura); break;
+        case "erro":    desenharTipoErro(o, topoAltura, baseY, baseAltura); break;
+        case "menu":    desenharTipoMenu(o, topoAltura, baseY, baseAltura); break;
+    }
+}
+
+function blocoBase(x, y, w, h, cor) {
+    ctx.fillStyle = cor;
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = 2;
+    ctx.fillRect(x, y, w, h);
+    ctx.strokeRect(x, y, w, h);
+}
+
+function desenharTipoPopup(o, hTopo, yBase, hBase) {
+    ctx.save();
+    ctx.shadowColor = "#FA397A";
+    ctx.shadowBlur = 10;
+    blocoBase(o.x, 0, LARGURA_OBSTACULO, hTopo, "#1a0d14");
+    blocoBase(o.x, yBase, LARGURA_OBSTACULO, hBase, "#1a0d14");
+    ctx.restore();
+
+    const cx = o.x + LARGURA_OBSTACULO / 2;
+    const cy = 16 + o.deslocamentoFechar * Math.max(0, hTopo - 32);
+    if (hTopo > 30) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, 9, 0, Math.PI * 2);
+        ctx.fillStyle = "#FA3939";
+        ctx.fill();
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 11px monospace";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("X", cx, cy + 1);
+    }
+}
+
+function desenharTipoCookie(o, hTopo, yBase, hBase) {
+    ctx.save();
+    ctx.shadowColor = "#F5D742";
+    ctx.shadowBlur = 8;
+    blocoBase(o.x, 0, LARGURA_OBSTACULO, hTopo, "#241d0a");
+    blocoBase(o.x, yBase, LARGURA_OBSTACULO, hBase, "#241d0a");
+    ctx.restore();
+
+    if (hBase > 24) {
+        ctx.fillStyle = "#F5D742";
+        ctx.font = "9px monospace";
+        ctx.textAlign = "center";
+        ctx.fillText("COOKIES", o.x + LARGURA_OBSTACULO / 2, yBase + 18);
+    }
+}
+
+function desenharTipoLoading(o, hTopo, yBase, hBase) {
+    blocoBase(o.x, 0, LARGURA_OBSTACULO, hTopo, "#08181c");
+    blocoBase(o.x, yBase, LARGURA_OBSTACULO, hBase, "#08181c");
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(o.x, 0, LARGURA_OBSTACULO, altura);
+    ctx.clip();
+
+    ctx.strokeStyle = "#39E9FA";
+    ctx.lineWidth = 6;
+    const deslocamento = (tempoTotalJogo * 90) % 24;
+
+    for (let i = -altura; i < altura * 2; i += 24) {
+        ctx.beginPath();
+        ctx.moveTo(o.x - 10, i + deslocamento);
+        ctx.lineTo(o.x + LARGURA_OBSTACULO + 10, i + deslocamento - LARGURA_OBSTACULO);
+        ctx.stroke();
+    }
+    ctx.restore();
+}
+
+function desenharTipoErro(o, hTopo, yBase, hBase) {
+    const glitch = Math.sin(tempoTotalJogo * 30 + o.x) * 1.5;
+
+    ctx.save();
+    ctx.shadowColor = "#FA3939";
+    ctx.shadowBlur = 10;
+    blocoBase(o.x + glitch, 0, LARGURA_OBSTACULO, hTopo, "#1c0a0a");
+    blocoBase(o.x - glitch, yBase, LARGURA_OBSTACULO, hBase, "#1c0a0a");
+    ctx.restore();
+
+    ctx.fillStyle = "#FA3939";
+    ctx.font = "bold 16px monospace";
+    ctx.textAlign = "center";
+    if (hTopo > 20) ctx.fillText("!", o.x + LARGURA_OBSTACULO / 2, hTopo - 10);
+    if (hBase > 20) ctx.fillText("!", o.x + LARGURA_OBSTACULO / 2, yBase + 22);
+}
+
+function desenharTipoMenu(o, hTopo, yBase, hBase) {
+    blocoBase(o.x, 0, LARGURA_OBSTACULO, hTopo, "#12121a");
+    blocoBase(o.x, yBase, LARGURA_OBSTACULO, hBase, "#12121a");
+
+    ctx.strokeStyle = "#8b8bd6";
+    ctx.lineWidth = 3;
+
+    function linhasMenu(yInicio, altura) {
+        const quantidade = Math.floor(altura / 18);
+        for (let i = 0; i < quantidade; i++) {
+            const tremor = Math.sin(tempoTotalJogo * 6 + i + o.x) * 4;
+            const y = yInicio + 10 + i * 18;
+            ctx.beginPath();
+            ctx.moveTo(o.x + 10 + tremor, y);
+            ctx.lineTo(o.x + LARGURA_OBSTACULO - 10 + tremor, y);
+            ctx.stroke();
+        }
+    }
+
+    linhasMenu(0, hTopo);
+    linhasMenu(yBase, hBase);
+}
+
+
+// ----------------------------------------------------------
+// PONTUAÇÃO
+// Some 1 ponto a cada obstáculo atravessado. A barrinha do HUD
+// mostra o quão perto (ou quanto já passou) o jogador está do
+// próprio recorde salvo.
+// ----------------------------------------------------------
+let pontuacao = 0;
+const hudPontuacao = document.getElementById("hud-pontuacao");
+const hudRecordeBarra = document.getElementById("hud-recorde-barra");
+
+function somarPonto() {
+    pontuacao++;
+    hudPontuacao.textContent = pontuacao;
+    atualizarBarraRecorde();
+}
+
+function atualizarBarraRecorde() {
+    const recorde = lerRecorde();
+    if (recorde <= 0) {
+        hudRecordeBarra.style.width = "100%";
+        return;
+    }
+    const percentual = Math.min(100, (pontuacao / recorde) * 100);
+    hudRecordeBarra.style.width = percentual + "%";
+    hudRecordeBarra.classList.toggle("superado", pontuacao >= recorde);
+}
+
+
+// ----------------------------------------------------------
+// FRASES ENGRAÇADAS
+// Aparecem flutuando de vez em quando durante o jogo (efeito
+// "toast") e uma delas é escolhida pra tela de fim.
+// ----------------------------------------------------------
+const FRASES_UX = [
+    "Você clicou no botão errado.",
+    "Parabéns, encontrou o botão invisível.",
+    "Seu usuário desistiu.",
+    "O designer colocou mais um modal.",
+    "Você perdeu 5 minutos procurando o botão salvar.",
+    "Isso deveria ter sido um teste de usabilidade.",
+    "O cliente pediu mais um pop-up.",
+    "404: paciência não encontrada."
+];
+
+let tempoAteProximaFrase = 4;
+
+function atualizarFrasesAmbiente(dt) {
+    tempoAteProximaFrase -= dt;
+    if (tempoAteProximaFrase <= 0) {
+        tempoAteProximaFrase = 5 + Math.random() * 4;
+        mostrarFraseFlutuante(FRASES_UX[Math.floor(Math.random() * FRASES_UX.length)]);
+    }
+}
+
+function mostrarFraseFlutuante(texto) {
+    const toast = document.createElement("div");
+    toast.className = "frase-flutuante-toast";
+    toast.textContent = texto;
+    areaFrasesFlutuantes.appendChild(toast);
+    setTimeout(() => toast.remove(), 2700);
+}
+
+
+// ----------------------------------------------------------
+// MICROINTERAÇÕES — feedback visual de clique
+// ----------------------------------------------------------
+let efeitosClique = [];
+
+function criarEfeitoClique(x, y) {
+    efeitosClique.push({ x, y, raio: 4, vida: 1 });
+}
+
+function atualizarEfeitosClique(dt) {
+    efeitosClique.forEach(efeito => {
+        efeito.raio += 90 * dt;
+        efeito.vida -= dt * 2.2;
+    });
+    efeitosClique = efeitosClique.filter(e => e.vida > 0);
+}
+
+function desenharEfeitosClique() {
+    efeitosClique.forEach(efeito => {
+        ctx.beginPath();
+        ctx.arc(efeito.x, efeito.y, efeito.raio, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(250, 57, 122, ${Math.max(0, efeito.vida)})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    });
+}
+
+
+// ----------------------------------------------------------
+// FUNDO (grade neon com leve parallax, só decorativo)
+// ----------------------------------------------------------
+function desenharFundo() {
+    ctx.fillStyle = "#030303";
+    ctx.fillRect(0, 0, largura, altura);
+
+    ctx.strokeStyle = "rgba(57, 233, 250, 0.06)";
+    ctx.lineWidth = 1;
+    const espacamento = 40;
+    const deslocamento = (tempoTotalJogo * 40) % espacamento;
+
+    for (let x = -espacamento; x < largura + espacamento; x += espacamento) {
+        ctx.beginPath();
+        ctx.moveTo(x - deslocamento, 0);
+        ctx.lineTo(x - deslocamento, altura);
+        ctx.stroke();
+    }
+    for (let y = 0; y < altura; y += espacamento) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(largura, y);
+        ctx.stroke();
+    }
+}
+
+
+// ----------------------------------------------------------
+// COLISÃO / MORTE
+// ----------------------------------------------------------
+function colidir() {
+    if (estado !== "jogando") return;
+    finalizarJogo();
+}
+
+
+// ----------------------------------------------------------
+// ESTADOS DO JOGO — transições
+// ----------------------------------------------------------
+let tempoTotalJogo = 0;
+
+function iniciarJogo() {
+    estado = "jogando";
+    pontuacao = 0;
+    tempoTotalJogo = 0;
+    tempoDesdeUltimoObstaculo = 0;
+    tempoAteProximaFrase = 4;
+    obstaculos = [];
+    efeitosClique = [];
+    areaFrasesFlutuantes.innerHTML = "";
+
+    reiniciarJogador();
+
+    hudPontuacao.textContent = "0";
+    atualizarBarraRecorde();
+
+    telaInicio.classList.add("oculto");
+    telaFim.classList.add("oculto");
+    hudJogo.classList.remove("oculto");
+}
+
+function finalizarJogo() {
+    estado = "fim";
+
+    const recordeAnterior = lerRecorde();
+    const bateuRecorde = pontuacao > recordeAnterior;
+    if (bateuRecorde) salvarRecorde(pontuacao);
+
+    document.getElementById("fim-pontuacao").textContent = pontuacao;
+    document.getElementById("fim-recorde").textContent = lerRecorde();
+    document.getElementById("aviso-novo-recorde").classList.toggle("oculto", !bateuRecorde);
+    document.getElementById("frase-morte").textContent =
+        FRASES_UX[Math.floor(Math.random() * FRASES_UX.length)];
+
+    hudJogo.classList.add("oculto");
+    telaFim.classList.remove("oculto");
+}
+
+
+// ----------------------------------------------------------
+// CONTROLE DE TOQUE / CLIQUE
+// Um único gesto (clique do mouse ou toque na tela) sempre
+// significa "flap". Na tela de início ele começa o jogo;
+// jogando, ele impulsiona o cursor pra cima.
+// ----------------------------------------------------------
+function aoInteragir(evento) {
+    evento.preventDefault();
+    flap();
+}
+
+areaJogo.addEventListener("pointerdown", aoInteragir);
+
+window.addEventListener("keydown", function (evento) {
+    if (evento.code === "Space" || evento.code === "ArrowUp") {
+        evento.preventDefault();
+        flap();
+    }
+});
+
+document.getElementById("botao-comecar").addEventListener("click", function (evento) {
+    evento.stopPropagation();
+    iniciarJogo();
+});
+
+document.getElementById("botao-jogar-de-novo").addEventListener("click", function (evento) {
+    evento.stopPropagation();
+    iniciarJogo();
+});
+
+
+// ----------------------------------------------------------
+// LOOP PRINCIPAL
+// requestAnimationFrame com deltaTime, pra física se comportar
+// igual em qualquer taxa de atualização de tela.
+// ----------------------------------------------------------
+let ultimoQuadro = null;
+
+function loop(agora) {
+    if (ultimoQuadro === null) ultimoQuadro = agora;
+    const dt = Math.min(0.05, (agora - ultimoQuadro) / 1000);
+    ultimoQuadro = agora;
+
+    if (estado === "jogando") {
+        tempoTotalJogo += dt;
+        atualizarFisica(dt);
+        atualizarObstaculos(dt);
+        verificarColisaoObstaculos();
+        atualizarFrasesAmbiente(dt);
+    }
+
+    atualizarEfeitosClique(dt);
+
+    desenharFundo();
+    if (estado !== "inicio") desenharObstaculos();
+    desenharEfeitosClique();
+    if (estado !== "inicio") desenharJogador();
+
+    requestAnimationFrame(loop);
+}
+
+requestAnimationFrame(loop);
+
+</script>
+
+</body>
+</html>
