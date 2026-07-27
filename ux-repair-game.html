@@ -15,6 +15,22 @@
      2. PHASES (no script)  → onde editar/adicionar fases e problemas
      3. HEURISTICS (script) → onde editar as 10 heurísticas de Nielsen
      4. SCORING (script)    → onde editar pontuação, bônus e penalidade
+
+     BUGFIX (palco responsivo):
+     O jogo tem um "palco" (#rlStage) com elementos posicionados
+     em coordenadas absolutas fixas (ex.: x:400). Antes, o próprio
+     elemento do palco encolhia com a tela (92vw) e ficava com
+     "overflow: hidden" — então em telas estreitas os elementos
+     posicionados mais à direita/embaixo simplesmente ficavam
+     cortados e invisíveis, e no modo paisagem (pouca altura) o
+     palco de 420px de altura não cabia na tela.
+     A correção: o palco agora é um "mundo" de coordenadas fixas
+     (480x420) dentro de um contêiner externo responsivo, e é
+     redimensionado visualmente via CSS transform: scale(), com
+     o JS convertendo as coordenadas de toque/arraste de volta
+     pra esse sistema de coordenadas fixo. Resultado: todo
+     elemento sempre fica visível e clicável, em qualquer tamanho
+     de tela ou orientação.
      ========================================================== -->
 
 <meta charset="UTF-8">
@@ -24,6 +40,36 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#000000">
 <link rel="icon" type="image/png" href="favicon.png">
+<!-- Ajuste o domínio abaixo para a URL real de produção -->
+<link rel="canonical" href="https://upixel.com.br/games/ux-repair-lab.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel Games">
+<meta property="og:title" content="UX Repair Lab — Console de reparo de interfaces">
+<meta property="og:description" content="Conserte interfaces quebradas aplicando as 10 heurísticas de Nielsen num laboratório interativo.">
+<meta property="og:url" content="https://upixel.com.br/games/ux-repair-lab.html">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UX Repair Lab — Console de reparo de interfaces">
+<meta name="twitter:description" content="Conserte interfaces quebradas aplicando as 10 heurísticas de Nielsen num laboratório interativo.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "UX Repair Lab",
+  "description": "Jogo em 10 fases em que o jogador conserta interfaces quebradas aplicando cada uma das 10 heurísticas de usabilidade de Nielsen.",
+  "genre": "Educational",
+  "gamePlatform": "Web Browser",
+  "applicationCategory": "Game",
+  "inLanguage": "pt-BR",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Upixel"
+  }
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,16 +162,36 @@
         padding: 24px 28px 60px;
     }
 
-    .rl-stage {
+    /* ----------------------------------------------------------
+       PALCO RESPONSIVO
+       .rl-stage-outer é o contêiner visível: seu tamanho reage à
+       tela (largura e altura disponíveis). .rl-stage é o "mundo"
+       de coordenadas fixas (480x420) que o JS escala pra caber
+       dentro do outer via transform. Todo elemento do jogo é
+       posicionado dentro de .rl-stage usando essas coordenadas
+       fixas — por isso nunca fica cortado, só menor.
+       ---------------------------------------------------------- */
+    .rl-stage-outer {
         position: relative;
-        width: min(92vw, 480px);
-        height: 420px;
+        /* cabe na largura da tela, mas também respeita a altura
+           disponível (essencial no modo paisagem no celular) */
+        width: max(240px, min(92vw, 480px, calc(62vh * 480 / 420)));
+        aspect-ratio: 480 / 420;
         background: linear-gradient(180deg, #0c0c10, #08080a);
         border: 1px solid #232228;
         border-radius: 18px;
         box-shadow: 0 0 0 1px #000, 0 0 30px rgba(250, 57, 122, 0.06);
         overflow: hidden;
         touch-action: none;
+    }
+
+    .rl-stage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 480px;
+        height: 420px;
+        transform-origin: top left;
     }
 
     .rl-panel {
@@ -155,6 +221,24 @@
     }
     .rl-btn-check:disabled { opacity: 0.35; cursor: not-allowed; }
     .rl-btn-next { background: transparent; border: 1px solid var(--rl-pink); color: var(--rl-pink); }
+
+    .rl-btn-reset {
+        display: inline-block;
+        width: 100%;
+        margin-top: 8px;
+        padding: 10px;
+        background: transparent;
+        color: var(--rl-text-dim);
+        border: 1px solid #2a2a30;
+        border-radius: 10px;
+        font-size: 12px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: "Courier New", monospace;
+        transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .rl-btn-reset:hover { border-color: var(--rl-pink); color: var(--rl-pink); }
 
     .rl-feedback {
         margin-top: 14px;
@@ -221,6 +305,17 @@
         color: var(--rl-text-dim);
     }
     .rl-summary .rl-summary-grid strong { display: block; font-size: 20px; color: var(--rl-text); }
+
+    /* Modo paisagem em telas curtas: reduz respiros verticais pra
+       tudo continuar visível sem precisar rolar demais */
+    @media (max-height: 480px) and (orientation: landscape) {
+        .rl-topbar { padding: 10px 16px; }
+        .rl-hero { padding: 14px 16px 4px; }
+        .rl-hero h1 { font-size: 20px; }
+        #rlPhaseInfo, #rlRecordNote { font-size: 12px; }
+        .rl-lab { padding: 12px 16px 30px; gap: 14px; }
+        .rl-panel { padding: 14px; }
+    }
 </style>
 </head>
 <body class="rl-body">
@@ -238,11 +333,16 @@
         <h1>Console de reparo de interfaces</h1>
         <p id="rlPhaseInfo">Carregando fase...</p>
         <p id="rlRecordNote"></p>
+        <p class="rl-mobile-tip">
+    
+</p>
         <div class="rl-progress-dots" id="rlDots"></div>
     </header>
 
     <main class="rl-lab" id="rlLab">
-        <div class="rl-stage" id="rlStage"></div>
+        <div class="rl-stage-outer" id="rlStageOuter">
+            <div class="rl-stage" id="rlStage"></div>
+        </div>
 
         <aside class="rl-panel">
             <h2 id="rlProblemTitle">Problema</h2>
@@ -250,6 +350,7 @@
             <div class="rl-feedback" id="rlFeedback" hidden></div>
             <button class="rl-btn-check" id="rlCheckBtn">Verificar correção</button>
             <button class="rl-btn-next" id="rlNextBtn" hidden>Continuar →</button>
+            <button class="rl-btn-reset" id="rlResetBtn">↺ Reiniciar esta fase</button>
         </aside>
     </main>
 
@@ -269,6 +370,18 @@
 <script>
 (function () {
     "use strict";
+
+    /* ==========================================================
+       DIMENSÕES DE "MUNDO" DO PALCO
+       Todas as coordenadas usadas nas fases abaixo (x, y, w, h)
+       são relativas a esse sistema fixo de 480x420 — independente
+       do tamanho real da tela. O CSS escala o palco visualmente;
+       essas constantes existem só pra deixar isso explícito no
+       código (o clamping em si usa stage.clientWidth/clientHeight,
+       que continuam retornando 480/420 mesmo com o transform).
+       ========================================================== */
+    var DESIGN_W = 480;
+    var DESIGN_H = 420;
 
     /* ==========================================================
        PONTUAÇÃO — edite os valores aqui para rebalancear o jogo
@@ -319,37 +432,72 @@
     var elRecordNote = document.getElementById("rlRecordNote");
     var elPhaseInfo = document.getElementById("rlPhaseInfo");
     var elDots = document.getElementById("rlDots");
+    var elStageOuter = document.getElementById("rlStageOuter");
     var elStage = document.getElementById("rlStage");
     var elProblemTitle = document.getElementById("rlProblemTitle");
     var elProblemText = document.getElementById("rlProblemText");
     var elFeedback = document.getElementById("rlFeedback");
     var elCheckBtn = document.getElementById("rlCheckBtn");
     var elNextBtn = document.getElementById("rlNextBtn");
+    var elResetBtn = document.getElementById("rlResetBtn");
     var elLab = document.getElementById("rlLab");
     var elSummary = document.getElementById("rlSummary");
+
+    /* ==========================================================
+       ESCALA RESPONSIVA DO PALCO
+       Calcula o quanto .rl-stage (480x420 fixo) precisa ser
+       escalado pra caber visualmente dentro de .rl-stage-outer
+       (que reage ao tamanho real da tela via CSS). Reagimos tanto
+       a resize da janela quanto a mudanças de layout (ex.: o
+       painel quebrando linha), por isso o ResizeObserver.
+       ========================================================== */
+    function updateStageScale() {
+        var w = elStageOuter.clientWidth;
+        if (!w) return;
+        var scale = w / DESIGN_W;
+        elStage.style.transform = "scale(" + scale + ")";
+    }
+
+    if (window.ResizeObserver) {
+        new ResizeObserver(updateStageScale).observe(elStageOuter);
+    } else {
+        window.addEventListener("resize", updateStageScale);
+        window.addEventListener("orientationchange", updateStageScale);
+    }
+    updateStageScale();
 
     /* ==========================================================
        MOTORES DE INTERAÇÃO (reutilizados pelas fases abaixo)
        ========================================================== */
 
     // ---- 1) Arrastar (mouse + toque, via Pointer Events) ----
+    // BUGFIX: as posições de ponteiro (e.clientX/clientY) chegam
+    // em pixels reais de tela, mas os elementos são posicionados
+    // no sistema de coordenadas fixo de 480x420. Por isso todo
+    // cálculo de posição agora passa por "scale" (a razão entre o
+    // tamanho visual do palco e seu tamanho de mundo fixo) antes
+    // de mexer em left/top — assim o arraste acompanha o dedo/
+    // cursor corretamente em qualquer tamanho de tela.
     function makeDraggable(stage, el, onDrop) {
-        var offsetX = 0, offsetY = 0;
+        var offsetX = 0, offsetY = 0; // em coordenadas de mundo (fixas)
         el.addEventListener("pointerdown", function (e) {
             if (el.classList.contains("rl-solved")) return;
             el.setPointerCapture(e.pointerId);
-            var rect = el.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
+            var stageRect = stage.getBoundingClientRect();
+            var scale = stageRect.width / stage.clientWidth;
+            var elRect = el.getBoundingClientRect();
+            offsetX = (e.clientX - elRect.left) / scale;
+            offsetY = (e.clientY - elRect.top) / scale;
             el.style.zIndex = 10;
         });
         el.addEventListener("pointermove", function (e) {
             if (e.buttons !== 1 && e.pointerType === "mouse") return;
             if (!el.hasPointerCapture || !el.hasPointerCapture(e.pointerId)) return;
             var stageRect = stage.getBoundingClientRect();
+            var scale = stageRect.width / stage.clientWidth;
             var elW = el.offsetWidth, elH = el.offsetHeight;
-            var x = e.clientX - stageRect.left - offsetX;
-            var y = e.clientY - stageRect.top - offsetY;
+            var x = (e.clientX - stageRect.left) / scale - offsetX;
+            var y = (e.clientY - stageRect.top) / scale - offsetY;
             x = Math.max(0, Math.min(x, stage.clientWidth - elW));
             y = Math.max(0, Math.min(y, stage.clientHeight - elH));
             el.style.left = x + "px";
@@ -456,6 +604,9 @@
        Para adicionar uma nova fase, inclua um objeto com:
        title, problem, text, heuristic, problemsFixed e um
        setup(stage) que monta a tela e retorna checkFn().
+       Coordenadas continuam em pixels "de mundo" (0-480, 0-420),
+       exatamente como antes — a responsividade é tratada pelo
+       motor de escala acima, então nada aqui precisou mudar.
        ========================================================== */
     var PHASES = [
 
@@ -711,6 +862,7 @@
         elNextBtn.hidden = true;
         elCheckBtn.hidden = false;
         elCheckBtn.disabled = false;
+        elResetBtn.hidden = false;
 
         elPhaseInfo.textContent = "Fase " + (index + 1) + " de " + PHASES.length + " — " + phase.problem;
         elProblemTitle.textContent = phase.title;
@@ -719,6 +871,7 @@
         state.currentCheck = phase.setup(elStage);
         state.phaseStartTime = Date.now();
         renderDots();
+        updateStageScale();
     }
 
     function handleCheck() {
@@ -745,6 +898,7 @@
                 (bonus ? (" (+" + bonus + " bônus de velocidade)") : "") +
                 ". Heurística: " + phase.heuristic + ".";
             elCheckBtn.hidden = true;
+            elResetBtn.hidden = true;
             elNextBtn.hidden = false;
         } else {
             state.score = Math.max(0, state.score - SCORING.errorPenaltyPoints);
@@ -762,6 +916,13 @@
         } else {
             renderPhase(state.phaseIndex);
         }
+    }
+
+    // Reinicia a fase atual do zero (elementos voltam às posições
+    // iniciais), sem avançar de fase e sem mexer na pontuação já
+    // acumulada — só desfaz o estado bagunçado da tentativa atual.
+    function handleReset() {
+        renderPhase(state.phaseIndex);
     }
 
     function finishGame() {
@@ -796,6 +957,7 @@
 
     elCheckBtn.addEventListener("click", handleCheck);
     elNextBtn.addEventListener("click", handleNext);
+    elResetBtn.addEventListener("click", handleReset);
     document.getElementById("rlRestartBtn").addEventListener("click", restartGame);
 
     // ---------- Início ----------
