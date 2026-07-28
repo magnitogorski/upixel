@@ -134,6 +134,153 @@
 
      Manter esta organização facilita a manutenção do site.
      ========================================================== -->
+
+
+<!-- ==========================================================
+     CSS ADICIONAL — CONTAINER DE LEITURA + NAVEGAÇÃO ENTRE ARTIGOS
+
+     Este bloco é REUTILIZÁVEL em todos os artigos do site.
+
+     Nos próximos artigos, basta:
+     1. Copiar este <style> inteiro (ou movê-lo para o style.css
+        principal, se preferir centralizar).
+     2. Copiar a estrutura HTML da seção ".navegacao-artigos"
+        (no final do artigo, antes do rodapé).
+     3. Alterar apenas: href, título e descrição dos dois cards.
+
+     Nada aqui interfere no layout atual do desktop — só adiciona
+     um teto de largura confortável para leitura e os cards de
+     navegação. Nenhuma classe/estilo existente foi removido.
+     ========================================================== -->
+
+<style>
+
+  /* --- Container de leitura --- */
+  .container-leitura {
+    max-width: 1060px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 600px) {
+    .container-leitura {
+      padding: 0 40px;
+    }
+  }
+
+  /* --- Navegação entre artigos --- */
+  .navegacao-artigos {
+    display: flex;
+    gap: 20px;
+    max-width: 820px;
+    width: 100%;
+    margin: 60px auto 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .card-nav {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background-color: #000;
+    text-decoration: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-nav:hover {
+    border-color: #FA397A;
+    background-color: rgba(250, 57, 122, 0.08);
+    transform: translateY(-3px);
+  }
+
+  .card-nav-proximo {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .nav-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: #FA397A;
+  }
+
+  .nav-titulo {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    margin: 0;
+    color: #fff;
+  }
+
+  .nav-descricao {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 700px) {
+    .navegacao-artigos {
+      flex-direction: column;
+    }
+
+    .card-nav-proximo {
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+
+  /* --- Caixas de texto do artigo ---
+     Cada bloco de leitura (parágrafos que caminham juntos) fica
+     dentro de uma ".caixa-texto", deixando o texto mais fácil
+     de escanear. Reutilizável: em novos artigos, basta agrupar
+     os <p> relacionados dentro de uma div com essa classe. */
+  .caixa-texto {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+
+  .caixa-texto p {
+    margin: 0 0 10px 0;
+  }
+
+  .caixa-texto p:last-child {
+    margin-bottom: 0;
+  }
+
+  .caixa-texto h2 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin: 0 0 14px 0;
+    color: #FA397A;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 600px) {
+    .caixa-texto {
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+
+    .caixa-texto h2 {
+      font-size: 0.95rem;
+    }
+  }
+
+</style>
+
 </head>
 
 
@@ -210,66 +357,98 @@ Upixel
 
 <article class="texto-artigo" id="texto">
 
+<div class="caixa-texto">
+    <h1>As 10 Heurísticas de Nielsen (do jeito errado)</h1>
+</div>
 
+<div class="caixa-texto">
+    <p>
+        Existem centenas de artigos ensinando como aplicar as heurísticas de Nielsen.
+        Então resolvi fazer diferente. Se você quer construir uma interface inesquecível
+        pelos motivos errados, este guia é para você.
+    </p>
+</div>
 
-<h1>As 10 Heurísticas de Nielsen (do jeito errado)</h1>
+<div class="caixa-texto">
+    <h2>1. Nunca mostre o que está acontecendo.</h2>
+</div>
 
-<p>
-Existem centenas de artigos ensinando como aplicar as heurísticas de Nielsen.
-Então resolvi fazer diferente. Se você quer construir uma interface inesquecível
-pelos motivos errados, este guia é para você.
-<p><h2>1. Nunca mostre o que está acontecendo.</h2></p>
+<div class="caixa-texto">
+    <p>O botão foi clicado? Não diga nada. Deixe o usuário se perguntando se clicou ou se o sistema resolveu tirar um café.</p>
+</div>
 
+<div class="caixa-texto">
+    <h2>2. Use termos que ninguém entende.</h2>
+</div>
 
-<p>O botão foi clicado? Não diga nada. Deixe o usuário se perguntando se clicou ou se
-o sistema resolveu tirar um café.</p>
+<div class="caixa-texto">
+    <p>Troque "Salvar" por "Persistir Entidade". Se possível, use três siglas em sequência.</p>
+</div>
 
-<p><h2>2. Use termos que ninguém entende.</h2></p>
+<div class="caixa-texto">
+    <h2>3. Não permita voltar.</h2>
+</div>
 
-<p>Troque 'Salvar' por 'Persistir Entidade'. Se possível, use três siglas em sequência."</p>
+<div class="caixa-texto">
+    <p>Errou? Problema do usuário. Toda decisão deve ser definitiva.</p>
+</div>
 
-<p><h2>3. Não permita voltar.</h2></p>
+<div class="caixa-texto">
+    <h2>4. Faça cada tela diferente.</h2>
+</div>
 
-<p>Errou? Problema do usuário. Toda decisão deve ser definitiva."</p>
+<div class="caixa-texto">
+    <p>O botão Confirmar pode ser verde numa tela, azul na outra e vermelho na terceira. Surpresa mantém o usuário atento.</p>
+</div>
 
-<p><h2>4. Faça cada tela diferente.</h2></p>
+<div class="caixa-texto">
+    <h2>5. Espere o erro acontecer.</h2>
+</div>
 
-<p>O botão Confirmar pode ser verde numa tela, azul na outra e vermelho na terceira. Surpresa mantém o usuário atento.</p>
+<div class="caixa-texto">
+    <p>Validação? Nunca. Deixe o usuário preencher 38 campos e só avise no final que o CPF estava errado.</p>
+</div>
 
-<p><h2>5. Espere o erro acontecer.</h2></p>
+<div class="caixa-texto">
+    <h2>6. Faça o usuário decorar tudo.</h2>
+</div>
 
-<p>Validação? Nunca. Deixe o usuário preencher 38 campos e só avise no final que o CPF estava errado.</p>
+<div class="caixa-texto">
+    <p>Quem precisa de histórico ou sugestões? Se ele esqueceu, que comece de novo.</p>
+</div>
 
-<p><h2>6. Faça o usuário decorar tudo.</h2></p>
+<div class="caixa-texto">
+    <h2>7. Esconda as funções importantes.</h2>
+</div>
 
-<p>Quem precisa de histórico ou sugestões? Se ele esqueceu, que comece de novo.</p>
+<div class="caixa-texto">
+    <p>O botão principal deve ficar escondido atrás de um menu dentro de outro menu.</p>
+</div>
 
-<p><h2>7. Esconda as funções importantes.</h2></p>
+<div class="caixa-texto">
+    <h2>8. Coloque informação em todo lugar.</h2>
+</div>
 
-<p>O botão principal deve ficar escondido atrás de um menu dentro de outro menu.</p>
+<div class="caixa-texto">
+    <p>Se sobrou espaço na tela, coloque um gráfico, dois cards e um GIF.</p>
+</div>
 
-<p><h2>8. Coloque informação em todo lugar.</h2></p>
+<div class="caixa-texto">
+    <h2>9. Mensagens de erro misteriosas.</h2>
+</div>
 
-<p>Se sobrou espaço na tela, coloque um gráfico, dois cards e um GIF.</p>
+<div class="caixa-texto">
+    <p>Erro 0x800A4F7B. Boa sorte.</p>
+</div>
 
-<p><h2>9. Mensagens de erro misteriosas.</h2></p>
+<div class="caixa-texto">
+    <h2>10. Ignore completamente a ajuda.</h2>
+</div>
 
-<p>Erro 0x800A4F7B. Boa sorte.</p>
-
-<p><h2>10. Ignore completamente a ajuda.</h2></p>
-
-<p>Se precisar explicar como usar, esconda a documentação em um PDF de 240 páginas.</p>
-
-<p>Se você leu este artigo e pensou 'caramba. Eu já usei um sistema exatamente assim', parabéns. Você acabou de encontrar alguém que seguiu esse manual à risca.</p>
-
-
-</p>
-
-
-
-
-
-
+<div class="caixa-texto">
+    <p>Se precisar explicar como usar, esconda a documentação em um PDF de 240 páginas.</p>
+    <p>Se você leu este artigo e pensou "caramba, eu já usei um sistema exatamente assim", parabéns. Você acabou de encontrar alguém que seguiu esse manual à risca.</p>
+</div>
 
 </article>
 
@@ -314,7 +493,19 @@ o sistema resolveu tirar um café.</p>
 
 </section>
 
+<section class="navegacao-artigos">
 
+    <a href="artigo-o-influencer-e-so-a-interface.html" class="card-nav card-nav-anterior">
+        <span class="nav-label">&larr; Artigo anterior</span>
+        <h3 class="nav-titulo">O Influencer é só a Interface</h3>
+        <p class="nav-descricao">Bonito por fora (nem sempre). Persuasivo por dentro. E quase sempre vendendo alguma coisa.</p>
+    </a>
+
+    <a href="artigo-infinite-scroll.html" class="card-nav card-nav-proximo">
+        <span class="nav-label">Próximo artigo &rarr;</span>
+        <h3 class="nav-titulo">Infiniiiiite Scroll</h3>
+        <p class="nav-descricao">Fomos engolidos por um buraco negro digital.</p>
+    </a>
 
 
 </main>
