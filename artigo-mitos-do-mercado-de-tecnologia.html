@@ -130,6 +130,152 @@
 
      Manter esta organização facilita a manutenção do site.
      ========================================================== -->
+
+<!-- ==========================================================
+     CSS ADICIONAL — CONTAINER DE LEITURA + NAVEGAÇÃO ENTRE ARTIGOS
+
+     Este bloco é REUTILIZÁVEL em todos os artigos do site.
+
+     Nos próximos artigos, basta:
+     1. Copiar este <style> inteiro (ou movê-lo para o style.css
+        principal, se preferir centralizar).
+     2. Copiar a estrutura HTML da seção ".navegacao-artigos"
+        (no final do artigo, antes do rodapé).
+     3. Alterar apenas: href, título e descrição dos dois cards.
+
+     Nada aqui interfere no layout atual do desktop — só adiciona
+     um teto de largura confortável para leitura e os cards de
+     navegação. Nenhuma classe/estilo existente foi removido.
+     ========================================================== -->
+
+<style>
+
+  /* --- Container de leitura --- */
+  .container-leitura {
+    max-width: 1060px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 600px) {
+    .container-leitura {
+      padding: 0 40px;
+    }
+  }
+
+  /* --- Navegação entre artigos --- */
+  .navegacao-artigos {
+    display: flex;
+    gap: 20px;
+    max-width: 820px;
+    width: 100%;
+    margin: 60px auto 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .card-nav {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background-color: #000;
+    text-decoration: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-nav:hover {
+    border-color: #FA397A;
+    background-color: rgba(250, 57, 122, 0.08);
+    transform: translateY(-3px);
+  }
+
+  .card-nav-proximo {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .nav-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: #FA397A;
+  }
+
+  .nav-titulo {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    margin: 0;
+    color: #fff;
+  }
+
+  .nav-descricao {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 700px) {
+    .navegacao-artigos {
+      flex-direction: column;
+    }
+
+    .card-nav-proximo {
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+
+  /* --- Caixas de texto do artigo ---
+     Cada bloco de leitura (parágrafos que caminham juntos) fica
+     dentro de uma ".caixa-texto", deixando o texto mais fácil
+     de escanear. Reutilizável: em novos artigos, basta agrupar
+     os <p> relacionados dentro de uma div com essa classe. */
+  .caixa-texto {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+
+  .caixa-texto p {
+    margin: 0 0 10px 0;
+  }
+
+  .caixa-texto p:last-child {
+    margin-bottom: 0;
+  }
+
+  .caixa-texto h2 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin: 0 0 14px 0;
+    color: #FA397A;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 600px) {
+    .caixa-texto {
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+
+    .caixa-texto h2 {
+      font-size: 0.95rem;
+    }
+  }
+
+</style>
+
 </head>
 
 
@@ -208,224 +354,183 @@ Upixel
 <article class="texto-artigo" id="texto">
 
 
-<h1>Essa fada chamada salário de 5 dígitos</h1>
+<div class="caixa-texto">
+    <h1>Essa fada chamada salário de 5 dígitos</h1>
+</div>
 
-<p class="data-artigo">20 JUL 2026 • Upixel</p>
+<div class="caixa-texto">
+    
+    <p class="subtitulo">
+        Uma sátira sobre cursos que prometem salários de cinco dígitos, atalhos para o sucesso e a fantasia vendida por parte do mercado de tecnologia.
+    </p>
 
-<p class="subtitulo">
-Uma sátira sobre cursos que prometem salários de cinco dígitos, atalhos para o sucesso e a fantasia vendida por parte do mercado de tecnologia.
-</p>
+    <p>Quem nunca viu um anúncio assim?</p>
 
-<p>
-Quem nunca viu um anúncio assim?
-</p>
+    <p>
+        "<strong>Essa profissão paga até R$ 20.000 por mês.</strong>"<br>
+        "<strong>Faça esse curso e conquiste um salário de 5 dígitos.</strong>"
+    </p>
 
-<p>
-"<strong>Essa profissão paga até R$ 20.000 por mês.</strong>"<br>
-"<strong>Faça esse curso e conquiste um salário de 5 dígitos.</strong>"
-</p>
+    <p>
+        Se você já pesquisou sobre <strong>UX Design</strong>, <strong>UI Design</strong>, programação, dados ou qualquer carreira em tecnologia, provavelmente já encontrou promessas parecidas. Elas costumam vender uma ideia muito sedutora: existe um caminho rápido para conquistar um salário alto. Basta comprar um curso, assistir às aulas e esperar a conta bancária sorrir.
+    </p>
 
-<p>
-Se você já pesquisou sobre <strong>UX Design</strong>, <strong>UI Design</strong>, programação, dados ou qualquer carreira em tecnologia, provavelmente já encontrou promessas parecidas. Elas costumam vender uma ideia muito sedutora: existe um caminho rápido para conquistar um salário alto. Basta comprar um curso, assistir às aulas e esperar a conta bancária sorrir.
-</p>
+    <p>Na prática, a história costuma ser um pouco menos mágica.</p>
+</div>
 
-<p>
-Na prática, a história costuma ser um pouco menos mágica.
-</p>
+<div class="caixa-texto">
+    <h2>O conto de fadas do mercado de tecnologia</h2>
+</div>
 
-<h2>O conto de fadas do mercado de tecnologia</h2>
+<div class="caixa-texto">
+    <p>
+        Parece simples. Você compra o curso, assiste às aulas, recebe o certificado imaginário da felicidade e, de repente, o dinheiro começa a cair na conta.
+    </p>
 
-<p>
-Parece simples. Você compra o curso, assiste às aulas, recebe o certificado imaginário da felicidade e, de repente, o dinheiro começa a cair na conta.
-</p>
+    <p>Só esqueceram de colocar alguns detalhes em letras bem pequenas.</p>
 
-<p>
-Só esqueceram de colocar alguns detalhes em letras bem pequenas.
-</p>
+    <p>
+        A maioria dessas promessas não fala sobre anos de experiência, projetos que deram errado, entrevistas frustradas, noites estudando, clientes difíceis, portas fechadas e a quantidade absurda de erros que normalmente fazem parte da construção de qualquer carreira.
+    </p>
 
-<p>
-A maioria dessas promessas não fala sobre anos de experiência, projetos que deram errado, entrevistas frustradas, noites estudando, clientes difíceis, portas fechadas e a quantidade absurda de erros que normalmente fazem parte da construção de qualquer carreira.
-</p>
+    <p>O que elas vendem não é apenas conhecimento.</p>
 
-<p>
-O que elas vendem não é apenas conhecimento.
-</p>
+    <p>Elas vendem um atalho.</p>
 
-<p>
-Elas vendem um atalho.
-</p>
+    <p>E talvez essa seja a maior mercadoria da internet.</p>
+</div>
 
-<p>
-E talvez essa seja a maior mercadoria da internet.
-</p>
+<div class="caixa-texto">
+    <h2>O problema nunca foi vender conhecimento</h2>
+</div>
 
-<h2>O problema nunca foi vender conhecimento</h2>
+<div class="caixa-texto">
+    <p>
+        Não existe problema algum em vender conhecimento. Existem professores excelentes, profissionais experientes e pessoas que realmente dedicam anos para ensinar aquilo que aprenderam no mercado.
+    </p>
 
-<p>
-Não existe problema algum em vender conhecimento. Existem professores excelentes, profissionais experientes e pessoas que realmente dedicam anos para ensinar aquilo que aprenderam no mercado.
-</p>
+    <p>O problema começa quando uma exceção passa a ser vendida como regra.</p>
 
-<p>
-O problema começa quando uma exceção passa a ser vendida como regra.
-</p>
+    <p>
+        Quando o salário de alguém com dez ou quinze anos de carreira aparece como se fosse o destino natural de quem acabou de terminar um curso online.
+    </p>
 
-<p>
-Quando o salário de alguém com dez ou quinze anos de carreira aparece como se fosse o destino natural de quem acabou de terminar um curso online.
-</p>
+    <p>É aí que mora a fada.</p>
+</div>
 
-<p>
-É aí que mora a fada.
-</p>
+<div class="caixa-texto">
+    <h2>A faculdade da esperança</h2>
+</div>
 
-<h2>A faculdade da esperança</h2>
+<div class="caixa-texto">
+    <p>
+        Já vi anúncios de cursos de UI/UX, programação, etc... custando mais do que uma pós-graduação.
+    </p>
 
-<p>
-Já vi anúncios de cursos de UI/UX, programação, etc... custando mais do que uma pós-graduação.
-</p>
+    <p>
+        Cursos que não oferecem diploma reconhecido, não garantem emprego e, muitas vezes, ensinam conteúdos disponíveis gratuitamente em documentações oficiais, fóruns especializados e até no YouTube.
+    </p>
 
-<p>
-Cursos que não oferecem diploma reconhecido, não garantem emprego e, muitas vezes, ensinam conteúdos disponíveis gratuitamente em documentações oficiais, fóruns especializados e até no YouTube.
-</p>
+    <p>Então surge uma dúvida inevitável.</p>
 
-<p>
-Então surge uma dúvida inevitável.
-</p>
+    <p>Estamos comprando conhecimento... ou comprando esperança?</p>
+</div>
 
-<p>
-Estamos comprando conhecimento... ou comprando esperança?
-</p>
+<div class="caixa-texto">
+    <h2>O salário de cinco dígitos existe?</h2>
+</div>
 
-<h2>O salário de cinco dígitos existe?</h2>
+<div class="caixa-texto">
+    <p>Claro que existe.</p>
 
-<p>
-Claro que existe.
-</p>
+    <p>
+        Existem profissionais de UX, UI, desenvolvimento, dados, segurança, inteligência artificial e diversas áreas da tecnologia recebendo salários excelentes.
+    </p>
 
-<p>
-Existem profissionais de UX, UI, desenvolvimento, dados, segurança, inteligência artificial e diversas áreas da tecnologia recebendo salários excelentes.
-</p>
+    <p>Mas quase ninguém mostra o caminho inteiro.</p>
 
-<p>
-Mas quase ninguém mostra o caminho inteiro.
-</p>
+    <p>Mostram apenas a linha de chegada.</p>
 
-<p>
-Mostram apenas a linha de chegada.
-</p>
+    <p>
+        Poucos contam quantos anos levaram para chegar ali, quantos projetos entregaram, quantos finais de semana estudaram ou quantas oportunidades recusadas apareceram antes do primeiro grande salário.
+    </p>
+</div>
 
-<p>
-Poucos contam quantos anos levaram para chegar ali, quantos projetos entregaram, quantos finais de semana estudaram ou quantas oportunidades recusadas apareceram antes do primeiro grande salário.
-</p>
+<div class="caixa-texto">
+    <h2>Quando o marketing vira fantasia</h2>
+</div>
 
-<h2>Quando o marketing vira fantasia</h2>
+<div class="caixa-texto">
+    <p>
+        Profissões como medicina, engenharia ou aviação sempre estiveram associadas a bons salários porque todo mundo conhece o caminho: anos de estudo, prática, responsabilidade e experiência.
+    </p>
 
-<p>
-Profissões como medicina, engenharia ou aviação sempre estiveram associadas a bons salários porque todo mundo conhece o caminho: anos de estudo, prática, responsabilidade e experiência.
-</p>
+    <p>Na tecnologia surgiu uma narrativa muito mais sedutora.</p>
 
-<p>
-Na tecnologia surgiu uma narrativa muito mais sedutora.
-</p>
+    <p>"A profissão do futuro."</p>
 
-<p>
-"A profissão do futuro."
-</p>
+    <p>"O mercado está desesperado por profissionais."</p>
 
-<p>
-"O mercado está desesperado por profissionais."
-</p>
+    <p>"Ganhe cinco dígitos trabalhando de casa."</p>
 
-<p>
-"Ganhe cinco dígitos trabalhando de casa."
-</p>
+    <p>Tudo isso pode até acontecer.</p>
 
-<p>
-Tudo isso pode até acontecer.
-</p>
+    <p>O detalhe é que normalmente acontece depois de muito trabalho.</p>
 
-<p>
-O detalhe é que normalmente acontece depois de muito trabalho.
-</p>
+    <p>Não depois de três meses assistindo vídeos em velocidade 2x.</p>
+</div>
 
-<p>
-Não depois de três meses assistindo vídeos em velocidade 2x.
-</p>
+<div class="caixa-texto">
+    <h2>Antes de comprar o sonho</h2>
+</div>
 
-<h2>Antes de comprar o sonho</h2>
+<div class="caixa-texto">
+    <p>
+        Antes de investir em qualquer curso vendido por um influencer — palavra que já virou praticamente uma profissão — faça algumas perguntas simples.
+    </p>
 
-<p>
-Antes de investir em qualquer curso vendido por um influencer — palavra que já virou praticamente uma profissão — faça algumas perguntas simples.
-</p>
+    <p>Converse com profissionais da área.</p>
 
-<p>
-Converse com profissionais da área.
-</p>
+    <p>Pesquise salários em diferentes níveis de experiência.</p>
 
-<p>
-Pesquise salários em diferentes níveis de experiência.
-</p>
+    <p>Pergunte quanto tempo levou até o primeiro emprego.</p>
 
-<p>
-Pergunte quanto tempo levou até o primeiro emprego.
-</p>
+    <p>Descubra quantos projetos foram necessários para construir um portfólio.</p>
 
-<p>
-Descubra quantos projetos foram necessários para construir um portfólio.
-</p>
+    <p>Conhecimento é investimento.</p>
 
-<p>
-Conhecimento é investimento.
-</p>
+    <p>Ilusão costuma ser despesa.</p>
+</div>
 
-<p>
-Ilusão costuma ser despesa.
-</p>
+<div class="caixa-texto">
+    <h2>Questione, pesquise e acorde</h2>
+</div>
 
-<h2>Questione, pesquise e acorde</h2>
+<div class="caixa-texto">
+    <p>Talvez a maior mentira não seja a existência dos salários de cinco dígitos.</p>
 
-<p>
-Talvez a maior mentira não seja a existência dos salários de cinco dígitos.
-</p>
+    <p>Eles existem.</p>
 
-<p>
-Eles existem.
-</p>
+    <p>
+        A fantasia está em acreditar que qualquer pessoa chegará lá em poucos meses apenas porque um anúncio disse que sim.
+    </p>
 
-<p>
-A fantasia está em acreditar que qualquer pessoa chegará lá em poucos meses apenas porque um anúncio disse que sim.
-</p>
+    <p>Toda carreira leva tempo.</p>
 
-<p>
-Toda carreira leva tempo.
-</p>
+    <p>Toda profissão exige prática.</p>
 
-<p>
-Toda profissão exige prática.
-</p>
+    <p>E nenhuma propaganda consegue substituir anos de experiência.</p>
 
-<p>
-E nenhuma propaganda consegue substituir anos de experiência.
-</p>
+    <p>Questione.</p>
 
-<p>
-Questione.
-</p>
+    <p>Pesquise.</p>
 
-<p>
-Pesquise.
-</p>
+    <p>Converse com quem realmente vive essa realidade.</p>
 
-<p>
-Converse com quem realmente vive essa realidade.
-</p>
+    <p>Porque a internet vende muitos contos de fadas.</p>
 
-<p>
-Porque a internet vende muitos contos de fadas.
-</p>
-
-<p>
-Mas quem acorda cedo para trabalhar quase nunca encontra uma fada no caminho.
-</p>
+    <p>Mas quem acorda cedo para trabalhar quase nunca encontra uma fada no caminho.</p>
+</div>
 
 
 </article>
@@ -472,6 +577,19 @@ Mas quem acorda cedo para trabalhar quase nunca encontra uma fada no caminho.
 
 </section>
 
+<section class="navegacao-artigos">
+
+    <a href="artigo-infinite-scroll.html" class="card-nav card-nav-anterior">
+        <span class="nav-label">&larr; Artigo anterior</span>
+        <h3 class="nav-titulo">Infiniiiiite Scroll</h3>
+        <p class="nav-descricao">Fomos engolidos por um buraco negro digital.</p>
+    </a>
+
+    <a href="artigo-dashboards-e-visualizacao-de-dados.html" class="card-nav card-nav-proximo">
+        <span class="nav-label">Próximo artigo &rarr;</span>
+        <h3 class="nav-titulo">Informação demais, visualização de menos</h3>
+        <p class="nav-descricao">Mais dados não significam mais respostas.</p>
+    </a>
 
 
 </main>
