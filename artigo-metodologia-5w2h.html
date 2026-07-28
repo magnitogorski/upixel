@@ -126,6 +126,152 @@
 
      Manter esta organização facilita a manutenção do site.
      ========================================================== -->
+
+<!-- ==========================================================
+     CSS ADICIONAL — CONTAINER DE LEITURA + NAVEGAÇÃO ENTRE ARTIGOS
+
+     Este bloco é REUTILIZÁVEL em todos os artigos do site.
+
+     Nos próximos artigos, basta:
+     1. Copiar este <style> inteiro (ou movê-lo para o style.css
+        principal, se preferir centralizar).
+     2. Copiar a estrutura HTML da seção ".navegacao-artigos"
+        (no final do artigo, antes do rodapé).
+     3. Alterar apenas: href, título e descrição dos dois cards.
+
+     Nada aqui interfere no layout atual do desktop — só adiciona
+     um teto de largura confortável para leitura e os cards de
+     navegação. Nenhuma classe/estilo existente foi removido.
+     ========================================================== -->
+
+<style>
+
+  /* --- Container de leitura --- */
+  .container-leitura {
+    max-width: 1060px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 600px) {
+    .container-leitura {
+      padding: 0 40px;
+    }
+  }
+
+  /* --- Navegação entre artigos --- */
+  .navegacao-artigos {
+    display: flex;
+    gap: 20px;
+    max-width: 820px;
+    width: 100%;
+    margin: 60px auto 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .card-nav {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background-color: #000;
+    text-decoration: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-nav:hover {
+    border-color: #FA397A;
+    background-color: rgba(250, 57, 122, 0.08);
+    transform: translateY(-3px);
+  }
+
+  .card-nav-proximo {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .nav-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: #FA397A;
+  }
+
+  .nav-titulo {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    margin: 0;
+    color: #fff;
+  }
+
+  .nav-descricao {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 700px) {
+    .navegacao-artigos {
+      flex-direction: column;
+    }
+
+    .card-nav-proximo {
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+
+  /* --- Caixas de texto do artigo ---
+     Cada bloco de leitura (parágrafos que caminham juntos) fica
+     dentro de uma ".caixa-texto", deixando o texto mais fácil
+     de escanear. Reutilizável: em novos artigos, basta agrupar
+     os <p> relacionados dentro de uma div com essa classe. */
+  .caixa-texto {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+
+  .caixa-texto p {
+    margin: 0 0 10px 0;
+  }
+
+  .caixa-texto p:last-child {
+    margin-bottom: 0;
+  }
+
+  .caixa-texto h2 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin: 0 0 14px 0;
+    color: #FA397A;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 600px) {
+    .caixa-texto {
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+
+    .caixa-texto h2 {
+      font-size: 0.95rem;
+    }
+  }
+
+</style>
+
 </head>
 
 
@@ -204,138 +350,160 @@ Upixel
 
 <article class="texto-artigo" id="texto">
 
+<div class="caixa-texto">
+    <h1>Centro de Urgência 5W2H</h1>
+</div>
+
+<div class="caixa-texto">
+    <p class="subtitulo">
+    <strong>A instituição onde sete perguntas simples se transformam em um caso de internação coletiva.
+    </strong>
+    </p>
+</div>
+
+<div class="caixa-texto">
+    <p>
+    Nunca ouviu falar em <strong>5W2H</strong>? Não se assuste. Apesar do nome parecer senha de fila de padaria, ele é apenas uma metodologia de planejamento criada para organizar ações de forma simples. O método ajuda equipes a estruturar um <strong>plano de ação</strong>, definir responsabilidades, prazos, custos e a execução de projetos por meio de apenas sete perguntas.
+    </p>
+    <p>
+    Na teoria, o 5W2H serve para reduzir dúvidas, melhorar a comunicação e aumentar a produtividade. Na prática... algumas empresas conseguem transformar uma ferramenta feita para simplificar em um verdadeiro hospital da burocracia.
+    </p>
+</div>
+
+<div class="caixa-texto">
+    <h2>O que é 5W2H?</h2>
+</div>
+
+<div class="caixa-texto">
+    <p>
+    O nome vem das iniciais de sete perguntas em inglês que ajudam qualquer equipe a organizar um projeto:
+    </p>
+        <ul>
+        <li><strong>What?</strong> O que será feito?</li>
+        <li><strong>Why?</strong> Por que será feito?</li>
+        <li><strong>Who?</strong> Quem será o responsável?</li>
+        <li><strong>When?</strong> Quando será executado?</li>
+        <li><strong>Where?</strong> Onde será realizado?</li>
+        <li><strong>How?</strong> Como será feito?</li>
+        <li><strong>How Much?</strong> Quanto vai custar?</li>
+    </ul>
+</div>
+
+<div class="caixa-texto">
+    <p>
+    Pronto. Era isso. Não precisava de pós-graduação, MBA nem uma reunião de duas horas. Bastava responder essas sete perguntas e começar a trabalhar.
+    </p>
+     <p>
+    Mas foi justamente aí que tudo deu errado.
+    </p>
+</div>
+
+<div class="caixa-texto">
+    <h2>Ala 1 — O Paciente do "Who"</h2>
+</div>
+
+<div class="caixa-texto">
+    <p><strong>— Quem é o responsável?</strong></p>
+     <p>— Todos.</p>
+    <p>
+    O médico apenas faz uma anotação no prontuário e suspira.
+    </p>
+    <p><strong>Diagnóstico:</strong> responsabilidade compartilhada em estágio terminal.</p>
+</div>
+
+
+<div class="caixa-texto">
+    <h2>Ala 2 — O Surto do "When"</h2>
+</div>
+
+<div class="caixa-texto">
+    <p><strong>— Quando fica pronto?</strong></p>
+    <p>— O quanto antes.</p>
+    <p><strong>— E isso significa...?</strong></p>
+    <p>— O quanto antes.</p>
+    <p>
+    O paciente repete a resposta olhando fixamente para um gráfico de Gantt.
+    </p>
+</div>
 
 
 
-<h1>Centro de Urgência 5W2H</h1>
 
-<p class="data-artigo">20 JUL 2026 • Upixel</p>
+<div class="caixa-texto">
+    <h2>Ala 3 — A Síndrome do "How"</h2>
+</div>
 
-<p class="subtitulo">
-A instituição onde sete perguntas simples se transformam em um caso de internação coletiva.
-</p>
+<div class="caixa-texto">
+    <p><strong>— Como vamos fazer?</strong></p>
+    <p>— Precisamos alinhar com as áreas.</p>
+    <p><strong>— Certo... mas como?</strong></p>
+    <p>— Alinhando.</p>
+    <p>
+    O paciente é encaminhado imediatamente para a sala de reunião número 14.
+    </p>
+</div>
 
-<p>
-Nunca ouviu falar em <strong>5W2H</strong>? Não se assuste. Apesar do nome parecer senha de fila de padaria, ele é apenas uma metodologia de planejamento criada para organizar ações de forma simples. O método ajuda equipes a estruturar um <strong>plano de ação</strong>, definir responsabilidades, prazos, custos e a execução de projetos por meio de apenas sete perguntas.
-</p>
+<div class="caixa-texto">
+    <h2>Ala 4 — O Caso Perdido do "How Much"</h2>
+</div>
 
-<p>
-Na teoria, o 5W2H serve para reduzir dúvidas, melhorar a comunicação e aumentar a produtividade. Na prática... algumas empresas conseguem transformar uma ferramenta feita para simplificar em um verdadeiro hospital da burocracia.
-</p>
+<div class="caixa-texto">
+    <p><strong>— Quanto vai custar?</strong></p>
+    <p>— Ainda estamos levantando.</p>
+    <p>
+    O mesmo paciente faz essa afirmação há oito meses.
+    </p>
 
-<h2>O que é 5W2H?</h2>
-
-<p>
-O nome vem das iniciais de sete perguntas em inglês que ajudam qualquer equipe a organizar um projeto:
-</p>
-
-<ul>
-<li><strong>What?</strong> O que será feito?</li>
-<li><strong>Why?</strong> Por que será feito?</li>
-<li><strong>Who?</strong> Quem será o responsável?</li>
-<li><strong>When?</strong> Quando será executado?</li>
-<li><strong>Where?</strong> Onde será realizado?</li>
-<li><strong>How?</strong> Como será feito?</li>
-<li><strong>How Much?</strong> Quanto vai custar?</li>
-</ul>
-
-<p>
-Pronto. Era isso. Não precisava de pós-graduação, MBA nem uma reunião de duas horas. Bastava responder essas sete perguntas e começar a trabalhar.
-</p>
-
-<p>
-Mas foi justamente aí que tudo deu errado.
-</p>
-
-<h2>Ala 1 — O Paciente do "Who"</h2>
-
-<p><strong>— Quem é o responsável?</strong></p>
-
-<p>— Todos.</p>
-
-<p>
-O médico apenas faz uma anotação no prontuário e suspira.
-</p>
-
-<p><strong>Diagnóstico:</strong> responsabilidade compartilhada em estágio terminal.</p>
-
-<h2>Ala 2 — O Surto do "When"</h2>
-
-<p><strong>— Quando fica pronto?</strong></p>
-
-<p>— O quanto antes.</p>
-
-<p><strong>— E isso significa...?</strong></p>
-
-<p>— O quanto antes.</p>
-
-<p>
-O paciente repete a resposta olhando fixamente para um gráfico de Gantt.
-</p>
-
-<h2>Ala 3 — A Síndrome do "How"</h2>
-
-<p><strong>— Como vamos fazer?</strong></p>
-
-<p>— Precisamos alinhar com as áreas.</p>
-
-<p><strong>— Certo... mas como?</strong></p>
-
-<p>— Alinhando.</p>
-
-<p>
-O paciente é encaminhado imediatamente para a sala de reunião número 14.
-</p>
-
-<h2>Ala 4 — O Caso Perdido do "How Much"</h2>
-
-<p><strong>— Quanto vai custar?</strong></p>
-
-<p>— Ainda estamos levantando.</p>
-
-<p>
-O mesmo paciente faz essa afirmação há oito meses.
-</p>
-
-<h2>A Ala VIP da Burocracia</h2>
-
-<p>
-É onde ficam os casos mais curiosos do hospital. Pacientes que acreditam que, quanto maior o documento, melhor o planejamento.
-</p>
-
-<p>
-Um <strong>5W2H</strong> de sete linhas nunca parece suficiente. O objetivo deixa de ser organizar um plano de ação e passa a ser produzir páginas e mais páginas que, no fim, ninguém consulta novamente.
-</p>
-
-<h2>Por que o 5W2H funciona?</h2>
-
-<p>
-Apesar da sátira, o <strong>5W2H</strong> continua sendo uma das metodologias de gestão mais eficientes para organizar projetos, distribuir responsabilidades e estruturar um plano de ação. Sua simplicidade é justamente sua maior qualidade.
-</p>
-
-<p>
-O problema nunca foi a ferramenta. O problema começa quando empresas adicionam camadas de burocracia, reuniões intermináveis, aprovações em excesso e documentos que servem apenas para alimentar outros documentos.
-</p>
-
-<p>
-As sete perguntas continuam as mesmas, mas as respostas passam por comitês, planilhas, apresentações e revisões que pouco contribuem para a execução. O planejamento deixa de servir às pessoas e passa a servir ao próprio processo.
-</p>
-
-<h2>Existe cura?</h2>
-
-<p>
-Existe. Ela começa quando lembramos que o objetivo do <strong>5W2H</strong> nunca foi criar um documento bonito, um PowerPoint de cinquenta slides ou um formulário impossível de preencher.
-</p>
-
-<p>
-O verdadeiro propósito da metodologia sempre foi ajudar alguém a saber exatamente <strong>o que fazer, por que fazer, quem fará, quando acontecerá, onde será executado, como será realizado e quanto custará</strong>, sem precisar marcar outra reunião para descobrir.
-</p>
-
-<p>
-Se depois de responder às sete perguntas você ainda precisa agendar uma reunião para explicar o documento... talvez o paciente não seja o projeto.
-</p>
+</div>
 
 
+
+<div class="caixa-texto">
+    <h2>A Ala VIP da Burocracia</h2>
+</div>
+
+<div class="caixa-texto">
+    <p>
+    É onde ficam os casos mais curiosos do hospital. Pacientes que acreditam que, quanto maior o documento, melhor o planejamento.
+    </p>
+    <p>
+    Um <strong>5W2H</strong> de sete linhas nunca parece suficiente. O objetivo deixa de ser organizar um plano de ação e passa a ser produzir páginas e mais páginas que, no fim, ninguém consulta novamente.
+    </p>
+</div>
+
+<div class="caixa-texto">
+    <h2>Por que o 5W2H funciona?</h2>
+</div>
+
+<div class="caixa-texto">
+    <p>
+    Apesar da sátira, o <strong>5W2H</strong> continua sendo uma das metodologias de gestão mais eficientes para organizar projetos, distribuir responsabilidades e estruturar um plano de ação. Sua simplicidade é justamente sua maior qualidade.
+    </p>
+        <p>
+    O problema nunca foi a ferramenta. O problema começa quando empresas adicionam camadas de burocracia, reuniões intermináveis, aprovações em excesso e documentos que servem apenas para alimentar outros documentos.
+    </p>
+    <p>
+    As sete perguntas continuam as mesmas, mas as respostas passam por comitês, planilhas, apresentações e revisões que pouco contribuem para a execução. O planejamento deixa de servir às pessoas e passa a servir ao próprio processo.
+    </p>
+
+</div>
+
+<div class="caixa-texto">
+    <h2>Existe cura?</h2>
+</div>
+
+<div class="caixa-texto">
+    <p>
+    Existe. Ela começa quando lembramos que o objetivo do <strong>5W2H</strong> nunca foi criar um documento bonito, um PowerPoint de cinquenta slides ou um formulário impossível de preencher.
+    </p>
+        <p>
+    O verdadeiro propósito da metodologia sempre foi ajudar alguém a saber exatamente <strong>o que fazer, por que fazer, quem fará, quando acontecerá, onde será executado, como será realizado e quanto custará</strong>, sem precisar marcar outra reunião para descobrir.
+    </p>
+    <p>
+    Se depois de responder às sete perguntas você ainda precisa agendar uma reunião para explicar o documento... talvez o paciente não seja o projeto.
+    </p>
+
+</div>
 
 </article>
 
@@ -381,6 +549,21 @@ Se depois de responder às sete perguntas você ainda precisa agendar uma reuni�
 </section>
 
 
+<section class="navegacao-artigos">
+
+    <a href="artigo-michael-scott-analise-swot.html" class="card-nav card-nav-anterior">
+        <span class="nav-label">&larr; Artigo anterior</span>
+        <h3 class="nav-titulo">E se Michael Scott fizesse uma análise SWOT?</h3>
+        <p class="nav-descricao">Uma reunião estratégica conduzida pelo pior melhor chefe do mundo.</p>
+    </a>
+
+    <a href="artigo-o-influencer-e-so-a-interface.html" class="card-nav card-nav-proximo">
+        <span class="nav-label">Próximo artigo &rarr;</span>
+        <h3 class="nav-titulo">O Influencer é só a Interface</h3>
+        <p class="nav-descricao">Bonito por fora (nem sempre). Persuasivo por dentro. E quase sempre vendendo alguma coisa.</p>
+    </a>
+
+</section>
 
 
 </main>
