@@ -118,6 +118,152 @@
 
 </head>
 
+<!-- ==========================================================
+     CSS ADICIONAL — CONTAINER DE LEITURA + NAVEGAÇÃO ENTRE ARTIGOS
+
+     Este bloco é REUTILIZÁVEL em todos os artigos do site.
+
+     Nos próximos artigos, basta:
+     1. Copiar este <style> inteiro (ou movê-lo para o style.css
+        principal, se preferir centralizar).
+     2. Copiar a estrutura HTML da seção ".navegacao-artigos"
+        (no final do artigo, antes do rodapé).
+     3. Alterar apenas: href, título e descrição dos dois cards.
+
+     Nada aqui interfere no layout atual do desktop — só adiciona
+     um teto de largura confortável para leitura e os cards de
+     navegação. Nenhuma classe/estilo existente foi removido.
+     ========================================================== -->
+
+<style>
+
+  /* --- Container de leitura --- */
+  .container-leitura {
+    max-width: 1060px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 600px) {
+    .container-leitura {
+      padding: 0 40px;
+    }
+  }
+
+  /* --- Navegação entre artigos --- */
+  .navegacao-artigos {
+    display: flex;
+    gap: 20px;
+    max-width: 820px;
+    width: 100%;
+    margin: 60px auto 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .card-nav {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background-color: #000;
+    text-decoration: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-nav:hover {
+    border-color: #FA397A;
+    background-color: rgba(250, 57, 122, 0.08);
+    transform: translateY(-3px);
+  }
+
+  .card-nav-proximo {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .nav-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: #FA397A;
+  }
+
+  .nav-titulo {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    margin: 0;
+    color: #fff;
+  }
+
+  .nav-descricao {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 700px) {
+    .navegacao-artigos {
+      flex-direction: column;
+    }
+
+    .card-nav-proximo {
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+
+  /* --- Caixas de texto do artigo ---
+     Cada bloco de leitura (parágrafos que caminham juntos) fica
+     dentro de uma ".caixa-texto", deixando o texto mais fácil
+     de escanear. Reutilizável: em novos artigos, basta agrupar
+     os <p> relacionados dentro de uma div com essa classe. */
+  .caixa-texto {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+
+  .caixa-texto p {
+    margin: 0 0 10px 0;
+  }
+
+  .caixa-texto p:last-child {
+    margin-bottom: 0;
+  }
+
+  .caixa-texto h2 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin: 0 0 14px 0;
+    color: #FA397A;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 600px) {
+    .caixa-texto {
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+
+    .caixa-texto h2 {
+      font-size: 0.95rem;
+    }
+  }
+
+</style>
+
+</head>
 
 <body>
 
@@ -190,77 +336,90 @@ Upixel
 
 <article class="texto-artigo" id="texto">
 
-<h1>Marketing Digital Nota 1000. Atendimento Pessoal Nota 0.</h1>
+<div class="caixa-texto"><h1>Marketing Digital Nota 1000. Atendimento Pessoal Nota 0.</h1>
+</div>
 
-<p>Sou um antissocial de mídia. Isso é fato. Não uso redes sociais, não acompanho influenciadores e nunca escolhi um lugar por causa de seguidores ou posts bonitos.</p>
-
+<div class="caixa-texto">
+<p>
+Sou um antissocial de mídia. Isso é fato. Não uso redes sociais, não acompanho influenciadores e nunca escolhi um lugar por causa de seguidores ou posts bonitos.
+</p>
 <p>Talvez isso me torne um dinossauro. Tudo bem.</p>
+<p>
+Eu sou o tipo de cliente que frequenta sempre os mesmos lugares: o mesmo mercado, a mesma padaria, o mesmo açougue, o mesmo posto de gasolina. Muitas vezes pago um pouco mais caro só porque sei que não vou me aborrecer. Atendimento consistente sempre valeu mais para mim do que qualquer promoção.
+</p>
+</div>
 
-<p>Eu sou o tipo de cliente que frequenta sempre os mesmos lugares: o mesmo mercado, a mesma padaria, o mesmo açougue, o mesmo posto de gasolina. Muitas vezes pago um pouco mais caro só porque sei que não vou me aborrecer. Atendimento consistente sempre valeu mais para mim do que qualquer promoção.</p>
 
-<h2>Desde 2011 na mesma hamburgueria</h2>
 
-<p>Desde 2011 frequento a mesma hamburgueria da cidade. Durante todos esses anos, fui atendido pelo mesmo casal. Educação, respeito e simpatia. Aquele tipo de atendimento que faz o cliente voltar sem precisar de programa de fidelidade.</p>
 
+<div class="caixa-texto"><h2>Desde 2011 na mesma hamburgueria</h2>
+</div>
+
+<div class="caixa-texto">
+<p>
+Desde 2011 frequento a mesma hamburgueria da cidade. Durante todos esses anos, fui atendido pelo mesmo casal. Educação, respeito e simpatia. Aquele tipo de atendimento que faz o cliente voltar sem precisar de programa de fidelidade.</p>
 <p>Recentemente minha esposa comentou, surpresa:</p>
-
 <p><strong>— Você viu o Instagram deles? Está muito bom. Bastante seguidores.</strong></p>
-
-<p>Olhei pelo celular dela. As fotos estavam bem feitas, os textos cuidadosos, a identidade visual bonita. Pensei: “Que legal. Cresceram.”</p>
-
+<p>
+Olhei pelo celular dela. As fotos estavam bem feitas, os textos cuidadosos, a identidade visual bonita. Pensei: “Que legal. Cresceram.”
+</p>
 <p>Bastaram duas visitas recentes para essa impressão mudar.</p>
+</div>
+<div class="caixa-texto"><h2>Quando o atendimento muda</h2>
+</div>
 
-<h2>Quando o atendimento muda</h2>
-
-<p>Pelo que parece, o casal está passando o negócio para o filho. Na primeira vez que fui atendido por ele, o tratamento já veio diferente: mais frio, menos atencioso.</p>
-
+<div class="caixa-texto">
+<p>
+Pelo que parece, o casal está passando o negócio para o filho. Na primeira vez que fui atendido por ele, o tratamento já veio diferente: mais frio, menos atencioso.
+</p>
 <p>Na segunda, liguei, fiz o pedido e fui apenas buscar o lanche.</p>
-
 <p>Cheguei.<br>
 Nenhum cumprimento.<br>
 Atendimento seco.</p>
-
 <p><strong>— Total: R$ 27,00.</strong></p>
-
 <p>Pedi uma cerveja para levar.</p>
-
 <p>Ele somou mentalmente e disse:</p>
-
 <p><strong>— R$ 44,00.</strong></p>
-
 <p>Estranhei.</p>
-
 <p><strong>— Quanto custa a cerveja?</strong></p>
-
 <p><strong>— R$ 10,00.</strong></p>
-
 <p><strong>— Então 27 mais 10 não dá 44.</strong></p>
-
 <p>Ele pediu desculpas e disse que havia somado errado.</p>
-
 <p>Pode ter sido apenas um equívoco. Todo mundo erra.</p>
+<p>
+Mas quando o atendimento já começa distante, termina com uma cobrança incorreta e ainda transmite insegurança, a confiança do cliente se abala rapidamente.
+</p>
+</div>
 
-<p>Mas quando o atendimento já começa distante, termina com uma cobrança incorreta e ainda transmite insegurança, a confiança do cliente se abala rapidamente.</p>
 
-<h2>O que os pais construíram em décadas</h2>
 
-<p>Os pais passaram mais de uma década construindo uma relação baseada em respeito e consistência. Coisas que não aparecem em foto de Instagram.</p>
 
-<p>A impressão que ficou foi a de alguém mais preocupado com a vitrine digital do que com a experiência de quem realmente paga a conta.</p>
+<div class="caixa-texto"><h2>O que os pais construíram em décadas</h2>
+</div>
 
+<div class="caixa-texto"><p>Os pais passaram mais de uma década construindo uma relação baseada em respeito e consistência. Coisas que não aparecem em foto de Instagram.</p>
+<p>
+A impressão que ficou foi a de alguém mais preocupado com a vitrine digital do que com a experiência de quem realmente paga a conta.
+</p>
 <p>Talvez eu esteja sendo injusto.<br>
 Tomara que esteja.</p>
-
 <p>Mas dificilmente volto.</p>
+</div>
 
-<h2>Marketing atrai. Atendimento fideliza.</h2>
+<div class="caixa-texto"><h2>Marketing atrai. Atendimento fideliza.</h2>
+</div>
 
-<p>Marketing digital consegue fazer a pessoa entrar pela primeira vez. Um bom atendimento é o que faz ela voltar pela centésima.</p>
+<div class="caixa-texto"><p>
+Marketing digital consegue fazer a pessoa entrar pela primeira vez. Um bom atendimento é o que faz ela voltar pela centésima.
+</p>
+<p>
+É curioso observar empresas comemorando milhares de seguidores enquanto perdem clientes antigos por detalhes que nenhuma campanha consegue disfarçar.
+</p>
+</div>
 
-<p>É curioso observar empresas comemorando milhares de seguidores enquanto perdem clientes antigos por detalhes que nenhuma campanha consegue disfarçar.</p>
-
-<p><strong>Instagram bonito vende uma vez.<br>
+<div class="caixa-texto"><p><strong>Instagram bonito vende uma vez.<br>
 Bom atendimento vende durante décadas.</strong></p>
+</div>
 
 </article> <!-- fim do conteúdo do artigo -->
 
@@ -306,7 +465,21 @@ Bom atendimento vende durante décadas.</strong></p>
 
 </section>
 
+<section class="navegacao-artigos">
 
+    <a href="artigo-como-seria-o-linkedin-de-dwight-schrute.html" class="card-nav card-nav-anterior">
+        <span class="nav-label">&larr; Artigo anterior</span>
+        <h3 class="nav-titulo">Como Dwight Schrute Usaria o LinkedIn</h3>
+        <p class="nav-descricao">O perfil profissional mais honesto de Scranton.</p>
+    </a>
+
+    <a href="artigo-michael-scott-analise-swot.html" class="card-nav card-nav-proximo">
+        <span class="nav-label">Próximo artigo &rarr;</span>
+        <h3 class="nav-titulo">E se Michael Scott fizesse uma análise SWOT?</h3>
+        <p class="nav-descricao">Uma reunião estratégica conduzida pelo pior melhor chefe do mundo.</p>
+    </a>
+
+</section>
 
 </main>
 
