@@ -1,19 +1,55 @@
 # ==========================================================
 # ROBOTS.TXT — Upixel
 #
-# Esse arquivo diz pros robôs de busca (Google, Bing, etc.)
-# que eles podem visitar e indexar TODAS as páginas do site.
+# Este arquivo informa aos mecanismos de busca e aos
+# crawlers de IA quais áreas do site podem ser acessadas.
 #
-# "User-agent: *"  -> vale para todos os robôs
-# "Allow: /"       -> libera tudo, sem bloquear nada
-# "Sitemap:"       -> aponta onde está a lista de páginas do site
+# Atualmente, todo o conteúdo público da Upixel pode ser
+# rastreado e indexado.
 #
-# IMPORTANTE: este arquivo precisa ficar na RAIZ do site,
-# no mesmo lugar do index.html — ou seja, acessível em:
+# Inclui regras explícitas para alguns dos principais
+# agentes de IA, mantendo a mesma política aplicada aos
+# demais mecanismos de busca.
+#
+# Localização:
 # https://upixel.com.br/robots.txt
 # ==========================================================
 
+# --------------------------
+# OpenAI
+# --------------------------
+User-agent: GPTBot
+Allow: /
+
+# --------------------------
+# Anthropic
+# --------------------------
+User-agent: Claude-Web
+Allow: /
+
+# --------------------------
+# Google AI
+# --------------------------
+User-agent: Google-Extended
+Allow: /
+
+# --------------------------
+# Perplexity
+# --------------------------
+User-agent: PerplexityBot
+Allow: /
+
+# --------------------------
+# Common Crawl
+# --------------------------
+User-agent: CCBot
+Allow: /
+
+# --------------------------
+# Todos os demais robôs
+# --------------------------
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://upixel.com.br/sitemap.xml
