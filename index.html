@@ -191,9 +191,9 @@
        <nav class="menu">
     <a href="index.html" class="ativo">Home</a>
     <a href="artigos.html">Artigos</a>
-    <a href="besteirol.html">Besteirol</a>
-    <a href="games.html">Games</a>
+    <a href="ux-challenge.html">UX Challenge</a>
     <a href="quiz.html">Quiz</a>
+    <a href="besteirol.html">Besteirol</a>
     <a href="contato.html">Contato</a>
 </nav>
     </header>
@@ -202,27 +202,18 @@
         <div class="bloco-texto">
             <span class="texto-menor"><img src="raio.png" alt="Raio" class="icone-raio">Underground dos 8 Bits</span>
 
-            <h1 class="titulo-destaque">No início, <br> era só pixel <br>isso aqui</h1>
+            <h1 class="titulo-destaque">No início, era só <br> pixel isso aqui.<br></h1>
 
             <div class="frase-underground">
                 <img src="sua-logo.png" alt="Logo menor" class="logo-pequena">
                 <p class="texto-quebrado">
                     Hoje tudo virou <br>experiência.
                 </p>
-            </div>
-
-            <div class="container-botao">
-                <a href="quiz.html" class="botao-artigos">
-                    Começar desafio
-                    <svg class="seta-fina" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
+            </div>         
         </div>
 
         <div class="bloco-imagem">
-            <img src="IMG1.png" alt="Primeira imagem" class="imagem-direita">
+            <img src="upixel-8-bits-design-ux-ui-cultura-digital.png" alt="Primeira imagem" class="imagem-direita">
         </div>
 
     </main>
@@ -296,6 +287,125 @@
 <hr class="divisor-secao">
 
 <!-- ==========================================================
+     GAMES (nova área)
+
+     Section de apresentação da área Games na home.
+     Reaproveita exatamente a mesma estrutura e as mesmas
+     classes CSS da seção "Sobre nós" (.sobre-nos,
+     .sobre-conteudo, .titulo-sobre, .descricao-sobre,
+     .sobre-imagem, .container-botao, .botao-artigos) para
+     garantir 100% de consistência visual com o restante do
+     site, sem precisar tocar em style.css ou mobile.css.
+
+     Troque "logogrande.png" (usada aqui só como imagem
+     provisória) pela arte pixel da área Games quando tiver
+     pronta — não foi criada/alterada nenhuma imagem nova.
+
+     Link do botão "Jogar agora" aponta para games.html
+     (criada na Etapa 2).
+     ========================================================== -->
+
+<section class="sobre-nos games-secao">
+
+    <div class="sobre-conteudo">
+
+        <span class="texto-menor">
+            <img src="raio.png" alt="Raio" class="icone-raio">
+            Nova área
+        </span>
+
+        <h2 class="titulo-sobre">
+            UX Challenge
+        </h2>
+
+        <p class="descricao-sobre">
+           Você passaria em uma <br> entrevista de UX?
+        </p>
+
+        <div class="container-botao">
+            <a href="ux-challenge.html" class="botao-artigos">
+                Testar meu Nível
+                <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+
+    </div>
+
+
+    <div class="sobre-imagem">
+
+        <!-- imagem provisória, troque pela arte da área Games -->
+        <img src="upixel-pixel-art-ux-ui-design-cultura-digital.png" alt="Games Upixel">
+
+    </div>
+
+
+</section>
+
+<hr class="divisor-secao">
+
+<!-- ==========================================================
+     QUIZ (nova área)
+
+     Mesma estrutura e classes da seção Games / Sobre nós
+     (.sobre-nos, .sobre-conteudo, .titulo-sobre, etc.)
+     para manter 100% de consistência visual sem CSS extra.
+
+     Imagem: usando provisoriamente a mesma do Games
+     (upixel-games-pixel-art.png). Troque quando tiver a arte
+     específica do Quiz.
+
+     Link do botão aponta para quiz.html.
+     ========================================================== -->
+
+<section class="sobre-nos quiz-secao">
+
+    <div class="sobre-conteudo">
+
+        <span class="texto-menor">
+            <img src="raio.png" alt="Raio" class="icone-raio">
+            Nova área
+        </span>
+
+        <h2 class="titulo-sobre">
+            Upixel Quiz
+        </h2>
+
+        <p class="descricao-sobre">
+            Você sabe de tudo um pouco. <br>Ou só tem muita confiança?
+           
+        </p>
+
+        <div class="container-botao">
+            <a href="quiz.html" class="botao-artigos">
+                Começar o Quiz
+                <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="sobre-imagem">
+    
+        <img src="quiz-cultura-digital-tecnologia-humor-pixel-art.png" alt="Quiz Upixel">
+    </div>
+
+</section>
+
+<hr class="divisor-secao">
+<!-- ==========================================================
      PIXEL FEED (antes era a seção de CAMISETAS)
 
      Substitui a antiga seção de camisetas na home.
@@ -343,73 +453,9 @@
 
     <div class="pixelfeed-imagem">
 
-        <img src="besteirol.png" alt="Pixel Feed">
+        <img src="besteirol-humor-internet-cultura-digital-pixel-art.png" alt="Pixel Feed">
 
     </div>
-
-</section>
-
-<hr class="divisor-secao">
-
-<!-- ==========================================================
-     GAMES (nova área)
-
-     Section de apresentação da área Games na home.
-     Reaproveita exatamente a mesma estrutura e as mesmas
-     classes CSS da seção "Sobre nós" (.sobre-nos,
-     .sobre-conteudo, .titulo-sobre, .descricao-sobre,
-     .sobre-imagem, .container-botao, .botao-artigos) para
-     garantir 100% de consistência visual com o restante do
-     site, sem precisar tocar em style.css ou mobile.css.
-
-     Troque "logogrande.png" (usada aqui só como imagem
-     provisória) pela arte pixel da área Games quando tiver
-     pronta — não foi criada/alterada nenhuma imagem nova.
-
-     Link do botão "Jogar agora" aponta para games.html
-     (criada na Etapa 2).
-     ========================================================== -->
-
-<section class="sobre-nos games-secao">
-
-    <div class="sobre-conteudo">
-
-        <span class="texto-menor">
-            <img src="raio.png" alt="Raio" class="icone-raio">
-            Nova área
-        </span>
-
-        <h2 class="titulo-sobre">
-            Games
-        </h2>
-
-        <p class="descricao-sobre">
-            Games lo-fi. Porque eu não sou da Rockstar.
-        </p>
-
-        <div class="container-botao">
-            <a href="games.html" class="botao-artigos">
-                Jogar Mini-games de UX
-                <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"/>
-                </svg>
-            </a>
-        </div>
-
-    </div>
-
-
-    <div class="sobre-imagem">
-
-        <!-- imagem provisória, troque pela arte da área Games -->
-        <img src="upixel-games-pixel-art.png" alt="Games Upixel">
-
-    </div>
-
 
 </section>
 
@@ -498,8 +544,6 @@
         </iframe>
 
     </div>
-
-</section>
 
 </section>
 
@@ -612,9 +656,9 @@
 
                <a href="index.html" class="ativo">Home</a>
                <a href="artigos.html">Artigos</a>
-               <a href="besteirol.html">Besteirol</a>
-               <a href="games.html">Games</a>
+               <a href="ux-challenge.html">UX Challenge</a>
                <a href="quiz.html">Quiz</a>
+               <a href="besteirol.html">Besteirol</a>
                <a href="contato.html">Contato</a>
 
         </nav>

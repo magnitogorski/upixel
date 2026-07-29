@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Academia UX | Upixel</title>
+<meta name="description" content="Aprenda UX e UI como se estivesse jogando. Uma produção Upixel.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================================================
+   1. TOKENS — identidade visual Upixel
+   =========================================================== */
+:root{
+  --bg:#000000;
+  --card:#080808;
+  --card-2:#0d0d0d;
+  --border:#1d1d1d;
+  --pink:#FA397A;
+  --pink-2:#F93877;
+  --text:#ffffff;
+  --text-2:#BDBDBD;
+  --verde:#2ecc71;
+  --vermelho:#e74c3c;
+  --font-game:'Pixelify Sans', system-ui, sans-serif;
+  --font-body:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --radius:14px;
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  margin:0; padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+}
+
+.app{
+  width:100%;
+  max-width:700px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  padding:0 20px;
+}
+
+/* Telas: apenas uma visível por vez */
+.tela{
+  display:none;
+  flex-direction:column;
+  flex:1;
+  animation:fadeIn .35s ease;
+}
+.tela.ativa{ display:flex; }
+
+@keyframes fadeIn{
+  from{ opacity:0; transform:translateY(6px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+@keyframes fadeOut{
+  from{ opacity:1; }
+  to{ opacity:0; }
+}
+
+/* ===========================================================
+   2. TOPO — navegação de volta para o catálogo de jogos
+   =========================================================== */
+.topo-nav{
+  display:flex;
+  align-items:center;
+  padding:16px 0 0 0;
+}
+.link-voltar{
+  font-family:var(--font-game);
+  font-size:12px;
+  letter-spacing:.5px;
+  color:var(--text-2);
+  text-decoration:none;
+  border:1px solid var(--border);
+  background:var(--card);
+  padding:8px 14px;
+  border-radius:100px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:color .15s ease, border-color .15s ease, transform .15s ease;
+}
+.link-voltar:hover{
+  color:var(--pink);
+  border-color:var(--pink);
+  transform:translateX(-2px);
+}
+
+/* ===========================================================
+   3. TELA INICIAL
+   =========================================================== */
+#tela-inicial{
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:18px;
+  min-height:calc(100vh - 56px);
+}
+.logo-inicial{
+  font-family:var(--font-game);
+  font-size:14px;
+  letter-spacing:2px;
+  color:var(--pink);
+  text-transform:uppercase;
+  border:1px solid var(--border);
+  padding:6px 14px;
+  border-radius:100px;
+  background:var(--card);
+}
+.titulo-inicial{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:44px;
+  margin:0;
+  line-height:1.1;
+}
+.titulo-inicial span{ color:var(--pink); }
+.subtitulo-inicial{
+  color:var(--text-2);
+  font-size:17px;
+  max-width:420px;
+  margin:0 0 4px 0;
+}
+
+/* Painel de retomada — XP e progresso geral da trilha, visível
+   apenas quando já existe progresso salvo */
+.inicial-stats{
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  max-width:360px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px 20px;
+  margin-bottom:4px;
+}
+.inicial-stats.visivel{ display:flex; }
+.inicial-stats-linha{
+  display:flex;
+  width:100%;
+  justify-content:space-around;
+}
+.inicial-stat-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+}
+.inicial-stat-valor{
+  font-family:var(--font-game);
+  color:var(--pink);
+  font-size:18px;
+}
+.inicial-stat-label{
+  color:var(--text-2);
+  font-size:11px;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+}
+.inicial-progress-wrap{
+  width:100%;
+}
+.inicial-progress-texto{
+  display:flex;
+  justify-content:space-between;
+  color:var(--text-2);
+  font-size:11px;
+  font-family:var(--font-game);
+  letter-spacing:.4px;
+  margin-bottom:6px;
+  text-transform:uppercase;
+}
+.inicial-progress-barra{
+  width:100%;
+  height:8px;
+  border-radius:6px;
+  background:var(--border);
+  overflow:hidden;
+}
+.inicial-progress-barra i{
+  display:block;
+  height:100%;
+  width:0%;
+  background:var(--pink);
+  border-radius:6px;
+  transition:width .6s ease;
+}
+
+.btn-primario{
+  font-family:var(--font-game);
+  background:var(--pink);
+  color:#fff;
+  border:none;
+  padding:16px 40px;
+  font-size:16px;
+  letter-spacing:.5px;
+  border-radius:100px;
+  cursor:pointer;
+  transition:transform .15s ease, background .15s ease;
+}
+.btn-primario:hover{ background:var(--pink-2); transform:translateY(-2px); }
+.btn-primario:active{ transform:scale(.97); }
+
+.rodape-inicial{
+  color:var(--text-2);
+  font-size:12px;
+  margin-top:24px;
+}
+
+/* ===========================================================
+   4. HOME / TRILHA DE MATÉRIAS
+   =========================================================== */
+#tela-home{ padding-top:24px; padding-bottom:40px; gap:20px; }
+
+.home-cabecalho{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:4px;
+}
+.home-titulo{
+  font-size:24px;
+  font-weight:700;
+  margin:0;
+}
+.home-xp{
+  font-family:var(--font-game);
+  background:var(--card);
+  border:1px solid var(--border);
+  color:var(--pink);
+  padding:8px 14px;
+  border-radius:100px;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  position:relative;
+  transition:transform .2s ease;
+}
+.home-xp.pulso{ animation:pulsoXP .5s ease; }
+@keyframes pulsoXP{
+  0%{ transform:scale(1); }
+  35%{ transform:scale(1.15); }
+  100%{ transform:scale(1); }
+}
+
+/* Cartão de estatísticas — dados persistidos em localStorage */
+.stats-card{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+}
+.stats-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+  text-align:center;
+}
+.stats-valor{
+  font-family:var(--font-game);
+  color:var(--pink);
+  font-size:17px;
+}
+.stats-label{
+  color:var(--text-2);
+  font-size:10px;
+  letter-spacing:.3px;
+  text-transform:uppercase;
+  line-height:1.3;
+}
+
+.lista-materias{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.card-materia{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px 20px;
+  cursor:pointer;
+  transition:transform .15s ease, border-color .15s ease;
+  position:relative;
+}
+.card-materia:hover:not(.bloqueada){
+  border-color:var(--pink);
+  transform:translateY(-2px);
+}
+.card-materia.bloqueada{
+  cursor:not-allowed;
+  opacity:.45;
+}
+.card-materia.concluida{
+  border-color:var(--pink-2);
+}
+
+.card-materia-topo{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.card-materia-nome{
+  font-size:17px;
+  font-weight:600;
+  margin:0;
+}
+.card-materia-status{
+  font-family:var(--font-game);
+  font-size:11px;
+  color:var(--text-2);
+  letter-spacing:.5px;
+}
+.card-materia-status.status-concluida{ color:var(--pink); }
+
+.barra-fases{
+  display:flex;
+  gap:5px;
+}
+.seg-fase{
+  flex:1;
+  height:6px;
+  border-radius:4px;
+  background:var(--border);
+  overflow:hidden;
+}
+.seg-fase i{
+  display:block;
+  height:100%;
+  width:0%;
+  background:var(--pink);
+  border-radius:4px;
+  transition:width .4s ease;
+}
+.seg-fase.preenchido i{ width:100%; }
+
+.reset-progresso{
+  text-align:center;
+  color:var(--text-2);
+  font-size:12px;
+  margin-top:10px;
+  text-decoration:underline;
+  cursor:pointer;
+}
+
+/* ===========================================================
+   5. TELA DE JOGO — HUD, pergunta, cartões
+   =========================================================== */
+#tela-jogo{ padding-top:18px; padding-bottom:24px; gap:0; }
+
+.hud{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.hud-voltar{
+  background:none;
+  border:none;
+  color:var(--text-2);
+  font-size:22px;
+  cursor:pointer;
+  line-height:1;
+  padding:4px;
+}
+.hud-voltar:hover{ color:var(--pink); }
+
+.hud-barra-wrap{
+  flex:1;
+  display:flex;
+  gap:5px;
+}
+.hud-seg{
+  flex:1;
+  height:9px;
+  border-radius:6px;
+  background:var(--border);
+  overflow:hidden;
+}
+.hud-seg i{
+  display:block;
+  height:100%;
+  width:0%;
+  background:var(--pink);
+  border-radius:6px;
+  transition:width .3s ease;
+}
+.hud-seg.completo i{ width:100%; }
+
+.hud-vidas{
+  font-family:var(--font-game);
+  font-size:15px;
+  letter-spacing:2px;
+  white-space:nowrap;
+  transition:transform .2s ease;
+}
+.hud-vidas.tremor{ animation:tremor .4s ease; }
+@keyframes tremor{
+  0%,100%{ transform:translateX(0); }
+  25%{ transform:translateX(-4px); }
+  75%{ transform:translateX(4px); }
+}
+
+.hud-info{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-family:var(--font-game);
+  color:var(--text-2);
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:22px;
+  position:relative;
+}
+.hud-info .hud-xp{ color:var(--pink); position:relative; }
+
+/* Texto flutuante "+XP" exibido próximo ao contador ao acertar */
+.xp-flutuante{
+  position:absolute;
+  top:-6px;
+  right:0;
+  font-family:var(--font-game);
+  color:var(--verde);
+  font-size:12px;
+  pointer-events:none;
+  animation:flutuarXP 1s ease forwards;
+}
+@keyframes flutuarXP{
+  0%{ opacity:0; transform:translateY(0); }
+  20%{ opacity:1; }
+  100%{ opacity:0; transform:translateY(-22px); }
+}
+
+.pergunta-texto{
+  font-family:var(--font-body);
+  font-size:22px;
+  font-weight:600;
+  line-height:1.35;
+  margin:0 0 26px 0;
+}
+
+.grade-cartoes{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.cartao-resposta{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px 16px;
+  color:var(--text);
+  font-size:15px;
+  line-height:1.35;
+  cursor:pointer;
+  text-align:left;
+  transition:transform .12s ease, border-color .12s ease, background .12s ease;
+  min-height:78px;
+  display:flex;
+  align-items:center;
+}
+.cartao-resposta:hover{ border-color:var(--pink); }
+.cartao-resposta.selecionado{
+  border-color:var(--pink);
+  background:#120910;
+  transform:scale(1.02);
+}
+.cartao-resposta.correto{
+  border-color:var(--verde);
+  background:#0c1c11;
+  color:#8ff0ab;
+}
+.cartao-resposta.incorreto{
+  border-color:var(--vermelho);
+  background:#210d0d;
+  color:#f5a3a3;
+  animation:tremor .35s ease;
+}
+.cartao-resposta.desabilitado{ pointer-events:none; }
+
+.feedback-area{
+  min-height:34px;
+  font-family:var(--font-game);
+  font-size:15px;
+  margin-bottom:10px;
+  text-align:center;
+  animation:fadeIn .25s ease;
+}
+.feedback-area.ok{ color:var(--verde); }
+.feedback-area.erro{ color:var(--vermelho); }
+
+.btn-continuar{
+  font-family:var(--font-game);
+  background:var(--pink);
+  color:#fff;
+  border:none;
+  padding:16px;
+  font-size:15px;
+  letter-spacing:.5px;
+  border-radius:100px;
+  cursor:pointer;
+  margin-top:auto;
+  transition:background .15s ease, opacity .15s ease, transform .12s ease;
+}
+.btn-continuar:disabled{
+  background:#2a1620;
+  color:#6b4a58;
+  cursor:not-allowed;
+}
+.btn-continuar:not(:disabled):hover{ background:var(--pink-2); }
+.btn-continuar:not(:disabled):active{ transform:scale(.98); }
+
+/* ===========================================================
+   6. TELA DE FEEDBACK — exibida logo após cada resposta
+   =========================================================== */
+#tela-feedback{
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:22px;
+  min-height:calc(100vh - 40px);
+  padding-bottom:24px;
+}
+.feedback-conteudo{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  max-width:380px;
+  border-radius:var(--radius);
+  border:1.5px solid var(--border);
+  padding:36px 24px;
+  background:var(--card);
+  animation:apareceFeedback .3s ease;
+}
+@keyframes apareceFeedback{
+  from{ opacity:0; transform:scale(.9); }
+  to{ opacity:1; transform:scale(1); }
+}
+#tela-feedback.feedback-correto .feedback-conteudo{
+  border-color:var(--verde);
+  background:#0c1c11;
+}
+#tela-feedback.feedback-incorreto .feedback-conteudo{
+  border-color:var(--vermelho);
+  background:#210d0d;
+}
+.feedback-icone{
+  font-size:44px;
+  line-height:1;
+}
+#tela-feedback.feedback-correto .feedback-icone{ color:var(--verde); }
+#tela-feedback.feedback-incorreto .feedback-icone{ color:var(--vermelho); }
+.feedback-titulo{
+  font-size:24px;
+  font-weight:700;
+  margin:0;
+}
+#tela-feedback.feedback-correto .feedback-titulo{ color:#8ff0ab; }
+#tela-feedback.feedback-incorreto .feedback-titulo{ color:#f5a3a3; }
+.feedback-resposta-correta{
+  color:var(--text-2);
+  font-size:14px;
+  margin:0;
+  line-height:1.4;
+}
+.feedback-resposta-correta strong{ color:var(--text); }
+.feedback-xp-ganho{
+  font-family:var(--font-game);
+  color:var(--pink);
+  font-size:15px;
+  background:var(--card-2);
+  border:1px solid var(--border);
+  padding:8px 18px;
+  border-radius:100px;
+}
+#tela-feedback .btn-continuar{
+  width:100%;
+  max-width:380px;
+  margin-top:0;
+}
+
+/* ===========================================================
+   7. TELAS DE CONCLUSÃO (fase / matéria / final)
+   =========================================================== */
+.tela-conclusao{
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:14px;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+.conclusao-emoji{ font-size:52px; animation:apareceFeedback .35s ease; }
+.conclusao-titulo{
+  font-size:28px;
+  font-weight:700;
+  margin:0;
+}
+.conclusao-mensagem{
+  color:var(--text-2);
+  font-size:15px;
+  max-width:400px;
+  margin:0;
+}
+.conclusao-xp{
+  font-family:var(--font-game);
+  color:var(--pink);
+  font-size:16px;
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:10px 22px;
+  border-radius:100px;
+  margin:6px 0 10px 0;
+}
+.conclusao-botoes{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  width:100%;
+  max-width:300px;
+}
+.btn-secundario{
+  font-family:var(--font-game);
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--border);
+  padding:14px;
+  font-size:14px;
+  border-radius:100px;
+  cursor:pointer;
+  transition:border-color .15s ease;
+  text-decoration:none;
+  display:block;
+}
+.btn-secundario:hover{ border-color:var(--pink); }
+
+/* Bloco de incentivo a continuar navegando pela Upixel,
+   exibido apenas na tela final do jogo */
+.final-continue{
+  width:100%;
+  max-width:300px;
+  margin-top:8px;
+}
+.final-continue-titulo{
+  font-family:var(--font-game);
+  color:var(--text-2);
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.final-links{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.btn-link-externo{
+  font-family:var(--font-body);
+  font-size:14px;
+  color:var(--text);
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:13px;
+  border-radius:100px;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition:border-color .15s ease, transform .15s ease;
+}
+.btn-link-externo:hover{
+  border-color:var(--pink);
+  transform:translateY(-2px);
+}
+
+/* Confetes CSS — apenas tons de rosa/branco/cinza, sem imagens */
+.confete{
+  position:absolute;
+  top:-20px;
+  width:8px;
+  height:14px;
+  opacity:.9;
+  border-radius:2px;
+  animation:cair linear forwards;
+}
+@keyframes cair{
+  to{ transform:translateY(115vh) rotate(340deg); opacity:0; }
+}
+
+/* ===========================================================
+   8. RESPONSIVIDADE
+   =========================================================== */
+@media (max-width:520px){
+  .app{ padding:0 16px; }
+  .titulo-inicial{ font-size:34px; }
+  .pergunta-texto{ font-size:19px; }
+  .grade-cartoes{ grid-template-columns:1fr; }
+  .cartao-resposta{ min-height:auto; padding:16px; }
+  .btn-primario, .btn-continuar{ padding:15px; font-size:14px; }
+  .stats-card{ grid-template-columns:repeat(2, 1fr); }
+}
+
+/* Acessibilidade de foco no teclado */
+button:focus-visible, .card-materia:focus-visible, .cartao-resposta:focus-visible, a:focus-visible{
+  outline:2px solid var(--pink);
+  outline-offset:2px;
+}
+
+/* Respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- =========================================================
+       TOPO — link persistente de volta ao catálogo de jogos
+       ========================================================= -->
+  <header class="topo-nav">
+    <a class="link-voltar" href="ux-challenge.html">← Voltar aos Jogos</a>
+  </header>
+
+  <!-- =========================================================
+       TELA 1 — INICIAL
+       ========================================================= -->
+  <section id="tela-inicial" class="tela ativa">
+    <span class="logo-inicial">Upixel</span>
+    <h1 class="titulo-inicial">Academia <span>UX</span></h1>
+    <p class="subtitulo-inicial">Aprenda UX e UI como se estivesse jogando.</p>
+
+    <!-- Painel de retomada: só aparece quando já existe progresso salvo -->
+    <div class="inicial-stats" id="inicial-stats">
+      <div class="inicial-stats-linha">
+        <div class="inicial-stat-item">
+          <span class="inicial-stat-valor" id="inicial-xp">0 XP</span>
+          <span class="inicial-stat-label">Experiência</span>
+        </div>
+        <div class="inicial-stat-item">
+          <span class="inicial-stat-valor" id="inicial-materia-atual">—</span>
+          <span class="inicial-stat-label">Matéria atual</span>
+        </div>
+      </div>
+      <div class="inicial-progress-wrap">
+        <div class="inicial-progress-texto">
+          <span>Trilha completa</span>
+          <span id="inicial-progresso-pct">0%</span>
+        </div>
+        <div class="inicial-progress-barra"><i id="inicial-progresso-barra"></i></div>
+      </div>
+    </div>
+
+    <button class="btn-primario" id="btn-comecar">Começar</button>
+    <p class="rodape-inicial">150 perguntas · 6 matérias · 0 desculpas para UI ruim</p>
+  </section>
+
+  <!-- =========================================================
+       TELA 2 — HOME (trilha de matérias)
+       ========================================================= -->
+  <section id="tela-home" class="tela">
+    <div class="home-cabecalho">
+      <h2 class="home-titulo">Sua trilha</h2>
+      <span class="home-xp" id="home-xp">⚡ 0 XP</span>
+    </div>
+
+    <!-- Estatísticas persistidas em localStorage -->
+    <div class="stats-card" id="stats-card">
+      <div class="stats-item">
+        <span class="stats-valor" id="stat-xp">0</span>
+        <span class="stats-label">XP total</span>
+      </div>
+      <div class="stats-item">
+        <span class="stats-valor" id="stat-perguntas">0</span>
+        <span class="stats-label">Perguntas</span>
+      </div>
+      <div class="stats-item">
+        <span class="stats-valor" id="stat-acertos">0%</span>
+        <span class="stats-label">Acertos</span>
+      </div>
+      <div class="stats-item">
+        <span class="stats-valor" id="stat-materias">0/6</span>
+        <span class="stats-label">Matérias concluídas</span>
+      </div>
+      <div class="stats-item">
+        <span class="stats-valor" id="stat-fases">0</span>
+        <span class="stats-label">Fases concluídas</span>
+      </div>
+      <div class="stats-item">
+        <span class="stats-valor" id="stat-vidas">❤️❤️❤️</span>
+        <span class="stats-label">Vidas atuais</span>
+      </div>
+    </div>
+
+    <div class="lista-materias" id="lista-materias"><!-- gerado via JS --></div>
+    <span class="reset-progresso" id="btn-reset">Reiniciar progresso</span>
+  </section>
+
+  <!-- =========================================================
+       TELA 3 — JOGO (pergunta)
+       ========================================================= -->
+  <section id="tela-jogo" class="tela">
+    <div class="hud">
+      <button class="hud-voltar" id="btn-voltar" aria-label="Voltar">←</button>
+      <div class="hud-barra-wrap" id="hud-barra"><!-- 5 segmentos gerados via JS --></div>
+      <span class="hud-vidas" id="hud-vidas">❤️❤️❤️</span>
+    </div>
+    <div class="hud-info">
+      <span id="hud-materia">Matéria</span>
+      <span id="hud-fase">Fase 1/5</span>
+      <span class="hud-xp" id="hud-xp">⚡ 0</span>
+    </div>
+
+    <h2 class="pergunta-texto" id="texto-pergunta">Pergunta</h2>
+    <div class="grade-cartoes" id="grade-cartoes"><!-- 4 cartões gerados via JS --></div>
+    <div class="feedback-area" id="area-feedback"></div>
+    <button class="btn-continuar" id="btn-continuar" disabled>Continuar</button>
+  </section>
+
+  <!-- =========================================================
+       TELA 3B — FEEDBACK DA RESPOSTA
+       ========================================================= -->
+  <section id="tela-feedback" class="tela">
+    <div class="feedback-conteudo">
+      <span class="feedback-icone" id="feedback-icone">✓</span>
+      <h2 class="feedback-titulo" id="feedback-titulo">Correto!</h2>
+      <p class="feedback-resposta-correta" id="feedback-resposta-correta"></p>
+      <span class="feedback-xp-ganho" id="feedback-xp-ganho">+0 XP</span>
+    </div>
+    <button class="btn-continuar" id="btn-feedback-continuar">Continuar</button>
+  </section>
+
+  <!-- =========================================================
+       TELA 4 — FASE CONCLUÍDA
+       ========================================================= -->
+  <section id="tela-fase-concluida" class="tela tela-conclusao">
+    <span class="conclusao-emoji">🎉</span>
+    <h2 class="conclusao-titulo">Fase concluída</h2>
+    <p class="conclusao-mensagem" id="fase-mensagem">Mais uma interface salva.</p>
+    <span class="conclusao-xp" id="fase-xp">+0 XP</span>
+    <div class="conclusao-botoes">
+      <button class="btn-primario" id="btn-proxima-fase">Próxima fase</button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       TELA 5 — MATÉRIA CONCLUÍDA
+       ========================================================= -->
+  <section id="tela-materia-concluida" class="tela tela-conclusao">
+    <span class="conclusao-emoji">🏆</span>
+    <h2 class="conclusao-titulo">Matéria concluída</h2>
+    <p class="conclusao-mensagem" id="materia-mensagem">Nielsen aprovaria essa fase.</p>
+    <span class="conclusao-xp" id="materia-xp">+0 XP</span>
+    <div class="conclusao-botoes">
+      <button class="btn-primario" id="btn-continuar-materia">Continuar</button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       TELA 6 — FINAL DO JOGO
+       ========================================================= -->
+  <section id="tela-final" class="tela tela-conclusao">
+    <span class="conclusao-emoji">🏆</span>
+    <h2 class="conclusao-titulo">Parabéns!</h2>
+    <p class="conclusao-mensagem">Você concluiu a Academia UX da Upixel. Você respondeu 150 perguntas sobre UX, UI, acessibilidade, Design Thinking, Figma e heurísticas. Continue acompanhando a Upixel para desbloquear novos módulos.</p>
+    <div class="conclusao-botoes">
+      <button class="btn-primario" id="btn-jogar-novamente">Jogar novamente</button>
+      <button class="btn-secundario" id="btn-voltar-inicio">Voltar ao início</button>
+    </div>
+
+    <!-- Incentivo para continuar navegando na Upixel -->
+    <div class="final-continue">
+      <p class="final-continue-titulo">Continue por aqui</p>
+      <div class="final-links">
+        <a class="btn-link-externo" href="games.html">🎮 Outros jogos</a>
+        <a class="btn-link-externo" href="quizzes.html">🧠 Quizzes</a>
+        <a class="btn-link-externo" href="blog.html">📚 Artigos</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* =============================================================
+   ACADEMIA UX — UPIXEL
+   Jogo educativo estilo Duolingo sobre UX/UI Design
+   Código organizado por seções. 100% offline, sem dependências.
+   ============================================================= */
+
+/* ---------------------------------------------------------
+   SEÇÃO 1 — DADOS (matérias, fases e perguntas)
+   Para adicionar uma nova matéria, basta inserir um novo
+   objeto no array MATERIAS seguindo a mesma estrutura.
+   --------------------------------------------------------- */
+const MATERIAS = [
+
+  /* ============ 1. HEURÍSTICAS DE NIELSEN ============ */
+  {
+    titulo: "Heurísticas de Nielsen",
+    fases: [
+      { titulo: "Fundamentos", perguntas: [
+        { pergunta: "O usuário clicou em 'Salvar' e nada aconteceu na tela. Qual heurística foi violada?", alternativas:["Visibilidade do status do sistema","Estética e design minimalista","Ajuda e documentação","Flexibilidade e eficiência de uso"], correta:0 },
+        { pergunta: "Um app de banco usa o termo 'efetuar transação pecuniária' em vez de 'fazer pagamento'. Qual heurística foi ferida?", alternativas:["Controle e liberdade do usuário","Correspondência entre sistema e mundo real","Consistência e padrões","Reconhecer é melhor que lembrar"], correta:1 },
+        { pergunta: "Um site não tem botão de 'cancelar' durante o preenchimento de um formulário longo. Qual heurística está ausente?", alternativas:["Controle e liberdade do usuário","Prevenção de erros","Visibilidade do status do sistema","Design minimalista"], correta:0 },
+        { pergunta: "Em um app, o botão de 'confirmar' muda de lugar em cada tela. Isso fere qual heurística?", alternativas:["Ajuda e documentação","Consistência e padrões","Flexibilidade de uso","Correspondência com o mundo real"], correta:1 },
+        { pergunta: "Quantas heurísticas de usabilidade Jakob Nielsen propôs originalmente?", alternativas:["8","10","12","6"], correta:1 }
+      ]},
+      { titulo: "Prevenção e memória", perguntas: [
+        { pergunta: "Um formulário permite enviar um CPF com letras e só avisa o erro depois do envio. Qual heurística foi negligenciada?", alternativas:["Prevenção de erros","Estética minimalista","Flexibilidade e eficiência de uso","Ajuda e documentação"], correta:0 },
+        { pergunta: "Um app mostra o mesmo ícone de 'coração' para 'favoritar' em uma tela e para 'curtir' em outra. Isso fere:", alternativas:["Visibilidade do status do sistema","Consistência e padrões","Controle e liberdade do usuário","Reconhecimento em vez de memorização"], correta:1 },
+        { pergunta: "Um sistema exige que o usuário memorize um código de 10 dígitos entre telas. Qual heurística está sendo ignorada?", alternativas:["Reconhecer é melhor que lembrar","Design minimalista e estético","Prevenção de erros","Flexibilidade e eficiência de uso"], correta:0 },
+        { pergunta: "Atalhos de teclado para usuários avançados, mantendo a interface simples para iniciantes, atendem a qual heurística?", alternativas:["Consistência e padrões","Flexibilidade e eficiência de uso","Visibilidade do status do sistema","Ajuda e documentação"], correta:1 },
+        { pergunta: "Uma mensagem de erro diz apenas 'Erro 500'. Qual heurística foi desrespeitada?", alternativas:["Ajudar o usuário a reconhecer, diagnosticar e recuperar-se de erros","Estética e design minimalista","Controle e liberdade do usuário","Consistência e padrões"], correta:0 }
+      ]},
+      { titulo: "Clareza e foco", perguntas: [
+        { pergunta: "Um app pede confirmação antes de excluir uma conta permanentemente. Essa é uma boa prática de qual heurística?", alternativas:["Prevenção de erros","Flexibilidade e eficiência de uso","Correspondência com o mundo real","Ajuda e documentação"], correta:0 },
+        { pergunta: "Uma tela tem excesso de informações irrelevantes competindo com o conteúdo principal. Qual heurística foi violada?", alternativas:["Consistência e padrões","Design minimalista e estético","Controle e liberdade do usuário","Visibilidade do status do sistema"], correta:1 },
+        { pergunta: "O usuário não encontra como desfazer uma ação após arrastar um arquivo para a lixeira. Isso fere:", alternativas:["Controle e liberdade do usuário","Reconhecer é melhor que lembrar","Ajuda e documentação","Prevenção de erros"], correta:0 },
+        { pergunta: "Um app de e-commerce mostra uma central de ajuda com busca por palavras-chave. Isso atende à heurística de:", alternativas:["Consistência e padrões","Ajuda e documentação","Flexibilidade e eficiência de uso","Estética minimalista"], correta:1 },
+        { pergunta: "Uma barra de carregamento infinita, sem indicação de progresso, prejudica qual heurística?", alternativas:["Visibilidade do status do sistema","Prevenção de erros","Consistência e padrões","Controle e liberdade do usuário"], correta:0 }
+      ]},
+      { titulo: "Consistência avançada", perguntas: [
+        { pergunta: "Um app trava sem aviso ao tentar salvar um arquivo grande. O usuário não sabe se deve esperar ou tentar novamente. Qual heurística foi violada?", alternativas:["Visibilidade do status do sistema","Design minimalista","Consistência e padrões","Ajuda e documentação"], correta:0 },
+        { pergunta: "Um sistema usa o mesmo ícone de lixeira tanto para 'excluir' quanto para 'arquivar', causando confusão. Isso é falha de:", alternativas:["Prevenção de erros","Consistência e padrões","Flexibilidade de uso","Correspondência com o mundo real"], correta:1 },
+        { pergunta: "Ao digitar um e-mail inválido, o campo já sinaliza o erro antes do envio do formulário. Essa prática reforça:", alternativas:["Prevenção de erros","Ajuda e documentação","Reconhecer é melhor que lembrar","Estética minimalista"], correta:0 },
+        { pergunta: "Um app com apenas ícones sem texto, difícil de entender para novos usuários, provavelmente peca em:", alternativas:["Reconhecer é melhor que lembrar","Consistência e padrões","Prevenção de erros","Controle e liberdade do usuário"], correta:0 },
+        { pergunta: "Uma interface com dezenas de opções visíveis o tempo todo, sem hierarquia, dificulta o uso. Qual heurística resolveria isso?", alternativas:["Design minimalista e estético","Ajuda e documentação","Consistência e padrões","Controle e liberdade do usuário"], correta:0 }
+      ]},
+      { titulo: "Cenários reais", perguntas: [
+        { pergunta: "Um app de delivery permite reabrir o pedido cancelado com um clique, evitando repetir tudo. Isso é aplicação de:", alternativas:["Flexibilidade e eficiência de uso","Prevenção de erros","Consistência e padrões","Ajuda e documentação"], correta:0 },
+        { pergunta: "Você percebe que usuários avançados reclamam de excesso de cliques para tarefas repetitivas. Qual heurística resolve isso?", alternativas:["Flexibilidade e eficiência de uso","Design minimalista e estético","Visibilidade do status do sistema","Consistência e padrões"], correta:0 },
+        { pergunta: "Um app financeiro usa termos como 'commit da transação' em vez de 'confirmar pagamento'. Isso é falha de:", alternativas:["Correspondência entre sistema e mundo real","Prevenção de erros","Ajuda e documentação","Controle e liberdade do usuário"], correta:0 },
+        { pergunta: "Um chatbot de suporte não oferece nenhuma forma de falar com humano. Qual heurística está ausente?", alternativas:["Ajuda e documentação","Consistência e padrões","Design minimalista","Reconhecer é melhor que lembrar"], correta:0 },
+        { pergunta: "Um PO pediu para remover a confirmação antes de excluir contas 'para ser mais rápido'. Qual heurística você defenderia?", alternativas:["Prevenção de erros","Estética minimalista","Flexibilidade de uso","Ajuda e documentação"], correta:0 }
+      ]}
+    ]
+  },
+
+  /* ============ 2. UX DESIGN ============ */
+  {
+    titulo: "UX Design",
+    fases: [
+      { titulo: "Conceitos básicos", perguntas: [
+        { pergunta: "O que significa a sigla UX?", alternativas:["User Experience","User Exchange","Unified Xperience","User Extension"], correta:0 },
+        { pergunta: "Qual é o principal objetivo do design de UX?", alternativas:["Deixar a interface bonita","Resolver problemas reais dos usuários","Aumentar o número de telas","Usar as cores da moda"], correta:1 },
+        { pergunta: "O que é uma persona em UX?", alternativas:["Um cliente real entrevistado ao vivo","Uma representação fictícia baseada em dados de usuários reais","O nome do designer responsável","Um tipo de botão"], correta:1 },
+        { pergunta: "Para que serve um mapa de jornada do usuário (user journey map)?", alternativas:["Mostrar o código-fonte do produto","Visualizar as etapas e emoções do usuário ao longo da experiência","Listar preços dos concorrentes","Definir a paleta de cores"], correta:1 },
+        { pergunta: "O que é 'usabilidade'?", alternativas:["A facilidade e eficiência com que um usuário realiza uma tarefa","O tanto de animações em uma tela","A quantidade de cores usadas","O número de telas do app"], correta:0 }
+      ]},
+      { titulo: "Pesquisa e validação", perguntas: [
+        { pergunta: "Qual é o objetivo de um teste de usabilidade?", alternativas:["Vender o produto","Identificar dificuldades reais no uso da interface","Definir o preço do produto","Escolher a fonte tipográfica"], correta:1 },
+        { pergunta: "O que é 'wireframe'?", alternativas:["Um esboço estrutural de baixa fidelidade da interface","A versão final do produto","Um vídeo de demonstração","Um teste com usuários"], correta:0 },
+        { pergunta: "O que caracteriza um MVP (Produto Mínimo Viável) em UX?", alternativas:["A versão mais bonita possível","A versão com o menor conjunto de funcionalidades que já entrega valor","Um produto sem nenhuma função","Um protótipo apenas visual"], correta:1 },
+        { pergunta: "O que é 'arquitetura da informação'?", alternativas:["A organização e estruturação do conteúdo para facilitar a navegação","O layout visual de botões","A paleta de cores do site","O código JavaScript da página"], correta:0 },
+        { pergunta: "Por que é importante fazer pesquisa com usuários antes de desenhar a solução?", alternativas:["Para evitar resolver o problema errado","Para economizar tempo de programação","Para escolher a fonte certa","Para agradar o chefe"], correta:0 }
+      ]},
+      { titulo: "Diagnóstico de problemas", perguntas: [
+        { pergunta: "Um usuário abandona o carrinho de compras sempre na tela de frete. O que a equipe de UX deveria fazer primeiro?", alternativas:["Mudar a cor do botão de comprar","Investigar a causa do abandono com dados e testes","Adicionar mais banners promocionais","Remover a etapa de frete sem analisar"], correta:1 },
+        { pergunta: "O que é 'card sorting'?", alternativas:["Uma técnica para entender como usuários organizam categorias de conteúdo","Um jogo de cartas da equipe","Uma forma de testar cores","Um tipo de wireframe"], correta:0 },
+        { pergunta: "Qual a diferença entre UX e UI?", alternativas:["Não há diferença, são sinônimos","UX trata da experiência geral, UI trata da interface visual e interativa","UX é só para mobile, UI é só para desktop","UI vem antes da pesquisa, UX depois"], correta:1 },
+        { pergunta: "O que são 'pontos de dor' (pain points) do usuário?", alternativas:["Erros de programação no back-end","Dificuldades ou frustrações que o usuário enfrenta durante o uso","Cores muito vibrantes na tela","Tempos de carregamento do servidor"], correta:1 },
+        { pergunta: "Por que testes A/B são usados em UX?", alternativas:["Para comparar duas versões e ver qual performa melhor com dados reais","Para escolher a fonte favorita do designer","Para acelerar o desenvolvimento","Para reduzir custos de hospedagem"], correta:0 }
+      ]},
+      { titulo: "Linguagem e fluxo", perguntas: [
+        { pergunta: "Uma pesquisa mostrou que usuários não entendem o termo 'onboarding' usado no app. O que isso indica?", alternativas:["Que o termo técnico não corresponde à linguagem do usuário","Que o app está com bug","Que faltam mais telas","Que a cor do botão está errada"], correta:0 },
+        { pergunta: "O que é 'fluxo de usuário' (user flow)?", alternativas:["O caminho que o usuário percorre para completar uma tarefa","A velocidade de carregamento da página","A paleta de cores usada","O nome técnico do banco de dados"], correta:0 },
+        { pergunta: "Qual a vantagem de prototipar antes de desenvolver?", alternativas:["Testar e validar ideias com baixo custo antes de investir em código","Aumentar o tempo de entrega do projeto","Evitar conversar com os usuários","Pular a etapa de pesquisa"], correta:0 },
+        { pergunta: "O que significa 'usabilidade heurística' na prática de UX?", alternativas:["Uma avaliação de interface feita por especialistas com base em princípios conhecidos","Um teste feito só com usuários iniciantes","Uma pesquisa de mercado","Um tipo de prototipagem em alta fidelidade"], correta:0 },
+        { pergunta: "Um app de saúde ignora o feedback de usuários idosos por serem 'poucos'. Qual o risco dessa decisão?", alternativas:["Excluir um grupo relevante e prejudicar a acessibilidade e inclusão do produto","Nenhum, poucos usuários não importam","Melhorar a experiência geral","Aumentar o engajamento"], correta:0 }
+      ]},
+      { titulo: "Estratégia e métricas", perguntas: [
+        { pergunta: "O time quer lançar uma funcionalidade sem validar com usuários porque 'o prazo é curto'. Qual é o risco típico dessa decisão em UX?", alternativas:["Investir tempo e dinheiro em algo que pode não resolver o problema real","Entregar mais rápido sem nenhum risco","Melhorar a retenção automaticamente","Reduzir a necessidade de testes futuros"], correta:0 },
+        { pergunta: "O que é 'double diamond' aplicado a UX?", alternativas:["Um framework de duas fases de divergência e convergência: descobrir problema e descobrir solução","Um tipo de gráfico de vendas","Um teste de usabilidade específico","Uma métrica de conversão"], correta:0 },
+        { pergunta: "Por que métricas como NPS e CSAT são usadas em UX?", alternativas:["Para medir satisfação e percepção dos usuários sobre o produto","Para definir o layout da tela","Para escolher fontes tipográficas","Para acelerar o build do app"], correta:0 },
+        { pergunta: "Um designer entrega uma tela linda, mas os usuários não conseguem concluir a tarefa principal. O que faltou?", alternativas:["Validar a usabilidade e o fluxo com testes reais","Usar mais animações","Adicionar mais cores","Aumentar o tamanho da logo"], correta:0 },
+        { pergunta: "Qual é o papel do 'benchmarking' em projetos de UX?", alternativas:["Analisar concorrentes e referências para embasar decisões de design","Definir o preço final do produto","Substituir a pesquisa com usuários","Escolher a paleta de cores por sorteio"], correta:0 }
+      ]}
+    ]
+  },
+
+  /* ============ 3. UI DESIGN ============ */
+  {
+    titulo: "UI Design",
+    fases: [
+      { titulo: "Conceitos básicos", perguntas: [
+        { pergunta: "O que significa a sigla UI?", alternativas:["User Interface","User Integration","Unified Interaction","User Instance"], correta:0 },
+        { pergunta: "Seu botão de excluir é maior e mais chamativo que o de salvar. Qual problema isso pode causar?", alternativas:["Nenhum, tamanho não importa","O usuário pode excluir algo por engano com mais facilidade","O app ficará mais rápido","Vai melhorar a acessibilidade"], correta:1 },
+        { pergunta: "O que é 'hierarquia visual'?", alternativas:["A ordem de importância dos elementos guiada por tamanho, cor e posição","O número de telas do app","A quantidade de ícones usados","O nome da paleta de cores"], correta:0 },
+        { pergunta: "Para que serve o espaço em branco (whitespace) em uma interface?", alternativas:["Para preencher espaço vazio sem função","Para dar respiro visual e destacar elementos importantes","Para economizar tinta na impressão","Para esconder erros de layout"], correta:1 },
+        { pergunta: "O que é um 'design system'?", alternativas:["Um conjunto de componentes e padrões reutilizáveis para manter consistência visual","Um único botão customizado","Um plano de marketing","Um tipo de teste de usabilidade"], correta:0 }
+      ]},
+      { titulo: "Cor, contraste e grid", perguntas: [
+        { pergunta: "Por que a consistência de cores e ícones importa na UI?", alternativas:["Ajuda o usuário a reconhecer padrões e reduzir esforço cognitivo","Deixa o app mais colorido","Aumenta o tempo de carregamento","Não tem nenhuma importância prática"], correta:0 },
+        { pergunta: "O que é 'contraste' em UI e por que é importante?", alternativas:["A diferença de tom entre elementos, importante para legibilidade","O número de botões na tela","A velocidade da animação","O tamanho do logotipo"], correta:0 },
+        { pergunta: "Um texto cinza claro sobre fundo branco é um problema de UI porque:", alternativas:["Fica bonito e moderno sempre","Pode prejudicar a legibilidade por baixo contraste","Deixa a página mais rápida","Não afeta a experiência"], correta:1 },
+        { pergunta: "O que caracteriza um bom alinhamento em UI?", alternativas:["Elementos posicionados aleatoriamente para parecer criativo","Elementos organizados em uma grade lógica e consistente","Textos sempre centralizados","Ícones sobrepostos ao texto"], correta:1 },
+        { pergunta: "Qual a função de um grid (grade) em design de interfaces?", alternativas:["Organizar e alinhar elementos de forma consistente","Definir a paleta de cores","Substituir o uso de tipografia","Acelerar o carregamento do site"], correta:0 }
+      ]},
+      { titulo: "Componentes e feedback", perguntas: [
+        { pergunta: "Um formulário usa 6 fontes diferentes na mesma tela. Qual problema de UI isso evidencia?", alternativas:["Falta de consistência tipográfica, prejudicando a hierarquia visual","Melhora a diversão do usuário","Aumenta a legibilidade","Nenhum problema"], correta:0 },
+        { pergunta: "O que é 'affordance' em UI?", alternativas:["A propriedade de um elemento sugerir visualmente como deve ser usado","O nome técnico de uma cor","A velocidade de resposta do servidor","Um tipo de ícone específico"], correta:0 },
+        { pergunta: "Botões sem nenhum estado de hover ou clique prejudicam qual aspecto?", alternativas:["O feedback visual das ações do usuário","A paleta de cores","O tempo de build do projeto","A arquitetura da informação"], correta:0 },
+        { pergunta: "Qual é a vantagem de usar componentes reutilizáveis em UI?", alternativas:["Garantir consistência e agilizar o desenvolvimento","Deixar cada tela totalmente diferente","Aumentar o número de bugs","Reduzir a legibilidade"], correta:0 },
+        { pergunta: "Por que ícones sem rótulo de texto podem ser um problema de UI?", alternativas:["Podem gerar ambiguidade sobre o significado da ação","Sempre deixam a interface mais rápida","Melhoram a acessibilidade automaticamente","Não têm nenhum impacto"], correta:0 }
+      ]},
+      { titulo: "Sistemas visuais", perguntas: [
+        { pergunta: "Uma paleta com dez cores de destaque compete por atenção na mesma tela. Isso é sintoma de:", alternativas:["Falta de hierarquia e uso excessivo de cor","Boa prática de UI","Acessibilidade bem aplicada","Consistência visual"], correta:0 },
+        { pergunta: "O que é 'atomic design'?", alternativas:["Uma metodologia que organiza componentes de UI em níveis: átomos, moléculas, organismos etc.","Um teste de performance do app","Um tipo de animação CSS","Uma técnica de pesquisa com usuários"], correta:0 },
+        { pergunta: "Por que respeitar uma escala tipográfica consistente é importante?", alternativas:["Cria hierarquia clara e previsível para o usuário","Deixa a interface mais bagunçada de propósito","Não tem relação com usabilidade","Serve só para decoração"], correta:0 },
+        { pergunta: "Um botão 'Comprar' com a mesma cor do texto de aviso de erro pode causar:", alternativas:["Confusão entre ação positiva e alerta negativo","Mais conversões automaticamente","Melhor acessibilidade","Nenhum efeito perceptível"], correta:0 },
+        { pergunta: "O que é 'micro-interação' em UI?", alternativas:["Pequenas respostas visuais a ações do usuário, como um botão que 'pulsa' ao ser clicado","Um bug pequeno no sistema","Uma reunião rápida da equipe","Um tipo de wireframe"], correta:0 }
+      ]},
+      { titulo: "Casos avançados", perguntas: [
+        { pergunta: "Um app usa espaçamentos diferentes entre elementos parecidos em cada tela. Qual conceito de UI resolveria isso?", alternativas:["Sistema de espaçamento consistente (design tokens)","Aumentar as animações","Adicionar mais cores","Reduzir a resolução das imagens"], correta:0 },
+        { pergunta: "Por que dark mode bem-feito considera contraste e não apenas inverter cores?", alternativas:["Porque contraste inadequado pode prejudicar legibilidade mesmo no escuro","Porque cores escuras sempre têm bom contraste automaticamente","Porque dark mode não afeta acessibilidade","Porque o objetivo é só estética"], correta:0 },
+        { pergunta: "Qual o risco de ignorar estados de erro, vazio e carregamento no design de telas?", alternativas:["Deixar o usuário sem entender o que está acontecendo em situações reais de uso","Nenhum, esses estados raramente acontecem","Melhorar a performance do app","Aumentar a satisfação automaticamente"], correta:0 },
+        { pergunta: "Um design system sem documentação de uso tende a causar:", alternativas:["Inconsistência quando diferentes times aplicam os componentes de formas distintas","Mais consistência automaticamente","Redução do tempo de desenvolvimento","Nenhum impacto prático"], correta:0 },
+        { pergunta: "Por que alinhar o tamanho da área clicável (não só o visual) do botão importa em UI mobile?", alternativas:["Porque áreas de toque pequenas dificultam o uso em telas sensíveis ao toque","Porque não afeta a experiência em dispositivos móveis","Porque só importa em desktop","Porque reduz a necessidade de testes"], correta:0 }
+      ]}
+    ]
+  },
+
+  /* ============ 4. DESIGN THINKING ============ */
+  {
+    titulo: "Design Thinking",
+    fases: [
+      { titulo: "As cinco etapas", perguntas: [
+        { pergunta: "Quais são as etapas clássicas do Design Thinking?", alternativas:["Empatizar, Definir, Idear, Prototipar, Testar","Planejar, Codificar, Testar, Lançar","Pesquisar, Vender, Entregar","Analisar, Criticar, Aprovar"], correta:0 },
+        { pergunta: "O que significa 'empatizar' no Design Thinking?", alternativas:["Compreender profundamente as necessidades e sentimentos do usuário","Definir o orçamento do projeto","Escrever o código da solução","Escolher a paleta de cores"], correta:0 },
+        { pergunta: "Qual o objetivo da etapa de 'idear'?", alternativas:["Gerar o maior número possível de ideias antes de filtrar","Escolher a primeira ideia que surgir","Finalizar o design visual","Testar com usuários reais"], correta:0 },
+        { pergunta: "O que é um protótipo no Design Thinking?", alternativas:["Uma representação simplificada da ideia para testar rapidamente","A versão final pronta para produção","Um relatório financeiro","Um documento legal do produto"], correta:0 },
+        { pergunta: "Por que o Design Thinking é considerado um processo iterativo?", alternativas:["Porque as etapas podem ser revisitadas conforme se aprende mais","Porque segue sempre uma ordem linear rígida","Porque é usado apenas uma vez por projeto","Porque não permite mudanças"], correta:0 }
+      ]},
+      { titulo: "Empatia e ideação", perguntas: [
+        { pergunta: "O que é 'brainstorming' na fase de ideação?", alternativas:["Uma dinâmica para gerar ideias livremente, sem julgamento inicial","Uma reunião para aprovar orçamento","Um teste de usabilidade","Uma etapa de programação"], correta:0 },
+        { pergunta: "Qual a importância de definir o 'problema certo' antes de buscar soluções?", alternativas:["Evita investir esforço resolvendo algo que não é a real necessidade do usuário","Não tem importância, qualquer problema serve","Acelera a aprovação do orçamento","Substitui a necessidade de testes"], correta:0 },
+        { pergunta: "O que é um 'PDV' (Ponto de Vista) no Design Thinking?", alternativas:["Uma declaração que une usuário, necessidade e insight para guiar a ideação","Um tipo de gráfico financeiro","Uma ferramenta de programação","Um teste de acessibilidade"], correta:0 },
+        { pergunta: "Por que fazer entrevistas com usuários na fase de empatia?", alternativas:["Para captar necessidades reais que talvez não apareçam em suposições internas","Para vender o produto antes do lançamento","Para definir preços de mercado","Para acelerar o desenvolvimento técnico"], correta:0 },
+        { pergunta: "O que caracteriza um protótipo de baixa fidelidade?", alternativas:["Simples, rápido de fazer, focado em testar conceitos gerais","Idêntico ao produto final em todos os detalhes","Feito somente em código de produção","Sem nenhuma possibilidade de mudança"], correta:0 }
+      ]},
+      { titulo: "Validação com usuários", perguntas: [
+        { pergunta: "Um time cria uma solução sem entender o problema do usuário, só porque 'parece legal'. Qual etapa foi pulada?", alternativas:["Empatizar e Definir","Prototipar","Testar","Idear"], correta:0 },
+        { pergunta: "Por que testar protótipos com usuários reais é essencial no Design Thinking?", alternativas:["Permite validar hipóteses antes de investir em uma solução final","Serve apenas para cumprir formalidade","Substitui a necessidade de ideação","Acelera o lançamento sem necessidade de ajustes"], correta:0 },
+        { pergunta: "O que é a técnica dos '5 porquês' usada no Design Thinking?", alternativas:["Perguntar 'por quê' repetidamente para chegar à causa raiz de um problema","Uma votação para escolher a melhor ideia","Um teste de usabilidade padrão","Uma etapa de aprovação financeira"], correta:0 },
+        { pergunta: "Qual o papel da multidisciplinaridade nas equipes de Design Thinking?", alternativas:["Trazer diferentes perspectivas para enriquecer a solução do problema","Aumentar o custo do projeto sem benefício","Atrasar decisões desnecessariamente","Substituir a pesquisa com usuários"], correta:0 },
+        { pergunta: "Por que é recomendado prototipar rápido e barato antes de refinar?", alternativas:["Para aprender e ajustar antes de investir tempo e recursos em algo caro","Para economizar apenas na etapa final","Para evitar qualquer teste com usuários","Para pular a fase de definição"], correta:0 }
+      ]},
+      { titulo: "Pensamento estratégico", perguntas: [
+        { pergunta: "Uma equipe recebe feedback negativo no teste de protótipo e decide ignorar para 'não atrasar o prazo'. Qual princípio do Design Thinking está sendo violado?", alternativas:["A natureza iterativa e centrada no usuário do processo","A necessidade de brainstorming","A fase de definição do problema","O uso de protótipos de alta fidelidade"], correta:0 },
+        { pergunta: "O que é 'pensamento convergente' no Design Thinking?", alternativas:["Filtrar e selecionar as melhores ideias entre muitas geradas","Gerar o máximo de ideias possíveis sem filtro","Ignorar dados de pesquisa","Pular direto para o desenvolvimento"], correta:0 },
+        { pergunta: "Qual a diferença entre pensamento divergente e convergente?", alternativas:["Divergente expande possibilidades; convergente reduz e escolhe","Divergente é usado só no desenvolvimento; convergente na pesquisa","Não há diferença prática","Divergente é sempre mais rápido que convergente"], correta:0 },
+        { pergunta: "Por que mapas de empatia são usados na fase de empatizar?", alternativas:["Para organizar o que o usuário diz, pensa, sente e faz","Para calcular custos do projeto","Para definir a stack tecnológica","Para aprovar o design final"], correta:0 },
+        { pergunta: "Qual o risco de pular a etapa de teste e lançar direto a solução prototipada?", alternativas:["Lançar algo que não resolve o problema real do usuário","Nenhum risco relevante","Acelerar sem nenhuma consequência","Melhorar automaticamente a adoção"], correta:0 }
+      ]},
+      { titulo: "Casos avançados", perguntas: [
+        { pergunta: "Um gestor pede para 'pular a pesquisa e ir direto para o protótipo final' para economizar tempo. Qual é o risco dessa decisão dentro do Design Thinking?", alternativas:["Desenvolver uma solução baseada em suposições, não em necessidades reais","Nenhum risco, pesquisa é dispensável","Vai garantir sucesso do produto","Vai eliminar a necessidade de testes futuros"], correta:0 },
+        { pergunta: "Por que o Design Thinking é útil para problemas complexos e ambíguos ('wicked problems')?", alternativas:["Porque estrutura a exploração do problema antes de buscar soluções fixas","Porque garante uma única resposta certa rapidamente","Porque elimina a necessidade de dados","Porque é aplicável só a produtos digitais"], correta:0 },
+        { pergunta: "O que significa 'fail fast, learn fast' no contexto do Design Thinking?", alternativas:["Testar rápido para identificar erros cedo e aprender com eles a baixo custo","Lançar produtos sem qualquer teste","Evitar qualquer tipo de falha a todo custo","Ignorar o feedback dos usuários"], correta:0 },
+        { pergunta: "Qual a relação entre Design Thinking e Design Sprint?", alternativas:["O Design Sprint é uma versão acelerada e estruturada de etapas do Design Thinking","São processos totalmente não relacionados","Design Sprint substitui totalmente a pesquisa com usuários","Design Sprint é usado apenas para programação"], correta:0 },
+        { pergunta: "Por que envolver stakeholders de negócio durante a ideação pode ser benéfico?", alternativas:["Ajuda a alinhar viabilidade de negócio com desejabilidade do usuário e viabilidade técnica","Serve apenas para aprovar orçamento no final","Substitui totalmente a pesquisa com usuários","Atrasa o processo sem nenhum ganho"], correta:0 }
+      ]}
+    ]
+  },
+
+  /* ============ 5. ACESSIBILIDADE ============ */
+  {
+    titulo: "Acessibilidade",
+    fases: [
+      { titulo: "Conceitos básicos", perguntas: [
+        { pergunta: "O que significa 'acessibilidade digital'?", alternativas:["Garantir que produtos digitais possam ser usados por pessoas com diferentes capacidades","Deixar o site mais bonito","Usar apenas cores escuras","Reduzir o número de páginas do site"], correta:0 },
+        { pergunta: "Por que o contraste de cores é importante para acessibilidade?", alternativas:["Ajuda pessoas com baixa visão a distinguir texto do fundo","Só serve para decoração","Não tem relação com usuários com deficiência visual","Serve apenas para SEO"], correta:0 },
+        { pergunta: "O que é o texto alternativo (alt text) em imagens?", alternativas:["Uma descrição textual da imagem para leitores de tela","Um efeito visual sobre a imagem","Um filtro de cor da imagem","Um tipo de compressão de arquivo"], correta:0 },
+        { pergunta: "Por que é importante que um site funcione bem com navegação por teclado?", alternativas:["Porque nem todos os usuários conseguem ou preferem usar o mouse","Porque deixa o site mais lento","Porque não afeta pessoas com deficiência motora","Porque é apenas uma preferência estética"], correta:0 },
+        { pergunta: "O que são leitores de tela (screen readers)?", alternativas:["Softwares que convertem conteúdo textual em áudio para pessoas com deficiência visual","Programas para editar imagens","Ferramentas para testar performance de código","Extensões para acelerar o carregamento de páginas"], correta:0 }
+      ]},
+      { titulo: "Boas práticas", perguntas: [
+        { pergunta: "Um formulário pede CPF apenas no formato americano (SSN). O que está errado nesse caso para um público brasileiro?", alternativas:["O formato não corresponde ao documento e à realidade do usuário local","Nada, formatos internacionais são sempre preferíveis","Vai melhorar a acessibilidade","É apenas uma questão estética"], correta:0 },
+        { pergunta: "O que é WCAG?", alternativas:["Um conjunto de diretrizes internacionais para acessibilidade na web","Uma linguagem de programação","Um framework de front-end","Um tipo de teste de usabilidade específico"], correta:0 },
+        { pergunta: "Por que vídeos devem ter legendas?", alternativas:["Para tornar o conteúdo acessível a pessoas surdas ou com deficiência auditiva","Apenas para decorar a tela","Para aumentar o tempo de carregamento","Porque é uma exigência estética"], correta:0 },
+        { pergunta: "O que caracteriza um bom foco de teclado (focus state) em um elemento interativo?", alternativas:["Um indicador visual claro de qual elemento está selecionado ao navegar por teclado","Nenhuma indicação visual, para não poluir a tela","Um efeito sonoro obrigatório","Uma cor aleatória a cada clique"], correta:0 },
+        { pergunta: "Por que tamanhos de fonte muito pequenos prejudicam a acessibilidade?", alternativas:["Dificultam a leitura para pessoas com baixa visão ou dificuldades visuais","Deixam o site mais rápido","Melhoram automaticamente o SEO","Não têm nenhum impacto prático"], correta:0 }
+      ]},
+      { titulo: "Interação e leitura", perguntas: [
+        { pergunta: "Você removeu o botão 'Voltar' de um fluxo de checkout. Qual princípio de acessibilidade e usabilidade foi afetado?", alternativas:["Controle e previsibilidade da navegação para o usuário","Contraste de cores","Uso de texto alternativo","Legendas em vídeo"], correta:0 },
+        { pergunta: "O que é 'navegação por tab' em acessibilidade web?", alternativas:["A capacidade de navegar entre elementos interativos usando a tecla Tab do teclado","Um tipo de menu suspenso","Uma forma de zoom na tela","Um recurso exclusivo de leitores de tela"], correta:0 },
+        { pergunta: "Por que ícones sozinhos (sem texto ou aria-label) podem prejudicar usuários de leitor de tela?", alternativas:["Porque o leitor de tela pode não conseguir descrever a função do ícone","Porque ícones sempre são mais rápidos de carregar","Porque leitores de tela ignoram todos os ícones automaticamente","Porque não afeta a experiência de nenhum usuário"], correta:0 },
+        { pergunta: "O que é 'aria-label' em HTML?", alternativas:["Um atributo que fornece um rótulo acessível para leitores de tela","Uma propriedade de CSS para animações","Um tipo de tag de imagem","Um método de compressão de vídeo"], correta:0 },
+        { pergunta: "Por que formulários devem ter labels associados corretamente aos campos?", alternativas:["Para que leitores de tela consigam identificar o propósito de cada campo","Apenas por questão estética","Para acelerar o carregamento da página","Porque é uma exigência de SEO, não de acessibilidade"], correta:0 }
+      ]},
+      { titulo: "Inclusão real", perguntas: [
+        { pergunta: "Um site usa apenas a cor vermelha para indicar erro, sem ícone ou texto. Qual problema isso cria para usuários com daltonismo?", alternativas:["Eles podem não perceber que há um erro, pois dependem só da cor","Nenhum problema, cor é suficiente sempre","Melhora a acessibilidade","Não afeta a usabilidade"], correta:0 },
+        { pergunta: "O que é a 'ordem de leitura' (reading order) em uma página, e por que importa para acessibilidade?", alternativas:["A sequência lógica em que o conteúdo é lido por tecnologias assistivas","A ordem visual de cores na tela","Um recurso apenas de SEO","Um tipo de animação de carregamento"], correta:0 },
+        { pergunta: "Por que animações excessivas podem ser um problema de acessibilidade?", alternativas:["Podem causar desconforto ou até crises em pessoas sensíveis a movimento","Sempre melhoram a experiência de todos os usuários","Não têm nenhuma relação com acessibilidade","São exigidas pelas diretrizes WCAG"], correta:0 },
+        { pergunta: "O que significa 'design inclusivo'?", alternativas:["Projetar considerando a diversidade de habilidades, contextos e necessidades dos usuários","Projetar apenas para o público majoritário","Ignorar deficiências para simplificar o processo","Um sinônimo exato de acessibilidade legal"], correta:0 },
+        { pergunta: "Por que testar produtos com usuários com deficiência é valioso?", alternativas:["Revela barreiras reais que testes convencionais podem não identificar","É apenas uma formalidade sem valor prático","Substitui todos os outros tipos de teste","Não traz nenhum aprendizado ao time"], correta:0 }
+      ]},
+      { titulo: "Casos avançados", perguntas: [
+        { pergunta: "Um app de saúde não segue as diretrizes WCAG e é processado por não oferecer acesso adequado. Isso ilustra que acessibilidade também é uma questão de:", alternativas:["Direito e responsabilidade legal, além de boa prática de design","Apenas estética visual","Apenas performance técnica","Marketing da marca"], correta:0 },
+        { pergunta: "Por que é recomendado não depender apenas do mouse ou do toque para operar um recurso interativo?", alternativas:["Para garantir que pessoas com deficiência motora também consigam usar o recurso","Porque mouse e toque são tecnologias obsoletas","Porque teclado é sempre mais rápido para todos","Porque não afeta a acessibilidade"], correta:0 },
+        { pergunta: "O que é o nível de conformidade 'AA' da WCAG?", alternativas:["Um padrão intermediário amplamente adotado como referência de acessibilidade adequada","O nível mais básico e insuficiente de acessibilidade","Um nível exclusivo para aplicativos mobile","Uma certificação de performance de código"], correta:0 },
+        { pergunta: "Um site com bom contraste, mas sem suporte a leitores de tela, atende a acessibilidade de forma:", alternativas:["Parcial, pois ainda exclui usuários que dependem de tecnologia assistiva","Completa, pois contraste é suficiente","Nenhuma acessibilidade foi considerada","Total, pois cobre a maioria dos casos"], correta:0 },
+        { pergunta: "Por que acessibilidade deveria ser considerada desde o início do projeto, e não como ajuste posterior?", alternativas:["Porque é mais eficaz e barato incorporar acessibilidade no design do que corrigir depois","Porque não faz diferença o momento em que é aplicada","Porque leis não exigem acessibilidade desde o início","Porque acessibilidade é responsabilidade exclusiva do desenvolvedor"], correta:0 }
+      ]}
+    ]
+  },
+
+  /* ============ 6. FIGMA ============ */
+  {
+    titulo: "Figma",
+    fases: [
+      { titulo: "Primeiros passos", perguntas: [
+        { pergunta: "O que é o Figma?", alternativas:["Uma ferramenta de design de interfaces colaborativa baseada em nuvem","Um editor de vídeos","Uma linguagem de programação","Um banco de dados"], correta:0 },
+        { pergunta: "O que é um 'frame' no Figma?", alternativas:["Um contêiner que define os limites de uma tela ou área de design","Um tipo de fonte tipográfica","Um plugin de exportação","Um efeito de sombra"], correta:0 },
+        { pergunta: "Para que serve a ferramenta 'Auto Layout' no Figma?", alternativas:["Organizar e redimensionar elementos automaticamente conforme o conteúdo","Aplicar filtros de cor às imagens","Criar animações de vídeo","Gerar código back-end automaticamente"], correta:0 },
+        { pergunta: "O que são 'componentes' no Figma?", alternativas:["Elementos reutilizáveis que mantêm consistência ao serem replicados no projeto","Apenas imagens estáticas sem função","Um tipo de exportação de PDF","Um recurso exclusivo para prototipagem de apps nativos"], correta:0 },
+        { pergunta: "O que é uma 'instância' de componente no Figma?", alternativas:["Uma cópia vinculada ao componente principal, que herda atualizações dele","Um componente totalmente independente","Um tipo de camada de texto","Um plugin externo"], correta:0 }
+      ]},
+      { titulo: "Prototipagem e estilos", perguntas: [
+        { pergunta: "Para que serve o modo de prototipagem (Prototype) no Figma?", alternativas:["Criar interações e simular fluxos de navegação entre telas","Editar código-fonte do produto","Comprimir arquivos de imagem","Gerenciar banco de dados do projeto"], correta:0 },
+        { pergunta: "O que são 'estilos' (styles) no Figma?", alternativas:["Configurações reutilizáveis de cor, texto ou efeito aplicáveis a vários elementos","Um tipo de imagem vetorial","Um plugin de tradução","Uma ferramenta de exportação de vídeo"], correta:0 },
+        { pergunta: "Qual a vantagem de usar 'variantes' de componentes no Figma?", alternativas:["Agrupar diferentes estados (hover, ativo, desabilitado) de um mesmo componente","Aumentar o tamanho do arquivo sem benefício","Substituir a necessidade de Auto Layout","Gerar automaticamente o código do produto"], correta:0 },
+        { pergunta: "O que é o 'Dev Mode' no Figma?", alternativas:["Um modo focado em fornecer especificações e código para desenvolvedores","Um plugin de animação 3D","Uma ferramenta de correção ortográfica","Um recurso de armazenamento em nuvem"], correta:0 },
+        { pergunta: "Por que usar 'grids' e 'guias' no Figma?", alternativas:["Para manter alinhamento e consistência entre elementos da interface","Para aplicar efeitos de sombra automaticamente","Para exportar vídeos com mais qualidade","Para acelerar o carregamento do protótipo"], correta:0 }
+      ]},
+      { titulo: "Colaboração", perguntas: [
+        { pergunta: "Dois designers editam o mesmo arquivo Figma ao mesmo tempo sem conflito de versão. Isso é possível graças a:", alternativas:["A colaboração em tempo real baseada em nuvem do Figma","Um plugin de terceiros obrigatório","O modo offline do Figma","A exportação manual de arquivos"], correta:0 },
+        { pergunta: "Como o 'Auto Layout' ajuda quando o texto de um botão é traduzido para um idioma mais longo?", alternativas:["O botão se redimensiona automaticamente para acomodar o novo texto","O texto é cortado automaticamente sem opção de ajuste","O Figma bloqueia edições em outros idiomas","Nada muda, é preciso redesenhar manualmente"], correta:0 },
+        { pergunta: "O que é 'component properties' no Figma?", alternativas:["Propriedades configuráveis que permitem customizar instâncias de um componente sem quebrá-lo","Um tipo de exportação em PDF","Um plugin de tradução automática","Uma ferramenta de análise de performance"], correta:0 },
+        { pergunta: "Para que servem os 'plugins' no Figma?", alternativas:["Estender funcionalidades da ferramenta, como gerar conteúdo fictício ou automatizar tarefas","Substituir totalmente a necessidade de design manual","Editar vídeos dentro do Figma","Hospedar o site final do produto"], correta:0 },
+        { pergunta: "O que representa a 'página' (page) dentro de um arquivo Figma?", alternativas:["Uma divisão organizacional para agrupar frames e conteúdos relacionados","Uma tela única e obrigatória por projeto","Um tipo de exportação de imagem","Um componente reutilizável"], correta:0 }
+      ]},
+      { titulo: "Organização e escala", perguntas: [
+        { pergunta: "Um time constrói telas sem usar Auto Layout e todo ajuste de texto quebra o design. Qual recurso do Figma evitaria esse retrabalho?", alternativas:["Auto Layout, que redimensiona elementos automaticamente conforme o conteúdo","Estilos de cor apenas","Modo Dev apenas","Plugins de exportação de vídeo"], correta:0 },
+        { pergunta: "Por que nomear camadas e frames de forma organizada no Figma é uma boa prática?", alternativas:["Facilita a colaboração e a manutenção do arquivo por outras pessoas do time","Não influencia em nada o trabalho da equipe","Deixa o arquivo mais pesado","É exigido pelo próprio Figma para salvar o arquivo"], correta:0 },
+        { pergunta: "O que acontece quando você atualiza o componente principal (main component) no Figma?", alternativas:["Todas as instâncias vinculadas a ele são atualizadas automaticamente","Nada acontece com as instâncias já criadas","Apenas a primeira instância é atualizada","O arquivo original é apagado"], correta:0 },
+        { pergunta: "Qual é a vantagem de trabalhar com 'design tokens' (cores, espaçamentos) versionados entre Figma e código?", alternativas:["Manter consistência entre o design e a implementação final do produto","Eliminar totalmente a necessidade de comunicação com desenvolvedores","Aumentar o tamanho dos arquivos sem benefício prático","Substituir a necessidade de um design system"], correta:0 },
+        { pergunta: "Por que é recomendável organizar um arquivo Figma com um design system estruturado em bibliotecas?", alternativas:["Facilita reutilização, consistência e escalabilidade entre múltiplos projetos e times","Deixa o Figma mais lento sem nenhum ganho","É exigido obrigatoriamente pela ferramenta","Substitui a necessidade de testes de usabilidade"], correta:0 }
+      ]},
+      { titulo: "Handoff e times grandes", perguntas: [
+        { pergunta: "Um novo designer no time precisa aplicar o mesmo padrão de botões em várias telas rapidamente. Qual recurso do Figma é mais indicado?", alternativas:["Usar componentes de uma biblioteca compartilhada do design system","Redesenhar cada botão manualmente do zero","Duplicar arquivos inteiros para cada tela","Exportar imagens estáticas de outro projeto"], correta:0 },
+        { pergunta: "Por que versionar bibliotecas de componentes no Figma é importante em times grandes?", alternativas:["Permite rastrear mudanças e evitar quebras inesperadas em múltiplos projetos vinculados","Não traz nenhum benefício prático","Serve apenas para reduzir o tamanho do arquivo","É um recurso exclusivo de prototipagem"], correta:0 },
+        { pergunta: "Qual a diferença entre 'instância destacada' (detached instance) e uma instância normal no Figma?", alternativas:["A instância destacada perde o vínculo com o componente principal e não recebe mais atualizações automáticas","Não existe diferença prática entre elas","A instância destacada sempre atualiza mais rápido","Instância destacada é exclusiva do modo Dev"], correta:0 },
+        { pergunta: "Como o Figma contribui para o handoff (entrega) entre design e desenvolvimento?", alternativas:["Fornecendo especificações, medidas e ativos exportáveis diretamente no Dev Mode","Gerando o back-end do produto automaticamente","Eliminando totalmente a necessidade de comunicação entre as áreas","Substituindo a necessidade de testes de usabilidade"], correta:0 },
+        { pergunta: "Por que revisar 'constraints' (restrições de redimensionamento) é importante ao criar componentes responsivos no Figma?", alternativas:["Garante que os elementos se comportem corretamente em diferentes tamanhos de tela","As constraints afetam apenas a cor dos elementos","Não têm nenhuma relação com responsividade","São aplicáveis apenas a arquivos de vídeo"], correta:0 }
+      ]}
+    ]
+  }
+
+];
+
+/* Mensagens bem-humoradas de conclusão de fase (estilo Upixel) */
+const MENSAGENS_FASE = [
+  "Mais uma interface salva.",
+  "Um usuário acabou de agradecer em silêncio.",
+  "Parabéns. Hoje você evitou mais um modal desnecessário.",
+  "Nielsen aprovaria essa fase.",
+  "Seu Product Owner quase estragou tudo, mas você chegou a tempo.",
+  "Menos um botão vermelho gigante no mundo.",
+  "Alguém, em algum lugar, não precisou ligar para o suporte."
+];
+
+const MENSAGENS_MATERIA = [
+  "Você oficialmente entende mais de UX do que aquele card de referência no Pinterest.",
+  "Mais uma matéria dominada. O botão de 'salvar' agora treme de respeito.",
+  "Isso aí. Interfaces confusas têm um novo inimigo.",
+  "Se usabilidade fosse esporte, você estaria no pódio.",
+  "Nível avançado desbloqueado: agora você discorda de decisões de UI com propriedade."
+];
+
+/* ---------------------------------------------------------
+   SEÇÃO 2 — ESTADO (persistência em localStorage)
+   --------------------------------------------------------- */
+const CHAVE_STORAGE = "academiaux_estado";
+
+function estadoPadrao(){
+  return {
+    xp: 0,
+    materiaIndex: 0,
+    faseIndex: 0,
+    perguntaIndex: 0,
+    vidas: 3,
+    materiasConcluidas: MATERIAS.map(()=>false),
+    // Estatísticas cumulativas — usadas na área de estatísticas da home
+    estatisticas: {
+      perguntasRespondidas: 0,
+      acertos: 0,
+      fasesConcluidas: 0
+    }
+  };
+}
+
+function carregarEstado(){
+  try{
+    const bruto = localStorage.getItem(CHAVE_STORAGE);
+    if(!bruto) return estadoPadrao();
+    const salvo = JSON.parse(bruto);
+    // validação simples de integridade
+    if(typeof salvo.xp !== "number" || !Array.isArray(salvo.materiasConcluidas)) return estadoPadrao();
+    // compatibilidade com progresso salvo antes da adição de estatísticas
+    if(!salvo.estatisticas){
+      salvo.estatisticas = { perguntasRespondidas:0, acertos:0, fasesConcluidas:0 };
+    }
+    return salvo;
+  }catch(e){
+    return estadoPadrao();
+  }
+}
+
+function salvarEstado(){
+  try{
+    localStorage.setItem(CHAVE_STORAGE, JSON.stringify(estado));
+  }catch(e){ /* localStorage indisponível: segue sem persistir */ }
+}
+
+let estado = carregarEstado();
+
+/* Sessão de jogo em memória (permite "revisitar" matérias concluídas
+   sem corromper o progresso principal salvo) */
+let sessao = {
+  materiaIdx: 0,
+  faseIdx: 0,
+  perguntaIdx: 0,
+  vidas: 3,
+  ehFronteira: true,
+  selecionada: null,
+  respondido: false
+};
+
+/* Guarda a ação a executar quando o usuário confirmar a tela de
+   feedback (avançar pergunta ou reiniciar fase por falta de vidas) */
+let acaoAposFeedback = null;
+
+/* ---------------------------------------------------------
+   SEÇÃO 3 — REFERÊNCIAS DE DOM
+   --------------------------------------------------------- */
+const telas = {
+  inicial: document.getElementById("tela-inicial"),
+  home: document.getElementById("tela-home"),
+  jogo: document.getElementById("tela-jogo"),
+  feedback: document.getElementById("tela-feedback"),
+  faseConcluida: document.getElementById("tela-fase-concluida"),
+  materiaConcluida: document.getElementById("tela-materia-concluida"),
+  final: document.getElementById("tela-final")
+};
+
+function mostrarTela(nome){
+  Object.values(telas).forEach(t => t.classList.remove("ativa"));
+  telas[nome].classList.add("ativa");
+}
+
+/* ---------------------------------------------------------
+   SEÇÃO 4 — CÁLCULOS AUXILIARES DE PROGRESSO
+   --------------------------------------------------------- */
+function totalDeFases(){
+  return MATERIAS.reduce((soma, m) => soma + m.fases.length, 0);
+}
+
+/* Progresso geral da trilha em porcentagem (0–100), considerando
+   matérias concluídas + fases já feitas na matéria atual */
+function progressoGeralPct(){
+  const total = totalDeFases();
+  let concluidas = 0;
+  MATERIAS.forEach((m, idx) => {
+    if(estado.materiasConcluidas[idx]) concluidas += m.fases.length;
+    else if(idx === estado.materiaIndex) concluidas += estado.faseIndex;
+  });
+  return Math.round((concluidas / total) * 100);
+}
+
+/* ---------------------------------------------------------
+   SEÇÃO 5 — TELA INICIAL
+   --------------------------------------------------------- */
+function renderTelaInicial(){
+  const painel = document.getElementById("inicial-stats");
+  const temProgresso = estado.xp > 0 || estado.materiaIndex > 0 || estado.faseIndex > 0 || estado.perguntaIndex > 0;
+  const btnComecar = document.getElementById("btn-comecar");
+
+  if(temProgresso){
+    painel.classList.add("visivel");
+    document.getElementById("inicial-xp").textContent = "⚡ " + estado.xp + " XP";
+    document.getElementById("inicial-materia-atual").textContent = MATERIAS[estado.materiaIndex].titulo;
+    const pct = progressoGeralPct();
+    document.getElementById("inicial-progresso-pct").textContent = pct + "%";
+    document.getElementById("inicial-progresso-barra").style.width = pct + "%";
+    btnComecar.textContent = "Continuar";
+  } else {
+    painel.classList.remove("visivel");
+    btnComecar.textContent = "Começar";
+  }
+
+  mostrarTela("inicial");
+}
+
+/* ---------------------------------------------------------
+   SEÇÃO 6 — TELA HOME (trilha de matérias + estatísticas)
+   --------------------------------------------------------- */
+function renderStatsCard(){
+  const est = estado.estatisticas;
+  const pctAcertos = est.perguntasRespondidas > 0
+    ? Math.round((est.acertos / est.perguntasRespondidas) * 100)
+    : 0;
+  const materiasConcluidasCount = estado.materiasConcluidas.filter(Boolean).length;
+
+  document.getElementById("stat-xp").textContent = estado.xp;
+  document.getElementById("stat-perguntas").textContent = est.perguntasRespondidas;
+  document.getElementById("stat-acertos").textContent = pctAcertos + "%";
+  document.getElementById("stat-materias").textContent = materiasConcluidasCount + "/" + MATERIAS.length;
+  document.getElementById("stat-fases").textContent = est.fasesConcluidas;
+  document.getElementById("stat-vidas").textContent = "❤️".repeat(estado.vidas) + "🖤".repeat(3 - estado.vidas);
+}
+
+function renderHome(){
+  document.getElementById("home-xp").textContent = "⚡ " + estado.xp + " XP";
+  renderStatsCard();
+
+  const lista = document.getElementById("lista-materias");
+  lista.innerHTML = "";
+
+  MATERIAS.forEach((materia, idx) => {
+    const concluida = estado.materiasConcluidas[idx];
+    const bloqueada = idx > estado.materiaIndex;
+    const emAndamento = idx === estado.materiaIndex && !concluida;
+
+    const card = document.createElement("article");
+    card.className = "card-materia" + (bloqueada ? " bloqueada" : "") + (concluida ? " concluida" : "");
+    card.tabIndex = bloqueada ? -1 : 0;
+
+    let statusTexto = "Bloqueada";
+    if(concluida) statusTexto = "🏆 Concluída";
+    else if(emAndamento) statusTexto = "Em andamento";
+    else if(!bloqueada) statusTexto = "Disponível";
+
+    const fasesPreenchidas = concluida ? 5 : (idx === estado.materiaIndex ? estado.faseIndex : 0);
+
+    let segmentos = "";
+    for(let i=0;i<5;i++){
+      segmentos += `<div class="seg-fase${i < fasesPreenchidas ? " preenchido" : ""}"><i></i></div>`;
+    }
+
+    card.innerHTML = `
+      <div class="card-materia-topo">
+        <h3 class="card-materia-nome">${materia.titulo}</h3>
+        <span class="card-materia-status${concluida ? " status-concluida" : ""}">${statusTexto}</span>
+      </div>
+      <div class="barra-fases">${segmentos}</div>
+    `;
+
+    if(!bloqueada){
+      card.addEventListener("click", () => iniciarSessao(idx));
+      card.addEventListener("keypress", (e) => { if(e.key === "Enter") iniciarSessao(idx); });
+    }
+
+    lista.appendChild(card);
+  });
+
+  mostrarTela("home");
+}
+
+/* ---------------------------------------------------------
+   SEÇÃO 7 — SESSÃO DE JOGO
+   --------------------------------------------------------- */
+function iniciarSessao(materiaIdx){
+  const ehFronteira = materiaIdx === estado.materiaIndex;
+  sessao.materiaIdx = materiaIdx;
+  sessao.ehFronteira = ehFronteira;
+
+  if(ehFronteira){
+    sessao.faseIdx = estado.faseIndex;
+    sessao.perguntaIdx = estado.perguntaIndex;
+    sessao.vidas = estado.vidas;
+  } else {
+    // Revisitando matéria já concluída: sessão isolada, começa do zero
+    sessao.faseIdx = 0;
+    sessao.perguntaIdx = 0;
+    sessao.vidas = 3;
+  }
+
+  renderPergunta();
+}
+
+function sincronizarEstadoComSessao(){
+  if(!sessao.ehFronteira) return;
+  estado.faseIndex = sessao.faseIdx;
+  estado.perguntaIndex = sessao.perguntaIdx;
+  estado.vidas = sessao.vidas;
+  salvarEstado();
+}
+
+/* ---------------------------------------------------------
+   SEÇÃO 8 — RENDERIZAÇÃO DA PERGUNTA
+   --------------------------------------------------------- */
+function renderPergunta(){
+  sessao.selecionada = null;
+  sessao.respondido = false;
+
+  const materia = MATERIAS[sessao.materiaIdx];
+  const fase = materia.fases[sessao.faseIdx];
+  const pergunta = fase.perguntas[sessao.perguntaIdx];
+
+  // HUD textual
+  document.getElementById("hud-materia").textContent = materia.titulo;
+  document.getElementById("hud-fase").textContent = `Fase ${sessao.faseIdx + 1}/5`;
+  document.getElementById("hud-xp").textContent = "⚡ " + estado.xp;
+  document.getElementById("hud-vidas").textContent = "❤️".repeat(sessao.vidas) + "🖤".repeat(3 - sessao.vidas);
+
+  // Barra de progresso (5 segmentos, um por pergunta da fase)
+  const hudBarra = document.getElementById("hud-barra");
+  hudBarra.innerHTML = "";
+  for(let i=0;i<5;i++){
+    const seg = document.createElement("div");
+    seg.className = "hud-seg" + (i < sessao.perguntaIdx ? " completo" : "");
+    const preenchimento = document.createElement("i");
+    if(i < sessao.perguntaIdx) preenchimento.style.width = "100%";
+    seg.appendChild(preenchimento);
+    hudBarra.appendChild(seg);
+  }
+
+  // Pergunta
+  document.getElementById("texto-pergunta").textContent = pergunta.pergunta;
+
+  // Cartões de resposta
+  const grade = document.getElementById("grade-cartoes");
+  grade.innerHTML = "";
+  pergunta.alternativas.forEach((alt, i) => {
+    const cartao = document.createElement("button");
+    cartao.className = "cartao-resposta";
+    cartao.type = "button";
+    cartao.textContent = alt;
+    cartao.addEventListener("click", () => selecionarCartao(i));
+    grade.appendChild(cartao);
+  });
+
+  // Feedback e botão continuar
+  const feedback = document.getElementById("area-feedback");
+  feedback.textContent = "";
+  feedback.className = "feedback-area";
+
+  const btnContinuar = document.getElementById("btn-continuar");
+  btnContinuar.disabled = true;
+  btnContinuar.textContent = "Continuar";
+
+  mostrarTela("jogo");
+}
+
+function selecionarCartao(indice){
+  if(sessao.respondido) return;
+  sessao.selecionada = indice;
+
+  const cartoes = document.querySelectorAll(".cartao-resposta");
+  cartoes.forEach((c, i) => c.classList.toggle("selecionado", i === indice));
+
+  document.getElementById("btn-continuar").disabled = false;
+}
+
+/* ---------------------------------------------------------
+   SEÇÃO 9 — VERIFICAÇÃO DE RESPOSTA
+   --------------------------------------------------------- */
+document.getElementById("btn-continuar").addEventListener("click", () => {
+  if(sessao.selecionada === null) return;
+
+  if(!sessao.respondido){
+    verificarResposta();
+  }
+});
+
+function verificarResposta(){
+  sessao.respondido = true;
+
+  const materia = MATERIAS[sessao.materiaIdx];
+  const fase = materia.fases[sessao.faseIdx];
+  const pergunta = fase.perguntas[sessao.perguntaIdx];
+  const correta = pergunta.correta;
+  const acertou = sessao.selecionada === correta;
+
+  const cartoes = document.querySelectorAll(".cartao-resposta");
+  cartoes.forEach(c => c.classList.add("desabilitado"));
+  document.getElementById("btn-continuar").disabled = true;
+
+  let xpGanho = 0;
+
+  if(acertou){
+    cartoes[sessao.selecionada].classList.add("correto");
+
+    // XP escalado levemente conforme a fase (fases mais avançadas valem mais)
+    xpGanho = 10 + (sessao.faseIdx * 2);
+    estado.xp += xpGanho;
+    estado.estatisticas.acertos += 1;
+
+    document.getElementById("hud-xp").textContent = "⚡ " + estado.xp;
+    mostrarXPFlutuante(document.getElementById("hud-xp"), xpGanho);
+  } else {
+    cartoes[sessao.selecionada].classList.add("incorreto");
+    cartoes[correta].classList.add("correto");
+
+    sessao.vidas -= 1;
+    const hudVidas = document.getElementById("hud-vidas");
+    hudVidas.textContent = "❤️".repeat(Math.max(sessao.vidas,0)) + "🖤".repeat(3 - Math.max(sessao.vidas,0));
+    hudVidas.classList.add("tremor");
+    setTimeout(() => hudVidas.classList.remove("tremor"), 400);
+  }
+
+  estado.estatisticas.perguntasRespondidas += 1;
+  sincronizarEstadoComSessao();
+  salvarEstado();
+
+  // Define o que acontece quando o usuário confirmar a tela de feedback
+  acaoAposFeedback = () => {
+    if(!acertou && sessao.vidas <= 0){
+      reiniciarFasePorFaltaDeVidas();
+    } else {
+      avancarPergunta();
+    }
+  };
+
+  // Pequena pausa para o usuário ver o cartão colorido antes da tela de feedback
+  setTimeout(() => mostrarTelaFeedback(acertou, pergunta.alternativas[correta], xpGanho), 650);
+}
+
+/* Cria um "+XP" flutuante próximo ao contador informado, reforçando
+   visualmente o ganho de experiência (microinteração) */
+function mostrarXPFlutuante(elementoRef, xp){
+  if(xp <= 0) return;
+  const flutuante = document.createElement("span");
+  flutuante.className = "xp-flutuante";
+  flutuante.textContent = "+" + xp;
+  elementoRef.appendChild(flutuante);
+  setTimeout(() => flutuante.remove(), 1000);
+}
+
+/* Tela dedicada de feedback, exibida logo após cada resposta:
+   visual verde para acertos, vermelho para erros, com a resposta
+   correta (quando aplicável) e o XP ganho */
+function mostrarTelaFeedback(acertou, textoRespostaCorreta, xpGanho){
+  const secao = telas.feedback;
+  secao.classList.toggle("feedback-correto", acertou);
+  secao.classList.toggle("feedback-incorreto", !acertou);
+
+  document.getElementById("feedback-icone").textContent = acertou ? "✓" : "✗";
+  document.getElementById("feedback-titulo").textContent = acertou ? "Correto!" : "Incorreto";
+
+  const respostaCorretaEl = document.getElementById("feedback-resposta-correta");
+  if(acertou){
+    respostaCorretaEl.style.display = "none";
+    respostaCorretaEl.textContent = "";
+  } else {
+    respostaCorretaEl.style.display = "block";
+    respostaCorretaEl.innerHTML = "Resposta correta: <strong>" + textoRespostaCorreta + "</strong>";
+  }
+
+  document.getElementById("feedback-xp-ganho").textContent = acertou ? ("+" + xpGanho + " XP") : "+0 XP";
+
+  mostrarTela("feedback");
+}
+
+document.getElementById("btn-feedback-continuar").addEventListener("click", () => {
+  if(typeof acaoAposFeedback === "function"){
+    const acao = acaoAposFeedback;
+    acaoAposFeedback = null;
+    acao();
+  }
+});
+
+function reiniciarFasePorFaltaDeVidas(){
+  // Sem corações: reinicia a fase atual do zero, vidas voltam a 3
+  sessao.perguntaIdx = 0;
+  sessao.vidas = 3;
+  sincronizarEstadoComSessao();
+  renderPergunta();
+}
+
+/* ---------------------------------------------------------
+   SEÇÃO 10 — AVANÇO DE PERGUNTA / FASE / MATÉRIA
+   --------------------------------------------------------- */
+function avancarPergunta(){
+  const materia = MATERIAS[sessao.materiaIdx];
+  const fase = materia.fases[sessao.faseIdx];
+
+  sessao.perguntaIdx += 1;
+
+  if(sessao.perguntaIdx >= fase.perguntas.length){
+    // Fase concluída
+    sessao.perguntaIdx = 0;
+    mostrarFaseConcluida();
+  } else {
+    sincronizarEstadoComSessao();
+    renderPergunta();
+  }
+}
+
+function mostrarFaseConcluida(){
+  const xpDaFase = 10 + (sessao.faseIdx * 2);
+  const materia = MATERIAS[sessao.materiaIdx];
+  const ehUltimaFase = sessao.faseIdx >= materia.fases.length - 1;
+
+  estado.estatisticas.fasesConcluidas += 1;
+  salvarEstado();
+
+  document.getElementById("fase-mensagem").textContent =
+    MENSAGENS_FASE[Math.floor(Math.random() * MENSAGENS_FASE.length)];
+  document.getElementById("fase-xp").textContent = "+" + (xpDaFase * fase_perguntas_count(materia, sessao.faseIdx)) + " XP nesta fase";
+
+  const btn = document.getElementById("btn-proxima-fase");
+  btn.textContent = ehUltimaFase ? "Concluir matéria" : "Próxima fase";
+
+  btn.onclick = () => {
+    if(ehUltimaFase){
+      finalizarMateria();
+    } else {
+      sessao.faseIdx += 1;
+      sincronizarEstadoComSessao();
+      renderPergunta();
+    }
+  };
+
+  mostrarTela("faseConcluida");
+  dispararConfetes("tela-fase-concluida", 18);
+}
+
+function fase_perguntas_count(materia, faseIdx){
+  return materia.fases[faseIdx].perguntas.length;
+}
+
+function finalizarMateria(){
+  estado.materiasConcluidas[sessao.materiaIdx] = true;
+
+  if(sessao.ehFronteira){
+    const proximo = sessao.materiaIdx + 1;
+    if(proximo < MATERIAS.length){
+      estado.materiaIndex = proximo;
+      estado.faseIndex = 0;
+      estado.perguntaIndex = 0;
+      estado.vidas = 3;
+    }
+    salvarEstado();
+  } else {
+    salvarEstado();
+  }
+
+  const todasConcluidas = estado.materiasConcluidas.every(Boolean);
+
+  document.getElementById("materia-mensagem").textContent =
+    MENSAGENS_MATERIA[Math.floor(Math.random() * MENSAGENS_MATERIA.length)];
+  document.getElementById("materia-xp").textContent = "Matéria: " + MATERIAS[sessao.materiaIdx].titulo;
+
+  const btnContinuarMateria = document.getElementById("btn-continuar-materia");
+  btnContinuarMateria.onclick = () => {
+    if(todasConcluidas){
+      mostrarTela("final");
+    } else {
+      renderHome();
+    }
+  };
+
+  mostrarTela("materiaConcluida");
+  dispararConfetes("tela-materia-concluida", 28);
+}
+
+/* ---------------------------------------------------------
+   SEÇÃO 11 — CONFETES (apenas CSS, tons da marca Upixel)
+   --------------------------------------------------------- */
+function dispararConfetes(containerId, quantidade){
+  const cores = ["#FA397A", "#F93877", "#ffffff", "#BDBDBD"];
+  const container = document.getElementById(containerId);
+  if(!container) return;
+
+  for(let i=0;i<quantidade;i++){
+    const c = document.createElement("span");
+    c.className = "confete";
+    c.style.left = Math.random() * 100 + "%";
+    c.style.background = cores[Math.floor(Math.random()*cores.length)];
+    c.style.animationDuration = (1.8 + Math.random()*1.4) + "s";
+    c.style.animationDelay = (Math.random()*0.4) + "s";
+    container.appendChild(c);
+    setTimeout(() => c.remove(), 3600);
+  }
+}
+
+/* ---------------------------------------------------------
+   SEÇÃO 12 — NAVEGAÇÃO GERAL / EVENTOS
+   --------------------------------------------------------- */
+document.getElementById("btn-comecar").addEventListener("click", renderHome);
+
+document.getElementById("btn-voltar").addEventListener("click", () => {
+  sincronizarEstadoComSessao();
+  renderHome();
+});
+
+document.getElementById("btn-reset").addEventListener("click", () => {
+  if(confirm("Reiniciar todo o progresso da Academia UX?")){
+    estado = estadoPadrao();
+    salvarEstado();
+    renderHome();
+  }
+});
+
+document.getElementById("btn-jogar-novamente").addEventListener("click", () => {
+  estado = estadoPadrao();
+  salvarEstado();
+  renderHome();
+});
+
+document.getElementById("btn-voltar-inicio").addEventListener("click", () => {
+  renderTelaInicial();
+});
+
+/* ---------------------------------------------------------
+   SEÇÃO 13 — INICIALIZAÇÃO
+   A tela inicial sempre exibe XP e progresso (quando existentes)
+   antes do usuário decidir continuar ou começar do zero.
+   --------------------------------------------------------- */
+(function inicializar(){
+  renderTelaInicial();
+})();
+</script>
+</body>
+</html>
