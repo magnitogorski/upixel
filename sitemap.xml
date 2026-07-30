@@ -1,184 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    SITEMAP.XML — Upixel
-
-    Lista de todas as páginas públicas do site para facilitar
-    a indexação pelos mecanismos de busca e agentes de IA.
-
-    Local:
-    https://upixel.com.br/sitemap.xml
-
-    Sempre que criar uma nova página pública, adicione um novo
-    bloco <url> abaixo.
--->
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <!-- Página inicial -->
     <url>
         <loc>https://upixel.com.br/</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- Páginas principais -->
+    <!-- Artigos -->
     <url>
         <loc>https://upixel.com.br/artigos.html</loc>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-07-30</lastmod>
+        <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://upixel.com.br/besteirol.html</loc>
-        <changefreq>weekly</changefreq>
+        <loc>https://upixel.com.br/artigo-manual-ux-sem-papinho-parte-1.html</loc>
+        <lastmod>2026-07-30</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://upixel.com.br/games.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://upixel.com.br/quiz.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://upixel.com.br/contato.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <!-- Artigos -->
-    <url>
         <loc>https://upixel.com.br/artigo-como-seria-o-linkedin-de-dwight-schrute.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/artigo-marketing-digital-nota-1000-atendimento-nota-0.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/artigo-michael-scott-analise-swot.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/artigo-metodologia-5w2h.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/artigo-o-influencer-e-so-a-interface.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/artigo-10-heuristicas-de-nielsen.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/artigo-infinite-scroll.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/artigo-mitos-do-mercado-de-tecnologia.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/artigo-dashboards-e-visualizacao-de-dados.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <!-- Games -->
     <url>
-        <loc>https://upixel.com.br/ux-repair-game.html</loc>
+        <loc>https://upixel.com.br/ux-challenge.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://upixel.com.br/gameuxbird.html</loc>
+        <loc>https://upixel.com.br/duoux.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Quizzes -->
+    <!-- Quiz -->
+    <url>
+        <loc>https://upixel.com.br/quiz.html</loc>
+        <lastmod>2026-07-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://upixel.com.br/quiz-breaking-bad.html</loc>
+        <lastmod>2026-07-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
     <url>
         <loc>https://upixel.com.br/quiz-cultura-gamer.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/quiz-ia.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/quiz-design-de-interface.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/quiz-memes.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <url>
-        <loc>https://upixel.com.br/quiz-breaking-bad.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/quiz-raças-de-cachorro.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/quiz-tecnologia.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/quiz-voce-conhece-the-office.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/quiz-ux.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://upixel.com.br/quiz-wcag.html</loc>
+        <lastmod>2026-07-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
+    <!-- Besteirol -->
+    <url>
+        <loc>https://upixel.com.br/besteirol.html</loc>
+        <lastmod>2026-07-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Contato -->
+    <url>
+        <loc>https://upixel.com.br/contato.html</loc>
+        <lastmod>2026-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
 </urlset>
+
+
+
+
+
+<!--<url>
+    <loc>https://upixel.com.br/como-trabalhar-em-equipe.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>-->
