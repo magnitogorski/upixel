@@ -36,7 +36,7 @@ body {
 /* 5. O Menu com 112px de distância */
 .menu {
     display: flex;
-    gap: 112px; 
+    gap: 60px; 
 }
 
 /* 6. Os Links com a fonte Pixelify Sans corrigida */
@@ -678,7 +678,7 @@ body {
 
 .footer-menu {
     display: flex;
-    gap: 72px;
+    gap: 30px;
 }
 
 .footer-menu a {
