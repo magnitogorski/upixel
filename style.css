@@ -1189,7 +1189,7 @@ body {
 
 .pagina-contato {
     margin: 80px 60px;
-    max-width: 720px;
+    max-width: auto;
 }
 
 .pagina-contato .botao-voltar {
@@ -1227,6 +1227,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 24px;
+}
+
+.pagina-contato strong {
+    color: #FA397A;
 }
 
 .contato-form input,
