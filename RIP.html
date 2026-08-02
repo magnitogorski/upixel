@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<!-- ==========================================================
+     Página: RIP — O CEMITÉRIO DAS TENDÊNCIAS
+
+     Página nova, própria — não reaproveita .pagina-artigos nem
+     .cards-artigos-grid pelo mesmo motivo do Glossário: o conteúdo
+     aqui tem forma diferente. Uma lista contínua de obituários
+     que precisa crescer por anos sem virar bagunça, com busca,
+     filtro e ordenação em tempo real.
+
+     Estrutura: hero → barra de ferramentas (busca + filtros +
+     ordenação, sticky) → lista contínua de lápides → cada lápide
+     é um <details> nativo (accordion sem JS) com um obituário
+     de 3 seções + uma enquete (JS leve, com localStorage como
+     armazenamento provisório até existir um backend de verdade).
+
+     Todo o CSS da página vive no <style id="rip-style"> abaixo,
+     prefixo .rip- em tudo — nenhuma classe daqui colide com as
+     outras páginas. Se depois migrar pro style.css global, é só
+     recortar o bloco inteiro.
+
+     Lembrete: adicionar o link "RIP" no menu das outras páginas
+     também (index.html, artigos.html, glossario, etc.), do mesmo
+     jeito que foi feito aqui, pra navegação ficar consistente.
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RIP: o cemitério das tendências | Upixel</title>
+
+<meta name="description" content="RIP é o memorial digital da Upixel: tecnologias, interfaces, softwares e conceitos que a internet, o design e o mercado já enterraram. Flores são opcionais, julgamento é inevitável.">
+<meta name="keywords" content="RIP tecnologia, tecnologias descontinuadas, tendências de design mortas, obituário tecnológico, Adobe Flash, Internet Explorer, Orkut, história da tecnologia, Upixel">
+
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/rip.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="RIP: o cemitério das tendências | Upixel">
+<meta property="og:description" content="Aqui jazem coisas que um dia foram úteis, bonitas ou fizeram sentido. Não é nostalgia. É documentação.">
+<meta property="og:url" content="https://upixel.com.br/rip.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RIP: o cemitério das tendências | Upixel">
+<meta name="twitter:description" content="Tecnologia, design e internet enterram coisas o tempo todo. Aqui a gente documenta cada uma.">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Mesmos arquivos de estilo do restante do site. Nenhuma regra foi alterada. -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+<!-- ==========================================================
+     SEO: ItemList — cada falecido como um item de uma lista
+     que só cresce. Mais preciso que Article genérico pra um
+     memorial que vai ganhar centenas de entradas.
+     ========================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "RIP — O cemitério das tendências",
+  "url": "https://upixel.com.br/rip.html",
+  "description": "Memorial digital da Upixel com tecnologias, interfaces, softwares e conceitos que perderam relevância ou foram descontinuados.",
+  "inLanguage": "pt-BR",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "item": { "@type": "Thing", "name": "Adobe Flash", "description": "Plugin que animava a web e virou sinônimo de vulnerabilidade de segurança." } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "Thing", "name": "Internet Explorer", "description": "O navegador que todo mundo usava só pra baixar outro navegador." } },
+    { "@type": "ListItem", "position": 3, "item": { "@type": "Thing", "name": "Orkut", "description": "A rede social que o Brasil adotou como se fosse dele." } },
+    { "@type": "ListItem", "position": 4, "item": { "@type": "Thing", "name": "MSN Messenger", "description": "O som de notificação mais reconhecível do início dos anos 2000." } },
+    { "@type": "ListItem", "position": 5, "item": { "@type": "Thing", "name": "Google+", "description": "A rede social que ninguém pediu, obrigatória pra usar o resto do Google." } },
+    { "@type": "ListItem", "position": 6, "item": { "@type": "Thing", "name": "Silverlight", "description": "A resposta da Microsoft ao Flash, mesmo destino." } },
+    { "@type": "ListItem", "position": 7, "item": { "@type": "Thing", "name": "Windows Phone", "description": "O sistema operacional com a melhor interface e o pior ecossistema de apps." } },
+    { "@type": "ListItem", "position": 8, "item": { "@type": "Thing", "name": "Adobe Fireworks", "description": "Fazia web design e prototipagem antes de existir uma palavra pra isso." } },
+    { "@type": "ListItem", "position": 9, "item": { "@type": "Thing", "name": "Adobe XD", "description": "Chegou tarde na briga que o Figma já tinha vencido." } },
+    { "@type": "ListItem", "position": 10, "item": { "@type": "Thing", "name": "GeoCities", "description": "Onde a internet aprendeu a se decorar sozinha, mal." } },
+    { "@type": "ListItem", "position": 11, "item": { "@type": "Thing", "name": "Google Reader", "description": "O RSS morreu com ele, mesmo o Google jurando que não." } },
+    { "@type": "ListItem", "position": 12, "item": { "@type": "Thing", "name": "Winamp", "description": "Tecnicamente ainda existe. Ninguém sabe dizer por quê." } },
+    { "@type": "ListItem", "position": 13, "item": { "@type": "Thing", "name": "Palm", "description": "Inventou o smartphone antes do smartphone existir e ainda assim perdeu." } },
+    { "@type": "ListItem", "position": 14, "item": { "@type": "Thing", "name": "BlackBerry", "description": "O teclado físico que o iPhone convenceu todo mundo a não precisar mais." } },
+    { "@type": "ListItem", "position": 15, "item": { "@type": "Thing", "name": "Locadoras de vídeo", "description": "Morreram de streaming antes do streaming ter esse nome." } },
+    { "@type": "ListItem", "position": 16, "item": { "@type": "Thing", "name": "CD-ROM", "description": "700MB que pareciam infinitos até a internet aparecer." } },
+    { "@type": "ListItem", "position": 17, "item": { "@type": "Thing", "name": "Disquete", "description": "O ícone de 'salvar' que sobrevive à própria extinção." } },
+    { "@type": "ListItem", "position": 18, "item": { "@type": "Thing", "name": "Fax", "description": "Tecnicamente não morreu. Isso diz mais sobre burocracia do que sobre tecnologia." } },
+    { "@type": "ListItem", "position": 19, "item": { "@type": "Thing", "name": "Clippy", "description": "Parecia que você estava tentando escrever uma carta." } },
+    { "@type": "ListItem", "position": 20, "item": { "@type": "Thing", "name": "QR Code pré-pandemia", "description": "Morreu de irrelevância e ressuscitou de necessidade." } },
+    { "@type": "ListItem", "position": 21, "item": { "@type": "Thing", "name": "NFT como solução universal", "description": "A promessa de que tudo precisava virar token." } },
+    { "@type": "ListItem", "position": 22, "item": { "@type": "Thing", "name": "Metaverso como promessa", "description": "Uma empresa trocou de nome por causa disso." } },
+    { "@type": "ListItem", "position": 23, "item": { "@type": "Thing", "name": "Hamburger Menu como solução pra tudo", "description": "Esconde a navegação e chama isso de 'design limpo'." } },
+    { "@type": "ListItem", "position": 24, "item": { "@type": "Thing", "name": "AngularJS", "description": "O framework que ensinou uma geração de front-end e foi aposentado por ela." } },
+    { "@type": "ListItem", "position": 25, "item": { "@type": "Thing", "name": "Flat Design extremo", "description": "Tirou toda sombra da interface e, junto, a informação de onde clicar." } },
+    { "@type": "ListItem", "position": 26, "item": { "@type": "Thing", "name": "Google Stadia", "description": "A nuvem prometeu rodar seus jogos. Rodou a empresa pra fora do mercado." } }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upixel.com.br/index.html" },
+    { "@type": "ListItem", "position": 2, "name": "RIP", "item": "https://upixel.com.br/rip.html" }
+  ]
+}
+</script>
+
+<!-- ==========================================================
+     CSS da página — prefixo .rip- em tudo, sem depender de
+     nenhuma classe de outra página. Mesma linguagem visual do
+     Glossário: fundo preto, rosa #FA397A, bordas discretas,
+     muito espaço em branco.
+     ========================================================== -->
+<style id="rip-style">
+  .rip-page {
+    --rip-bg: #000000;
+    --rip-text: #ffffff;
+    --rip-muted: #828282;
+    --rip-pink: #FA397A;
+    --rip-border: #262626;
+    --rip-border-strong: #333333;
+
+    background: var(--rip-bg);
+    color: var(--rip-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  .rip-page *,
+  .rip-page *::before,
+  .rip-page *::after {
+    box-sizing: border-box;
+  }
+
+  /* ---------- hero ---------- */
+
+  .rip-hero {
+    padding: 96px 60px 56px;
+    max-width: 900px;
+  }
+
+  .rip-eyebrow {
+    display: block;
+    color: var(--rip-pink);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .rip-h1 {
+    font-size: clamp(2.4rem, 1.7rem + 3vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0 0 16px;
+  }
+
+  .rip-sub {
+    color: var(--rip-pink);
+    font-size: clamp(1.05rem, 1rem + .4vw, 1.4rem);
+    font-weight: 700;
+    margin: 0 0 28px;
+  }
+
+  .rip-texto p {
+    color: var(--rip-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 62ch;
+    margin: 0 0 14px;
+  }
+
+  .rip-texto p:last-child {
+    margin-bottom: 24px;
+  }
+
+  .rip-cta-entrar {
+    /* Escondido por enquanto — mantido no código, é só trocar este
+       "display: none" por "display: inline-flex" pra reativar. */
+    display: none;
+    align-items: center;
+    gap: 10px;
+    background: var(--rip-pink);
+    color: #000000;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: .95rem;
+    padding: 14px 26px;
+    border: 1px solid var(--rip-pink);
+    transition: background .18s ease, color .18s ease;
+  }
+
+  .rip-cta-entrar:hover,
+  .rip-cta-entrar:focus-visible {
+    background: transparent;
+    color: var(--rip-pink);
+  }
+
+  /* ---------- barra de ferramentas (busca + filtro + ordenação) ---------- */
+
+  .rip-ferramentas {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--rip-bg);
+    border-top: 1px solid var(--rip-border);
+    border-bottom: 1px solid var(--rip-border);
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .rip-busca {
+    display: flex;
+    align-items: center;
+    max-width: 480px;
+  }
+
+  .rip-busca input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--rip-border-strong);
+    color: var(--rip-text);
+    font-size: .95rem;
+    padding: 12px 16px;
+    font-family: inherit;
+  }
+
+  .rip-busca input::placeholder {
+    color: var(--rip-muted);
+  }
+
+  .rip-busca input:focus-visible {
+    outline: none;
+    border-color: var(--rip-pink);
+  }
+
+  .rip-linha-filtros {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .rip-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .rip-filtro {
+    background: transparent;
+    border: 1px solid var(--rip-border-strong);
+    color: var(--rip-muted);
+    font-size: .82rem;
+    font-weight: 700;
+    padding: 7px 14px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color .18s ease, color .18s ease;
+  }
+
+  .rip-filtro:hover,
+  .rip-filtro:focus-visible {
+    color: var(--rip-text);
+    border-color: var(--rip-text);
+  }
+
+  .rip-filtro[aria-pressed="true"] {
+    color: #000000;
+    background: var(--rip-pink);
+    border-color: var(--rip-pink);
+  }
+
+  .rip-ordenacao {
+    /* Escondido por enquanto — mantido no código e no JS pra reativar
+       depois, é só trocar este "display: none" por "display: flex". */
+    display: none;
+    align-items: center;
+    gap: 10px;
+    flex: none;
+  }
+
+  .rip-ordenacao label {
+    color: var(--rip-muted);
+    font-size: .82rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .rip-ordenacao select {
+    background: var(--rip-bg);
+    border: 1px solid var(--rip-border-strong);
+    color: var(--rip-text);
+    font-size: .85rem;
+    padding: 9px 12px;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  .rip-ordenacao select:focus-visible {
+    outline: none;
+    border-color: var(--rip-pink);
+  }
+
+  .rip-contador {
+    color: var(--rip-muted);
+    font-size: .8rem;
+    margin: 0;
+  }
+
+  /* ---------- lista contínua ---------- */
+
+  .rip-corpo {
+    padding: 8px 60px 40px;
+    max-width: 900px;
+  }
+
+  .rip-vazio-busca {
+    display: none;
+    color: var(--rip-muted);
+    font-size: .95rem;
+    font-style: italic;
+    padding: 48px 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .rip-vazio-busca.rip-ativo {
+    display: block;
+  }
+
+  /* ---------- lápide (cada item) ---------- */
+
+  .rip-lapide {
+    border-top: 1px solid var(--rip-border);
+  }
+
+  .rip-lapide:last-of-type {
+    border-bottom: 1px solid var(--rip-border);
+  }
+
+  .rip-lapide[hidden] {
+    display: none;
+  }
+
+  .rip-lapide summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 24px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .rip-lapide summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .rip-lapide-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .rip-lapide-nome {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--rip-text);
+    transition: color .18s ease;
+  }
+
+  .rip-lapide summary:hover .rip-lapide-nome,
+  .rip-lapide summary:focus-visible .rip-lapide-nome {
+    color: var(--rip-pink);
+  }
+
+  .rip-lapide-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .rip-anos {
+    color: var(--rip-muted);
+    font-size: .88rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .rip-categoria-badge {
+    color: var(--rip-pink);
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--rip-border-strong);
+    padding: 3px 8px;
+  }
+
+  .rip-epitafio {
+    color: var(--rip-muted);
+    font-size: .9rem;
+    font-style: italic;
+    margin: 2px 0 0;
+  }
+
+  .rip-lapide summary::after {
+    content: "+";
+    flex: none;
+    color: var(--rip-pink);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 4px;
+  }
+
+  .rip-lapide[open] summary::after {
+    content: "–";
+  }
+
+  .rip-obituario {
+    padding: 0 0 32px;
+    max-width: 66ch;
+  }
+
+  .rip-obituario-secao {
+    margin: 0 0 20px;
+  }
+
+  .rip-obituario-secao:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .rip-label {
+    display: block;
+    color: var(--rip-pink);
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+
+  .rip-obituario-secao p {
+    margin: 0;
+    color: var(--rip-muted);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  /* ---------- enquete ---------- */
+
+  .rip-enquete {
+    border-top: 1px solid var(--rip-border);
+    padding-top: 24px;
+    margin-top: 28px;
+  }
+
+  .rip-enquete-pergunta {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--rip-text);
+    margin: 0 0 14px;
+  }
+
+  .rip-enquete-botoes {
+    display: flex;
+    gap: 10px;
+  }
+
+  .rip-voto {
+    background: transparent;
+    border: 1px solid var(--rip-border-strong);
+    color: var(--rip-text);
+    font-size: .88rem;
+    font-weight: 700;
+    padding: 9px 18px;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color .18s ease, color .18s ease;
+  }
+
+  .rip-voto:hover,
+  .rip-voto:focus-visible {
+    border-color: var(--rip-pink);
+    color: var(--rip-pink);
+  }
+
+  .rip-voto[disabled] {
+    cursor: default;
+  }
+
+  .rip-enquete-resultado {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 320px;
+  }
+
+  .rip-enquete-resultado.rip-ativo {
+    display: flex;
+  }
+
+  .rip-enquete-botoes.rip-ativo {
+    display: none;
+  }
+
+  .rip-resultado-linha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .85rem;
+    color: var(--rip-muted);
+  }
+
+  .rip-resultado-barra {
+    flex: 1;
+    height: 6px;
+    background: var(--rip-border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rip-resultado-preenchimento {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: var(--rip-pink);
+  }
+
+  .rip-resultado-percentual {
+    width: 42px;
+    text-align: right;
+    flex: none;
+    color: var(--rip-text);
+  }
+
+  /* ---------- cta final ---------- */
+
+  .rip-cta-final {
+    padding: 48px 60px 96px;
+    max-width: 900px;
+  }
+
+  .rip-cta-final p {
+    color: var(--rip-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .rip-cta-final a {
+    color: var(--rip-pink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rip-page * {
+      transition: none !important;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .rip-hero,
+    .rip-ferramentas,
+    .rip-corpo,
+    .rip-cta-final {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .rip-lapide summary {
+      gap: 12px;
+    }
+
+    .rip-linha-filtros {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .rip-enquete-botoes {
+      flex-direction: column;
+    }
+  }
+</style>
+
+</head>
+<body class="rip-page">
+
+    <!-- ======================================================
+         HEADER — idêntico ao das outras páginas do site
+         ====================================================== -->
+    <header class="meu-header">
+        <div class="logo">
+            <img src="logobranca.png" alt="Logotipo do meu site">
+        </div>
+
+        <nav class="menu" aria-label="Navegação principal">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+            <a href="rip.html" class="ativo" aria-current="page">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html">Besteirol</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ================= HERO ================= -->
+        <section class="rip-hero">
+            <span class="rip-eyebrow">Academia UPIXEL</span>
+            <h1 class="rip-h1">⚰️ RIP</h1>
+            <p class="rip-sub">O cemitério das tendências.</p>
+            <div class="rip-texto">
+                <p>Aqui jazem coisas que um dia foram úteis, bonitas, práticas ou simplesmente fizeram sentido.</p>
+                <p>Algumas morreram de velhice. Outras foram assassinadas pelo progresso. Algumas cavaram a própria cova de tanto se complicar.</p>
+                <p>Não é nostalgia. É documentação.</p>
+                <p>Este é um registro honesto de tudo o que a tecnologia, o design e a internet já enterraram... e do que ainda insiste em assombrar o mercado.</p>
+                <p>Flores são opcionais. Julgamento, inevitável.</p>
+            </div>
+            <a href="#cemiterio" class="rip-cta-entrar">Entrar no cemitério</a>
+        </section>
+
+        <!-- ================= FERRAMENTAS: busca, filtro, ordenação ================= -->
+        <div class="rip-ferramentas" id="cemiterio">
+            <div class="rip-busca">
+                <input
+                    type="search"
+                    id="rip-input-busca"
+                    placeholder="Buscar por nome, categoria ou ano..."
+                    aria-label="Buscar no cemitério por nome, categoria ou ano"
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="rip-linha-filtros">
+                <div class="rip-filtros" role="group" aria-label="Filtrar por categoria">
+                    <button type="button" class="rip-filtro" data-categoria="todos" aria-pressed="true">Todos</button>
+                    <button type="button" class="rip-filtro" data-categoria="UX" aria-pressed="false">UX</button>
+                    <button type="button" class="rip-filtro" data-categoria="UI" aria-pressed="false">UI</button>
+                    <button type="button" class="rip-filtro" data-categoria="Design" aria-pressed="false">Design</button>
+                    <button type="button" class="rip-filtro" data-categoria="Comunicação" aria-pressed="false">Comunicação</button>
+                    <button type="button" class="rip-filtro" data-categoria="Tecnologia" aria-pressed="false">Tecnologia</button>
+                    <button type="button" class="rip-filtro" data-categoria="Programação" aria-pressed="false">Programação</button>
+                    <button type="button" class="rip-filtro" data-categoria="Internet" aria-pressed="false">Internet</button>
+                    <button type="button" class="rip-filtro" data-categoria="Software" aria-pressed="false">Software</button>
+                    <button type="button" class="rip-filtro" data-categoria="Hardware" aria-pressed="false">Hardware</button>
+                    <button type="button" class="rip-filtro" data-categoria="Música" aria-pressed="false">Música</button>
+                    <button type="button" class="rip-filtro" data-categoria="Games" aria-pressed="false">Games</button>
+                    <button type="button" class="rip-filtro" data-categoria="Marketing" aria-pressed="false">Marketing</button>
+                    <button type="button" class="rip-filtro" data-categoria="Conceitos" aria-pressed="false">Conceitos</button>
+                    <button type="button" class="rip-filtro" data-categoria="Empresas" aria-pressed="false">Empresas</button>
+                </div>
+
+                <div class="rip-ordenacao">
+                    <label for="rip-select-ordenar">Ordenar por</label>
+                    <select id="rip-select-ordenar">
+                        <option value="recentes">Mais recentes</option>
+                        <option value="antigos">Mais antigos</option>
+                        <option value="az">A-Z</option>
+                        <option value="za">Z-A</option>
+                    </select>
+                </div>
+            </div>
+
+            <p class="rip-contador" id="rip-contador">26 sepultamentos registrados.</p>
+        </div>
+
+        <!-- ================= LISTA CONTÍNUA DE LÁPIDES ================= -->
+        <div class="rip-corpo" id="rip-lista">
+
+            <details class="rip-lapide" data-nome="Adobe Flash" data-categoria="Tecnologia" data-ano-inicio="1996" data-ano-fim="2020" id="rip-adobe-flash">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Adobe Flash</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1996 — 2020</span>
+                            <span class="rip-categoria-badge">Tecnologia</span>
+                        </div>
+                        <p class="rip-epitafio">"Instale este plugin."</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Um plugin de navegador que rodava animações, jogos e sites inteiros construídos em cima dele, quando "responsivo" ainda nem era palavra.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Foi, por mais de uma década, a única forma prática de colocar movimento, som e interação numa web feita majoritariamente de HTML estático.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>O iPhone nunca rodou Flash, o HTML5 fez o mesmo trabalho sem plugin, e as falhas de segurança se acumularam até a Adobe desistir oficialmente em 2020.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="adobe-flash">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Internet Explorer" data-categoria="Software" data-ano-inicio="1995" data-ano-fim="2022" id="rip-internet-explorer">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Internet Explorer</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1995 — 2022</span>
+                            <span class="rip-categoria-badge">Software</span>
+                        </div>
+                        <p class="rip-epitafio">O navegador que você usava só pra baixar o Chrome.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>O navegador padrão do Windows por quase três décadas, presente na tela de qualquer computador recém-formatado.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Vinha pré-instalado em todo PC do planeta. Não precisava ser bom, precisava só estar lá primeiro.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Anos ignorando padrões web enquanto Chrome e Firefox evoluíam mais rápido; a própria Microsoft aposentou o navegador em junho de 2022.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="internet-explorer">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Orkut" data-categoria="Internet" data-ano-inicio="2004" data-ano-fim="2014" id="rip-orkut">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Orkut</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2004 — 2014</span>
+                            <span class="rip-categoria-badge">Internet</span>
+                        </div>
+                        <p class="rip-epitafio">"Fulano te adicionou como fã."</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>A rede social do Google, cheia de comunidades, depoimentos públicos e um contador de visitas no perfil.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Virou febre nacional no Brasil de um jeito que surpreendeu até o próprio Google, que nunca planejou aquilo pra cá.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Facebook chegou com interface mais moderna e o Google puxou o tapete em 2014, encerrando o serviço de vez.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="orkut">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="MSN Messenger" data-categoria="Internet" data-ano-inicio="1999" data-ano-fim="2013" id="rip-msn-messenger">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ MSN Messenger</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1999 — 2013</span>
+                            <span class="rip-categoria-badge">Internet</span>
+                        </div>
+                        <p class="rip-epitafio">O som de notificação mais reconhecível de uma geração.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>O mensageiro instantâneo da Microsoft, com nudge, status "ausente" e emoticons piscando.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Chegou junto com a popularização da internet discada e virou o principal lugar de conversa fora do telefone fixo.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Rebatizado Windows Live Messenger, foi migrado à força pra dentro do Skype em 2013, que a Microsoft tinha acabado de comprar.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="msn-messenger">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Google+" data-categoria="Internet" data-ano-inicio="2011" data-ano-fim="2019" id="rip-google-plus">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Google+</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2011 — 2019</span>
+                            <span class="rip-categoria-badge">Internet</span>
+                        </div>
+                        <p class="rip-epitafio">A rede social que ninguém pediu, obrigatória pra comentar no YouTube.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>A tentativa do Google de competir com o Facebook, com "círculos" no lugar de listas de amigos.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Nunca fez, de fato — o crescimento inicial veio de integrar à força com YouTube e Gmail, não de escolha real das pessoas.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Uma falha de segurança expondo dados de usuários em 2018 deu ao Google o motivo perfeito pra encerrar a versão para consumidores em 2019.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="google-plus">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Silverlight" data-categoria="Tecnologia" data-ano-inicio="2007" data-ano-fim="2021" id="rip-silverlight">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Silverlight</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2007 — 2021</span>
+                            <span class="rip-categoria-badge">Tecnologia</span>
+                        </div>
+                        <p class="rip-epitafio">A resposta da Microsoft ao Flash. Mesmo destino.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Um plugin de navegador da Microsoft pra rodar vídeo e aplicações ricas, usado até por serviços como Netflix no começo.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Chegou embalado como alternativa "mais robusta" ao Flash, com integração nativa ao .NET, num momento em que ainda fazia sentido apostar em plugins.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>O mesmo inimigo do Flash: o HTML5 fez o trabalho sem plugin, e a Microsoft encerrou o suporte estendido em outubro de 2021.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="silverlight">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Windows Phone" data-categoria="Hardware" data-ano-inicio="2010" data-ano-fim="2017" id="rip-windows-phone">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Windows Phone</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2010 — 2017</span>
+                            <span class="rip-categoria-badge">Hardware</span>
+                        </div>
+                        <p class="rip-epitafio">Interface premiada, loja de apps vazia.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>O sistema operacional móvel da Microsoft, com a interface "Metro" de blocos vivos que influenciou até o design do Windows 8.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Elogiado pela crítica por uma tipografia e um layout genuinamente diferentes de iOS e Android, numa época em que todo mundo copiava os dois.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Desenvolvedores nunca priorizaram a plataforma, os apps essenciais nunca chegaram, e a própria Microsoft foi encerrando o investimento a partir de 2017.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="windows-phone">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Adobe Fireworks" data-categoria="Design" data-ano-inicio="1998" data-ano-fim="2019" id="rip-adobe-fireworks">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Adobe Fireworks</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1998 — 2019</span>
+                            <span class="rip-categoria-badge">Design</span>
+                        </div>
+                        <p class="rip-epitafio">Fazia protótipo de tela antes de "protótipo de tela" ser uma categoria.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Um editor da Macromedia (depois Adobe) feito especificamente pra design de interfaces web, misturando vetor e bitmap numa ferramenta só.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Era a ferramenta certa pro trabalho certo, numa época em que Photoshop e Illustrator serviam pra tudo, menos pra interface.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>A Adobe parou de desenvolvê-lo em 2013 depois de comprar o Macromedia, deixou vender por mais alguns anos e descontinuou de vez em 2019.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="adobe-fireworks">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Adobe XD" data-categoria="UI" data-ano-inicio="2016" data-ano-fim="2023" id="rip-adobe-xd">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Adobe XD</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2016 — 2023</span>
+                            <span class="rip-categoria-badge">UI</span>
+                        </div>
+                        <p class="rip-epitafio">Chegou tarde numa briga que o Figma já tinha vencido.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>A tentativa da Adobe de entrar no mercado de design de UI e prototipagem, com colaboração em tempo real e componentes reutilizáveis.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Chegou a atrair times que já usavam Creative Cloud e queriam manter tudo dentro do mesmo ecossistema.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>O Figma cresceu mais rápido e a própria Adobe tentou comprá-lo; quando o acordo caiu por questões regulatórias, a Adobe anunciou em 2023 que pararia de vender novas licenças do XD.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="adobe-xd">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="GeoCities" data-categoria="Internet" data-ano-inicio="1994" data-ano-fim="2009" id="rip-geocities">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ GeoCities</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1994 — 2009</span>
+                            <span class="rip-categoria-badge">Internet</span>
+                        </div>
+                        <p class="rip-epitafio">Onde a internet aprendeu a se decorar sozinha. Mal.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Um serviço gratuito de hospedagem que deixava qualquer pessoa criar sua própria página, organizadas em "bairros" temáticos.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Foi a porta de entrada de milhões de pessoas pra publicar algo próprio na web, GIFs piscando, contador de visitas e tudo mais.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>O Yahoo, que tinha comprado o serviço em 1999, encerrou as contas dos Estados Unidos em 2009, achando redes sociais e blogs mais eficientes.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="geocities">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Google Reader" data-categoria="Internet" data-ano-inicio="2005" data-ano-fim="2013" id="rip-google-reader">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Google Reader</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2005 — 2013</span>
+                            <span class="rip-categoria-badge">Internet</span>
+                        </div>
+                        <p class="rip-epitafio">O RSS morreu junto, mesmo o Google jurando que não.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Um agregador de feeds RSS que reunia posts de blogs e sites num único lugar, sem algoritmo, em ordem cronológica.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Virou o hábito diário de leitura de uma legião de nerds e jornalistas, num formato limpo que nenhuma rede social depois conseguiu replicar.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>O Google encerrou o serviço em julho de 2013 como parte de uma limpeza de produtos com "baixo engajamento", empurrando todo mundo pro Google+.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="google-reader">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Winamp" data-categoria="Software" data-ano-inicio="1997" data-ano-fim="9999" id="rip-winamp">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Winamp</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1997 — ainda não desligaram</span>
+                            <span class="rip-categoria-badge">Software</span>
+                        </div>
+                        <p class="rip-epitafio">"It really whips the llama's ass." Ninguém mais lembra por quê.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>O tocador de MP3 que definiu como uma geração inteira ouvia música no PC, com skins customizáveis e um visualizador que hipnotizava mais que a própria música.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Era leve, era gratuito, era customizável até o exagero, e chegou bem no auge da pirataria de MP3 no fim dos anos 90.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Tecnicamente não morreu — segue existindo sob nova gestão, com relançamentos esporádicos que ninguém pediu. É o fantasma mais ativo deste cemitério.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="winamp">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Palm" data-categoria="Hardware" data-ano-inicio="1996" data-ano-fim="2011" id="rip-palm">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Palm</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1996 — 2011</span>
+                            <span class="rip-categoria-badge">Hardware</span>
+                        </div>
+                        <p class="rip-epitafio">Inventou o smartphone antes de existir a palavra "smartphone".</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Fabricante do PalmPilot e depois dos PDAs Palm, agendas eletrônicas de bolso com caneta stylus e sincronização com o computador.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Foi a primeira vez que "levar seus compromissos no bolso" pareceu de fato prático, muito antes do iPhone existir.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Chegou atrasada na era touchscreen, apostou tarde demais no webOS, e a HP, que tinha comprado a empresa, encerrou os aparelhos em 2011.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="palm">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="BlackBerry" data-categoria="Hardware" data-ano-inicio="1999" data-ano-fim="2022" id="rip-blackberry">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ BlackBerry</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1999 — 2022</span>
+                            <span class="rip-categoria-badge">Hardware</span>
+                        </div>
+                        <p class="rip-epitafio">O teclado físico que o iPhone convenceu todo mundo a dispensar.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>O smartphone-padrão de executivos e políticos, com teclado físico QWERTY e um sistema de e-mail push que virou vício corporativo.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Resolvia um problema real — e-mail rápido e seguro no bolso — antes de qualquer concorrente levar isso a sério.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Recusou-se a apostar em tela sensível ao toque enquanto o mundo inteiro migrava pra lá; os serviços dos aparelhos antigos foram desligados de vez em janeiro de 2022.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="blackberry">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Locadoras de vídeo" data-categoria="Empresas" data-ano-inicio="1980" data-ano-fim="2014" id="rip-locadoras">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Locadoras de vídeo</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">anos 1980 — 2014</span>
+                            <span class="rip-categoria-badge">Empresas</span>
+                        </div>
+                        <p class="rip-epitafio">"Seja gentil, rebobine." Ninguém mais precisou ser.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Lojas físicas de aluguel de VHS e depois DVD, com prateleiras por gênero e uma multa esperando quem atrasasse a devolução.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Era o único jeito de assistir o que quisesse, quando quisesse, num mundo sem streaming e com poucos canais de TV.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>O streaming eliminou a viagem até a loja; a maior rede do setor entrou com pedido de recuperação judicial em 2010 e fechou as últimas lojas próprias em 2014.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="locadoras">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="CD-ROM" data-categoria="Hardware" data-ano-inicio="1985" data-ano-fim="2015" id="rip-cd-rom">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ CD-ROM</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1985 — anos 2010</span>
+                            <span class="rip-categoria-badge">Hardware</span>
+                        </div>
+                        <p class="rip-epitafio">700MB que pareciam infinitos até a internet aparecer.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>O disco óptico que distribuía software, jogos, enciclopédias inteiras e a instalação do próprio sistema operacional.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Era barato de produzir, cabia em qualquer envelope e resolvia o problema de distribuir arquivos grandes numa época sem banda larga.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Download e streaming eliminaram a necessidade de mídia física; fabricantes de notebook começaram a tirar o leitor de CD dos aparelhos ainda na década de 2010.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="cd-rom">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Disquete" data-categoria="Hardware" data-ano-inicio="1971" data-ano-fim="2011" id="rip-disquete">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Disquete</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1971 — 2011</span>
+                            <span class="rip-categoria-badge">Hardware</span>
+                        </div>
+                        <p class="rip-epitafio">O ícone de "salvar" que sobrevive à própria extinção.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Uma mídia magnética removível usada pra guardar e transportar arquivos entre computadores, com capacidade medida em kilobytes e depois poucos megabytes.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Foi, por duas décadas, a forma mais prática e barata de levar um arquivo de um PC pro outro sem precisar de rede.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Pendrives e depois a nuvem tornaram sua capacidade minúscula obsoleta; a Sony, última grande fabricante, parou de produzi-los em 2011.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="disquete">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Fax" data-categoria="Tecnologia" data-ano-inicio="1980" data-ano-fim="9999" id="rip-fax">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Fax</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">anos 1980 — tecnicamente vivo</span>
+                            <span class="rip-categoria-badge">Tecnologia</span>
+                        </div>
+                        <p class="rip-epitafio">Tecnicamente não morreu. Isso diz mais sobre burocracia do que sobre tecnologia.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Um aparelho que transmitia documentos escaneados por linha telefônica, imprimindo do outro lado em tempo quase real.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Era a única forma de enviar um documento assinado a distância antes do e-mail e da assinatura digital existirem.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>E-mail, PDF e assinatura eletrônica resolvem o mesmo problema há anos — mas contratos jurídicos, hospitais e órgãos públicos em vários países ainda insistem nele.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="fax">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Clippy" data-categoria="UX" data-ano-inicio="1996" data-ano-fim="2001" id="rip-clippy">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Clippy</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1996 — 2001</span>
+                            <span class="rip-categoria-badge">UX</span>
+                        </div>
+                        <p class="rip-epitafio">"Parece que você está tentando escrever uma carta."</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>O assistente animado do Microsoft Office, um clipe de papel com olhos que interrompia pra oferecer ajuda que ninguém pediu.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Foi uma aposta genuína em tornar o software mais "amigável" pra quem estava chegando agora nos computadores pessoais.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>A ajuda era mais interrupção do que assistência; virado piada nacional, foi desativado por padrão no Office XP em 2001.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="clippy">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="QR Code pré-pandemia" data-categoria="Marketing" data-ano-inicio="1994" data-ano-fim="2019" id="rip-qr-code">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ QR Code pré-pandemia</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1994 — 2019</span>
+                            <span class="rip-categoria-badge">Marketing</span>
+                        </div>
+                        <p class="rip-epitafio">Morreu de irrelevância. Ressuscitou de necessidade.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Um código de barras bidimensional, criado no Japão em 1994 pra rastrear peças automotivas, que virou moda em cartazes e anúncios ocidentais.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Prometia ligar o mundo físico ao digital com um escaneamento só — a promessa era boa, a execução nunca foi.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Precisava de um app dedicado pra ler, ninguém tinha um instalado, e virou piada de campanha de marketing preguiçosa — até 2020, quando cardápios sem contato o trouxeram de volta à força.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="qr-code">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="NFT como solução universal" data-categoria="Marketing" data-ano-inicio="2021" data-ano-fim="2022" id="rip-nft">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ NFT como solução universal</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2021 — 2022</span>
+                            <span class="rip-categoria-badge">Marketing</span>
+                        </div>
+                        <p class="rip-epitafio">A promessa de que tudo precisava virar token.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>A ideia de que registrar qualquer coisa — arte, ingresso, imóvel, tuíte — numa blockchain resolveria problemas que ninguém tinha antes perguntado se existiam.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Vendas de milhões de dólares por arquivos de imagem viraram manchete, e toda marca quis um pedaço do hype antes de entender o que estava vendendo.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>O volume de negociação despencou drasticamente ao longo de 2022, expondo que a maior parte do valor era especulação, não utilidade real.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="nft">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Metaverso como promessa" data-categoria="Conceitos" data-ano-inicio="2021" data-ano-fim="2023" id="rip-metaverso">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Metaverso como promessa</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2021 — 2023</span>
+                            <span class="rip-categoria-badge">Conceitos</span>
+                        </div>
+                        <p class="rip-epitafio">Uma empresa trocou de nome inteiro por causa disso.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>A promessa de um mundo virtual 3D persistente onde trabalho, lazer e reuniões aconteceriam através de óculos de realidade virtual.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>O Facebook renomeou a própria empresa pra Meta em 2021 e apostou bilhões na ideia, arrastando o resto do mercado atrás.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Ninguém queria de fato usar óculos de VR pra fazer reunião de trabalho; a própria Meta reduziu o investimento e demitiu parte do time responsável.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="metaverso">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Hamburger Menu como solução pra tudo" data-categoria="UX" data-ano-inicio="1981" data-ano-fim="9999" id="rip-hamburger-menu">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Hamburger Menu como solução pra tudo</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">1981 — ainda assombra</span>
+                            <span class="rip-categoria-badge">UX</span>
+                        </div>
+                        <p class="rip-epitafio">Esconde a navegação inteira e chama isso de "design limpo".</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Um ícone de três linhas que virou o esconderijo padrão pra qualquer navegação que o time de design não quis mostrar na tela principal.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Resolvia de verdade o problema de espaço em telas pequenas, e virou tão comum que ninguém mais questionava se fazia sentido no desktop.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Estudos de usabilidade mostraram repetidamente que esconder a navegação reduz o uso dela — mas o ícone segue vivo, usado até quando sobra espaço de tela de sobra.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="hamburger-menu">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="AngularJS" data-categoria="Programação" data-ano-inicio="2010" data-ano-fim="2021" id="rip-angularjs">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ AngularJS</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2010 — 2021</span>
+                            <span class="rip-categoria-badge">Programação</span>
+                        </div>
+                        <p class="rip-epitafio">Ensinou uma geração de front-end e foi aposentado por ela.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>O framework front-end criado pelo Google que popularizou data binding de duas vias e diretivas em HTML pra construir aplicações de página única.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Chegou numa época em que "SPA" ainda era conceito novo, e virou a porta de entrada de muita gente pro desenvolvimento front-end moderno.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>React e o próprio sucessor Angular (reescrito do zero) ofereciam arquiteturas mais modernas; o Google anunciou o fim do suporte pra dezembro de 2021.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="angularjs">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Flat Design extremo" data-categoria="Design" data-ano-inicio="2013" data-ano-fim="2018" id="rip-flat-design">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Flat Design extremo</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2013 — 2018</span>
+                            <span class="rip-categoria-badge">Design</span>
+                        </div>
+                        <p class="rip-epitafio">Tirou toda sombra da interface e, junto, a informação de onde clicar.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>A tendência de eliminar completamente sombra, gradiente e volume da interface em nome de um visual "limpo", puxada pelo iOS 7 e pela linguagem Metro da Microsoft.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Foi uma reação legítima ao excesso de skeumorfismo da década anterior, com texturas de couro e madeira em app de calculadora.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Levada ao extremo, tirou qualquer pista visual de que um elemento era clicável; o próprio mercado voltou a introduzir sombra e profundidade sutil nos anos seguintes.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="flat-design">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="rip-lapide" data-nome="Google Stadia" data-categoria="Games" data-ano-inicio="2019" data-ano-fim="2023" id="rip-google-stadia">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Google Stadia</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">2019 — 2023</span>
+                            <span class="rip-categoria-badge">Games</span>
+                        </div>
+                        <p class="rip-epitafio">A nuvem prometeu rodar seus jogos. Rodou a empresa pra fora do mercado.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>O serviço de jogos em nuvem do Google, que prometia rodar títulos AAA direto no navegador, sem console nem download.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>A tecnologia de streaming em si funcionava melhor do que o ceticismo geral esperava, e chegou com nomes grandes de estúdios prometendo suporte.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>Poucos jogos exclusivos, base de usuários pequena e o padrão do Google de abandonar produtos fizeram a empresa encerrar o serviço em janeiro de 2023, pouco mais de três anos após o lançamento.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="google-stadia">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- ============================================================
+                 👇 COLE NOVOS ITENS AQUI EMBAIXO 👇
+
+                 Pra adicionar um novo "falecido":
+                 1) Copie o bloco de exemplo comentado logo abaixo (do
+                    <details ...> até o </details> — inclusive as duas tags).
+                 2) Cole ele em qualquer lugar aqui dentro da lista
+                    (acima ou abaixo dos itens que já existem).
+                 3) Troque nele:
+                    - data-nome            → nome do item
+                    - data-categoria       → uma destas, exatamente igual:
+                                             UX, UI, Design, Tecnologia,
+                                             Programação, Internet, Software,
+                                             Hardware, Games, Marketing,
+                                             Conceitos, Empresas
+                    - data-ano-inicio      → ano que nasceu, ex: "2015"
+                    - data-ano-fim         → ano que morreu, ex: "2022".
+                                             Se ainda não morreu oficialmente,
+                                             use "9999" (assim ele sempre
+                                             aparece por último em "mais
+                                             recentes" e por primeiro em
+                                             "mais antigos" continua correto)
+                    - id                   → um id único, tipo
+                                             id="rip-nome-do-item" (sem
+                                             espaço, sem acento, tudo minúsculo)
+                    - data-enquete-id      → mesmo texto do id, sem o "rip-"
+                    - ⚰️ Nome do item      → dentro de .rip-lapide-nome
+                    - o texto de .rip-anos → o que aparece pro usuário
+                                             (ex: "2015 — 2022")
+                    - a badge de categoria → dentro de .rip-categoria-badge
+                    - o epitáfio           → a frase em itálico dentro de
+                                             .rip-epitafio
+                    - as 3 seções          → O que era / Por que fez
+                                             sucesso / O que causou a morte
+
+                 Não precisa mexer em mais nada: busca, filtro e o contador
+                 de "X sepultamentos encontrados" se atualizam sozinhos.
+
+                 Template pronto pra copiar (está comentado, então não
+                 aparece na página até você copiar e descomentar):
+
+            <details class="rip-lapide" data-nome="NOME DO ITEM" data-categoria="Categoria" data-ano-inicio="0000" data-ano-fim="0000" id="rip-nome-do-item">
+                <summary>
+                    <div class="rip-lapide-info">
+                        <span class="rip-lapide-nome">⚰️ Nome do item</span>
+                        <div class="rip-lapide-meta">
+                            <span class="rip-anos">0000 — 0000</span>
+                            <span class="rip-categoria-badge">Categoria</span>
+                        </div>
+                        <p class="rip-epitafio">Epitáfio curto e ácido aqui.</p>
+                    </div>
+                </summary>
+                <div class="rip-obituario">
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que era</span>
+                        <p>Descrição do que era, em 1-2 frases.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">Por que fez sucesso</span>
+                        <p>Por que fez sentido na época, em 1-2 frases.</p>
+                    </div>
+                    <div class="rip-obituario-secao">
+                        <span class="rip-label">O que causou sua morte</span>
+                        <p>O motivo real da queda, em 1-2 frases.</p>
+                    </div>
+                    <div class="rip-enquete" data-enquete-id="nome-do-item">
+                        <p class="rip-enquete-pergunta">Você sente saudade?</p>
+                        <div class="rip-enquete-botoes">
+                            <button type="button" class="rip-voto" data-voto="sim"><span aria-hidden="true">👍</span> Sim</button>
+                            <button type="button" class="rip-voto" data-voto="nao"><span aria-hidden="true">👎</span> Não</button>
+                        </div>
+                        <div class="rip-enquete-resultado"></div>
+                    </div>
+                </div>
+            </details>
+
+                 ============================================================ -->
+
+
+<details class="rip-lapide" data-nome="Orelhão" data-categoria="Comunicação" data-ano-inicio="1970" data-ano-fim="2015" id="rip-orelhao">
+
+    <summary>
+
+        <div class="rip-lapide-info">
+
+            <span class="rip-lapide-nome">⚰️ Orelhão</span>
+
+            <div class="rip-lapide-meta">
+
+                <span class="rip-anos">1970 — 2015</span>
+
+                <span class="rip-categoria-badge">Comunicação</span>
+
+            </div>
+
+            <p class="rip-epitáfio">O telefone que ficava na rua morreu quando todo mundo passou a carregar um no bolso.</p>
+
+        </div>
+
+    </summary>
+
+    <div class="rip-obituario">
+
+        <div class="rip-obituario-secao">
+
+            <span class="rip-label">O que era</span>
+
+            <p>Uma cabine ou aparelho de telefone público espalhado pelas cidades, permitindo fazer ligações usando fichas ou cartões telefônicos.</p>
+
+        </div>
+
+        <div class="rip-obituario-secao">
+
+            <span class="rip-label">Por que fez sucesso</span>
+
+            <p>Era a forma mais prática de se comunicar quando telefones residenciais eram caros e celulares ainda eram coisa de filme de ficção científica.</p>
+
+        </div>
+
+        <div class="rip-obituario-secao">
+
+            <span class="rip-label">O que causou sua morte</span>
+
+            <p>O celular transformou qualquer pessoa em um telefone ambulante. O orelhão virou decoração urbana, lembrança de infância e abrigo improvisado para quem ainda tenta achar um.</p>
+
+        </div>
+
+        <div class="rip-enquete" data-enquete-id="orelhao">
+
+            <p class="rip-enquete-pergunta">Você sente saudade?</p>
+
+            <div class="rip-enquete-botoes">
+
+                <button type="button" class="rip-voto" data-voto="sim">
+                    <span aria-hidden="true">👍</span> Sim
+                </button>
+
+                <button type="button" class="rip-voto" data-voto="nao">
+                    <span aria-hidden="true">👎</span> Não
+                </button>
+
+            </div>
+
+            <div class="rip-enquete-resultado"></div>
+
+        </div>
+
+    </div>
+
+</details>
+
+<details class="rip-lapide" data-nome="Discman" data-categoria="Música" data-ano-inicio="1984" data-ano-fim="2010" id="rip-discman">
+
+    <summary>
+
+        <div class="rip-lapide-info">
+
+            <span class="rip-lapide-nome">⚰️ Discman</span>
+
+            <div class="rip-lapide-meta">
+
+                <span class="rip-anos">1984 — 2010</span>
+
+                <span class="rip-categoria-badge">Música</span>
+
+            </div>
+
+            <p class="rip-epitafio">Transformou qualquer caminhada em um videoclipe particular. Morreu tentando carregar música em um mundo que ficou sem espaço para cabos.</p>
+
+        </div>
+
+    </summary>
+
+    <div class="rip-obituario">
+
+        <div class="rip-obituario-secao">
+
+            <span class="rip-label">O que era</span>
+
+            <p>Um aparelho portátil que reproduzia CDs e permitia levar sua coleção de músicas para qualquer lugar. Era o sucessor do Walkman e símbolo de status nos anos 90.</p>
+
+        </div>
+
+        <div class="rip-obituario-secao">
+
+            <span class="rip-label">Por que fez sucesso</span>
+
+            <p>Porque colocou qualidade de áudio de CD no bolso das pessoas e deu a sensação de ter uma trilha sonora própria para a vida.</p>
+
+        </div>
+
+        <div class="rip-obituario-secao">
+
+            <span class="rip-label">O que causou sua morte</span>
+
+            <p>Foi esmagado pela chegada dos MP3 players, celulares e streaming. O problema não era ouvir música, era carregar um aparelho enorme para fazer algo que hoje cabe no relógio.</p>
+
+        </div>
+
+        <div class="rip-enquete" data-enquete-id="discman">
+
+            <p class="rip-enquete-pergunta">Você sente saudade?</p>
+
+            <div class="rip-enquete-botoes">
+
+                <button type="button" class="rip-voto" data-voto="sim">
+                    <span aria-hidden="true">👍</span> Sim
+                </button>
+
+                <button type="button" class="rip-voto" data-voto="nao">
+                    <span aria-hidden="true">👎</span> Não
+                </button>
+
+            </div>
+
+            <div class="rip-enquete-resultado"></div>
+
+        </div>
+
+    </div>
+
+</details>
+
+
+
+
+            <p class="rip-vazio-busca" id="rip-vazio-busca">Nenhum falecido encontrado. Talvez ainda não tenha morrido — ou talvez você tenha escrito errado. <a href="contato.html">Sugere um nome pra gente</a>.</p>
+
+        </div>
+
+        <!-- ================= CTA FINAL ================= -->
+        <section class="rip-cta-final">
+            <p>Conhece algo que já devia estar enterrado aqui? <a href="contato.html">Manda pra gente lá no Contato</a> — este cemitério só cresce.</p>
+        </section>
+
+    </main>
+
+    <!-- ======================================================
+         FOOTER — idêntico ao das outras páginas
+         ====================================================== -->
+    <footer class="footer">
+
+        <div class="footer-esquerda">
+            <img src="logobranca.png" alt="Upixel" class="footer-logo">
+            <p class="copyright">
+                Upixel. Todos os direitos reservados.
+            </p>
+        </div>
+
+        <div class="footer-centro">
+            <nav class="footer-menu" aria-label="Navegação do rodapé">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+            <a href="rip.html" class="ativo" aria-current="page">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html">Besteirol</a>
+            <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+
+    </footer>
+
+    <div class="footer-ilustracao">
+        <img src="rodape.png" alt="Ilustração Footer" loading="lazy" decoding="async">
+    </div>
+
+    <!-- ==========================================================
+         JS da página — só o necessário pra busca em tempo real,
+         filtro por categoria, ordenação e a enquete de cada
+         lápide. O accordion continua sendo o <details> nativo,
+         zero JS pra isso.
+
+         Armazenamento de votos: por enquanto usa localStorage,
+         só pra já existir uma estrutura funcionando (contagem
+         por item + trava de "já votei"). Quando houver um
+         backend de verdade, troque as três funções marcadas
+         "TODO: substituir por chamada de API" mantendo a mesma
+         assinatura — o resto do script não muda.
+         ========================================================== -->
+    <script>
+    (function () {
+        'use strict';
+
+        var lista = document.getElementById('rip-lista');
+        var lapides = Array.prototype.slice.call(lista.querySelectorAll('.rip-lapide'));
+        var inputBusca = document.getElementById('rip-input-busca');
+        var botoesFiltro = Array.prototype.slice.call(document.querySelectorAll('.rip-filtro'));
+        var selectOrdenar = document.getElementById('rip-select-ordenar');
+        var contador = document.getElementById('rip-contador');
+        var vazio = document.getElementById('rip-vazio-busca');
+        var categoriaAtiva = 'todos';
+
+        function normalizar(texto) {
+            return texto
+                .toString()
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
+        }
+
+        function textoBusca(lapide) {
+            // Busca associativa: cobre nome, categoria, anos e todo o texto
+            // do obituário (o que era / por que fez sucesso / causa da morte),
+            // então "netflix" acha Silverlight, "iphone" acha Palm, etc.
+            return normalizar(lapide.textContent);
+        }
+
+        function aplicarFiltroEBusca() {
+            var termo = normalizar(inputBusca.value.trim());
+            var visiveis = 0;
+
+            lapides.forEach(function (lapide) {
+                // Enquanto há um termo de busca, ela vale pra tudo, ignorando
+                // o filtro de categoria — buscar "flash" acha Adobe Flash
+                // mesmo se o filtro estiver marcado em outra categoria.
+                var bateCategoria = termo !== '' || categoriaAtiva === 'todos' || lapide.dataset.categoria === categoriaAtiva;
+                var bateBusca = termo === '' || textoBusca(lapide).indexOf(termo) !== -1;
+                var mostrar = bateCategoria && bateBusca;
+
+                lapide.hidden = !mostrar;
+                if (mostrar) visiveis += 1;
+            });
+
+            contador.textContent = visiveis === 1
+                ? '1 sepultamento encontrado.'
+                : visiveis + ' sepultamentos encontrados.';
+
+            vazio.classList.toggle('rip-ativo', visiveis === 0);
+        }
+
+        function ordenar() {
+            var modo = selectOrdenar.value;
+            var ordenados = lapides.slice().sort(function (a, b) {
+                if (modo === 'az') {
+                    return a.dataset.nome.localeCompare(b.dataset.nome, 'pt-BR');
+                }
+                if (modo === 'za') {
+                    return b.dataset.nome.localeCompare(a.dataset.nome, 'pt-BR');
+                }
+                if (modo === 'antigos') {
+                    return parseInt(a.dataset.anoInicio, 10) - parseInt(b.dataset.anoInicio, 10);
+                }
+                // 'recentes' (padrão): pelo ano de "morte" mais recente primeiro
+                return parseInt(b.dataset.anoFim, 10) - parseInt(a.dataset.anoFim, 10);
+            });
+
+            ordenados.forEach(function (lapide) {
+                lista.appendChild(lapide);
+            });
+            lista.appendChild(vazio);
+        }
+
+        inputBusca.addEventListener('input', function () {
+            if (inputBusca.value.trim() !== '') {
+                categoriaAtiva = 'todos';
+                botoesFiltro.forEach(function (b) {
+                    b.setAttribute('aria-pressed', b.dataset.categoria === 'todos' ? 'true' : 'false');
+                });
+            }
+            aplicarFiltroEBusca();
+        });
+
+        botoesFiltro.forEach(function (botao) {
+            botao.addEventListener('click', function () {
+                botoesFiltro.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+                botao.setAttribute('aria-pressed', 'true');
+                categoriaAtiva = botao.dataset.categoria;
+                aplicarFiltroEBusca();
+            });
+        });
+
+        selectOrdenar.addEventListener('change', ordenar);
+
+        // ---------- enquete: "você sente saudade?" ----------
+
+        // TODO: substituir por chamada de API — deve retornar { sim: number, nao: number }
+        function lerVotos(id) {
+            try {
+                var bruto = localStorage.getItem('rip-votos-' + id);
+                return bruto ? JSON.parse(bruto) : { sim: 0, nao: 0 };
+            } catch (erro) {
+                return { sim: 0, nao: 0 };
+            }
+        }
+
+        // TODO: substituir por chamada de API — deve persistir { sim: number, nao: number }
+        function salvarVotos(id, votos) {
+            try {
+                localStorage.setItem('rip-votos-' + id, JSON.stringify(votos));
+            } catch (erro) {
+                // localStorage indisponível — enquete segue funcional só na sessão atual
+            }
+        }
+
+        // TODO: substituir por chamada de API — deve retornar 'sim' | 'nao' | null
+        function meuVoto(id) {
+            try {
+                return localStorage.getItem('rip-meu-voto-' + id);
+            } catch (erro) {
+                return null;
+            }
+        }
+
+        function registrarMeuVoto(id, escolha) {
+            try {
+                localStorage.setItem('rip-meu-voto-' + id, escolha);
+            } catch (erro) {
+                // segue sem persistir a escolha do usuário
+            }
+        }
+
+        function renderizarResultado(container, votos) {
+            var total = votos.sim + votos.nao;
+            var pctSim = total === 0 ? 0 : Math.round((votos.sim / total) * 100);
+            var pctNao = total === 0 ? 0 : 100 - pctSim;
+
+            container.innerHTML =
+                '<div class="rip-resultado-linha">' +
+                    '<span aria-hidden="true">👍</span>' +
+                    '<div class="rip-resultado-barra"><div class="rip-resultado-preenchimento" style="width:' + pctSim + '%"></div></div>' +
+                    '<span class="rip-resultado-percentual">' + pctSim + '%</span>' +
+                '</div>' +
+                '<div class="rip-resultado-linha">' +
+                    '<span aria-hidden="true">👎</span>' +
+                    '<div class="rip-resultado-barra"><div class="rip-resultado-preenchimento" style="width:' + pctNao + '%"></div></div>' +
+                    '<span class="rip-resultado-percentual">' + pctNao + '%</span>' +
+                '</div>';
+        }
+
+        document.querySelectorAll('.rip-enquete').forEach(function (enquete) {
+            var id = enquete.dataset.enqueteId;
+            var botoesContainer = enquete.querySelector('.rip-enquete-botoes');
+            var resultadoContainer = enquete.querySelector('.rip-enquete-resultado');
+            var jaVotou = meuVoto(id);
+
+            if (jaVotou) {
+                var votosAtuais = lerVotos(id);
+                renderizarResultado(resultadoContainer, votosAtuais);
+                botoesContainer.style.display = 'none';
+                resultadoContainer.classList.add('rip-ativo');
+            }
+
+            enquete.querySelectorAll('.rip-voto').forEach(function (botao) {
+                botao.addEventListener('click', function (evento) {
+                    evento.preventDefault();
+                    if (meuVoto(id)) return;
+
+                    var escolha = botao.dataset.voto;
+                    var votos = lerVotos(id);
+                    votos[escolha] += 1;
+                    salvarVotos(id, votos);
+                    registrarMeuVoto(id, escolha);
+
+                    renderizarResultado(resultadoContainer, votos);
+                    botoesContainer.classList.remove('rip-ativo');
+                    botoesContainer.style.display = 'none';
+                    resultadoContainer.classList.add('rip-ativo');
+                });
+            });
+        });
+
+        aplicarFiltroEBusca();
+    })();
+    </script>
+
+</body>
+</html>
