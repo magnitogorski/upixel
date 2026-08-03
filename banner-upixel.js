@@ -301,11 +301,13 @@
                 '}' +
 
                 '.barra-topo {' +
+                    'position: relative;' +
                     'display: flex;' +
                     'align-items: center;' +
                     'justify-content: space-between;' +
                     'gap: 10px;' +
-                    'padding: 5px 42px 5px 12px;' +
+                    'min-height: 32px;' +
+                    'padding: 5px 36px 5px 12px;' +
                     'background: repeating-linear-gradient(' +
                         '45deg,' +
                         '#1a1a1a,' +
@@ -336,30 +338,33 @@
 
                 '.barra-topo-direita .tm { font-size: 8px; vertical-align: super; }' +
 
+                /* Fica ancorado dentro da própria barra "PUBLICIDADE"
+                   (topo do banner), em vez de flutuar sobre a imagem —
+                   assim nunca fica escondido atrás do selo circular em
+                   telas estreitas, em nenhum breakpoint. */
                 '.fechar {' +
                     'position: absolute;' +
-                    'top: 38px;' +
-                    'right: 8px;' +
-                    'width: 26px;' +
-                    'height: 26px;' +
+                    'top: 4px;' +
+                    'right: 6px;' +
+                    'width: 24px;' +
+                    'height: 24px;' +
                     'display: flex;' +
                     'align-items: center;' +
                     'justify-content: center;' +
-                    'background: #ffffff;' +
-                    'border: 2px solid #1a1a1a;' +
-                    'border-radius: 3px;' +
-                    'color: #1a1a1a;' +
+                    'background: rgba(255, 255, 255, 0.14);' +
+                    'border: 1.5px solid #ffe600;' +
+                    'border-radius: 4px;' +
+                    'color: #ffe600;' +
                     'cursor: pointer;' +
-                    'z-index: 3;' +
-                    'box-shadow: 2px 2px 0 #1a1a1a;' +
-                    'transition: background .15s ease, transform .15s ease, box-shadow .15s ease;' +
+                    'z-index: 5;' +
+                    'transition: background .15s ease, color .15s ease, transform .15s ease;' +
                 '}' +
 
                 '.fechar:hover, .fechar:focus-visible {' +
                     'background: #FA397A;' +
+                    'border-color: #FA397A;' +
                     'color: #ffffff;' +
-                    'transform: translate(1px, 1px);' +
-                    'box-shadow: 1px 1px 0 #1a1a1a;' +
+                    'transform: scale(1.06);' +
                     'outline: none;' +
                 '}' +
 
@@ -537,9 +542,8 @@
                    horizontal em nenhum momento. */
                 '@media (max-width: 560px) {' +
                     '.wrapper { padding: 22px 0; }' +
-                    '.barra-topo { padding: 6px 38px 6px 10px; }' +
+                    '.barra-topo { padding: 6px 34px 6px 10px; }' +
                     '.barra-topo-esquerda { font-size: 9px; }' +
-                    '.fechar { top: 34px; }' +
                     '.corpo { flex-direction: column; }' +
                     '.coluna-imagem {' +
                         'flex-basis: auto;' +
