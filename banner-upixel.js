@@ -46,10 +46,21 @@
    - titulo         título em destaque.
    - descricao      descrição curta (1–2 frases funciona melhor).
    - link           URL de destino (uma página do seu site).
-   - selo           (opcional) texto do selo. Padrão: "Produto Fictício".
+   - selo           (opcional) texto do selo pequeno. Padrão: "Produto patrocinado".
    - texto-botao    (opcional) texto do botão. Padrão: "Saiba mais".
    - nova-aba       (opcional) escreva nova-aba="true" pra abrir
                      o link em outra aba. Padrão: mesma aba.
+
+   IDENTIDADE VISUAL
+   - O componente foi desenhado de propósito com um visual retrô,
+     inspirado nas propagandas de portais brasileiros do fim dos
+     anos 90 e dos anos 2000 (estilo UOL/Terra/Yahoo/Baixaki/
+     Superdownloads/lojas virtuais da época). Tem barra "PUBLICIDADE
+     / UPUBLI™" no topo, selo grande de destaque (ex.: "OFERTA",
+     "LANÇAMENTO"), botão enorme estilo botão de loja antiga, e
+     rodapé "Conteúdo patrocinado". É intencional: o objetivo é
+     deixar óbvio, à primeira vista, que aquele bloco é uma peça
+     publicitária — não uma funcionalidade nativa do site.
 
    ISOLAMENTO
    - CSS: vive inteiramente dentro do Shadow DOM (attachShadow).
@@ -70,6 +81,11 @@
     if (customElements.get('upx-banner')) return;
 
     var CHAVE_LOCALSTORAGE = 'upx-banner-fechado:';
+
+    // Palavras de destaque estilo "selo de loja antiga". A escolha é
+    // determinística (baseada no id-anuncio/título), então o mesmo
+    // banner sempre mostra o mesmo selo — sem depender de novo atributo.
+    var SELOS_DESTAQUE = ['OFERTA', 'LANÇAMENTO', 'NOVO', 'SUCESSO DE VENDAS'];
 
     class UpxBanner extends HTMLElement {
 
@@ -108,33 +124,63 @@
             }
         }
 
+        _escolherSeloDestaque(chave) {
+            var texto = chave || 'upx-banner';
+            var soma = 0;
+            for (var i = 0; i < texto.length; i++) {
+                soma += texto.charCodeAt(i);
+            }
+            return SELOS_DESTAQUE[soma % SELOS_DESTAQUE.length];
+        }
+
         _render() {
             var imagem = this.getAttribute('imagem') || '';
             var titulo = this.getAttribute('titulo') || 'Título do produto';
             var descricao = this.getAttribute('descricao') || '';
             var link = this.getAttribute('link') || '#';
-            var selo = this.getAttribute('selo') || 'Será que Presta?';
+            var selo = this.getAttribute('selo') || 'Produto patrocinado';
             var textoBotao = this.getAttribute('texto-botao') || 'Saiba mais';
             var novaAba = this.getAttribute('nova-aba') === 'true';
+            var idAnuncio = this.getAttribute('id-anuncio') || titulo;
+            var seloDestaque = this._escolherSeloDestaque(idAnuncio);
 
             var raiz = this.attachShadow({ mode: 'open' });
 
             raiz.innerHTML =
                 '<style>' + this._css() + '</style>' +
-                '<div class="banner" part="banner" role="link" tabindex="0" aria-label="' +
-                    this._escapar(titulo) + '. ' + this._escapar(descricao) + '">' +
-                    '<button type="button" class="fechar" aria-label="Fechar este anúncio">' +
-                        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>' +
-                    '</button>' +
-                    (imagem ? '<div class="imagem"><img src="' + this._escapar(imagem) + '" alt="" loading="lazy"></div>' : '') +
-                    '<div class="conteudo">' +
-                        '<span class="selo">' + this._escapar(selo) + '</span>' +
-                        '<h3 class="titulo">' + this._escapar(titulo) + '</h3>' +
-                        (descricao ? '<p class="descricao">' + this._escapar(descricao) + '</p>' : '') +
-                        '<span class="botao">' +
-                            this._escapar(textoBotao) +
-                            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-                        '</span>' +
+                '<div class="wrapper">' +
+                    '<div class="banner" part="banner" role="link" tabindex="0" aria-label="Publicidade. ' +
+                        this._escapar(titulo) + '. ' + this._escapar(descricao) + '">' +
+
+                        '<div class="barra-topo">' +
+                            '<span class="barra-topo-esquerda">&#9679; PUBLICIDADE &#9679;</span>' +
+                            '<span class="barra-topo-direita">UPUBLI<span class="tm">&trade;</span></span>' +
+                        '</div>' +
+
+                        '<button type="button" class="fechar" aria-label="Fechar este anúncio">' +
+                            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>' +
+                        '</button>' +
+
+                        '<div class="corpo">' +
+                            (imagem ?
+                                '<div class="coluna-imagem">' +
+                                    '<div class="moldura-imagem">' +
+                                        '<img src="' + this._escapar(imagem) + '" alt="" loading="lazy">' +
+                                    '</div>' +
+                                    '<div class="estrela-selo"><span>' + this._escapar(seloDestaque) + '</span></div>' +
+                                '</div>'
+                            : '') +
+                            '<div class="coluna-conteudo">' +
+                                '<span class="selo-pequeno">&#9733; ' + this._escapar(selo) + '</span>' +
+                                '<h3 class="titulo">' + this._escapar(titulo) + '</h3>' +
+                                (descricao ? '<p class="descricao">' + this._escapar(descricao) + '</p>' : '') +
+                                '<span class="botao">' +
+                                    '[ ' + this._escapar(textoBotao) + ' ]' +
+                                '</span>' +
+                            '</div>' +
+                        '</div>' +
+
+                        '<div class="rodape">Conteúdo patrocinado &bull; Produto fictício da coleção Upubli&trade;</div>' +
                     '</div>' +
                 '</div>';
 
@@ -149,7 +195,9 @@
                 }
             };
 
-            elBanner.addEventListener('click', irParaLink);
+            elBanner.addEventListener('click', function () {
+                irParaLink();
+            });
             elBanner.addEventListener('keydown', function (evento) {
                 if (evento.key === 'Enter' || evento.key === ' ') {
                     evento.preventDefault();
@@ -218,167 +266,294 @@
 
                 '*, *::before, *::after { box-sizing: border-box; }' +
 
+                '.wrapper {' +
+                    'width: 100%;' +
+                    'max-width: 100%;' +
+                    'padding: 32px 0;' +
+                    'display: flex;' +
+                    'justify-content: center;' +
+                '}' +
+
+                /* Retângulo de propaganda clássico: proporção próxima de
+                   728x220 no desktop, moldura grossa, sombra "dura" em
+                   vez de sombra suave moderna — lembrando banner de
+                   portal dos anos 2000. */
                 '.banner {' +
                     'position: relative;' +
                     'display: flex;' +
-                    'align-items: center;' +
-                    'gap: 24px;' +
+                    'flex-direction: column;' +
                     'width: 100%;' +
-                    'max-width: 100%;' +
-                    'background: linear-gradient(135deg, #0d0d0d 0%, #000000 65%);' +
-                    'border: 1px solid #262626;' +
-                    'border-radius: 16px;' +
-                    'padding: 24px 28px;' +
+                    'max-width: 728px;' +
+                    'background: linear-gradient(180deg, #fff6e9 0%, #ffe9c7 100%);' +
+                    'border: 4px solid #1a1a1a;' +
+                    'border-radius: 6px;' +
                     'cursor: pointer;' +
-                    'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;' +
+                    'font-family: Arial, Helvetica, sans-serif;' +
                     'overflow: hidden;' +
-                    'transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;' +
-                '}' +
-
-                '.banner::before {' +
-                    'content: "";' +
-                    'position: absolute;' +
-                    'inset: 0 auto 0 0;' +
-                    'width: 3px;' +
-                    'background: linear-gradient(180deg, #FA397A, #7a1f45);' +
+                    'box-shadow: 6px 6px 0 #1a1a1a, 0 0 0 2px #FA397A inset;' +
+                    'transition: transform .15s ease, box-shadow .15s ease;' +
                 '}' +
 
                 '.banner:hover, .banner:focus-visible {' +
-                    'border-color: #FA397A;' +
-                    'box-shadow: 0 8px 28px rgba(250, 57, 122, 0.16);' +
-                    'transform: translateY(-1px);' +
+                    'transform: translate(-2px, -2px);' +
+                    'box-shadow: 9px 9px 0 #1a1a1a, 0 0 0 2px #FA397A inset;' +
                     'outline: none;' +
                 '}' +
 
+                '.barra-topo {' +
+                    'display: flex;' +
+                    'align-items: center;' +
+                    'justify-content: space-between;' +
+                    'gap: 10px;' +
+                    'padding: 5px 42px 5px 12px;' +
+                    'background: repeating-linear-gradient(' +
+                        '45deg,' +
+                        '#1a1a1a,' +
+                        '#1a1a1a 8px,' +
+                        '#2b2b2b 8px,' +
+                        '#2b2b2b 16px' +
+                    ');' +
+                    'border-bottom: 3px solid #FA397A;' +
+                '}' +
+
+                '.barra-topo-esquerda {' +
+                    'font-size: 10px;' +
+                    'font-weight: 900;' +
+                    'letter-spacing: 1.5px;' +
+                    'text-transform: uppercase;' +
+                    'color: #ffe600;' +
+                    'text-shadow: 1px 1px 0 #000;' +
+                '}' +
+
+                '.barra-topo-direita {' +
+                    'font-family: "Pixelify Sans", "Arial Black", Arial, sans-serif;' +
+                    'font-size: 13px;' +
+                    'font-weight: 700;' +
+                    'letter-spacing: .5px;' +
+                    'color: #FA397A;' +
+                    'text-shadow: 1px 1px 0 #000;' +
+                '}' +
+
+                '.barra-topo-direita .tm { font-size: 8px; vertical-align: super; }' +
+
                 '.fechar {' +
                     'position: absolute;' +
-                    'top: 10px;' +
-                    'right: 10px;' +
-                    'width: 40px;' +
-                    'height: 40px;' +
+                    'top: 38px;' +
+                    'right: 8px;' +
+                    'width: 26px;' +
+                    'height: 26px;' +
                     'display: flex;' +
                     'align-items: center;' +
                     'justify-content: center;' +
-                    'background: rgba(255, 255, 255, 0.06);' +
-                    'border: 1px solid #333333;' +
-                    'border-radius: 50%;' +
-                    'color: #ffffff;' +
+                    'background: #ffffff;' +
+                    'border: 2px solid #1a1a1a;' +
+                    'border-radius: 3px;' +
+                    'color: #1a1a1a;' +
                     'cursor: pointer;' +
-                    'z-index: 2;' +
-                    'transition: background .18s ease, border-color .18s ease, transform .18s ease;' +
+                    'z-index: 3;' +
+                    'box-shadow: 2px 2px 0 #1a1a1a;' +
+                    'transition: background .15s ease, transform .15s ease, box-shadow .15s ease;' +
                 '}' +
 
                 '.fechar:hover, .fechar:focus-visible {' +
                     'background: #FA397A;' +
-                    'border-color: #FA397A;' +
-                    'transform: scale(1.06);' +
+                    'color: #ffffff;' +
+                    'transform: translate(1px, 1px);' +
+                    'box-shadow: 1px 1px 0 #1a1a1a;' +
                     'outline: none;' +
                 '}' +
 
-                '.fechar svg { width: 16px; height: 16px; }' +
+                '.fechar svg { width: 12px; height: 12px; }' +
 
-                '.imagem {' +
-                    'flex: none;' +
-                    'width: 96px;' +
-                    'height: 96px;' +
-                    'border-radius: 12px;' +
-                    'overflow: hidden;' +
-                    'background: #1a1a1a;' +
+                '.corpo {' +
+                    'display: flex;' +
+                    'align-items: stretch;' +
+                    'flex: 1 1 auto;' +
                 '}' +
 
-                '.imagem img {' +
+                '.coluna-imagem {' +
+                    'position: relative;' +
+                    'flex: 0 0 36%;' +
+                    'max-width: 36%;' +
+                    'display: flex;' +
+                    'align-items: center;' +
+                    'justify-content: center;' +
+                    'padding: 16px;' +
+                    'background: repeating-linear-gradient(' +
+                        '135deg,' +
+                        '#ffe9c7,' +
+                        '#ffe9c7 10px,' +
+                        '#ffdead 10px,' +
+                        '#ffdead 20px' +
+                    ');' +
+                    'border-right: 3px dashed #1a1a1a;' +
+                '}' +
+
+                '.moldura-imagem {' +
+                    'width: 100%;' +
+                    'aspect-ratio: 1 / 1;' +
+                    'border-radius: 8px;' +
+                    'overflow: hidden;' +
+                    'background: #ffffff;' +
+                    'border: 3px solid #1a1a1a;' +
+                    'box-shadow: 3px 3px 0 #FA397A;' +
+                '}' +
+
+                '.moldura-imagem img {' +
                     'width: 100%;' +
                     'height: 100%;' +
                     'object-fit: cover;' +
                     'display: block;' +
                 '}' +
 
-                '.conteudo {' +
+                '.estrela-selo {' +
+                    'position: absolute;' +
+                    'top: -6px;' +
+                    'right: -2px;' +
+                    'width: 68px;' +
+                    'height: 68px;' +
+                    'display: flex;' +
+                    'align-items: center;' +
+                    'justify-content: center;' +
+                    'background: #ffe600;' +
+                    'border: 2px solid #1a1a1a;' +
+                    'border-radius: 50%;' +
+                    'transform: rotate(-14deg);' +
+                    'box-shadow: 2px 2px 0 #1a1a1a;' +
+                    'animation: upx-pulsar 1.6s ease-in-out infinite;' +
+                '}' +
+
+                '.estrela-selo span {' +
+                    'display: block;' +
+                    'width: 100%;' +
+                    'text-align: center;' +
+                    'font-size: 9.5px;' +
+                    'font-weight: 900;' +
+                    'line-height: 1.1;' +
+                    'color: #c0006e;' +
+                    'text-transform: uppercase;' +
+                    'letter-spacing: .2px;' +
+                    'padding: 0 4px;' +
+                    'word-break: break-word;' +
+                '}' +
+
+                '@keyframes upx-pulsar {' +
+                    '0%, 100% { transform: rotate(-14deg) scale(1); }' +
+                    '50% { transform: rotate(-14deg) scale(1.08); }' +
+                '}' +
+
+                '.coluna-conteudo {' +
                     'flex: 1 1 auto;' +
                     'min-width: 0;' +
                     'display: flex;' +
                     'flex-direction: column;' +
-                    'gap: 6px;' +
-                    'padding-right: 36px;' +
+                    'justify-content: center;' +
+                    'gap: 8px;' +
+                    'padding: 18px 20px;' +
                 '}' +
 
-                '.selo {' +
+                '.selo-pequeno {' +
                     'display: inline-block;' +
                     'align-self: flex-start;' +
-                    'background: rgba(250, 57, 122, 0.14);' +
-                    'color: #FA397A;' +
-                    'font-size: 11px;' +
-                    'font-weight: 700;' +
+                    'background: #1a1a1a;' +
+                    'color: #ffe600;' +
+                    'font-size: 10px;' +
+                    'font-weight: 800;' +
                     'text-transform: uppercase;' +
-                    'letter-spacing: 1px;' +
-                    'padding: 4px 10px;' +
-                    'border-radius: 20px;' +
-                    'border: 1px solid rgba(250, 57, 122, 0.35);' +
+                    'letter-spacing: .8px;' +
+                    'padding: 3px 9px;' +
+                    'border-radius: 3px;' +
                 '}' +
 
                 '.titulo {' +
                     'margin: 2px 0 0;' +
-                    'color: #ffffff;' +
-                    'font-family: "Pixelify Sans", -apple-system, BlinkMacSystemFont, sans-serif;' +
-                    'font-size: 1.15rem;' +
+                    'color: #1a1a1a;' +
+                    'font-family: "Pixelify Sans", "Arial Black", Arial, sans-serif;' +
+                    'font-size: 1.28rem;' +
                     'font-weight: 700;' +
-                    'line-height: 1.25;' +
+                    'line-height: 1.2;' +
                     'overflow-wrap: break-word;' +
+                    'text-shadow: 1px 1px 0 #ffe600;' +
                 '}' +
 
                 '.descricao {' +
                     'margin: 0;' +
-                    'color: #a3a3a3;' +
-                    'font-size: .9rem;' +
-                    'line-height: 1.5;' +
+                    'color: #3a3a3a;' +
+                    'font-size: .88rem;' +
+                    'line-height: 1.45;' +
                     'overflow-wrap: break-word;' +
-                    'max-width: 60ch;' +
+                    'max-width: 48ch;' +
                 '}' +
 
                 '.botao {' +
                     'display: inline-flex;' +
                     'align-items: center;' +
-                    'gap: 8px;' +
+                    'justify-content: center;' +
                     'align-self: flex-start;' +
-                    'margin-top: 8px;' +
-                    'background: #FA397A;' +
-                    'color: #000000;' +
-                    'font-size: .85rem;' +
-                    'font-weight: 700;' +
-                    'padding: 10px 18px;' +
-                    'border-radius: 8px;' +
-                    'transition: background .18s ease, transform .18s ease;' +
+                    'margin-top: 10px;' +
+                    'background: linear-gradient(180deg, #ff5fa2 0%, #FA397A 55%, #d61f60 100%);' +
+                    'color: #ffffff;' +
+                    'font-size: 1rem;' +
+                    'font-weight: 900;' +
+                    'letter-spacing: .5px;' +
+                    'text-transform: uppercase;' +
+                    'padding: 12px 26px;' +
+                    'border: 2px solid #7a0e3c;' +
+                    'border-radius: 6px;' +
+                    'box-shadow: 0 4px 0 #7a0e3c, 0 6px 12px rgba(0,0,0,.35);' +
+                    'text-shadow: 1px 1px 0 rgba(0,0,0,.35);' +
+                    'transition: transform .12s ease, box-shadow .12s ease;' +
                 '}' +
 
-                '.botao svg { width: 15px; height: 15px; flex: none; }' +
-
                 '.banner:hover .botao, .banner:focus-visible .botao {' +
-                    'background: #ffffff;' +
+                    'transform: translateY(2px);' +
+                    'box-shadow: 0 2px 0 #7a0e3c, 0 4px 8px rgba(0,0,0,.35);' +
+                '}' +
+
+                '.rodape {' +
+                    'padding: 6px 14px;' +
+                    'background: #1a1a1a;' +
+                    'color: #cfcfcf;' +
+                    'font-size: 10px;' +
+                    'letter-spacing: .2px;' +
+                    'text-align: center;' +
                 '}' +
 
                 '@media (prefers-reduced-motion: reduce) {' +
-                    ':host, .banner, .fechar, .botao { transition: none !important; }' +
+                    ':host, .banner, .fechar, .botao, .estrela-selo { transition: none !important; animation: none !important; }' +
                 '}' +
 
-                /* Tablet: reduz respiro sem quebrar a estrutura lado a lado. */
-                '@media (max-width: 900px) {' +
-                    '.banner { gap: 18px; padding: 20px; }' +
-                    '.imagem { width: 76px; height: 76px; }' +
+                /* Tablet: mantém layout horizontal, só reduz respiro e
+                   proporções pra caber sem estourar a largura. */
+                '@media (max-width: 780px) {' +
+                    '.coluna-imagem { flex-basis: 34%; max-width: 34%; padding: 12px; }' +
+                    '.coluna-conteudo { padding: 14px 16px; }' +
+                    '.titulo { font-size: 1.1rem; }' +
+                    '.estrela-selo { width: 56px; height: 56px; }' +
                 '}' +
 
-                /* Celular: empilha imagem em cima do texto, botão fechar some
-                   do canto e some pra dentro do fluxo, nada de largura fixa
-                   que force rolagem horizontal. */
+                /* Celular: vira card vertical — imagem no topo, título,
+                   descrição, botão ocupando 100% da largura. Sem rolagem
+                   horizontal em nenhum momento. */
                 '@media (max-width: 560px) {' +
-                    '.banner {' +
-                        'flex-direction: column;' +
-                        'align-items: flex-start;' +
-                        'padding: 20px 18px;' +
+                    '.wrapper { padding: 22px 0; }' +
+                    '.barra-topo { padding: 6px 38px 6px 10px; }' +
+                    '.barra-topo-esquerda { font-size: 9px; }' +
+                    '.fechar { top: 34px; }' +
+                    '.corpo { flex-direction: column; }' +
+                    '.coluna-imagem {' +
+                        'flex-basis: auto;' +
+                        'max-width: 100%;' +
+                        'width: 100%;' +
+                        'border-right: none;' +
+                        'border-bottom: 3px dashed #1a1a1a;' +
+                        'padding: 18px;' +
                     '}' +
-                    '.imagem { width: 100%; height: 140px; }' +
-                    '.conteudo { padding-right: 0; width: 100%; }' +
-                    '.botao { width: 100%; justify-content: center; }' +
-                    '.fechar { top: 8px; right: 8px; }' +
+                    '.moldura-imagem { max-width: 220px; margin: 0 auto; }' +
+                    '.estrela-selo { top: 6px; right: 6px; }' +
+                    '.coluna-conteudo { align-items: stretch; padding: 16px 16px 18px; }' +
+                    '.selo-pequeno, .titulo, .descricao { align-self: flex-start; }' +
+                    '.botao { width: 100%; margin-top: 12px; }' +
                 '}'
             );
         }
