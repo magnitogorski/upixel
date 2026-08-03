@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<!-- ==========================================================
+     Página: UX EM SPRAY™ — coleção UPUBLI™ (produtos fictícios)
+
+     Landing page satírica, dentro do padrão visual da Upixel:
+     fundo preto, rosa #FA397A, tipografia padrão do sistema
+     (sem fonte pixelizada). Prefixo de classe próprio ".spray-"
+     em tudo que é novo, pra não colidir com nada do resto do
+     site — header,
+     footer e FAQ reaproveitam exatamente as classes globais já
+     usadas em artigos.html / ux-challenge.html
+     (.meu-header / .footer / .faq / .faq-label / .faq-titulo).
+
+     Tudo puro: HTML, CSS e JS, sem framework, sem dependência
+     externa além das fontes do Google já usadas no site.
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UX em Spray™ | Upubli™ — produtos fictícios da Upixel</title>
+
+<meta name="description" content="UX em Spray™: um borrifo e sua interface nunca mais terá dark patterns. Produto 100% fictício da coleção Upubli™, criado pela Upixel só pra rir (e pensar) sobre UX.">
+<meta name="keywords" content="UX em Spray, Upubli, produto fictício, satira UX, humor UX, dark patterns, heurísticas, pesquisa com usuários, Upixel">
+
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/upubli-ux-em-spray.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="UX em Spray™ | Upubli™ — produtos fictícios da Upixel">
+<meta property="og:description" content="Borrife. Resolva. Repita. UX em Spray™ é 100% fictício — parte da coleção satírica Upubli™ da Upixel.">
+<meta property="og:url" content="https://upixel.com.br/upubli-ux-em-spray.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UX em Spray™ | Upubli™ — produtos fictícios da Upixel">
+<meta name="twitter:description" content="Um borrifo e sua interface nunca mais terá dark patterns. (Produto fictício, gente. Respira.)">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Mesmos arquivos de estilo do restante do site. Nenhuma regra foi alterada. -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "UX em Spray™ substitui pesquisa com usuários?", "acceptedAnswer": { "@type": "Answer", "text": "Em teoria não deveria. Na prática, é exatamente isso que várias empresas fictícias tentaram fazer com produtos reais." } },
+    { "@type": "Question", "name": "Posso borrifar direto no Figma?", "acceptedAnswer": { "@type": "Answer", "text": "Tecnicamente sim, já que o produto não existe, você pode borrifar em qualquer coisa sem nenhum efeito colateral real." } },
+    { "@type": "Question", "name": "Funciona em sistemas legados?", "acceptedAnswer": { "@type": "Answer", "text": "Funciona em qualquer sistema, real ou imaginário, com a mesma eficácia: nenhuma." } },
+    { "@type": "Question", "name": "Isso é um produto de verdade?", "acceptedAnswer": { "@type": "Answer", "text": "Não. UX em Spray™ é fictício, faz parte da coleção satírica Upubli™ da Upixel, criado só pra entretenimento." } }
+  ]
+}
+</script>
+
+<!-- ==========================================================
+     CSS da página — prefixo .spray- em tudo que é novo.
+     ========================================================== -->
+<style id="spray-style">
+  .spray-page {
+    --spray-bg: #000000;
+    --spray-text: #ffffff;
+    --spray-muted: #828282;
+    --spray-pink: #FA397A;
+    --spray-border: #262626;
+    --spray-border-strong: #333333;
+    --spray-amarelo: #FFC531;
+
+    background: var(--spray-bg);
+    color: var(--spray-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  .spray-page *,
+  .spray-page *::before,
+  .spray-page *::after {
+    box-sizing: border-box;
+  }
+
+  .spray-page img {
+    max-width: 100%;
+  }
+
+  .spray-secao {
+    padding: 88px 60px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .spray-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--spray-pink);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .spray-titulo-secao {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 16px;
+  }
+
+  .spray-sub-secao {
+    color: var(--spray-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 62ch;
+    margin: 0 0 48px;
+  }
+
+  /* ---------- selo de produto fictício (topo) ---------- */
+
+  .spray-aviso-topo {
+    background: linear-gradient(90deg, rgba(255, 197, 49, 0.1), rgba(255, 197, 49, 0.02));
+    border-bottom: 1px solid var(--spray-border);
+    padding: 14px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  .spray-aviso-selo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--spray-amarelo);
+    color: #1a1400;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    flex: none;
+  }
+
+  .spray-aviso-texto {
+    color: var(--spray-muted);
+    font-size: .88rem;
+  }
+
+  .spray-aviso-texto strong {
+    color: var(--spray-text);
+  }
+
+  /* ---------- hero ---------- */
+
+  .spray-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding-top: 72px;
+    padding-bottom: 56px;
+  }
+
+  .spray-hero-texto {
+    max-width: 52ch;
+  }
+
+  .spray-hero-titulo {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: clamp(2.4rem, 1.7rem + 2.8vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0 0 14px;
+  }
+
+  .spray-hero-titulo .spray-marca-registrada {
+    color: var(--spray-pink);
+  }
+
+  .spray-slogan {
+    color: var(--spray-pink);
+    font-size: clamp(1.05rem, 1rem + .4vw, 1.35rem);
+    font-weight: 700;
+    margin: 0 0 20px;
+  }
+
+  .spray-descricao {
+    color: var(--spray-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 32px;
+  }
+
+  .spray-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .spray-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: .95rem;
+    font-weight: 700;
+    padding: 16px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+    font-family: inherit;
+  }
+
+  .spray-btn:hover,
+  .spray-btn:focus-visible {
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  .spray-btn--primario {
+    background: var(--spray-pink);
+    color: #000000;
+  }
+
+  .spray-btn--primario:hover,
+  .spray-btn--primario:focus-visible {
+    background: #ffffff;
+  }
+
+  .spray-btn--secundario {
+    background: transparent;
+    color: var(--spray-text);
+    border-color: var(--spray-border-strong);
+  }
+
+  .spray-btn--secundario:hover,
+  .spray-btn--secundario:focus-visible {
+    border-color: var(--spray-pink);
+    color: var(--spray-pink);
+  }
+
+  /* ---------- barra de confiança (detalhes de realismo) ---------- */
+
+  .spray-confianca {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-bottom: 10px;
+  }
+
+  .spray-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--spray-muted);
+    font-size: .82rem;
+  }
+
+  .spray-chip strong {
+    color: var(--spray-text);
+    font-weight: 700;
+  }
+
+  .spray-pulso {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #35d17a;
+    flex: none;
+    animation: spray-pulsar 1.6s ease-in-out infinite;
+  }
+
+  @keyframes spray-pulsar {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(53, 209, 122, .5); }
+    50% { opacity: .6; box-shadow: 0 0 0 4px rgba(53, 209, 122, 0); }
+  }
+
+  .spray-letra-miuda {
+    color: #5c5c5c;
+    font-size: .74rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ---------- imagem do produto ---------- */
+
+  .spray-hero-imagem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .spray-fita-vendido {
+    position: absolute;
+    top: 18px;
+    right: -6px;
+    background: var(--spray-pink);
+    color: #000000;
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 8px 18px;
+    border-radius: 6px 0 0 6px;
+    box-shadow: -4px 4px 0 rgba(0,0,0,.4);
+    z-index: 2;
+  }
+
+  .spray-lata {
+    width: min(320px, 70vw);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 30px 50px rgba(250, 57, 122, .18));
+    animation: spray-flutuar 5s ease-in-out infinite;
+  }
+
+  @keyframes spray-flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spray-lata,
+    .spray-pulso {
+      animation: none !important;
+    }
+  }
+
+  /* ---------- benefícios ---------- */
+
+  .spray-beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .spray-beneficio {
+    background: #0a0a0a;
+    border: 1px solid var(--spray-border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+
+  .spray-beneficio:hover {
+    border-color: var(--spray-pink);
+    transform: translateY(-3px);
+  }
+
+  .spray-beneficio-icone {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .spray-beneficio p {
+    margin: 0;
+    color: var(--spray-text);
+    font-size: .98rem;
+    line-height: 1.55;
+  }
+
+  .spray-nota-asterisco {
+    margin-top: 32px;
+    color: #5c5c5c;
+    font-size: .76rem;
+    line-height: 1.7;
+  }
+
+  /* ---------- como funciona ---------- */
+
+  .spray-passos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+  }
+
+  .spray-passo {
+    position: relative;
+    padding-top: 8px;
+  }
+
+  .spray-passo-numero {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--spray-pink);
+    line-height: 1;
+    margin-bottom: 14px;
+    opacity: .9;
+  }
+
+  .spray-passo h3 {
+    font-size: 1.05rem;
+    margin: 0 0 8px;
+  }
+
+  .spray-passo p {
+    color: var(--spray-muted);
+    font-size: .92rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ---------- embalagem ---------- */
+
+  .spray-embalagem-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .spray-embalagem-lista li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    background: #0a0a0a;
+    border: 1px solid var(--spray-border);
+    border-radius: 10px;
+    color: var(--spray-text);
+    font-size: .96rem;
+    line-height: 1.55;
+  }
+
+  .spray-embalagem-lista li::before {
+    content: "📦";
+    flex: none;
+    font-size: 1.1rem;
+  }
+
+  /* ---------- tabelas (especificações e comparativo) ---------- */
+
+  .spray-tabela-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--spray-border);
+    border-radius: 12px;
+  }
+
+  .spray-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 480px;
+  }
+
+  .spray-tabela th,
+  .spray-tabela td {
+    text-align: left;
+    padding: 14px 20px;
+    font-size: .92rem;
+    border-bottom: 1px solid var(--spray-border);
+    white-space: normal;
+  }
+
+  .spray-tabela thead th {
+    background: #0a0a0a;
+    color: var(--spray-pink);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-weight: 700;
+  }
+
+  .spray-tabela tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .spray-tabela tbody th {
+    color: var(--spray-muted);
+    font-weight: 700;
+    width: 220px;
+  }
+
+  .spray-tabela td {
+    color: var(--spray-text);
+  }
+
+  .spray-tabela--comparativo th:not(:first-child),
+  .spray-tabela--comparativo td:not(:first-child) {
+    text-align: center;
+  }
+
+  .spray-tabela--comparativo .spray-coluna-produto {
+    color: var(--spray-pink);
+    background: rgba(250, 57, 122, .06);
+  }
+
+  .spray-check {
+    color: #35d17a;
+  }
+
+  .spray-x {
+    color: #828282;
+  }
+
+  /* ---------- selo do instituto (certificação fictícia) ---------- */
+
+  .spray-instituto {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .spray-selo-instituto {
+    flex: none;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 2px dashed var(--spray-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    transform: rotate(-8deg);
+    color: var(--spray-pink);
+    font-size: .62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    line-height: 1.3;
+  }
+
+  .spray-instituto-texto p {
+    margin: 0;
+    color: var(--spray-muted);
+    font-size: .88rem;
+    line-height: 1.6;
+    max-width: 52ch;
+  }
+
+  .spray-instituto-texto strong {
+    color: var(--spray-text);
+  }
+
+  /* ---------- avaliações ---------- */
+
+  .spray-avaliacoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .spray-avaliacao {
+    background: #0a0a0a;
+    border: 1px solid var(--spray-border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .spray-estrelas {
+    color: var(--spray-amarelo);
+    font-size: .95rem;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .spray-avaliacao p {
+    color: var(--spray-text);
+    font-size: .96rem;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+
+  .spray-avaliador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .spray-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--spray-pink);
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: .85rem;
+    flex: none;
+  }
+
+  .spray-avaliador-nome {
+    color: var(--spray-text);
+    font-size: .88rem;
+    font-weight: 700;
+    display: block;
+  }
+
+  .spray-avaliador-cargo {
+    color: var(--spray-muted);
+    font-size: .78rem;
+    display: block;
+  }
+
+  /* ---------- rodapé de aviso fictício ---------- */
+
+  .spray-aviso-rodape {
+    background: #0a0a0a;
+    border-top: 1px solid var(--spray-border);
+    border-bottom: 1px solid var(--spray-border);
+    padding: 32px 60px;
+    text-align: center;
+  }
+
+  .spray-aviso-rodape p {
+    max-width: 62ch;
+    margin: 0 auto;
+    color: var(--spray-muted);
+    font-size: .88rem;
+    line-height: 1.6;
+  }
+
+  .spray-aviso-rodape strong {
+    color: var(--spray-text);
+  }
+
+  /* ---------- modal ---------- */
+
+  .spray-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .78);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .28s ease, visibility 0s linear .28s;
+  }
+
+  .spray-modal-overlay.spray-aberto {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .28s ease, visibility 0s linear 0s;
+  }
+
+  .spray-modal {
+    background: #0a0a0a;
+    border: 1px solid var(--spray-border-strong);
+    border-radius: 16px;
+    max-width: 440px;
+    width: 100%;
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+    transform: scale(.9) translateY(12px);
+    opacity: 0;
+    transition: transform .32s cubic-bezier(.2, .8, .2, 1), opacity .28s ease;
+  }
+
+  .spray-modal-overlay.spray-aberto .spray-modal {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  .spray-modal-emoji {
+    font-size: 2.6rem;
+    display: block;
+    margin-bottom: 16px;
+    animation: spray-balancar .6s ease-in-out .1s;
+  }
+
+  @keyframes spray-balancar {
+    0% { transform: rotate(0deg) scale(.6); opacity: 0; }
+    40% { transform: rotate(-12deg) scale(1.05); opacity: 1; }
+    70% { transform: rotate(8deg) scale(1); }
+    100% { transform: rotate(0deg) scale(1); }
+  }
+
+  .spray-modal h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 1.3rem;
+    margin: 0 0 14px;
+  }
+
+  .spray-modal p {
+    color: var(--spray-muted);
+    font-size: .92rem;
+    line-height: 1.65;
+    margin: 0 0 10px;
+  }
+
+  .spray-modal p:last-of-type {
+    margin-bottom: 28px;
+  }
+
+  .spray-modal .spray-btn {
+    width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spray-modal-overlay,
+    .spray-modal,
+    .spray-modal-emoji {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  /* ---------- responsivo ---------- */
+
+  @media (max-width: 900px) {
+    .spray-secao {
+      padding: 64px 32px;
+    }
+
+    .spray-hero {
+      grid-template-columns: 1fr;
+      padding-top: 48px;
+      text-align: left;
+    }
+
+    .spray-hero-imagem {
+      order: -1;
+    }
+
+    .spray-hero-texto {
+      max-width: 100%;
+    }
+
+    .spray-instituto {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .spray-instituto-texto p {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .spray-secao {
+      padding: 48px 22px;
+    }
+
+    .spray-aviso-topo {
+      padding: 12px 22px;
+    }
+
+    .spray-btn {
+      width: 100%;
+    }
+
+    .spray-botoes {
+      flex-direction: column;
+    }
+
+    .spray-confianca {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .spray-instituto {
+      align-items: center;
+    }
+
+    .spray-modal {
+      padding: 32px 22px;
+    }
+  }
+</style>
+
+</head>
+<body class="spray-page">
+
+    <!-- ======================================================
+         AVISO FIXO NO TOPO — selo de produto fictício
+         ====================================================== -->
+    <div class="spray-aviso-topo">
+        <span class="spray-aviso-selo">🟡 Produto fictício</span>
+        <span class="spray-aviso-texto">Este item faz parte da <strong>Upubli™</strong>, a coleção de produtos satíricos da Upixel. Nada aqui é vendido de verdade.</span>
+    </div>
+
+    <!-- ======================================================
+         HEADER — idêntico ao das outras páginas do site
+         ====================================================== -->
+    <header class="meu-header">
+        <div class="logo">
+            <img src="logobranca.png" alt="Logotipo do meu site">
+        </div>
+
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html">Glossário UX</a>
+            <a href="rip.html">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html">Besteirol</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <main class="spray-page">
+
+        <!-- ================= HERO ================= -->
+        <section class="spray-hero spray-secao">
+
+            <div class="spray-hero-texto">
+                <span class="spray-eyebrow">Upubli™ apresenta</span>
+
+                <h1 class="spray-hero-titulo">UX em Spray<span class="spray-marca-registrada">™</span></h1>
+
+                <p class="spray-slogan">Borrife. Resolva. Repita.</p>
+
+                <p class="spray-descricao">
+                    Um único borrifo e sua interface nunca mais terá dark patterns, botão perdido ou fluxo confuso. Sem pesquisa, sem workshop, sem entrevista chata com usuário — só três segundos de spray e pronto: usabilidade instantânea, direto do vidro pro pixel.
+                </p>
+
+                <div class="spray-botoes">
+                    <button type="button" class="spray-btn spray-btn--primario" id="spray-btn-comprar">
+                        Comprar Agora
+                    </button>
+                    <a href="#spray-como-funciona" class="spray-btn spray-btn--secundario">
+                        Saiba como funciona
+                    </a>
+                </div>
+
+                <div class="spray-confianca">
+                    <span class="spray-chip"><span class="spray-pulso" aria-hidden="true"></span> <strong id="spray-contador-visualizacoes">42</strong> pessoas vendo este produto agora</span>
+                    <span class="spray-chip">📦 Estoque: <strong>9.999+</strong> unidades</span>
+                    <span class="spray-chip">🚚 Entrega em <strong>0 dias úteis*</strong></span>
+                    <span class="spray-chip">🛡️ Garantia <strong>vitalícia*</strong></span>
+                </div>
+
+                <p class="spray-letra-miuda">*Entrega via meio de transporte ainda não inventado. Garantia válida em qualquer universo onde este produto exista — ou seja, em nenhum.</p>
+            </div>
+
+            <div class="spray-hero-imagem">
+                <span class="spray-fita-vendido">Mais vendido</span>
+
+                <img
+                    class="spray-lata"
+                    src="imagens-upubli-ux-em-spray.png"
+                    alt="Lata de spray rosa e preta com o texto UX em Spray, da coleção Upubli"
+                    width="240"
+                    height="380"
+                    loading="lazy"
+                >
+            </div>
+
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= BENEFÍCIOS ================= -->
+        <section class="spray-secao" id="spray-beneficios">
+            <span class="spray-eyebrow">Por que borrifar</span>
+            <h2 class="spray-titulo-secao">Benefícios</h2>
+            <p class="spray-sub-secao">Tudo que a pesquisa com usuário resolve devagar, o UX em Spray™ promete resolver num borrifo só.</p>
+
+            <div class="spray-beneficios-grid">
+                <div class="spray-beneficio">
+                    <span class="spray-beneficio-icone">🧹</span>
+                    <p>Remove até 98% dos botões desnecessários da tela.*</p>
+                </div>
+                <div class="spray-beneficio">
+                    <span class="spray-beneficio-icone">✅</span>
+                    <p>Aprovação instantânea do gerente, mesmo sem ele ver o protótipo.*</p>
+                </div>
+                <div class="spray-beneficio">
+                    <span class="spray-beneficio-icone">🎨</span>
+                    <p>Compatível com Figma, Sketch e Microsoft Paint.</p>
+                </div>
+                <div class="spray-beneficio">
+                    <span class="spray-beneficio-icone">☕</span>
+                    <p>Aroma de café recém-passado, pra disfarçar a reunião que passou do horário.</p>
+                </div>
+                <div class="spray-beneficio">
+                    <span class="spray-beneficio-icone">🚫</span>
+                    <p>Livre de Dark Patterns — ou pelo menos livre de culpa por usá-los.</p>
+                </div>
+                <div class="spray-beneficio">
+                    <span class="spray-beneficio-icone">📉</span>
+                    <p>Reduz a taxa de rejeição do design em reuniões de alinhamento.*</p>
+                </div>
+                <div class="spray-beneficio">
+                    <span class="spray-beneficio-icone">🧠</span>
+                    <p>Simula 10 anos de experiência em UX em apenas um borrifo.*</p>
+                </div>
+                <div class="spray-beneficio">
+                    <span class="spray-beneficio-icone">🗂️</span>
+                    <p>Organiza automaticamente seu backlog — visualmente, pelo menos.</p>
+                </div>
+            </div>
+
+            <p class="spray-nota-asterisco">*Resultados não avaliados por nenhum órgão real de usabilidade, design ou bom senso. UX em Spray™ é um produto fictício e não remove, aprova, reduz ou simula absolutamente nada.</p>
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= COMO FUNCIONA ================= -->
+        <section class="spray-secao" id="spray-como-funciona">
+            <span class="spray-eyebrow">Modo de uso</span>
+            <h2 class="spray-titulo-secao">Como funciona</h2>
+            <p class="spray-sub-secao">Quatro passos entre você e uma interface impecável. Nenhum deles funciona, mas todos são fáceis.</p>
+
+            <div class="spray-passos">
+                <div class="spray-passo">
+                    <span class="spray-passo-numero">01</span>
+                    <h3>Agite bem a lata</h3>
+                    <p>Por pelo menos 30 segundos, olhando pra tela com a mesma cara de quem "já sabe o que o usuário quer".</p>
+                </div>
+                <div class="spray-passo">
+                    <span class="spray-passo-numero">02</span>
+                    <h3>Borrife a 20cm da tela</h3>
+                    <p>Aponte direto pro botão que ninguém encontra. Ele continuará lá, mas agora com um aroma agradável.</p>
+                </div>
+                <div class="spray-passo">
+                    <span class="spray-passo-numero">03</span>
+                    <h3>Espere 3 segundos</h3>
+                    <p>Tempo suficiente pra fingir, em voz alta na reunião, que "já está rodando um teste de usabilidade".</p>
+                </div>
+                <div class="spray-passo">
+                    <span class="spray-passo-numero">04</span>
+                    <h3>Apresente como validado</h3>
+                    <p>Print da tela, sem legenda, no grupo do time. Ninguém vai perguntar a metodologia. Ninguém nunca pergunta.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= O QUE VEM NA EMBALAGEM ================= -->
+        <section class="spray-secao" id="spray-embalagem">
+            <span class="spray-eyebrow">Unboxing</span>
+            <h2 class="spray-titulo-secao">O que vem na embalagem</h2>
+            <p class="spray-sub-secao">Tudo isso dentro de uma caixa que também promete mais do que entrega — combinando perfeitamente com o produto.</p>
+
+            <ul class="spray-embalagem-lista">
+                <li>1 lata de UX em Spray™ (473ml de clareza instantânea, ou de ar comprimido, a diferença é sutil).</li>
+                <li>1 manual de instruções de 40 páginas que ninguém vai ler antes de borrifar.</li>
+                <li>1 adesivo "Eu uso UX em Spray™" pra colar no notebook, ao lado dos outros dez que você nunca colou.</li>
+                <li>1 certificado de participação em um workshop que não aconteceu.</li>
+                <li>1 cartão de "10% de desconto" na próxima compra de um produto que também não existe.</li>
+                <li>1 checklist de heurísticas de Nielsen, impresso de cabeça pra baixo, de propósito.</li>
+                <li>Brinde surpresa: a mesma ansiedade pré-reunião de sempre, agora com cheiro de lavanda.</li>
+            </ul>
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= ESPECIFICAÇÕES TÉCNICAS ================= -->
+        <section class="spray-secao" id="spray-especificacoes">
+            <span class="spray-eyebrow">Ficha técnica</span>
+            <h2 class="spray-titulo-secao">Especificações técnicas</h2>
+            <p class="spray-sub-secao">Porque nenhum produto parece sério sem uma tabela cheia de números que ninguém confere.</p>
+
+            <div class="spray-tabela-wrapper">
+                <table class="spray-tabela">
+                    <tbody>
+                        <tr><th scope="row">Nome do produto</th><td>UX em Spray™</td></tr>
+                        <tr><th scope="row">Fabricante</th><td>Upubli™ Labs, uma divisão fictícia da Upixel</td></tr>
+                        <tr><th scope="row">Peso líquido</th><td>473 ml (ou 0 ml, dependendo do universo)</td></tr>
+                        <tr><th scope="row">Validade</th><td>Indeterminada — o produto nunca existiu pra vencer</td></tr>
+                        <tr><th scope="row">Modo de uso</th><td>Agitar, borrifar, apresentar como validado</td></tr>
+                        <tr><th scope="row">Ingredientes ativos</th><td>Confiança excessiva, aroma de café, 2% de heurísticas de Nielsen</td></tr>
+                        <tr><th scope="row">Compatibilidade</th><td>Figma, Sketch, Microsoft Paint, papel e caneta</td></tr>
+                        <tr><th scope="row">Certificação</th><td>ICEU — Instituto de Certificação em Experiência do Usuário (fictício)</td></tr>
+                        <tr><th scope="row">Registro</th><td>UPB-0000/00 (não consta em nenhum órgão real)</td></tr>
+                        <tr><th scope="row">Contraindicações</th><td>Uso em produtos que realmente precisam de pesquisa com usuários</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="spray-instituto">
+                <div class="spray-selo-instituto" aria-hidden="true">ICEU<br>Certificado<br>Fictício</div>
+                <div class="spray-instituto-texto">
+                    <p><strong>Certificado (de brincadeira) pelo ICEU</strong> — Instituto de Certificação em Experiência do Usuário, uma instituição tão real quanto o produto que ela está certificando aqui.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= COMPARATIVO ================= -->
+        <section class="spray-secao" id="spray-comparativo">
+            <span class="spray-eyebrow">Frente a frente</span>
+            <h2 class="spray-titulo-secao">Comparativo</h2>
+            <p class="spray-sub-secao">UX em Spray™ contra os métodos tradicionais que, convenhamos, dão muito mais trabalho.</p>
+
+            <div class="spray-tabela-wrapper">
+                <table class="spray-tabela spray-tabela--comparativo">
+                    <thead>
+                        <tr>
+                            <th scope="col">Critério</th>
+                            <th scope="col" class="spray-coluna-produto">UX em Spray™</th>
+                            <th scope="col">Pesquisa com usuários</th>
+                            <th scope="col">Workshops</th>
+                            <th scope="col">Entrevistas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Tempo necessário</th>
+                            <td class="spray-coluna-produto">3 segundos</td>
+                            <td>Semanas</td>
+                            <td>Um dia inteiro que vira dois</td>
+                            <td>Depende de quantas remarcaram</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Requer participantes reais</th>
+                            <td class="spray-coluna-produto"><span class="spray-x">✗ Não</span></td>
+                            <td><span class="spray-check">✓ Sim</span></td>
+                            <td><span class="spray-check">✓ Sim</span></td>
+                            <td><span class="spray-check">✓ Sim</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Café consumido</th>
+                            <td class="spray-coluna-produto">0 xícaras (o cheiro já engana)</td>
+                            <td>Incontável</td>
+                            <td>Uma cafeteira inteira</td>
+                            <td>1 por entrevistado, no mínimo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Nível de desconforto social</th>
+                            <td class="spray-coluna-produto">Nenhum</td>
+                            <td>Médio</td>
+                            <td>Alto (post-its o julgando)</td>
+                            <td>Alto ("me conta sobre sua rotina")</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Baseado em evidência</th>
+                            <td class="spray-coluna-produto"><span class="spray-x">✗ Nenhuma</span></td>
+                            <td><span class="spray-check">✓ Sim</span></td>
+                            <td><span class="spray-check">✓ Sim</span></td>
+                            <td><span class="spray-check">✓ Sim</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Resultado real</th>
+                            <td class="spray-coluna-produto">Nenhum (o produto não existe)</td>
+                            <td>Decisões melhores</td>
+                            <td>Alinhamento (às vezes)</td>
+                            <td>Insights genuínos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= AVALIAÇÕES ================= -->
+        <section class="spray-secao" id="spray-avaliacoes">
+            <span class="spray-eyebrow">Depoimentos</span>
+            <h2 class="spray-titulo-secao">Avaliações</h2>
+            <p class="spray-sub-secao">Cinco estrelas de gente que definitivamente não existe, exagerando sobre um produto que também não existe.</p>
+
+            <div class="spray-avaliacoes-grid">
+                <div class="spray-avaliacao">
+                    <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <p>"Borrifei uma vez e meu roadmap trimestral se organizou sozinho. Não sei explicar, só sei que funcionou até a próxima reunião de diretoria."</p>
+                    <div class="spray-avaliador">
+                        <span class="spray-avatar">RS</span>
+                        <span>
+                            <span class="spray-avaliador-nome">Ronald Shrump</span>
+                            <span class="spray-avaliador-cargo">CEO de uma startup que muda de nome todo trimestre</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="spray-avaliacao">
+                    <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <p>"Antes eu gastava três sprints inteiras em pesquisa. Agora gasto três segundos de spray e apresento os mesmos slides de sempre."</p>
+                    <div class="spray-avaliador">
+                        <span class="spray-avatar">VF</span>
+                        <span>
+                            <span class="spray-avaliador-nome">Vinícias Fonmolhada</span>
+                            <span class="spray-avaliador-cargo">Product Owner autoproclamado</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="spray-avaliacao">
+                    <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <p>"Testei em 0 usuários reais e a taxa de satisfação foi de 100%. Os números não mentem, principalmente porque eu inventei eles."</p>
+                    <div class="spray-avaliador">
+                        <span class="spray-avatar">JW</span>
+                        <span>
+                            <span class="spray-avaliador-nome">Jéssica Wireframe</span>
+                            <span class="spray-avaliador-cargo">UX Researcher que nunca fez uma pesquisa</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="spray-avaliacao">
+                    <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <p>"Eu tomo decisão de produto no feeling há oito anos. O spray só deu um cheirinho de metodologia pra minha planilha de achismos."</p>
+                    <div class="spray-avaliador">
+                        <span class="spray-avatar">CS</span>
+                        <span>
+                            <span class="spray-avaliador-nome">Carlos SemDados</span>
+                            <span class="spray-avaliador-cargo">Gerente de produto, decide no achismo desde 2016</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="spray-avaliacao">
+                    <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <p>"Cientificamente falando, borrifei em três personas fictícias e todas relataram 'satisfação plena'. Elas não podem falar, mas eu sinto que sim."</p>
+                    <div class="spray-avaliador">
+                        <span class="spray-avatar">DP</span>
+                        <span>
+                            <span class="spray-avaliador-nome">Dra. Persona</span>
+                            <span class="spray-avaliador-cargo">Especialista em usuários que não existem</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="spray-avaliacao">
+                    <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <p>"Transformei o spray numa cerimônia recorrente. Toda sexta às 10h a gente borrifa junto. Chamamos de 'Spray Retrospective'."</p>
+                    <div class="spray-avaliador">
+                        <span class="spray-avatar">ES</span>
+                        <span>
+                            <span class="spray-avaliador-nome">Enzo ScrumMaster</span>
+                            <span class="spray-avaliador-cargo">Cria uma cerimônia nova pra tudo, inclusive pra isso</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= FAQ ================= -->
+        <section class="faq spray-secao">
+            <span class="faq-label">Perguntas frequentes</span>
+            <h2 class="faq-titulo">Antes de borrifar, tire essas dúvidas</h2>
+
+            <details>
+                <summary>UX em Spray™ substitui pesquisa com usuários?</summary>
+                <p>Em teoria, não deveria. Na prática, é exatamente isso que várias empresas (bem reais) tentam fazer todos os dias, sem nenhum spray envolvido — só otimismo e prazo apertado.</p>
+            </details>
+
+            <details>
+                <summary>Posso borrifar direto no Figma?</summary>
+                <p>Pode borrifar em qualquer coisa: Figma, Sketch, uma folha de papel ou o monitor do seu gerente. Como o produto não existe, o efeito colateral também não.</p>
+            </details>
+
+            <details>
+                <summary>Funciona em sistemas legados?</summary>
+                <p>Funciona igualmente bem em sistema legado, sistema novo, sistema imaginário e sistema que só existe no roadmap: com a mesma eficácia de sempre, que é nenhuma.</p>
+            </details>
+
+            <details>
+                <summary>Existe uma versão sem cheiro de café, pra quem prefere chá?</summary>
+                <p>Ainda não. Nossa equipe de P&D fictícia está "trabalhando nisso" desde o lançamento, com o mesmo empenho de um backlog que nunca sai do "a fazer".</p>
+            </details>
+
+            <details>
+                <summary>Isso é um produto de verdade?</summary>
+                <p>Não. UX em Spray™ é 100% fictício, faz parte da coleção satírica Upubli™ da Upixel, e existe só pra fazer rir (e pensar um pouco sobre atalhos em UX).</p>
+            </details>
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= AVISO FICTÍCIO (antes do footer) ================= -->
+        <div class="spray-aviso-rodape">
+            <p><strong>Este é um produto fictício</strong>, criado apenas para entretenimento pela Upixel. UX em Spray™, a Upubli™ e todos os depoimentos desta página não existem, não são vendidos e não substituem pesquisa, workshop ou entrevista nenhuma — essas, sim, continuam bem reais e recomendadas.</p>
+        </div>
+
+    </main>
+
+    <!-- ======================================================
+         FOOTER — idêntico ao das outras páginas
+         ====================================================== -->
+    <footer class="footer">
+
+        <div class="footer-esquerda">
+            <img src="logobranca.png" alt="Upixel" class="footer-logo">
+            <p class="copyright">
+                Upixel. Todos os direitos reservados.
+            </p>
+        </div>
+
+        <div class="footer-centro">
+            <nav class="footer-menu">
+                <a href="index.html">Home</a>
+                <a href="artigos.html">Artigos</a>
+                <a href="ux-challenge.html">UX Challenge</a>
+                <a href="glossario-dissecado-de-ux.html">Glossário UX</a>
+                <a href="rip.html">RIP</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="besteirol.html">Besteirol</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+
+    </footer>
+
+    <div class="footer-ilustracao">
+        <img src="rodape.png" alt="Ilustração Footer">
+    </div>
+
+    <!-- ======================================================
+         MODAL — "Comprar Agora"
+         ====================================================== -->
+    <div class="spray-modal-overlay" id="spray-modal-overlay" role="presentation">
+        <div class="spray-modal" role="dialog" aria-modal="true" aria-labelledby="spray-modal-titulo">
+            <span class="spray-modal-emoji" aria-hidden="true">😂</span>
+            <h3 id="spray-modal-titulo">É sério que você compraria isso?</h3>
+            <p>Infelizmente (ou felizmente), o UX em Spray™ não existe.</p>
+            <p>Esta página faz parte da coleção de produtos fictícios da Upixel. Se você chegou até aqui, nossa propaganda funcionou.</p>
+            <p>Obrigado por entrar na brincadeira.</p>
+            <button type="button" class="spray-btn spray-btn--primario" id="spray-btn-fechar-modal">
+                Voltar para a realidade
+            </button>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         JS da página — isolado num IIFE. Cuida de:
+         1) contador de "pessoas vendo agora" (flutuação leve)
+         2) abrir/fechar o modal de compra, com animação e
+            fechamento por Esc, clique fora ou botão
+         ====================================================== -->
+    <script>
+    (function () {
+        'use strict';
+
+        // ---------- contador de visualizações (só estética) ----------
+        var elContador = document.getElementById('spray-contador-visualizacoes');
+        if (elContador) {
+            var valorAtual = parseInt(elContador.textContent, 10) || 42;
+
+            setInterval(function () {
+                var variacao = Math.floor(Math.random() * 5) - 2; // -2 a +2
+                valorAtual = Math.max(12, Math.min(97, valorAtual + variacao));
+                elContador.textContent = valorAtual;
+            }, 3500);
+        }
+
+        // ---------- modal "Comprar Agora" ----------
+        var overlay = document.getElementById('spray-modal-overlay');
+        var btnAbrir = document.getElementById('spray-btn-comprar');
+        var btnFechar = document.getElementById('spray-btn-fechar-modal');
+        var ultimoFoco = null;
+
+        function abrirModal() {
+            ultimoFoco = document.activeElement;
+            overlay.classList.add('spray-aberto');
+            document.body.style.overflow = 'hidden';
+            btnFechar.focus();
+            document.addEventListener('keydown', aoPressionarTecla);
+        }
+
+        function fecharModal() {
+            overlay.classList.remove('spray-aberto');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', aoPressionarTecla);
+            if (ultimoFoco && typeof ultimoFoco.focus === 'function') {
+                ultimoFoco.focus();
+            }
+        }
+
+        function aoPressionarTecla(evento) {
+            if (evento.key === 'Escape') {
+                fecharModal();
+            }
+        }
+
+        if (btnAbrir) btnAbrir.addEventListener('click', abrirModal);
+        if (btnFechar) btnFechar.addEventListener('click', fecharModal);
+
+        if (overlay) {
+            overlay.addEventListener('click', function (evento) {
+                // fecha só se o clique foi no fundo, não dentro da caixa do modal
+                if (evento.target === overlay) {
+                    fecharModal();
+                }
+            });
+        }
+    })();
+    </script>
+
+</body>
+</html>

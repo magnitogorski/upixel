@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo — Banner Promocional Upixel</title>
+
+<!-- Esta página é só uma demonstração de como o componente se
+     encaixa entre seções quaisquer. As seções cinzas abaixo
+     representam "qualquer seção de qualquer página do site" —
+     o banner não sabe nem precisa saber o que tem ao redor
+     dele. -->
+<style>
+    body {
+        margin: 0;
+        background: #050505;
+        color: #eaeaea;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .secao-exemplo {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 64px 24px;
+    }
+    .secao-exemplo h2 {
+        margin: 0 0 12px;
+        font-size: 1.4rem;
+    }
+    .secao-exemplo p {
+        margin: 0;
+        color: #8a8a8a;
+        line-height: 1.6;
+    }
+    .faixa-componente {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px 8px;
+    }
+    hr {
+        border: none;
+        border-top: 1px solid #1f1f1f;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+</style>
+</head>
+<body>
+
+    <section class="secao-exemplo">
+        <h2>Artigo qualquer da Upixel</h2>
+        <p>Esta é uma seção normal da página — texto, imagem, o que for. O banner logo abaixo não altera nada aqui em cima.</p>
+    </section>
+
+    <hr>
+
+    <!-- ================= BANNER PROMOCIONAL 1 ================= -->
+    <div class="faixa-componente">
+        <upx-banner
+            id-anuncio="promo-camiseta-pixel-01"
+            imagem="https://placehold.co/200x200/1a1a1a/FA397A?text=%E2%9A%A1"
+            titulo="Camiseta Upixel Edição 8-Bit"
+            descricao="Estampa pixel art exclusiva, tecido premium. Peça limitada."
+            link="https://upixel.com.br/loja.html">
+        </upx-banner>
+    </div>
+
+    <hr>
+
+    <section class="secao-exemplo">
+        <h2>Outra seção qualquer</h2>
+        <p>O espaço entre seções é só um lugar de encaixe. O banner pode entrar aqui, mais abaixo, no meio de um artigo — onde fizer sentido.</p>
+    </section>
+
+    <hr>
+
+    <!-- ================= BANNER PROMOCIONAL 2 ================= -->
+    <div class="faixa-componente">
+        <upx-banner
+            id-anuncio="promo-curso-ux-02"
+            imagem="https://placehold.co/200x200/1a1a1a/FA397A?text=%E2%9A%A1"
+            titulo="Curso Upixel de UX Sem Papinho"
+            descricao="Aprenda a reconhecer (e evitar) corporativês em 4 módulos."
+            link="https://upixel.com.br/curso.html"
+            texto-botao="Quero aprender"
+            nova-aba="true">
+        </upx-banner>
+    </div>
+
+    <hr>
+
+    <section class="secao-exemplo">
+        <h2>Fim da demonstração</h2>
+        <p>Feche qualquer um dos banners acima e recarregue a página (F5): ele não volta a aparecer, porque a escolha fica salva no localStorage do navegador.</p>
+    </section>
+
+    <script src="banner-upixel.js" defer></script>
+
+</body>
+</html>
