@@ -6,8 +6,10 @@
      Página: UX EM SPRAY™ — coleção UPUBLI™ (produtos fictícios)
 
      Landing page satírica, dentro do padrão visual da Upixel:
-     fundo preto, rosa #FA397A, tipografia padrão do sistema
-     (sem fonte pixelizada). Prefixo de classe próprio ".spray-"
+     fundo preto, rosa #FA397A. A fonte pixelizada (Pixelify Sans)
+     é usada só no menu de navegação, herdada do style.css global;
+     todo o conteúdo desta página (títulos, textos, tabelas) usa
+     a fonte padrão do sistema. Prefixo de classe próprio ".upubli-"
      em tudo que é novo, pra não colidir com nada do resto do
      site — header,
      footer e FAQ reaproveitam exatamente as classes globais já
@@ -47,6 +49,13 @@
 
 <link rel="icon" type="image/png" href="favicon.png">
 
+<!-- Fonte usada pelo menu de navegação (.meu-header / .menu), definida em style.css.
+     Precisa deste link para o navegador baixar a fonte — sem ele o menu cai
+     no fallback padrão do sistema, mesmo com a regra CSS presente. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
 <!-- Mesmos arquivos de estilo do restante do site. Nenhuma regra foi alterada. -->
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="mobile.css">
@@ -73,45 +82,45 @@
 </script>
 
 <!-- ==========================================================
-     CSS da página — prefixo .spray- em tudo que é novo.
+     CSS da página — prefixo .upubli- em tudo que é novo.
      ========================================================== -->
-<style id="spray-style">
-  .spray-page {
-    --spray-bg: #000000;
-    --spray-text: #ffffff;
-    --spray-muted: #828282;
-    --spray-pink: #FA397A;
-    --spray-border: #262626;
-    --spray-border-strong: #333333;
-    --spray-amarelo: #FFC531;
+<style id="upubli-style">
+  .upubli-page {
+    --upubli-bg: #000000;
+    --upubli-text: #ffffff;
+    --upubli-muted: #828282;
+    --upubli-pink: #FA397A;
+    --upubli-border: #262626;
+    --upubli-border-strong: #333333;
+    --upubli-amarelo: #FFC531;
 
-    background: var(--spray-bg);
-    color: var(--spray-text);
+    background: var(--upubli-bg);
+    color: var(--upubli-text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     scroll-behavior: smooth;
   }
 
-  .spray-page *,
-  .spray-page *::before,
-  .spray-page *::after {
+  .upubli-page *,
+  .upubli-page *::before,
+  .upubli-page *::after {
     box-sizing: border-box;
   }
 
-  .spray-page img {
+  .upubli-page img {
     max-width: 100%;
   }
 
-  .spray-secao {
+  .upubli-secao {
     padding: 88px 60px;
     max-width: 1120px;
     margin: 0 auto;
   }
 
-  .spray-eyebrow {
+  .upubli-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--spray-pink);
+    color: var(--upubli-pink);
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
@@ -119,7 +128,7 @@
     margin-bottom: 16px;
   }
 
-  .spray-titulo-secao {
+  .upubli-titulo-secao {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem);
     font-weight: 700;
@@ -127,8 +136,8 @@
     margin: 0 0 16px;
   }
 
-  .spray-sub-secao {
-    color: var(--spray-muted);
+  .upubli-sub-secao {
+    color: var(--upubli-muted);
     font-size: 1.05rem;
     line-height: 1.7;
     max-width: 62ch;
@@ -137,9 +146,9 @@
 
   /* ---------- selo de produto fictício (topo) ---------- */
 
-  .spray-aviso-topo {
+  .upubli-aviso-topo {
     background: linear-gradient(90deg, rgba(255, 197, 49, 0.1), rgba(255, 197, 49, 0.02));
-    border-bottom: 1px solid var(--spray-border);
+    border-bottom: 1px solid var(--upubli-border);
     padding: 14px 60px;
     display: flex;
     align-items: center;
@@ -149,11 +158,11 @@
     flex-wrap: wrap;
   }
 
-  .spray-aviso-selo {
+  .upubli-aviso-selo {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--spray-amarelo);
+    background: var(--upubli-amarelo);
     color: #1a1400;
     font-size: 12px;
     font-weight: 700;
@@ -164,18 +173,18 @@
     flex: none;
   }
 
-  .spray-aviso-texto {
-    color: var(--spray-muted);
+  .upubli-aviso-texto {
+    color: var(--upubli-muted);
     font-size: .88rem;
   }
 
-  .spray-aviso-texto strong {
-    color: var(--spray-text);
+  .upubli-aviso-texto strong {
+    color: var(--upubli-text);
   }
 
   /* ---------- hero ---------- */
 
-  .spray-hero {
+  .upubli-hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
@@ -184,11 +193,11 @@
     padding-bottom: 56px;
   }
 
-  .spray-hero-texto {
+  .upubli-hero-texto {
     max-width: 52ch;
   }
 
-  .spray-hero-titulo {
+  .upubli-hero-titulo {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     font-size: clamp(2.4rem, 1.7rem + 2.8vw, 3.8rem);
     font-weight: 700;
@@ -196,32 +205,32 @@
     margin: 0 0 14px;
   }
 
-  .spray-hero-titulo .spray-marca-registrada {
-    color: var(--spray-pink);
+  .upubli-hero-titulo .upubli-marca-registrada {
+    color: var(--upubli-pink);
   }
 
-  .spray-slogan {
-    color: var(--spray-pink);
+  .upubli-slogan {
+    color: var(--upubli-pink);
     font-size: clamp(1.05rem, 1rem + .4vw, 1.35rem);
     font-weight: 700;
     margin: 0 0 20px;
   }
 
-  .spray-descricao {
-    color: var(--spray-muted);
+  .upubli-descricao {
+    color: var(--upubli-muted);
     font-size: 1.05rem;
     line-height: 1.7;
     margin: 0 0 32px;
   }
 
-  .spray-botoes {
+  .upubli-botoes {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
     margin-bottom: 28px;
   }
 
-  .spray-btn {
+  .upubli-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -237,71 +246,71 @@
     font-family: inherit;
   }
 
-  .spray-btn:hover,
-  .spray-btn:focus-visible {
+  .upubli-btn:hover,
+  .upubli-btn:focus-visible {
     transform: translateY(-2px);
     outline: none;
   }
 
-  .spray-btn--primario {
-    background: var(--spray-pink);
+  .upubli-btn--primario {
+    background: var(--upubli-pink);
     color: #000000;
   }
 
-  .spray-btn--primario:hover,
-  .spray-btn--primario:focus-visible {
+  .upubli-btn--primario:hover,
+  .upubli-btn--primario:focus-visible {
     background: #ffffff;
   }
 
-  .spray-btn--secundario {
+  .upubli-btn--secundario {
     background: transparent;
-    color: var(--spray-text);
-    border-color: var(--spray-border-strong);
+    color: var(--upubli-text);
+    border-color: var(--upubli-border-strong);
   }
 
-  .spray-btn--secundario:hover,
-  .spray-btn--secundario:focus-visible {
-    border-color: var(--spray-pink);
-    color: var(--spray-pink);
+  .upubli-btn--secundario:hover,
+  .upubli-btn--secundario:focus-visible {
+    border-color: var(--upubli-pink);
+    color: var(--upubli-pink);
   }
 
   /* ---------- barra de confiança (detalhes de realismo) ---------- */
 
-  .spray-confianca {
+  .upubli-confianca {
     display: flex;
     flex-wrap: wrap;
     gap: 10px 20px;
     margin-bottom: 10px;
   }
 
-  .spray-chip {
+  .upubli-chip {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: var(--spray-muted);
+    color: var(--upubli-muted);
     font-size: .82rem;
   }
 
-  .spray-chip strong {
-    color: var(--spray-text);
+  .upubli-chip strong {
+    color: var(--upubli-text);
     font-weight: 700;
   }
 
-  .spray-pulso {
+  .upubli-pulso {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: #35d17a;
     flex: none;
-    animation: spray-pulsar 1.6s ease-in-out infinite;
+    animation: upubli-pulsar 1.6s ease-in-out infinite;
   }
 
-  @keyframes spray-pulsar {
+  @keyframes upubli-pulsar {
     0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(53, 209, 122, .5); }
     50% { opacity: .6; box-shadow: 0 0 0 4px rgba(53, 209, 122, 0); }
   }
 
-  .spray-letra-miuda {
+  .upubli-letra-miuda {
     color: #5c5c5c;
     font-size: .74rem;
     line-height: 1.5;
@@ -310,18 +319,18 @@
 
   /* ---------- imagem do produto ---------- */
 
-  .spray-hero-imagem {
+  .upubli-hero-imagem {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .spray-fita-vendido {
+  .upubli-fita-vendido {
     position: absolute;
     top: 18px;
     right: -6px;
-    background: var(--spray-pink);
+    background: var(--upubli-pink);
     color: #000000;
     font-size: .78rem;
     font-weight: 700;
@@ -333,61 +342,61 @@
     z-index: 2;
   }
 
-  .spray-lata {
+  .upubli-lata {
     width: min(320px, 70vw);
     height: auto;
     display: block;
     filter: drop-shadow(0 30px 50px rgba(250, 57, 122, .18));
-    animation: spray-flutuar 5s ease-in-out infinite;
+    animation: upubli-flutuar 5s ease-in-out infinite;
   }
 
-  @keyframes spray-flutuar {
+  @keyframes upubli-flutuar {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .spray-lata,
-    .spray-pulso {
+    .upubli-lata,
+    .upubli-pulso {
       animation: none !important;
     }
   }
 
   /* ---------- benefícios ---------- */
 
-  .spray-beneficios-grid {
+  .upubli-beneficios-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 20px;
   }
 
-  .spray-beneficio {
+  .upubli-beneficio {
     background: #0a0a0a;
-    border: 1px solid var(--spray-border);
+    border: 1px solid var(--upubli-border);
     border-radius: 12px;
     padding: 24px;
     transition: border-color .18s ease, transform .18s ease;
   }
 
-  .spray-beneficio:hover {
-    border-color: var(--spray-pink);
+  .upubli-beneficio:hover {
+    border-color: var(--upubli-pink);
     transform: translateY(-3px);
   }
 
-  .spray-beneficio-icone {
+  .upubli-beneficio-icone {
     font-size: 1.6rem;
     margin-bottom: 12px;
     display: block;
   }
 
-  .spray-beneficio p {
+  .upubli-beneficio p {
     margin: 0;
-    color: var(--spray-text);
+    color: var(--upubli-text);
     font-size: .98rem;
     line-height: 1.55;
   }
 
-  .spray-nota-asterisco {
+  .upubli-nota-asterisco {
     margin-top: 32px;
     color: #5c5c5c;
     font-size: .76rem;
@@ -396,34 +405,34 @@
 
   /* ---------- como funciona ---------- */
 
-  .spray-passos {
+  .upubli-passos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 28px;
   }
 
-  .spray-passo {
+  .upubli-passo {
     position: relative;
     padding-top: 8px;
   }
 
-  .spray-passo-numero {
+  .upubli-passo-numero {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--spray-pink);
+    color: var(--upubli-pink);
     line-height: 1;
     margin-bottom: 14px;
     opacity: .9;
   }
 
-  .spray-passo h3 {
+  .upubli-passo h3 {
     font-size: 1.05rem;
     margin: 0 0 8px;
   }
 
-  .spray-passo p {
-    color: var(--spray-muted);
+  .upubli-passo p {
+    color: var(--upubli-muted);
     font-size: .92rem;
     line-height: 1.6;
     margin: 0;
@@ -431,7 +440,7 @@
 
   /* ---------- embalagem ---------- */
 
-  .spray-embalagem-lista {
+  .upubli-embalagem-lista {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -439,20 +448,20 @@
     gap: 14px;
   }
 
-  .spray-embalagem-lista li {
+  .upubli-embalagem-lista li {
     display: flex;
     align-items: flex-start;
     gap: 14px;
     padding: 16px 18px;
     background: #0a0a0a;
-    border: 1px solid var(--spray-border);
+    border: 1px solid var(--upubli-border);
     border-radius: 10px;
-    color: var(--spray-text);
+    color: var(--upubli-text);
     font-size: .96rem;
     line-height: 1.55;
   }
 
-  .spray-embalagem-lista li::before {
+  .upubli-embalagem-lista li::before {
     content: "📦";
     flex: none;
     font-size: 1.1rem;
@@ -460,71 +469,71 @@
 
   /* ---------- tabelas (especificações e comparativo) ---------- */
 
-  .spray-tabela-wrapper {
+  .upubli-tabela-wrapper {
     overflow-x: auto;
-    border: 1px solid var(--spray-border);
+    border: 1px solid var(--upubli-border);
     border-radius: 12px;
   }
 
-  .spray-tabela {
+  .upubli-tabela {
     width: 100%;
     border-collapse: collapse;
     min-width: 480px;
   }
 
-  .spray-tabela th,
-  .spray-tabela td {
+  .upubli-tabela th,
+  .upubli-tabela td {
     text-align: left;
     padding: 14px 20px;
     font-size: .92rem;
-    border-bottom: 1px solid var(--spray-border);
+    border-bottom: 1px solid var(--upubli-border);
     white-space: normal;
   }
 
-  .spray-tabela thead th {
+  .upubli-tabela thead th {
     background: #0a0a0a;
-    color: var(--spray-pink);
+    color: var(--upubli-pink);
     font-size: .78rem;
     text-transform: uppercase;
     letter-spacing: .5px;
     font-weight: 700;
   }
 
-  .spray-tabela tbody tr:last-child td {
+  .upubli-tabela tbody tr:last-child td {
     border-bottom: none;
   }
 
-  .spray-tabela tbody th {
-    color: var(--spray-muted);
+  .upubli-tabela tbody th {
+    color: var(--upubli-muted);
     font-weight: 700;
     width: 220px;
   }
 
-  .spray-tabela td {
-    color: var(--spray-text);
+  .upubli-tabela td {
+    color: var(--upubli-text);
   }
 
-  .spray-tabela--comparativo th:not(:first-child),
-  .spray-tabela--comparativo td:not(:first-child) {
+  .upubli-tabela--comparativo th:not(:first-child),
+  .upubli-tabela--comparativo td:not(:first-child) {
     text-align: center;
   }
 
-  .spray-tabela--comparativo .spray-coluna-produto {
-    color: var(--spray-pink);
+  .upubli-tabela--comparativo .upubli-coluna-produto {
+    color: var(--upubli-pink);
     background: rgba(250, 57, 122, .06);
   }
 
-  .spray-check {
+  .upubli-check {
     color: #35d17a;
   }
 
-  .spray-x {
+  .upubli-x {
     color: #828282;
   }
 
   /* ---------- selo do instituto (certificação fictícia) ---------- */
 
-  .spray-instituto {
+  .upubli-instituto {
     margin-top: 48px;
     display: flex;
     align-items: center;
@@ -532,19 +541,19 @@
     flex-wrap: wrap;
   }
 
-  .spray-selo-instituto {
+  .upubli-selo-instituto {
     flex: none;
     width: 96px;
     height: 96px;
     border-radius: 50%;
-    border: 2px dashed var(--spray-pink);
+    border: 2px dashed var(--upubli-pink);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 10px;
     transform: rotate(-8deg);
-    color: var(--spray-pink);
+    color: var(--upubli-pink);
     font-size: .62rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -552,58 +561,58 @@
     line-height: 1.3;
   }
 
-  .spray-instituto-texto p {
+  .upubli-instituto-texto p {
     margin: 0;
-    color: var(--spray-muted);
+    color: var(--upubli-muted);
     font-size: .88rem;
     line-height: 1.6;
     max-width: 52ch;
   }
 
-  .spray-instituto-texto strong {
-    color: var(--spray-text);
+  .upubli-instituto-texto strong {
+    color: var(--upubli-text);
   }
 
   /* ---------- avaliações ---------- */
 
-  .spray-avaliacoes-grid {
+  .upubli-avaliacoes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
   }
 
-  .spray-avaliacao {
+  .upubli-avaliacao {
     background: #0a0a0a;
-    border: 1px solid var(--spray-border);
+    border: 1px solid var(--upubli-border);
     border-radius: 12px;
     padding: 24px;
   }
 
-  .spray-estrelas {
-    color: var(--spray-amarelo);
+  .upubli-estrelas {
+    color: var(--upubli-amarelo);
     font-size: .95rem;
     letter-spacing: 2px;
     margin-bottom: 12px;
   }
 
-  .spray-avaliacao p {
-    color: var(--spray-text);
+  .upubli-avaliacao p {
+    color: var(--upubli-text);
     font-size: .96rem;
     line-height: 1.6;
     margin: 0 0 16px;
   }
 
-  .spray-avaliador {
+  .upubli-avaliador {
     display: flex;
     align-items: center;
     gap: 12px;
   }
 
-  .spray-avatar {
+  .upubli-avatar {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: var(--spray-pink);
+    background: var(--upubli-pink);
     color: #000000;
     display: flex;
     align-items: center;
@@ -613,44 +622,44 @@
     flex: none;
   }
 
-  .spray-avaliador-nome {
-    color: var(--spray-text);
+  .upubli-avaliador-nome {
+    color: var(--upubli-text);
     font-size: .88rem;
     font-weight: 700;
     display: block;
   }
 
-  .spray-avaliador-cargo {
-    color: var(--spray-muted);
+  .upubli-avaliador-cargo {
+    color: var(--upubli-muted);
     font-size: .78rem;
     display: block;
   }
 
   /* ---------- rodapé de aviso fictício ---------- */
 
-  .spray-aviso-rodape {
+  .upubli-aviso-rodape {
     background: #0a0a0a;
-    border-top: 1px solid var(--spray-border);
-    border-bottom: 1px solid var(--spray-border);
+    border-top: 1px solid var(--upubli-border);
+    border-bottom: 1px solid var(--upubli-border);
     padding: 32px 60px;
     text-align: center;
   }
 
-  .spray-aviso-rodape p {
+  .upubli-aviso-rodape p {
     max-width: 62ch;
     margin: 0 auto;
-    color: var(--spray-muted);
+    color: var(--upubli-muted);
     font-size: .88rem;
     line-height: 1.6;
   }
 
-  .spray-aviso-rodape strong {
-    color: var(--spray-text);
+  .upubli-aviso-rodape strong {
+    color: var(--upubli-text);
   }
 
   /* ---------- modal ---------- */
 
-  .spray-modal-overlay {
+  .upubli-modal-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, .78);
@@ -665,15 +674,15 @@
     transition: opacity .28s ease, visibility 0s linear .28s;
   }
 
-  .spray-modal-overlay.spray-aberto {
+  .upubli-modal-overlay.upubli-aberto {
     opacity: 1;
     visibility: visible;
     transition: opacity .28s ease, visibility 0s linear 0s;
   }
 
-  .spray-modal {
+  .upubli-modal {
     background: #0a0a0a;
-    border: 1px solid var(--spray-border-strong);
+    border: 1px solid var(--upubli-border-strong);
     border-radius: 16px;
     max-width: 440px;
     width: 100%;
@@ -685,50 +694,50 @@
     transition: transform .32s cubic-bezier(.2, .8, .2, 1), opacity .28s ease;
   }
 
-  .spray-modal-overlay.spray-aberto .spray-modal {
+  .upubli-modal-overlay.upubli-aberto .upubli-modal {
     transform: scale(1) translateY(0);
     opacity: 1;
   }
 
-  .spray-modal-emoji {
+  .upubli-modal-emoji {
     font-size: 2.6rem;
     display: block;
     margin-bottom: 16px;
-    animation: spray-balancar .6s ease-in-out .1s;
+    animation: upubli-balancar .6s ease-in-out .1s;
   }
 
-  @keyframes spray-balancar {
+  @keyframes upubli-balancar {
     0% { transform: rotate(0deg) scale(.6); opacity: 0; }
     40% { transform: rotate(-12deg) scale(1.05); opacity: 1; }
     70% { transform: rotate(8deg) scale(1); }
     100% { transform: rotate(0deg) scale(1); }
   }
 
-  .spray-modal h3 {
+  .upubli-modal h3 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     font-size: 1.3rem;
     margin: 0 0 14px;
   }
 
-  .spray-modal p {
-    color: var(--spray-muted);
+  .upubli-modal p {
+    color: var(--upubli-muted);
     font-size: .92rem;
     line-height: 1.65;
     margin: 0 0 10px;
   }
 
-  .spray-modal p:last-of-type {
+  .upubli-modal p:last-of-type {
     margin-bottom: 28px;
   }
 
-  .spray-modal .spray-btn {
+  .upubli-modal .upubli-btn {
     width: 100%;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .spray-modal-overlay,
-    .spray-modal,
-    .spray-modal-emoji {
+    .upubli-modal-overlay,
+    .upubli-modal,
+    .upubli-modal-emoji {
       transition: none !important;
       animation: none !important;
     }
@@ -737,75 +746,75 @@
   /* ---------- responsivo ---------- */
 
   @media (max-width: 900px) {
-    .spray-secao {
+    .upubli-secao {
       padding: 64px 32px;
     }
 
-    .spray-hero {
+    .upubli-hero {
       grid-template-columns: 1fr;
       padding-top: 48px;
       text-align: left;
     }
 
-    .spray-hero-imagem {
+    .upubli-hero-imagem {
       order: -1;
     }
 
-    .spray-hero-texto {
+    .upubli-hero-texto {
       max-width: 100%;
     }
 
-    .spray-instituto {
+    .upubli-instituto {
       flex-direction: column;
       text-align: center;
     }
 
-    .spray-instituto-texto p {
+    .upubli-instituto-texto p {
       max-width: 100%;
     }
   }
 
   @media (max-width: 560px) {
-    .spray-secao {
+    .upubli-secao {
       padding: 48px 22px;
     }
 
-    .spray-aviso-topo {
+    .upubli-aviso-topo {
       padding: 12px 22px;
     }
 
-    .spray-btn {
+    .upubli-btn {
       width: 100%;
     }
 
-    .spray-botoes {
+    .upubli-botoes {
       flex-direction: column;
     }
 
-    .spray-confianca {
+    .upubli-confianca {
       flex-direction: column;
       gap: 8px;
     }
 
-    .spray-instituto {
+    .upubli-instituto {
       align-items: center;
     }
 
-    .spray-modal {
+    .upubli-modal {
       padding: 32px 22px;
     }
   }
 </style>
 
 </head>
-<body class="spray-page">
+<body class="upubli-page">
 
     <!-- ======================================================
          AVISO FIXO NO TOPO — selo de produto fictício
          ====================================================== -->
-    <div class="spray-aviso-topo">
-        <span class="spray-aviso-selo">🟡 Produto fictício</span>
-        <span class="spray-aviso-texto">Este item faz parte da <strong>Upubli™</strong>, a coleção de produtos satíricos da Upixel. Nada aqui é vendido de verdade.</span>
+    <div class="upubli-aviso-topo">
+        <span class="upubli-aviso-selo">🟡 Produto fictício</span>
+        <span class="upubli-aviso-texto">Este item faz parte da <strong>Upubli™</strong>, a coleção de produtos satíricos da Upixel. Nada aqui é vendido de verdade.</span>
     </div>
 
     <!-- ======================================================
@@ -828,56 +837,56 @@
         </nav>
     </header>
 
-    <main class="spray-page">
+    <main class="upubli-page">
 
         <!-- ================= HERO ================= -->
-        <section class="spray-hero spray-secao">
+        <section class="upubli-hero upubli-secao">
 
-            <div class="spray-hero-texto">
-<span class="spray-eyebrow">Upubli™ apresenta</span>
+            <div class="upubli-hero-texto">
+<span class="upubli-eyebrow">Upubli™ apresenta</span>
 
-<h1 class="spray-hero-titulo">
-    UX Time Machine<span class="spray-marca-registrada">™</span>
+<h1 class="upubli-hero-titulo">
+    UX Time Machine<span class="upubli-marca-registrada">™</span>
 </h1>
 
-<p class="spray-slogan">
+<p class="upubli-slogan">
     Viaje para o futuro e descubra seus bugs antes dos usuários.
 </p>
 
-<p class="spray-descricao">
+<p class="upubli-descricao">
     Pare de fazer apostas.<br>
     ⏳ Descubra qual botão ninguém encontrou.<br>
     💥 Veja qual atualização derrubou a produção.<br>
     😡 Leia as reclamações antes mesmo do lançamento.<br>
     📉 Volte ao presente fingindo que sempre soube da resposta.
-</p>                </p>
+</p>
 
-                <div class="spray-botoes">
-                    <button type="button" class="spray-btn spray-btn--primario" id="spray-btn-comprar">
+                <div class="upubli-botoes">
+                    <button type="button" class="upubli-btn upubli-btn--primario" id="upubli-btn-comprar">
                         Comprar Agora
                     </button>
-                    <a href="#spray-como-funciona" class="spray-btn spray-btn--secundario">
+                    <a href="#upubli-como-funciona" class="upubli-btn upubli-btn--secundario">
                         Saiba como funciona
                     </a>
                 </div>
 
-                <div class="spray-confianca">
-                    <span class="spray-chip"><span class="spray-pulso" aria-hidden="true"></span> <strong id="spray-contador-visualizacoes">42</strong> pessoas vendo este produto agora</span>
-                    <span class="spray-chip">📦 Estoque: <strong>9.999+</strong> unidades</span>
-                    <span class="spray-chip">🚚 Entrega em <strong>0 dias úteis*</strong></span>
-                    <span class="spray-chip">🛡️ Garantia <strong>vitalícia*</strong></span>
+                <div class="upubli-confianca">
+                    <span class="upubli-chip"><span class="upubli-pulso" aria-hidden="true"></span> <strong id="upubli-contador-visualizacoes">42</strong> pessoas vendo este produto agora</span>
+                    <span class="upubli-chip">📦 Estoque: <strong>9.999+</strong> unidades</span>
+                    <span class="upubli-chip">🚚 Entrega em <strong>0 dias úteis*</strong></span>
+                    <span class="upubli-chip">🛡️ Garantia <strong>vitalícia*</strong></span>
                 </div>
 
-                <p class="spray-letra-miuda">*Entrega via meio de transporte ainda não inventado. Garantia válida em qualquer universo onde este produto exista — ou seja, em nenhum.</p>
+                <p class="upubli-letra-miuda">*Entrega via meio de transporte ainda não inventado. Garantia válida em qualquer universo onde este produto exista — ou seja, em nenhum.</p>
             </div>
 
-            <div class="spray-hero-imagem">
-                <span class="spray-fita-vendido">Mais vendido</span>
+            <div class="upubli-hero-imagem">
+                <span class="upubli-fita-vendido">Mais vendido</span>
 
                 <img
-                    class="spray-lata"
+                    class="upubli-lata"
                     src="ux-time-machine-upubli-upixel.png"
-                    alt="Lata de spray rosa e preta com o texto UX em Spray, da coleção Upubli"
+                    alt="Imagem de uma máquina de tempo futurista"
                     width="240"
                     height="380"
                     loading="lazy"
@@ -889,101 +898,101 @@
         <hr class="divisor-secao">
 
         <!-- ================= BENEFÍCIOS ================= -->
-        <section class="spray-secao" id="spray-beneficios">
-            <span class="spray-eyebrow">Tecnologia Temporal</span>
+        <section class="upubli-secao" id="upubli-beneficios">
+            <span class="upubli-eyebrow">Tecnologia Temporal</span>
 
-<h2 class="spray-titulo-secao">
+<h2 class="upubli-titulo-secao">
     Benefícios
 </h2>
 
-<p class="spray-sub-secao">
+<p class="upubli-sub-secao">
     Conserte hoje os problemas que só apareceriam daqui seis meses.
 </p>
-<div class="spray-beneficios-grid">
+<div class="upubli-beneficios-grid">
 
-    <div class="spray-beneficio">
-        <span class="spray-beneficio-icone">🕰️</span>
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">🕰️</span>
         <p><strong>Correção antecipada™</strong><br>
         Corrija bugs antes mesmo de escrevê-los.</p>
     </div>
 
-    <div class="spray-beneficio">
-        <span class="spray-beneficio-icone">👤</span>
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">👤</span>
         <p><strong>Usuários do Futuro™</strong><br>
         Converse com pessoas que já reclamaram da sua interface.</p>
     </div>
 
-    <div class="spray-beneficio">
-        <span class="spray-beneficio-icone">📊</span>
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">📊</span>
         <p><strong>Dashboard Pós-Fracasso™</strong><br>
         Veja métricas completas do desastre antes dele acontecer.</p>
     </div>
 
-    <div class="spray-beneficio">
-        <span class="spray-beneficio-icone">🚨</span>
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">🚨</span>
         <p><strong>Detector de Reuniões</strong><br>
         Saiba quais reuniões poderiam ter sido um e-mail.</p>
     </div>
 
-    <div class="spray-beneficio">
-        <span class="spray-beneficio-icone">🤖</span>
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">🤖</span>
         <p><strong>IA Arrependida™</strong><br>
         Descubra qual prompt gerou aquele layout horrível.</p>
     </div>
 
-    <div class="spray-beneficio">
-        <span class="spray-beneficio-icone">📉</span>
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">📉</span>
         <p><strong>Economia de Retrabalho</strong><br>
         Apague meses de decisões ruins em apenas uma viagem.</p>
     </div>
 
-    <div class="spray-beneficio">
-        <span class="spray-beneficio-icone">🧠</span>
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">🧠</span>
         <p><strong>Modo "Eu Avisei"</strong><br>
         Volte apenas para dizer que já sabia.</p>
     </div>
 
-    <div class="spray-beneficio">
-        <span class="spray-beneficio-icone">📅</span>
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">📅</span>
         <p><strong>Sprint Infinita™</strong><br>
         Descubra que sempre haverá uma alteração de última hora.</p>
     </div>
 
 </div>
 
-            <p class="spray-nota-asterisco">*Resultados não avaliados por nenhum órgão real de usabilidade, design ou bom senso. UX em Spray™ é um produto fictício e não remove, aprova, reduz ou simula absolutamente nada.</p>
+            <p class="upubli-nota-asterisco">*Resultados não avaliados por nenhum órgão real de usabilidade, design ou bom senso. Time Machine™ é um produto fictício e não viaja no tempo.</p>
         </section>
 
         <hr class="divisor-secao">
 
         <!-- ================= COMO FUNCIONA ================= -->
-        <section class="spray-secao" id="spray-como-funciona">
-            <span class="spray-eyebrow">Modo de uso</span>
-            <h2 class="spray-titulo-secao">Como funciona</h2>
-            <p class="spray-sub-secao">Quatro passos entre você e uma interface impecável. Nenhum deles funciona, mas todos são fáceis.</p>
+        <section class="upubli-secao" id="upubli-como-funciona">
+            <span class="upubli-eyebrow">Modo de uso</span>
+            <h2 class="upubli-titulo-secao">Como funciona</h2>
+            <p class="upubli-sub-secao">Quatro passos entre você e uma interface impecável. Nenhum deles funciona, mas todos são fáceis.</p>
 
-            <div class="spray-passos">
+            <div class="upubli-passos">
 
-    <div class="spray-passo">
-        <span class="spray-passo-numero">01</span>
+    <div class="upubli-passo">
+        <span class="upubli-passo-numero">01</span>
         <h3>Escolha uma data</h3>
         <p>Quanto mais distante, maior o arrependimento.</p>
     </div>
 
-    <div class="spray-passo">
-        <span class="spray-passo-numero">02</span>
+    <div class="upubli-passo">
+        <span class="upubli-passo-numero">02</span>
         <h3>Viaje no tempo</h3>
         <p>Evite encontrar sua versão defendendo a mesma ideia ruim.</p>
     </div>
 
-    <div class="spray-passo">
-        <span class="spray-passo-numero">03</span>
+    <div class="upubli-passo">
+        <span class="upubli-passo-numero">03</span>
         <h3>Fotografe os bugs</h3>
         <p>Leve prints das reclamações e avaliações de uma estrela.</p>
     </div>
 
-    <div class="spray-passo">
-        <span class="spray-passo-numero">04</span>
+    <div class="upubli-passo">
+        <span class="upubli-passo-numero">04</span>
         <h3>Ignore tudo</h3>
         <p>Porque o stakeholder prefere daquele outro jeito.</p>
     </div>
@@ -994,12 +1003,12 @@
         <hr class="divisor-secao">
 
         <!-- ================= O QUE VEM NA EMBALAGEM ================= -->
-        <section class="spray-secao" id="spray-embalagem">
-            <span class="spray-eyebrow">Unboxing</span>
-            <h2 class="spray-titulo-secao">O que vem na embalagem</h2>
-            <p class="spray-sub-secao">Tudo isso dentro de uma caixa que também promete mais do que entrega — combinando perfeitamente com o produto.</p>
+        <section class="upubli-secao" id="upubli-embalagem">
+            <span class="upubli-eyebrow">Unboxing</span>
+            <h2 class="upubli-titulo-secao">O que vem na embalagem</h2>
+            <p class="upubli-sub-secao">Tudo isso dentro de uma caixa que também promete mais do que entrega — combinando perfeitamente com o produto.</p>
 
- <ul class="spray-embalagem-lista">
+ <ul class="upubli-embalagem-lista">
     <li>1 UX Time Machine™.</li>
     <li>1 Capacete anti-paradoxo.</li>
     <li>1 Manual escrito pela sua versão de 2037.</li>
@@ -1010,81 +1019,81 @@
 </ul>        </section>
 
 <!-- ================= AVALIAÇÕES ================= -->
-<section class="spray-secao" id="spray-avaliacoes">
-    <span class="spray-eyebrow">Relatos do Futuro</span>
-    <h2 class="spray-titulo-secao">Avaliações</h2>
-    <p class="spray-sub-secao">Depoimentos de pessoas que voltaram no tempo para evitar bugs... ou pelo menos tentar.</p>
+<section class="upubli-secao" id="upubli-avaliacoes">
+    <span class="upubli-eyebrow">Relatos do Futuro</span>
+    <h2 class="upubli-titulo-secao">Avaliações</h2>
+    <p class="upubli-sub-secao">Depoimentos de pessoas que voltaram no tempo para evitar bugs... ou pelo menos tentar.</p>
 
-    <div class="spray-avaliacoes-grid">
+    <div class="upubli-avaliacoes-grid">
 
-        <div class="spray-avaliacao">
-            <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+        <div class="upubli-avaliacao">
+            <div class="upubli-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
             <p>"Viajei seis meses no futuro e descobri que o botão 'Salvar' nunca salvou nada. Economizei umas 300 reclamações."</p>
-            <div class="spray-avaliador">
-                <span class="spray-avatar">DR</span>
+            <div class="upubli-avaliador">
+                <span class="upubli-avatar">DR</span>
                 <span>
-                    <span class="spray-avaliador-nome">Douglas Roadmap</span>
-                    <span class="spray-avaliador-cargo">Head de Produto Temporal</span>
+                    <span class="upubli-avaliador-nome">Douglas Roadmap</span>
+                    <span class="upubli-avaliador-cargo">Head de Produto Temporal</span>
                 </span>
             </div>
         </div>
 
-        <div class="spray-avaliacao">
-            <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+        <div class="upubli-avaliacao">
+            <div class="upubli-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
             <p>"Descobri que meu deploy de sexta realmente derrubaria tudo. Fiz exatamente igual mesmo assim."</p>
-            <div class="spray-avaliador">
-                <span class="spray-avatar">AD</span>
+            <div class="upubli-avaliador">
+                <span class="upubli-avatar">AD</span>
                 <span>
-                    <span class="spray-avaliador-nome">Amanda Deploy</span>
-                    <span class="spray-avaliador-cargo">Desenvolvedora Quântica</span>
+                    <span class="upubli-avaliador-nome">Amanda Deploy</span>
+                    <span class="upubli-avaliador-cargo">Desenvolvedora Quântica</span>
                 </span>
             </div>
         </div>
 
-        <div class="spray-avaliacao">
-            <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+        <div class="upubli-avaliacao">
+            <div class="upubli-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
             <p>"Encontrei meu eu de 2031. Ele só repetia: 'faz pesquisa com usuário'. Achei exagero e ignorei."</p>
-            <div class="spray-avaliador">
-                <span class="spray-avatar">CF</span>
+            <div class="upubli-avaliador">
+                <span class="upubli-avatar">CF</span>
                 <span>
-                    <span class="spray-avaliador-nome">Carlos Feeling</span>
-                    <span class="spray-avaliador-cargo">Gerente de Produto por Intuição</span>
+                    <span class="upubli-avaliador-nome">Carlos Feeling</span>
+                    <span class="upubli-avaliador-cargo">Gerente de Produto por Intuição</span>
                 </span>
             </div>
         </div>
 
-        <div class="spray-avaliacao">
-            <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+        <div class="upubli-avaliacao">
+            <div class="upubli-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
             <p>"A máquina mostrou exatamente qual funcionalidade receberia nota 1 na loja. O CEO aprovou do mesmo jeito."</p>
-            <div class="spray-avaliador">
-                <span class="spray-avatar">JS</span>
+            <div class="upubli-avaliador">
+                <span class="upubli-avatar">JS</span>
                 <span>
-                    <span class="spray-avaliador-nome">Juliana Sprint</span>
-                    <span class="spray-avaliador-cargo">Product Manager Multiversal</span>
+                    <span class="upubli-avaliador-nome">Juliana Sprint</span>
+                    <span class="upubli-avaliador-cargo">Product Manager Multiversal</span>
                 </span>
             </div>
         </div>
 
-        <div class="spray-avaliacao">
-            <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+        <div class="upubli-avaliacao">
+            <div class="upubli-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
             <p>"Voltei do futuro com um relatório completo dos bugs. Quando cheguei, mudaram o escopo inteiro."</p>
-            <div class="spray-avaliador">
-                <span class="spray-avatar">LM</span>
+            <div class="upubli-avaliador">
+                <span class="upubli-avatar">LM</span>
                 <span>
-                    <span class="spray-avaliador-nome">Lucas Merge</span>
-                    <span class="spray-avaliador-cargo">Especialista em Retrabalho</span>
+                    <span class="upubli-avaliador-nome">Lucas Merge</span>
+                    <span class="upubli-avaliador-cargo">Especialista em Retrabalho</span>
                 </span>
             </div>
         </div>
 
-        <div class="spray-avaliacao">
-            <div class="spray-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+        <div class="upubli-avaliacao">
+            <div class="upubli-estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
             <p>"Voltei para impedir um bug crítico. Descobri que o verdadeiro problema era a reunião que decidiu implementá-lo."</p>
-            <div class="spray-avaliador">
-                <span class="spray-avatar">BT</span>
+            <div class="upubli-avaliador">
+                <span class="upubli-avatar">BT</span>
                 <span>
-                    <span class="spray-avaliador-nome">Bianca Timeline</span>
-                    <span class="spray-avaliador-cargo">Analista de Paradoxos Corporativos</span>
+                    <span class="upubli-avaliador-nome">Bianca Timeline</span>
+                    <span class="upubli-avaliador-cargo">Analista de Paradoxos Corporativos</span>
                 </span>
             </div>
         </div>
@@ -1094,7 +1103,7 @@
         <hr class="divisor-secao">
 
         <!-- ================= FAQ ================= -->
-<section class="faq spray-secao">
+<section class="faq upubli-secao">
     <span class="faq-label">Perguntas frequentes</span>
     <h2 class="faq-titulo">Antes de alterar a linha do tempo, tire essas dúvidas</h2>
 
@@ -1131,7 +1140,7 @@
         <hr class="divisor-secao">
 
         <!-- ================= AVISO FICTÍCIO (antes do footer) ================= -->
-        <div class="spray-aviso-rodape">
+        <div class="upubli-aviso-rodape">
             <p><strong>Este é um produto fictício</strong>, criado apenas para entretenimento pela Upixel. UX em Spray™, a Upubli™ e todos os depoimentos desta página não existem, não são vendidos e não substituem pesquisa, workshop ou entrevista nenhuma — essas, sim, continuam bem reais e recomendadas.</p>
         </div>
 
@@ -1171,14 +1180,14 @@
     <!-- ======================================================
          MODAL — "Comprar Agora"
          ====================================================== -->
-    <div class="spray-modal-overlay" id="spray-modal-overlay" role="presentation">
-        <div class="spray-modal" role="dialog" aria-modal="true" aria-labelledby="spray-modal-titulo">
-            <span class="spray-modal-emoji" aria-hidden="true">😂</span>
-            <h3 id="spray-modal-titulo">É sério que você compraria isso?</h3>
+    <div class="upubli-modal-overlay" id="upubli-modal-overlay" role="presentation">
+        <div class="upubli-modal" role="dialog" aria-modal="true" aria-labelledby="upubli-modal-titulo">
+            <span class="upubli-modal-emoji" aria-hidden="true">😂</span>
+            <h3 id="upubli-modal-titulo">É sério que você compraria isso?</h3>
             <p>Infelizmente (ou felizmente), nenhum dos produtos desta página existe.</p>
             <p>Esta página faz parte da coleção de produtos fictícios da Upixel. Se você chegou até aqui, nossa propaganda funcionou.</p>
             <p>Obrigado por entrar na brincadeira.</p>
-            <button type="button" class="spray-btn spray-btn--primario" id="spray-btn-fechar-modal">
+            <button type="button" class="upubli-btn upubli-btn--primario" id="upubli-btn-fechar-modal">
                 Voltar para a realidade
             </button>
         </div>
@@ -1195,7 +1204,7 @@
         'use strict';
 
         // ---------- contador de visualizações (só estética) ----------
-        var elContador = document.getElementById('spray-contador-visualizacoes');
+        var elContador = document.getElementById('upubli-contador-visualizacoes');
         if (elContador) {
             var valorAtual = parseInt(elContador.textContent, 10) || 42;
 
@@ -1207,21 +1216,21 @@
         }
 
         // ---------- modal "Comprar Agora" ----------
-        var overlay = document.getElementById('spray-modal-overlay');
-        var btnAbrir = document.getElementById('spray-btn-comprar');
-        var btnFechar = document.getElementById('spray-btn-fechar-modal');
+        var overlay = document.getElementById('upubli-modal-overlay');
+        var btnAbrir = document.getElementById('upubli-btn-comprar');
+        var btnFechar = document.getElementById('upubli-btn-fechar-modal');
         var ultimoFoco = null;
 
         function abrirModal() {
             ultimoFoco = document.activeElement;
-            overlay.classList.add('spray-aberto');
+            overlay.classList.add('upubli-aberto');
             document.body.style.overflow = 'hidden';
             btnFechar.focus();
             document.addEventListener('keydown', aoPressionarTecla);
         }
 
         function fecharModal() {
-            overlay.classList.remove('spray-aberto');
+            overlay.classList.remove('upubli-aberto');
             document.body.style.overflow = '';
             document.removeEventListener('keydown', aoPressionarTecla);
             if (ultimoFoco && typeof ultimoFoco.focus === 'function') {
