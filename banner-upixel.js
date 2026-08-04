@@ -307,7 +307,7 @@
                     'justify-content: space-between;' +
                     'gap: 10px;' +
                     'min-height: 32px;' +
-                    'padding: 5px 36px 5px 12px;' +
+                    'padding: 5px 40px 5px 12px;' +
                     'background: repeating-linear-gradient(' +
                         '45deg,' +
                         '#1a1a1a,' +
@@ -343,20 +343,34 @@
                    assim nunca fica escondido atrás do selo circular em
                    telas estreitas, em nenhum breakpoint. */
                 '.fechar {' +
+                    /* Reset da aparência nativa do <button>. Sem isso, o
+                       Safari do iOS aplica o próprio "chrome" do sistema
+                       em cima do botão (fundo, padding, cantos), o que
+                       pode empurrar/cortar o elemento e fazê-lo sumir na
+                       prática, mesmo com z-index alto. */
+                    '-webkit-appearance: none;' +
+                    'appearance: none;' +
+                    'margin: 0;' +
+                    'padding: 0;' +
+                    'font: inherit;' +
+                    'line-height: 1;' +
+                    'box-sizing: border-box;' +
                     'position: absolute;' +
                     'top: 4px;' +
                     'right: 6px;' +
-                    'width: 24px;' +
-                    'height: 24px;' +
+                    'width: 26px;' +
+                    'height: 26px;' +
                     'display: flex;' +
                     'align-items: center;' +
                     'justify-content: center;' +
-                    'background: rgba(255, 255, 255, 0.14);' +
+                    'background-color: rgba(255, 255, 255, 0.14);' +
                     'border: 1.5px solid #ffe600;' +
                     'border-radius: 4px;' +
                     'color: #ffe600;' +
                     'cursor: pointer;' +
-                    'z-index: 5;' +
+                    '-webkit-tap-highlight-color: transparent;' +
+                    'touch-action: manipulation;' +
+                    'z-index: 6;' +
                     'transition: background .15s ease, color .15s ease, transform .15s ease;' +
                 '}' +
 
@@ -368,7 +382,7 @@
                     'outline: none;' +
                 '}' +
 
-                '.fechar svg { width: 12px; height: 12px; }' +
+                '.fechar svg { width: 12px; height: 12px; pointer-events: none; }' +
 
                 '.corpo {' +
                     'display: flex;' +
@@ -542,7 +556,7 @@
                    horizontal em nenhum momento. */
                 '@media (max-width: 560px) {' +
                     '.wrapper { padding: 22px 0; }' +
-                    '.barra-topo { padding: 6px 34px 6px 10px; }' +
+                    '.barra-topo { padding: 6px 38px 6px 10px; }' +
                     '.barra-topo-esquerda { font-size: 9px; }' +
                     '.corpo { flex-direction: column; }' +
                     '.coluna-imagem {' +
