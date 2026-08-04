@@ -132,23 +132,44 @@ gtag('config', 'G-1BSCJB0HD2');
 <!-- ==========================================================
      DADOS DO QUIZ + MONTAGEM DOS CARDS DE CATEGORIA
      ========================================================== -->
+
 <script src="quiz-data.js"></script>
+
 <script>
 
-    const areaPicker = document.getElementById("categoria-picker");
-    const categorias = obterCategorias();
+const QUIZZES_NOVOS = [
+    "chaves"
+];
 
-    areaPicker.innerHTML = categorias.map(categoria => {
-        const slug = CATEGORIA_SLUGS[categoria] || categoria.toLowerCase().replace(/\s+/g, "-");
-        const totalPerguntas = QUESTOES.filter(q => q.tags.includes(categoria)).length;
 
-        return `
-            <a class="categoria-picker-item" href="quiz-${slug}.html">
-                ${categoria}
-                <span class="categoria-picker-contagem">${totalPerguntas} perguntas</span>
-            </a>
-        `;
-    }).join("");
+const areaPicker = document.getElementById("categoria-picker");
+const categorias = obterCategorias();
+
+areaPicker.innerHTML = categorias.map(categoria => {
+
+    const slug = CATEGORIA_SLUGS[categoria] || categoria.toLowerCase().replace(/\s+/g, "-");
+
+    const totalPerguntas = QUESTOES.filter(
+        q => q.tags.includes(categoria)
+    ).length;
+
+    const ehNovo = QUIZZES_NOVOS.includes(categoria);
+
+    return `
+        <a class="categoria-picker-item ${ehNovo ? '--novo' : ''}" href="quiz-${slug}.html">
+
+            ${ehNovo ? '<span class="selo-novo-quiz">NOVO</span>' : ''}
+
+            ${categoria}
+
+            <span class="categoria-picker-contagem">
+                ${totalPerguntas} perguntas
+            </span>
+
+        </a>
+    `;
+
+}).join("");
 
 </script>
 
