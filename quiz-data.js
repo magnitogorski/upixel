@@ -29,6 +29,156 @@
 const QUESTOES = [
 
 {
+    id:"chaves-01",
+    tags:["chaves"],
+    pergunta:"Qual é o verdadeiro nome do Chaves dentro da série?",
+    respostas:[
+        "Roberto",
+        "Nunca é revelado",
+        "Chespirito",
+        "Francisco",
+        "Carlos"
+    ],
+    correta:1,
+    explicacao:"O verdadeiro nome do Chaves nunca é revelado oficialmente durante a série."
+},
+
+{
+    id:"chaves-02",
+    tags:["chaves"],
+    pergunta:"Quem vive dizendo 'Foi sem querer querendo'?",
+    respostas:[
+        "Quico",
+        "Professor Girafales",
+        "Seu Madruga",
+        "Chaves",
+        "Nhonho"
+    ],
+    correta:3,
+    explicacao:"Essa é uma das frases mais famosas do Chaves."
+},
+
+{
+    id:"chaves-03",
+    tags:["chaves"],
+    pergunta:"Qual é a profissão do Seu Madruga?",
+    respostas:[
+        "Padeiro",
+        "Pintor",
+        "Pedreiro",
+        "Ele faz bicos, mas está quase sempre desempregado",
+        "Carteiro"
+    ],
+    correta:3,
+    explicacao:"Seu Madruga faz diversos trabalhos temporários ao longo da série, mas é conhecido por estar frequentemente desempregado."
+},
+
+{
+    id:"chaves-04",
+    tags:["chaves"],
+    pergunta:"Quem é o dono da vila?",
+    respostas:[
+        "Seu Madruga",
+        "Professor Girafales",
+        "Seu Barriga",
+        "Jaiminho",
+        "Godinez"
+    ],
+    correta:2,
+    explicacao:"Seu Barriga é o proprietário da vila e vive cobrando o aluguel."
+},
+
+{
+    id:"chaves-05",
+    tags:["chaves"],
+    pergunta:"Qual personagem mora na casa número 72 da vila?",
+    respostas:[
+        "Seu Madruga",
+        "Dona Florinda",
+        "Seu Barriga",
+        "Dona Clotilde",
+        "Professor Girafales"
+    ],
+    correta:0,
+    explicacao:"Seu Madruga mora na casa nº 72, a mesma onde Seu Barriga aparece todo mês para cobrar os 14 meses de aluguel atrasado."
+},
+
+{
+    id:"chaves-06",
+    tags:["chaves"],
+    pergunta:"Qual é a comida favorita do Chaves?",
+    respostas:[
+        "Brigadeiro",
+        "Pipoca",
+        "Sanduíche de presunto",
+        "Churros",
+        "Pirulito"
+    ],
+    correta:2,
+    explicacao:"O sanduíche de presunto é praticamente um símbolo do personagem."
+},
+
+{
+    id:"chaves-07",
+    tags:["chaves"],
+    pergunta:"Qual destas características é uma marca registrada da Chiquinha?",
+    respostas:[
+        "Usar um chapéu de marinheiro",
+        "Ter sardas e usar óculos",
+        "Andar sempre de boné",
+        "Usar gravata borboleta",
+        "Ter um bigode falso"
+    ],
+    correta:1,
+    explicacao:"As sardas, os óculos e as maria-chiquinhas são algumas das características mais marcantes da Chiquinha."
+},
+
+{
+    id:"chaves-08",
+    tags:["chaves"],
+    pergunta:"Quem vive fugindo para evitar trabalhar?",
+    respostas:[
+        "Professor Girafales",
+        "Seu Madruga",
+        "Chaves",
+        "Seu Barriga",
+        "Quico"
+    ],
+    correta:1,
+    explicacao:"Seu Madruga ficou famoso por sua preguiça e pelas desculpas para evitar trabalho."
+},
+
+{
+    id:"chaves-09",
+    tags:["chaves"],
+    pergunta:"Qual é o nome do amigo imaginário que o Chaves diz ter?",
+    respostas:[
+        "Pepito",
+        "Sente",
+        "Chilindrina",
+        "Godinez",
+        "Nenhum, ele nunca menciona um amigo imaginário"
+    ],
+    correta:1,
+    explicacao:"Em um episódio, o Chaves diz que seu amigo imaginário se chama Sente. Quando perguntam 'Sente onde?', ele responde: 'Aqui'. É uma das piadas clássicas da série."
+},
+
+{
+    id:"chaves-10",
+    tags:["chaves"],
+    pergunta:"Por que Jaiminho diz que evita fazer qualquer tarefa?",
+    respostas:[
+        "Porque está cansado",
+        "Porque mora longe",
+        "Porque tem alergia",
+        "Porque quer evitar a fadiga",
+        "Porque está doente"
+    ],
+    correta:3,
+    explicacao:"'Quero evitar a fadiga' é a frase mais famosa do carteiro Jaiminho."
+},
+
+{
     id:"cachorro-01",
     tags:["Raças de cachorro"],
     pergunta:"Qual destas raças acredita que é um cachorro de colo, mesmo pesando quase 80 kg?",
@@ -1542,6 +1692,7 @@ const QUESTOES = [
 const PONTOS_POR_ACERTO = 10;
 
 // Slug de cada categoria -> usado no nome do arquivo (quiz-<slug>.html)
+// Slug de cada categoria -> usado no nome do arquivo (quiz-<slug>.html)
 const CATEGORIA_SLUGS = {
     "Raças de Cachorro": "raças-de-cachorro",
     "IA": "ia",
@@ -1552,7 +1703,8 @@ const CATEGORIA_SLUGS = {
     "Tecnologia": "tecnologia",
     "Memes": "memes",
     "Breaking Bad": "breaking-bad",
-    "Games": "cultura-gamer"
+    "Games": "cultura-gamer",
+    "Chaves": "chaves"
 };
 
 // Lê todas as tags usadas em QUESTOES (usado por quiz.html para
