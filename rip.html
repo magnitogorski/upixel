@@ -668,9 +668,10 @@
 
             <div class="rip-linha-filtros">
                 <div class="rip-filtros" role="group" aria-label="Filtrar por categoria">
-                    <button type="button" class="rip-filtro" data-categoria="todos" aria-pressed="true">Todos</button>
+                    <button type="button" class="rip-filtro" data-categoria="recentes" aria-pressed="true">Últimas adicionadas</button>
                     <button type="button" class="rip-filtro" data-categoria="UX" aria-pressed="false">UX</button>
                     <button type="button" class="rip-filtro" data-categoria="UI" aria-pressed="false">UI</button>
+                    <button type="button" class="rip-filtro" data-categoria="Fotografia" aria-pressed="false">Fotografia</button>
                     <button type="button" class="rip-filtro" data-categoria="Design" aria-pressed="false">Design</button>
                     <button type="button" class="rip-filtro" data-categoria="Comunicação" aria-pressed="false">Comunicação</button>
                     <button type="button" class="rip-filtro" data-categoria="Tecnologia" aria-pressed="false">Tecnologia</button>
@@ -688,21 +689,172 @@
                 <div class="rip-ordenacao">
                     <label for="rip-select-ordenar">Ordenar por</label>
                     <select id="rip-select-ordenar">
-                        <option value="recentes">Mais recentes</option>
-                        <option value="antigos">Mais antigos</option>
+                        <option value="novos" selected>Últimas covas adicionadas</option>
+                        <option value="recentes">Morreram mais recentemente</option>
+                        <option value="antigos">Morreram há mais tempo</option>
                         <option value="az">A-Z</option>
                         <option value="za">Z-A</option>
                     </select>
                 </div>
             </div>
 
-            <p class="rip-contador" id="rip-contador">26 sepultamentos registrados.</p>
+            <p class="rip-contador" id="rip-contador">Mostrando as 5 últimas covas adicionadas.</p>
         </div>
 
         <!-- ================= LISTA CONTÍNUA DE LÁPIDES ================= -->
         <div class="rip-corpo" id="rip-lista">
 
-            <details class="rip-lapide" data-nome="Adobe Flash" data-categoria="Tecnologia" data-ano-inicio="1996" data-ano-fim="2020" id="rip-adobe-flash">
+
+<details class="rip-lapide" data-nome="Álbum de Fotos Impresso" data-categoria="Fotografia" data-ano-inicio="1960" data-ano-fim="2020" id="rip-album-fotos">
+
+    <summary>
+        <div class="rip-lapide-info">
+            <span class="rip-lapide-nome">⚰️ Álbum de Fotos Impresso</span>
+
+            <div class="rip-lapide-meta">
+                <span class="rip-anos">1960 — 2020</span>
+                <span class="rip-categoria-badge">Fotografia</span>
+            </div>
+
+            <p class="rip-epitafio">"Não tinha nuvem. Tinha uma gaveta cheia de memórias."</p>
+        </div>
+    </summary>
+
+    <div class="rip-obituario">
+
+        <div class="rip-obituario-secao">
+            <span class="rip-label">O que era</span>
+            <p>
+                Livros com páginas plásticas onde famílias guardavam fotos reveladas,
+                viagens, aniversários, casamentos e momentos importantes da vida.
+            </p>
+        </div>
+
+        <div class="rip-obituario-secao">
+            <span class="rip-label">Por que fez sucesso</span>
+            <p>
+                Era a forma oficial de guardar lembranças. Reunir a família para olhar
+                um álbum antigo era quase um ritual.
+            </p>
+        </div>
+
+        <div class="rip-obituario-secao">
+            <span class="rip-label">O que causou sua morte</span>
+            <p>
+                Celulares, redes sociais e armazenamento em nuvem transformaram milhares
+                de fotos físicas em arquivos esquecidos no Google Fotos.
+            </p>
+        </div>
+
+    </div>
+
+</details>
+            
+<details class="rip-lapide" data-nome="Filme Fotográfico 35mm" data-categoria="Fotografia" data-ano-inicio="1889" data-ano-fim="2015" id="rip-filme-fotografico">
+
+<summary>
+<div class="rip-lapide-info">
+<span class="rip-lapide-nome">⚰️ Filme Fotográfico 35mm</span>
+<div class="rip-lapide-meta">
+<span class="rip-anos">1889 — 2015</span>
+<span class="rip-categoria-badge">Fotografia</span>
+</div>
+<p class="rip-epitafio">"36 fotos. Sem direito a apagar."</p>
+</div>
+</summary>
+
+<div class="rip-obituario">
+<div class="rip-obituario-secao">
+<span class="rip-label">O que era</span>
+<p>
+Rolos de filme usados em câmeras analógicas para registrar momentos antes da era digital.
+</p>
+</div>
+
+<div class="rip-obituario-secao">
+<span class="rip-label">Por que fez sucesso</span>
+<p>
+Era o padrão mundial da fotografia por décadas. Todo mundo esperava a revelação para descobrir as fotos.
+</p>
+</div>
+
+<div class="rip-obituario-secao">
+<span class="rip-label">O que causou sua morte</span>
+<p>
+Câmeras digitais e celulares eliminaram o custo da revelação e permitiram ver a foto na hora.
+</p>
+</div>
+</div>
+
+</details>
+
+<details class="rip-lapide" data-nome="Câmera Digital Compacta" data-categoria="Fotografia" data-ano-inicio="1995" data-ano-fim="2020" id="rip-camera-digital">
+
+    <summary>
+        <div class="rip-lapide-info">
+            <span class="rip-lapide-nome">⚰️ Câmera Digital Compacta</span>
+
+            <div class="rip-lapide-meta">
+                <span class="rip-anos">1995 — 2020</span>
+                <span class="rip-categoria-badge">Fotografia</span>
+            </div>
+
+            <p class="rip-epitafio">"Espera... vou passar as fotos para o computador."</p>
+        </div>
+    </summary>
+
+    <div class="rip-obituario">
+
+        <div class="rip-obituario-secao">
+            <span class="rip-label">O que era</span>
+            <p>
+                Pequenas câmeras digitais que carregavam no bolso, com zoom óptico,
+                cartão de memória e aquela missão de registrar viagens, festas e aniversários.
+            </p>
+        </div>
+
+        <div class="rip-obituario-secao">
+            <span class="rip-label">Por que fez sucesso</span>
+            <p>
+                Eram a evolução das câmeras de filme: tirava a foto, via na hora,
+                apagava as ruins e podia guardar centenas de imagens sem revelar nenhum rolo.
+            </p>
+        </div>
+
+        <div class="rip-obituario-secao">
+            <span class="rip-label">O que causou sua morte</span>
+            <p>
+                Os celulares ganharam câmeras cada vez melhores, edição automática,
+                compartilhamento instantâneo e GPS. A câmera que era um aparelho separado
+                virou apenas mais uma função do smartphone.
+            </p>
+        </div>
+
+        <div class="rip-enquete" data-enquete-id="camera-digital">
+
+            <p class="rip-enquete-pergunta">Você sente saudade?</p>
+
+            <div class="rip-enquete-botoes">
+
+                <button type="button" class="rip-voto" data-voto="sim">
+                    <span aria-hidden="true">👍</span> Sim
+                </button>
+
+                <button type="button" class="rip-voto" data-voto="nao">
+                    <span aria-hidden="true">👎</span> Não
+                </button>
+
+            </div>
+
+            <div class="rip-enquete-resultado"></div>
+
+        </div>
+
+    </div>
+
+</details>
+
+            <details class="rip-lapide" data-nome="Adobe Flash" data-categoria="Tecnologia" data-ano-inicio="1996" data-ano-fim="2020" data-adicionado="1" id="rip-adobe-flash">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Adobe Flash</span>
@@ -737,7 +889,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Internet Explorer" data-categoria="Software" data-ano-inicio="1995" data-ano-fim="2022" id="rip-internet-explorer">
+            <details class="rip-lapide" data-nome="Internet Explorer" data-categoria="Software" data-ano-inicio="1995" data-ano-fim="2022" data-adicionado="2" id="rip-internet-explorer">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Internet Explorer</span>
@@ -772,7 +924,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Orkut" data-categoria="Internet" data-ano-inicio="2004" data-ano-fim="2014" id="rip-orkut">
+            <details class="rip-lapide" data-nome="Orkut" data-categoria="Internet" data-ano-inicio="2004" data-ano-fim="2014" data-adicionado="3" id="rip-orkut">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Orkut</span>
@@ -807,7 +959,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="MSN Messenger" data-categoria="Internet" data-ano-inicio="1999" data-ano-fim="2013" id="rip-msn-messenger">
+            <details class="rip-lapide" data-nome="MSN Messenger" data-categoria="Internet" data-ano-inicio="1999" data-ano-fim="2013" data-adicionado="4" id="rip-msn-messenger">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ MSN Messenger</span>
@@ -842,7 +994,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Google+" data-categoria="Internet" data-ano-inicio="2011" data-ano-fim="2019" id="rip-google-plus">
+            <details class="rip-lapide" data-nome="Google+" data-categoria="Internet" data-ano-inicio="2011" data-ano-fim="2019" data-adicionado="5" id="rip-google-plus">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Google+</span>
@@ -877,7 +1029,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Silverlight" data-categoria="Tecnologia" data-ano-inicio="2007" data-ano-fim="2021" id="rip-silverlight">
+            <details class="rip-lapide" data-nome="Silverlight" data-categoria="Tecnologia" data-ano-inicio="2007" data-ano-fim="2021" data-adicionado="6" id="rip-silverlight">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Silverlight</span>
@@ -912,7 +1064,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Windows Phone" data-categoria="Hardware" data-ano-inicio="2010" data-ano-fim="2017" id="rip-windows-phone">
+            <details class="rip-lapide" data-nome="Windows Phone" data-categoria="Hardware" data-ano-inicio="2010" data-ano-fim="2017" data-adicionado="7" id="rip-windows-phone">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Windows Phone</span>
@@ -947,7 +1099,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Adobe Fireworks" data-categoria="Design" data-ano-inicio="1998" data-ano-fim="2019" id="rip-adobe-fireworks">
+            <details class="rip-lapide" data-nome="Adobe Fireworks" data-categoria="Design" data-ano-inicio="1998" data-ano-fim="2019" data-adicionado="8" id="rip-adobe-fireworks">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Adobe Fireworks</span>
@@ -982,7 +1134,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Adobe XD" data-categoria="UI" data-ano-inicio="2016" data-ano-fim="2023" id="rip-adobe-xd">
+            <details class="rip-lapide" data-nome="Adobe XD" data-categoria="UI" data-ano-inicio="2016" data-ano-fim="2023" data-adicionado="9" id="rip-adobe-xd">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Adobe XD</span>
@@ -1017,7 +1169,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="GeoCities" data-categoria="Internet" data-ano-inicio="1994" data-ano-fim="2009" id="rip-geocities">
+            <details class="rip-lapide" data-nome="GeoCities" data-categoria="Internet" data-ano-inicio="1994" data-ano-fim="2009" data-adicionado="10" id="rip-geocities">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ GeoCities</span>
@@ -1052,7 +1204,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Google Reader" data-categoria="Internet" data-ano-inicio="2005" data-ano-fim="2013" id="rip-google-reader">
+            <details class="rip-lapide" data-nome="Google Reader" data-categoria="Internet" data-ano-inicio="2005" data-ano-fim="2013" data-adicionado="11" id="rip-google-reader">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Google Reader</span>
@@ -1087,7 +1239,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Winamp" data-categoria="Software" data-ano-inicio="1997" data-ano-fim="9999" id="rip-winamp">
+            <details class="rip-lapide" data-nome="Winamp" data-categoria="Software" data-ano-inicio="1997" data-ano-fim="9999" data-adicionado="12" id="rip-winamp">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Winamp</span>
@@ -1122,7 +1274,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Palm" data-categoria="Hardware" data-ano-inicio="1996" data-ano-fim="2011" id="rip-palm">
+            <details class="rip-lapide" data-nome="Palm" data-categoria="Hardware" data-ano-inicio="1996" data-ano-fim="2011" data-adicionado="13" id="rip-palm">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Palm</span>
@@ -1157,7 +1309,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="BlackBerry" data-categoria="Hardware" data-ano-inicio="1999" data-ano-fim="2022" id="rip-blackberry">
+            <details class="rip-lapide" data-nome="BlackBerry" data-categoria="Hardware" data-ano-inicio="1999" data-ano-fim="2022" data-adicionado="14" id="rip-blackberry">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ BlackBerry</span>
@@ -1192,7 +1344,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Locadoras de vídeo" data-categoria="Empresas" data-ano-inicio="1980" data-ano-fim="2014" id="rip-locadoras">
+            <details class="rip-lapide" data-nome="Locadoras de vídeo" data-categoria="Empresas" data-ano-inicio="1980" data-ano-fim="2014" data-adicionado="15" id="rip-locadoras">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Locadoras de vídeo</span>
@@ -1227,7 +1379,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="CD-ROM" data-categoria="Hardware" data-ano-inicio="1985" data-ano-fim="2015" id="rip-cd-rom">
+            <details class="rip-lapide" data-nome="CD-ROM" data-categoria="Hardware" data-ano-inicio="1985" data-ano-fim="2015" data-adicionado="16" id="rip-cd-rom">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ CD-ROM</span>
@@ -1262,7 +1414,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Disquete" data-categoria="Hardware" data-ano-inicio="1971" data-ano-fim="2011" id="rip-disquete">
+            <details class="rip-lapide" data-nome="Disquete" data-categoria="Hardware" data-ano-inicio="1971" data-ano-fim="2011" data-adicionado="17" id="rip-disquete">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Disquete</span>
@@ -1297,7 +1449,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Fax" data-categoria="Tecnologia" data-ano-inicio="1980" data-ano-fim="9999" id="rip-fax">
+            <details class="rip-lapide" data-nome="Fax" data-categoria="Tecnologia" data-ano-inicio="1980" data-ano-fim="9999" data-adicionado="18" id="rip-fax">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Fax</span>
@@ -1332,7 +1484,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Clippy" data-categoria="UX" data-ano-inicio="1996" data-ano-fim="2001" id="rip-clippy">
+            <details class="rip-lapide" data-nome="Clippy" data-categoria="UX" data-ano-inicio="1996" data-ano-fim="2001" data-adicionado="19" id="rip-clippy">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Clippy</span>
@@ -1367,7 +1519,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="QR Code pré-pandemia" data-categoria="Marketing" data-ano-inicio="1994" data-ano-fim="2019" id="rip-qr-code">
+            <details class="rip-lapide" data-nome="QR Code pré-pandemia" data-categoria="Marketing" data-ano-inicio="1994" data-ano-fim="2019" data-adicionado="20" id="rip-qr-code">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ QR Code pré-pandemia</span>
@@ -1402,7 +1554,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="NFT como solução universal" data-categoria="Marketing" data-ano-inicio="2021" data-ano-fim="2022" id="rip-nft">
+            <details class="rip-lapide" data-nome="NFT como solução universal" data-categoria="Marketing" data-ano-inicio="2021" data-ano-fim="2022" data-adicionado="21" id="rip-nft">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ NFT como solução universal</span>
@@ -1437,7 +1589,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Metaverso como promessa" data-categoria="Conceitos" data-ano-inicio="2021" data-ano-fim="2023" id="rip-metaverso">
+            <details class="rip-lapide" data-nome="Metaverso como promessa" data-categoria="Conceitos" data-ano-inicio="2021" data-ano-fim="2023" data-adicionado="22" id="rip-metaverso">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Metaverso como promessa</span>
@@ -1472,7 +1624,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Hamburger Menu como solução pra tudo" data-categoria="UX" data-ano-inicio="1981" data-ano-fim="9999" id="rip-hamburger-menu">
+            <details class="rip-lapide" data-nome="Hamburger Menu como solução pra tudo" data-categoria="UX" data-ano-inicio="1981" data-ano-fim="9999" data-adicionado="23" id="rip-hamburger-menu">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Hamburger Menu como solução pra tudo</span>
@@ -1507,7 +1659,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="AngularJS" data-categoria="Programação" data-ano-inicio="2010" data-ano-fim="2021" id="rip-angularjs">
+            <details class="rip-lapide" data-nome="AngularJS" data-categoria="Programação" data-ano-inicio="2010" data-ano-fim="2021" data-adicionado="24" id="rip-angularjs">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ AngularJS</span>
@@ -1542,7 +1694,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Flat Design extremo" data-categoria="Design" data-ano-inicio="2013" data-ano-fim="2018" id="rip-flat-design">
+            <details class="rip-lapide" data-nome="Flat Design extremo" data-categoria="Design" data-ano-inicio="2013" data-ano-fim="2018" data-adicionado="25" id="rip-flat-design">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Flat Design extremo</span>
@@ -1577,7 +1729,7 @@
                 </div>
             </details>
 
-            <details class="rip-lapide" data-nome="Google Stadia" data-categoria="Games" data-ano-inicio="2019" data-ano-fim="2023" id="rip-google-stadia">
+            <details class="rip-lapide" data-nome="Google Stadia" data-categoria="Games" data-ano-inicio="2019" data-ano-fim="2023" data-adicionado="26" id="rip-google-stadia">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Google Stadia</span>
@@ -1631,9 +1783,22 @@
                     - data-ano-fim         → ano que morreu, ex: "2022".
                                              Se ainda não morreu oficialmente,
                                              use "9999" (assim ele sempre
-                                             aparece por último em "mais
-                                             recentes" e por primeiro em
-                                             "mais antigos" continua correto)
+                                             aparece por último em "morreram
+                                             mais recentemente" e por primeiro
+                                             em "morreram há mais tempo"
+                                             continua correto)
+                    - data-adicionado      → o PRÓXIMO número da sequência.
+                                             O item mais novo hoje é o 28
+                                             (Discman), então o próximo item
+                                             que você adicionar deve usar
+                                             data-adicionado="29", o
+                                             seguinte "30", e assim por
+                                             diante. É esse número (não a
+                                             posição no arquivo) que decide
+                                             a ordem em "Últimas covas
+                                             adicionadas" — por isso pode
+                                             colar o bloco em qualquer lugar
+                                             da lista.
                     - id                   → um id único, tipo
                                              id="rip-nome-do-item" (sem
                                              espaço, sem acento, tudo minúsculo)
@@ -1647,13 +1812,14 @@
                     - as 3 seções          → O que era / Por que fez
                                              sucesso / O que causou a morte
 
-                 Não precisa mexer em mais nada: busca, filtro e o contador
-                 de "X sepultamentos encontrados" se atualizam sozinhos.
+                 Não precisa mexer em mais nada: busca, filtro, ordenação
+                 e o contador de "X sepultamentos encontrados" se
+                 atualizam sozinhos.
 
                  Template pronto pra copiar (está comentado, então não
                  aparece na página até você copiar e descomentar):
 
-            <details class="rip-lapide" data-nome="NOME DO ITEM" data-categoria="Categoria" data-ano-inicio="0000" data-ano-fim="0000" id="rip-nome-do-item">
+            <details class="rip-lapide" data-nome="NOME DO ITEM" data-categoria="Categoria" data-ano-inicio="0000" data-ano-fim="0000" data-adicionado="0000" id="rip-nome-do-item">
                 <summary>
                     <div class="rip-lapide-info">
                         <span class="rip-lapide-nome">⚰️ Nome do item</span>
@@ -1691,7 +1857,7 @@
                  ============================================================ -->
 
 
-<details class="rip-lapide" data-nome="Orelhão" data-categoria="Comunicação" data-ano-inicio="1970" data-ano-fim="2015" id="rip-orelhao">
+<details class="rip-lapide" data-nome="Orelhão" data-categoria="Comunicação" data-ano-inicio="1970" data-ano-fim="2015" data-adicionado="27" id="rip-orelhao">
 
     <summary>
 
@@ -1763,7 +1929,7 @@
 
 </details>
 
-<details class="rip-lapide" data-nome="Discman" data-categoria="Música" data-ano-inicio="1984" data-ano-fim="2010" id="rip-discman">
+<details class="rip-lapide" data-nome="Discman" data-categoria="Música" data-ano-inicio="1984" data-ano-fim="2010" data-adicionado="28" id="rip-discman">
 
     <summary>
 
@@ -1904,7 +2070,13 @@
         var selectOrdenar = document.getElementById('rip-select-ordenar');
         var contador = document.getElementById('rip-contador');
         var vazio = document.getElementById('rip-vazio-busca');
-        var categoriaAtiva = 'todos';
+
+        // Quantas covas aparecem por padrão no estado "Últimas adicionadas".
+        var LIMITE_RECENTES = 5;
+
+        // 'recentes' é o estado padrão da página (substitui o antigo "todos").
+        // Não é uma categoria real — é tratado à parte em aplicarFiltroEBusca().
+        var categoriaAtiva = 'recentes';
 
         function normalizar(texto) {
             return texto
@@ -1921,25 +2093,61 @@
             return normalizar(lapide.textContent);
         }
 
+        function idsDasMaisRecentes(quantidade) {
+            // Calcula direto pela data-adicionado, sem depender da posição
+            // no DOM — assim continua funcionando mesmo que uma cova nova
+            // seja colada em qualquer lugar do HTML.
+            var ordenadasPorRecencia = lapides.slice().sort(function (a, b) {
+                return parseInt(b.dataset.adicionado, 10) - parseInt(a.dataset.adicionado, 10);
+            });
+
+            var ids = {};
+            ordenadasPorRecencia.slice(0, quantidade).forEach(function (lapide) {
+                ids[lapide.id] = true;
+            });
+            return ids;
+        }
+
         function aplicarFiltroEBusca() {
             var termo = normalizar(inputBusca.value.trim());
             var visiveis = 0;
 
-            lapides.forEach(function (lapide) {
-                // Enquanto há um termo de busca, ela vale pra tudo, ignorando
-                // o filtro de categoria — buscar "flash" acha Adobe Flash
-                // mesmo se o filtro estiver marcado em outra categoria.
-                var bateCategoria = termo !== '' || categoriaAtiva === 'todos' || lapide.dataset.categoria === categoriaAtiva;
-                var bateBusca = termo === '' || textoBusca(lapide).indexOf(termo) !== -1;
-                var mostrar = bateCategoria && bateBusca;
+            if (termo !== '') {
+                // Buscar vale pra tudo, ignorando tanto o filtro de categoria
+                // quanto o limite de "últimas adicionadas" — buscar "flash"
+                // deve achar Adobe Flash mesmo que ele não esteja entre as
+                // 5 covas mais recentes.
+                lapides.forEach(function (lapide) {
+                    var mostrar = textoBusca(lapide).indexOf(termo) !== -1;
+                    lapide.hidden = !mostrar;
+                    if (mostrar) visiveis += 1;
+                });
+            } else if (categoriaAtiva === 'recentes') {
+                var idsVisiveis = idsDasMaisRecentes(LIMITE_RECENTES);
+                lapides.forEach(function (lapide) {
+                    var mostrar = !!idsVisiveis[lapide.id];
+                    lapide.hidden = !mostrar;
+                    if (mostrar) visiveis += 1;
+                });
+            } else {
+                lapides.forEach(function (lapide) {
+                    var mostrar = lapide.dataset.categoria === categoriaAtiva;
+                    lapide.hidden = !mostrar;
+                    if (mostrar) visiveis += 1;
+                });
+            }
 
-                lapide.hidden = !mostrar;
-                if (mostrar) visiveis += 1;
-            });
-
-            contador.textContent = visiveis === 1
-                ? '1 sepultamento encontrado.'
-                : visiveis + ' sepultamentos encontrados.';
+            if (termo !== '') {
+                contador.textContent = visiveis === 1
+                    ? '1 sepultamento encontrado.'
+                    : visiveis + ' sepultamentos encontrados.';
+            } else if (categoriaAtiva === 'recentes') {
+                contador.textContent = 'Mostrando as ' + Math.min(LIMITE_RECENTES, lapides.length) + ' últimas covas adicionadas.';
+            } else {
+                contador.textContent = visiveis === 1
+                    ? '1 sepultamento nesta categoria.'
+                    : visiveis + ' sepultamentos nesta categoria.';
+            }
 
             vazio.classList.toggle('rip-ativo', visiveis === 0);
         }
@@ -1956,8 +2164,14 @@
                 if (modo === 'antigos') {
                     return parseInt(a.dataset.anoInicio, 10) - parseInt(b.dataset.anoInicio, 10);
                 }
-                // 'recentes' (padrão): pelo ano de "morte" mais recente primeiro
-                return parseInt(b.dataset.anoFim, 10) - parseInt(a.dataset.anoFim, 10);
+                if (modo === 'recentes') {
+                    // pelo ano de "morte" mais recente primeiro
+                    return parseInt(b.dataset.anoFim, 10) - parseInt(a.dataset.anoFim, 10);
+                }
+                // 'novos' (padrão): pela ordem em que a cova foi adicionada
+                // ao site, a mais recente primeiro — não depende da posição
+                // no HTML, só do número em data-adicionado.
+                return parseInt(b.dataset.adicionado, 10) - parseInt(a.dataset.adicionado, 10);
             });
 
             ordenados.forEach(function (lapide) {
@@ -1968,9 +2182,9 @@
 
         inputBusca.addEventListener('input', function () {
             if (inputBusca.value.trim() !== '') {
-                categoriaAtiva = 'todos';
+                categoriaAtiva = 'recentes';
                 botoesFiltro.forEach(function (b) {
-                    b.setAttribute('aria-pressed', b.dataset.categoria === 'todos' ? 'true' : 'false');
+                    b.setAttribute('aria-pressed', b.dataset.categoria === 'recentes' ? 'true' : 'false');
                 });
             }
             aplicarFiltroEBusca();
@@ -2075,6 +2289,7 @@
             });
         });
 
+        ordenar();
         aplicarFiltroEBusca();
     })();
     </script>
