@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<!-- ==========================================================
+     Página: NUVEM DE BACKUP FÍSICA™ — coleção UPUBLI™ (produtos fictícios)
+
+     Landing page satírica, dentro do padrão visual da Upixel:
+     fundo preto, rosa #FA397A. A fonte pixelizada (Pixelify Sans)
+     é usada só no menu de navegação, herdada do style.css global;
+     todo o conteúdo desta página (títulos, textos, tabelas) usa
+     a fonte padrão do sistema. Prefixo de classe próprio ".upubli-"
+     em tudo que é novo, pra não colidir com nada do resto do
+     site — header,
+     footer e FAQ reaproveitam exatamente as classes globais já
+     usadas em artigos.html / ux-challenge.html
+     (.meu-header / .footer / .faq / .faq-label / .faq-titulo).
+
+     Tudo puro: HTML, CSS e JS, sem framework, sem dependência
+     externa além das fontes do Google já usadas no site.
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nuvem de Backup Física™ | Upubli™ — produtos fictícios da Upixel</title>
+
+<meta name="description" content="Nuvem de Backup Física™: a primeira nuvem que você pode colocar na mesa. Um armazenamento fictício e satírico da coleção Upubli™ da Upixel.">
+<meta name="keywords" content="Nuvem de Backup Física, backup físico, cloud storage, armazenamento fictício, humor tecnologia, sátira tech, produto fictício, Upubli, Upixel">
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/pagina-upubli-nuvem-backup-fisica.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:locale" content="pt_BR">
+
+<meta property="og:title" content="Nuvem de Backup Física™ | Upubli™ — produtos fictícios da Upixel">
+<meta property="og:description" content="A primeira nuvem que você pode colocar na mesa. Zero cabos, zero servidores, zero garantia de funcionar. Uma sátira da coleção Upubli™ da Upixel.">
+<meta property="og:url" content="https://upixel.com.br/pagina-upubli-nuvem-backup-fisica.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-social-nuvem-backup-fisica.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nuvem de Backup Física™ | Upubli™ — produtos fictícios da Upixel">
+<meta name="twitter:description" content="Seus arquivos estão na nuvem, mas você nunca consegue tocar nela. A Upixel resolveu isso — literalmente. Produto fictício da coleção Upubli™.">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social-nuvem-backup-fisica.png">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Fonte usada pelo menu de navegação (.meu-header / .menu), definida em style.css.
+     Precisa deste link para o navegador baixar a fonte — sem ele o menu cai
+     no fallback padrão do sistema, mesmo com a regra CSS presente. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<!-- Mesmos arquivos de estilo do restante do site. Nenhuma regra foi alterada. -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "A Nuvem de Backup Física™ substitui um serviço de nuvem de verdade?", "acceptedAnswer": { "@type": "Answer", "text": "Em teoria não deveria. Na prática, é exatamente o oposto de qualquer solução real de backup — e essa é a graça." } },
+    { "@type": "Question", "name": "Posso guardar arquivos grandes dentro dela?", "acceptedAnswer": { "@type": "Answer", "text": "Pode tentar. Só fique atento ao aviso sobre chuva na embalagem." } },
+    { "@type": "Question", "name": "Funciona sem internet?", "acceptedAnswer": { "@type": "Answer", "text": "Funciona sem internet, sem Wi-Fi de verdade e, tecnicamente, sem armazenamento nenhum." } },
+    { "@type": "Question", "name": "Isso é um produto de verdade?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Nuvem de Backup Física™ é fictícia, faz parte da coleção satírica Upubli™ da Upixel, criada só pra entretenimento." } }
+  ]
+}
+</script>
+
+<!-- ==========================================================
+     CSS da página — prefixo .upubli- em tudo que é novo.
+     ========================================================== -->
+<style id="upubli-style">
+  .upubli-page {
+    --upubli-bg: #000000;
+    --upubli-text: #ffffff;
+    --upubli-muted: #828282;
+    --upubli-pink: #FA397A;
+    --upubli-border: #262626;
+    --upubli-border-strong: #333333;
+    --upubli-amarelo: #FFC531;
+
+    background: var(--upubli-bg);
+    color: var(--upubli-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  .upubli-page *,
+  .upubli-page *::before,
+  .upubli-page *::after {
+    box-sizing: border-box;
+  }
+
+  .upubli-page img {
+    max-width: 100%;
+  }
+
+  .upubli-secao {
+    padding: 88px 60px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .upubli-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--upubli-pink);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .upubli-titulo-secao {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 16px;
+  }
+
+  .upubli-sub-secao {
+    color: var(--upubli-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 62ch;
+    margin: 0 0 48px;
+  }
+
+  /* ---------- selo de produto fictício (topo) ---------- */
+
+  .upubli-aviso-topo {
+    background: linear-gradient(90deg, rgba(255, 197, 49, 0.1), rgba(255, 197, 49, 0.02));
+    border-bottom: 1px solid var(--upubli-border);
+    padding: 14px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  .upubli-aviso-selo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--upubli-amarelo);
+    color: #1a1400;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    flex: none;
+  }
+
+  .upubli-aviso-texto {
+    color: var(--upubli-muted);
+    font-size: .88rem;
+  }
+
+  .upubli-aviso-texto strong {
+    color: var(--upubli-text);
+  }
+
+  /* ---------- hero ---------- */
+
+  .upubli-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding-top: 72px;
+    padding-bottom: 56px;
+  }
+
+  .upubli-hero-texto {
+    max-width: 52ch;
+  }
+
+  .upubli-hero-titulo {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: clamp(2.4rem, 1.7rem + 2.8vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0 0 14px;
+  }
+
+  .upubli-hero-titulo .upubli-marca-registrada {
+    color: var(--upubli-pink);
+  }
+
+  .upubli-slogan {
+    color: var(--upubli-pink);
+    font-size: clamp(1.05rem, 1rem + .4vw, 1.35rem);
+    font-weight: 700;
+    margin: 0 0 20px;
+  }
+
+  .upubli-descricao {
+    color: var(--upubli-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 32px;
+  }
+
+  .upubli-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .upubli-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: .95rem;
+    font-weight: 700;
+    padding: 16px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+    font-family: inherit;
+  }
+
+  .upubli-btn:hover,
+  .upubli-btn:focus-visible {
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  .upubli-btn--primario {
+    background: var(--upubli-pink);
+    color: #000000;
+  }
+
+  .upubli-btn--primario:hover,
+  .upubli-btn--primario:focus-visible {
+    background: #ffffff;
+  }
+
+  .upubli-btn--secundario {
+    background: transparent;
+    color: var(--upubli-text);
+    border-color: var(--upubli-border-strong);
+  }
+
+  .upubli-btn--secundario:hover,
+  .upubli-btn--secundario:focus-visible {
+    border-color: var(--upubli-pink);
+    color: var(--upubli-pink);
+  }
+
+  /* ---------- barra de confiança (detalhes de realismo) ---------- */
+
+  .upubli-confianca {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-bottom: 10px;
+  }
+
+  .upubli-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--upubli-muted);
+    font-size: .82rem;
+  }
+
+  .upubli-chip strong {
+    color: var(--upubli-text);
+    font-weight: 700;
+  }
+
+  .upubli-pulso {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #35d17a;
+    flex: none;
+    animation: upubli-pulsar 1.6s ease-in-out infinite;
+  }
+
+  @keyframes upubli-pulsar {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(53, 209, 122, .5); }
+    50% { opacity: .6; box-shadow: 0 0 0 4px rgba(53, 209, 122, 0); }
+  }
+
+  .upubli-letra-miuda {
+    color: #5c5c5c;
+    font-size: .74rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ---------- imagem do produto ---------- */
+
+  .upubli-hero-imagem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .upubli-fita-vendido {
+    position: absolute;
+    top: 18px;
+    right: -6px;
+    background: var(--upubli-pink);
+    color: #000000;
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 8px 18px;
+    border-radius: 6px 0 0 6px;
+    box-shadow: -4px 4px 0 rgba(0,0,0,.4);
+    z-index: 2;
+  }
+
+  .upubli-lata {
+    width: min(320px, 70vw);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 30px 50px rgba(250, 57, 122, .18));
+    animation: upubli-flutuar 5s ease-in-out infinite;
+  }
+
+  @keyframes upubli-flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .upubli-lata,
+    .upubli-pulso {
+      animation: none !important;
+    }
+  }
+
+  /* ---------- benefícios ---------- */
+
+  .upubli-beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .upubli-beneficio {
+    background: #0a0a0a;
+    border: 1px solid var(--upubli-border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+
+  .upubli-beneficio:hover {
+    border-color: var(--upubli-pink);
+    transform: translateY(-3px);
+  }
+
+  .upubli-beneficio-icone {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .upubli-beneficio p {
+    margin: 0;
+    color: var(--upubli-text);
+    font-size: .98rem;
+    line-height: 1.55;
+  }
+
+  .upubli-nota-asterisco {
+    margin-top: 32px;
+    color: #5c5c5c;
+    font-size: .76rem;
+    line-height: 1.7;
+  }
+
+  /* ---------- como funciona ---------- */
+
+  .upubli-passos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+  }
+
+  .upubli-passo {
+    position: relative;
+    padding-top: 8px;
+  }
+
+  .upubli-passo-numero {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--upubli-pink);
+    line-height: 1;
+    margin-bottom: 14px;
+    opacity: .9;
+  }
+
+  .upubli-passo h3 {
+    font-size: 1.05rem;
+    margin: 0 0 8px;
+  }
+
+  .upubli-passo p {
+    color: var(--upubli-muted);
+    font-size: .92rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ---------- embalagem ---------- */
+
+  .upubli-embalagem-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .upubli-embalagem-lista li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    background: #0a0a0a;
+    border: 1px solid var(--upubli-border);
+    border-radius: 10px;
+    color: var(--upubli-text);
+    font-size: .96rem;
+    line-height: 1.55;
+  }
+
+  .upubli-embalagem-lista li::before {
+    content: "📦";
+    flex: none;
+    font-size: 1.1rem;
+  }
+
+  /* ---------- tabelas (especificações e comparativo) ---------- */
+
+  .upubli-tabela-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--upubli-border);
+    border-radius: 12px;
+  }
+
+  .upubli-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 480px;
+  }
+
+  .upubli-tabela th,
+  .upubli-tabela td {
+    text-align: left;
+    padding: 14px 20px;
+    font-size: .92rem;
+    border-bottom: 1px solid var(--upubli-border);
+    white-space: normal;
+  }
+
+  .upubli-tabela thead th {
+    background: #0a0a0a;
+    color: var(--upubli-pink);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-weight: 700;
+  }
+
+  .upubli-tabela tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .upubli-tabela tbody th {
+    color: var(--upubli-muted);
+    font-weight: 700;
+    width: 220px;
+  }
+
+  .upubli-tabela td {
+    color: var(--upubli-text);
+  }
+
+  .upubli-tabela--comparativo th:not(:first-child),
+  .upubli-tabela--comparativo td:not(:first-child) {
+    text-align: center;
+  }
+
+  .upubli-tabela--comparativo .upubli-coluna-produto {
+    color: var(--upubli-pink);
+    background: rgba(250, 57, 122, .06);
+  }
+
+  .upubli-check {
+    color: #35d17a;
+  }
+
+  .upubli-x {
+    color: #828282;
+  }
+
+  /* ---------- selo do instituto (certificação fictícia) ---------- */
+
+  .upubli-instituto {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .upubli-selo-instituto {
+    flex: none;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 2px dashed var(--upubli-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    transform: rotate(-8deg);
+    color: var(--upubli-pink);
+    font-size: .62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    line-height: 1.3;
+  }
+
+  .upubli-instituto-texto p {
+    margin: 0;
+    color: var(--upubli-muted);
+    font-size: .88rem;
+    line-height: 1.6;
+    max-width: 52ch;
+  }
+
+  .upubli-instituto-texto strong {
+    color: var(--upubli-text);
+  }
+
+  /* ---------- avaliações ---------- */
+
+  .upubli-avaliacoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .upubli-avaliacao {
+    background: #0a0a0a;
+    border: 1px solid var(--upubli-border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .upubli-estrelas {
+    color: var(--upubli-amarelo);
+    font-size: .95rem;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .upubli-avaliacao p {
+    color: var(--upubli-text);
+    font-size: .96rem;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+
+  .upubli-avaliador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .upubli-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--upubli-pink);
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: .85rem;
+    flex: none;
+  }
+
+  .upubli-avaliador-nome {
+    color: var(--upubli-text);
+    font-size: .88rem;
+    font-weight: 700;
+    display: block;
+  }
+
+  .upubli-avaliador-cargo {
+    color: var(--upubli-muted);
+    font-size: .78rem;
+    display: block;
+  }
+
+  /* ---------- rodapé de aviso fictício ---------- */
+
+  .upubli-aviso-rodape {
+    background: #0a0a0a;
+    border-top: 1px solid var(--upubli-border);
+    border-bottom: 1px solid var(--upubli-border);
+    padding: 32px 60px;
+    text-align: center;
+  }
+
+  .upubli-aviso-rodape p {
+    max-width: 62ch;
+    margin: 0 auto;
+    color: var(--upubli-muted);
+    font-size: .88rem;
+    line-height: 1.6;
+  }
+
+  .upubli-aviso-rodape strong {
+    color: var(--upubli-text);
+  }
+
+  /* ---------- modal ---------- */
+
+  .upubli-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .78);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .28s ease, visibility 0s linear .28s;
+  }
+
+  .upubli-modal-overlay.upubli-aberto {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .28s ease, visibility 0s linear 0s;
+  }
+
+  .upubli-modal {
+    background: #0a0a0a;
+    border: 1px solid var(--upubli-border-strong);
+    border-radius: 16px;
+    max-width: 440px;
+    width: 100%;
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+    transform: scale(.9) translateY(12px);
+    opacity: 0;
+    transition: transform .32s cubic-bezier(.2, .8, .2, 1), opacity .28s ease;
+  }
+
+  .upubli-modal-overlay.upubli-aberto .upubli-modal {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  .upubli-modal-emoji {
+    font-size: 2.6rem;
+    display: block;
+    margin-bottom: 16px;
+    animation: upubli-balancar .6s ease-in-out .1s;
+  }
+
+  @keyframes upubli-balancar {
+    0% { transform: rotate(0deg) scale(.6); opacity: 0; }
+    40% { transform: rotate(-12deg) scale(1.05); opacity: 1; }
+    70% { transform: rotate(8deg) scale(1); }
+    100% { transform: rotate(0deg) scale(1); }
+  }
+
+  .upubli-modal h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 1.3rem;
+    margin: 0 0 14px;
+  }
+
+  .upubli-modal p {
+    color: var(--upubli-muted);
+    font-size: .92rem;
+    line-height: 1.65;
+    margin: 0 0 10px;
+  }
+
+  .upubli-modal p:last-of-type {
+    margin-bottom: 28px;
+  }
+
+  .upubli-modal .upubli-btn {
+    width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .upubli-modal-overlay,
+    .upubli-modal,
+    .upubli-modal-emoji {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  /* ---------- responsivo ---------- */
+
+  @media (max-width: 900px) {
+    .upubli-secao {
+      padding: 64px 32px;
+    }
+
+    .upubli-hero {
+      grid-template-columns: 1fr;
+      padding-top: 48px;
+      text-align: left;
+    }
+
+    .upubli-hero-imagem {
+      order: -1;
+    }
+
+    .upubli-hero-texto {
+      max-width: 100%;
+    }
+
+    .upubli-instituto {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .upubli-instituto-texto p {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .upubli-secao {
+      padding: 48px 22px;
+    }
+
+    .upubli-aviso-topo {
+      padding: 12px 22px;
+    }
+
+    .upubli-btn {
+      width: 100%;
+    }
+
+    .upubli-botoes {
+      flex-direction: column;
+    }
+
+    .upubli-confianca {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .upubli-instituto {
+      align-items: center;
+    }
+
+    .upubli-modal {
+      padding: 32px 22px;
+    }
+  }
+</style>
+
+</head>
+<body class="upubli-page">
+
+    <!-- ======================================================
+         AVISO FIXO NO TOPO — selo de produto fictício
+         ====================================================== -->
+    <div class="upubli-aviso-topo">
+        <span class="upubli-aviso-selo">🟡 Produto fictício</span>
+        <span class="upubli-aviso-texto">Este item faz parte da <strong>Upubli™</strong>, a coleção de produtos satíricos da Upixel. Nada aqui é vendido de verdade.</span>
+    </div>
+
+    <!-- ======================================================
+         HEADER — idêntico ao das outras páginas do site
+         ====================================================== -->
+    <header class="meu-header">
+        <div class="logo">
+            <img src="logobranca.png" alt="Logotipo do meu site">
+        </div>
+
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html">Glossário UX</a>
+            <a href="rip.html">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html">Besteirol</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <main class="upubli-page">
+
+        <!-- ================= HERO ================= -->
+        <section class="upubli-hero upubli-secao">
+
+            <div class="upubli-hero-texto">
+<span class="upubli-eyebrow">Upubli™ apresenta</span>
+
+<h1 class="upubli-hero-titulo">
+    Nuvem de Backup Física<span class="upubli-marca-registrada">™</span>
+</h1>
+
+<p class="upubli-slogan">
+    Se seus arquivos estão na nuvem, por que você ainda não consegue tocar nela?
+</p>
+
+<p class="upubli-descricao">
+    Cansado de deixar seus arquivos perdidos em servidores distantes?<br>
+    ☁️ A primeira nuvem que você pode colocar na mesa, de verdade.<br>
+    🔌 Zero cabos — porque até o armazenamento merece liberdade.<br>
+    📁 Recuperação manual: perdeu um arquivo? Procure dentro da nuvem.<br>
+    💻 Compatível com qualquer sistema, até aquele PC de 2008.
+</p>
+
+<div class="upubli-botoes">
+    <button type="button" class="upubli-btn upubli-btn--primario" id="upubli-btn-comprar">
+        Comprar Agora
+    </button>
+
+    <a href="#upubli-como-funciona" class="upubli-btn upubli-btn--secundario">
+        Saiba como funciona
+    </a>
+</div>
+
+<div class="upubli-confianca">
+    <span class="upubli-chip">
+        <span class="upubli-pulso" aria-hidden="true"></span>
+        <strong id="upubli-contador-visualizacoes">37</strong> pessoas tentando tocar a nuvem agora
+    </span>
+
+    <span class="upubli-chip">
+        ☁️ Estoque: <strong>500 nuvens</strong> compactadas
+    </span>
+
+    <span class="upubli-chip">
+        🌦️ Entrega sujeita a <strong>previsão do tempo*</strong>
+    </span>
+
+    <span class="upubli-chip">
+        🛡️ Garantia <strong>atmosférica vitalícia*</strong>
+    </span>
+</div>
+
+<p class="upubli-letra-miuda">
+    *A nuvem é física, mas os dados continuam sendo só uma ideia.
+    Produto desenvolvido para quem confunde metáfora com hardware.
+</p>
+
+</div>
+
+<div class="upubli-hero-imagem">
+    <span class="upubli-fita-vendido">
+        Lançamento
+    </span>
+
+    <!--
+        Sugestão de nome de arquivo para a imagem do produto
+        (crie e salve com este nome na pasta de imagens do site):
+        nuvem-backup-fisica-upubli-upixel.png
+    -->
+    <img
+        class="upubli-lata"
+        src="nuvem-backup-fisica-upubli-upixel.png"
+        alt="Nuvem de Backup Física flutuando sobre uma mesa, com cabos soltos ao redor"
+        width="320"
+        height="320"
+        loading="lazy"
+    >
+</div>
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= BENEFÍCIOS ================= -->
+        <section class="upubli-secao" id="upubli-beneficios">
+            <span class="upubli-eyebrow">Tecnologia Cloud 100% Física</span>
+
+<h2 class="upubli-titulo-secao">
+    Benefícios
+</h2>
+
+<p class="upubli-sub-secao">
+    Backup que você pode ver, tocar e, com um pouco de sorte, encontrar de novo.
+</p>
+
+<div class="upubli-beneficios-grid">
+
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">☁️</span>
+        <p><strong>Backup visível</strong><br>
+        Veja seus arquivos flutuando diante dos seus olhos.</p>
+    </div>
+
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">🔌</span>
+        <p><strong>Zero cabos</strong><br>
+        Porque até o armazenamento merece liberdade.</p>
+    </div>
+
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">☁️</span>
+        <p><strong>Tecnologia Cloud 100% física</strong><br>
+        Sem servidores misteriosos em algum lugar do planeta.</p>
+    </div>
+
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">🔍</span>
+        <p><strong>Recuperação manual</strong><br>
+        Perdeu um arquivo? Procure dentro da nuvem.</p>
+    </div>
+
+    <div class="upubli-beneficio">
+        <span class="upubli-beneficio-icone">💻</span>
+        <p><strong>Compatível com qualquer sistema</strong><br>
+        Windows, Mac, Linux e até aquele computador de 2008.</p>
+    </div>
+
+</div>
+
+<p class="upubli-nota-asterisco">
+*Backup físico não avaliado por nenhuma operadora de nuvem real. Nuvem de Backup Física™ é um produto fictício e não substitui um backup de verdade — infelizmente.
+</p>
+
+</section>
+
+<hr class="divisor-secao">
+
+
+<!-- ================= COMO FUNCIONA ================= -->
+
+<section class="upubli-secao" id="upubli-como-funciona">
+
+<span class="upubli-eyebrow">Modo de uso</span>
+
+<h2 class="upubli-titulo-secao">
+    Como funciona
+</h2>
+
+<p class="upubli-sub-secao">
+    Quatro passos entre uma pasta perdida e a tranquilidade de "está em algum lugar".
+</p>
+
+<div class="upubli-passos">
+
+    <div class="upubli-passo">
+        <span class="upubli-passo-numero">01</span>
+        <h3>Abra a caixa</h3>
+        <p>Retire a Nuvem de Backup Física™ compactada da embalagem original.</p>
+    </div>
+
+    <div class="upubli-passo">
+        <span class="upubli-passo-numero">02</span>
+        <h3>Posicione na mesa</h3>
+        <p>Escolha um local ventilado, mas nunca perto de um ventilador de verdade.</p>
+    </div>
+
+    <div class="upubli-passo">
+        <span class="upubli-passo-numero">03</span>
+        <h3>Aguarde a sincronização atmosférica</h3>
+        <p>A nuvem "sincroniza" sozinha — ou não, dependendo do clima do dia.</p>
+    </div>
+
+    <div class="upubli-passo">
+        <span class="upubli-passo-numero">04</span>
+        <h3>Recupere seus arquivos</h3>
+        <p>Procure manualmente dentro da nuvem sempre que precisar de algo.</p>
+    </div>
+
+</div>
+
+</section>
+
+<hr class="divisor-secao">
+
+
+<!-- ================= ESPECIFICAÇÕES TÉCNICAS ================= -->
+
+<section class="upubli-secao" id="upubli-especificacoes">
+
+<span class="upubli-eyebrow">Ficha técnica</span>
+
+<h2 class="upubli-titulo-secao">
+    Especificações técnicas
+</h2>
+
+<p class="upubli-sub-secao">
+    Tudo que você precisa saber antes de tentar tocar a nuvem.
+</p>
+
+<div class="upubli-tabela-wrapper">
+    <table class="upubli-tabela">
+        <tbody>
+            <tr>
+                <th scope="row">Modelo</th>
+                <td>CloudBox Air™</td>
+            </tr>
+            <tr>
+                <th scope="row">Capacidade</th>
+                <td>500 GB (nuvem pequena) · 2 TB (nuvem profissional) · Ilimitada (quando chove)</td>
+            </tr>
+            <tr>
+                <th scope="row">Conectividade</th>
+                <td>Wi-Fi imaginário · Bluetooth atmosférico · USB apenas para parecer tecnológico</td>
+            </tr>
+            <tr>
+                <th scope="row">Peso</th>
+                <td>0 gramas</td>
+            </tr>
+            <tr>
+                <th scope="row">Bateria</th>
+                <td>Carregada pela previsão do tempo</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</section>
+
+<hr class="divisor-secao">
+
+
+<!-- ================= EMBALAGEM ================= -->
+
+<section class="upubli-secao" id="upubli-embalagem">
+
+<span class="upubli-eyebrow">Unboxing</span>
+
+<h2 class="upubli-titulo-secao">
+    O que vem na embalagem
+</h2>
+
+<p class="upubli-sub-secao">
+    Tudo que você precisa para guardar seus arquivos em um lugar que dá pra apontar.
+</p>
+
+<ul class="upubli-embalagem-lista">
+    <li>1 nuvem física compactada.</li>
+    <li>Manual de instalação em 48 páginas.</li>
+    <li>Certificado "seus arquivos estão em algum lugar".</li>
+    <li>Adesivo "Powered by Cloud".</li>
+</ul>
+
+<p class="upubli-nota-asterisco">
+    <strong style="color: var(--upubli-text);">Avisos importantes:</strong><br>
+    ⚠️ Não deixar próximo de ventiladores.<br>
+    ⚠️ Pode desaparecer durante atualizações meteorológicas.<br>
+    ⚠️ Arquivos grandes podem causar chuva.
+</p>
+
+</section>
+        <hr class="divisor-secao">
+
+        <!-- ================= FAQ ================= -->
+<section class="faq upubli-secao">
+  <span class="faq-label">Perguntas frequentes</span>
+<h2 class="faq-titulo">Antes de tentar tocar a nuvem, tire essas dúvidas</h2>
+
+<details>
+    <summary>A Nuvem de Backup Física™ substitui um serviço de nuvem de verdade?</summary>
+    <p>Em teoria não deveria. Na prática, é exatamente o oposto de qualquer solução real de backup — e essa é a graça.</p>
+</details>
+
+<details>
+    <summary>Posso guardar arquivos grandes dentro dela?</summary>
+    <p>Pode tentar. Só fique atento ao aviso sobre chuva na embalagem.</p>
+</details>
+
+<details>
+    <summary>Funciona sem internet?</summary>
+    <p>Funciona sem internet, sem Wi-Fi de verdade e, tecnicamente, sem armazenamento nenhum.</p>
+</details>
+
+<details>
+    <summary>Preciso instalar algum driver?</summary>
+    <p>Não. Só abrir a caixa, colocar na mesa e admirar.</p>
+</details>
+
+<details>
+    <summary>O que acontece se eu perder a nuvem de vista?</summary>
+    <p>Nada muda. Tecnicamente ela nunca esteve totalmente lá.</p>
+</details>
+
+<details>
+    <summary>Isso é um produto de verdade?</summary>
+    <p>Não. A Nuvem de Backup Física™ é um produto 100% fictício da coleção satírica Upubli™ da Upixel. Ela existe apenas para lembrar que backup de verdade continua sendo aquele em nuvem — ou em HD externo mesmo.</p>
+</details>
+
+</section>
+        <hr class="divisor-secao">
+
+        <!-- ================= AVISO FICTÍCIO (antes do footer) ================= -->
+        <div class="upubli-aviso-rodape">
+            <p><strong>Este é um produto fictício</strong>, criado apenas para entretenimento pela Upixel. Nuvem de Backup Física™, a Upubli™ e todos os depoimentos desta página não existem, não são vendidos e não substituem nenhum serviço de backup ou armazenamento em nuvem de verdade — esses, sim, continuam bem reais e recomendados.</p>
+        </div>
+
+    </main>
+
+    <!-- ======================================================
+         FOOTER — idêntico ao das outras páginas
+         ====================================================== -->
+    <footer class="footer">
+
+        <div class="footer-esquerda">
+            <img src="logobranca.png" alt="Upixel" class="footer-logo">
+            <p class="copyright">
+                Upixel. Todos os direitos reservados.
+            </p>
+        </div>
+
+        <div class="footer-centro">
+            <nav class="footer-menu">
+                <a href="index.html">Home</a>
+                <a href="artigos.html">Artigos</a>
+                <a href="ux-challenge.html">UX Challenge</a>
+                <a href="glossario-dissecado-de-ux.html">Glossário UX</a>
+                <a href="rip.html">RIP</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="besteirol.html">Besteirol</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+
+    </footer>
+
+    <div class="footer-ilustracao">
+        <img src="rodape.png" alt="Ilustração Footer">
+    </div>
+
+    <!-- ======================================================
+         MODAL — "Comprar Agora"
+         ====================================================== -->
+    <div class="upubli-modal-overlay" id="upubli-modal-overlay" role="presentation">
+        <div class="upubli-modal" role="dialog" aria-modal="true" aria-labelledby="upubli-modal-titulo">
+            <span class="upubli-modal-emoji" aria-hidden="true">😂</span>
+            <h3 id="upubli-modal-titulo">É sério que você compraria isso?</h3>
+            <p>Infelizmente (ou felizmente), nenhum dos produtos desta página existe.</p>
+            <p>Esta página faz parte da coleção de produtos fictícios da Upixel. Se você chegou até aqui, nossa propaganda funcionou.</p>
+            <p>Obrigado por entrar na brincadeira.</p>
+            <button type="button" class="upubli-btn upubli-btn--primario" id="upubli-btn-fechar-modal">
+                Voltar para a realidade
+            </button>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         JS da página — isolado num IIFE. Cuida de:
+         1) contador de "pessoas vendo agora" (flutuação leve)
+         2) abrir/fechar o modal de compra, com animação e
+            fechamento por Esc, clique fora ou botão
+         ====================================================== -->
+    <script>
+    (function () {
+        'use strict';
+
+        // ---------- contador de visualizações (só estética) ----------
+        var elContador = document.getElementById('upubli-contador-visualizacoes');
+        if (elContador) {
+            var valorAtual = parseInt(elContador.textContent, 10) || 42;
+
+            setInterval(function () {
+                var variacao = Math.floor(Math.random() * 5) - 2; // -2 a +2
+                valorAtual = Math.max(12, Math.min(97, valorAtual + variacao));
+                elContador.textContent = valorAtual;
+            }, 3500);
+        }
+
+        // ---------- modal "Comprar Agora" ----------
+        var overlay = document.getElementById('upubli-modal-overlay');
+        var btnAbrir = document.getElementById('upubli-btn-comprar');
+        var btnFechar = document.getElementById('upubli-btn-fechar-modal');
+        var ultimoFoco = null;
+
+        function abrirModal() {
+            ultimoFoco = document.activeElement;
+            overlay.classList.add('upubli-aberto');
+            document.body.style.overflow = 'hidden';
+            btnFechar.focus();
+            document.addEventListener('keydown', aoPressionarTecla);
+        }
+
+        function fecharModal() {
+            overlay.classList.remove('upubli-aberto');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', aoPressionarTecla);
+            if (ultimoFoco && typeof ultimoFoco.focus === 'function') {
+                ultimoFoco.focus();
+            }
+        }
+
+        function aoPressionarTecla(evento) {
+            if (evento.key === 'Escape') {
+                fecharModal();
+            }
+        }
+
+        if (btnAbrir) btnAbrir.addEventListener('click', abrirModal);
+        if (btnFechar) btnFechar.addEventListener('click', fecharModal);
+
+        if (overlay) {
+            overlay.addEventListener('click', function (evento) {
+                // fecha só se o clique foi no fundo, não dentro da caixa do modal
+                if (evento.target === overlay) {
+                    fecharModal();
+                }
+            });
+        }
+    })();
+    </script>
+
+</body>
+</html>
