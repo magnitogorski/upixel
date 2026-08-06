@@ -863,14 +863,14 @@
     📉 Volte ao presente fingindo que sempre soube da resposta.
 </p>
 
-                <div class="upubli-botoes">
-                    <button type="button" class="upubli-btn upubli-btn--primario" id="upubli-btn-comprar">
-                        Comprar Agora
-                    </button>
-                    <a href="#upubli-como-funciona" class="upubli-btn upubli-btn--secundario">
-                        Saiba como funciona
-                    </a>
-                </div>
+ <div class="upubli-botoes">
+    <button type="button" class="upubli-btn upubli-btn--primario" id="upubli-btn-comprar">
+        Comprar Agora
+    </button>
+    <button type="button" class="upubli-btn upubli-btn--secundario" id="upubli-btn-compartilhar">
+        🔗 Compartilhar
+    </button>
+</div>
 
                 <div class="upubli-confianca">
                     <span class="upubli-chip"><span class="upubli-pulso" aria-hidden="true"></span> <strong id="upubli-contador-visualizacoes">42</strong> pessoas vendo este produto agora</span>
@@ -1216,7 +1216,51 @@
                 elContador.textContent = valorAtual;
             }, 3500);
         }
+// ---------- botão "Compartilhar" ----------
+        var btnCompartilhar = document.getElementById('upubli-btn-compartilhar');
+        var textoOriginalCompartilhar = btnCompartilhar ? btnCompartilhar.textContent : '';
 
+        function compartilharProduto() {
+            var url = window.location.href;
+            var dadosCompartilhamento = {
+                title: document.title,
+                text: 'Olha esse produto fictício da Upixel: UX Time Machine™',
+                url: url
+            };
+
+            // navegadores/celulares com suporte ao compartilhamento nativo
+            if (navigator.share) {
+                navigator.share(dadosCompartilhamento).catch(function () {
+                    // usuário cancelou o compartilhamento — não faz nada
+                });
+                return;
+            }
+
+            // fallback: copia o link pra área de transferência
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url)
+                    .then(mostrarConfirmacaoCopia)
+                    .catch(function () {
+                        window.prompt('Copie o link do produto:', url);
+                    });
+            } else {
+                window.prompt('Copie o link do produto:', url);
+            }
+        }
+
+        function mostrarConfirmacaoCopia() {
+            if (!btnCompartilhar) return;
+            btnCompartilhar.textContent = '✅ Link copiado!';
+            setTimeout(function () {
+                btnCompartilhar.textContent = textoOriginalCompartilhar;
+            }, 2000);
+        }
+
+        if (btnCompartilhar) {
+            btnCompartilhar.addEventListener('click', compartilharProduto);
+        }
+
+        
         // ---------- modal "Comprar Agora" ----------
         var overlay = document.getElementById('upubli-modal-overlay');
         var btnAbrir = document.getElementById('upubli-btn-comprar');
