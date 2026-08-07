@@ -2,52 +2,14 @@
 <html lang="pt-BR">
 <head>
 
-
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
-
-<!-- ==========================================================
-     CABEÇALHO (HEAD) DA PÁGINA
-
-     Tudo o que estiver dentro da tag <head> NÃO aparece
-     para o visitante.
-
-     Esta área contém:
-     • Configurações básicas da página
-     • SEO (Google e Bing)
-     • Compartilhamento em redes sociais
-     • Fontes
-     • Favicon
-     • Arquivos CSS
-     • Google Analytics
-     • Outros scripts futuros
-
-     IMPORTANTE:
-     • Não apagar nem mover este conteúdo sem necessidade.
-     • Ao criar novas páginas, copie esta estrutura e altere
-       apenas os títulos, descrições e URLs específicas.
-     ========================================================== -->
-
-
-<!-- ==========================================================
-     CONFIGURAÇÕES BÁSICAS
-     ========================================================== -->
-
+<!-- CABEÇALHO (HEAD) DA PÁGINA -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="enYczYyJ8jAaD5YW4W9ryeZWXjxfBshz7i_hoW3aDu4">
 
 <title>Upixel | UX, UI e Cultura Digital com Humor Crítico</title>
-
-
-<!-- ==========================================================
-     SEO
-     Informações utilizadas pelos mecanismos de busca.
-
-     OBS: acrescentei "humor", "feed", "memes" e "pixel feed"
-     nas keywords, já que agora a home também linka pro Pixel
-     Feed (conteúdo de humor), e não só pros artigos sérios.
-     ========================================================== -->
 
 <meta name="description" content="Underground dos 8 bits. Artigos, quizzes e besteirol sobre UX, influencers, infinite scroll e o que a internet não quer que você pense.">
 <meta name="keywords" content="pixel art, pixels, ui, ux, design, arte digital, 8 bits, videogames, criatividade, dashboards, interfaces, cultura digital, camisetas geek, humor, memes, pixel feed, feed de humor">
@@ -58,13 +20,6 @@
 
 <link rel="canonical" href="https://upixel.com.br/">
 
-
-<!-- ==========================================================
-     OPEN GRAPH
-     Informações utilizadas quando alguém compartilha
-     a página no WhatsApp, LinkedIn, Facebook, Discord etc.
-     ========================================================== -->
-
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Upixel">
 <meta property="og:title" content="Upixel | Pixel Art, UI, UX, Design e Cultura Digital">
@@ -72,55 +27,22 @@
 <meta property="og:url" content="https://upixel.com.br/">
 <meta property="og:image" content="https://upixel.com.br/imagens/capa-social.png">
 
-
-<!-- ==========================================================
-     TWITTER / X
-     Também utilizado por diversos aplicativos de mensagens.
-     ========================================================== -->
-
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Upixel | Pixel Art, UI, UX, Design e Cultura Digital">
 <meta name="twitter:description" content="Artigos sobre Pixel Art, UX, design, criatividade, cultura digital e nosso Pixel Feed de humor.">
 <meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.png">
-
-
-<!-- ==========================================================
-     FONTES
-     Fontes utilizadas pela Upixel.
-     ========================================================== -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 
-
-<!-- ==========================================================
-     FAVICON
-     Ícone exibido na aba do navegador.
-     ========================================================== -->
-
 <link rel="icon" type="image/png" href="favicon.png">
-
-
-<!-- ==========================================================
-     ESTILOS (CSS)
-     style.css  → Estilos principais do site.
-     mobile.css → Ajustes exclusivos para celulares.
-     ========================================================== -->
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="mobile.css">
 
-
-<!-- ==========================================================
-     DESTAQUE DO ARTIGO MAIS RECENTE
-
-     Bloco novo, isolado do resto do CSS: só estiliza o selo
-     "Novo" e a borda rosa do card marcado com a classe
-     "card-artigo--novo" lá embaixo, no primeiro <article> da
-     seção de artigos recentes. Nada mais no site é afetado.
-     ========================================================== -->
+<!-- DESTAQUE DO ARTIGO MAIS RECENTE -->
 <style>
     .card-artigo--novo {
         position: relative;
@@ -145,93 +67,332 @@
     }
 </style>
 
-
-<!-- ==========================================================
-     RESPONSIVO — ESCONDER IMAGENS DE SEÇÃO EM CELULAR/TABLET
-
-     Pedido: em telas de celular e tablet, as imagens grandes
-     de cada seção (hero, Games, Glossário, Quiz, Pixel Feed,
-     Sobre nós) somem. As únicas imagens que continuam
-     aparecendo em qualquer tamanho de tela são as dos CARDS
-     de artigo (.imagem-artigo).
-
-     Este bloco não mexe no mobile.css (que não foi enviado
-     pra mim) — ele só adiciona uma regra extra, com !important
-     pra garantir que vença qualquer regra equivalente que já
-     exista lá.
-
-     Breakpoint usado: 1024px (cobre tablet e celular juntos).
-     Se no seu mobile.css o corte de tablet for outro valor,
-     me avise o número exato e eu ajusto aqui.
-     ========================================================== -->
+<!-- RESPONSIVO — ESCONDER IMAGENS DE SEÇÃO EM CELULAR/TABLET -->
 <style>
     @media (max-width: 1024px) {
         .bloco-imagem,
         .sobre-imagem,
-        .pixelfeed-imagem {
+        .pixelfeed-imagem,
+        .destaque-imagem {
             display: none !important;
         }
     }
 </style>
 
+<!-- ESTILOS OTIMIZADOS -->
+<style id="home-style">
+    :root {
+        --upx-bg: #000000;
+        --upx-fg: #ffffff;
+        --upx-muted: #999999;
+        --upx-pink: #FA397A;
+        --upx-border: #262626;
+        --upx-border-strong: #333333;
+        --upx-card-bg: #0a0a0a;
+        --upx-max-width: 1280px;
+        --upx-font-clean: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+        --upx-section-padding: 80px;
+    }
 
-<!-- ==========================================================
-     GOOGLE ANALYTICS 4 (GA4)
+    /* Container Global para Widescreen */
+    .upx-container {
+        width: 100%;
+        max-width: var(--upx-max-width);
+        margin: 0 auto;
+        padding-left: 32px;
+        padding-right: 32px;
+        box-sizing: border-box;
+    }
 
-     Monitoramento de visitantes da Upixel.
+    /* Divisor */
+    .divisor-secao {
+        border: none;
+        border-top: 1px solid var(--upx-border);
+        margin: 0;
+        width: 100%;
+    }
 
-     IMPORTANTE:
-     • Manter este código em TODAS as páginas.
-     • Não alterar o ID de medição sem necessidade.
-     • Copiar este bloco ao criar novas páginas.
-     ========================================================== -->
+    /* Padronização do Espaçamento das Seções */
+    .conteudo-principal,
+    .artigos-recentes,
+    .destaque-secao,
+    .portal-secao,
+    .sobre-nos,
+    .spotify-section,
+    .newsletter {
+        padding-top: var(--upx-section-padding) !important;
+        padding-bottom: var(--upx-section-padding) !important;
+        box-sizing: border-box;
+    }
 
+    /* Títulos em Segoe UI */
+    .titulo-secao h2, 
+    .destaque-titulo, 
+    .titulo-sobre, 
+    .titulo-spotify, 
+    .titulo-newsletter {
+        font-family: var(--upx-font-clean) !important;
+        font-weight: 700 !important;
+        font-size: clamp(1.8rem, 1.4rem + 1.2vw, 2.4rem) !important;
+        line-height: 1.2 !important;
+        letter-spacing: -0.5px;
+        color: #ffffff !important;
+    }
+
+    /* Hero Section */
+    .hero-dica {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 32px;
+        color: var(--upx-muted);
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-dica-seta {
+        display: inline-block;
+        color: var(--upx-pink);
+        animation: upx-bounce 1.8s infinite steps(4);
+    }
+
+    @keyframes upx-bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(5px); }
+    }
+
+    /* Artigos Recentes */
+    .artigos-recentes .titulo-secao {
+        margin-bottom: 36px;
+    }
+
+    /* Seção Explore a Upixel */
+    .portal-status {
+        font-family: var(--upx-font-clean);
+        font-size: 13px;
+        color: var(--upx-pink);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+
+    .portal-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-top: 36px;
+    }
+
+    .portal-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--upx-card-bg);
+        border: 1px solid var(--upx-border-strong);
+        border-radius: 12px;
+        padding: 28px 24px;
+        min-height: 200px;
+        text-decoration: none;
+        color: var(--upx-fg);
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+    }
+
+    .portal-card:hover,
+    .portal-card:focus-visible {
+        transform: translateY(-4px);
+        border-color: var(--upx-pink);
+        box-shadow: 0 8px 24px rgba(250, 57, 122, 0.15);
+        outline: none;
+    }
+
+    .portal-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+    }
+
+    .portal-card-tecla {
+        font-family: var(--upx-font-clean);
+        font-size: 12px;
+        font-weight: 700;
+        color: #fff;
+        background: rgba(250, 57, 122, 0.2);
+        border: 1px solid var(--upx-pink);
+        padding: 3px 10px;
+        border-radius: 20px;
+    }
+
+    .portal-card-icone {
+        font-size: 30px;
+        line-height: 1;
+    }
+
+    .portal-card-corpo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .portal-card-titulo {
+        font-family: var(--upx-font-clean);
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .portal-card-desc {
+        font-family: var(--upx-font-clean);
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--upx-muted);
+        margin: 0;
+    }
+
+    .portal-card-rodape {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--upx-font-clean);
+        font-size: 14px;
+        color: var(--upx-pink);
+        font-weight: 600;
+    }
+
+    .portal-card-rodape svg {
+        width: 16px;
+        height: 16px;
+        transition: transform .2s ease;
+    }
+
+    .portal-card:hover .portal-card-rodape svg {
+        transform: translateX(6px);
+    }
+
+    /* Seção Grossário Dissecado */
+    .destaque-secao {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+    }
+
+    .destaque-conteudo {
+        flex: 1;
+        max-width: 580px;
+    }
+
+    .destaque-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--upx-font-clean);
+        color: var(--upx-pink);
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+    }
+
+    .destaque-texto {
+        font-family: var(--upx-font-clean);
+        color: var(--upx-muted);
+        font-size: clamp(1.2rem, 1rem + 0.8vw, 1.45rem);
+        line-height: 1.5;
+        margin: 0 0 28px;
+        font-weight: 400;
+    }
+
+    .destaque-imagem {
+        flex: none;
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+        display: block;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+    }
+
+    .destaque-imagem img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: none !important;
+    }
+
+    /* Ajustes Responsivos */
+    @media (max-width: 860px) {
+        :root {
+            --upx-section-padding: 56px;
+        }
+
+        .portal-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .destaque-secao {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .destaque-imagem {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .upx-container {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+</style>
+
+<!-- GOOGLE ANALYTICS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-
   gtag('config', 'G-EXQS02C898');
 </script>
 
-
-
-<!-- ==========================================================
-     ESPAÇO RESERVADO PARA FUTURAS INTEGRAÇÕES
-
-     Exemplos:
-     • Microsoft Clarity (Heatmaps e gravações)
-     • Google Search Console
-     • Meta Pixel
-     • Outros scripts de monitoramento
-
-     Manter esta organização facilita a manutenção do site.
-     ========================================================== -->
 </head>
 
 <script src="banner-upixel.js" defer></script>
 
 <body>
 
+    <!-- HEADER -->
     <header class="meu-header">
         <div class="logo">
             <img src="logobranca.png" alt="Logotipo do meu site"> 
         </div>
         
-       <nav class="menu">
-    <a href="index.html" class="ativo">Home</a>
-    <a href="artigos.html">Artigos</a>
-    <a href="ux-challenge.html">UX Challenge</a>
-    <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
-    <a href="rip.html">RIP</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="besteirol.html">Besteirol</a>
-    <a href="contato.html">Contato</a>
-</nav>
+        <nav class="menu">
+            <a href="index.html" class="ativo">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+            <a href="rip.html">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html">Besteirol</a>
+            <a href="contato.html">Contato</a>
+        </nav>
     </header>
-    <main class="conteudo-principal">
+
+    <!-- HERO / UNDERGROUND DOS 8 BITS -->
+    <main class="conteudo-principal upx-container">
         
         <div class="bloco-texto">
             <span class="texto-menor"><img src="raio.png" alt="Raio" class="icone-raio">Underground dos 8 Bits</span>
@@ -241,9 +402,15 @@
             <div class="frase-underground">
                 <img src="sua-logo.png" alt="Logo menor" class="logo-pequena">
                 <p class="texto-quebrado">
-                    Hoje tudo virou <br>experiência.
+                    Hoje é onde UX, design <br>e cultura digital colidem.
                 </p>
-            </div>         
+            </div>
+
+            <p class="hero-dica">
+                <span class="hero-dica-seta" aria-hidden="true">▾</span>
+                Role pra escolher seu próximo clique
+            </p>
+
         </div>
 
         <div class="bloco-imagem">
@@ -254,593 +421,433 @@
 
     <hr class="divisor-secao">
 
-<section class="artigos-recentes">
+    <!-- ARTIGOS RECENTES -->
+    <section class="artigos-recentes upx-container">
 
-    <div class="titulo-secao">
+        <div class="titulo-secao">
 
-        <div class="titulo-esquerda">
-            <img src="raioartigos.png" alt="Ícone" class="icone-titulo">
-            <h2>
-                <span>Artigos</span>
-                <span>recentes</span>
+            <div class="titulo-esquerda">
+                <img src="raioartigos.png" alt="Ícone" class="icone-titulo">
+                <h2>
+                    <span>Artigos</span>
+                    <span>recentes</span>
+                </h2>
+            </div>
+
+            <a href="artigos.html" class="ver-todos">
+                Ver todos
+                <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                </svg>
+            </a>
+
+        </div>
+
+        <div class="cards-artigos">
+
+            <article class="card-artigo card-artigo--novo">
+                <span class="selo-novo">Novo</span>
+                <img src="autoridade-significado-antigo-e-atual.png" class="imagem-artigo" alt="Pixel art de um balão chatbot, branco com 3 pontinhos dentro.">
+                <span class="categoria">Contexto</span>
+                <h3><strong>Autoridade: </strong> como uma palavra mudou de significado</h3>
+                <p>Antes significava medo. Hoje virou elogio de marketing.</p>
+                <a href="artigo-autoridade-como-uma-palavra-mudou-de-significado.html" class="leia-mais">Leia mais</a>
+            </article>
+
+            <article class="card-artigo">
+                <img src="capa-chatbot-experiencia-ruim.png" class="imagem-artigo" alt="Pixel art de um balão chatbot, branco com 3 pontinhos dentro.">
+                <span class="categoria">Cultura Digital</span>
+                <h3>Como arruinar seu chatbot em 10 passos</h3>
+                <p>Do “não entendi” infinito até esconder o atendente como se fosse o final boss.</p>
+                <a href="artigo-como-arruinar-experiencia-chatbot-10-passos.html" class="leia-mais">Leia mais</a>
+            </article>
+
+            <article class="card-artigo">
+                <img src="capa-locadoras-algoritmo-experiencia.png" class="imagem-artigo" alt="Pixel art de uma locadora, com as portas abertas e um letreiro escrito aberto.">
+                <span class="categoria">Cultura Digital</span>
+                <h3>Quem viveu sabe o que é isso...</h3>
+                <p>Locadoras, algoritmos e o que perdemos na busca por eficiência.</p>
+                <a href="artigo-locadoras-experiencia-e-algoritmo.html" class="leia-mais">Leia mais</a>
+            </article>
+
+            <article class="card-artigo">
+                <img src="equipe-desorganizada-sem-metodo-e-comunicacao.png" class="imagem-artigo" alt="Pixel art de uma locadora, com as portas abertas e um letreiro escrito aberto.">
+                <span class="categoria">Organização</span>
+                <h3>Como você trabalha em equipe?</h3>
+                <p>A resposta depende muito menos da pessoa do que da equipe onde vai trabalhar.</p>
+                <a href="artigo-como-trabalhar-em-equipe.html" class="leia-mais">Leia mais</a>
+            </article>
+
+        </div>
+
+    </section>
+
+    <hr class="divisor-secao">
+
+    <!-- GROSSÁRIO DISSECADO -->
+    <section class="destaque-secao upx-container">
+
+        <div class="destaque-conteudo">
+
+            <span class="destaque-eyebrow">
+                <img src="raio.png" alt="Raio" class="icone-raio">
+                Grossário
+            </span>
+
+            <h2 class="destaque-titulo">
+                Grossário Dissecado <br>de UX
             </h2>
+
+            <p class="destaque-texto">
+                Aqui a gente abre o termo, <br>
+                tira o verniz e <br>
+                mostra o que sobra.
+            </p>
+
+            <div class="container-botao">
+                <a href="glossario-dissecado-de-ux.html" class="botao-artigos">
+                    Dissecar termos
+                    <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12H19M19 12L13 6M19 12L13 18"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
         </div>
 
-        <a href="artigos.html" class="ver-todos">
-            Ver todos
-            <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12H19M19 12L13 6M19 12L13 18"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"/>
-            </svg>
-        </a>
-
-    </div>
-
-    <div class="cards-artigos">
-
-<article class="card-artigo card-artigo--novo">
-    <span class="selo-novo">Novo</span>
-    <img src="autoridade-significado-antigo-e-atual.png" class="imagem-artigo" alt="Pixel art de um balão chatbot, branco com 3 pontinhos dentro.">
-    <span class="categoria">Contexto</span>
-    <h3><strong>Autoridade: </strong> como uma palavra mudou de significado</h3>
-    <p>Antes significava medo. Hoje virou elogio de marketing.</p>
-    <a href="artigo-autoridade-como-uma-palavra-mudou-de-significado.html" class="leia-mais">Leia mais</a>
-</article>
-
-<article class="card-artigo">
-    <img src="capa-chatbot-experiencia-ruim.png" class="imagem-artigo" alt="Pixel art de um balão chatbot, branco com 3 pontinhos dentro.">
-    <span class="categoria">Cultura Digital</span>
-    <h3>Como arruinar seu chatbot em 10 passos</h3>
-    <p>Do “não entendi” infinito até esconder o atendente como se fosse o final boss.</p>
-    <a href="artigo-como-arruinar-experiencia-chatbot-10-passos.html" class="leia-mais">Leia mais</a>
-</article>
-
-<article class="card-artigo">
-    <img src="capa-locadoras-algoritmo-experiencia.png" class="imagem-artigo" alt="Pixel art de uma locadora, com as portas abertas e um letreiro escrito aberto.">
-    <span class="categoria">Cultura Digital</span>
-    <h3>Quem viveu sabe o que é isso...</h3>
-    <p>Locadoras, algoritmos e o que perdemos na busca por eficiência.</p>
-    <a href="artigo-locadoras-experiencia-e-algoritmo.html" class="leia-mais">Leia mais</a>
-</article>
-
-<article class="card-artigo">
-    <img src="equipe-desorganizada-sem-metodo-e-comunicacao.png" class="imagem-artigo" alt="Pixel art de uma locadora, com as portas abertas e um letreiro escrito aberto.">
-    <span class="categoria">Organização</span>
-    <h3>Como você trabalha em equipe?</h3>
-    <p>A resposta depende muito menos da pessoa do que da equipe onde vai trabalhar.</p>
-    <a href="artigo-como-trabalhar-em-equipe.html" class="leia-mais">Leia mais</a>
-</article>
-
-</div>
-
-</section>
-
-<hr class="divisor-secao">
-
-<!-- ==========================================================
-     GAMES (nova área)
-
-     Section de apresentação da área Games na home.
-     Reaproveita exatamente a mesma estrutura e as mesmas
-     classes CSS da seção "Sobre nós" (.sobre-nos,
-     .sobre-conteudo, .titulo-sobre, .descricao-sobre,
-     .sobre-imagem, .container-botao, .botao-artigos) para
-     garantir 100% de consistência visual com o restante do
-     site, sem precisar tocar em style.css ou mobile.css.
-
-     Troque "logogrande.png" (usada aqui só como imagem
-     provisória) pela arte pixel da área Games quando tiver
-     pronta — não foi criada/alterada nenhuma imagem nova.
-
-     Link do botão "Jogar agora" aponta para games.html
-     (criada na Etapa 2).
-     ========================================================== -->
-
-<section class="sobre-nos games-secao">
-
-    <div class="sobre-conteudo">
-
-        <span class="texto-menor">
-            <img src="raio.png" alt="Raio" class="icone-raio">
-            Desafio
-        </span>
-
-        <h2 class="titulo-sobre">
-            UX Challenge
-        </h2>
-
-        <p class="descricao-sobre">
-           Você passaria em uma <br> entrevista de UX?
-        </p>
-
-        <div class="container-botao">
-            <a href="ux-challenge.html" class="botao-artigos">
-                Testar meu Nível
-                <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"/>
-                </svg>
-            </a>
+        <div class="destaque-imagem">
+            <img src="glossario-dissecado-de-ux-upixel.png" alt="Grossário Dissecado de UX da Upixel">
         </div>
 
+    </section>
+
+    <div class="upx-container">
+        <upx-banner
+            id-anuncio="uxspray"
+            imagem="imagens-upubli-ux-em-spray.png"
+            titulo="🧴 UX em Spray™"
+            descricao="Uma borrifada e qualquer interface parece ter sido aprovada pelo gerente."
+            link="pagina-upubli-spray.html">
+        </upx-banner>
     </div>
 
-
-    <div class="sobre-imagem">
-
-        <!-- imagem provisória, troque pela arte da área Games -->
-        <img src="upixel-pixel-art-ux-ui-design-cultura-digital.png" alt="Games Upixel">
-
-    </div>
-
-
-</section>
-
-<upx-banner
-    id-anuncio="TimeMachine"
-    imagem="ux-time-machine-upubli-upixel-viagem.png"
-    titulo="⏳ Time Machine™"
-    descricao="Viaje pelo futuro da sua interface antes que os usuários descubram os problemas."
-    link="pagina-upubli-time-machine.html">
-</upx-banner>
-
-
-<hr class="divisor-secao">
-
-<!-- ==========================================================
-     Glossario Dissecado de UX
-     ========================================================== -->
-
-<section class="sobre-nos games-secao">
-
-    <div class="sobre-conteudo">
-
-        <span class="texto-menor">
-            <img src="raio.png" alt="Raio" class="icone-raio">
-            "Grossário"
-        </span>
-
-        <h2 class="titulo-sobre">
-            Glossário Dissecado <br>de UX
-        </h2>
-
-        <p class="descricao-sobre">
-           Aqui a gente abre o termo, <br>tira o verniz e mostra o que sobra.
-        </p>
-
-        <div class="container-botao">
-            <a href="glossario-dissecado-de-ux.html" class="botao-artigos">
-                Dissecar termos
-                <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"/>
-                </svg>
-            </a>
-        </div>
-
-    </div>
-
-
-    <div class="sobre-imagem">
-
-        <!-- imagem provisória, troque pela arte da área Games -->
-        <img src="glossario-dissecado-de-ux-upixel.png" alt="Glossário Dissecado de UX da Upixel">
-
-    </div>
-
-
-</section>
-
-<hr class="divisor-secao">
-
-<!-- ==========================================================
-     RIP (nova área)
-
-     Section de apresentação do memorial RIP na home. Mesma
-     estrutura e classes de Games / Glossário / Quiz
-     (.sobre-nos, .sobre-conteudo, .titulo-sobre, .sobre-imagem,
-     .container-botao, .botao-artigos), zero CSS novo.
-
-     Imagem: "rip-cemiterio-tendencias-upixel.png" é só um nome
-     de arquivo provisório — troque pela arte pixel do cemitério
-     quando tiver pronta.
-
-     Link do botão aponta para rip.html.
-     ========================================================== -->
-
-<section class="sobre-nos rip-secao">
-
-    <div class="sobre-conteudo">
-
-        <span class="texto-menor">
-            <img src="raio.png" alt="Raio" class="icone-raio">
-            Memorial digital
-        </span>
-
-        <h2 class="titulo-sobre">
-            ⚰️ RIP
-        </h2>
-
-        <p class="descricao-sobre">
-           Tecnologias, tendências e conceitos <br>que a internet já enterrou.
-        </p>
-
-        <div class="container-botao">
-            <a href="rip.html" class="botao-artigos">
-                Entrar no cemitério
-                <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"/>
-                </svg>
-            </a>
-        </div>
-
-    </div>
-
-
-    <div class="sobre-imagem">
-
-        <!-- imagem provisória, troque pela arte do cemitério RIP -->
-        <img src="cemiterio-de-tecnologias-extintas-rip-tecnologia-morta.png" alt="RIP - o cemitério das tendências da Upixel">
-
-    </div>
-
-
-</section>
-
-<hr class="divisor-secao">
-
-<!-- ==========================================================
-     QUIZ (nova área)
-
-     Mesma estrutura e classes da seção Games / Sobre nós
-     (.sobre-nos, .sobre-conteudo, .titulo-sobre, etc.)
-     para manter 100% de consistência visual sem CSS extra.
-
-     Imagem: usando provisoriamente a mesma do Games
-     (upixel-games-pixel-art.png). Troque quando tiver a arte
-     específica do Quiz.
-
-     Link do botão aponta para quiz.html.
-     ========================================================== -->
-
-<section class="sobre-nos quiz-secao">
-
-    <div class="sobre-conteudo">
-
-        <span class="texto-menor">
-            <img src="raio.png" alt="Raio" class="icone-raio">
-            Sabe-tudo
-        </span>
-
-        <h2 class="titulo-sobre">
-            Upixel Quiz
-        </h2>
-
-        <p class="descricao-sobre">
-            Você sabe de tudo um pouco. <br>Ou só tem muita confiança?
-           
-        </p>
-
-        <div class="container-botao">
-            <a href="quiz.html" class="botao-artigos">
-                Começar o Quiz
-                <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"/>
-                </svg>
-            </a>
-        </div>
-
-    </div>
-
-    <div class="sobre-imagem">
-    
-        <img src="quiz-cultura-digital-tecnologia-humor-pixel-art.png" alt="Quiz Upixel">
-    </div>
-
-</section>
-
-<hr class="divisor-secao">
-<!-- ==========================================================
-     PIXEL FEED (antes era a seção de CAMISETAS)
-
-     Substitui a antiga seção de camisetas na home.
-     Leva para upixelfeed.html — o feed de humor/memes do site.
-
-     Imagem: encostada na borda direita da tela, no mesmo
-     espírito da imagem do hero (seção .conteudo-principal).
-     Troque "pixelfeed.png" pela sua arte quando tiver pronta.
-     ========================================================== -->
-
-<upx-banner
-    id-anuncio="uxspray"
-    imagem="imagens-upubli-ux-em-spray.png"
-    titulo="🧴 UX em Spray™"
-    descricao="Uma borrifada e qualquer interface parece ter sido aprovada pelo gerente."
-    link="pagina-upubli-spray.html">
-</upx-banner>
-
-<section class="pixelfeed-secao">
-
-    <div class="pixelfeed-conteudo">
-
-        <span class="texto-menor">
-            <img src="raio.png" alt="Raio" class="icone-raio">
-            Humor do Tiozão
-        </span>
-
-        <h2 class="titulo-pixelfeed">
-            Besteirol, pois nesse site é a <span class="destaque-rosa">única coisa séria</span>.
-        </h2>
-
-        <p class="descricao-pixelfeed">
-            Não consigo devolver seus minutos perdidos com os posts. Só posso garantir que vão valer a pena.
-        </p>
-
-        <div class="container-botao">
-            <a href="besteirol.html" class="botao-artigos">
-                Explorar besteirol
-
-                <svg class="seta-fina" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L13 6M19 12L13 18"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"/>
-                </svg>
-
-            </a>
-        </div>
-
-    </div>
-
-
-    <div class="pixelfeed-imagem">
-
-        <img src="besteirol-humor-internet-cultura-digital-pixel-art.png" alt="Pixel Feed">
-
-    </div>
-
-</section>
-
-<hr class="divisor-secao">
-
-<section class="sobre-nos">
-
-    <div class="sobre-conteudo">
-
-        <span class="texto-menor">
-            <img src="raio.png" alt="Raio" class="icone-raio">
-            Sobre nós
-        </span>
-
-
-        <h2 class="titulo-sobre">
-            Talvez seja<br>
-            só um pixel
-        </h2>
-
-
-        <p class="descricao-sobre">
-            Mas é incrível a quantidade <br> de coisas que podem <br> nascer dele...
-        </p>
-
-        <div class="container-botao">
-            <a href="contato.html" class="botao-contato-mini">
-                Fale comigo
-            </a>
-        </div>
-
-    </div>
-
-
-    <div class="sobre-imagem">
-
-        <img src="logogrande.png" alt="Sobre nós">
-
-    </div>
-
-
-</section>
-
-<hr class="divisor-secao">
-
-<upx-banner
-    id-anuncio="nielsenslap"
-    imagem="nielsen-slap-upubli-upixel.png"
-    titulo="✋ Nielsen Slap™"
-    descricao="O boneco que detecta erros de UX e aplica um tapa educativo antes que seus usuários façam isso."
-    link="pagina-upubli-nielsen-slap.html">
-</upx-banner>
-
-<section class="spotify-section">
-
-    <div class="spotify-conteudo">
-
-        <span class="texto-menor">
-            <img src="raio.png" alt="Raio" class="icone-raio">
-            Ou algum lugar por aí
-        </span>
-
-        <h2 class="titulo-spotify">
-            Conecte-se no Linkedin.<br>
-            Ouça no Spotify
-        </h2>
-
-        <p class="descricao-spotify">
-            A internet é rápida. <br>
-            As pessoas têm pressa. <br>
-            E no fim, tudo vira memória.
-        </p>
-
-        <a href="https://www.linkedin.com/in/bruno-ito-gorski/"
-           class="linkedin-botao"
-           target="_blank">
-            Meu LinkedIn
-        </a>
-
-    </div>
-
-    <div class="spotify-card">
-
-        <iframe
-            data-testid="embed-iframe"
-            style="border-radius:12px"
-            src="https://open.spotify.com/embed/playlist/5TI9b1CSFmB3AaBuaAPADU?utm_source=generator&theme=0&si=63a531da8f8a41ec"
-            width="100%"
-            height="352"
-            frameborder="0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-        </iframe>
-
-    </div>
-
-</section>
-
-<hr class="divisor-secao">
-
-<section class="newsletter">
-
-    <div class="newsletter-esquerda">
-
-        <h2 class="titulo-newsletter">
-            Não é só um blog.<br>
-            É um ponto de encontro.
-        </h2>
-
-    </div>
-
-    <div class="newsletter-direita">
-
-        <span class="newsletter-texto">
-            Newsletter. É sério que você quer isso?
-        </span>
-
-        <div class="sib-form" style="text-align:center; background-color:#EFF2F7;">
-  <div id="sib-form-container" class="sib-form-container">
+    <hr class="divisor-secao">
+
+    <!-- EXPLORE A UPIXEL (EX-MENU PRINCIPAL REORGANIZADO SEM REDUNDÂNCIAS) -->
+    <section class="portal-secao upx-container" id="menu-principal">
+
+        <div class="titulo-secao">
+
+            <div class="titulo-esquerda">
+                <img src="raio.png" alt="Raio" class="icone-raio">
+                <h2>
+                    <span>Explore a</span>
+                    <span>Upixel</span>
+                </h2>
+            </div>
 <!--
-    <div id="error-message" class="sib-form-message-panel">
-      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-        Sua assinatura não pôde ser validada.
-      </div>
- </div>
-
-    <div id="success-message" class="sib-form-message-panel">
-      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-        Você fez sua assinatura com sucesso.
-      </div>
-    </div>
+            <span class="portal-status">&gt;_ 4 destinos disponíveis</span>
 -->
-    <div id="sib-container" class="sib-container--large sib-container--vertical">
-
-      <form id="sib-form"
-            method="POST"
-            action="https://8c95e98a.sibforms.com/serve/MUIFAMJ_yL5wZnkIkvzqwcs7hchlvkDdm_MwRnh3Zr99-RwrQaxhBHoRqOA-34XbxstQkH1OyKucYcpPY1nPj0p5lB5SAgGgXAy4VEIuY0jKD-9_ZkgFSaxYXUnYKtRI94RelbXi7N_XJcyDOrEAQ0Je6EbT6IK9ZErDUrb5Mx7_HM0ifyrMwNgGfN_gMqs6Cp68rwj6RdOUGncAeg=="
-            data-type="subscription">
-
-        <div class="sib-form-block">
-          <p>Newsletter Upixel</p>
         </div>
 
-        <div class="sib-form-block">
-          <p>É sério que você quer isso?</p>
+        <div class="portal-grid">
+
+            <a href="ux-challenge.html" class="portal-card">
+                <div class="portal-card-header">
+                    <span class="portal-card-tecla">01</span>
+                    <span class="portal-card-icone" aria-hidden="true">🕹️</span>
+                </div>
+                <div class="portal-card-corpo">
+                    <span class="portal-card-titulo">UX Challenge</span>
+                    <p class="portal-card-desc">Telas reais, problemas reais. Descubra se <strong>você passaria</strong> numa entrevista prática de UX.</p>
+                </div>
+                <span class="portal-card-rodape">
+                    Testar meu nível
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+
+            <a href="rip.html" class="portal-card">
+                <div class="portal-card-header">
+                    <span class="portal-card-tecla">02</span>
+                    <span class="portal-card-icone" aria-hidden="true">⚰️</span>
+                </div>
+                <div class="portal-card-corpo">
+                    <span class="portal-card-titulo">RIP</span>
+                    <p class="portal-card-desc">O cemitério das tecnologias, tendências e conceitos que a internet já enterrou no esquecimento.</p>
+                </div>
+                <span class="portal-card-rodape">
+                    Entrar no cemitério
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+
+            <a href="quiz.html" class="portal-card">
+                <div class="portal-card-header">
+                    <span class="portal-card-tecla">03</span>
+                    <span class="portal-card-icone" aria-hidden="true">❓</span>
+                </div>
+                <div class="portal-card-corpo">
+                    <span class="portal-card-titulo">Quiz</span>
+                    <p class="portal-card-desc">Você sabe de tudo um pouco. Ou só tem muita confiança? Coloque seu conhecimento à prova.</p>
+                </div>
+                <span class="portal-card-rodape">
+                    Começar o quiz
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+
+            <a href="besteirol.html" class="portal-card">
+                <div class="portal-card-header">
+                    <span class="portal-card-tecla">04</span>
+                    <span class="portal-card-icone" aria-hidden="true">😅</span>
+                </div>
+                <div class="portal-card-corpo">
+                    <span class="portal-card-titulo">Besteirol</span>
+                    <p class="portal-card-desc">O feed de humor da Upixel. A única coisa séria por aqui é o nome da seção.</p>
+                </div>
+                <span class="portal-card-rodape">
+                    Explorar humor
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+
         </div>
 
-        <div class="sib-input sib-form-block">
-          <label for="EMAIL">
-            Agora é só inserir um e-mail válido
-          </label>
+    </section>
 
-          <input
-              type="email"
-              id="EMAIL"
-              name="EMAIL"
-              placeholder="EMAIL"
-              required
-              autocomplete="email">
+    <div class="upx-container">
+        <upx-banner
+            id-anuncio="TimeMachine"
+            imagem="ux-time-machine-upubli-upixel-viagem.png"
+            titulo="⏳ Time Machine™"
+            descricao="Viaje pelo futuro da sua interface antes que os usuários descubram os problemas."
+            link="pagina-upubli-time-machine.html">
+        </upx-banner>
+    </div>
 
-          <label class="entry__error entry__error--primary"></label>
+    <hr class="divisor-secao">
 
-          <label class="entry__specification">
-            Forneça seu e-mail para assinar.
-          </label>
+    <!-- SOBRE NÓS -->
+    <section class="sobre-nos upx-container">
+
+        <div class="sobre-conteudo">
+
+            <span class="texto-menor">
+                <img src="raio.png" alt="Raio" class="icone-raio">
+                Sobre nós
+            </span>
+
+            <h2 class="titulo-sobre">
+                Talvez seja<br>
+                só um pixel
+            </h2>
+
+            <p class="descricao-sobre">
+                Mas é incrível a quantidade <br> de coisas que podem <br> nascer dele...
+            </p>
+
+            <div class="container-botao">
+                <a href="contato.html" class="botao-contato-mini">
+                    Fale comigo
+                </a>
+            </div>
+
         </div>
 
-        <div class="sib-form-block">
-          <button type="submit">
-            ASSINAR
-          </button>
+        <div class="sobre-imagem">
+            <img src="logogrande.png" alt="Sobre nós">
         </div>
 
-        <input type="text" name="email_address_check" class="input--hidden">
-        <input type="hidden" name="locale" value="pt">
+    </section>
 
-      </form>
+    <hr class="divisor-secao">
 
-    </div>
-  </div>
-</div>
-
-    </div>
-
-
-    
-</section>
-<hr class="divisor-secao">
-
-<footer class="footer">
-
-    <div class="footer-esquerda">
-
-        <img src="logobranca.png" alt="Upixel" class="footer-logo">
-
-        <p class="copyright">
-            Upixel. Todos os direitos reservados.
-        </p>
-
+    <div class="upx-container">
+        <upx-banner
+            id-anuncio="nielsenslap"
+            imagem="nielsen-slap-upubli-upixel.png"
+            titulo="✋ Nielsen Slap™"
+            descricao="O boneco que detecta erros de UX e aplica um tapa educativo antes que seus usuários façam isso."
+            link="pagina-upubli-nielsen-slap.html">
+        </upx-banner>
     </div>
 
-    <div class="footer-centro">
+    <!-- SPOTIFY / LINKEDIN -->
+    <section class="spotify-section upx-container">
 
-        <nav class="footer-menu">
+        <div class="spotify-conteudo">
 
-               <a href="index.html" class="ativo">Home</a>
-               <a href="artigos.html">Artigos</a>
-               <a href="ux-challenge.html">UX Challenge</a>
-               <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
-               <a href="rip.html">RIP</a>
-               <a href="quiz.html">Quiz</a>
-               <a href="besteirol.html">Besteirol</a>
-               <a href="contato.html">Contato</a>
+            <span class="texto-menor">
+                <img src="raio.png" alt="Raio" class="icone-raio">
+                Ou algum lugar por aí
+            </span>
 
-        </nav>
+            <h2 class="titulo-spotify">
+                Conecte-se no Linkedin.<br>
+                Ouça no Spotify
+            </h2>
 
+            <p class="descricao-spotify">
+                A internet é rápida. <br>
+                As pessoas têm pressa. <br>
+                E no fim, tudo vira memória.
+            </p>
+
+            <a href="https://www.linkedin.com/in/bruno-ito-gorski/"
+               class="linkedin-botao"
+               target="_blank">
+                Meu LinkedIn
+            </a>
+
+        </div>
+
+        <div class="spotify-card">
+
+            <iframe
+                data-testid="embed-iframe"
+                style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/5TI9b1CSFmB3AaBuaAPADU?utm_source=generator&theme=0&si=63a531da8f8a41ec"
+                width="100%"
+                height="352"
+                frameborder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+    </section>
+
+    <hr class="divisor-secao">
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter upx-container">
+
+        <div class="newsletter-esquerda">
+
+            <h2 class="titulo-newsletter">
+                Não é só um blog.<br>
+                É um ponto de encontro.
+            </h2>
+
+        </div>
+
+        <div class="newsletter-direita">
+
+            <span class="newsletter-texto">
+                Newsletter. É sério que você quer isso?
+            </span>
+
+            <div class="sib-form" style="text-align:center; background-color:#EFF2F7;">
+              <div id="sib-form-container" class="sib-form-container">
+
+                <div id="sib-container" class="sib-container--large sib-container--vertical">
+
+                  <form id="sib-form"
+                        method="POST"
+                        action="https://8c95e98a.sibforms.com/serve/MUIFAMJ_yL5wZnkIkvzqwcs7hchlvkDdm_MwRnh3Zr99-RwrQaxhBHoRqOA-34XbxstQkH1OyKucYcpPY1nPj0p5lB5SAgGgXAy4VEIuY0jKD-9_ZkgFSaxYXUnYKtRI94RelbXi7N_XJcyDOrEAQ0Je6EbT6IK9ZErDUrb5Mx7_HM0ifyrMwNgGfN_gMqs6Cp68rwj6RdOUGncAeg=="
+                        data-type="subscription">
+
+                    <div class="sib-form-block">
+                      <p>Newsletter Upixel</p>
+                    </div>
+
+                    <div class="sib-form-block">
+                      <p>É sério que você quer isso?</p>
+                    </div>
+
+                    <div class="sib-input sib-form-block">
+                      <label for="EMAIL">
+                        Agora é só inserir um e-mail válido
+                      </label>
+
+                      <input
+                          type="email"
+                          id="EMAIL"
+                          name="EMAIL"
+                          placeholder="EMAIL"
+                          required
+                          autocomplete="email">
+
+                      <label class="entry__error entry__error--primary"></label>
+
+                      <label class="entry__specification">
+                        Forneça seu e-mail para assinar.
+                      </label>
+                    </div>
+
+                    <div class="sib-form-block">
+                      <button type="submit">
+                        ASSINAR
+                      </button>
+                    </div>
+
+                    <input type="text" name="email_address_check" class="input--hidden">
+                    <input type="hidden" name="locale" value="pt">
+
+                  </form>
+
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <hr class="divisor-secao">
+
+    <!-- FOOTER -->
+    <footer class="footer upx-container">
+
+        <div class="footer-esquerda">
+
+            <img src="logobranca.png" alt="Upixel" class="footer-logo">
+
+            <p class="copyright">
+                Upixel. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+        <div class="footer-centro">
+
+            <nav class="footer-menu">
+                   <a href="index.html" class="ativo">Home</a>
+                   <a href="artigos.html">Artigos</a>
+                   <a href="ux-challenge.html">UX Challenge</a>
+                   <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+                   <a href="rip.html">RIP</a>
+                   <a href="quiz.html">Quiz</a>
+                   <a href="besteirol.html">Besteirol</a>
+                   <a href="contato.html">Contato</a>
+            </nav>
+
+        </div>
+
+    </footer>
+
+    <div class="footer-ilustracao">
+        <img src="rodape.png" alt="Ilustração Footer">
     </div>
 
-</footer>
-
-<div class="footer-ilustracao">
-
-    <img src="rodape.png" alt="Ilustração Footer">
-
-</div>
 </body>
 </html>
