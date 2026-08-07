@@ -612,6 +612,50 @@
       flex-direction: column;
     }
   }
+
+/* ---------- responsivo: widescreen + tablet ---------- */
+
+.rip-hero,
+.rip-corpo,
+.rip-cta-final {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 1440px) {
+    .rip-hero,
+    .rip-corpo,
+    .rip-cta-final {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .rip-hero,
+    .rip-ferramentas,
+    .rip-corpo,
+    .rip-cta-final {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+.rip-linha-filtros {
+    justify-content: center;
+}
+
+.rip-filtros {
+    width: 100%;
+    justify-content: center;
+}
+.rip-ferramentas {
+    align-items: center;
+}
+
+.rip-contador {
+    text-align: center;
+}
+
 </style>
 
 </head>

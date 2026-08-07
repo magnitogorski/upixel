@@ -3248,3 +3248,109 @@ input[type="submit"]:hover {
     margin-top: 16px;
     max-width: 620px;
 }
+
+/* ---------- limite de largura em telas muito largas (widescreen) ---------- */
+
+.meu-header,
+.footer,
+.footer-ilustracao {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- limite de largura em telas muito largas (widescreen) ---------- */
+
+/* ---------- largura máxima unificada em todas as páginas ----------
+   Estes elementos já garantem seu próprio respiro lateral via padding,
+   então só precisam de max-width + margin:auto pra centralizar. */
+.meu-header,
+.footer,
+.footer-ilustracao,
+.conteudo-principal,
+.sobre-nos,
+.pixelfeed-secao,
+.spotify-section,
+.newsletter {
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* .artigos-recentes é o único que usa MARGIN (não padding) como
+   respiro lateral (margin: 80px 60px original) — por isso, sozinho,
+   precisa do width:calc() pra não perder esse respiro em telas
+   menores que 1320px. */
+.artigos-recentes {
+    max-width: 1320px;
+    width: calc(100% - 120px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+
+
+/* ==========================================================
+   PADRÃO GERAL — recipiente de conteúdo + tipografia
+   Usado por: Glossário, RIP, Contato (e outras páginas novas).
+   Não mexe em header, footer, menu, nem nos cards de artigo.
+   ========================================================== */
+
+.upx-conteudo {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+@media (min-width: 1440px) {
+    .upx-conteudo {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .upx-conteudo {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+@media (max-width: 720px) {
+    .upx-conteudo {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+/* Escala de fontes única — mesma régua em toda página nova */
+
+.upx-titulo-pagina {
+    font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.7rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 16px;
+}
+
+.upx-subtitulo-pagina {
+    color: #FA397A;
+    font-size: clamp(1.05rem, 1rem + .4vw, 1.4rem);
+    font-weight: 700;
+    margin: 0 0 28px;
+}
+
+.upx-texto-pagina {
+    color: #828282;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 62ch;
+    margin: 0 0 14px;
+}
+
+.upx-texto-pagina p:last-child {
+    margin-bottom: 0;
+}
