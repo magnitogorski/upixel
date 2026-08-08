@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<script src="banner-upixel.js" defer></script>
+
+<!-- ==========================================================
+     Página: A ZONA OBSCURA — coleção UPUBLI™ (produtos fictícios)
+
+     Hub editorial/underground dos produtos absurdos da Upixel.
+     Diferente da Spray e da Time Machine (que são páginas de
+     produto único, estilo "landing"), esta é uma página de
+     VITRINE — vários anúncios fictícios, com ritmo visual
+     variado (banner/startup/corporativo/premium/discreto),
+     amarrados por um texto editorial no topo.
+
+     Prefixo de classe próprio ".uo-" (Upixel Obscuro) em tudo
+     que é novo, pra não colidir com nada do resto do site.
+     Header, footer e o padrão de disclaimer seguem o mesmo
+     espírito das outras páginas Upubli — só que num tom mais
+     sombrio/underground, sem o selo amarelo "produto fictício"
+     (que combina mais com a Spray/Time Machine do que com uma
+     "zona que o algoritmo finge que não viu").
+
+     Reaproveita <upx-banner> pra divulgar os OUTROS produtos
+     Upubli (Spray, Time Machine, Nielsen Slap) dentro desta
+     própria página — fecha o ciclo: a Zona Obscura vira o hub
+     que linka pra tudo, e pode ser divulgada nas outras páginas
+     com o snippet de banner no fim desta resposta.
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Zona Obscura | Upubli™ — a seção que a Upixel finge não conhecer</title>
+
+<meta name="description" content="A Zona Obscura é a vitrine dos produtos mais absurdos da Upubli™: soluções pra problemas que não existem, anúncios exagerados e invenções que uma reunião jamais deveria ter aprovado. Coleção 100% fictícia da Upixel.">
+<meta name="keywords" content="Upubli, produtos fictícios, sátira, humor, anúncios absurdos, UX, marketing exagerado, startups, cultura digital, Upixel">
+
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/upubli-zona-obscura.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="A Zona Obscura | Upubli™ — a seção que a Upixel finge não conhecer">
+<meta property="og:description" content="Devaneios, psicoses, pânico... ou lucidez? Bem-vindo à seção de produtos absurdos que o algoritmo finge que não viu.">
+<meta property="og:url" content="https://upixel.com.br/upubli-zona-obscura.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Zona Obscura | Upubli™">
+<meta name="twitter:description" content="Nada aqui sobrevive a uma autópsia honesta. E é exatamente por isso que existe.">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<!-- Mesmos arquivos de estilo do restante do site. Nenhuma regra foi alterada. -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+<!-- ==========================================================
+     CSS da página — prefixo .uo- em tudo que é novo.
+     ========================================================== -->
+<style id="uo-style">
+  .uo-page {
+    --uo-bg: #000000;
+    --uo-text: #ffffff;
+    --uo-muted: #828282;
+    --uo-pink: #FA397A;
+    --uo-border: #262626;
+    --uo-border-strong: #333333;
+
+    background: var(--uo-bg);
+    color: var(--uo-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  .uo-page *,
+  .uo-page *::before,
+  .uo-page *::after {
+    box-sizing: border-box;
+  }
+
+  .uo-page img {
+    max-width: 100%;
+  }
+
+  /* ---------- aviso topo (discreto, sem selo amarelo) ---------- */
+
+  .uo-aviso-topo {
+    border-bottom: 1px solid var(--uo-border);
+    padding: 12px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  .uo-aviso-topo span:first-child {
+    color: var(--uo-pink);
+    font-weight: 700;
+    font-size: .82rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex: none;
+  }
+
+  .uo-aviso-topo span:last-child {
+    color: var(--uo-muted);
+    font-size: .85rem;
+  }
+
+  /* ---------- hero editorial ---------- */
+
+  .uo-hero {
+    padding: 88px 60px 40px;
+    max-width: 900px;
+  }
+
+  .uo-eyebrow {
+    display: block;
+    color: var(--uo-pink);
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .uo-h1 {
+    position: relative;
+    font-size: clamp(2.2rem, 1.5rem + 2.8vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0 0 40px;
+    width: fit-content;
+    cursor: default;
+  }
+
+  /* Signature move: glitch de duas camadas em cima do H1, só no
+     hover/foco — chromatic aberration usando SÓ as cores da marca
+     (rosa + branco), pra combinar com "dark web" sem fugir da
+     identidade visual preta+rosa. */
+  .uo-h1::before,
+  .uo-h1::after {
+    content: "Bem-vindo ao obscuro.";
+    position: absolute;
+    inset: 0;
+    background: var(--uo-bg);
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  .uo-h1::before {
+    color: var(--uo-pink);
+    clip-path: inset(0 0 55% 0);
+  }
+
+  .uo-h1::after {
+    color: #ffffff;
+    clip-path: inset(55% 0 0 0);
+  }
+
+  .uo-h1:hover::before,
+  .uo-h1:focus-visible::before {
+    opacity: 1;
+    animation: uo-glitch-a .5s steps(2, end) 2;
+  }
+
+  .uo-h1:hover::after,
+  .uo-h1:focus-visible::after {
+    opacity: 1;
+    animation: uo-glitch-b .5s steps(2, end) 2;
+  }
+
+  @keyframes uo-glitch-a {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-3px, 1px); }
+    50% { transform: translate(3px, -1px); }
+    75% { transform: translate(-2px, 0); }
+    100% { transform: translate(0, 0); }
+  }
+
+  @keyframes uo-glitch-b {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(3px, -1px); }
+    50% { transform: translate(-3px, 1px); }
+    75% { transform: translate(2px, 0); }
+    100% { transform: translate(0, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .uo-h1::before,
+    .uo-h1::after {
+      display: none;
+    }
+  }
+
+  .uo-editorial p {
+    color: var(--uo-muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 62ch;
+    margin: 0 0 20px;
+  }
+
+  .uo-editorial p:last-child {
+    margin-bottom: 0;
+  }
+
+  .uo-marca {
+    color: var(--uo-pink);
+    font-weight: 700;
+  }
+
+  /* ---------- transição pra vitrine ---------- */
+
+  .uo-transicao {
+    padding: 24px 60px 48px;
+    max-width: 900px;
+  }
+
+  .uo-transicao h2 {
+    font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+
+  .uo-transicao p {
+    color: var(--uo-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  /* ---------- vitrine: grid assimétrico ---------- */
+
+  .uo-vitrine {
+    padding: 0 60px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .uo-card {
+    position: relative;
+    grid-column: span 1;
+    background: #050505;
+    border: 1px solid var(--uo-border);
+    border-radius: 10px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+
+  .uo-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--uo-pink);
+  }
+
+  .uo-card--span2 { grid-column: span 2; }
+  .uo-card--span4 { grid-column: span 4; }
+
+  .uo-formato {
+    color: var(--uo-muted);
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+  }
+
+  .uo-icone {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .uo-titulo {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--uo-text);
+    margin: 0;
+  }
+
+  .uo-tagline {
+    color: var(--uo-pink);
+    font-weight: 700;
+    font-size: .92rem;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .uo-corpo {
+    color: var(--uo-muted);
+    font-size: .9rem;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+
+  .uo-rodape-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--uo-border);
+  }
+
+  .uo-preco {
+    color: var(--uo-text);
+    font-weight: 700;
+    font-size: .85rem;
+  }
+
+  .uo-preco small {
+    display: block;
+    color: var(--uo-muted);
+    font-weight: 400;
+    font-size: .72rem;
+  }
+
+  .uo-cta {
+    background: transparent;
+    border: 1px solid var(--uo-border-strong);
+    color: var(--uo-text);
+    font-size: .78rem;
+    font-weight: 700;
+    padding: 9px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color .18s ease, color .18s ease, background .18s ease;
+    white-space: nowrap;
+  }
+
+  .uo-cta:hover,
+  .uo-cta:focus-visible {
+    border-color: var(--uo-pink);
+    color: #000000;
+    background: var(--uo-pink);
+  }
+
+  /* selo de autópsia — o elemento-assinatura desta vitrine */
+  .uo-selo-autopsia {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    border: 2px dashed var(--uo-pink);
+    color: var(--uo-pink);
+    font-size: .58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    line-height: 1.25;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6px;
+    transform: rotate(-11deg);
+    transition: transform .25s ease;
+    pointer-events: none;
+  }
+
+  .uo-card:hover .uo-selo-autopsia {
+    transform: rotate(-4deg) scale(1.05);
+  }
+
+  /* ---------- skin: banner (retrô, publicidade de internet antiga) ---------- */
+
+  .uo-card--banner {
+    background: linear-gradient(135deg, rgba(250, 57, 122, .08), rgba(250, 57, 122, 0));
+    border: 1px dashed var(--uo-border-strong);
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 22px 28px;
+  }
+
+  .uo-card--banner .uo-icone {
+    font-size: 2.6rem;
+  }
+
+  .uo-card--banner .uo-marquee-wrapper {
+    overflow: hidden;
+    border-top: 1px solid var(--uo-border-strong);
+    border-bottom: 1px solid var(--uo-border-strong);
+    margin-top: 6px;
+    padding: 4px 0;
+  }
+
+  .uo-card--banner .uo-marquee {
+    display: inline-block;
+    white-space: nowrap;
+    color: var(--uo-pink);
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    padding-left: 100%;
+    animation: uo-marquee 14s linear infinite;
+  }
+
+  @keyframes uo-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .uo-card--banner .uo-marquee {
+      animation: none;
+      padding-left: 0;
+    }
+  }
+
+  /* ---------- skin: startup (hype, gradiente, badge de aporte) ---------- */
+
+  .uo-card--startup {
+    background: radial-gradient(circle at 20% 0%, rgba(250, 57, 122, .16), rgba(0,0,0,0) 60%), #050505;
+    border-color: rgba(250, 57, 122, .3);
+  }
+
+  .uo-badge-aporte {
+    align-self: flex-start;
+    background: var(--uo-pink);
+    color: #000000;
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  /* ---------- skin: corporativo (sóbrio, quase sério demais) ---------- */
+
+  .uo-card--corporate {
+    background: #0a0a0a;
+    border-color: var(--uo-border-strong);
+  }
+
+  .uo-card--corporate .uo-titulo {
+    font-family: "Segoe UI", sans-serif;
+    letter-spacing: .2px;
+  }
+
+  .uo-card--corporate .uo-formato {
+    color: var(--uo-text);
+    opacity: .5;
+  }
+
+  /* ---------- skin: premium (elegante, minimalista) ---------- */
+
+  .uo-card--premium {
+    background: #050505;
+    border: 1px solid var(--uo-border-strong);
+  }
+
+  .uo-card--premium .uo-icone {
+    font-size: 2.4rem;
+  }
+
+  .uo-card--premium .uo-titulo {
+    font-size: 1.3rem;
+  }
+
+  /* ---------- skin: discreto (pequeno, seco, quase escondido) ---------- */
+
+  .uo-card--discreet {
+    padding: 20px;
+    gap: 8px;
+  }
+
+  .uo-card--discreet .uo-icone {
+    font-size: 1.3rem;
+  }
+
+  .uo-card--discreet .uo-titulo {
+    font-size: 1rem;
+  }
+
+  .uo-card--discreet .uo-corpo {
+    font-size: .84rem;
+  }
+
+  /* ---------- link de callback (Clipe → RIP) ---------- */
+
+  .uo-callback {
+    color: var(--uo-muted);
+    font-size: .78rem;
+    font-style: italic;
+  }
+
+  .uo-callback a {
+    color: var(--uo-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .uo-callback a:hover {
+    color: var(--uo-pink);
+  }
+
+  /* ---------- mais atrocidades (banners dos outros Upubli) ---------- */
+
+  .uo-atrocidades {
+    padding: 40px 60px 20px;
+    max-width: 1120px;
+  }
+
+  .uo-atrocidades h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+
+  .uo-atrocidades p {
+    color: var(--uo-muted);
+    font-size: .92rem;
+    margin: 0 0 24px;
+  }
+
+  .upx-container + .upx-container {
+    margin-top: 16px;
+  }
+
+  /* ---------- fechamento editorial ---------- */
+
+  .uo-fechamento {
+    padding: 64px 60px 24px;
+    max-width: 900px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .uo-fechamento p {
+    margin: 0 0 10px;
+    color: var(--uo-text);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .uo-fechamento p + p {
+    color: var(--uo-muted);
+    font-size: .95rem;
+    font-weight: 400;
+  }
+
+  .uo-legal {
+    padding: 0 60px 56px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .uo-legal p {
+    color: #5c5c5c;
+    font-size: .74rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ---------- modal ---------- */
+
+  .uo-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .8);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .28s ease, visibility 0s linear .28s;
+  }
+
+  .uo-modal-overlay.uo-aberto {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .28s ease, visibility 0s linear 0s;
+  }
+
+  .uo-modal {
+    background: #0a0a0a;
+    border: 1px solid var(--uo-border-strong);
+    border-radius: 16px;
+    max-width: 440px;
+    width: 100%;
+    padding: 36px 30px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+    transform: scale(.9) translateY(12px);
+    opacity: 0;
+    transition: transform .3s cubic-bezier(.2, .8, .2, 1), opacity .28s ease;
+  }
+
+  .uo-modal-overlay.uo-aberto .uo-modal {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  .uo-modal-selo {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    border: 2px dashed var(--uo-pink);
+    color: var(--uo-pink);
+    font-size: .58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+    transform: rotate(-10deg);
+  }
+
+  .uo-modal p {
+    color: var(--uo-muted);
+    font-size: .95rem;
+    line-height: 1.6;
+    margin: 0 0 24px;
+  }
+
+  .uo-modal button {
+    background: var(--uo-pink);
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 24px;
+    font-weight: 700;
+    font-size: .9rem;
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    transition: background .18s ease;
+  }
+
+  .uo-modal button:hover {
+    background: #ffffff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .uo-modal-overlay,
+    .uo-modal {
+      transition: none !important;
+    }
+  }
+
+  /* ---------- responsivo ---------- */
+
+  @media (max-width: 1024px) {
+    .uo-aviso-topo,
+    .uo-hero,
+    .uo-transicao,
+    .uo-vitrine,
+    .uo-atrocidades,
+    .uo-fechamento,
+    .uo-legal {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .uo-vitrine {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .uo-card--span4 {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .uo-aviso-topo,
+    .uo-hero,
+    .uo-transicao,
+    .uo-vitrine,
+    .uo-atrocidades,
+    .uo-fechamento,
+    .uo-legal {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    .uo-vitrine {
+      grid-template-columns: 1fr;
+    }
+
+    .uo-card--span2,
+    .uo-card--span4 {
+      grid-column: span 1;
+    }
+
+    .uo-card--banner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .uo-rodape-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .uo-cta {
+      width: 100%;
+    }
+  }
+</style>
+
+</head>
+<body class="uo-page">
+
+    <!-- ======================================================
+         HEADER — idêntico ao das outras páginas do site
+         ====================================================== -->
+    <header class="meu-header">
+        <div class="logo">
+            <img src="logobranca.png" alt="Logotipo do meu site">
+        </div>
+
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+            <a href="rip.html">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html">Besteirol</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <main class="uo-page">
+
+        <!-- ================= AVISO TOPO (discreto) ================= -->
+        <div class="uo-aviso-topo">
+            <span>Zona não recomendada</span>
+            <span>Você está prestes a entrar numa parte da Upixel que o próprio site finge não conhecer.</span>
+        </div>
+
+        <!-- ================= HERO EDITORIAL ================= -->
+        <section class="uo-hero">
+            <span class="uo-eyebrow">Upubli™ apresenta</span>
+            <h1 class="uo-h1" tabindex="0">Bem-vindo ao obscuro.</h1>
+
+            <div class="uo-editorial">
+                <p>Você chegou ao obscuro do site.</p>
+                <p>Aqui seria a <span class="uo-marca">dark web da Upixel</span>.</p>
+                <p>Devaneios, psicoses, pânico... ou seria o oposto?</p>
+                <p><span class="uo-marca">Lucidez, sanidade, tranquilidade.</span></p>
+                <p>Aqui os produtos e anúncios são tão absurdos que o Procon e o Celso Russomanno provavelmente <span class="uo-marca">rasgariam as próprias entranhas</span> tentando descobrir onde foi parar o <span class="uo-marca">senso de utilidade</span>.</p>
+                <p>Abririam o produto na mesa.</p>
+                <p>Separariam músculo de marketing, nervo de promessa e osso de entrega.</p>
+                <p>Localizariam com uma pinça onde foi parar o benefício real.</p>
+                <p>E, no fim da autópsia, descobririam que o único órgão funcional era a <span class="uo-marca">vergonha alheia do consumidor</span>.</p>
+                <p>Nada aqui passa em teste de laboratório.</p>
+                <p>Nada aqui sobrevive a uma autópsia honesta.</p>
+                <p>E é exatamente por isso que existe.</p>
+                <p>Bem-vindo à seção que <span class="uo-marca">o algoritmo finge que não viu</span>.</p>
+            </div>
+        </section>
+
+        <!-- ================= TRANSIÇÃO ================= -->
+        <section class="uo-transicao">
+            <h2>Os produtos que ninguém pediu.</h2>
+            <p>Cada anúncio abaixo passou por uma autópsia completa. Nenhum sobreviveu. Todos foram publicados mesmo assim.</p>
+        </section>
+
+        <!-- ================= VITRINE ================= -->
+        <section class="uo-vitrine" aria-label="Anúncios de produtos fictícios">
+
+            <!-- 1. Nuvem de Backup Física™ — skin banner, span 4 -->
+            <article class="uo-card uo-card--banner uo-card--span4">
+                <span class="uo-icone" aria-hidden="true">☁️</span>
+                <div>
+                    <span class="uo-formato">Publicidade de banner — patrocinado por ninguém</span>
+                    <h3 class="uo-titulo">Nuvem de Backup Física™</h3>
+                    <p class="uo-tagline">Se seus arquivos estão na nuvem, nada mais justo que a nuvem estar na sua mesa.</p>
+                    <p class="uo-corpo">Uma esfera de isopor cinza que fica sobre o monitor, sincronizada com absolutamente nada. Toda vez que você salva um arquivo, ela pisca uma luzinha azul só pra você se sentir seguro. Compatível com qualquer sistema — porque não se conecta a nenhum.</p>
+                    <div class="uo-marquee-wrapper" aria-hidden="true">
+                        <span class="uo-marquee">★ PROMOÇÃO RELÂMPAGO ★ ENQUANTO DUROU O SERVIDOR ★ ESTOQUE LIMITADO A UM PLANETA ★ CLIQUE AQUI (NÃO CLIQUE) ★</span>
+                    </div>
+                    <div class="uo-rodape-card">
+                        <span class="uo-preco">R$ 349,00 <small>parcelado em 12x de otimismo</small></span>
+                        <a href="pagina-upubli-nuvem-de-backup-fisica.html" class="uo-cta">Sincronizar mesmo assim</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 2. Adaptador USB de Duas Pontas™ — classic -->
+            <article class="uo-card">
+                <span class="uo-formato">Solução clássica</span>
+                <span class="uo-icone" aria-hidden="true">🔌</span>
+                <h3 class="uo-titulo">Adaptador USB de Duas Pontas™</h3>
+                <p class="uo-tagline">Para conectar duas coisas que claramente não deveriam ser conectadas.</p>
+                <p class="uo-corpo">Testado em laboratório nenhum, aprovado por ninguém do comitê de segurança elétrica. Uma ponta entra, a outra também tenta. O resultado é seu problema.</p>
+                <div class="uo-rodape-card">
+                    <span class="uo-preco">R$ 89,90 <small>a ponta que sobrar é por sua conta</small></span>
+                    <a href="pagina-upubli-adaptador-usb-duas-pontas.html" class="uo-cta">Conectar sem pensar</a>
+                  </div>
+            </article>
+
+            <!-- 3. Extensão Cerebral™ — startup, span 2 -->
+            <article class="uo-card uo-card--startup uo-card--span2">
+                <span class="uo-badge-aporte">Série A: R$ 40 MI</span>
+                <span class="uo-formato">Startup investida demais</span>
+                <span class="uo-icone" aria-hidden="true">🧠</span>
+                <h3 class="uo-titulo">Extensão Cerebral™</h3>
+                <p class="uo-tagline">Agora com 20% mais pensamentos desnecessários.</p>
+                <p class="uo-corpo">Levantamos uma rodada avaliada em R$ 40 milhões pra provar que sua memória de curto prazo pode virar produto recorrente. Assinatura mensal — cancelamento cerebral não incluso.</p>
+                <div class="uo-rodape-card">
+                    <span class="uo-preco">R$ 197<small>/mês, ou R$ 1.970/ano se já desistiu de pensar sozinho</small></span>
+                    <a href="pagina-upubli-extensao-cerebral.html" class="uo-cta">Escalar minha mente</a>
+                </div>
+            </article>
+
+            <!-- 4. Relógio que Atrasa™ — discreet -->
+            <article class="uo-card uo-card--discreet">
+                <span class="uo-formato">Anúncio discreto</span>
+                <span class="uo-icone" aria-hidden="true">🕰️</span>
+                <h3 class="uo-titulo">Relógio que Atrasa™</h3>
+                <p class="uo-corpo">Programado pra correr 4 minutos mais devagar por hora. Porque a pontualidade sempre foi um problema de fuso, não seu.</p>
+                <div class="uo-rodape-card">
+                    <span class="uo-preco">R$ 219,00</span>
+                    <a href="upubli-relogio-que-atrasa.html" class="uo-cta">Chegar depois com estilo</a>
+                </div>
+            </article>
+
+            <!-- 5. Nielsen — discreet -->
+            <article class="uo-card uo-card--discreet">
+                <span class="uo-formato">Nielsen Porrador</span>
+                <span class="uo-icone" aria-hidden="true">⚠️</span>
+                <h3 class="uo-titulo">Nielsen Slap™</h3>
+                <p class="uo-corpo">10 maneiras de descobrir que sua interface está errada — antes do usuário descobrir por você.</p>
+                <p>Testado em interfaces reais, aplicado sem anestesia e aprovado por ninguém que participou da reunião que criou o problema.</p>
+                <div class="uo-rodape-card">
+                    <span class="uo-preco">R$ 99,90 <small>2 unidades, você vai perder uma</small></span>
+                    <a href="pagina-upubli-nielsen-slap.html" class="uo-cta">Leve o tapa</a>
+                </div>
+            </article>
+
+            <!-- 6. Cadeira Ergonômica para Quem Não Senta™ — classic -->
+            <article class="uo-card">
+                <span class="uo-formato">Solução clássica</span>
+                <span class="uo-icone" aria-hidden="true">🪑</span>
+                <h3 class="uo-titulo">Cadeira Ergonômica para Quem Não Senta™</h3>
+                <p class="uo-tagline">Postura perfeita. Uso questionável.</p>
+                <p class="uo-corpo">Desenvolvida por ergonomistas que também nunca sentaram nela. Ideal pra quem trabalha em pé, deitado, ou fingindo trabalhar em qualquer outro lugar.</p>
+                <div class="uo-rodape-card">
+                    <a href="upubli-cadeira-ergonomica.html" class="uo-cta">Em dé (DIPÉ) com estilo</a>
+                </div>
+            </article>
+
+            <!-- 7. Dashboard de Sentimentos™ — corporate, span 2 -->
+            <article class="uo-card uo-card--corporate uo-card--span2">
+                <span class="uo-selo-autopsia" aria-hidden="true">Benefício<br>não<br>encontrado</span>
+                <span class="uo-formato">Solução corporativa</span>
+                <span class="uo-icone" aria-hidden="true">📊</span>
+                <h3 class="uo-titulo">Dashboard de Sentimentos™</h3>
+                <p class="uo-tagline">Transforme como sua equipe se sente em um gráfico que ninguém vai ler.</p>
+                <p class="uo-corpo">Nosso algoritmo proprietário converte silêncio em reunião, olheiras e mensagens de "tudo bem" em métricas acionáveis. Compatível com qualquer clima organizacional — inclusive o péssimo.</p>
+                <div class="uo-rodape-card">
+                    <span class="uo-preco">Sob consulta <small>como tudo que envolve RH</small></span>
+                    <a href="upubli-dashboard-sentimentos.html" class="uo-cta">Solicitar demonstração</a>
+                </div>
+            </article>
+
+            <!-- 8. Pivô-as-a-Service™ — startup, span 2 -->
+<article class="uo-card uo-card--startup uo-card--span2">
+    <span class="uo-badge-aporte">Tecnologia proibida pelo calendário</span>
+    <span class="uo-formato">Produto revolucionário demais</span>
+    <span class="uo-icone" aria-hidden="true">⏳</span>
+
+    <h3 class="uo-titulo">Time Machine™</h3>
+
+    <p class="uo-tagline">
+        Volte no tempo para corrigir decisões que você jurava que eram boas.
+    </p>
+
+    <p class="uo-corpo">
+        Uma máquina revolucionária capaz de transportar você para qualquer momento do passado.
+        Perfeita para refazer aquela reunião, desfazer aquele commit ou voltar cinco minutos
+        no tempo e pensar melhor antes de responder “pode deixar comigo”.
+    </p>
+
+    <div class="uo-rodape-card">
+        <span class="uo-preco">
+            R$ 9.999
+            <small>ou 3 parcelas de arrependimento temporal</small>
+        </span>
+
+        <a href="pagina-upubli-time-machine.html" class="uo-cta">Viajar agora</a>
+    </div>
+</article>
+
+            <!-- 9. Notificação Silenciosa e Barulhenta™ — classic -->
+            <article class="uo-card">
+                <span class="uo-formato">Solução clássica</span>
+                <span class="uo-icone" aria-hidden="true">🔔</span>
+                <h3 class="uo-titulo">Notificação Silenciosa e Barulhenta™</h3>
+                <p class="uo-tagline">O único dispositivo que vibra alto pra avisar que ficou quieto.</p>
+                <p class="uo-corpo">Configurado pra tocar uma sirene discreta de 90 decibéis toda vez que o modo silencioso é ativado. Porque silêncio de verdade ninguém aguenta.</p>
+                <div class="uo-rodape-card">
+                    <span class="uo-preco">R$ 159,90</span>
+                    <a href="upubli-notificacao-silenciosa.html" class="uo-cta">Silenciar com barulho</a>
+                </div>
+            </article>
+
+            <!-- 10. Suco Prensa a Frio de Dados™ — classic -->
+<article class="uo-card">
+    <span class="uo-formato">Tecnologia sensorial</span>
+    <span class="uo-icone" aria-hidden="true">👃</span>
+    <h3 class="uo-titulo">VR Nose™</h3>
+    <p class="uo-tagline">Sinta o cheiro dos produtos antes de comprar.</p>
+    <p class="uo-corpo">Um nariz de realidade virtual que libera o aroma do produto enquanto você navega. Perfume, café, tênis novo — agora sua experiência de compra também invade suas narinas.</p>
+    <div class="uo-rodape-card">
+        <span class="uo-preco">R$ 799,90 <small>cartuchos vendidos separadamente</small></span>
+        <a href="upubli-vr-nose.html" class="uo-cta">Cheirar agora</a>
+    </div>
+</article>
+
+            <!-- 11. Espelho com IA™ — premium, span 2 -->
+            <article class="uo-card uo-card--premium uo-card--span2">
+                <span class="uo-formato">Edição premium</span>
+                <span class="uo-icone" aria-hidden="true">🪞</span>
+                <h3 class="uo-titulo">Espelho com IA™</h3>
+                <p class="uo-tagline">Reflete você. Só que depois de carregar por 4 segundos.</p>
+                <p class="uo-corpo">Nosso espelho premium usa inteligência artificial de última geração pra confirmar, com 99,2% de confiança, que é você mesmo ali. Em dias de instabilidade no servidor, reflete outra pessoa.</p>
+                <div class="uo-rodape-card">
+                    <span class="uo-preco">R$ 3.999,00 <small>edição limitada, como sua paciência</small></span>
+                     <a href="upubli-espelho-com-ia.html" class="uo-cta">Ver meu Reflexo</a>
+                </div>
+            </article>
+
+            <!-- 12. SPRAY UX -->
+<article class="uo-card uo-card--span2">
+    <span class="uo-selo-autopsia" aria-hidden="true">UX<br>garantida*</span>
+    <span class="uo-formato">Solução clássica</span>
+    <span class="uo-icone" aria-hidden="true">🧴</span>
+
+    <h3 class="uo-titulo">UX Spray™</h3>
+
+    <p class="uo-tagline">
+        Borrife sobre a interface e espere a experiência do usuário melhorar.
+    </p>
+
+    <p class="uo-corpo">
+        Desenvolvido para eliminar instantaneamente bugs de usabilidade, reuniões intermináveis,
+        botões sem função e aquele clássico “o usuário não entendeu”. Basta aplicar diretamente
+        sobre a tela e aguardar. Não funciona, mas deixa a equipe mais confiante.
+    </p>
+
+    <p class="uo-callback">
+        *Resultados não comprovados — mas a apresentação fica muito mais convincente.
+    </p>
+
+    <div class="uo-rodape-card">
+        <span class="uo-preco">
+            R$ 49,90
+            <small>frete grátis para quem chama isso de experiência</small>
+        </span>
+
+        <a href="pagina-upubli-spray.html" class="uo-cta">
+            Borrifar UX
+        </a>
+    </div>
+</article>
+
+        </section>
+
+        <!-- ================= FECHAMENTO ================= -->
+        <section class="uo-fechamento">
+            <p>Se você chegou até aqui, parabéns. Nenhum órgão regulador foi acionado.</p>
+            <p>Ou pelo menos ainda não.</p>
+        </section>
+
+        <div class="uo-legal">
+            <p>Nenhum produto desta página existe, é vendido ou funciona. Assim como a maioria das promessas da internet.</p>
+        </div>
+
+    </main>
+
+    <!-- ======================================================
+         FOOTER — idêntico ao das outras páginas
+         ====================================================== -->
+    <footer class="footer">
+
+        <div class="footer-esquerda">
+            <img src="logobranca.png" alt="Upixel" class="footer-logo">
+            <p class="copyright">
+                Upixel. Todos os direitos reservados.
+            </p>
+        </div>
+
+        <div class="footer-centro">
+            <nav class="footer-menu">
+                <a href="index.html">Home</a>
+                <a href="artigos.html">Artigos</a>
+                <a href="ux-challenge.html">UX Challenge</a>
+                <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+                <a href="rip.html">RIP</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="besteirol.html">Besteirol</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+
+    </footer>
+
+    <div class="footer-ilustracao">
+        <img src="rodape.png" alt="Ilustração Footer">
+    </div>
+
+    <!-- ======================================================
+         MODAL — reação ao clicar em qualquer botão de compra
+         ====================================================== -->
+    <div class="uo-modal-overlay" id="uo-modal-overlay" role="presentation">
+        <div class="uo-modal" role="dialog" aria-modal="true" aria-labelledby="uo-modal-titulo">
+            <div class="uo-modal-selo" aria-hidden="true">100%<br>Fictício</div>
+            <h3 id="uo-modal-titulo" style="margin:0 0 12px;">Isso não existe.</h3>
+            <p id="uo-modal-mensagem">Nada aqui é real.</p>
+            <button type="button" id="uo-btn-fechar-modal">Voltar pra Zona Obscura</button>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         JS — abre o modal com uma mensagem específica de cada
+         botão (data-mensagem), fecha por Esc, clique fora ou
+         botão. Isolado num IIFE, zero dependência externa.
+         ====================================================== -->
+    <script>
+    (function () {
+        'use strict';
+
+        var overlay = document.getElementById('uo-modal-overlay');
+        var mensagemEl = document.getElementById('uo-modal-mensagem');
+        var btnFechar = document.getElementById('uo-btn-fechar-modal');
+        var botoesCta = document.querySelectorAll('.uo-cta');
+        var ultimoFoco = null;
+
+        function abrirModal(mensagem) {
+            mensagemEl.textContent = mensagem || 'Nada aqui é real.';
+            ultimoFoco = document.activeElement;
+            overlay.classList.add('uo-aberto');
+            document.body.style.overflow = 'hidden';
+            btnFechar.focus();
+            document.addEventListener('keydown', aoPressionarTecla);
+        }
+
+        function fecharModal() {
+            overlay.classList.remove('uo-aberto');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', aoPressionarTecla);
+            if (ultimoFoco && typeof ultimoFoco.focus === 'function') {
+                ultimoFoco.focus();
+            }
+        }
+
+        function aoPressionarTecla(evento) {
+            if (evento.key === 'Escape') {
+                fecharModal();
+            }
+        }
+
+        botoesCta.forEach(function (botao) {
+            botao.addEventListener('click', function () {
+                abrirModal(botao.getAttribute('data-mensagem'));
+            });
+        });
+
+        if (btnFechar) btnFechar.addEventListener('click', fecharModal);
+
+        if (overlay) {
+            overlay.addEventListener('click', function (evento) {
+                if (evento.target === overlay) {
+                    fecharModal();
+                }
+            });
+        }
+    })();
+    </script>
+
+</body>
+</html>
