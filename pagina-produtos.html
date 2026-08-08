@@ -100,7 +100,29 @@
   .uo-page img {
     max-width: 100%;
   }
+/* Corrige especificamente o card "Nuvem de Backup Física":
+   a div que embrulha o texto precisa de min-width: 0 pra poder
+   encolher — sem isso, o texto do marquee (numa linha só) força
+   a div a ficar larga demais e o conteúdo é cortado no mobile. */
+.uo-card--banner > div {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+/* Correção definitiva: troca align-items de flex-start pra
+   stretch nesse card específico, quando ele empilha no mobile.
+   O !important é necessário porque a regra antiga (que causa o
+   bug) usa o mesmo seletor — sem ele, corre o risco de perder
+   a "queda de braço" dependendo da ordem em que os blocos foram
+   colados no arquivo. */
+.uo-card--banner {
+    align-items: stretch !important;
+}
 
+.uo-card--banner > div,
+.uo-marquee-wrapper {
+    width: 100%;
+    min-width: 0;
+}
   /* ---------- aviso topo (discreto, sem selo amarelo) ---------- */
 
   .uo-aviso-topo {
@@ -355,7 +377,7 @@
     cursor: pointer;
     font-family: inherit;
     transition: border-color .18s ease, color .18s ease, background .18s ease;
-    white-space: nowrap;
+   
   }
 
   .uo-cta:hover,
@@ -739,6 +761,70 @@
       width: 100%;
     }
   }
+
+  /* ---------- CORREÇÃO: cards "comidos" no mobile ----------
+   1) O selo de autópsia parava de flutuar por cima do texto
+      e vira uma etiqueta normal, dentro do fluxo, em telas
+      estreitas — antes ele ficava sobrepondo o título/tagline.
+   2) Textos longos (preços, títulos) agora quebram linha em
+      vez de estourar a largura do card.
+   3) O card--banner e o rodapé do card empilham mais cedo
+      (a partir de 900px, não só 640px), evitando aperto em
+      telas médias (tablets e celulares grandes).
+   4) .uo-cta agora tem caixa garantida mesmo sendo <a>, não
+      só <button>.
+*/
+
+.uo-titulo,
+.uo-tagline,
+.uo-corpo,
+.uo-preco,
+.uo-marquee {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.uo-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .uo-card--banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .uo-rodape-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .uo-cta {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .uo-selo-autopsia {
+        position: static;
+        width: auto;
+        height: auto;
+        border-radius: 20px;
+        padding: 5px 12px;
+        transform: none;
+        margin-bottom: 4px;
+        align-self: flex-start;
+        line-height: 1.3;
+        font-size: .62rem;
+    }
+
+    .uo-card:hover .uo-selo-autopsia {
+        transform: none;
+    }
+}
 </style>
 
 </head>
