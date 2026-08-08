@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<!-- ==========================================================
+     Página: RELÓGIO QUE ATRASA™ — coleção UPUBLI™ (produtos fictícios)
+
+     Landing page satírica, dentro do padrão visual da Upixel:
+     fundo preto, rosa #FA397A. A fonte pixelizada (Pixelify Sans)
+     é usada só no menu de navegação, herdada do style.css global;
+     todo o conteúdo desta página (títulos, textos) usa a fonte
+     padrão do sistema. Prefixo de classe próprio ".upubli-" em
+     tudo que é novo, pra não colidir com nada do resto do site —
+     header, footer e FAQ reaproveitam exatamente as classes
+     globais já usadas em artigos.html / ux-challenge.html.
+
+     Tudo puro: HTML, CSS e JS, sem framework, sem dependência
+     externa além das fontes do Google já usadas no site.
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Relógio que Atrasa™ | Upubli™ — Upixel</title>
+
+<meta name="description" content="Relógio que Atrasa™: programado pra correr 4 minutos mais devagar por hora. Porque a pontualidade sempre foi um problema de fuso, não seu. Produto 100% fictício da coleção Upubli™.">
+<meta name="keywords" content="Relógio que Atrasa, Upubli, produto fictício, sátira tech, humor pontualidade, atraso programado, Upixel">
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/pagina-upubli-relogio-que-atrasa.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Relógio que Atrasa™ | Upubli™ — Upixel">
+<meta property="og:description" content="Programado pra correr 4 minutos mais devagar por hora. Porque a pontualidade sempre foi um problema de fuso, não seu.">
+<meta property="og:url" content="https://upixel.com.br/pagina-upubli-relogio-que-atrasa.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-social-relogio-que-atrasa.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Relógio que Atrasa™ | Upubli™ — Upixel">
+<meta name="twitter:description" content="4 minutos a menos por hora. Atrasado de fábrica. (Produto 100% fictício.)">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social-relogio-que-atrasa.png">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Relógio que Atrasa™",
+      "image": "https://upixel.com.br/imagens/relogio-que-atrasa-upubli-upixel.png",
+      "description": "Programado pra correr 4 minutos mais devagar por hora. Porque a pontualidade sempre foi um problema de fuso, não seu.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Upubli™"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "129.90",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock",
+        "url": "https://upixel.com.br/pagina-upubli-relogio-que-atrasa.html"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O relógio realmente atrasa 4 minutos por hora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Em teoria, sim. Na prática, como o produto não existe, ele atrasa exatamente o quanto você quiser imaginar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Serve de justificativa para chegar atrasado no trabalho?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Foi exatamente para isso que ele foi (não) projetado. Use com moderação e um bom storytelling."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso sincronizar com o celular?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pode tentar. O relógio vai continuar atrasando. O celular não. O conflito é parte da experiência."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Isso é um produto de verdade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Relógio que Atrasa™ é 100% fictício, faz parte da coleção satírica Upubli™ da Upixel."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style id="upubli-style">
+  .upubli-page {
+    --upubli-bg: #000000;
+    --upubli-text: #ffffff;
+    --upubli-muted: #828282;
+    --upubli-pink: #FA397A;
+    --upubli-border: #262626;
+    --upubli-border-strong: #333333;
+    --upubli-amarelo: #FFC531;
+
+    background: var(--upubli-bg);
+    color: var(--upubli-text);
+    scroll-behavior: smooth;
+  }
+
+  main.upubli-page,
+  .upubli-aviso-topo,
+  .upubli-aviso-rodape,
+  .upubli-modal-overlay {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  .upubli-page *,
+  .upubli-page *::before,
+  .upubli-page *::after {
+    box-sizing: border-box;
+  }
+
+  .upubli-page img {
+    max-width: 100%;
+  }
+
+  .upubli-secao {
+    padding: 88px 60px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .upubli-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--upubli-pink);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .upubli-titulo-secao {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 16px;
+  }
+
+  .upubli-sub-secao {
+    color: var(--upubli-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 62ch;
+    margin: 0 0 48px;
+  }
+
+  .upubli-aviso-topo {
+    background: linear-gradient(90deg, rgba(255, 197, 49, 0.1), rgba(255, 197, 49, 0.02));
+    border-bottom: 1px solid var(--upubli-border);
+    padding: 14px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  .upubli-aviso-selo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--upubli-amarelo);
+    color: #1a1400;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    flex: none;
+  }
+
+  .upubli-aviso-texto {
+    color: var(--upubli-muted);
+    font-size: .88rem;
+  }
+
+  .upubli-aviso-texto strong {
+    color: var(--upubli-text);
+  }
+
+  .upubli-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding-top: 72px;
+    padding-bottom: 56px;
+  }
+
+  .upubli-hero-texto {
+    max-width: 52ch;
+  }
+
+  .upubli-hero-titulo {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: clamp(2.4rem, 1.7rem + 2.8vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0 0 14px;
+  }
+
+  .upubli-hero-titulo .upubli-marca-registrada {
+    color: var(--upubli-pink);
+  }
+
+  .upubli-slogan {
+    color: var(--upubli-pink);
+    font-size: clamp(1.05rem, 1rem + .4vw, 1.35rem);
+    font-weight: 700;
+    margin: 0 0 20px;
+  }
+
+  .upubli-preco-box {
+    background: #0a0a0a;
+    border: 1px solid var(--upubli-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+
+  .upubli-preco-valor {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--upubli-amarelo);
+  }
+
+  .upubli-preco-obs {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--upubli-pink);
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  .upubli-descricao {
+    color: var(--upubli-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 32px;
+  }
+
+  .upubli-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .upubli-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: .95rem;
+    font-weight: 700;
+    padding: 16px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+    font-family: inherit;
+  }
+
+  .upubli-btn:hover,
+  .upubli-btn:focus-visible {
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  .upubli-btn--primario {
+    background: var(--upubli-pink);
+    color: #000000;
+  }
+
+  .upubli-btn--primario:hover,
+  .upubli-btn--primario:focus-visible {
+    background: #ffffff;
+  }
+
+  .upubli-btn--secundario {
+    background: transparent;
+    color: var(--upubli-text);
+    border-color: var(--upubli-border-strong);
+  }
+
+  .upubli-btn--secundario:hover,
+  .upubli-btn--secundario:focus-visible {
+    border-color: var(--upubli-pink);
+    color: var(--upubli-pink);
+  }
+
+  .upubli-confianca {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-bottom: 10px;
+  }
+
+  .upubli-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--upubli-muted);
+    font-size: .82rem;
+  }
+
+  .upubli-chip strong {
+    color: var(--upubli-text);
+    font-weight: 700;
+  }
+
+  .upubli-pulso {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #35d17a;
+    flex: none;
+    animation: upubli-pulsar 1.6s ease-in-out infinite;
+  }
+
+  @keyframes upubli-pulsar {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(53, 209, 122, .5); }
+    50% { opacity: .6; box-shadow: 0 0 0 4px rgba(53, 209, 122, 0); }
+  }
+
+  .upubli-letra-miuda {
+    color: #5c5c5c;
+    font-size: .74rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .upubli-hero-imagem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .upubli-fita-vendido {
+    position: absolute;
+    top: 18px;
+    right: -6px;
+    background: var(--upubli-amarelo);
+    color: #000000;
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 8px 18px;
+    border-radius: 6px 0 0 6px;
+    box-shadow: -4px 4px 0 rgba(0,0,0,.4);
+    z-index: 2;
+  }
+
+  .upubli-lata {
+    width: min(320px, 70vw);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 30px 50px rgba(250, 57, 122, .18));
+    animation: upubli-flutuar 5s ease-in-out infinite;
+  }
+
+  @keyframes upubli-flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .upubli-lata,
+    .upubli-pulso {
+      animation: none !important;
+    }
+  }
+
+  .upubli-beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .upubli-beneficio {
+    background: #0a0a0a;
+    border: 1px solid var(--upubli-border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+
+  .upubli-beneficio:hover {
+    border-color: var(--upubli-pink);
+    transform: translateY(-3px);
+  }
+
+  .upubli-beneficio-icone {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .upubli-beneficio p {
+    margin: 0;
+    color: var(--upubli-text);
+    font-size: .98rem;
+    line-height: 1.55;
+  }
+
+  .upubli-nota-asterisco {
+    margin-top: 32px;
+    color: #5c5c5c;
+    font-size: .76rem;
+    line-height: 1.7;
+  }
+
+  .upubli-passos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+  }
+
+  .upubli-passo {
+    position: relative;
+    padding-top: 8px;
+  }
+
+  .upubli-passo-numero {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--upubli-pink);
+    line-height: 1;
+    margin-bottom: 14px;
+    opacity: .9;
+  }
+
+  .upubli-passo h3 {
+    font-size: 1.05rem;
+    margin: 0 0 8px;
+  }
+
+  .upubli-passo p {
+    color: var(--upubli-muted);
+    font-size: .92rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .upubli-embalagem-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .upubli-embalagem-lista li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    background: #0a0a0a;
+    border: 1px solid var(--upubli-border);
+    border-radius: 10px;
+    color: var(--upubli-text);
+    font-size: .96rem;
+    line-height: 1.55;
+  }
+
+  .upubli-embalagem-lista li::before {
+    content: "🕰️";
+    flex: none;
+    font-size: 1.1rem;
+  }
+
+  .upubli-avaliacoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .upubli-avaliacao {
+    background: #0a0a0a;
+    border: 1px solid var(--upubli-border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .upubli-estrelas {
+    color: var(--upubli-amarelo);
+    font-size: .95rem;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .upubli-avaliacao p {
+    color: var(--upubli-text);
+    font-size: .96rem;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+
+  .upubli-avaliador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .upubli-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--upubli-pink);
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: .85rem;
+    flex: none;
+  }
+
+  .upubli-avaliador-nome {
+    color: var(--upubli-text);
+    font-size: .88rem;
+    font-weight: 700;
+    display: block;
+  }
+
+  .upubli-avaliador-cargo {
+    color: var(--upubli-muted);
+    font-size: .78rem;
+    display: block;
+  }
+
+  .upubli-aviso-rodape {
+    background: #0a0a0a;
+    border-top: 1px solid var(--upubli-border);
+    border-bottom: 1px solid var(--upubli-border);
+    padding: 32px 60px;
+    text-align: center;
+  }
+
+  .upubli-aviso-rodape p {
+    max-width: 62ch;
+    margin: 0 auto;
+    color: var(--upubli-muted);
+    font-size: .88rem;
+    line-height: 1.6;
+  }
+
+  .upubli-aviso-rodape strong {
+    color: var(--upubli-text);
+  }
+
+  .upubli-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .78);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .28s ease, visibility 0s linear .28s;
+  }
+
+  .upubli-modal-overlay.upubli-aberto {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .28s ease, visibility 0s linear 0s;
+  }
+
+  .upubli-modal {
+    background: #0a0a0a;
+    border: 1px solid var(--upubli-border-strong);
+    border-radius: 16px;
+    max-width: 440px;
+    width: 100%;
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+    transform: scale(.9) translateY(12px);
+    opacity: 0;
+    transition: transform .32s cubic-bezier(.2, .8, .2, 1), opacity .28s ease;
+  }
+
+  .upubli-modal-overlay.upubli-aberto .upubli-modal {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  .upubli-modal-emoji {
+    font-size: 2.6rem;
+    display: block;
+    margin-bottom: 16px;
+    animation: upubli-balancar .6s ease-in-out .1s;
+  }
+
+  @keyframes upubli-balancar {
+    0% { transform: rotate(0deg) scale(.6); opacity: 0; }
+    40% { transform: rotate(-12deg) scale(1.05); opacity: 1; }
+    70% { transform: rotate(8deg) scale(1); }
+    100% { transform: rotate(0deg) scale(1); }
+  }
+
+  .upubli-modal h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 1.3rem;
+    margin: 0 0 14px;
+  }
+
+  .upubli-modal p {
+    color: var(--upubli-muted);
+    font-size: .92rem;
+    line-height: 1.65;
+    margin: 0 0 10px;
+  }
+
+  .upubli-modal p:last-of-type {
+    margin-bottom: 28px;
+  }
+
+  .upubli-modal .upubli-btn {
+    width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .upubli-modal-overlay,
+    .upubli-modal,
+    .upubli-modal-emoji {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .upubli-secao {
+      padding: 64px 32px;
+    }
+
+    .upubli-hero {
+      grid-template-columns: 1fr;
+      padding-top: 48px;
+      text-align: left;
+    }
+
+    .upubli-hero-imagem {
+      order: -1;
+    }
+
+    .upubli-hero-texto {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .upubli-secao {
+      padding: 48px 22px;
+    }
+
+    .upubli-aviso-topo {
+      padding: 12px 22px;
+    }
+
+    .upubli-btn {
+      width: 100%;
+    }
+
+    .upubli-botoes {
+      flex-direction: column;
+    }
+
+    .upubli-confianca {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .upubli-modal {
+      padding: 32px 22px;
+    }
+  }
+</style>
+
+</head>
+<body class="upubli-page">
+
+    <div class="upubli-aviso-topo">
+        <span class="upubli-aviso-selo">🟡 Produto fictício</span>
+        <span class="upubli-aviso-texto">Este item faz parte da <strong>Upubli™</strong>, a coleção de produtos satíricos da Upixel. Nada aqui é vendido de verdade.</span>
+    </div>
+
+    <header class="meu-header">
+        <div class="logo">
+            <img src="logobranca.png" alt="Logotipo Upixel">
+        </div>
+
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html">Glossário UX</a>
+            <a href="rip.html">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html">Besteirol</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <main class="upubli-page">
+
+        <!-- ================= HERO ================= -->
+        <section class="upubli-hero upubli-secao">
+
+            <div class="upubli-hero-texto">
+                <span class="upubli-eyebrow">Upubli™ apresenta · Anúncio discreto 🕰️</span>
+
+                <h1 class="upubli-hero-titulo">
+                    Relógio que Atrasa<span class="upubli-marca-registrada">™</span>
+                </h1>
+
+                <p class="upubli-slogan">
+                    Programado pra correr 4 minutos mais devagar por hora.
+                </p>
+
+                <div class="upubli-preco-box">
+                    <span class="upubli-preco-valor">R$ 129,90</span>
+                    <span class="upubli-preco-obs">*Atrasado de fábrica</span>
+                </div>
+
+                <p class="upubli-descricao">
+                    Porque a pontualidade sempre foi um problema de fuso, não seu.<br>
+                    Um relógio que entende que chegar no horário é superestimado — e que 4 minutos a menos por hora resolvem a maior parte dos seus problemas sociais.
+                </p>
+
+                <div class="upubli-botoes">
+                    <button type="button" class="upubli-btn upubli-btn--primario" id="upubli-btn-comprar">
+                        Comprar (com atraso)
+                    </button>
+
+                    <a href="#upubli-como-funciona" class="upubli-btn upubli-btn--secundario">
+                        Como (não) funciona
+                    </a>
+                </div>
+
+                <div class="upubli-confianca">
+                    <span class="upubli-chip">
+                        <span class="upubli-pulso" aria-hidden="true"></span>
+                        <strong id="upubli-contador-visualizacoes">41</strong> pessoas atrasadas vendo agora
+                    </span>
+
+                    <span class="upubli-chip">
+                        🕰️ Atraso: <strong>4 min/hora</strong>
+                    </span>
+
+                    <span class="upubli-chip">
+                        📦 Estoque: <strong>sempre atrasado</strong>
+                    </span>
+
+                    <span class="upubli-chip">
+                        🛡️ Garantia: <strong>até o próximo fuso</strong>
+                    </span>
+                </div>
+
+                <p class="upubli-letra-miuda">
+                    *Em 24 horas o relógio estará aproximadamente 1h36min atrasado. Em uma semana, quase 12 horas. Em um mês… bem, você já não vai mais saber que dia é.
+                </p>
+
+            </div>
+
+            <div class="upubli-hero-imagem">
+                <span class="upubli-fita-vendido">
+                    Atrasado de fábrica
+                </span>
+
+                <img
+                    class="upubli-lata"
+                    src="relogio-que-atrasa-upubli-upixel.png"
+                    alt="Relógio que Atrasa™ — produto fictício da coleção Upubli™ da Upixel"
+                    width="320"
+                    height="320"
+                    loading="lazy"
+                >
+            </div>
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= BENEFÍCIOS ================= -->
+        <section class="upubli-secao" id="upubli-beneficios">
+            <span class="upubli-eyebrow">Por que atrasar</span>
+
+            <h2 class="upubli-titulo-secao">
+                Diferenciais Exclusivos
+            </h2>
+
+            <p class="upubli-sub-secao">
+                Tudo que um relógio normal resolve com precisão, o Relógio que Atrasa™ resolve com desculpa pronta.
+            </p>
+
+            <div class="upubli-beneficios-grid">
+
+                <div class="upubli-beneficio">
+                    <span class="upubli-beneficio-icone">⏰</span>
+                    <p><strong>4 minutos a menos por hora</strong><br>
+                    Programado de fábrica. Não precisa configurar. Já nasce atrasado.</p>
+                </div>
+
+                <div class="upubli-beneficio">
+                    <span class="upubli-beneficio-icone">🌍</span>
+                    <p><strong>Problema de fuso, não seu</strong><br>
+                    A pontualidade sempre foi relativa. Agora você tem o hardware pra provar.</p>
+                </div>
+
+                <div class="upubli-beneficio">
+                    <span class="upubli-beneficio-icone">😌</span>
+                    <p><strong>Desculpa embutida</strong><br>
+                    “Meu relógio atrasa” deixa de ser desculpa e vira especificação técnica.</p>
+                </div>
+
+                <div class="upubli-beneficio">
+                    <span class="upubli-beneficio-icone">📅</span>
+                    <p><strong>Reuniões mais curtas</strong><br>
+                    Você chega quando a reunião já está no meio. Economia de tempo garantida.</p>
+                </div>
+
+                <div class="upubli-beneficio">
+                    <span class="upubli-beneficio-icone">🔋</span>
+                    <p><strong>Bateria que também atrasa</strong><br>
+                    A carga acaba exatamente quando você mais precisa de uma desculpa.</p>
+                </div>
+
+            </div>
+
+            <p class="upubli-nota-asterisco">
+            *Produto satírico. Não atrasa, não adianta e não resolve nenhum problema de pontualidade — só cria desculpas melhores.
+            </p>
+
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= COMO FUNCIONA ================= -->
+        <section class="upubli-secao" id="upubli-como-funciona">
+
+            <span class="upubli-eyebrow">Modo de uso</span>
+
+            <h2 class="upubli-titulo-secao">
+                Como (não) funciona
+            </h2>
+
+            <p class="upubli-sub-secao">
+                Quatro passos entre você e um atraso perfeitamente justificado. Nenhum deles funciona, mas todos são fáceis.
+            </p>
+
+            <div class="upubli-passos">
+
+                <div class="upubli-passo">
+                    <span class="upubli-passo-numero">01</span>
+                    <h3 style="color: var(--upubli-text);">Coloque no pulso</h3>
+                    <p>Ou na mesa. Ou no bolso. O atraso é o mesmo em qualquer lugar.</p>
+                </div>
+
+                <div class="upubli-passo">
+                    <span class="upubli-passo-numero">02</span>
+                    <h3 style="color: var(--upubli-text);">Não sincronize com nada</h3>
+                    <p>Celular, computador, relógio da parede — deixe todos no horário certo. O conflito é o ponto.</p>
+                </div>
+
+                <div class="upubli-passo">
+                    <span class="upubli-passo-numero">03</span>
+                    <h3 style="color: var(--upubli-text);">Saia “no horário”</h3>
+                    <p>Segundo o seu relógio. No mundo real você já estará 4 minutos (por hora) atrasado.</p>
+                </div>
+
+                <div class="upubli-passo">
+                    <span class="upubli-passo-numero">04</span>
+                    <h3 style="color: var(--upubli-text);">Chegue e explique</h3>
+                    <p>“Meu relógio atrasa 4 minutos por hora.” Mostre o produto. Ninguém vai acreditar, mas a desculpa é técnica.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= EMBALAGEM ================= -->
+        <section class="upubli-secao" id="upubli-embalagem">
+
+            <span class="upubli-eyebrow">Conteúdo da caixa</span>
+
+            <h2 class="upubli-titulo-secao">
+                O que vem na caixa
+            </h2>
+
+            <p class="upubli-sub-secao">
+                Tudo isso dentro de uma caixa que também chega atrasada — combinando perfeitamente com o produto.
+            </p>
+
+            <ul class="upubli-embalagem-lista">
+                <li>1 Relógio que Atrasa™ (já saindo de fábrica 4 minutos atrasado).</li>
+                <li>1 Manual de instruções que começa na página 3 e termina na página 1.</li>
+                <li>1 Adesivo “Eu chego no meu horário” pra colar no notebook.</li>
+                <li>1 Cartão de desculpas prontas (12 variações de “problema de fuso”).</li>
+                <li>1 Certificado de atraso vitalício (não transferível, não utilizável).</li>
+                <li>Brinde surpresa: a mesma sensação de urgência de sempre, agora com justificativa oficial.</li>
+            </ul>
+
+            <p class="upubli-nota-asterisco">
+                <strong style="color: var(--upubli-text);">Avisos fictícios:</strong><br>
+                ⚠️ Não use para marcar horário de voo, consulta médica ou entrega de projeto.<br>
+                ⚠️ Em 24h o atraso acumulado é de aproximadamente 1h36min.<br>
+                ⚠️ Se alguém perguntar as horas, minta com confiança.
+            </p>
+
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= AVALIAÇÕES ================= -->
+        <section class="upubli-secao" id="upubli-avaliacoes">
+            <span class="upubli-eyebrow">Opinião dos atrasados</span>
+
+            <h2 class="upubli-titulo-secao">
+                Depoimentos de quem usa
+            </h2>
+
+            <p class="upubli-sub-secao">
+                Cinco estrelas de gente que definitivamente não existe, chegando atrasada a lugares que também não existem.
+            </p>
+
+            <div class="upubli-avaliacoes-grid">
+
+                <div class="upubli-avaliacao">
+                    <div class="upubli-estrelas">★★★★★</div>
+                    <p>"Cheguei 47 minutos atrasado na reunião e mostrei o relógio. O chefe não acreditou, mas também não conseguiu me demitir. Valeu cada centavo."</p>
+                    <div class="upubli-avaliador">
+                        <div class="upubli-avatar">PL</div>
+                        <div>
+                            <span class="upubli-avaliador-nome">Paulo Lento</span>
+                            <span class="upubli-avaliador-cargo">Analista de pontualidade inversa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upubli-avaliacao">
+                    <div class="upubli-estrelas">★★★★★</div>
+                    <p>"Antes eu inventava desculpas. Agora eu tenho especificação técnica. ‘Problema de fuso’ nunca soou tão profissional."</p>
+                    <div class="upubli-avaliador">
+                        <div class="upubli-avatar">MA</div>
+                        <div>
+                            <span class="upubli-avaliador-nome">Marina Atrasada</span>
+                            <span class="upubli-avaliador-cargo">Product Manager de reuniões perdidas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upubli-avaliacao">
+                    <div class="upubli-estrelas">★★★★★</div>
+                    <p>"Em uma semana o relógio estava 11 horas atrasado. Eu achava que era segunda. Era terça. Melhor semana da minha vida."</p>
+                    <div class="upubli-avaliador">
+                        <div class="upubli-avatar">CF</div>
+                        <div>
+                            <span class="upubli-avaliador-nome">Carlos Fuso</span>
+                            <span class="upubli-avaliador-cargo">Especialista em fuso horário imaginário</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="divisor-secao">
+
+        <!-- ================= FAQ ================= -->
+        <section class="faq upubli-secao">
+            <span class="faq-label">Perguntas Frequentes</span>
+            <h2 class="faq-titulo">Antes de atrasar, tire essas dúvidas</h2>
+
+            <details>
+                <summary>O relógio realmente atrasa 4 minutos por hora?</summary>
+                <p>Em teoria, sim. Na prática, como o produto não existe, ele atrasa exatamente o quanto você quiser imaginar — e a desculpa continua válida.</p>
+            </details>
+
+            <details>
+                <summary>Serve de justificativa para chegar atrasado no trabalho?</summary>
+                <p>Foi exatamente para isso que ele foi (não) projetado. Use com moderação e um bom storytelling. Resultados podem variar conforme a paciência do seu chefe.</p>
+            </details>
+
+            <details>
+                <summary>Posso sincronizar com o celular?</summary>
+                <p>Pode tentar. O relógio vai continuar atrasando. O celular não. O conflito entre os dois é parte da experiência do produto.</p>
+            </details>
+
+            <details>
+                <summary>Existe uma versão que adianta?</summary>
+                <p>Ainda não. Nossa equipe de P&D fictícia está “trabalhando nisso” desde o lançamento, com o mesmo ritmo de quem usa o Relógio que Atrasa™.</p>
+            </details>
+
+            <details>
+                <summary>Isso é um produto de verdade?</summary>
+                <p>Não. Relógio que Atrasa™ é 100% fictício, faz parte da coleção satírica Upubli™ da Upixel, e existe só pra fazer rir de quem sempre chega “quase no horário”.</p>
+            </details>
+
+        </section>
+
+        <hr class="divisor-secao">
+
+        <div class="upubli-aviso-rodape">
+            <p><strong>Este é um produto fictício</strong>, criado apenas para entretenimento pela Upixel. Relógio que Atrasa™, a Upubli™ e todos os depoimentos desta página não existem, não são vendidos e não resolvem nenhum problema de pontualidade — chegar no horário continua sendo, infelizmente, responsabilidade sua.</p>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="footer-esquerda">
+            <img src="logobranca.png" alt="Upixel" class="footer-logo">
+            <p class="copyright">
+                Upixel. Todos os direitos reservados.
+            </p>
+        </div>
+
+        <div class="footer-centro">
+            <nav class="footer-menu">
+                <a href="index.html">Home</a>
+                <a href="artigos.html">Artigos</a>
+                <a href="ux-challenge.html">UX Challenge</a>
+                <a href="glossario-dissecado-de-ux.html">Glossário UX</a>
+                <a href="rip.html">RIP</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="besteirol.html">Besteirol</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+
+    </footer>
+
+    <div class="upubli-modal-overlay" id="upubli-modal">
+        <div class="upubli-modal">
+            <span class="upubli-modal-emoji">🕰️</span>
+            <h3>Calma, você ainda está no horário</h3>
+            <p>Infelizmente (ou felizmente), o Relógio que Atrasa™ não existe.</p>
+            <p>Esta página faz parte da coleção de produtos fictícios da Upixel. Se você chegou até aqui no horário, nossa propaganda de atraso funcionou.</p>
+            <button type="button" class="upubli-btn upubli-btn--primario" id="upubli-btn-fechar-modal">
+                Voltar para a realidade (no horário)
+            </button>
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const btnComprar = document.getElementById('upubli-btn-comprar');
+        const modal = document.getElementById('upubli-modal');
+        const btnFechar = document.getElementById('upubli-btn-fechar-modal');
+        const contador = document.getElementById('upubli-contador-visualizacoes');
+
+        if(btnComprar && modal && btnFechar) {
+          btnComprar.addEventListener('click', function() {
+            modal.classList.add('upubli-aberto');
+          });
+
+          btnFechar.addEventListener('click', function() {
+            modal.classList.remove('upubli-aberto');
+          });
+
+          modal.addEventListener('click', function(e) {
+            if(e.target === modal) {
+              modal.classList.remove('upubli-aberto');
+            }
+          });
+        }
+
+        if(contador) {
+          setInterval(function() {
+            let atual = parseInt(contador.innerText, 10);
+            let variacao = Math.floor(Math.random() * 5) - 2;
+            let novo = atual + variacao;
+            if(novo < 18) novo = 18;
+            if(novo > 72) novo = 72;
+            contador.innerText = novo;
+          }, 4000);
+        }
+      });
+    </script>
+
+</body>
+</html>
