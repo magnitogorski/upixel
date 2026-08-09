@@ -1,154 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Página inicial -->
   <url>
-    <loc>https://upixel.com.br/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <loc>https://upixel.com.br/index.html</loc>
   </url>
 
+  <!-- Artigos -->
   <url>
     <loc>https://upixel.com.br/artigos.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
+  <url>
+    <loc>https://upixel.com.br/artigo-resistencia-e-beleza-de-falar-mal-de-criacoes-de-ia.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/artigo-autoridade-como-uma-palavra-mudou-de-significado.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/artigo-como-arruinar-experiencia-chatbot-10-passos.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/artigo-locadoras-experiencia-e-algoritmo.html</loc>
+  </url>
   <url>
     <loc>https://upixel.com.br/artigo-como-trabalhar-em-equipe.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-manual-ux-sem-papinho-parte-2.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-manual-ux-sem-papinho-parte-1.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-como-seria-o-linkedin-de-dwight-schrute.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-marketing-digital-nota-1000-atendimento-nota-0.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-michael-scott-analise-swot.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-metodologia-5w2h.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-o-influencer-e-so-a-interface.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-10-heuristicas-de-nielsen.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-infinite-scroll.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-mitos-do-mercado-de-tecnologia.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/artigo-dashboards-e-visualizacao-de-dados.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
 
+  <!-- UX -->
   <url>
     <loc>https://upixel.com.br/ux-challenge.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/glossario-dissecado-de-ux.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/rip.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
 
+  <!-- Quizzes -->
   <url>
     <loc>https://upixel.com.br/quiz.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/quiz-breaking-bad.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
+  <url>
+    <loc>https://upixel.com.br/quiz-chaves.html</loc>
+  </url>
   <url>
     <loc>https://upixel.com.br/quiz-cultura-gamer.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/quiz-ia.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/quiz-design-de-interface.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/quiz-memes.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
-    <loc>https://upixel.com.br/quiz-raças-de-cachorro.html</loc>
-    <lastmod>2026-08-02</lastmod>
+    <loc>https://upixel.com.br/quiz-ra%C3%A7as-de-cachorro.html</loc>
   </url>
-
   <url>
     <loc>https://upixel.com.br/quiz-tecnologia.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/quiz-voce-conhece-the-office.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/quiz-ux.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
-
   <url>
     <loc>https://upixel.com.br/quiz-wcag.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
 
+  <!-- Besteirol -->
   <url>
     <loc>https://upixel.com.br/besteirol.html</loc>
-    <lastmod>2026-08-02</lastmod>
   </url>
 
+  <!-- Contato -->
   <url>
     <loc>https://upixel.com.br/contato.html</loc>
-    <lastmod>2026-08-02</lastmod>
+  </url>
+
+  <!-- Produtos -->
+  <url>
+    <loc>https://upixel.com.br/pagina-produtos.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/pagina-upubli-adaptador-usb-duas-pontas.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/pagina-upubli-extensao-cerebral.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/upubli-relogio-que-atrasa.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/pagina-upubli-nielsen-slap.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/upubli-cadeira-ergonomica.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/upubli-dashboard-sentimentos.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/pagina-upubli-time-machine.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/upubli-notificacao-silenciosa.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/upubli-vr-nose.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/upubli-espelho-com-ia.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/pagina-upubli-spray.html</loc>
   </url>
 
 </urlset>
