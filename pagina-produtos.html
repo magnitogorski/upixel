@@ -4,57 +4,36 @@
 
 <script src="banner-upixel.js" defer></script>
 
-<!-- ==========================================================
-     Página: A ZONA OBSCURA — coleção UPUBLI™ (produtos fictícios)
-
-     Hub editorial/underground dos produtos absurdos da Upixel.
-     Diferente da Spray e da Time Machine (que são páginas de
-     produto único, estilo "landing"), esta é uma página de
-     VITRINE — vários anúncios fictícios, com ritmo visual
-     variado (banner/startup/corporativo/premium/discreto),
-     amarrados por um texto editorial no topo.
-
-     Prefixo de classe próprio ".uo-" (Upixel Obscuro) em tudo
-     que é novo, pra não colidir com nada do resto do site.
-     Header, footer e o padrão de disclaimer seguem o mesmo
-     espírito das outras páginas Upubli — só que num tom mais
-     sombrio/underground, sem o selo amarelo "produto fictício"
-     (que combina mais com a Spray/Time Machine do que com uma
-     "zona que o algoritmo finge que não viu").
-
-     Reaproveita <upx-banner> pra divulgar os OUTROS produtos
-     Upubli (Spray, Time Machine, Nielsen Slap) dentro desta
-     própria página — fecha o ciclo: a Zona Obscura vira o hub
-     que linka pra tudo, e pode ser divulgada nas outras páginas
-     com o snippet de banner no fim desta resposta.
-     ========================================================== -->
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Zona Obscura | Upubli™ — a seção que a Upixel finge não conhecer</title>
+<title>A Zona Obscura | Upubli™ — produtos absurdos e satíricos da Upixel</title>
 
-<meta name="description" content="A Zona Obscura é a vitrine dos produtos mais absurdos da Upubli™: soluções pra problemas que não existem, anúncios exagerados e invenções que uma reunião jamais deveria ter aprovado. Coleção 100% fictícia da Upixel.">
-<meta name="keywords" content="Upubli, produtos fictícios, sátira, humor, anúncios absurdos, UX, marketing exagerado, startups, cultura digital, Upixel">
+<meta name="description" content="A Zona Obscura é a vitrine oficial dos produtos mais absurdos da Upubli™: soluções para problemas que não existem, anúncios exagerados e invenções que nenhuma reunião deveria ter aprovado. Coleção 100% fictícia da Upixel.">
 
 <meta name="author" content="Upixel">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#000000">
 
+<!-- Canonical -->
 <link rel="canonical" href="https://upixel.com.br/upubli-zona-obscura.html">
 
+<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Upixel">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="A Zona Obscura | Upubli™ — a seção que a Upixel finge não conhecer">
+<meta property="og:title" content="A Zona Obscura | Upubli™ — produtos absurdos e satíricos da Upixel">
 <meta property="og:description" content="Devaneios, psicoses, pânico... ou lucidez? Bem-vindo à seção de produtos absurdos que o algoritmo finge que não viu.">
 <meta property="og:url" content="https://upixel.com.br/upubli-zona-obscura.html">
 <meta property="og:image" content="https://upixel.com.br/imagens/capa-social.png">
+<meta property="og:image:alt" content="A Zona Obscura — coleção de produtos fictícios e satíricos da Upubli™">
 
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="A Zona Obscura | Upubli™">
 <meta name="twitter:description" content="Nada aqui sobrevive a uma autópsia honesta. E é exatamente por isso que existe.">
 <meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.png">
+<meta name="twitter:image:alt" content="A Zona Obscura — produtos fictícios da Upixel">
 
 <link rel="icon" type="image/png" href="favicon.png">
 
@@ -62,10 +41,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 
-<!-- Mesmos arquivos de estilo do restante do site. Nenhuma regra foi alterada. -->
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="mobile.css">
 
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -74,9 +53,32 @@
   gtag('config', 'G-EXQS02C898');
 </script>
 
-<!-- ==========================================================
-     CSS da página — prefixo .uo- em tudo que é novo.
-     ========================================================== -->
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "A Zona Obscura | Upubli™",
+  "description": "Vitrine dos produtos mais absurdos e fictícios da Upubli™, a coleção satírica da Upixel.",
+  "url": "https://upixel.com.br/upubli-zona-obscura.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Upixel",
+    "url": "https://upixel.com.br"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Upixel",
+    "url": "https://upixel.com.br",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://upixel.com.br/logobranca.png"
+    }
+  },
+  "inLanguage": "pt-BR"
+}
+</script>
+
 <style id="uo-style">
   .uo-page {
     --uo-bg: #000000;
@@ -100,31 +102,24 @@
   .uo-page img {
     max-width: 100%;
   }
-/* Corrige especificamente o card "Nuvem de Backup Física":
-   a div que embrulha o texto precisa de min-width: 0 pra poder
-   encolher — sem isso, o texto do marquee (numa linha só) força
-   a div a ficar larga demais e o conteúdo é cortado no mobile. */
-.uo-card--banner > div {
+
+  /* Correção do card banner (Nuvem de Backup) */
+  .uo-card--banner > div {
     min-width: 0;
     flex: 1 1 auto;
-}
-/* Correção definitiva: troca align-items de flex-start pra
-   stretch nesse card específico, quando ele empilha no mobile.
-   O !important é necessário porque a regra antiga (que causa o
-   bug) usa o mesmo seletor — sem ele, corre o risco de perder
-   a "queda de braço" dependendo da ordem em que os blocos foram
-   colados no arquivo. */
-.uo-card--banner {
-    align-items: stretch !important;
-}
+  }
 
-.uo-card--banner > div,
-.uo-marquee-wrapper {
+  .uo-card--banner {
+    align-items: stretch !important;
+  }
+
+  .uo-card--banner > div,
+  .uo-marquee-wrapper {
     width: 100%;
     min-width: 0;
-}
-  /* ---------- aviso topo (discreto, sem selo amarelo) ---------- */
+  }
 
+  /* ---------- aviso topo ---------- */
   .uo-aviso-topo {
     border-bottom: 1px solid var(--uo-border);
     padding: 12px 60px;
@@ -151,7 +146,6 @@
   }
 
   /* ---------- hero editorial ---------- */
-
   .uo-hero {
     padding: 88px 60px 40px;
     max-width: 900px;
@@ -178,10 +172,6 @@
     cursor: default;
   }
 
-  /* Signature move: glitch de duas camadas em cima do H1, só no
-     hover/foco — chromatic aberration usando SÓ as cores da marca
-     (rosa + branco), pra combinar com "dark web" sem fugir da
-     identidade visual preta+rosa. */
   .uo-h1::before,
   .uo-h1::after {
     content: "Bem-vindo ao obscuro.";
@@ -254,8 +244,7 @@
     font-weight: 700;
   }
 
-  /* ---------- transição pra vitrine ---------- */
-
+  /* ---------- transição ---------- */
   .uo-transicao {
     padding: 24px 60px 48px;
     max-width: 900px;
@@ -275,8 +264,7 @@
     margin: 0;
   }
 
-  /* ---------- vitrine: grid assimétrico ---------- */
-
+  /* ---------- vitrine ---------- */
   .uo-vitrine {
     padding: 0 60px 40px;
     display: grid;
@@ -377,7 +365,10 @@
     cursor: pointer;
     font-family: inherit;
     transition: border-color .18s ease, color .18s ease, background .18s ease;
-   
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
   }
 
   .uo-cta:hover,
@@ -387,7 +378,7 @@
     background: var(--uo-pink);
   }
 
-  /* selo de autópsia — o elemento-assinatura desta vitrine */
+  /* selo de autópsia */
   .uo-selo-autopsia {
     position: absolute;
     top: 16px;
@@ -416,8 +407,7 @@
     transform: rotate(-4deg) scale(1.05);
   }
 
-  /* ---------- skin: banner (retrô, publicidade de internet antiga) ---------- */
-
+  /* ---------- skin: banner ---------- */
   .uo-card--banner {
     background: linear-gradient(135deg, rgba(250, 57, 122, .08), rgba(250, 57, 122, 0));
     border: 1px dashed var(--uo-border-strong);
@@ -429,6 +419,7 @@
 
   .uo-card--banner .uo-icone {
     font-size: 2.6rem;
+    flex-shrink: 0;
   }
 
   .uo-card--banner .uo-marquee-wrapper {
@@ -437,6 +428,8 @@
     border-bottom: 1px solid var(--uo-border-strong);
     margin-top: 6px;
     padding: 4px 0;
+    width: 100%;
+    max-width: 100%;
   }
 
   .uo-card--banner .uo-marquee {
@@ -462,8 +455,7 @@
     }
   }
 
-  /* ---------- skin: startup (hype, gradiente, badge de aporte) ---------- */
-
+  /* ---------- skin: startup ---------- */
   .uo-card--startup {
     background: radial-gradient(circle at 20% 0%, rgba(250, 57, 122, .16), rgba(0,0,0,0) 60%), #050505;
     border-color: rgba(250, 57, 122, .3);
@@ -481,8 +473,7 @@
     border-radius: 20px;
   }
 
-  /* ---------- skin: corporativo (sóbrio, quase sério demais) ---------- */
-
+  /* ---------- skin: corporativo ---------- */
   .uo-card--corporate {
     background: #0a0a0a;
     border-color: var(--uo-border-strong);
@@ -498,8 +489,7 @@
     opacity: .5;
   }
 
-  /* ---------- skin: premium (elegante, minimalista) ---------- */
-
+  /* ---------- skin: premium ---------- */
   .uo-card--premium {
     background: #050505;
     border: 1px solid var(--uo-border-strong);
@@ -513,8 +503,7 @@
     font-size: 1.3rem;
   }
 
-  /* ---------- skin: discreto (pequeno, seco, quase escondido) ---------- */
-
+  /* ---------- skin: discreto ---------- */
   .uo-card--discreet {
     padding: 20px;
     gap: 8px;
@@ -532,8 +521,7 @@
     font-size: .84rem;
   }
 
-  /* ---------- link de callback (Clipe → RIP) ---------- */
-
+  /* ---------- callback ---------- */
   .uo-callback {
     color: var(--uo-muted);
     font-size: .78rem;
@@ -550,8 +538,7 @@
     color: var(--uo-pink);
   }
 
-  /* ---------- mais atrocidades (banners dos outros Upubli) ---------- */
-
+  /* ---------- atrocidades ---------- */
   .uo-atrocidades {
     padding: 40px 60px 20px;
     max-width: 1120px;
@@ -573,8 +560,7 @@
     margin-top: 16px;
   }
 
-  /* ---------- fechamento editorial ---------- */
-
+  /* ---------- fechamento ---------- */
   .uo-fechamento {
     padding: 64px 60px 24px;
     max-width: 900px;
@@ -609,100 +595,7 @@
     margin: 0;
   }
 
-  /* ---------- modal ---------- */
-
-  .uo-modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .8);
-    backdrop-filter: blur(3px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .28s ease, visibility 0s linear .28s;
-  }
-
-  .uo-modal-overlay.uo-aberto {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity .28s ease, visibility 0s linear 0s;
-  }
-
-  .uo-modal {
-    background: #0a0a0a;
-    border: 1px solid var(--uo-border-strong);
-    border-radius: 16px;
-    max-width: 440px;
-    width: 100%;
-    padding: 36px 30px;
-    text-align: center;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
-    transform: scale(.9) translateY(12px);
-    opacity: 0;
-    transition: transform .3s cubic-bezier(.2, .8, .2, 1), opacity .28s ease;
-  }
-
-  .uo-modal-overlay.uo-aberto .uo-modal {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
-
-  .uo-modal-selo {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 16px;
-    border-radius: 50%;
-    border: 2px dashed var(--uo-pink);
-    color: var(--uo-pink);
-    font-size: .58rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1.2;
-    transform: rotate(-10deg);
-  }
-
-  .uo-modal p {
-    color: var(--uo-muted);
-    font-size: .95rem;
-    line-height: 1.6;
-    margin: 0 0 24px;
-  }
-
-  .uo-modal button {
-    background: var(--uo-pink);
-    color: #000000;
-    border: none;
-    border-radius: 8px;
-    padding: 14px 24px;
-    font-weight: 700;
-    font-size: .9rem;
-    cursor: pointer;
-    font-family: inherit;
-    width: 100%;
-    transition: background .18s ease;
-  }
-
-  .uo-modal button:hover {
-    background: #ffffff;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .uo-modal-overlay,
-    .uo-modal {
-      transition: none !important;
-    }
-  }
-
   /* ---------- responsivo ---------- */
-
   @media (max-width: 1024px) {
     .uo-aviso-topo,
     .uo-hero,
@@ -723,6 +616,20 @@
 
     .uo-card--span4 {
       grid-column: span 2;
+    }
+
+    .uo-card--banner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .uo-rodape-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .uo-cta {
+      width: 100%;
     }
   }
 
@@ -750,6 +657,7 @@
     .uo-card--banner {
       flex-direction: column;
       align-items: flex-start;
+      padding: 20px 18px;
     }
 
     .uo-rodape-card {
@@ -760,89 +668,277 @@
     .uo-cta {
       width: 100%;
     }
-  }
 
-  /* ---------- CORREÇÃO: cards "comidos" no mobile ----------
-   1) O selo de autópsia parava de flutuar por cima do texto
-      e vira uma etiqueta normal, dentro do fluxo, em telas
-      estreitas — antes ele ficava sobrepondo o título/tagline.
-   2) Textos longos (preços, títulos) agora quebram linha em
-      vez de estourar a largura do card.
-   3) O card--banner e o rodapé do card empilham mais cedo
-      (a partir de 900px, não só 640px), evitando aperto em
-      telas médias (tablets e celulares grandes).
-   4) .uo-cta agora tem caixa garantida mesmo sendo <a>, não
-      só <button>.
-*/
-
-.uo-titulo,
-.uo-tagline,
-.uo-corpo,
-.uo-preco,
-.uo-marquee {
-    overflow-wrap: anywhere;
-    word-break: break-word;
-}
-
-.uo-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-@media (max-width: 900px) {
-    .uo-card--banner {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .uo-rodape-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .uo-cta {
-        width: 100%;
-    }
-}
-
-@media (max-width: 640px) {
     .uo-selo-autopsia {
-        position: static;
-        width: auto;
-        height: auto;
-        border-radius: 20px;
-        padding: 5px 12px;
-        transform: none;
-        margin-bottom: 4px;
-        align-self: flex-start;
-        line-height: 1.3;
-        font-size: .62rem;
+      position: static;
+      width: auto;
+      height: auto;
+      border-radius: 20px;
+      padding: 5px 12px;
+      transform: none;
+      margin-bottom: 4px;
+      align-self: flex-start;
+      line-height: 1.3;
+      font-size: .62rem;
     }
 
     .uo-card:hover .uo-selo-autopsia {
-        transform: none;
+      transform: none;
     }
-}
+  }
+
+  .uo-titulo,
+  .uo-tagline,
+  .uo-corpo,
+  .uo-preco,
+  .uo-marquee {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
 </style>
 
 </head>
 <body class="uo-page">
 
-<!--SMART BACK BOTAO DE VOLTAR-->
-
 <script src="smart-back.js" defer></script>
 
-    <!-- ======================================================
-         HEADER — idêntico ao das outras páginas do site
-         ====================================================== -->
-    <header class="meu-header">
-        <div class="logo">
-            <img src="logobranca.png" alt="Logotipo do meu site">
-        </div>
+<header class="meu-header">
+    <div class="logo">
+        <img src="logobranca.png" alt="Upixel — logotipo">
+    </div>
 
-        <nav class="menu">
+    <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="ux-challenge.html">UX Challenge</a>
+        <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+        <a href="rip.html">RIP</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="besteirol.html">Besteirol</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+</header>
+
+<main class="uo-page">
+
+    <div class="uo-aviso-topo">
+        <span>Zona não recomendada</span>
+        <span>Você está prestes a entrar numa parte da Upixel que o próprio site finge não conhecer.</span>
+    </div>
+
+    <section class="uo-hero">
+        <span class="uo-eyebrow">Upubli™ apresenta</span>
+        <h1 class="uo-h1" tabindex="0">Bem-vindo ao obscuro.</h1>
+
+        <div class="uo-editorial">
+            <p>Você chegou ao obscuro do site.</p>
+            <p>Aqui seria a <span class="uo-marca">dark web da Upixel</span>.</p>
+            <p>Devaneios, psicoses, pânico... ou seria o oposto?</p>
+            <p><span class="uo-marca">Lucidez, sanidade, tranquilidade.</span></p>
+            <p>Aqui os produtos e anúncios são tão absurdos que o Procon e o Celso Russomanno provavelmente <span class="uo-marca">rasgariam as próprias entranhas</span> tentando descobrir onde foi parar o <span class="uo-marca">senso de utilidade</span>.</p>
+            <p>Abririam o produto na mesa.</p>
+            <p>Separariam músculo de marketing, nervo de promessa e osso de entrega.</p>
+            <p>Localizariam com uma pinça onde foi parar o benefício real.</p>
+            <p>E, no fim da autópsia, descobririam que o único órgão funcional era a <span class="uo-marca">vergonha alheia do consumidor</span>.</p>
+            <p>Nada aqui passa em teste de laboratório.</p>
+            <p>Nada aqui sobrevive a uma autópsia honesta.</p>
+            <p>E é exatamente por isso que existe.</p>
+            <p>Bem-vindo à seção que <span class="uo-marca">o algoritmo finge que não viu</span>.</p>
+        </div>
+    </section>
+
+    <section class="uo-transicao">
+        <h2>Os produtos que ninguém pediu.</h2>
+        <p>Cada anúncio abaixo passou por uma autópsia completa. Nenhum sobreviveu. Todos foram publicados mesmo assim.</p>
+    </section>
+
+    <section class="uo-vitrine" aria-label="Anúncios de produtos fictícios">
+
+        <!-- 1. Nuvem de Backup Física -->
+        <article class="uo-card uo-card--banner uo-card--span4">
+            <span class="uo-icone" aria-hidden="true">☁️</span>
+            <div>
+                <span class="uo-formato">Publicidade de banner — patrocinado por ninguém</span>
+                <h3 class="uo-titulo">Nuvem de Backup Física™</h3>
+                <p class="uo-tagline">Se seus arquivos estão na nuvem, nada mais justo que a nuvem estar na sua mesa.</p>
+                <p class="uo-corpo">Uma esfera de isopor cinza que fica sobre o monitor, sincronizada com absolutamente nada. Toda vez que você salva um arquivo, ela pisca uma luzinha azul só pra você se sentir seguro. Compatível com qualquer sistema — porque não se conecta a nenhum.</p>
+                <div class="uo-marquee-wrapper" aria-hidden="true">
+                    <span class="uo-marquee">★ PROMOÇÃO RELÂMPAGO ★ ENQUANTO DUROU O SERVIDOR ★ ESTOQUE LIMITADO A UM PLANETA ★ CLIQUE AQUI (NÃO CLIQUE) ★</span>
+                </div>
+                <div class="uo-rodape-card">
+                    <span class="uo-preco">R$ 349,00 <small>parcelado em 12x de otimismo</small></span>
+                    <a href="upubli-nuvem-de-backup-fisica.html" class="uo-cta">Sincronizar mesmo assim</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 2. Adaptador USB de Duas Pontas -->
+        <article class="uo-card">
+            <span class="uo-formato">Solução clássica</span>
+            <span class="uo-icone" aria-hidden="true">🔌</span>
+            <h3 class="uo-titulo">Adaptador USB de Duas Pontas™</h3>
+            <p class="uo-tagline">Para conectar duas coisas que claramente não deveriam ser conectadas.</p>
+            <p class="uo-corpo">Testado em laboratório nenhum, aprovado por ninguém do comitê de segurança elétrica. Uma ponta entra, a outra também tenta. O resultado é seu problema.</p>
+            <div class="uo-rodape-card">
+                <span class="uo-preco">R$ 89,90 <small>a ponta que sobrar é por sua conta</small></span>
+                <a href="upubli-adaptador-usb-duas-pontas.html" class="uo-cta">Conectar sem pensar</a>
+            </div>
+        </article>
+
+        <!-- 3. Extensão Cerebral -->
+        <article class="uo-card uo-card--startup uo-card--span2">
+            <span class="uo-badge-aporte">Série A: R$ 40 MI</span>
+            <span class="uo-formato">Startup investida demais</span>
+            <span class="uo-icone" aria-hidden="true">🧠</span>
+            <h3 class="uo-titulo">Extensão Cerebral™</h3>
+            <p class="uo-tagline">Agora com 20% mais pensamentos desnecessários.</p>
+            <p class="uo-corpo">Levantamos uma rodada avaliada em R$ 40 milhões pra provar que sua memória de curto prazo pode virar produto recorrente. Assinatura mensal — cancelamento cerebral não incluso.</p>
+            <div class="uo-rodape-card">
+                <span class="uo-preco">R$ 197<small>/mês, ou R$ 1.970/ano se já desistiu de pensar sozinho</small></span>
+                <a href="upubli-extensao-cerebral.html" class="uo-cta">Escalar minha mente</a>
+            </div>
+        </article>
+
+        <!-- 4. Relógio que Atrasa -->
+        <article class="uo-card uo-card--discreet">
+            <span class="uo-formato">Anúncio discreto</span>
+            <span class="uo-icone" aria-hidden="true">🕰️</span>
+            <h3 class="uo-titulo">Relógio que Atrasa™</h3>
+            <p class="uo-corpo">Programado pra correr 4 minutos mais devagar por hora. Porque a pontualidade sempre foi um problema de fuso, não seu.</p>
+            <div class="uo-rodape-card">
+                <span class="uo-preco">R$ 219,00</span>
+                <a href="upubli-relogio-que-atrasa.html" class="uo-cta">Chegar depois com estilo</a>
+            </div>
+        </article>
+
+        <!-- 5. Nielsen Slap -->
+        <article class="uo-card uo-card--discreet">
+            <span class="uo-formato">Nielsen Porrador</span>
+            <span class="uo-icone" aria-hidden="true">⚠️</span>
+            <h3 class="uo-titulo">Nielsen Slap™</h3>
+            <p class="uo-corpo">10 maneiras de descobrir que sua interface está errada — antes do usuário descobrir por você.</p>
+            <p>Testado em interfaces reais, aplicado sem anestesia e aprovado por ninguém que participou da reunião que criou o problema.</p>
+            <div class="uo-rodape-card">
+                <span class="uo-preco">R$ 99,90 <small>2 unidades, você vai perder uma</small></span>
+                <a href="upubli-nielsen-slap.html" class="uo-cta">Leve o tapa</a>
+            </div>
+        </article>
+
+        <!-- 6. Cadeira Ergonômica -->
+        <article class="uo-card">
+            <span class="uo-formato">Solução clássica</span>
+            <span class="uo-icone" aria-hidden="true">🪑</span>
+            <h3 class="uo-titulo">Cadeira Ergonômica para Quem Não Senta™</h3>
+            <p class="uo-tagline">Postura perfeita. Uso questionável.</p>
+            <p class="uo-corpo">Desenvolvida por ergonomistas que também nunca sentaram nela. Ideal pra quem trabalha em pé, deitado, ou fingindo trabalhar em qualquer outro lugar.</p>
+            <div class="uo-rodape-card">
+                <a href="upubli-cadeira-ergonomica.html" class="uo-cta">Em dé (DIPÉ) com estilo</a>
+            </div>
+        </article>
+
+        <!-- 7. Dashboard de Sentimentos -->
+        <article class="uo-card uo-card--corporate uo-card--span2">
+            <span class="uo-selo-autopsia" aria-hidden="true">Benefício<br>não<br>encontrado</span>
+            <span class="uo-formato">Solução corporativa</span>
+            <span class="uo-icone" aria-hidden="true">📊</span>
+            <h3 class="uo-titulo">Dashboard de Sentimentos™</h3>
+            <p class="uo-tagline">Transforme como sua equipe se sente em um gráfico que ninguém vai ler.</p>
+            <p class="uo-corpo">Nosso algoritmo proprietário converte silêncio em reunião, olheiras e mensagens de "tudo bem" em métricas acionáveis. Compatível com qualquer clima organizacional — inclusive o péssimo.</p>
+            <div class="uo-rodape-card">
+                <span class="uo-preco">Sob consulta <small>como tudo que envolve RH</small></span>
+                <a href="upubli-dashboard-sentimentos.html" class="uo-cta">Solicitar demonstração</a>
+            </div>
+        </article>
+
+        <!-- 8. Time Machine -->
+        <article class="uo-card uo-card--startup uo-card--span2">
+            <span class="uo-badge-aporte">Tecnologia proibida pelo calendário</span>
+            <span class="uo-formato">Produto revolucionário demais</span>
+            <span class="uo-icone" aria-hidden="true">⏳</span>
+            <h3 class="uo-titulo">Time Machine™</h3>
+            <p class="uo-tagline">Volte no tempo para corrigir decisões que você jurava que eram boas.</p>
+            <p class="uo-corpo">Uma máquina revolucionária capaz de transportar você para qualquer momento do passado. Perfeita para refazer aquela reunião, desfazer aquele commit ou voltar cinco minutos no tempo e pensar melhor antes de responder “pode deixar comigo”.</p>
+            <div class="uo-rodape-card">
+                <span class="uo-preco">R$ 9.999 <small>ou 3 parcelas de arrependimento temporal</small></span>
+                <a href="upubli-time-machine.html" class="uo-cta">Viajar agora</a>
+            </div>
+        </article>
+
+        <!-- 9. Notificação Silenciosa e Barulhenta -->
+        <article class="uo-card">
+            <span class="uo-formato">Solução clássica</span>
+            <span class="uo-icone" aria-hidden="true">🔔</span>
+            <h3 class="uo-titulo">Notificação Silenciosa e Barulhenta™</h3>
+            <p class="uo-tagline">O único dispositivo que vibra alto pra avisar que ficou quieto.</p>
+            <p class="uo-corpo">Configurado pra tocar uma sirene discreta de 90 decibéis toda vez que o modo silencioso é ativado. Porque silêncio de verdade ninguém aguenta.</p>
+            <div class="uo-rodape-card">
+                <span class="uo-preco">R$ 159,90</span>
+                <a href="upubli-notificacao-silenciosa.html" class="uo-cta">Silenciar com barulho</a>
+            </div>
+        </article>
+
+        <!-- 10. VR Nose -->
+        <article class="uo-card">
+            <span class="uo-formato">Tecnologia sensorial</span>
+            <span class="uo-icone" aria-hidden="true">👃</span>
+            <h3 class="uo-titulo">VR Nose™</h3>
+            <p class="uo-tagline">Sinta o cheiro dos produtos antes de comprar.</p>
+            <p class="uo-corpo">Um nariz de realidade virtual que libera o aroma do produto enquanto você navega. Perfume, café, tênis novo — agora sua experiência de compra também invade suas narinas.</p>
+            <div class="uo-rodape-card">
+                <span class="uo-preco">R$ 799,90 <small>cartuchos vendidos separadamente</small></span>
+                <a href="upubli-vr-nose.html" class="uo-cta">Cheirar agora</a>
+            </div>
+        </article>
+
+        <!-- 11. Espelho com IA -->
+        <article class="uo-card uo-card--premium uo-card--span2">
+            <span class="uo-formato">Edição premium</span>
+            <span class="uo-icone" aria-hidden="true">🪞</span>
+            <h3 class="uo-titulo">Espelho com IA™</h3>
+            <p class="uo-tagline">Reflete você. Só que depois de carregar por 4 segundos.</p>
+            <p class="uo-corpo">Nosso espelho premium usa inteligência artificial de última geração pra confirmar, com 99,2% de confiança, que é você mesmo ali. Em dias de instabilidade no servidor, reflete outra pessoa.</p>
+            <div class="uo-rodape-card">
+                <span class="uo-preco">R$ 3.999,00 <small>edição limitada, como sua paciência</small></span>
+                <a href="upubli-espelho-com-ia.html" class="uo-cta">Ver meu Reflexo</a>
+            </div>
+        </article>
+
+        <!-- 12. UX Spray -->
+        <article class="uo-card uo-card--span2">
+            <span class="uo-selo-autopsia" aria-hidden="true">UX<br>garantida*</span>
+            <span class="uo-formato">Solução clássica</span>
+            <span class="uo-icone" aria-hidden="true">🧴</span>
+            <h3 class="uo-titulo">UX Spray™</h3>
+            <p class="uo-tagline">Borrife sobre a interface e espere a experiência do usuário melhorar.</p>
+            <p class="uo-corpo">Desenvolvido para eliminar instantaneamente bugs de usabilidade, reuniões intermináveis, botões sem função e aquele clássico “o usuário não entendeu”. Basta aplicar diretamente sobre a tela e aguardar. Não funciona, mas deixa a equipe mais confiante.</p>
+            <p class="uo-callback">*Resultados não comprovados — mas a apresentação fica muito mais convincente.</p>
+            <div class="uo-rodape-card">
+                <span class="uo-preco">R$ 49,90 <small>frete grátis para quem chama isso de experiência</small></span>
+                <a href="upubli-spray.html" class="uo-cta">Borrifar UX</a>
+            </div>
+        </article>
+
+    </section>
+
+    <section class="uo-fechamento">
+        <p>Se você chegou até aqui, parabéns. Nenhum órgão regulador foi acionado.</p>
+        <p>Ou pelo menos ainda não.</p>
+    </section>
+
+    <div class="uo-legal">
+        <p>Nenhum produto desta página existe, é vendido ou funciona. Assim como a maioria das promessas da internet.</p>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-esquerda">
+        <img src="logobranca.png" alt="Upixel" class="footer-logo">
+        <p class="copyright">Upixel. Todos os direitos reservados.</p>
+    </div>
+
+    <div class="footer-centro">
+        <nav class="footer-menu">
             <a href="index.html">Home</a>
             <a href="artigos.html">Artigos</a>
             <a href="ux-challenge.html">UX Challenge</a>
@@ -852,289 +948,12 @@
             <a href="besteirol.html">Besteirol</a>
             <a href="contato.html">Contato</a>
         </nav>
-    </header>
-
-    <main class="uo-page">
-
-        <!-- ================= AVISO TOPO (discreto) ================= -->
-        <div class="uo-aviso-topo">
-            <span>Zona não recomendada</span>
-            <span>Você está prestes a entrar numa parte da Upixel que o próprio site finge não conhecer.</span>
-        </div>
-
-        <!-- ================= HERO EDITORIAL ================= -->
-        <section class="uo-hero">
-            <span class="uo-eyebrow">Upubli™ apresenta</span>
-            <h1 class="uo-h1" tabindex="0">Bem-vindo ao obscuro.</h1>
-
-            <div class="uo-editorial">
-                <p>Você chegou ao obscuro do site.</p>
-                <p>Aqui seria a <span class="uo-marca">dark web da Upixel</span>.</p>
-                <p>Devaneios, psicoses, pânico... ou seria o oposto?</p>
-                <p><span class="uo-marca">Lucidez, sanidade, tranquilidade.</span></p>
-                <p>Aqui os produtos e anúncios são tão absurdos que o Procon e o Celso Russomanno provavelmente <span class="uo-marca">rasgariam as próprias entranhas</span> tentando descobrir onde foi parar o <span class="uo-marca">senso de utilidade</span>.</p>
-                <p>Abririam o produto na mesa.</p>
-                <p>Separariam músculo de marketing, nervo de promessa e osso de entrega.</p>
-                <p>Localizariam com uma pinça onde foi parar o benefício real.</p>
-                <p>E, no fim da autópsia, descobririam que o único órgão funcional era a <span class="uo-marca">vergonha alheia do consumidor</span>.</p>
-                <p>Nada aqui passa em teste de laboratório.</p>
-                <p>Nada aqui sobrevive a uma autópsia honesta.</p>
-                <p>E é exatamente por isso que existe.</p>
-                <p>Bem-vindo à seção que <span class="uo-marca">o algoritmo finge que não viu</span>.</p>
-            </div>
-        </section>
-
-        <!-- ================= TRANSIÇÃO ================= -->
-        <section class="uo-transicao">
-            <h2>Os produtos que ninguém pediu.</h2>
-            <p>Cada anúncio abaixo passou por uma autópsia completa. Nenhum sobreviveu. Todos foram publicados mesmo assim.</p>
-        </section>
-
-        <!-- ================= VITRINE ================= -->
-        <section class="uo-vitrine" aria-label="Anúncios de produtos fictícios">
-
-            <!-- 1. Nuvem de Backup Física™ — skin banner, span 4 -->
-            <article class="uo-card uo-card--banner uo-card--span4">
-                <span class="uo-icone" aria-hidden="true">☁️</span>
-                <div>
-                    <span class="uo-formato">Publicidade de banner — patrocinado por ninguém</span>
-                    <h3 class="uo-titulo">Nuvem de Backup Física™</h3>
-                    <p class="uo-tagline">Se seus arquivos estão na nuvem, nada mais justo que a nuvem estar na sua mesa.</p>
-                    <p class="uo-corpo">Uma esfera de isopor cinza que fica sobre o monitor, sincronizada com absolutamente nada. Toda vez que você salva um arquivo, ela pisca uma luzinha azul só pra você se sentir seguro. Compatível com qualquer sistema — porque não se conecta a nenhum.</p>
-                    <div class="uo-marquee-wrapper" aria-hidden="true">
-                        <span class="uo-marquee">★ PROMOÇÃO RELÂMPAGO ★ ENQUANTO DUROU O SERVIDOR ★ ESTOQUE LIMITADO A UM PLANETA ★ CLIQUE AQUI (NÃO CLIQUE) ★</span>
-                    </div>
-                    <div class="uo-rodape-card">
-                        <span class="uo-preco">R$ 349,00 <small>parcelado em 12x de otimismo</small></span>
-                        <a href="pagina-upubli-nuvem-de-backup-fisica.html" class="uo-cta">Sincronizar mesmo assim</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 2. Adaptador USB de Duas Pontas™ — classic -->
-            <article class="uo-card">
-                <span class="uo-formato">Solução clássica</span>
-                <span class="uo-icone" aria-hidden="true">🔌</span>
-                <h3 class="uo-titulo">Adaptador USB de Duas Pontas™</h3>
-                <p class="uo-tagline">Para conectar duas coisas que claramente não deveriam ser conectadas.</p>
-                <p class="uo-corpo">Testado em laboratório nenhum, aprovado por ninguém do comitê de segurança elétrica. Uma ponta entra, a outra também tenta. O resultado é seu problema.</p>
-                <div class="uo-rodape-card">
-                    <span class="uo-preco">R$ 89,90 <small>a ponta que sobrar é por sua conta</small></span>
-                    <a href="pagina-upubli-adaptador-usb-duas-pontas.html" class="uo-cta">Conectar sem pensar</a>
-                  </div>
-            </article>
-
-            <!-- 3. Extensão Cerebral™ — startup, span 2 -->
-            <article class="uo-card uo-card--startup uo-card--span2">
-                <span class="uo-badge-aporte">Série A: R$ 40 MI</span>
-                <span class="uo-formato">Startup investida demais</span>
-                <span class="uo-icone" aria-hidden="true">🧠</span>
-                <h3 class="uo-titulo">Extensão Cerebral™</h3>
-                <p class="uo-tagline">Agora com 20% mais pensamentos desnecessários.</p>
-                <p class="uo-corpo">Levantamos uma rodada avaliada em R$ 40 milhões pra provar que sua memória de curto prazo pode virar produto recorrente. Assinatura mensal — cancelamento cerebral não incluso.</p>
-                <div class="uo-rodape-card">
-                    <span class="uo-preco">R$ 197<small>/mês, ou R$ 1.970/ano se já desistiu de pensar sozinho</small></span>
-                    <a href="pagina-upubli-extensao-cerebral.html" class="uo-cta">Escalar minha mente</a>
-                </div>
-            </article>
-
-            <!-- 4. Relógio que Atrasa™ — discreet -->
-            <article class="uo-card uo-card--discreet">
-                <span class="uo-formato">Anúncio discreto</span>
-                <span class="uo-icone" aria-hidden="true">🕰️</span>
-                <h3 class="uo-titulo">Relógio que Atrasa™</h3>
-                <p class="uo-corpo">Programado pra correr 4 minutos mais devagar por hora. Porque a pontualidade sempre foi um problema de fuso, não seu.</p>
-                <div class="uo-rodape-card">
-                    <span class="uo-preco">R$ 219,00</span>
-                    <a href="upubli-relogio-que-atrasa.html" class="uo-cta">Chegar depois com estilo</a>
-                </div>
-            </article>
-
-            <!-- 5. Nielsen — discreet -->
-            <article class="uo-card uo-card--discreet">
-                <span class="uo-formato">Nielsen Porrador</span>
-                <span class="uo-icone" aria-hidden="true">⚠️</span>
-                <h3 class="uo-titulo">Nielsen Slap™</h3>
-                <p class="uo-corpo">10 maneiras de descobrir que sua interface está errada — antes do usuário descobrir por você.</p>
-                <p>Testado em interfaces reais, aplicado sem anestesia e aprovado por ninguém que participou da reunião que criou o problema.</p>
-                <div class="uo-rodape-card">
-                    <span class="uo-preco">R$ 99,90 <small>2 unidades, você vai perder uma</small></span>
-                    <a href="pagina-upubli-nielsen-slap.html" class="uo-cta">Leve o tapa</a>
-                </div>
-            </article>
-
-            <!-- 6. Cadeira Ergonômica para Quem Não Senta™ — classic -->
-            <article class="uo-card">
-                <span class="uo-formato">Solução clássica</span>
-                <span class="uo-icone" aria-hidden="true">🪑</span>
-                <h3 class="uo-titulo">Cadeira Ergonômica para Quem Não Senta™</h3>
-                <p class="uo-tagline">Postura perfeita. Uso questionável.</p>
-                <p class="uo-corpo">Desenvolvida por ergonomistas que também nunca sentaram nela. Ideal pra quem trabalha em pé, deitado, ou fingindo trabalhar em qualquer outro lugar.</p>
-                <div class="uo-rodape-card">
-                    <a href="upubli-cadeira-ergonomica.html" class="uo-cta">Em dé (DIPÉ) com estilo</a>
-                </div>
-            </article>
-
-            <!-- 7. Dashboard de Sentimentos™ — corporate, span 2 -->
-            <article class="uo-card uo-card--corporate uo-card--span2">
-                <span class="uo-selo-autopsia" aria-hidden="true">Benefício<br>não<br>encontrado</span>
-                <span class="uo-formato">Solução corporativa</span>
-                <span class="uo-icone" aria-hidden="true">📊</span>
-                <h3 class="uo-titulo">Dashboard de Sentimentos™</h3>
-                <p class="uo-tagline">Transforme como sua equipe se sente em um gráfico que ninguém vai ler.</p>
-                <p class="uo-corpo">Nosso algoritmo proprietário converte silêncio em reunião, olheiras e mensagens de "tudo bem" em métricas acionáveis. Compatível com qualquer clima organizacional — inclusive o péssimo.</p>
-                <div class="uo-rodape-card">
-                    <span class="uo-preco">Sob consulta <small>como tudo que envolve RH</small></span>
-                    <a href="upubli-dashboard-sentimentos.html" class="uo-cta">Solicitar demonstração</a>
-                </div>
-            </article>
-
-            <!-- 8. Pivô-as-a-Service™ — startup, span 2 -->
-<article class="uo-card uo-card--startup uo-card--span2">
-    <span class="uo-badge-aporte">Tecnologia proibida pelo calendário</span>
-    <span class="uo-formato">Produto revolucionário demais</span>
-    <span class="uo-icone" aria-hidden="true">⏳</span>
-
-    <h3 class="uo-titulo">Time Machine™</h3>
-
-    <p class="uo-tagline">
-        Volte no tempo para corrigir decisões que você jurava que eram boas.
-    </p>
-
-    <p class="uo-corpo">
-        Uma máquina revolucionária capaz de transportar você para qualquer momento do passado.
-        Perfeita para refazer aquela reunião, desfazer aquele commit ou voltar cinco minutos
-        no tempo e pensar melhor antes de responder “pode deixar comigo”.
-    </p>
-
-    <div class="uo-rodape-card">
-        <span class="uo-preco">
-            R$ 9.999
-            <small>ou 3 parcelas de arrependimento temporal</small>
-        </span>
-
-        <a href="pagina-upubli-time-machine.html" class="uo-cta">Viajar agora</a>
     </div>
-</article>
+</footer>
 
-            <!-- 9. Notificação Silenciosa e Barulhenta™ — classic -->
-            <article class="uo-card">
-                <span class="uo-formato">Solução clássica</span>
-                <span class="uo-icone" aria-hidden="true">🔔</span>
-                <h3 class="uo-titulo">Notificação Silenciosa e Barulhenta™</h3>
-                <p class="uo-tagline">O único dispositivo que vibra alto pra avisar que ficou quieto.</p>
-                <p class="uo-corpo">Configurado pra tocar uma sirene discreta de 90 decibéis toda vez que o modo silencioso é ativado. Porque silêncio de verdade ninguém aguenta.</p>
-                <div class="uo-rodape-card">
-                    <span class="uo-preco">R$ 159,90</span>
-                    <a href="upubli-notificacao-silenciosa.html" class="uo-cta">Silenciar com barulho</a>
-                </div>
-            </article>
-
-            <!-- 10. Suco Prensa a Frio de Dados™ — classic -->
-<article class="uo-card">
-    <span class="uo-formato">Tecnologia sensorial</span>
-    <span class="uo-icone" aria-hidden="true">👃</span>
-    <h3 class="uo-titulo">VR Nose™</h3>
-    <p class="uo-tagline">Sinta o cheiro dos produtos antes de comprar.</p>
-    <p class="uo-corpo">Um nariz de realidade virtual que libera o aroma do produto enquanto você navega. Perfume, café, tênis novo — agora sua experiência de compra também invade suas narinas.</p>
-    <div class="uo-rodape-card">
-        <span class="uo-preco">R$ 799,90 <small>cartuchos vendidos separadamente</small></span>
-        <a href="upubli-vr-nose.html" class="uo-cta">Cheirar agora</a>
-    </div>
-</article>
-
-            <!-- 11. Espelho com IA™ — premium, span 2 -->
-            <article class="uo-card uo-card--premium uo-card--span2">
-                <span class="uo-formato">Edição premium</span>
-                <span class="uo-icone" aria-hidden="true">🪞</span>
-                <h3 class="uo-titulo">Espelho com IA™</h3>
-                <p class="uo-tagline">Reflete você. Só que depois de carregar por 4 segundos.</p>
-                <p class="uo-corpo">Nosso espelho premium usa inteligência artificial de última geração pra confirmar, com 99,2% de confiança, que é você mesmo ali. Em dias de instabilidade no servidor, reflete outra pessoa.</p>
-                <div class="uo-rodape-card">
-                    <span class="uo-preco">R$ 3.999,00 <small>edição limitada, como sua paciência</small></span>
-                     <a href="upubli-espelho-com-ia.html" class="uo-cta">Ver meu Reflexo</a>
-                </div>
-            </article>
-
-            <!-- 12. SPRAY UX -->
-<article class="uo-card uo-card--span2">
-    <span class="uo-selo-autopsia" aria-hidden="true">UX<br>garantida*</span>
-    <span class="uo-formato">Solução clássica</span>
-    <span class="uo-icone" aria-hidden="true">🧴</span>
-
-    <h3 class="uo-titulo">UX Spray™</h3>
-
-    <p class="uo-tagline">
-        Borrife sobre a interface e espere a experiência do usuário melhorar.
-    </p>
-
-    <p class="uo-corpo">
-        Desenvolvido para eliminar instantaneamente bugs de usabilidade, reuniões intermináveis,
-        botões sem função e aquele clássico “o usuário não entendeu”. Basta aplicar diretamente
-        sobre a tela e aguardar. Não funciona, mas deixa a equipe mais confiante.
-    </p>
-
-    <p class="uo-callback">
-        *Resultados não comprovados — mas a apresentação fica muito mais convincente.
-    </p>
-
-    <div class="uo-rodape-card">
-        <span class="uo-preco">
-            R$ 49,90
-            <small>frete grátis para quem chama isso de experiência</small>
-        </span>
-
-        <a href="pagina-upubli-spray.html" class="uo-cta">
-            Borrifar UX
-        </a>
-    </div>
-</article>
-
-        </section>
-
-        <!-- ================= FECHAMENTO ================= -->
-        <section class="uo-fechamento">
-            <p>Se você chegou até aqui, parabéns. Nenhum órgão regulador foi acionado.</p>
-            <p>Ou pelo menos ainda não.</p>
-        </section>
-
-        <div class="uo-legal">
-            <p>Nenhum produto desta página existe, é vendido ou funciona. Assim como a maioria das promessas da internet.</p>
-        </div>
-
-    </main>
-
-    <!-- ======================================================
-         FOOTER — idêntico ao das outras páginas
-         ====================================================== -->
-    <footer class="footer">
-
-        <div class="footer-esquerda">
-            <img src="logobranca.png" alt="Upixel" class="footer-logo">
-            <p class="copyright">
-                Upixel. Todos os direitos reservados.
-            </p>
-        </div>
-
-        <div class="footer-centro">
-            <nav class="footer-menu">
-                <a href="index.html">Home</a>
-                <a href="artigos.html">Artigos</a>
-                <a href="ux-challenge.html">UX Challenge</a>
-                <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
-                <a href="rip.html">RIP</a>
-                <a href="quiz.html">Quiz</a>
-                <a href="besteirol.html">Besteirol</a>
-                <a href="contato.html">Contato</a>
-            </nav>
-        </div>
-
-    </footer>
-
-    <div class="footer-ilustracao">
-        <img src="rodape.png" alt="Ilustração Footer">
-    </div>
-
+<div class="footer-ilustracao">
+    <img src="rodape.png" alt="Ilustração Footer">
+</div>
 
 </body>
 </html>
