@@ -182,7 +182,6 @@
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
-    margin-bottom: 16px;
   }
 
   .pxj-paleta {
@@ -464,24 +463,11 @@
                 <button type="button" class="pxj-btn pxj-btn--primario" id="pxj-btn-compartilhar-nativo">
                     📤 Compartilhar
                 </button>
-                <button type="button" class="pxj-btn" id="pxj-btn-baixar">
-                    📥 Baixar imagem
-                </button>
-                <a class="pxj-btn" id="pxj-link-whatsapp" href="#" target="_blank" rel="noopener">
-                    💬 WhatsApp
-                </a>
-                <a class="pxj-btn" id="pxj-link-linkedin" href="#" target="_blank" rel="noopener">
-                    in LinkedIn
-                </a>
-                <a class="pxj-btn" id="pxj-link-x" href="#" target="_blank" rel="noopener">
-                    𝕏 / Twitter
-                </a>
             </div>
 
             <p class="pxj-compartilhar-nota">
-                Em celulares, "Compartilhar" já manda a imagem certinha pro WhatsApp, Instagram etc.
-                No computador, ou quando o navegador não permite isso direto, baixe a imagem e anexe
-                na hora de postar — os botões de WhatsApp/LinkedIn/X abrem só com o texto pronto.
+                Em celulares, o botão já manda a imagem certinha pro WhatsApp, Instagram etc.
+                No computador, ou quando o navegador não permite compartilhar direto, ele baixa a imagem pra você anexar.
             </p>
 
             <div class="pxj-refazer-botoes">
@@ -533,8 +519,7 @@
          3) algoritmo de "julgamento" (cobertura, cores, simetria,
             complexidade de bordas) — heurística com humor, não IA
          4) geração da imagem de compartilhamento (canvas próprio)
-         5) compartilhamento nativo (Web Share API) + fallback de
-            botões de texto (WhatsApp/LinkedIn/X) + download
+         5) compartilhamento nativo (Web Share API) + fallback de download
          ========================================================== -->
     <script>
     (function () {
@@ -692,10 +677,6 @@
         var canvasCompartilhar = document.getElementById('pxj-canvas-compartilhar');
 
         var btnCompartilharNativo = document.getElementById('pxj-btn-compartilhar-nativo');
-        var btnBaixar = document.getElementById('pxj-btn-baixar');
-        var linkWhatsapp = document.getElementById('pxj-link-whatsapp');
-        var linkLinkedin = document.getElementById('pxj-link-linkedin');
-        var linkX = document.getElementById('pxj-link-x');
 
         var btnRefazer = document.getElementById('pxj-btn-refazer');
         var btnNovoDesafio = document.getElementById('pxj-btn-novo-desafio');
@@ -926,7 +907,6 @@
 
             secaoResultado.classList.add('pxj-ativo');
             secaoResultado.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            atualizarLinksCompartilhar();
         });
 
         // ---------- gerar imagem de compartilhamento ----------
@@ -1020,25 +1000,7 @@
             cctx.textAlign = 'start';
         }
 
-        // ---------- compartilhamento ----------
-        function atualizarLinksCompartilhar() {
-            var textoBase = 'Fui julgado(a) na Orquestra do Pixel da Upixel: ' +
-                ultimoResultado.nota.toFixed(1) + '/10 — "' + ultimoResultado.titulo + '". ' +
-                'Desenha o seu também:';
-            var url = 'https://upixel.com.br/orquestra-do-pixel.html';
-
-            linkWhatsapp.href = 'https://wa.me/?text=' + encodeURIComponent(textoBase + ' ' + url);
-            linkX.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(textoBase) + '&url=' + encodeURIComponent(url);
-            linkLinkedin.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url);
-        }
-
-        btnBaixar.addEventListener('click', function () {
-            var link = document.createElement('a');
-            link.download = 'orquestra-do-pixel-upixel.png';
-            link.href = canvasCompartilhar.toDataURL('image/png');
-            link.click();
-        });
-
+        // ---------- compartilhamento (só nativo + fallback de download) ----------
         btnCompartilharNativo.addEventListener('click', function () {
             canvasCompartilhar.toBlob(function (blob) {
                 if (!blob) return;
@@ -1054,8 +1016,11 @@
                         // usuário cancelou — não faz nada
                     });
                 } else {
-                    // sem suporte a compartilhar arquivo: baixa a imagem como alternativa
-                    btnBaixar.click();
+                    // sem suporte a compartilhar arquivo: baixa a imagem
+                    var link = document.createElement('a');
+                    link.download = 'orquestra-do-pixel-upixel.png';
+                    link.href = canvasCompartilhar.toDataURL('image/png');
+                    link.click();
                 }
             }, 'image/png');
         });
