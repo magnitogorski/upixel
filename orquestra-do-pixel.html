@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<!-- ==========================================================
+     Página: ORQUESTRA DO PIXEL
+
+     Mini-game de desenho em pixel art: a pessoa recebe um
+     desafio aleatório, desenha numa grade de pixels, e recebe
+     uma "nota" e um título ácido — gerados por um algoritmo que
+     analisa o próprio desenho (cobertura, variedade de cores,
+     simetria, complexidade), não por IA real. É sátira, não
+     avaliação de arte de verdade — condizente com o tom Upubli.
+
+     Reaproveita o sistema de design compartilhado já criado em
+     style.css (.upx-conteudo / .upx-titulo-pagina /
+     .upx-subtitulo-pagina / .upx-texto-pagina) em vez de duplicar
+     outro bloco isolado. Só o que é específico desta página
+     (canvas, paleta, cartão de resultado) vive num <style>
+     próprio, prefixo ".pxj-" (Pixel Julgamento).
+
+     Header e footer são cópia exata do resto do site — não
+     adicionei link no menu principal de propósito, seguindo o
+     mesmo padrão dos produtos Upubli (descobertos via link
+     avulso, não pela navegação global). Se quiser deixar
+     descobrível, um bom lugar seria o "Mapa do Subterrâneo" da
+     Home, mas isso fica a seu critério.
+
+     Tudo client-side: canvas HTML5 puro, sem framework, sem
+     dependência externa além das fontes já usadas no site.
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Orquestra do Pixel: desenhe e seja julgado | Upixel</title>
+
+<meta name="description" content="Desenhe em pixel art um desafio aleatório e receba uma nota e um título ácido, tipo Nível Picasso em Crise ou Nível Michelangelo com Prazo Apertado. Compartilhe o resultado se tiver coragem.">
+<meta name="keywords" content="pixel art, desenho, jogo de desenho, arte pixel, Upixel, desafio criativo, humor, sátira">
+
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/orquestra-do-pixel.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Orquestra do Pixel | Upixel">
+<meta property="og:description" content="Desenhe em pixel art e receba uma nota que ninguém pediu. Nível Picasso em Crise, Nível Michelangelo com Prazo Apertado, e outras honras duvidosas.">
+<meta property="og:url" content="https://upixel.com.br/orquestra-do-pixel.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Orquestra do Pixel | Upixel">
+<meta name="twitter:description" content="Você desenha. A gente julga sem dó.">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+<!-- ==========================================================
+     CSS específico da página — prefixo .pxj- em tudo que é novo.
+     O resto (tipografia de título/subtítulo/texto, container)
+     vem do sistema .upx- já existente no style.css global.
+     ========================================================== -->
+<style id="pxj-style">
+  .pxj-page {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .pxj-page *,
+  .pxj-page *::before,
+  .pxj-page *::after {
+    box-sizing: border-box;
+  }
+
+  /* ---------- painel do desafio ---------- */
+
+  .pxj-desafio-painel {
+    background: #050505;
+    border: 1px solid #161616;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .pxj-desafio-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .pxj-desafio-label {
+    color: #FA397A;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .pxj-desafio-frase {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .pxj-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid #333333;
+    color: #ffffff;
+    font-size: .88rem;
+    font-weight: 700;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+    white-space: normal;
+    transition: border-color .18s ease, color .18s ease, background .18s ease;
+  }
+
+  .pxj-btn:hover,
+  .pxj-btn:focus-visible {
+    border-color: #FA397A;
+    color: #FA397A;
+  }
+
+  .pxj-btn--primario {
+    background: #FA397A;
+    border-color: #FA397A;
+    color: #000000;
+  }
+
+  .pxj-btn--primario:hover,
+  .pxj-btn--primario:focus-visible {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+  }
+
+  .pxj-btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+  }
+
+  .pxj-btn:disabled:hover {
+    border-color: #333333;
+    color: #ffffff;
+  }
+
+  /* ---------- ferramentas (paleta + ações) ---------- */
+
+  .pxj-ferramentas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .pxj-paleta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pxj-cor {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 2px solid #262626;
+    cursor: pointer;
+    padding: 0;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+
+  .pxj-cor:hover {
+    transform: translateY(-2px);
+  }
+
+  .pxj-cor[aria-pressed="true"] {
+    border-color: #ffffff;
+    transform: scale(1.08);
+  }
+
+  .pxj-cor--borracha {
+    background: #050505 !important;
+    background-image:
+      linear-gradient(45deg, transparent 45%, #FA397A 45%, #FA397A 55%, transparent 55%);
+    background-size: 100% 100%;
+  }
+
+  .pxj-acoes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- canvas de desenho ---------- */
+
+  .pxj-canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  #pxj-canvas {
+    background: #050505;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    touch-action: none;
+    cursor: crosshair;
+    max-width: 100%;
+  }
+
+  .pxj-aviso-minimo {
+    text-align: center;
+    color: #828282;
+    font-size: .85rem;
+    margin-bottom: 24px;
+    display: none;
+  }
+
+  .pxj-aviso-minimo.pxj-ativo {
+    display: block;
+  }
+
+  .pxj-finalizar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+
+  /* ---------- resultado / veredito ---------- */
+
+  .pxj-resultado {
+    display: none;
+    border-top: 1px solid #262626;
+    padding-top: 48px;
+    margin-top: 8px;
+  }
+
+  .pxj-resultado.pxj-ativo {
+    display: block;
+  }
+
+  .pxj-resultado-eyebrow {
+    color: #FA397A;
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .pxj-nota {
+    font-size: clamp(3rem, 2rem + 5vw, 5.5rem);
+    font-weight: 700;
+    text-align: center;
+    line-height: 1;
+    margin: 0 0 8px;
+    color: #ffffff;
+  }
+
+  .pxj-nota span {
+    color: #828282;
+    font-size: .4em;
+    font-weight: 700;
+  }
+
+  .pxj-titulo-nivel {
+    color: #FA397A;
+    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.8rem);
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 20px;
+  }
+
+  .pxj-critica {
+    color: #B5B5B5;
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 56ch;
+    margin: 0 auto 36px;
+    text-align: center;
+  }
+
+  #pxj-canvas-compartilhar {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 28px;
+    border-radius: 12px;
+    border: 1px solid #262626;
+  }
+
+  .pxj-compartilhar-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .pxj-compartilhar-nota {
+    text-align: center;
+    color: #5c5c5c;
+    font-size: .78rem;
+    line-height: 1.6;
+    max-width: 52ch;
+    margin: 0 auto 48px;
+  }
+
+  .pxj-refazer-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 640px) {
+    .pxj-desafio-painel {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .pxj-desafio-painel .pxj-btn {
+      width: 100%;
+    }
+
+    .pxj-ferramentas {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .pxj-acoes {
+      width: 100%;
+    }
+
+    .pxj-acoes .pxj-btn {
+      flex: 1;
+    }
+  }
+</style>
+
+</head>
+<body class="pxj-page">
+
+    <!-- ======================================================
+         HEADER — idêntico ao das outras páginas do site
+         ====================================================== -->
+    <header class="meu-header">
+        <div class="logo">
+            <img src="logobranca.png" alt="Logotipo do meu site">
+        </div>
+
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+            <a href="rip.html">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html">Besteirol</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <main class="pxj-page">
+
+        <!-- ================= HERO (usa o sistema .upx- global) ================= -->
+        <section class="upx-conteudo" style="padding-top: 88px;">
+            <span class="texto-menor" style="margin-bottom: 20px;">
+                <img src="raio.png" class="icone-raio" alt="Raio">
+                Academia UPIXEL
+            </span>
+
+            <h1 class="upx-titulo-pagina">🎨 Orquestra do Pixel</h1>
+            <p class="upx-subtitulo-pagina">Você desenha. A gente julga sem dó.</p>
+
+            <div class="upx-texto-pagina">
+                <p>Escolha um desafio aleatório, desenhe em pixels com a paciência de quem tem só uma tarde livre, e receba uma nota que ninguém pediu.</p>
+                <p>Não somos imparciais. Não somos justos. Mas somos rápidos.</p>
+            </div>
+        </section>
+
+        <!-- ================= FERRAMENTA DE DESENHO ================= -->
+        <section class="upx-conteudo" style="max-width: 720px; padding-top: 24px;">
+
+            <div class="pxj-desafio-painel">
+                <div class="pxj-desafio-texto">
+                    <span class="pxj-desafio-label">Seu desafio de hoje</span>
+                    <span class="pxj-desafio-frase" id="pxj-desafio-frase">Carregando desafio...</span>
+                </div>
+                <button type="button" class="pxj-btn" id="pxj-btn-sortear">
+                    🎲 Sortear outro desafio
+                </button>
+            </div>
+
+            <div class="pxj-ferramentas">
+                <div class="pxj-paleta" role="group" aria-label="Cores disponíveis" id="pxj-paleta"></div>
+
+                <div class="pxj-acoes">
+                    <button type="button" class="pxj-btn" id="pxj-btn-limpar">🗑️ Limpar tudo</button>
+                </div>
+            </div>
+
+            <div class="pxj-canvas-wrapper">
+                <canvas id="pxj-canvas" aria-label="Área de desenho em pixel art" role="img"></canvas>
+            </div>
+
+            <p class="pxj-aviso-minimo" id="pxj-aviso-minimo">Isso aí não é uma obra, é um acidente. Pinte alguma coisa antes de pedir julgamento.</p>
+
+            <div class="pxj-finalizar-wrapper">
+                <button type="button" class="pxj-btn pxj-btn--primario" id="pxj-btn-finalizar">
+                    ⚖️ Finalizar e ser julgado
+                </button>
+            </div>
+
+        </section>
+
+        <!-- ================= RESULTADO / VEREDITO ================= -->
+        <section class="upx-conteudo pxj-resultado" style="max-width: 720px;" id="pxj-resultado">
+
+            <span class="pxj-resultado-eyebrow">O veredito saiu</span>
+            <p class="pxj-nota" id="pxj-nota">0.0<span>/10</span></p>
+            <p class="pxj-titulo-nivel" id="pxj-titulo-nivel">Carregando título...</p>
+            <p class="pxj-critica" id="pxj-critica">Carregando crítica...</p>
+
+            <canvas id="pxj-canvas-compartilhar" width="1080" height="1350"></canvas>
+
+            <div class="pxj-compartilhar-botoes">
+                <button type="button" class="pxj-btn pxj-btn--primario" id="pxj-btn-compartilhar-nativo">
+                    📤 Compartilhar
+                </button>
+                <button type="button" class="pxj-btn" id="pxj-btn-baixar">
+                    📥 Baixar imagem
+                </button>
+                <a class="pxj-btn" id="pxj-link-whatsapp" href="#" target="_blank" rel="noopener">
+                    💬 WhatsApp
+                </a>
+                <a class="pxj-btn" id="pxj-link-linkedin" href="#" target="_blank" rel="noopener">
+                    in LinkedIn
+                </a>
+                <a class="pxj-btn" id="pxj-link-x" href="#" target="_blank" rel="noopener">
+                    𝕏 / Twitter
+                </a>
+            </div>
+
+            <p class="pxj-compartilhar-nota">
+                Em celulares, "Compartilhar" já manda a imagem certinha pro WhatsApp, Instagram etc.
+                No computador, ou quando o navegador não permite isso direto, baixe a imagem e anexe
+                na hora de postar — os botões de WhatsApp/LinkedIn/X abrem só com o texto pronto.
+            </p>
+
+            <div class="pxj-refazer-botoes">
+                <button type="button" class="pxj-btn" id="pxj-btn-refazer">🔁 Tentar de novo</button>
+                <button type="button" class="pxj-btn" id="pxj-btn-novo-desafio">🎲 Novo desafio</button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <hr class="divisor-secao">
+
+    <!-- ======================================================
+         FOOTER — idêntico ao das outras páginas
+         ====================================================== -->
+    <footer class="footer">
+
+        <div class="footer-esquerda">
+            <img src="logobranca.png" alt="Upixel" class="footer-logo">
+            <p class="copyright">
+                Upixel. Todos os direitos reservados.
+            </p>
+        </div>
+
+        <div class="footer-centro">
+            <nav class="footer-menu">
+                <a href="index.html">Home</a>
+                <a href="artigos.html">Artigos</a>
+                <a href="ux-challenge.html">UX Challenge</a>
+                <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+                <a href="rip.html">RIP</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="besteirol.html">Besteirol</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+
+    </footer>
+
+    <div class="footer-ilustracao">
+        <img src="rodape.png" alt="Ilustração Footer">
+    </div>
+
+    <!-- ==========================================================
+         JS — tudo isolado num IIFE. Cuida de:
+         1) desafios aleatórios
+         2) canvas de desenho em grade de pixels (mouse + touque)
+         3) algoritmo de "julgamento" (cobertura, cores, simetria,
+            complexidade de bordas) — heurística com humor, não IA
+         4) geração da imagem de compartilhamento (canvas próprio)
+         5) compartilhamento nativo (Web Share API) + fallback de
+            botões de texto (WhatsApp/LinkedIn/X) + download
+         ========================================================== -->
+    <script>
+    (function () {
+        'use strict';
+
+        // ---------- desafios (simples + logos + memoráveis) ----------
+        var DESAFIOS = [
+            "Um gato",
+            "Um café",
+            "Um botão",
+            "Um olho",
+            "Uma casa",
+            "Um peixe",
+            "Uma árvore",
+            "Um sol",
+            "Uma nuvem",
+            "Um coração",
+            "Um carro",
+            "Um telefone",
+            "Uma xícara",
+            "Um livro",
+            "Uma estrela",
+            "Um robô",
+            "Uma banana",
+            "Um ovo",
+            "Um peixe-bola",
+            "Logo da Apple",
+            "Swoosh da Nike",
+            "Pássaro do Twitter",
+            "Câmera do Instagram",
+            "Fantasma do Pac-Man",
+            "Invasor do Space Invaders",
+            "Logo do YouTube",
+            "Símbolo do Bluetooth",
+            "Ícone de Wi-Fi",
+            "Logo da PlayStation",
+            "Cara do among us"
+        ];
+
+        // ---------- paleta ----------
+        var PALETA = [
+            { cor: '#ffffff', nome: 'Branco' },
+            { cor: '#FA397A', nome: 'Rosa Upixel' },
+            { cor: '#2FBE7A', nome: 'Verde' },
+            { cor: '#4668FF', nome: 'Azul' },
+            { cor: '#FCFC30', nome: 'Amarelo' },
+            { cor: '#FA3939', nome: 'Vermelho' },
+            { cor: '#828282', nome: 'Cinza' }
+        ];
+
+        // ---------- níveis (bracket 0 = nota 0-1, bracket 9 = nota 9-10) ----------
+        var NIVEIS = [
+            {
+                titulo: 'Nível Criança de Três Anos Com Raiva do Giz de Cera',
+                criticas: [
+                    'Existe uma intenção artística aqui? Nem a gente tem certeza.',
+                    'Isso poderia ser arte abstrata se você tivesse dito isso antes de eu ver.'
+                ]
+            },
+            {
+                titulo: 'Nível Rabisco de Reunião Improdutiva',
+                criticas: [
+                    'Dá pra sentir o tédio de uma call de 45 minutos que devia ter sido um e-mail.',
+                    'Isso aqui não é desenho, é um sintoma.'
+                ]
+            },
+            {
+                titulo: 'Nível Post-it Filosófico',
+                criticas: [
+                    'Tem uma ideia em algum lugar aí dentro. Provavelmente.',
+                    'Parece profundo até alguém perguntar o que é.'
+                ]
+            },
+            {
+                titulo: 'Nível Arte Abstrata Involuntária',
+                criticas: [
+                    'Você não quis fazer isso, mas fez, e agora precisa viver com as consequências.',
+                    'Um crítico de arte chamaria isso de "corajoso". A gente chama de "ok".'
+                ]
+            },
+            {
+                titulo: 'Nível "Isso É Arte Contemporânea, Confia"',
+                criticas: [
+                    'Colocaríamos isso num museu só pra ver quem finge entender.',
+                    'Tecnicamente defensável. Emocionalmente, incerto.'
+                ]
+            },
+            {
+                titulo: 'Nível Picasso em Fase de Crise',
+                criticas: [
+                    'As proporções erradas parecem propositais. Vamos fingir que são.',
+                    'Há uma bagunça organizada aqui que quase parece talento.'
+                ]
+            },
+            {
+                titulo: 'Nível Van Gogh Sem a Orelha (e Sem Paciência)',
+                criticas: [
+                    'Dá pra sentir a angústia. Não sabemos exatamente de quê, mas dá.',
+                    'Tem energia. Tem caos. Tem prazo apertado.'
+                ]
+            },
+            {
+                titulo: 'Nível Da Vinci de Segunda-Feira',
+                criticas: [
+                    'Impressionante pra alguém que só tinha um mouse e nenhuma vontade real.',
+                    'Isso já é bom o suficiente pra deixar os outros desafios com inveja.'
+                ]
+            },
+            {
+                titulo: 'Nível Michelangelo Com Prazo Apertado',
+                criticas: [
+                    'Sinceramente? Melhor do que a gente esperava de alguém desenhando com o dedo.',
+                    'Isso tem intenção, tem forma, e tem um talento suspeito de vir de outro lugar.'
+                ]
+            },
+            {
+                titulo: 'Nível Renascentista Suspeito de Ter Usado Régua',
+                criticas: [
+                    'Ok, ou você é bom mesmo, ou trapaceou. Nenhuma das opções nos incomoda.',
+                    'Vamos aceitar essa obra e fingir que não estamos impressionados.'
+                ]
+            }
+        ];
+
+        // ---------- estado ----------
+        var TAMANHO_GRADE = 20;
+        var grade = criarGradeVazia();
+        var corAtual = PALETA[1].cor; // rosa como padrão
+        var desenhando = false;
+        var desafioAtual = '';
+        var ultimoResultado = null;
+
+        function criarGradeVazia() {
+            var g = [];
+            for (var r = 0; r < TAMANHO_GRADE; r++) {
+                g.push(new Array(TAMANHO_GRADE).fill(null));
+            }
+            return g;
+        }
+
+        // ---------- elementos ----------
+        var elDesafioFrase = document.getElementById('pxj-desafio-frase');
+        var btnSortear = document.getElementById('pxj-btn-sortear');
+        var elPaleta = document.getElementById('pxj-paleta');
+        var btnLimpar = document.getElementById('pxj-btn-limpar');
+        var canvas = document.getElementById('pxj-canvas');
+        var ctx = canvas.getContext('2d');
+        var avisoMinimo = document.getElementById('pxj-aviso-minimo');
+        var btnFinalizar = document.getElementById('pxj-btn-finalizar');
+
+        var secaoResultado = document.getElementById('pxj-resultado');
+        var elNota = document.getElementById('pxj-nota');
+        var elTituloNivel = document.getElementById('pxj-titulo-nivel');
+        var elCritica = document.getElementById('pxj-critica');
+        var canvasCompartilhar = document.getElementById('pxj-canvas-compartilhar');
+
+        var btnCompartilharNativo = document.getElementById('pxj-btn-compartilhar-nativo');
+        var btnBaixar = document.getElementById('pxj-btn-baixar');
+        var linkWhatsapp = document.getElementById('pxj-link-whatsapp');
+        var linkLinkedin = document.getElementById('pxj-link-linkedin');
+        var linkX = document.getElementById('pxj-link-x');
+
+        var btnRefazer = document.getElementById('pxj-btn-refazer');
+        var btnNovoDesafio = document.getElementById('pxj-btn-novo-desafio');
+
+        // ---------- paleta: montar botões ----------
+        function montarPaleta() {
+            var html = '';
+            PALETA.forEach(function (item, i) {
+                html += '<button type="button" class="pxj-cor" style="background:' + item.cor + '" ' +
+                    'data-cor="' + item.cor + '" aria-label="' + item.nome + '" ' +
+                    'aria-pressed="' + (item.cor === corAtual ? 'true' : 'false') + '"></button>';
+            });
+            html += '<button type="button" class="pxj-cor pxj-cor--borracha" data-cor="" ' +
+                'aria-label="Borracha" aria-pressed="false"></button>';
+            elPaleta.innerHTML = html;
+
+            elPaleta.querySelectorAll('.pxj-cor').forEach(function (botao) {
+                botao.addEventListener('click', function () {
+                    corAtual = botao.dataset.cor || null;
+                    elPaleta.querySelectorAll('.pxj-cor').forEach(function (b) {
+                        b.setAttribute('aria-pressed', 'false');
+                    });
+                    botao.setAttribute('aria-pressed', 'true');
+                });
+            });
+        }
+
+        // ---------- desafio ----------
+        function sortearDesafio() {
+            var novo;
+            do {
+                novo = DESAFIOS[Math.floor(Math.random() * DESAFIOS.length)];
+            } while (novo === desafioAtual && DESAFIOS.length > 1);
+            desafioAtual = novo;
+            elDesafioFrase.textContent = desafioAtual;
+        }
+
+        btnSortear.addEventListener('click', sortearDesafio);
+
+        // ---------- canvas: dimensionamento responsivo ----------
+        var tamanhoCelula = 20;
+
+        function redimensionarCanvas() {
+            var larguraDisponivel = Math.min(canvas.parentElement.clientWidth, 560);
+            tamanhoCelula = Math.max(14, Math.floor(larguraDisponivel / TAMANHO_GRADE));
+            var lado = tamanhoCelula * TAMANHO_GRADE;
+            canvas.width = lado;
+            canvas.height = lado;
+            redesenharCanvas();
+        }
+
+        function redesenharCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#050505';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (var r = 0; r < TAMANHO_GRADE; r++) {
+                for (var c = 0; c < TAMANHO_GRADE; c++) {
+                    var cor = grade[r][c];
+                    var x = c * tamanhoCelula;
+                    var y = r * tamanhoCelula;
+
+                    if (cor) {
+                        ctx.fillStyle = cor;
+                        ctx.fillRect(x, y, tamanhoCelula, tamanhoCelula);
+                    }
+
+                    ctx.strokeStyle = '#161616';
+                    ctx.lineWidth = 1;
+                    ctx.strokeRect(x + 0.5, y + 0.5, tamanhoCelula - 1, tamanhoCelula - 1);
+                }
+            }
+        }
+
+        window.addEventListener('resize', debounce(redimensionarCanvas, 150));
+
+        function debounce(fn, ms) {
+            var t;
+            return function () {
+                clearTimeout(t);
+                t = setTimeout(fn, ms);
+            };
+        }
+
+        // ---------- canvas: pintar pixels ----------
+        function coordenadasDoEvento(evento) {
+            var rect = canvas.getBoundingClientRect();
+            var escalaX = canvas.width / rect.width;
+            var escalaY = canvas.height / rect.height;
+            var clientX = evento.touches ? evento.touches[0].clientX : evento.clientX;
+            var clientY = evento.touches ? evento.touches[0].clientY : evento.clientY;
+            var x = (clientX - rect.left) * escalaX;
+            var y = (clientY - rect.top) * escalaY;
+            var col = Math.floor(x / tamanhoCelula);
+            var row = Math.floor(y / tamanhoCelula);
+            return { row: row, col: col };
+        }
+
+        function pintarEm(evento) {
+            var pos = coordenadasDoEvento(evento);
+            if (pos.row < 0 || pos.row >= TAMANHO_GRADE || pos.col < 0 || pos.col >= TAMANHO_GRADE) return;
+            grade[pos.row][pos.col] = corAtual;
+            redesenharCanvas();
+        }
+
+        canvas.addEventListener('mousedown', function (e) {
+            desenhando = true;
+            pintarEm(e);
+        });
+        canvas.addEventListener('mousemove', function (e) {
+            if (desenhando) pintarEm(e);
+        });
+        window.addEventListener('mouseup', function () {
+            desenhando = false;
+        });
+
+        canvas.addEventListener('touchstart', function (e) {
+            desenhando = true;
+            pintarEm(e);
+            e.preventDefault();
+        }, { passive: false });
+        canvas.addEventListener('touchmove', function (e) {
+            if (desenhando) pintarEm(e);
+            e.preventDefault();
+        }, { passive: false });
+        canvas.addEventListener('touchend', function () {
+            desenhando = false;
+        });
+
+        btnLimpar.addEventListener('click', function () {
+            grade = criarGradeVazia();
+            redesenharCanvas();
+        });
+
+        // ---------- algoritmo de julgamento ----------
+        function contarPixelsPintados() {
+            var n = 0;
+            for (var r = 0; r < TAMANHO_GRADE; r++) {
+                for (var c = 0; c < TAMANHO_GRADE; c++) {
+                    if (grade[r][c]) n++;
+                }
+            }
+            return n;
+        }
+
+        function calcularJulgamento() {
+            var total = TAMANHO_GRADE * TAMANHO_GRADE;
+            var preenchidos = contarPixelsPintados();
+            var fillRatio = preenchidos / total;
+
+            // variedade de cores
+            var coresUsadas = {};
+            for (var r = 0; r < TAMANHO_GRADE; r++) {
+                for (var c = 0; c < TAMANHO_GRADE; c++) {
+                    if (grade[r][c]) coresUsadas[grade[r][c]] = true;
+                }
+            }
+            var qtdCores = Object.keys(coresUsadas).length;
+
+            // simetria horizontal (espelho esquerda/direita)
+            var celulasComparadas = 0;
+            var celulasIguais = 0;
+            for (var r2 = 0; r2 < TAMANHO_GRADE; r2++) {
+                for (var c2 = 0; c2 < TAMANHO_GRADE / 2; c2++) {
+                    var espelho = TAMANHO_GRADE - 1 - c2;
+                    celulasComparadas++;
+                    var a = grade[r2][c2];
+                    var b = grade[r2][espelho];
+                    if ((a === null && b === null) || a === b) celulasIguais++;
+                }
+            }
+            var simetria = celulasComparadas > 0 ? celulasIguais / celulasComparadas : 0;
+
+            // complexidade de bordas (transições de cor entre vizinhos)
+            var transicoes = 0;
+            var maxTransicoes = 0;
+            for (var r3 = 0; r3 < TAMANHO_GRADE; r3++) {
+                for (var c3 = 0; c3 < TAMANHO_GRADE; c3++) {
+                    if (c3 < TAMANHO_GRADE - 1) {
+                        maxTransicoes++;
+                        if (grade[r3][c3] !== grade[r3][c3 + 1]) transicoes++;
+                    }
+                    if (r3 < TAMANHO_GRADE - 1) {
+                        maxTransicoes++;
+                        if (grade[r3][c3] !== grade[r3 + 1][c3]) transicoes++;
+                    }
+                }
+            }
+            var edgeRatio = maxTransicoes > 0 ? transicoes / maxTransicoes : 0;
+
+            // componentes (0-10 cada), com curva de sino pra fill e edge
+            var fillScore = 10 * (1 - Math.min(1, Math.abs(fillRatio - 0.35) / 0.35));
+            var colorScore = Math.min(qtdCores, 5) / 5 * 10;
+            var symmetryScore = fillRatio > 0.03 ? simetria * 10 : 3; // desenho quase vazio não ganha bônus de simetria
+            var edgeScore = 10 * (1 - Math.min(1, Math.abs(edgeRatio - 0.3) / 0.3));
+
+            var base = fillScore * 0.35 + colorScore * 0.15 + symmetryScore * 0.2 + edgeScore * 0.3;
+            var variacao = (Math.random() * 0.8) - 0.4; // humor do crítico no dia
+            var nota = Math.max(0, Math.min(10, base + variacao));
+            nota = Math.round(nota * 10) / 10;
+
+            var indiceNivel = Math.min(9, Math.floor(nota));
+            var nivel = NIVEIS[indiceNivel];
+            var critica = nivel.criticas[Math.floor(Math.random() * nivel.criticas.length)];
+
+            return {
+                nota: nota,
+                titulo: nivel.titulo,
+                critica: critica
+            };
+        }
+
+        // ---------- finalizar ----------
+        btnFinalizar.addEventListener('click', function () {
+            var preenchidos = contarPixelsPintados();
+            if (preenchidos < 5) {
+                avisoMinimo.classList.add('pxj-ativo');
+                return;
+            }
+            avisoMinimo.classList.remove('pxj-ativo');
+
+            ultimoResultado = calcularJulgamento();
+            elNota.innerHTML = ultimoResultado.nota.toFixed(1) + '<span>/10</span>';
+            elTituloNivel.textContent = ultimoResultado.titulo;
+            elCritica.textContent = ultimoResultado.critica;
+
+            gerarImagemCompartilhavel();
+
+            secaoResultado.classList.add('pxj-ativo');
+            secaoResultado.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            atualizarLinksCompartilhar();
+        });
+
+        // ---------- gerar imagem de compartilhamento ----------
+        function quebrarTexto(context, texto, x, y, larguraMax, alturaLinha) {
+            var palavras = texto.split(' ');
+            var linha = '';
+            var linhas = [];
+            palavras.forEach(function (palavra) {
+                var testeLinha = linha + palavra + ' ';
+                if (context.measureText(testeLinha).width > larguraMax && linha !== '') {
+                    linhas.push(linha);
+                    linha = palavra + ' ';
+                } else {
+                    linha = testeLinha;
+                }
+            });
+            linhas.push(linha);
+            linhas.forEach(function (l, i) {
+                context.fillText(l.trim(), x, y + i * alturaLinha);
+            });
+            return linhas.length;
+        }
+
+        function gerarImagemCompartilhavel() {
+            var w = canvasCompartilhar.width;
+            var h = canvasCompartilhar.height;
+            var cctx = canvasCompartilhar.getContext('2d');
+
+            cctx.clearRect(0, 0, w, h);
+            cctx.fillStyle = '#000000';
+            cctx.fillRect(0, 0, w, h);
+
+            // faixa rosa no topo
+            cctx.fillStyle = '#FA397A';
+            cctx.fillRect(0, 0, w, 14);
+
+            // marca
+            cctx.fillStyle = '#FA397A';
+            cctx.font = 'bold 30px "Pixelify Sans", sans-serif';
+            cctx.textAlign = 'center';
+            cctx.fillText('UPIXEL · ORQUESTRA DO PIXEL', w / 2, 76);
+
+            // desafio
+            cctx.fillStyle = '#828282';
+            cctx.font = '26px -apple-system, "Segoe UI", sans-serif';
+            cctx.fillText('Desafio: ' + desafioAtual, w / 2, 118);
+
+            // grade desenhada, ampliada e centralizada
+            var ladoGrade = 820;
+            var celula = ladoGrade / TAMANHO_GRADE;
+            var offsetX = (w - ladoGrade) / 2;
+            var offsetY = 160;
+
+            cctx.fillStyle = '#0a0a0a';
+            cctx.fillRect(offsetX - 10, offsetY - 10, ladoGrade + 20, ladoGrade + 20);
+
+            cctx.imageSmoothingEnabled = false;
+            for (var r = 0; r < TAMANHO_GRADE; r++) {
+                for (var c = 0; c < TAMANHO_GRADE; c++) {
+                    var cor = grade[r][c];
+                    if (cor) {
+                        cctx.fillStyle = cor;
+                        cctx.fillRect(offsetX + c * celula, offsetY + r * celula, celula, celula);
+                    }
+                }
+            }
+
+            var baseTexto = offsetY + ladoGrade + 70;
+
+            // nota
+            cctx.fillStyle = '#ffffff';
+            cctx.font = 'bold 92px -apple-system, "Segoe UI", sans-serif';
+            cctx.fillText(ultimoResultado.nota.toFixed(1) + ' / 10', w / 2, baseTexto);
+
+            // título do nível
+            cctx.fillStyle = '#FA397A';
+            cctx.font = 'bold 40px -apple-system, "Segoe UI", sans-serif';
+            var linhasTitulo = quebrarTexto(cctx, ultimoResultado.titulo, w / 2, baseTexto + 70, w - 140, 48);
+
+            // crítica
+            cctx.fillStyle = '#B5B5B5';
+            cctx.font = '28px -apple-system, "Segoe UI", sans-serif';
+            var yCritica = baseTexto + 70 + (linhasTitulo * 48) + 30;
+            quebrarTexto(cctx, ultimoResultado.critica, w / 2, yCritica, w - 180, 38);
+
+            // rodapé
+            cctx.fillStyle = '#5c5c5c';
+            cctx.font = '24px -apple-system, "Segoe UI", sans-serif';
+            cctx.fillText('upixel.com.br/orquestra-do-pixel.html', w / 2, h - 40);
+
+            cctx.textAlign = 'start';
+        }
+
+        // ---------- compartilhamento ----------
+        function atualizarLinksCompartilhar() {
+            var textoBase = 'Fui julgado(a) na Orquestra do Pixel da Upixel: ' +
+                ultimoResultado.nota.toFixed(1) + '/10 — "' + ultimoResultado.titulo + '". ' +
+                'Desenha o seu também:';
+            var url = 'https://upixel.com.br/orquestra-do-pixel.html';
+
+            linkWhatsapp.href = 'https://wa.me/?text=' + encodeURIComponent(textoBase + ' ' + url);
+            linkX.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(textoBase) + '&url=' + encodeURIComponent(url);
+            linkLinkedin.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url);
+        }
+
+        btnBaixar.addEventListener('click', function () {
+            var link = document.createElement('a');
+            link.download = 'orquestra-do-pixel-upixel.png';
+            link.href = canvasCompartilhar.toDataURL('image/png');
+            link.click();
+        });
+
+        btnCompartilharNativo.addEventListener('click', function () {
+            canvasCompartilhar.toBlob(function (blob) {
+                if (!blob) return;
+                var arquivo = new File([blob], 'orquestra-do-pixel-upixel.png', { type: 'image/png' });
+                var dadosCompartilhamento = {
+                    files: [arquivo],
+                    title: 'Orquestra do Pixel — Upixel',
+                    text: 'Fui julgado(a) na Orquestra do Pixel: ' + ultimoResultado.nota.toFixed(1) + '/10 — "' + ultimoResultado.titulo + '"'
+                };
+
+                if (navigator.canShare && navigator.canShare({ files: dadosCompartilhamento.files })) {
+                    navigator.share(dadosCompartilhamento).catch(function () {
+                        // usuário cancelou — não faz nada
+                    });
+                } else {
+                    // sem suporte a compartilhar arquivo: baixa a imagem como alternativa
+                    btnBaixar.click();
+                }
+            }, 'image/png');
+        });
+
+        // ---------- refazer ----------
+        btnRefazer.addEventListener('click', function () {
+            secaoResultado.classList.remove('pxj-ativo');
+            grade = criarGradeVazia();
+            redesenharCanvas();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        btnNovoDesafio.addEventListener('click', function () {
+            secaoResultado.classList.remove('pxj-ativo');
+            grade = criarGradeVazia();
+            redesenharCanvas();
+            sortearDesafio();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ---------- inicialização ----------
+        montarPaleta();
+        sortearDesafio();
+        redimensionarCanvas();
+    })();
+    </script>
+
+</body>
+</html>
