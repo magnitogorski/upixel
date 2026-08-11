@@ -1000,30 +1000,34 @@
             cctx.textAlign = 'start';
         }
 
-        // ---------- compartilhamento (só nativo + fallback de download) ----------
-        btnCompartilharNativo.addEventListener('click', function () {
-            canvasCompartilhar.toBlob(function (blob) {
-                if (!blob) return;
-                var arquivo = new File([blob], 'orquestra-do-pixel-upixel.png', { type: 'image/png' });
-                var dadosCompartilhamento = {
-                    files: [arquivo],
-                    title: 'Orquestra do Pixel — Upixel',
-                    text: 'Fui julgado(a) na Orquestra do Pixel: ' + ultimoResultado.nota.toFixed(1) + '/10 — "' + ultimoResultado.titulo + '"'
-                };
+// ---------- compartilhamento (só nativo + fallback de download) ----------
+btnCompartilharNativo.addEventListener('click', function () {
+    canvasCompartilhar.toBlob(function (blob) {
+        if (!blob) return;
+        var arquivo = new File([blob], 'orquestra-do-pixel-upixel.png', { type: 'image/png' });
+        var texto = 'Fui julgado(a) na Orquestra do Pixel: ' + 
+            ultimoResultado.nota.toFixed(1) + '/10 — "' + ultimoResultado.titulo + '". ' +
+            'Desenha o seu também: https://upixel.com.br/orquestra-do-pixel.html';
 
-                if (navigator.canShare && navigator.canShare({ files: dadosCompartilhamento.files })) {
-                    navigator.share(dadosCompartilhamento).catch(function () {
-                        // usuário cancelou — não faz nada
-                    });
-                } else {
-                    // sem suporte a compartilhar arquivo: baixa a imagem
-                    var link = document.createElement('a');
-                    link.download = 'orquestra-do-pixel-upixel.png';
-                    link.href = canvasCompartilhar.toDataURL('image/png');
-                    link.click();
-                }
-            }, 'image/png');
-        });
+        var dadosCompartilhamento = {
+            files: [arquivo],
+            title: 'Orquestra do Pixel — Upixel',
+            text: texto
+        };
+
+        if (navigator.canShare && navigator.canShare({ files: dadosCompartilhamento.files })) {
+            navigator.share(dadosCompartilhamento).catch(function () {
+                // usuário cancelou — não faz nada
+            });
+        } else {
+            // sem suporte a compartilhar arquivo: baixa a imagem
+            var link = document.createElement('a');
+            link.download = 'orquestra-do-pixel-upixel.png';
+            link.href = canvasCompartilhar.toDataURL('image/png');
+            link.click();
+        }
+    }, 'image/png');
+});
 
         // ---------- refazer ----------
         btnRefazer.addEventListener('click', function () {
