@@ -172,6 +172,58 @@
     box-sizing: border-box;
   }
 
+
+
+
+
+
+
+
+/* Força mostrar a seção da letra quando um termo é aberto via URL própria
+   (?termo=slug), sem depender do :target */
+.gd-letra.gd-letra-forcada { display: block !important; }
+
+.gd-verbete.gd-verbete-destaque { background: rgba(250, 57, 122, 0.06); }
+.gd-verbete.gd-verbete-destaque summary { color: var(--gd-pink); }
+
+.gd-compartilhar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  background: transparent;
+  border: 1px solid var(--gd-border-strong);
+  color: var(--gd-muted);
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: border-color .18s ease, color .18s ease;
+}
+
+.gd-compartilhar:hover,
+.gd-compartilhar:focus-visible {
+  color: var(--gd-pink);
+  border-color: var(--gd-pink);
+  outline: none;
+}
+
+.gd-compartilhar.gd-compartilhar-ok {
+  color: var(--gd-pink);
+  border-color: var(--gd-pink);
+}
+
+@media (max-width: 720px) {
+  .gd-compartilhar { width: 100%; justify-content: center; }
+}
+
+
+
+
+
+
+
   /* ---------- hero ---------- */
 
   .gd-hero {
@@ -1216,6 +1268,164 @@
     <div class="footer-ilustracao">
         <img src="rodape.png" alt="Ilustração Footer" loading="lazy" decoding="async">
     </div>
+
+
+
+
+<script>
+(function () {
+  'use strict';
+
+  var BASE_URL = 'https://upixel.com.br/glossario-dissecado-de-ux.html';
+  var PARAM = 'termo';
+
+  function truncar(t, max) {
+    t = t.replace(/\s+/g, ' ').trim();
+    return t.length <= max ? t : t.slice(0, max - 1).trim() + '…';
+  }
+
+  function setMeta(attr, key, valor) {
+    var el = document.head.querySelector('meta[' + attr + '="' + key + '"]');
+    if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
+    el.setAttribute('content', valor);
+  }
+
+  function setCanonical(url) {
+    var link = document.head.querySelector('link[rel="canonical"]');
+    if (!link) { link = document.createElement('link'); link.setAttribute('rel', 'canonical'); document.head.appendChild(link); }
+    link.setAttribute('href', url);
+  }
+
+  function injetarJSONLD(id, dados) {
+    var antigo = document.getElementById(id);
+    if (antigo) antigo.remove();
+    var s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.id = id;
+    s.textContent = JSON.stringify(dados);
+    document.head.appendChild(s);
+  }
+
+  function urlDoTermo(slug) { return BASE_URL + '?' + PARAM + '=' + encodeURIComponent(slug); }
+
+  // link "🔗 Link direto" em cada verbete, com copiar-para-clipboard
+ function compartilhar(botao, url, titulo, textoBase) {
+  if (navigator.share) {
+    navigator.share({ title: titulo, text: textoBase, url: url }).catch(function () {
+      // usuário cancelou o share nativo — não faz nada
+    });
+    return;
+  }
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function () {
+      var original = botao.textContent;
+      botao.textContent = '✓ Link copiado!';
+      botao.classList.add('gd-compartilhar-ok');
+      setTimeout(function () {
+        botao.textContent = original;
+        botao.classList.remove('gd-compartilhar-ok');
+      }, 1800);
+    });
+    return;
+  }
+  window.prompt('Copie o link:', url);
+}
+
+function adicionarBotoesCompartilhar() {
+  document.querySelectorAll('.gd-verbete').forEach(function (verbete) {
+    if (verbete.querySelector('.gd-compartilhar')) return;
+    var slug = verbete.id.replace('termo-', '');
+    var nome = verbete.querySelector('summary').textContent.trim();
+    var url = urlDoTermo(slug);
+    var textoOriginal = '🔗 Compartilhar esse termo grossário';
+
+    var botao = document.createElement('button');
+    botao.type = 'button';
+    botao.className = 'gd-compartilhar';
+    botao.textContent = textoOriginal;
+    botao.setAttribute('aria-label', 'Compartilhar o termo ' + nome);
+    botao.addEventListener('click', function () {
+      compartilhar(botao, url, nome + ' | Glossário Dissecado de UX', 'Isso aqui é ' + nome + ' sem corporativês:');
+    });
+
+    var corpo = verbete.querySelector('.gd-verbete-corpo');
+    if (corpo) corpo.appendChild(botao);
+  });
+}
+
+  function aplicarSEOdoTermo(idTermo) {
+    var termo = document.getElementById(idTermo);
+    if (!termo) return false;
+
+    var nome = termo.querySelector('summary').textContent.trim();
+    var paragrafo = termo.querySelector('.gd-verbete-corpo p');
+    var descricao = paragrafo
+      ? truncar('No Glossário Dissecado da Upixel: ' + paragrafo.textContent, 155)
+      : ('O que "' + nome + '" realmente significa, sem corporativês — Glossário Dissecado de UX da Upixel.');
+    var slug = idTermo.replace('termo-', '');
+    var url = urlDoTermo(slug);
+
+    document.title = nome + ' — o que isso significa de verdade | Glossário Dissecado de UX | Upixel';
+    setMeta('name', 'description', descricao);
+    setMeta('property', 'og:title', nome + ' | Glossário Dissecado de UX — Upixel');
+    setMeta('property', 'og:description', descricao);
+    setMeta('property', 'og:url', url);
+    setMeta('name', 'twitter:title', nome + ' | Glossário Dissecado de UX');
+    setMeta('name', 'twitter:description', descricao);
+    setCanonical(url);
+
+    injetarJSONLD('jsonld-termo-ativo', {
+      '@context': 'https://schema.org', '@type': 'DefinedTerm',
+      name: nome, description: descricao, url: url,
+      inDefinedTermSet: BASE_URL, inLanguage: 'pt-BR'
+    });
+    injetarJSONLD('jsonld-breadcrumb-termo', {
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://upixel.com.br/index.html' },
+        { '@type': 'ListItem', position: 2, name: 'Glossário Dissecado de UX', item: BASE_URL },
+        { '@type': 'ListItem', position: 3, name: nome, item: url }
+      ]
+    });
+
+    // mostra a seção da letra certa, abre e destaca o verbete
+    var secao = termo.closest('.gd-letra');
+    if (secao) {
+      document.querySelectorAll('.gd-letra').forEach(function (s) { s.classList.remove('gd-letra-forcada'); });
+      secao.classList.add('gd-letra-forcada');
+    }
+    termo.setAttribute('open', '');
+    termo.classList.add('gd-verbete-destaque');
+
+    // aviso visível no topo, reforça o assunto da página pra quem chega e pro Google
+    var texto = document.querySelector('.gd-texto');
+    if (texto && !document.querySelector('.gd-termo-ativo')) {
+      var aviso = document.createElement('p');
+      aviso.className = 'gd-termo-ativo';
+      aviso.innerHTML = 'Você está vendo o verbete <strong>' + nome + '</strong> do nosso glossário. ' +
+        '<a href="' + BASE_URL + '">Ver o Glossário Dissecado de UX completo →</a>';
+      texto.appendChild(aviso);
+    }
+
+    requestAnimationFrame(function () {
+      termo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    return true;
+  }
+
+  function iniciar() {
+    adicionarBotoesCompartilhar();
+    var slug = new URLSearchParams(window.location.search).get(PARAM);
+    if (slug) {
+      var ok = aplicarSEOdoTermo('termo-' + slug.trim().toLowerCase());
+      if (!ok) console.warn('Termo não encontrado no glossário:', slug);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', iniciar);
+})();
+</script>
+
 
 </body>
 </html>
