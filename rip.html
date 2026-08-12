@@ -154,6 +154,53 @@
     box-sizing: border-box;
   }
 
+
+
+
+
+
+.rip-lapide.rip-lapide-destaque { background: rgba(250, 57, 122, 0.06); }
+.rip-lapide.rip-lapide-destaque .rip-lapide-nome { color: var(--rip-pink); }
+
+.rip-compartilhar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid var(--rip-border-strong);
+  color: var(--rip-muted);
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: border-color .18s ease, color .18s ease;
+}
+
+.rip-compartilhar:hover,
+.rip-compartilhar:focus-visible {
+  color: var(--rip-pink);
+  border-color: var(--rip-pink);
+  outline: none;
+}
+
+.rip-compartilhar.rip-compartilhar-ok {
+  color: var(--rip-pink);
+  border-color: var(--rip-pink);
+}
+
+@media (max-width: 720px) {
+  .rip-compartilhar { width: 100%; justify-content: center; }
+}
+
+
+
+
+
+
+
+
   /* ---------- hero ---------- */
 
   .rip-hero {
@@ -2337,6 +2384,164 @@ Câmeras digitais e celulares eliminaram o custo da revelação e permitiram ver
         aplicarFiltroEBusca();
     })();
     </script>
+
+
+<script>
+(function () {
+  'use strict';
+
+  var BASE_URL = 'https://upixel.com.br/rip.html';
+  var PARAM = 'item';
+
+  function truncar(t, max) {
+    t = t.replace(/\s+/g, ' ').trim();
+    return t.length <= max ? t : t.slice(0, max - 1).trim() + '…';
+  }
+
+  function setMeta(attr, key, valor) {
+    var el = document.head.querySelector('meta[' + attr + '="' + key + '"]');
+    if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
+    el.setAttribute('content', valor);
+  }
+
+  function setCanonical(url) {
+    var link = document.head.querySelector('link[rel="canonical"]');
+    if (!link) { link = document.createElement('link'); link.setAttribute('rel', 'canonical'); document.head.appendChild(link); }
+    link.setAttribute('href', url);
+  }
+
+  function injetarJSONLD(id, dados) {
+    var antigo = document.getElementById(id);
+    if (antigo) antigo.remove();
+    var s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.id = id;
+    s.textContent = JSON.stringify(dados);
+    document.head.appendChild(s);
+  }
+
+  function urlDoItem(slug) { return BASE_URL + '?' + PARAM + '=' + encodeURIComponent(slug); }
+
+function compartilhar(botao, url, titulo, textoBase) {
+  if (navigator.share) {
+    navigator.share({ title: titulo, text: textoBase, url: url }).catch(function () {});
+    return;
+  }
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function () {
+      var original = botao.textContent;
+      botao.textContent = '✓ Link copiado!';
+      botao.classList.add('rip-compartilhar-ok');
+      setTimeout(function () {
+        botao.textContent = original;
+        botao.classList.remove('rip-compartilhar-ok');
+      }, 1800);
+    });
+    return;
+  }
+  window.prompt('Copie o link:', url);
+}
+
+function adicionarBotoesCompartilhar() {
+  document.querySelectorAll('.rip-lapide').forEach(function (lapide) {
+    if (lapide.querySelector('.rip-compartilhar')) return;
+    var slug = lapide.id.replace('rip-', '');
+    var nome = lapide.querySelector('.rip-lapide-nome').textContent.replace('⚰️', '').trim();
+    var url = urlDoItem(slug);
+    var textoOriginal = '🔗 Link direto pra essa cova';
+
+    var botao = document.createElement('button');
+    botao.type = 'button';
+    botao.className = 'rip-compartilhar';
+    botao.textContent = textoOriginal;
+    botao.setAttribute('aria-label', 'Compartilhar a cova de ' + nome);
+    botao.addEventListener('click', function () {
+      compartilhar(botao, url, '⚰️ ' + nome + ' | RIP — Upixel', nome + ' já morreu. Vem ver o obituário:');
+    });
+
+    var obituario = lapide.querySelector('.rip-obituario');
+    var enquete = obituario ? obituario.querySelector('.rip-enquete') : null;
+    if (obituario) {
+      if (enquete) obituario.insertBefore(botao, enquete);
+      else obituario.appendChild(botao);
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+  adicionarBotoesCompartilhar();
+
+  var slug = new URLSearchParams(window.location.search).get(PARAM);
+  if (!slug) return;
+  slug = slug.trim().toLowerCase();
+
+  var lapide = document.getElementById('rip-' + slug);
+  if (!lapide) { console.warn('Item não encontrado no RIP:', slug); return; }
+
+  var nome = lapide.querySelector('.rip-lapide-nome').textContent.replace('⚰️', '').trim();
+  var anosEl = lapide.querySelector('.rip-anos');
+  var anos = anosEl ? anosEl.textContent.trim() : '';
+  var categoria = lapide.dataset.categoria;
+  var oQueEra = lapide.querySelector('.rip-obituario-secao p');
+  var descricao = oQueEra
+    ? truncar(nome + ' (' + anos + '): ' + oQueEra.textContent, 155)
+    : (nome + ' no cemitério das tendências da Upixel.');
+  var url = urlDoItem(slug);
+
+  document.title = nome + ' (' + anos + ') — RIP | Upixel';
+  setMeta('name', 'description', descricao);
+  setMeta('property', 'og:title', '⚰️ ' + nome + ' | RIP — Upixel');
+  setMeta('property', 'og:description', descricao);
+  setMeta('property', 'og:url', url);
+  setMeta('name', 'twitter:title', '⚰️ ' + nome + ' | RIP — Upixel');
+  setMeta('name', 'twitter:description', descricao);
+  setCanonical(url);
+
+  injetarJSONLD('jsonld-item-ativo', {
+    '@context': 'https://schema.org', '@type': 'Thing',
+    name: nome, description: descricao, url: url, additionalType: categoria
+  });
+  injetarJSONLD('jsonld-breadcrumb-item', {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://upixel.com.br/index.html' },
+      { '@type': 'ListItem', position: 2, name: 'RIP', item: BASE_URL },
+      { '@type': 'ListItem', position: 3, name: nome, item: url }
+    ]
+  });
+
+  lapide.hidden = false;              // ignora o filtro "recentes"/categoria atual
+  lapide.setAttribute('open', '');
+  lapide.classList.add('rip-lapide-destaque');
+
+  var contador = document.getElementById('rip-contador');
+  if (contador) contador.textContent = 'Exibindo: ' + nome + '.';
+
+  var hero = document.querySelector('.rip-texto');
+  if (hero) {
+    var aviso = document.createElement('p');
+    aviso.className = 'rip-item-ativo';
+    aviso.innerHTML = 'Você está vendo a cova de <strong>' + nome + '</strong>. ' +
+      '<a href="' + BASE_URL + '">Ver o cemitério completo →</a>';
+    hero.appendChild(aviso);
+  }
+
+  requestAnimationFrame(function () {
+    lapide.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
+
+
 
 </body>
 </html>
