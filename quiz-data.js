@@ -28,6 +28,170 @@
 
 const QUESTOES = [
 
+
+{
+    id:"apps-01",
+    tags:["aplicativos"],
+    pergunta:"O iFood surgiu em qual país?",
+    respostas:[
+        "México",
+        "Estados Unidos",
+        "Argentina",
+        "Portugal",
+        "Brasil"
+    ],
+    correta:4,
+    explicacao:"O iFood é uma empresa brasileira, fundada em São Paulo em 2011."
+},
+
+
+{
+    id:"apps-02",
+    tags:["aplicativos"],
+    pergunta:"O Spotify foi criado em qual país?",
+    respostas:[
+        "Suécia",
+        "Estados Unidos",
+        "Reino Unido",
+        "Noruega",
+        "Alemanha"
+    ],
+    correta:0,
+    explicacao:"O Spotify foi fundado em Estocolmo, na Suécia, em 2006."
+},
+
+
+{
+    id:"apps-03",
+    tags:["aplicativos"],
+    pergunta:"O WhatsApp foi criado originalmente em qual país?",
+    respostas:[
+        "Canadá",
+        "Brasil",
+        "Índia",
+        "Estados Unidos",
+        "Reino Unido"
+    ],
+    correta:3,
+    explicacao:"O WhatsApp foi criado por Jan Koum e Brian Acton nos Estados Unidos, em 2009."
+},
+
+
+{
+    id:"apps-04",
+    tags:["aplicativos"],
+    pergunta:"De qual país veio o TikTok?",
+    respostas:[
+        "Japão",
+        "Coreia do Sul",
+        "China",
+        "Estados Unidos",
+        "Singapura"
+    ],
+    correta:2,
+    explicacao:"O TikTok pertence à chinesa ByteDance. O aplicativo surgiu a partir do Douyin, lançado na China em 2016."
+},
+
+
+{
+    id:"apps-05",
+    tags:["aplicativos"],
+    pergunta:"O aplicativo Waze foi criado originalmente em qual país?",
+    respostas:[
+        "Brasil",
+        "Estados Unidos",
+        "Israel",
+        "Alemanha",
+        "França"
+    ],
+    correta:2,
+    explicacao:"O Waze foi criado em Israel por Ehud Shabtai, Amir Shinar e Uri Levine."
+},
+
+
+{
+    id:"apps-06",
+    tags:["aplicativos"],
+    pergunta:"O Uber surgiu em qual país?",
+    respostas:[
+        "Canadá",
+        "Estados Unidos",
+        "Reino Unido",
+        "Austrália",
+        "Alemanha"
+    ],
+    correta:1,
+    explicacao:"O Uber foi fundado em San Francisco, nos Estados Unidos, em 2009."
+},
+
+
+{
+    id:"apps-07",
+    tags:["aplicativos"],
+    pergunta:"O Duolingo foi criado em qual país?",
+    respostas:[
+        "Estados Unidos",
+        "Espanha",
+        "Canadá",
+        "França",
+        "Brasil"
+    ],
+    correta:0,
+    explicacao:"O Duolingo foi criado nos Estados Unidos por Luis von Ahn e Severin Hacker."
+},
+
+
+{
+    id:"apps-08",
+    tags:["aplicativos"],
+    pergunta:"O Telegram foi criado por irmãos de qual país?",
+    respostas:[
+        "Polônia",
+        "Ucrânia",
+        "Alemanha",
+        "Estados Unidos",
+        "Rússia"
+    ],
+    correta:4,
+    explicacao:"Pavel e Nikolai Durov são russos e criaram o Telegram em 2013. A empresa posteriormente passou a operar a partir de outros países."
+},
+
+
+{
+    id:"apps-09",
+    tags:["aplicativos"],
+    pergunta:"O Canva foi criado em qual país?",
+    respostas:[
+        "Reino Unido",
+        "Estados Unidos",
+        "Austrália",
+        "Nova Zelândia",
+        "Canadá"
+    ],
+    correta:2,
+    explicacao:"O Canva foi fundado na Austrália, em 2013, por Melanie Perkins, Cliff Obrecht e Cameron Adams."
+},
+
+
+{
+    id:"apps-10",
+    tags:["aplicativos"],
+    pergunta:"O Airbnb nasceu em qual país?",
+    respostas:[
+        "Austrália",
+        "Reino Unido",
+        "Canadá",
+        "França",
+        "Estados Unidos"
+    ],
+    correta:4,
+    explicacao:"O Airbnb surgiu em San Francisco, nos Estados Unidos, em 2008."
+},
+
+
+
+
+
 {
     id:"chaves-01",
     tags:["chaves"],
@@ -1694,6 +1858,8 @@ const PONTOS_POR_ACERTO = 10;
 // Slug de cada categoria -> usado no nome do arquivo (quiz-<slug>.html)
 // Slug de cada categoria -> usado no nome do arquivo (quiz-<slug>.html)
 const CATEGORIA_SLUGS = {
+    
+    "Aplicativos": "aplicativos",
     "Raças de Cachorro": "raças-de-cachorro",
     "IA": "ia",
     "WCAG": "wcag",

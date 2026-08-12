@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<script src="banner-upixel.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<!-- ==========================================================
+     Página: GLOSSÁRIO DISSECADO DE UX
+
+     Página nova, própria — não reaproveita .pagina-artigos nem
+     .cards-artigos-grid porque o conteúdo aqui é outra coisa:
+     um glossário que precisa crescer por anos sem virar bagunça.
+
+     Estrutura: hero → índice A–Z (sticky) → seções por letra →
+     verbetes em <details>/<summary> nativo (zero JS).
+
+     Todo o CSS da página vive no <style id="glossario-style">
+     abaixo. Se depois você migrar isso pro style.css global,
+     é só recortar o bloco inteiro — nenhuma classe daqui colide
+     com nomes usados nas outras páginas (prefixo .gd-).
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Glossário Dissecado de UX: o que eles falam × o que significa | Upixel</title>
+
+<meta name="description" content="O glossário da Upixel dissecado: o que os termos de UX, Produto e Design realmente significam, sem corporativês, sem papinho de investidor e sem enrolação.">
+<meta name="keywords" content="glossário de UX, dicionário de UX, buzzwords de UX, termos de design, corporativês, UX Design, Product Design, jargão de tecnologia, Upixel">
+
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/glossario-dissecado-de-ux.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Glossário Dissecado de UX | Upixel">
+<meta property="og:description" content="O que eles falam × o que realmente significa. A gente abre o termo, tira o verniz e mostra o que sobra.">
+<meta property="og:url" content="https://upixel.com.br/glossario-dissecado-de-ux.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glossário Dissecado de UX | Upixel">
+<meta name="twitter:description" content="O que eles falam × o que realmente significa. Sem papinho. Sem pretensão. Sem enrolação.">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-social.png">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Mesmos arquivos de estilo do restante do site. Nenhuma regra foi alterada. -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+<!-- ==========================================================
+     SEO: DefinedTermSet — o tipo correto de dados estruturados
+     pra glossário (mais preciso que Article genérico).
+     ========================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "Glossário Dissecado de UX",
+  "url": "https://upixel.com.br/glossario-dissecado-de-ux.html",
+  "description": "Glossário da Upixel que dissecta termos de UX, Produto e Design, mostrando o que cada expressão realmente significa na prática.",
+  "inLanguage": "pt-BR",
+  "publisher": { "@type": "Organization", "name": "Upixel", "url": "https://upixel.com.br/" },
+  "hasDefinedTerm": [
+    { "@type": "DefinedTerm", "name": "A/B Test", "description": "Duas versões de uma tela brigando pra ver qual converte mais." },
+    {"@type":"DefinedTerm",   "name":"Accordion","description":"Um conteúdo que fica fechado até alguém clicar para descobrir o que existe dentro."},
+    { "@type": "DefinedTerm", "name": "Ágil", "description": "Um jeito de trabalhar em ciclos curtos — na teoria." },
+    { "@type": "DefinedTerm", "name": "Alinhamento", "description": "Concordar (ou fingir que concordou) com alguma coisa." },
+    { "@type": "DefinedTerm", "name": "Backlog", "description": "Lista de tudo que 'vamos fazer' um dia." },
+    { "@type": "DefinedTerm", "name": "Badge","description": "Um pequeno selo visual que grita uma informação que ninguém pediu."},
+    { "@type": "DefinedTerm", "name": "Brainstorming", "description": "Todo mundo falando ao mesmo tempo achando que é criatividade." },
+    {"@type":"DefinedTerm",   "name":"Breadcrumb","description":"Um caminho que mostra onde você está dentro de um site."},
+    { "@type": "DefinedTerm", "name": "Co-criação", "description": "Fazer o usuário trabalhar de graça e chamar de parceria." },
+    { "@type": "DefinedTerm", "name": "Customer centricity", "description": "Colocar o cliente no centro — do slide, pelo menos." },
+    { "@type": "DefinedTerm", "name": "Data-driven", "description": "Decisão tomada com números do lado, não necessariamente por causa deles." },
+    { "@type": "DefinedTerm", "name": "Design Thinking", "description": "Um processo de cinco etapas pra chegar onde o bom senso já chegaria em duas." },
+    {"@type":"DefinedTerm",   "name":  "Dropdown","description":"Uma lista de opções que fica escondida até alguém clicar nela."},
+    { "@type": "DefinedTerm", "name": "Empatia", "description": "Tentar entender o usuário antes de decidir por ele mesmo assim." },
+    {"@type":"DefinedTerm",   "name":"Empty State","description":"A tela que aparece quando não existe nada para mostrar."},
+    { "@type": "DefinedTerm", "name": "Engajamento", "description": "Quanto tempo alguém fica preso na tela, de preferência sem perceber." },
+    { "@type": "DefinedTerm", "name": "Feedback", "description": "Crítica embrulhada em papel de presente." },
+    {"@type":"DefinedTerm",   "name":"Footer","description":"O rodapé da página onde vão parar todas as coisas que ninguém soube onde colocar."},
+    { "@type": "DefinedTerm", "name": "Fricção", "description": "Qualquer coisa que faz o usuário pensar por mais de dois segundos." },
+    { "@type": "DefinedTerm", "name": "Growth", "description": "Crescer rápido, de qualquer jeito, e resolver os detalhes depois." },
+    {"@type":"DefinedTerm",   "name":"Header","description":"A parte de cima da tela onde colocam logo, menu, busca e decisões que ninguém sabe onde encaixar."}, 
+    { "@type": "DefinedTerm", "name": "Heurística", "description": "Regra prática de usabilidade que todo mundo cita e poucos aplicam de verdade." },
+    { "@type": "DefinedTerm", "name": "Insight", "description": "Uma observação óbvia dita com cara de descoberta." },
+    { "@type": "DefinedTerm", "name": "Jornada do usuário", "description": "O caminho que a pessoa faz até (ou apesar) do produto." },
+    { "@type": "DefinedTerm", "name": "Kickoff", "description": "A reunião mais animada do projeto — a primeira." },
+    { "@type": "DefinedTerm", "name": "KPI", "description": "O número que decide se você teve um bom trimestre." },
+    { "@type": "DefinedTerm", "name": "Lean", "description": "Fazer o mínimo pra aprender o máximo — na teoria." },
+    { "@type": "DefinedTerm", "name": "Mindset", "description": "Jeito de pensar que vira desculpa quando o processo falha." },
+    {"@type":"DefinedTerm",   "name":"Modal","description":"Uma janela que aparece na frente daquilo que você estava tentando fazer."},
+    { "@type": "DefinedTerm", "name": "MVP", "description": "A versão mais barata que ainda pode ser vendida como 'produto'." },
+    { "@type": "DefinedTerm", "name": "North Star Metric", "description": "O número que resume tudo que a empresa quer, numa métrica só." },
+    { "@type": "DefinedTerm", "name": "OKR", "description": "Meta com nome em inglês pra parecer mais estratégica." },
+    { "@type": "DefinedTerm", "name": "Onboarding", "description": "A primeira impressão que o produto tem uma chance de não estragar." },
+    {"@type":"DefinedTerm",   "name":"Pagination","description":"Dividir uma quantidade enorme de conteúdo em várias páginas para ninguém precisar carregar tudo de uma vez."},
+    { "@type": "DefinedTerm", "name": "Persona", "description": "Um usuário imaginário com nome, foto de banco de imagens e citação inventada." },
+    {"@type":"DefinedTerm",   "name":"Placeholder","description":"Um texto provisório dentro de um campo para sugerir o que deve ser digitado."},
+    { "@type": "DefinedTerm", "name": "Protótipo", "description": "Uma versão de mentira do produto, pra testar antes de gastar de verdade." },
+    { "@type": "DefinedTerm", "name": "Quick win", "description": "A vitória fácil que dá pra mostrar rápido pro chefe." },
+    { "@type": "DefinedTerm", "name": "Retrospectiva", "description": "A reunião pra falar o que deu errado sem apontar quem errou." },
+    { "@type": "DefinedTerm", "name": "Roadmap", "description": "Um plano de futuro que muda toda vez que alguém importante muda de ideia." },
+    {"@type":"DefinedTerm",   "name":"Sidebar","description":"Uma coluna lateral criada para colocar coisas que não couberam no conteúdo principal."},
+    {"@type":"DefinedTerm",   "name":"Skeleton","description":"Uma versão fantasma da interface que aparece enquanto o conteúdo verdadeiro não chega."},
+    { "@type": "DefinedTerm", "name": "Sprint", "description": "Um pedaço curto de tempo pra fingir urgência constante." },
+    { "@type": "DefinedTerm", "name": "Stakeholder", "description": "Qualquer pessoa que pode dizer não pro seu projeto." },
+    {"@type":"DefinedTerm",   "name":"Tab","description":"Uma forma de colocar vários conteúdos dentro da mesma interface sem mostrar tudo de uma vez."},
+    {"@type":"DefinedTerm",   "name":"Toast","description":"Uma mensagem temporária que aparece para avisar que alguma coisa aconteceu."},
+    {"@type":"DefinedTerm",   "name":"Tooltip","description":"Uma pequena explicação que aparece quando você passa o mouse sobre alguma coisa."},
+    { "@type": "DefinedTerm", "name": "Touchpoint", "description": "Cada lugar onde o usuário esbarra com a marca." },
+    { "@type": "DefinedTerm", "name": "Usabilidade", "description": "O quanto uma interface deixa a pessoa fazer o que veio fazer, sem sofrer." },
+    { "@type": "DefinedTerm", "name": "Validação", "description": "Confirmar que uma ideia funciona antes de gastar rios de dinheiro nela." },
+    { "@type": "DefinedTerm", "name": "Wireframe", "description": "O esqueleto da tela, sem cor, sem enfeite, só estrutura." },
+    { "@type": "DefinedTerm", "name": "Zero fricção", "description": "A promessa de uma experiência sem nenhum obstáculo, nunca." }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upixel.com.br/index.html" },
+    { "@type": "ListItem", "position": 2, "name": "Glossário Dissecado de UX", "item": "https://upixel.com.br/glossario-dissecado-de-ux.html" }
+  ]
+}
+</script>
+
+<!-- ==========================================================
+     CSS da página — prefixo .gd- em tudo, sem depender de
+     nenhuma classe de outra página. Fundo preto, rosa #FA397A,
+     bordas discretas, muito espaço em branco.
+     ========================================================== -->
+<style id="glossario-style">
+  .gd-page {
+    --gd-bg: #000000;
+    --gd-text: #ffffff;
+    --gd-muted: #828282;
+    --gd-pink: #FA397A;
+    --gd-border: #262626;
+    --gd-border-strong: #333333;
+
+    background: var(--gd-bg);
+    color: var(--gd-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  .gd-page *,
+  .gd-page *::before,
+  .gd-page *::after {
+    box-sizing: border-box;
+  }
+
+
+
+
+
+
+
+
+/* Força mostrar a seção da letra quando um termo é aberto via URL própria
+   (?termo=slug), sem depender do :target */
+.gd-letra.gd-letra-forcada { display: block !important; }
+
+.gd-verbete.gd-verbete-destaque { background: rgba(250, 57, 122, 0.06); }
+.gd-verbete.gd-verbete-destaque summary { color: var(--gd-pink); }
+
+.gd-compartilhar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  background: transparent;
+  border: 1px solid var(--gd-border-strong);
+  color: var(--gd-muted);
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: border-color .18s ease, color .18s ease;
+}
+
+.gd-compartilhar:hover,
+.gd-compartilhar:focus-visible {
+  color: var(--gd-pink);
+  border-color: var(--gd-pink);
+  outline: none;
+}
+
+.gd-compartilhar.gd-compartilhar-ok {
+  color: var(--gd-pink);
+  border-color: var(--gd-pink);
+}
+
+@media (max-width: 720px) {
+  .gd-compartilhar { width: 100%; justify-content: center; }
+}
+
+
+
+
+
+
+
+  /* ---------- hero ---------- */
+
+  .gd-hero {
+    padding: 96px 60px 64px;
+    max-width: 900px;
+  }
+
+  .gd-eyebrow {
+    display: block;
+    color: var(--gd-pink);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .gd-h1 {
+    font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.7rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 16px;
+  }
+
+  .gd-sub {
+    color: var(--gd-pink);
+    font-size: clamp(1.05rem, 1rem + .4vw, 1.4rem);
+    font-weight: 700;
+    margin: 0 0 28px;
+  }
+
+  .gd-texto p {
+    color: var(--gd-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 62ch;
+    margin: 0 0 14px;
+  }
+
+  .gd-texto p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---------- índice A–Z (funciona como abas, via :target) ---------- */
+
+  .gd-indice {
+    border-top: 1px solid var(--gd-border);
+    border-bottom: 1px solid var(--gd-border);
+    padding: 16px 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .gd-indice a {
+    color: var(--gd-text);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: .95rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    transition: border-color .18s ease, color .18s ease;
+  }
+
+  .gd-indice a:hover,
+  .gd-indice a:focus-visible {
+    color: var(--gd-pink);
+    border-color: var(--gd-border-strong);
+  }
+
+  /* letra ativa destacada no índice, sem precisar de JS */
+  .gd-page:has(#letra-A:target) .gd-indice a[href="#letra-A"],
+  .gd-page:has(#letra-B:target) .gd-indice a[href="#letra-B"],
+  .gd-page:has(#letra-C:target) .gd-indice a[href="#letra-C"],
+  .gd-page:has(#letra-D:target) .gd-indice a[href="#letra-D"],
+  .gd-page:has(#letra-E:target) .gd-indice a[href="#letra-E"],
+  .gd-page:has(#letra-F:target) .gd-indice a[href="#letra-F"],
+  .gd-page:has(#letra-G:target) .gd-indice a[href="#letra-G"],
+  .gd-page:has(#letra-H:target) .gd-indice a[href="#letra-H"],
+  .gd-page:has(#letra-I:target) .gd-indice a[href="#letra-I"],
+  .gd-page:has(#letra-J:target) .gd-indice a[href="#letra-J"],
+  .gd-page:has(#letra-K:target) .gd-indice a[href="#letra-K"],
+  .gd-page:has(#letra-L:target) .gd-indice a[href="#letra-L"],
+  .gd-page:has(#letra-M:target) .gd-indice a[href="#letra-M"],
+  .gd-page:has(#letra-N:target) .gd-indice a[href="#letra-N"],
+  .gd-page:has(#letra-O:target) .gd-indice a[href="#letra-O"],
+  .gd-page:has(#letra-P:target) .gd-indice a[href="#letra-P"],
+  .gd-page:has(#letra-Q:target) .gd-indice a[href="#letra-Q"],
+  .gd-page:has(#letra-R:target) .gd-indice a[href="#letra-R"],
+  .gd-page:has(#letra-S:target) .gd-indice a[href="#letra-S"],
+  .gd-page:has(#letra-T:target) .gd-indice a[href="#letra-T"],
+  .gd-page:has(#letra-U:target) .gd-indice a[href="#letra-U"],
+  .gd-page:has(#letra-V:target) .gd-indice a[href="#letra-V"],
+  .gd-page:has(#letra-W:target) .gd-indice a[href="#letra-W"],
+  .gd-page:has(#letra-X:target) .gd-indice a[href="#letra-X"],
+  .gd-page:has(#letra-Y:target) .gd-indice a[href="#letra-Y"],
+  .gd-page:has(#letra-Z:target) .gd-indice a[href="#letra-Z"],
+  .gd-page:not(:has(.gd-letra:target)) .gd-indice a[href="#letra-A"] {
+    color: var(--gd-pink);
+    border-color: var(--gd-pink);
+  }
+
+  /* ---------- seções por letra: só a ativa aparece ---------- */
+
+  .gd-corpo {
+    padding: 24px 60px 40px;
+    max-width: 900px;
+  }
+
+  .gd-letra {
+    display: none;
+    padding: 48px 0;
+    scroll-margin-top: 16px;
+  }
+
+  .gd-letra:target {
+    display: block;
+  }
+
+  /* sem hash na URL, mostra A por padrão — como a primeira aba */
+  .gd-page:not(:has(.gd-letra:target)) #letra-A {
+    display: block;
+  }
+
+  .gd-letra-titulo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gd-pink);
+    margin: 0 0 24px;
+  }
+
+  .gd-vazio {
+    color: var(--gd-muted);
+    font-size: .95rem;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .gd-vazio a {
+    color: var(--gd-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .gd-vazio a:hover {
+    color: var(--gd-pink);
+  }
+
+  /* ---------- verbetes ---------- */
+
+  .gd-verbete {
+    border-top: 1px solid var(--gd-border);
+  }
+
+  .gd-verbete:last-of-type {
+    border-bottom: 1px solid var(--gd-border);
+  }
+
+  .gd-verbete summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--gd-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: color .18s ease;
+  }
+
+  .gd-verbete summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .gd-verbete summary:hover,
+  .gd-verbete summary:focus-visible {
+    color: var(--gd-pink);
+  }
+
+  .gd-verbete summary::after {
+    content: "+";
+    flex: none;
+    color: var(--gd-pink);
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .gd-verbete[open] summary::after {
+    content: "–";
+  }
+
+  .gd-verbete-corpo {
+    padding: 0 0 28px;
+    max-width: 66ch;
+  }
+
+  .gd-verbete-corpo p {
+    margin: 0 0 16px;
+    color: var(--gd-muted);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .gd-verbete-corpo p:last-child {
+    margin-bottom: 0;
+  }
+
+  .gd-label {
+    display: block;
+    color: var(--gd-pink);
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+
+  .gd-relacionado {
+    font-size: .9rem !important;
+  }
+
+  .gd-relacionado a {
+    color: var(--gd-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .gd-relacionado a:hover {
+    color: var(--gd-pink);
+  }
+
+  /* ---------- cta final ---------- */
+
+  .gd-cta {
+    padding: 48px 60px 96px;
+    max-width: 900px;
+  }
+
+  .gd-cta p {
+    color: var(--gd-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .gd-cta a {
+    color: var(--gd-pink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 720px) {
+    .gd-hero,
+    .gd-corpo,
+    .gd-cta {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .gd-indice {
+      padding: 14px 24px;
+    }
+  }
+
+/* ---------- responsivo: widescreen + tablet ---------- */
+
+.gd-hero,
+.gd-corpo,
+.gd-cta {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 1440px) {
+    .gd-hero,
+    .gd-corpo,
+    .gd-cta {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .gd-hero,
+    .gd-indice,
+    .gd-corpo,
+    .gd-cta {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+.gd-indice {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+</style>
+
+</head>
+<body class="gd-page">
+
+    <!-- ======================================================
+         HEADER — idêntico ao de index.html / artigos.html
+         (adicione o link do Glossário no menu das outras
+         páginas também, pra navegação ficar consistente)
+         ====================================================== -->
+    <header class="meu-header">
+        <div class="logo">
+            <img src="logobranca.png" alt="Logotipo do meu site">
+        </div>
+
+        <nav class="menu" aria-label="Navegação principal">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html" class="ativo" aria-current="page">Grossário UX</a>
+            <a href="rip.html">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html">Besteirol</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ================= HERO ================= -->
+        <section class="gd-hero">
+            <span class="gd-eyebrow">Academia UPIXEL</span>
+            <h1 class="gd-h1">Glossário Dissecado de UX</h1>
+            <p class="gd-sub">O que eles falam × o que realmente significa.</p>
+            <div class="gd-texto">
+                <p>Aqui a gente abre o termo, tira o verniz e mostra o que sobra.</p>
+                <p>Sem papinho. Sem pretensão. Sem enrolação.</p>
+                <p>Se um conceito é bom, ele sobrevive sem buzzword. Se precisa de quinze adjetivos para parecer inteligente... talvez o problema nunca tenha sido a definição.</p>
+            </div>
+        </section>
+
+<upx-banner
+    id-anuncio="uxspray"
+    imagem="imagens-upubli-ux-em-spray.png"
+    titulo="🧴 UX em Spray™"
+    descricao="Uma borrifada e qualquer interface parece ter sido aprovada pelo gerente."
+    link="pagina-upubli-spray.html">
+</upx-banner>
+
+        <!-- ================= ÍNDICE A–Z ================= -->
+        <nav class="gd-indice" aria-label="Navegação alfabética do glossário">
+            <a href="#letra-A">A</a><a href="#letra-B">B</a><a href="#letra-C">C</a><a href="#letra-D">D</a><a href="#letra-E">E</a><a href="#letra-F">F</a><a href="#letra-G">G</a><a href="#letra-H">H</a><a href="#letra-I">I</a><a href="#letra-J">J</a><a href="#letra-K">K</a><a href="#letra-L">L</a><a href="#letra-M">M</a><a href="#letra-N">N</a><a href="#letra-O">O</a><a href="#letra-P">P</a><a href="#letra-Q">Q</a><a href="#letra-R">R</a><a href="#letra-S">S</a><a href="#letra-T">T</a><a href="#letra-U">U</a><a href="#letra-V">V</a><a href="#letra-W">W</a><a href="#letra-X">X</a><a href="#letra-Y">Y</a><a href="#letra-Z">Z</a>
+        </nav>
+
+        <!-- ================= VERBETES ================= -->
+        <div class="gd-corpo">
+
+            <section class="gd-letra" id="letra-A">
+                <h2 class="gd-letra-titulo">A</h2>
+
+                <details class="gd-verbete" id="termo-ab-test">
+                    <summary>A/B Test</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Duas versões de uma tela brigando pra ver qual converte mais.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra parecer orientado a dados antes de uma decisão que já tinha sido tomada na reunião anterior.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>O teste empata ou dá "quase significativo", e vence a versão que o chefe já preferia desde o início.</p>
+                        <p><span class="gd-label">Versão sem filtro</span>Validação estatística pra justificar intuição de quem manda.</p>
+                    </div>
+                </details>
+
+
+                <details class="gd-verbete" id="termo-acessibilidade">
+    <summary>Acessibilidade</summary>
+    <div class="gd-verbete-corpo">
+        <p><span class="gd-label">Tradução crua</span>Fazer o produto funcionar para pessoas que não são exatamente o usuário padrão inventado no slide.</p>
+        <p><span class="gd-label">Quando usam</span>Quando lembram que existem pessoas além do usuário "médio".</p>
+        <p><span class="gd-label">O que realmente acontece</span>Vira uma etapa esquecida no final do projeto.</p>
+        <p><span class="gd-label">Versão sem filtro</span>Incluir quem sempre foi ignorado.</p>
+    </div>
+</details>
+
+   <details class="gd-verbete" id="termo-accordion">
+        <summary>Accordion</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Um conteúdo que fica fechado até alguém clicar para descobrir o que existe dentro.</p>
+            <p><span class="gd-label">Quando usam</span>Pra economizar espaço e esconder informações consideradas secundárias.</p>
+            <p><span class="gd-label">O que realmente acontece</span>Transforma-se uma página inteira em uma sequência de portas fechadas e espera-se que o usuário tenha vontade de abrir todas.</p>
+        </div>
+    </details>
+
+                <details class="gd-verbete" id="termo-agil">
+                    <summary>Ágil</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Um jeito de trabalhar em ciclos curtos — na teoria.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra explicar por que o prazo mudou de novo.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Vira sinônimo de "sem planejamento", só que com cerimônia toda semana pra compensar.</p>
+                        <p><span class="gd-label">Versão sem filtro</span>Cascata com daily.</p>
+                    </div>
+                </details>
+
+                <details class="gd-verbete" id="termo-alinhamento">
+                    <summary>Alinhamento</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Concordar (ou fingir que concordou) com alguma coisa.</p>
+                        <p><span class="gd-label">Quando usam</span>Depois de uma reunião que não decidiu nada.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Três pessoas saem achando que ficou combinado três coisas diferentes.</p>
+                        <p class="gd-relacionado">Leia também: <a href="#termo-kickoff">Kickoff</a></p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-B">
+                <h2 class="gd-letra-titulo">B</h2>
+
+                <details class="gd-verbete" id="termo-backlog">
+                    <summary>Backlog</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Lista de tudo que "vamos fazer" um dia.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra guardar uma ideia sem precisar dizer não na hora.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Vira um cemitério educado de sugestões.</p>
+                        <p><span class="gd-label">Versão sem filtro</span>Onde as boas ideias vão morrer com dignidade.</p>
+                    </div>
+                </details>
+
+    <details class="gd-verbete" id="termo-badge">
+        <summary>Badge</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Um pequeno selo visual que grita uma informação que ninguém pediu.</p>
+            <p><span class="gd-label">Quando usam</span>Pra destacar status, novidade, quantidade, categoria ou qualquer coisa que precise parecer importante.</p>
+            <p><span class="gd-label">O que realmente acontece</span>Enfia-se uma bolinha, etiqueta ou cápsula colorida em algum canto da interface e torce-se para o usuário entender o que ela significa.</p>
+        </div>
+    </details>
+
+                <details class="gd-verbete" id="termo-brainstorming">
+                    <summary>Brainstorming</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Todo mundo falando ao mesmo tempo achando que é criatividade.</p>
+                        <p><span class="gd-label">Quando usam</span>Quando ninguém quer assumir sozinho a responsabilidade de decidir.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Sai um post-it amarelo com a mesma ideia que já existia antes da reunião.</p>
+                    </div>
+                </details>
+
+   <details class="gd-verbete" id="termo-breadcrumb">
+        <summary>Breadcrumb</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Um caminho que mostra onde você está dentro de um site.</p>
+            <p><span class="gd-label">Quando usam</span>Em estruturas profundas, quando voltar para níveis anteriores pode ser útil.</p>
+            <p><span class="gd-label">O que realmente acontece</span>Descobre-se que o usuário está em Produtos &gt; Categoria &gt; Subcategoria &gt; Produto &gt; Deus me ajude.</p>
+        </div>
+    </details>
+
+            </section>
+
+            <section class="gd-letra" id="letra-C">
+                <h2 class="gd-letra-titulo">C</h2>
+
+                <details class="gd-verbete" id="termo-co-criacao">
+                    <summary>Co-criação</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Fazer o usuário trabalhar de graça e chamar de parceria.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra dizer que o produto "nasceu com o cliente".</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Um workshop de duas horas vira uma citação no slide de pitch pro investidor.</p>
+                        <p><span class="gd-label">Versão sem filtro</span>Pesquisa com nome bonito.</p>
+                    </div>
+                </details>
+
+                <details class="gd-verbete" id="termo-customer-centricity">
+                    <summary>Customer centricity</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Colocar o cliente no centro — do slide, pelo menos.</p>
+                        <p><span class="gd-label">Quando usam</span>No mesmo trimestre em que cortam o time de suporte.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>O cliente continua no centro só da apresentação.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-D">
+                <h2 class="gd-letra-titulo">D</h2>
+
+                <details class="gd-verbete" id="termo-data-driven">
+                    <summary>Data-driven</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Decisão tomada com números do lado, não necessariamente por causa deles.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra dar peso científico a uma escolha que já tinha sido feita no feeling.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Escolhe-se a métrica que confirma o que já se queria fazer.</p>
+                        <p><span class="gd-label">Versão sem filtro</span>Confirmação de viés com gráfico.</p>
+                    </div>
+                </details>
+
+                <details class="gd-verbete" id="termo-design-thinking">
+                    <summary>Design Thinking</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Um processo de cinco etapas pra chegar onde o bom senso já chegaria em duas.</p>
+                        <p><span class="gd-label">Quando usam</span>Quando querem inovar sem sair da zona de conforto do processo.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Muito post-it, pouca decisão, e o protótipo final parece o rascunho do dia 1.</p>
+                    </div>
+                </details>
+                
+                <details class="gd-verbete" id="termo-discovery">
+                <summary>Discovery</summary>
+                <div class="gd-verbete-corpo">
+        <p><span class="gd-label">Tradução crua</span>Tempo para descobrir o que deveria ter sido perguntado antes de sair construindo.</p>
+        <p><span class="gd-label">Quando usam</span>Antes de iniciar um projeto para entender problema, usuário e contexto.</p>
+        <p><span class="gd-label">O que realmente acontece</span>Vira uma sequência de reuniões, entrevistas e documentos que às vezes confirma algo que já era óbvio.</p>
+        <p><span class="gd-label">Versão sem filtro</span>Investigar antes de gastar tempo criando a solução errada.</p>
+    </div>
+</details>
+
+    <details class="gd-verbete" id="termo-dropdown">
+        <summary>Dropdown</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Uma lista de opções que fica escondida até alguém clicar nela.</p>
+            <p><span class="gd-label">Quando usam</span>Quando existem várias opções e não querem ocupar espaço mostrando todas.</p>
+            <p><span class="gd-label">O que realmente acontece</span>O usuário clica, a lista aparece, ele procura a opção desejada e tenta não selecionar a errada com o dedo.</p>
+        </div>
+    </details>
+
+            </section>
+
+
+            
+            <section class="gd-letra" id="letra-E">
+                <h2 class="gd-letra-titulo">E</h2>
+
+                <details class="gd-verbete" id="termo-empatia">
+                    <summary>Empatia</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Tentar entender o usuário antes de decidir por ele mesmo assim.</p>
+                        <p><span class="gd-label">Quando usam</span>No começo de qualquer processo de design, geralmente numa frase de efeito.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Entrevista-se cinco pessoas e projeta-se pras outras cinco mil como se fossem iguais.</p>
+                        <p><span class="gd-label">Versão sem filtro</span>Suposição com nome bonito.</p>
+                        <p class="gd-relacionado">Leia também: <a href="#termo-persona">Persona</a></p>
+                    </div>
+                </details>
+
+
+                  <details class="gd-verbete" id="termo-empty-state">
+        <summary>Empty state</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>A tela que aparece quando não existe nada para mostrar.</p>
+            <p><span class="gd-label">Quando usam</span>Quando uma busca não encontrou resultados, uma lista está vazia ou o usuário ainda não fez nada.</p>
+            <p><span class="gd-label">O que realmente acontece</span>Uma tela completamente vazia ganha uma ilustração triste e a frase “Nada por aqui ainda”.</p>
+        </div>
+    </details>
+
+                <details class="gd-verbete" id="termo-engajamento">
+                    <summary>Engajamento</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Quanto tempo alguém fica preso na tela, de preferência sem perceber.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra justificar uma notificação a cada quinze minutos.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Confunde-se "gostar do produto" com "não conseguir sair dele".</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-F">
+                <h2 class="gd-letra-titulo">F</h2>
+
+                <details class="gd-verbete" id="termo-feedback">
+                    <summary>Feedback</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Crítica embrulhada em papel de presente.</p>
+                        <p><span class="gd-label">Quando usam</span>Antes de dizer algo que vai doer.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Vira "amei, só um ajuste pequeno" seguido de sete parágrafos de ajuste.</p>
+                    </div>
+                </details>
+
+    <details class="gd-verbete" id="termo-footer">
+        <summary>Footer</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>O rodapé da página onde vão parar todas as coisas que ninguém soube onde colocar.</p>
+            <p><span class="gd-label">Quando usam</span>Pra links institucionais, contatos, políticas, redes sociais e aquele mapa do site que ninguém abre.</p>
+            <p><span class="gd-label">O que realmente acontece</span>Vira o cemitério de links esquecidos, atualizado pela última vez em 2019.</p>
+        </div>
+    </details>
+
+                <details class="gd-verbete" id="termo-friccao">
+                    <summary>Fricção</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Qualquer coisa que faz o usuário pensar por mais de dois segundos.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra justificar remover uma etapa que, na real, protegia o usuário de errar.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Tira-se a fricção boa junto com a ruim, e o erro fica mais fácil de cometer.</p>
+                        <p class="gd-relacionado">Leia também: <a href="#termo-zero-friccao">Zero fricção</a></p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-G">
+                <h2 class="gd-letra-titulo">G</h2>
+
+                <details class="gd-verbete" id="termo-growth">
+                    <summary>Growth</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Crescer rápido, de qualquer jeito, e resolver os detalhes depois.</p>
+                        <p><span class="gd-label">Quando usam</span>Quando a métrica de curto prazo importa mais que a de longo prazo.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>O produto cresce, a dívida técnica e a de confiança do usuário também.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-H">
+                <h2 class="gd-letra-titulo">H</h2>
+
+
+                <details class="gd-verbete" id="termo-handoff">
+    <summary>Handoff</summary>
+    <div class="gd-verbete-corpo">
+        <p><span class="gd-label">Tradução crua</span>O momento em que o designer entrega a tela e torce pelo melhor.</p>
+        <p><span class="gd-label">Quando usam</span>Quando o design acabou e começa a briga com desenvolvimento.</p>
+        <p><span class="gd-label">O que realmente acontece</span>O botão chega diferente, a animação some e alguém diz "era só um detalhe".</p>
+        <p><span class="gd-label">Versão sem filtro</span>A fronteira onde a intenção encontra a realidade.</p>
+    </div>
+</details>
+
+    <details class="gd-verbete" id="termo-header">
+        <summary>Header</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>A parte de cima da tela onde colocam logo, menu, busca e decisões que ninguém sabe onde encaixar.</p>
+            <p><span class="gd-label">Quando usam</span>Sempre. Porque aparentemente toda interface precisa começar pelo topo.</p>
+            <p><span class="gd-label">O que realmente acontece</span>Vira um depósito de navegação, notificações, perfil, busca, botão de ajuda e mais três coisas que deveriam estar em outro lugar.</p>
+        </div>
+    </details>
+
+                <details class="gd-verbete" id="termo-heuristica">
+                    <summary>Heurística</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Regra prática de usabilidade que todo mundo cita e poucos aplicam de verdade.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra justificar uma crítica de design com aparência de ciência.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Vira lista de dez mandamentos decorada, não ferramenta de análise.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-I">
+                <h2 class="gd-letra-titulo">I</h2>
+
+                <details class="gd-verbete" id="termo-insight">
+                    <summary>Insight</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Uma observação óbvia dita com cara de descoberta.</p>
+                        <p><span class="gd-label">Quando usam</span>No fim de uma pesquisa, geralmente num slide sozinho, em fonte grande.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>"Usuários preferem tarefas mais fáceis" é chamado de revelação.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-J">
+                <h2 class="gd-letra-titulo">J</h2>
+
+                <details class="gd-verbete" id="termo-jornada-do-usuario">
+                    <summary>Jornada do usuário</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>O caminho que a pessoa faz até (ou apesar) do produto.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra desenhar um mapa bonito que ninguém revisita depois.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Fica emoldurado na parede da sala de reunião, virou decoração.</p>
+                        <p class="gd-relacionado">Leia também: <a href="#termo-touchpoint">Touchpoint</a></p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-K">
+                <h2 class="gd-letra-titulo">K</h2>
+
+                <details class="gd-verbete" id="termo-kickoff">
+                    <summary>Kickoff</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>A reunião mais animada do projeto — a primeira.</p>
+                        <p><span class="gd-label">Quando usam</span>No dia 1, com uma energia que não volta mais até o fim.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Todo mundo alinhado, até a primeira mudança de escopo.</p>
+                        <p class="gd-relacionado">Leia também: <a href="#termo-alinhamento">Alinhamento</a></p>
+                    </div>
+                </details>
+
+                <details class="gd-verbete" id="termo-kpi">
+                    <summary>KPI</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>O número que decide se você teve um bom trimestre.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra transformar um objetivo complexo em uma única casa decimal.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Otimiza-se o número, não o motivo pelo qual ele existia.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-L">
+                <h2 class="gd-letra-titulo">L</h2>
+
+                <details class="gd-verbete" id="termo-lean">
+                    <summary>Lean</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Fazer o mínimo pra aprender o máximo — na teoria.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra justificar entregar algo incompleto.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>"Mínimo" vira desculpa permanente, "completo" nunca chega.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-M">
+                <h2 class="gd-letra-titulo">M</h2>
+
+                    <details class="gd-verbete" id="termo-modal">
+        <summary>Modal / Dialog</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Uma janela que aparece na frente daquilo que você estava tentando fazer.</p>
+            <p><span class="gd-label">Quando usam</span>Pra confirmar ações, pedir informações, mostrar detalhes ou interromper o usuário com alguma coisa considerada importante.</p>
+            <p><span class="gd-label">O que realmente acontece</span>Você estava usando a interface normalmente. Agora precisa descobrir onde está o X.</p>
+        </div>
+    </details>
+
+                <details class="gd-verbete" id="termo-mvp">
+                    <summary>MVP</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>A versão mais barata que ainda pode ser vendida como "produto".</p>
+                        <p><span class="gd-label">Quando usam</span>Quando o prazo já era curto antes mesmo de começar.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>"Mínimo" sobra, "viável" some.</p>
+                        <p><span class="gd-label">Versão sem filtro</span>Protótipo com preço.</p>
+                    </div>
+                </details>
+
+                <details class="gd-verbete" id="termo-mindset">
+                    <summary>Mindset</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Jeito de pensar que vira desculpa quando o processo falha.</p>
+                        <p><span class="gd-label">Quando usam</span>Quando o problema não é a ferramenta, é "a cultura".</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Cobra-se do time uma mudança de mentalidade em vez de mudar o processo que não funciona.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-N">
+                <h2 class="gd-letra-titulo">N</h2>
+
+                <details class="gd-verbete" id="termo-north-star-metric">
+                    <summary>North Star Metric</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>O número que resume tudo que a empresa quer, numa métrica só.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra simplificar uma estratégia que não estava clara nem complicada.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Vira alvo a ser otimizado isoladamente, ignorando o resto do produto.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-O">
+                <h2 class="gd-letra-titulo">O</h2>
+
+                <details class="gd-verbete" id="termo-onboarding">
+                    <summary>Onboarding</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>A primeira impressão que o produto tem uma chance de não estragar.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra tentar explicar em três telas o que o design deveria explicar sozinho.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Vira tutorial que todo mundo pula, inclusive quem devia ter simplificado o produto antes.</p>
+                    </div>
+                </details>
+
+                <details class="gd-verbete" id="termo-okr">
+                    <summary>OKR</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Meta com nome em inglês pra parecer mais estratégica.</p>
+                        <p><span class="gd-label">Quando usam</span>No planejamento trimestral, com bastante convicção em janeiro.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Em março já ninguém lembra qual era o "objective".</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-P">
+                <h2 class="gd-letra-titulo">P</h2>
+
+                    <details class="gd-verbete" id="termo-pagination">
+        <summary>Pagination</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Dividir uma quantidade enorme de conteúdo em várias páginas.</p>
+            <p><span class="gd-label">Quando usam</span>Quando carregar ou mostrar tudo de uma vez seria pesado ou confuso.</p>
+            <p><span class="gd-label">O que realmente acontece</span>O usuário chega na página 2 e começa a questionar se realmente precisava encontrar aquele conteúdo.</p>
+        </div>
+    </details>
+
+                <details class="gd-verbete" id="termo-persona">
+                    <summary>Persona</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Um usuário imaginário com nome, foto de banco de imagens e citação inventada.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra dar um rosto a uma pesquisa que, no fundo, poderia ter virado só uma lista.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>"A Marina, 32 anos" decide o roadmap de gente que nunca foi entrevistada.</p>
+                        <p><span class="gd-label">Versão sem filtro</span>Estatística fantasiada de gente.</p>
+                        <p class="gd-relacionado">Leia também: <a href="#termo-empatia">Empatia</a></p>
+                    </div>
+                </details>
+
+    <details class="gd-verbete" id="termo-placeholder">
+        <summary>Placeholder</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Um texto provisório dentro de um campo para sugerir o que deve ser digitado.</p>
+            <p><span class="gd-label">Quando usam</span>Pra orientar o usuário sem ocupar espaço com um rótulo maior.</p>
+            <p><span class="gd-label">O que realmente acontece</span>O usuário começa a digitar e a única pista que explicava o campo desaparece.</p>
+        </div>
+    </details>
+
+                <details class="gd-verbete" id="termo-prototipo">
+                    <summary>Protótipo</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Uma versão de mentira do produto, pra testar antes de gastar de verdade.</p>
+                        <p><span class="gd-label">Quando usam</span>Antes de qualquer decisão cara.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Vira o produto final, porque "depois a gente refaz direito" nunca chega.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-Q">
+                <h2 class="gd-letra-titulo">Q</h2>
+
+                <details class="gd-verbete" id="termo-quick-win">
+                    <summary>Quick win</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>A vitória fácil que dá pra mostrar rápido pro chefe.</p>
+                        <p><span class="gd-label">Quando usam</span>Quando o projeto grande está atrasado e precisa de algo pra apresentar.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Resolve-se o sintoma visível; o problema de verdade continua esperando.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-R">
+                <h2 class="gd-letra-titulo">R</h2>
+
+                <details class="gd-verbete" id="termo-retrospectiva">
+                    <summary>Retrospectiva</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>A reunião pra falar o que deu errado sem apontar quem errou.</p>
+                        <p><span class="gd-label">Quando usam</span>No fim de cada sprint, por ritual.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Os mesmos três problemas aparecem, ninguém resolve, todos anotam de novo.</p>
+                        <p class="gd-relacionado">Leia também: <a href="#termo-sprint">Sprint</a></p>
+                    </div>
+                </details>
+
+                <details class="gd-verbete" id="termo-roadmap">
+                    <summary>Roadmap</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Um plano de futuro que muda toda vez que alguém importante muda de ideia.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra parecer que existe planejamento de longo prazo.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>É reescrito a cada trimestre, mas sempre apresentado como "a visão de sempre".</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-S">
+                <h2 class="gd-letra-titulo">S</h2>
+
+<details class="gd-verbete" id="termo-sidebar">
+        <summary>Sidebar</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Uma coluna lateral criada para colocar coisas que não couberam no conteúdo principal.</p>
+            <p><span class="gd-label">Quando usam</span>Pra navegação secundária, filtros, atalhos ou uma coleção de informações que alguém jurou que seria útil.</p>
+            <p><span class="gd-label">O que realmente acontece</span>Ocupa espaço nobre da tela e frequentemente vira uma parede de links que o usuário ignora.</p>
+        </div>
+    </details>
+
+        <details class="gd-verbete" id="termo-skeleton">
+        <summary>Skeleton (loading)</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Uma versão fantasma da interface que aparece enquanto o conteúdo verdadeiro não chega.</p>
+            <p><span class="gd-label">Quando usam</span>Pra dar a sensação de que alguma coisa está acontecendo durante o carregamento.</p>
+            <p><span class="gd-label">O que realmente acontece</span>O usuário vê blocos cinzentos durante cinco segundos e começa a suspeitar que a internet morreu.</p>
+        </div>
+    </details>
+
+
+
+                <details class="gd-verbete" id="termo-sprint">
+                    <summary>Sprint</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Um pedaço curto de tempo pra fingir urgência constante.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra dividir o trabalho em blocos de duas semanas, sempre.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>O ritmo de uma corrida, sem nunca ter a linha de chegada.</p>
+                    </div>
+                </details>
+
+                <details class="gd-verbete" id="termo-stakeholder">
+                    <summary>Stakeholder</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Qualquer pessoa que pode dizer não pro seu projeto.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra soar mais formal do que "chefe" ou "cliente".</p>
+                        <p><span class="gd-label">O que realmente acontece</span>É quem realmente decide, mesmo quando o time acha que decidiu sozinho.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-T">
+                <h2 class="gd-letra-titulo">T</h2>
+
+
+    <details class="gd-verbete" id="termo-tab">
+        <summary>Tab / Abas</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Uma forma de colocar várias páginas dentro da mesma página sem admitir que são várias páginas.</p>
+            <p><span class="gd-label">Quando usam</span>Pra organizar conteúdos relacionados sem aumentar demais o tamanho da interface.</p>
+            <p><span class="gd-label">O que realmente acontece</span>O usuário fica pulando entre abas tentando descobrir onde esconderam a informação que ele procura.</p>
+        </div>
+    </details>
+
+                    <details class="gd-verbete" id="termo-toast">
+        <summary>Toast / Snackbar</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Uma mensagem temporária que aparece para avisar que alguma coisa aconteceu.</p>
+            <p><span class="gd-label">Quando usam</span>Depois de salvar, excluir, copiar, enviar ou realizar qualquer ação que mereça um tapinha nas costas.</p>
+            <p><span class="gd-label">O que realmente acontece</span>A mensagem aparece por três segundos, desaparece e deixa o usuário se perguntando se ele realmente viu aquilo.</p>
+        </div>
+    </details>
+
+        <details class="gd-verbete" id="termo-tooltip">
+        <summary>Tooltip</summary>
+        <div class="gd-verbete-corpo">
+            <p><span class="gd-label">Tradução crua</span>Uma pequena explicação que aparece quando você passa o mouse sobre alguma coisa.</p>
+            <p><span class="gd-label">Quando usam</span>Pra explicar ícones, botões ou termos que seriam óbvios se tivessem sido bem projetados.</p>
+            <p><span class="gd-label">O que realmente acontece</span>Esconde-se a informação atrás de uma interação que o usuário talvez nem descubra.</p>
+        </div>
+    </details>
+
+                <details class="gd-verbete" id="termo-touchpoint">
+                    <summary>Touchpoint</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Cada lugar onde o usuário esbarra com a marca.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra fazer um mapa colorido cheio de setinhas.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Vira gráfico bonito que não muda a experiência em nenhum desses pontos.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-U">
+                <h2 class="gd-letra-titulo">U</h2>
+
+                <details class="gd-verbete" id="termo-usabilidade">
+                    <summary>Usabilidade</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>O quanto uma interface deixa a pessoa fazer o que veio fazer, sem sofrer.</p>
+                        <p><span class="gd-label">Quando usam</span>Depois que o produto já foi lançado e alguém percebeu que ninguém entende.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Vira item de checklist no fim, quando deveria ser decisão desde o início.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-V">
+                <h2 class="gd-letra-titulo">V</h2>
+
+                <details class="gd-verbete" id="termo-validacao">
+                    <summary>Validação</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>Confirmar que uma ideia funciona antes de gastar rios de dinheiro nela.</p>
+                        <p><span class="gd-label">Quando usam</span>Pra dar aparência de rigor a uma decisão que já tinha sido tomada.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Testa-se até aparecer o resultado que confirma o que já se queria ouvir.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-W">
+                <h2 class="gd-letra-titulo">W</h2>
+
+                <details class="gd-verbete" id="termo-wireframe">
+                    <summary>Wireframe</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>O esqueleto da tela, sem cor, sem enfeite, só estrutura.</p>
+                        <p><span class="gd-label">Quando usam</span>No começo do projeto, pra discutir função antes de estética.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Alguém sempre pede "só um preview de como vai ficar", e o esqueleto vira decisão final.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="gd-letra" id="letra-X">
+                <h2 class="gd-letra-titulo">X</h2>                        
+            
+            <details class="gd-verbete" id="termo-xp">
+    <summary>XP (Extreme Programming)</summary>
+    <div class="gd-verbete-corpo">
+        <p><span class="gd-label">Tradução crua</span>Programação extrema para quem achou que trabalhar normal era pouco.</p>
+        <p><span class="gd-label">Quando usam</span>Quando querem desenvolver software com muita colaboração e mudanças rápidas.</p>
+        <p><span class="gd-label">O que realmente acontece</span>A equipe abraça a agilidade até o momento em que alguém pede uma alteração urgente.</p>
+        <p><span class="gd-label">Versão sem filtro</span>Correria organizada com nome bonito.</p>
+    </div>
+    
+</details>
+    
+    </section>
+
+            
+
+
+            <section class="gd-letra" id="letra-Y">
+                <h2 class="gd-letra-titulo">Y</h2>
+                <p class="gd-vazio">Essa letra tá devendo verbete. Bora resolver isso — <a href="contato.html">sugere um termo em Y</a>.</p>
+            </section>
+
+            <section class="gd-letra" id="letra-Z">
+                <h2 class="gd-letra-titulo">Z</h2>
+
+                <details class="gd-verbete" id="termo-zero-friccao">
+                    <summary>Zero fricção</summary>
+                    <div class="gd-verbete-corpo">
+                        <p><span class="gd-label">Tradução crua</span>A promessa de uma experiência sem nenhum obstáculo, nunca.</p>
+                        <p><span class="gd-label">Quando usam</span>No pitch, pro investidor, antes do produto existir de verdade.</p>
+                        <p><span class="gd-label">O que realmente acontece</span>Fricção zero é impossível — o que existe é fricção bem escolhida.</p>
+                        <p><span class="gd-label">Versão sem filtro</span>Slogan.</p>
+                        <p class="gd-relacionado">Leia também: <a href="#termo-friccao">Fricção</a></p>
+                    </div>
+                </details>
+            </section>
+
+        </div>
+
+        <!-- ================= CTA FINAL ================= -->
+        <section class="gd-cta">
+            <p>Achou um termo que merece autópsia? <a href="contato.html">Manda pra gente lá no Contato</a> — esse glossário só cresce.</p>
+        </section>
+
+    </main>
+
+    <!-- ======================================================
+         FOOTER — idêntico ao de artigos.html
+         ====================================================== -->
+    <footer class="footer">
+
+        <div class="footer-esquerda">
+            <img src="logobranca.png" alt="Upixel" class="footer-logo">
+            <p class="copyright">
+                Upixel. Todos os direitos reservados.
+            </p>
+        </div>
+
+        <div class="footer-centro">
+            <nav class="footer-menu" aria-label="Navegação do rodapé">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html" class="ativo" aria-current="page">Grossário UX</a>
+            <a href="rip.html">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html">Besteirol</a>
+            <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+
+    </footer>
+
+    <div class="footer-ilustracao">
+        <img src="rodape.png" alt="Ilustração Footer" loading="lazy" decoding="async">
+    </div>
+
+
+
+
+<script>
+(function () {
+  'use strict';
+
+  var BASE_URL = 'https://upixel.com.br/glossario-dissecado-de-ux.html';
+  var PARAM = 'termo';
+
+  function truncar(t, max) {
+    t = t.replace(/\s+/g, ' ').trim();
+    return t.length <= max ? t : t.slice(0, max - 1).trim() + '…';
+  }
+
+  function setMeta(attr, key, valor) {
+    var el = document.head.querySelector('meta[' + attr + '="' + key + '"]');
+    if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
+    el.setAttribute('content', valor);
+  }
+
+  function setCanonical(url) {
+    var link = document.head.querySelector('link[rel="canonical"]');
+    if (!link) { link = document.createElement('link'); link.setAttribute('rel', 'canonical'); document.head.appendChild(link); }
+    link.setAttribute('href', url);
+  }
+
+  function injetarJSONLD(id, dados) {
+    var antigo = document.getElementById(id);
+    if (antigo) antigo.remove();
+    var s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.id = id;
+    s.textContent = JSON.stringify(dados);
+    document.head.appendChild(s);
+  }
+
+  function urlDoTermo(slug) { return BASE_URL + '?' + PARAM + '=' + encodeURIComponent(slug); }
+
+  // link "🔗 Link direto" em cada verbete, com copiar-para-clipboard
+ function compartilhar(botao, url, titulo, textoBase) {
+  if (navigator.share) {
+    navigator.share({ title: titulo, text: textoBase, url: url }).catch(function () {
+      // usuário cancelou o share nativo — não faz nada
+    });
+    return;
+  }
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function () {
+      var original = botao.textContent;
+      botao.textContent = '✓ Link copiado!';
+      botao.classList.add('gd-compartilhar-ok');
+      setTimeout(function () {
+        botao.textContent = original;
+        botao.classList.remove('gd-compartilhar-ok');
+      }, 1800);
+    });
+    return;
+  }
+  window.prompt('Copie o link:', url);
+}
+
+function adicionarBotoesCompartilhar() {
+  document.querySelectorAll('.gd-verbete').forEach(function (verbete) {
+    if (verbete.querySelector('.gd-compartilhar')) return;
+    var slug = verbete.id.replace('termo-', '');
+    var nome = verbete.querySelector('summary').textContent.trim();
+    var url = urlDoTermo(slug);
+    var textoOriginal = '🔗 Compartilhar esse termo grossário';
+
+    var botao = document.createElement('button');
+    botao.type = 'button';
+    botao.className = 'gd-compartilhar';
+    botao.textContent = textoOriginal;
+    botao.setAttribute('aria-label', 'Compartilhar o termo ' + nome);
+    botao.addEventListener('click', function () {
+      compartilhar(botao, url, nome + ' | Glossário Dissecado de UX', 'Isso aqui é ' + nome + ' sem corporativês:');
+    });
+
+    var corpo = verbete.querySelector('.gd-verbete-corpo');
+    if (corpo) corpo.appendChild(botao);
+  });
+}
+
+  function aplicarSEOdoTermo(idTermo) {
+    var termo = document.getElementById(idTermo);
+    if (!termo) return false;
+
+    var nome = termo.querySelector('summary').textContent.trim();
+    var paragrafo = termo.querySelector('.gd-verbete-corpo p');
+    var descricao = paragrafo
+      ? truncar('No Glossário Dissecado da Upixel: ' + paragrafo.textContent, 155)
+      : ('O que "' + nome + '" realmente significa, sem corporativês — Glossário Dissecado de UX da Upixel.');
+    var slug = idTermo.replace('termo-', '');
+    var url = urlDoTermo(slug);
+
+    document.title = nome + ' — o que isso significa de verdade | Glossário Dissecado de UX | Upixel';
+    setMeta('name', 'description', descricao);
+    setMeta('property', 'og:title', nome + ' | Glossário Dissecado de UX — Upixel');
+    setMeta('property', 'og:description', descricao);
+    setMeta('property', 'og:url', url);
+    setMeta('name', 'twitter:title', nome + ' | Glossário Dissecado de UX');
+    setMeta('name', 'twitter:description', descricao);
+    setCanonical(url);
+
+    injetarJSONLD('jsonld-termo-ativo', {
+      '@context': 'https://schema.org', '@type': 'DefinedTerm',
+      name: nome, description: descricao, url: url,
+      inDefinedTermSet: BASE_URL, inLanguage: 'pt-BR'
+    });
+    injetarJSONLD('jsonld-breadcrumb-termo', {
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://upixel.com.br/index.html' },
+        { '@type': 'ListItem', position: 2, name: 'Glossário Dissecado de UX', item: BASE_URL },
+        { '@type': 'ListItem', position: 3, name: nome, item: url }
+      ]
+    });
+
+    // mostra a seção da letra certa, abre e destaca o verbete
+    var secao = termo.closest('.gd-letra');
+    if (secao) {
+      document.querySelectorAll('.gd-letra').forEach(function (s) { s.classList.remove('gd-letra-forcada'); });
+      secao.classList.add('gd-letra-forcada');
+    }
+    termo.setAttribute('open', '');
+    termo.classList.add('gd-verbete-destaque');
+
+    // aviso visível no topo, reforça o assunto da página pra quem chega e pro Google
+    var texto = document.querySelector('.gd-texto');
+    if (texto && !document.querySelector('.gd-termo-ativo')) {
+      var aviso = document.createElement('p');
+      aviso.className = 'gd-termo-ativo';
+      aviso.innerHTML = 'Você está vendo o verbete <strong>' + nome + '</strong> do nosso glossário. ' +
+        '<a href="' + BASE_URL + '">Ver o Glossário Dissecado de UX completo →</a>';
+      texto.appendChild(aviso);
+    }
+
+    requestAnimationFrame(function () {
+      termo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    return true;
+  }
+
+  function iniciar() {
+    adicionarBotoesCompartilhar();
+    var slug = new URLSearchParams(window.location.search).get(PARAM);
+    if (slug) {
+      var ok = aplicarSEOdoTermo('termo-' + slug.trim().toLowerCase());
+      if (!ok) console.warn('Termo não encontrado no glossário:', slug);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', iniciar);
+})();
+</script>
+
+
+</body>
+</html>
