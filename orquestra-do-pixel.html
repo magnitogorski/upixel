@@ -525,38 +525,61 @@
     (function () {
         'use strict';
 
-        // ---------- desafios (simples + logos + memoráveis) ----------
+        // ---------- desafios (personagens icônicos, por categoria) ----------
         var DESAFIOS = [
-            "Um gato",
-            "Um café",
-            "Um botão",
-            "Um olho",
-            "Uma casa",
-            "Um peixe",
-            "Uma árvore",
-            "Um sol",
-            "Uma nuvem",
-            "Um coração",
-            "Um carro",
-            "Um telefone",
-            "Uma xícara",
-            "Um livro",
-            "Uma estrela",
-            "Um robô",
-            "Uma banana",
-            "Um ovo",
-            "Um peixe-bola",
-            "Logo da Apple",
-            "Swoosh da Nike",
-            "Pássaro do Twitter",
-            "Câmera do Instagram",
-            "Fantasma do Pac-Man",
-            "Invasor do Space Invaders",
-            "Logo do YouTube",
-            "Símbolo do Bluetooth",
-            "Ícone de Wi-Fi",
-            "Logo da PlayStation",
-            "Cara do among us"
+            // Muito fáceis / quase ícones
+            "Mickey Mouse",
+            "Hello Kitty",
+            "Snoopy",
+            "Pikachu",
+            "Kirby",
+            "Bob Esponja",
+            "Patrick Estrela",
+            "Homer Simpson",
+            "Bart Simpson",
+            "Garfield",
+            "Pink Panther",
+            "Charlie Brown",
+            "Jerry",
+            "Tom",
+            "Pernalonga",
+            // Nostalgia
+            "Chaves",
+            "Chapolin Colorado",
+            "Pica-Pau",
+            "Popeye",
+            "Cebolinha",
+            "Mônica",
+            "Cascão",
+            "Magali",
+            "Doug Funnie",
+            "Arnold (Hey Arnold!)",
+            "Dexter",
+            "Johnny Bravo",
+            "Meninas Superpoderosas",
+            "Coragem, o Cão Covarde",
+            "O Máskara",
+            // Games
+            "Mario",
+            "Luigi",
+            "Sonic",
+            "Pac-Man",
+            "Mega Man",
+            "Link",
+            "Among Us",
+            "Minecraft Steve",
+            "Donkey Kong",
+            // Super-heróis / cultura pop
+            "Homem-Aranha",
+            "Batman",
+            "Superman",
+            "Hulk",
+            "Homem de Ferro",
+            "Capitão América",
+            "Deadpool",
+            "Darth Vader",
+            "Groot",
+            "Baby Yoda / Grogu"
         ];
 
         // ---------- paleta ----------
@@ -645,7 +668,9 @@
         ];
 
         // ---------- estado ----------
-        var TAMANHO_GRADE = 20;
+        // grade um pouco mais densa (era 20x20) pra dar um traço mais fino,
+        // principalmente no celular, onde cada célula ficava grande demais
+        var TAMANHO_GRADE = 28;
         var grade = criarGradeVazia();
         var corAtual = PALETA[1].cor; // rosa como padrão
         var desenhando = false;
@@ -661,6 +686,7 @@
         }
 
         // ---------- elementos ----------
+        var elDesafioLabel = document.querySelector('.pxj-desafio-label');
         var elDesafioFrase = document.getElementById('pxj-desafio-frase');
         var btnSortear = document.getElementById('pxj-btn-sortear');
         var elPaleta = document.getElementById('pxj-paleta');
@@ -705,6 +731,31 @@
         }
 
         // ---------- desafio ----------
+
+        // hash simples (djb2) só pra transformar a data de hoje num índice
+        // estável — assim todo mundo que abrir a página no mesmo dia recebe
+        // o mesmo "desafio do dia", e ele muda sozinho à meia-noite.
+        function hashTexto(texto) {
+            var hash = 5381;
+            for (var i = 0; i < texto.length; i++) {
+                hash = ((hash << 5) + hash + texto.charCodeAt(i)) >>> 0;
+            }
+            return hash;
+        }
+
+        function obterDesafioDoDia() {
+            var hoje = new Date();
+            var chaveDoDia = hoje.getFullYear() + '-' + hoje.getMonth() + '-' + hoje.getDate();
+            var indice = hashTexto(chaveDoDia) % DESAFIOS.length;
+            return DESAFIOS[indice];
+        }
+
+        function carregarDesafioDoDia() {
+            desafioAtual = obterDesafioDoDia();
+            elDesafioFrase.textContent = desafioAtual;
+            elDesafioLabel.textContent = 'Desafio do dia 🔥';
+        }
+
         function sortearDesafio() {
             var novo;
             do {
@@ -712,6 +763,7 @@
             } while (novo === desafioAtual && DESAFIOS.length > 1);
             desafioAtual = novo;
             elDesafioFrase.textContent = desafioAtual;
+            elDesafioLabel.textContent = 'Seu desafio agora';
         }
 
         btnSortear.addEventListener('click', sortearDesafio);
@@ -721,7 +773,10 @@
 
         function redimensionarCanvas() {
             var larguraDisponivel = Math.min(canvas.parentElement.clientWidth, 560);
-            tamanhoCelula = Math.max(14, Math.floor(larguraDisponivel / TAMANHO_GRADE));
+            // célula mínima menor em telas estreitas: traço mais fino e mais
+            // controle no dedo, sem estourar a largura da tela
+            var celulaMinima = window.innerWidth <= 480 ? 8 : 14;
+            tamanhoCelula = Math.max(celulaMinima, Math.floor(larguraDisponivel / TAMANHO_GRADE));
             var lado = tamanhoCelula * TAMANHO_GRADE;
             canvas.width = lado;
             canvas.height = lado;
@@ -1047,7 +1102,7 @@ btnCompartilharNativo.addEventListener('click', function () {
 
         // ---------- inicialização ----------
         montarPaleta();
-        sortearDesafio();
+        carregarDesafioDoDia();
         redimensionarCanvas();
     })();
     </script>
