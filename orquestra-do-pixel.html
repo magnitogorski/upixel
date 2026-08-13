@@ -348,6 +348,143 @@
     margin-bottom: 40px;
   }
 
+  /* ---------- galeria do mês ---------- */
+
+  .pxj-galeria-titulo {
+    font-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 8px;
+  }
+
+  .pxj-galeria-subtitulo {
+    color: #828282;
+    font-size: .95rem;
+    line-height: 1.6;
+    margin: 0 0 24px;
+    max-width: 52ch;
+  }
+
+  .pxj-galeria-topo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .pxj-galeria-select {
+    background: #050505;
+    border: 1px solid #333333;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: .88rem;
+    font-weight: 700;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .pxj-galeria-select:focus-visible {
+    outline: none;
+    border-color: #FA397A;
+  }
+
+  .pxj-galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .pxj-galeria-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #262626;
+    background: #050505;
+    margin: 0;
+  }
+
+  .pxj-galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pxj-galeria-item-legenda {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 8px 8px 6px;
+    background: linear-gradient(to top, rgba(0,0,0,.88), transparent);
+    font-size: .68rem;
+    line-height: 1.35;
+  }
+
+  .pxj-galeria-item-autor {
+    color: #ffffff;
+    font-weight: 700;
+    display: block;
+  }
+
+  .pxj-galeria-item-desafio {
+    color: #FA397A;
+    font-weight: 700;
+  }
+
+  .pxj-galeria-vaga {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    border: 1px dashed #262626;
+    color: #5c5c5c;
+    font-size: .72rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 8px;
+  }
+
+  .pxj-galeria-vazia {
+    color: #5c5c5c;
+    font-size: .9rem;
+    padding: 8px 0 20px;
+    text-align: center;
+    grid-column: 1 / -1;
+  }
+
+  .pxj-galeria-cta {
+    background: #050505;
+    border: 1px solid #161616;
+    border-radius: 12px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .pxj-galeria-cta-texto {
+    color: #B5B5B5;
+    font-size: .92rem;
+    line-height: 1.5;
+    max-width: 40ch;
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    .pxj-galeria-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 640px) {
     .pxj-desafio-painel {
       flex-direction: column;
@@ -369,6 +506,15 @@
 
     .pxj-acoes .pxj-btn {
       flex: 1;
+    }
+
+    .pxj-galeria-cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .pxj-galeria-cta .pxj-btn {
+      width: 100%;
     }
   }
 </style>
@@ -470,9 +616,38 @@
                 No computador, ou quando o navegador não permite compartilhar direto, ele baixa a imagem pra você anexar.
             </p>
 
+            <p class="pxj-compartilhar-nota">
+                Achou que ficou bom? Concorra à <strong style="color:#ffffff;">Galeria do Mês</strong> mandando essa imagem pra
+                <a href="mailto:contato@upixel.com.br" style="color:#FA397A; text-decoration: none;">contato@upixel.com.br</a>.
+            </p>
+
             <div class="pxj-refazer-botoes">
                 <button type="button" class="pxj-btn" id="pxj-btn-refazer">🔁 Tentar de novo</button>
                 <button type="button" class="pxj-btn" id="pxj-btn-novo-desafio">🎲 Novo desafio</button>
+            </div>
+
+        </section>
+
+        <!-- ================= GALERIA DO MÊS ================= -->
+        <section class="upx-conteudo" style="max-width: 720px; padding-top: 24px;" id="pxj-galeria-secao">
+
+            <span class="pxj-resultado-eyebrow" style="text-align: left;">Salão de honra (duvidosa)</span>
+            <h2 class="pxj-galeria-titulo">🏆 Galeria do Mês</h2>
+            <p class="pxj-galeria-subtitulo">As 9 melhores artes de cada mês, escolhidas a dedo (com muito viés) e postadas por nós mesmos.</p>
+
+            <div class="pxj-galeria-topo">
+                <label for="pxj-galeria-mes" class="pxj-desafio-label" style="margin-bottom:0;">Ver mês</label>
+                <select id="pxj-galeria-mes" class="pxj-galeria-select"></select>
+            </div>
+
+            <div class="pxj-galeria-grid" id="pxj-galeria-grid"></div>
+
+            <div class="pxj-galeria-cta">
+                <p class="pxj-galeria-cta-texto">Sem integração automática por aqui — a curadoria é 100% manual. Manda sua arte e, se ela entrar entre as 9 melhores do mês, a gente posta.</p>
+                <a class="pxj-btn pxj-btn--primario" id="pxj-galeria-btn-enviar"
+                   href="mailto:contato@upixel.com.br?subject=Minha%20arte%20pra%20Galeria%20do%20Pixel&body=Oi%2C%20segue%20em%20anexo%20a%20minha%20arte%20da%20Orquestra%20do%20Pixel!%0D%0A%0D%0ADesafio%20que%20eu%20desenhei%3A%20%0D%0ANome%20pra%20aparecer%20na%20galeria%3A%20">
+                    ✉️ Mandar minha arte
+                </a>
             </div>
 
         </section>
@@ -1100,10 +1275,140 @@ btnCompartilharNativo.addEventListener('click', function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // ==================================================
+        // GALERIA DO MÊS
+        //
+        // Sem integração automática: as artes chegam pro seu e-mail
+        // (contato@upixel.com.br) e você mesmo escolhe as 9 melhores
+        // do mês e cadastra aqui embaixo, à mão.
+        //
+        // Como adicionar uma arte nova:
+        // 1) Salve a imagem em algum lugar acessível do seu site,
+        //    por exemplo numa pasta "galeria/AAAA-MM/arquivo.jpg"
+        //    (crie essa pasta e suba o arquivo do jeito que você já
+        //    sobe as outras imagens do site).
+        // 2) Ache (ou crie) a chave do mês correspondente aqui embaixo,
+        //    no formato "AAAA-MM" (ex: "2026-08" pra agosto de 2026).
+        // 3) Adicione um objeto no array desse mês com:
+        //    imagem  -> caminho/URL da imagem salva no passo 1
+        //    autor   -> nome que vai aparecer na legenda
+        //    desafio -> qual desafio a pessoa desenhou
+        // 4) Pode deixar até 9 objetos por mês. A partir do 10º são
+        //    ignorados (mostramos só os 9 primeiros da lista).
+        //
+        // Exemplo de um mês já preenchido (apague o comentário e
+        // ajuste os dados quando for usar de verdade):
+        //
+        // "2026-08": [
+        //     { imagem: "galeria/2026-08/01.jpg", autor: "Fulano", desafio: "Pikachu" },
+        //     { imagem: "galeria/2026-08/02.jpg", autor: "Ciclana", desafio: "Batman" }
+        // ]
+        // ==================================================
+        var GALERIA = {
+
+    "2026-08": [
+        {
+            imagem: "var-galeria/desenho-Bruno.jpg",
+            autor: "João Griffo",
+            desafio: "Spider Man"
+        },
+         {
+            imagem: "var-galeria/desenho-domingues.png",
+            autor: "Domingos D.",
+            desafio: "Robô"
+        },
+         {
+            imagem: "var-galeria/desenho-pael.png",
+            autor: "Cristiano",
+            desafio: "Peixe"
+        },
+    ]
+
+        };
+
+        var NOMES_MESES = [
+            'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+        ];
+
+        var elGaleriaMes = document.getElementById('pxj-galeria-mes');
+        var elGaleriaGrid = document.getElementById('pxj-galeria-grid');
+
+        function chaveDoMesAtual() {
+            var hoje = new Date();
+            var mes = String(hoje.getMonth() + 1);
+            if (mes.length < 2) mes = '0' + mes;
+            return hoje.getFullYear() + '-' + mes;
+        }
+
+        function chaveParaRotulo(chave) {
+            var partes = chave.split('-');
+            var ano = partes[0];
+            var indiceMes = parseInt(partes[1], 10) - 1;
+            return NOMES_MESES[indiceMes] + ' de ' + ano;
+        }
+
+        function montarSeletorDeMeses() {
+            var chaves = Object.keys(GALERIA).sort().reverse();
+
+            // sem nenhum mês cadastrado ainda: mostra o mês atual, vazio
+            if (chaves.length === 0) {
+                chaves = [chaveDoMesAtual()];
+            }
+
+            var html = '';
+            chaves.forEach(function (chave) {
+                html += '<option value="' + chave + '">' + chaveParaRotulo(chave) + '</option>';
+            });
+            elGaleriaMes.innerHTML = html;
+            elGaleriaMes.value = chaves[0];
+
+            renderizarGaleria(chaves[0]);
+        }
+
+        function escaparHtml(texto) {
+            var div = document.createElement('div');
+            div.textContent = texto;
+            return div.innerHTML;
+        }
+
+        function renderizarGaleria(chave) {
+            var itens = (GALERIA[chave] || []).slice(0, 9);
+            var html = '';
+
+            if (itens.length === 0) {
+                html += '<p class="pxj-galeria-vazia">Ninguém entrou pra galeria esse mês ainda. Que tal ser o primeiro?</p>';
+            }
+
+            itens.forEach(function (item) {
+                var autor = escaparHtml(item.autor || 'Anônimo');
+                var desafio = escaparHtml(item.desafio || '');
+                html += '<figure class="pxj-galeria-item">' +
+                    '<img src="' + item.imagem + '" alt="Pixel art de ' + autor + (desafio ? ', desafio: ' + desafio : '') + '" loading="lazy">' +
+                    '<figcaption class="pxj-galeria-item-legenda">' +
+                        '<span class="pxj-galeria-item-autor">' + autor + '</span>' +
+                        (desafio ? '<span class="pxj-galeria-item-desafio">' + desafio + '</span>' : '') +
+                    '</figcaption>' +
+                '</figure>';
+            });
+
+            var vagasRestantes = 9 - itens.length;
+            for (var i = 0; i < vagasRestantes; i++) {
+                html += '<div class="pxj-galeria-vaga">Vaga aberta</div>';
+            }
+
+            elGaleriaGrid.innerHTML = html;
+        }
+
+        elGaleriaMes.addEventListener('change', function () {
+            renderizarGaleria(elGaleriaMes.value);
+        });
+
         // ---------- inicialização ----------
         montarPaleta();
         carregarDesafioDoDia();
         redimensionarCanvas();
+        montarSeletorDeMeses();
     })();
     </script>
 
