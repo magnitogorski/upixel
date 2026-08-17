@@ -758,15 +758,24 @@
         ];
 
         // ---------- paleta ----------
-        var PALETA = [
-            { cor: '#ffffff', nome: 'Branco' },
-            { cor: '#FA397A', nome: 'Rosa Upixel' },
-            { cor: '#2FBE7A', nome: 'Verde' },
-            { cor: '#4668FF', nome: 'Azul' },
-            { cor: '#FCFC30', nome: 'Amarelo' },
-            { cor: '#FA3939', nome: 'Vermelho' },
-            { cor: '#828282', nome: 'Cinza' }
-        ];
+var PALETA = [
+    { cor: '#ffffff', nome: 'Branco' },
+    { cor: '#FA397A', nome: 'Rosa Upixel' },
+    { cor: '#FA3939', nome: 'Vermelho' },
+    { cor: '#FF7A30', nome: 'Laranja' },
+    { cor: '#FCFC30', nome: 'Amarelo' },
+    { cor: '#2FBE7A', nome: 'Verde' },
+    { cor: '#0E8F4F', nome: 'Verde Escuro' },
+    { cor: '#30E0E0', nome: 'Ciano' },
+    { cor: '#4668FF', nome: 'Azul' },
+    { cor: '#1E2E99', nome: 'Azul Escuro' },
+    { cor: '#8B3FFA', nome: 'Roxo' },
+    { cor: '#D63FFA', nome: 'Magenta' },
+    { cor: '#A0522D', nome: 'Marrom' },
+    { cor: '#F2C9A0', nome: 'Pele' },
+    { cor: '#828282', nome: 'Cinza' },
+    { cor: '#3A3A3A', nome: 'Cinza Escuro' }
+];
 
         // ---------- níveis (bracket 0 = nota 0-1, bracket 9 = nota 9-10) ----------
         var NIVEIS = [
@@ -845,7 +854,7 @@
         // ---------- estado ----------
         // grade um pouco mais densa (era 20x20) pra dar um traço mais fino,
         // principalmente no celular, onde cada célula ficava grande demais
-        var TAMANHO_GRADE = 28;
+        var TAMANHO_GRADE = 32;
         var grade = criarGradeVazia();
         var corAtual = PALETA[1].cor; // rosa como padrão
         var desenhando = false;
