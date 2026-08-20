@@ -1,0 +1,444 @@
+**Nome do artigo:** Eu não tenho paciência  
+**Nome da imagem:** capa-eu-nao-tenho-paciencia.png  
+**Título curto:** Eu não tenho paciência  
+**Texto curto:** A nova geração parece incapaz de se concentrar em qualquer desafio. Antes a gente era treinado a esperar: biblioteca, rádio, orelhão, filme revelado. Hoje tem tudo na mão e ainda assim ninguém termina nada.  
+**Categoria:** Sociedade  
+
+---
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<script src="banner-upixel.js" defer></script>
+
+<!-- ==========================================================
+     CABEÇALHO (HEAD) DA PÁGINA
+     ========================================================== -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eu não tenho paciência | Upixel</title>
+
+<!-- ==========================================================
+     SEO
+     ========================================================== -->
+
+<meta name="description" content="A nova geração parece incapaz de se concentrar. Antes a gente era treinado a esperar: biblioteca, rádio, orelhão, filme revelado. Hoje tem tudo na mão e ainda assim ninguém termina nada.">
+
+<meta name="keywords" content="paciência, atenção, concentração, geração, infinite scroll, tecnologia, espera, biblioteca, rádio, orelhão, fotografia analógica, Upixel, sociedade">
+
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/artigo-eu-nao-tenho-paciencia.html">
+
+<!-- ==========================================================
+     OPEN GRAPH
+     ========================================================== -->
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:title" content="Eu não tenho paciência | Upixel">
+<meta property="og:description" content="A nova geração parece incapaz de se concentrar. Antes a gente era treinado a esperar. Hoje tem tudo na mão e ainda assim ninguém termina nada.">
+<meta property="og:url" content="https://upixel.com.br/artigo-eu-nao-tenho-paciencia.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-eu-nao-tenho-paciencia.png">
+<meta property="og:locale" content="pt_BR">
+<meta property="article:author" content="Upixel">
+<meta property="article:section" content="Sociedade">
+
+<!-- ==========================================================
+     TWITTER / X
+     ========================================================== -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Eu não tenho paciência | Upixel">
+<meta name="twitter:description" content="A nova geração parece incapaz de se concentrar. Antes a gente era treinado a esperar. Hoje tem tudo na mão e ainda assim ninguém termina nada.">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-eu-nao-tenho-paciencia.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+<style>
+
+  .container-leitura {
+    max-width: 1060px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 600px) {
+    .container-leitura {
+      padding: 0 40px;
+    }
+  }
+
+  .navegacao-artigos {
+    display: flex;
+    gap: 20px;
+    max-width: 820px;
+    width: 100%;
+    margin: 60px auto 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .card-nav {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background-color: #000;
+    text-decoration: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-nav:hover {
+    border-color: #FA397A;
+    background-color: rgba(250, 57, 122, 0.08);
+    transform: translateY(-3px);
+  }
+
+  .card-nav-proximo {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .nav-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: #FA397A;
+  }
+
+  .nav-titulo {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    margin: 0;
+    color: #fff;
+  }
+
+  .nav-descricao {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 700px) {
+    .navegacao-artigos {
+      flex-direction: column;
+    }
+
+    .card-nav-proximo {
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+
+  .caixa-texto {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+
+  .caixa-texto p {
+    margin: 0 0 10px 0;
+  }
+
+  .caixa-texto p:last-child {
+    margin-bottom: 0;
+  }
+
+  .caixa-texto h2 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin: 0 0 14px 0;
+    color: #FA397A;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .caixa-texto ul {
+    margin: 0;
+    padding-left: 22px;
+  }
+
+  .caixa-texto li {
+    margin-bottom: 6px;
+    line-height: 1.45;
+  }
+
+  .caixa-texto li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    .caixa-texto {
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+
+    .caixa-texto h2 {
+      font-size: 0.95rem;
+    }
+  }
+
+</style>
+
+</head>
+
+
+<body>
+
+<script src="smart-back.js" defer></script>
+
+<header class="meu-header">
+
+    <div class="logo">
+        <img src="logobranca.png" alt="Upixel">
+    </div>
+
+     <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="artigos.html" class="ativo">Artigos</a>
+        <a href="ux-challenge.html">UX Challenge</a>
+        <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+        <a href="rip.html">RIP</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="besteirol.html">Besteirol</a>
+        <a href="contato.html">Contato</a>
+</nav>
+
+</header>
+
+
+
+<main class="pagina-artigo">
+
+
+<span class="categoria-artigo" id="categoria">
+Sociedade
+</span>
+
+<div class="info-artigo">
+
+<span id="data">
+20 AGO 2026
+</span>
+
+<span>
+•
+</span>
+
+<span>
+Upixel
+</span>
+
+</div>
+
+
+
+
+<article class="texto-artigo" id="texto">
+
+<div class="caixa-texto">
+    <h1>Eu não tenho paciência</h1>
+</div>
+
+<div class="caixa-texto">
+    <p>Porque diabos essa nova geração não consegue se concentrar em uma empreitada ou no que é pedido? Parece que qualquer coisa que chegue na vida como desafio vira um manual com 1.000 frases de efeito explicando por que não conseguiram entregar o que era preciso.</p>
+    <p>Novamente o saudosista com zero audiência, mas com muita vontade de falar. E foda-se se não for ouvido: vai falar de como as coisas eram antigamente. E que se danem, porque realmente era assim que acontecia.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>A gente foi treinado para esperar</h2>
+    <p>Antes da fase profissional existia uma coisa que talvez explique por que quem é mais velho parece ter mais paciência: a gente foi treinado para esperar, procurar e insistir.</p>
+    <p>Professor pedia um trabalho? Não tinha referência pronta no Google. Corria para a biblioteca. Os mais modernos tinham a Barsa ou algum genérico da Barsa em casa. Corria atrás de revistas que ficavam empoeiradas em um quartinho de bagunça porque alguém da casa se lembrava de ter visto alguma coisa em uma das milhares de Veja, IstoÉ e outras revistas acumuladas.</p>
+    <p>Referência bibliográfica era coisa séria. Não era algo que você simplesmente encontrava na internet em cinco segundos, copiava e colava. Você precisava procurar, ler, conferir e descobrir de onde aquela informação tinha vindo.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>Sem Uber, sem cartão, sem aplicativo</h2>
+    <p>Antigamente também não existia Uber. Lógico que não. Táxi era para quem trabalhava, tinha dinheiro e precisava usar. Ônibus era uma realidade para muita gente. E muitas vezes você simplesmente andava quilômetros porque era adolescente ou jovem, porque não tinha dinheiro. E acredite: era normal não ter um cartão de crédito, não ter conta em banco e não ter um aplicativo para resolver a sua vida. Você ia a pé mesmo. E pronto.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>A música inteira e a fita cassete</h2>
+    <p>Você ouvia a música inteira. Muitas vezes ficava na rádio durante horas esperando uma música tocar. E muitas vezes ela não tocava. Você voltava no dia seguinte. Esperava por dias. Até que, finalmente, ela tocava e você gravava em uma fita cassete, provavelmente com a voz do locutor entrando no começo ou no final.</p>
+    <p>E quando finalmente conseguia aquela música, era um êxtase absurdo.</p>
+    <p>Depois de ouvir cinquenta vezes, até perdia a graça.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>Televisão e a espera pelo domingo</h2>
+    <p>Programa de televisão era a mesma coisa. Os Simpsons, um dos meus favoritos, passava no domingo. Um ou dois episódios, quebrados em quatro por causa da publicidade. Acabou? Só domingo que vem.</p>
+    <p>E você esperava.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>Orelhão e a ausência de “digitando…”</h2>
+    <p>Telefone também. Muita gente não tinha telefone em casa e o orelhão não era um objeto de estética arquitetônica da cidade: ele te ensinava a esperar. Você queria falar com alguém? Ligava para a casa. Se a pessoa não estivesse, paciência. Ligava mais tarde. Não existia “visualizado”, “online”, “digitando…” nem a expectativa de que alguém tivesse obrigação de responder em 15 segundos. Você aprendia que o mundo continuava funcionando enquanto alguém não respondia.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>Fotografia com limite e sem segunda chance</h2>
+    <p>Fotografia era limitada. Você tinha 12, 24 ou 36 fotos no filme. Não dava para tirar 87 fotos da mesma coisa e escolher uma depois. Você pensava antes de apertar o botão. Depois ainda precisava revelar. E quando as fotos chegavam, podia descobrir que metade estava tremida, escura ou com alguém piscando.</p>
+    <p>E era isso.</p>
+    <p>Não tinha outra tentativa.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>Comprar exigia pesquisa de verdade</h2>
+    <p>Comprar alguma coisa também exigia pesquisa de verdade. Quer saber qual Ferrorama comprar? Revista. Quer saber qual autorama era melhor? Revista. Quer comparar algo? Revista. Você lia aquelas matérias enormes, marcava páginas, guardava revista velha.</p>
+    <p>Não existia jogar uma pergunta no Google e receber 42 respostas em três segundos.</p>
+    <p>Você precisava permanecer interessado tempo suficiente para descobrir.</p>
+    <p>E comprar alguma coisa era esperar. Comprou pela revista? Esperava chegar. Pediu alguma coisa? Esperava o caminhão. Queria assistir a um filme? Ia à locadora. E muitas vezes o filme já estava com lista de espera, pois o dono da locadora só tinha uma ou duas fitas dos lançamentos. Queria saber o resultado de alguma coisa? Esperava o jornal do dia seguinte.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>Esperar fazia parte da vida</h2>
+    <p>Esperar fazia parte da vida. E paciência não era mérito.</p>
+    <p>A gente simplesmente foi obrigado a praticá-la milhares de vezes.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>Hoje tem tudo. E ninguém fica cinco minutos</h2>
+    <p>Hoje existe uma quantidade absurda de informação na palma da mão. Música, filme, livro, tutorial, curso, notícia, pesquisa, inteligência artificial, mapa, banco, transporte, comida, praticamente tudo.</p>
+    <p>E mesmo assim parece que nunca tivemos tanta dificuldade para ficar cinco minutos em uma coisa só.</p>
+    <p>A pessoa abre um vídeo, vê dez segundos e passa para o próximo.</p>
+    <p>Abre outro, ri.</p>
+    <p>Passa.</p>
+    <p>Outro.</p>
+    <p>Passa.</p>
+    <p>Outro.</p>
+    <p>E quando percebe, passou meia hora vendo um cachorro caindo, um sujeito fazendo uma dancinha, alguém dizendo que dez exercícios por dia vão transformar seu corpo no do Arnold Schwarzenegger e uma mulher explicando como mudar completamente sua vida antes das 6h da manhã.</p>
+    <p>Eu já escrevi sobre essa porra do infinite scroll aqui: <a href="https://upixel.com.br/artigo-infinite-scroll.html" style="color:#FA397A;">https://upixel.com.br/artigo-infinite-scroll.html</a></p>
+</div>
+
+<div class="caixa-texto">
+    <h2>O absurdo final</h2>
+    <p>E a parte mais absurda é que a pessoa tem acesso a praticamente todo o conhecimento produzido pela humanidade no bolso, mas não consegue terminar uma tarefa trivial porque precisa explicar durante 15 minutos por que não conseguiu se concentrar.</p>
+    <p>A nossa geração aprendeu a esperar porque não tinha alternativa.</p>
+    <p>Esperava a música, o programa, a ligação, a fotografia, o ônibus, a encomenda, o resultado. Ou a próxima oportunidade.</p>
+    <p>Às vezes acho um absurdo ter que explicar para alguém, que tem toda a informação do mundo na frente dela, por que ela precisa simplesmente sentar, prestar atenção e fazer a porra do negócio até o fim.</p>
+</div>
+
+</article>
+
+<section class="compartilhar-linkedin">
+
+    <h2>Não clique em compartilhe</h2>
+
+    <p>
+        É exatamente isso que o algoritmo espera.
+    </p>
+
+<a href="#" 
+   class="botao-linkedin" 
+   id="upubli-btn-compartilhar">
+    🔗 Compartilhar
+</a>
+
+</section>
+
+<upx-banner
+    id-anuncio="backupfisica"
+    imagem="nuvem-backup-fisica-upubli-upixel.png"
+    titulo="☁️ Nuvem de Backup Física™"
+    descricao="Se seus arquivos estão na nuvem, nada mais justo que a nuvem estar na sua mesa."
+    link="pagina-upubli-nuvem-de-backup-fisica.html">
+</upx-banner>
+
+
+<section class="navegacao-artigos">
+
+<!--
+    <a href="artigo-resistencia-e-beleza-de-falar-mal-de-criacoes-de-ia.html" class="card-nav card-nav-anterior">
+        <span class="nav-label">&larr; Artigo anterior</span>
+        <h3 class="nav-titulo">"A beleza de falar mal de criações com IA</h3>
+        <p class="nav-descricao">Discursos de quem jura nunca usar IA. Pureza intelectual em dose máxima.</p>
+    </a>
+-->
+
+
+    <a href="artigo-ninguem-se-impressiona.html" class="card-nav card-nav-proximo">
+        <span class="nav-label">Mais artigos &rarr;</span>
+        <h3 class="nav-titulo">Ninguém se impressiona mais</h3>
+        <p class="nav-descricao">10 coisas que ninguém imaginava que existiriam vs. 10 que ainda não existem.</p>
+    </a>
+
+</section>
+
+</main>
+
+
+
+<div class="divisor-secao"></div>
+
+<footer class="footer">
+
+    <div class="footer-esquerda">
+
+        <img src="logobranca.png" alt="Upixel" class="footer-logo">
+
+        <p class="copyright">
+            Upixel. Todos os direitos reservados.
+        </p>
+
+    </div>
+
+    <div class="footer-centro">
+
+        <nav class="footer-menu">
+
+        <a href="index.html">Home</a>
+        <a href="artigos.html" class="ativo">Artigos</a>
+        <a href="ux-challenge.html">UX Challenge</a>
+        <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+        <a href="rip.html">RIP</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="besteirol.html">Besteirol</a>
+        <a href="contato.html">Contato</a>
+
+        </nav>
+
+    </div>
+
+</footer>
+
+<div class="footer-ilustracao">
+
+    <img src="rodape.png" alt="Ilustração Footer">
+
+</div>
+<script src="compartilhar.js"></script>
+
+</body>
+
+</html>
+```
