@@ -579,6 +579,138 @@
             </div>
         </section>
 
+
+
+
+<!-- ===== BANNER ROLETA DA SORTE UPIXEL (estilo Tigrinho) ===== -->
+<a href="roleta-do-acaso.html" id="upx-banner-tigrinho" style="
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 380px;
+  margin: 28px auto;
+  padding: 11px 13px 11px 11px;
+  background: linear-gradient(145deg, #1c1200 0%, #0e0e0e 50%, #1a0808 100%);
+  border: 2px solid #ff9500;
+  border-radius: 12px;
+  text-decoration: none;
+  font-family: 'Pixelify Sans', system-ui, sans-serif;
+  box-shadow: 0 0 0 1px #111, 0 0 18px rgba(255,149,0,0.28);
+  transition: transform 0.15s, box-shadow 0.15s;
+  overflow: hidden;
+  position: relative;
+" onmouseover="this.style.transform='scale(1.025)'; this.style.boxShadow='0 0 0 1px #111, 0 0 26px rgba(255,149,0,0.45)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 0 1px #111, 0 0 18px rgba(255,149,0,0.28)'">
+
+  <!-- roleta mini girando -->
+  <div style="
+    position: relative;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+  ">
+    <div class="upx-mini-roleta" style="
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 3px solid #ff9500;
+      background: conic-gradient(
+        #ff2d55 0deg 45deg,
+        #ff9500 45deg 90deg,
+        #ffe566 90deg 135deg,
+        #ff2d55 135deg 180deg,
+        #ff9500 180deg 225deg,
+        #ffe566 225deg 270deg,
+        #ff2d55 270deg 315deg,
+        #ff9500 315deg 360deg
+      );
+      animation: upx-spin 3.8s linear infinite;
+      box-shadow: 0 0 10px rgba(255,149,0,0.4);
+    "></div>
+    <!-- ponteiro -->
+    <div style="
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 9px solid #fff;
+      z-index: 2;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+    "></div>
+    <!-- centro -->
+    <div style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
+      background: #111;
+      border: 2px solid #ffe566;
+      border-radius: 50%;
+      z-index: 2;
+    "></div>
+  </div>
+
+  <!-- textos -->
+  <div style="flex: 1; min-width: 0;">
+    <div style="
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #ff6b6b;
+      margin-bottom: 2px;
+    ">🔥 Ao vivo agora</div>
+    <div style="
+      font-size: 0.88rem;
+      font-weight: 800;
+      line-height: 1.15;
+      background: linear-gradient(90deg, #ffe566, #ff9500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    ">Roleta da Sorte Upixel</div>
+    <div style="
+      font-size: 0.68rem;
+      color: #bbb;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    ">Gire e ganhe sua missão →</div>
+  </div>
+
+  <!-- botão -->
+  <span style="
+    background: linear-gradient(180deg, #ffe566 0%, #ff9500 60%, #ff6200 100%);
+    color: #000;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 8px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(255,149,0,0.35);
+    flex-shrink: 0;
+  ">GIRAR</span>
+</a>
+
+<style>
+  @keyframes upx-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>
+<!-- ===== FIM DO BANNER ===== -->
+
+
+
+
+
+
 <upx-banner
     id-anuncio="uxspray"
     imagem="imagens-upubli-ux-em-spray.png"
