@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<script src="banner-upixel.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>10 práticas não recomendadas de UX | Upixel</title>
+
+<meta name="description" content="É errando que se aprende. 10 práticas de UX que você não deveria seguir (mas que ajudam a entender o que realmente importa).">
+
+<meta name="keywords" content="UX, práticas de UX, erros de UX, heurísticas Nielsen, acessibilidade, carga cognitiva, pesquisa com usuário, mobile first, testes de usabilidade, Upixel">
+
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/artigo-10-praticas-nao-recomendadas-ux.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:title" content="10 práticas não recomendadas de UX | Upixel">
+<meta property="og:description" content="É errando que se aprende. 10 práticas de UX que você não deveria seguir (mas que ajudam a entender o que realmente importa).">
+<meta property="og:url" content="https://upixel.com.br/artigo-10-praticas-nao-recomendadas-ux.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-10-praticas-nao-recomendadas-ux.png">
+<meta property="og:locale" content="pt_BR">
+<meta property="article:author" content="Upixel">
+<meta property="article:section" content="UX">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="10 práticas não recomendadas de UX | Upixel">
+<meta name="twitter:description" content="É errando que se aprende. 10 práticas de UX que você não deveria seguir (mas que ajudam a entender o que realmente importa).">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-10-praticas-nao-recomendadas-ux.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXQS02C898');
+</script>
+
+<style>
+  .container-leitura {
+    max-width: 1060px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 600px) {
+    .container-leitura {
+      padding: 0 40px;
+    }
+  }
+
+  .navegacao-artigos {
+    display: flex;
+    gap: 20px;
+    max-width: 820px;
+    width: 100%;
+    margin: 60px auto 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .card-nav {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background-color: #000;
+    text-decoration: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-nav:hover {
+    border-color: #FA397A;
+    background-color: rgba(250, 57, 122, 0.08);
+    transform: translateY(-3px);
+  }
+
+  .card-nav-proximo {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .nav-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: #FA397A;
+  }
+
+  .nav-titulo {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    margin: 0;
+    color: #fff;
+  }
+
+  .nav-descricao {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 700px) {
+    .navegacao-artigos {
+      flex-direction: column;
+    }
+
+    .card-nav-proximo {
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+
+  .caixa-texto {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+
+  .caixa-texto p {
+    margin: 0 0 10px 0;
+  }
+
+  .caixa-texto p:last-child {
+    margin-bottom: 0;
+  }
+
+  .caixa-texto h2 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin: 0 0 14px 0;
+    color: #FA397A;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .caixa-texto ul {
+    margin: 0;
+    padding-left: 22px;
+  }
+
+  .caixa-texto li {
+    margin-bottom: 6px;
+    line-height: 1.45;
+  }
+
+  .caixa-texto li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    .caixa-texto {
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+
+    .caixa-texto h2 {
+      font-size: 0.95rem;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+
+<script src="smart-back.js" defer></script>
+
+<header class="meu-header">
+    <div class="logo">
+        <img src="logobranca.png" alt="Upixel">
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="artigos.html" class="ativo">Artigos</a>
+        <a href="ux-challenge.html">UX Challenge</a>
+        <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+        <a href="rip.html">RIP</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="besteirol.html">Besteirol</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+</header>
+
+<main class="pagina-artigo">
+
+<span class="categoria-artigo" id="categoria">UX</span>
+
+<div class="info-artigo">
+    <span id="data">24 AGO 2026</span>
+    <span>•</span>
+    <span>Upixel</span>
+</div>
+
+<article class="texto-artigo" id="texto">
+
+<div class="caixa-texto">
+    <h1>10 práticas não recomendadas de UX</h1>
+</div>
+
+<div class="caixa-texto">
+    <p>A regra é clara: se chutou para o gol, é porque tinha intenção de acertar.</p>
+    <p>E outra coisa: é errando que se aprende.</p>
+    <p>Claro que isso não vale para um piloto de avião ou para um cirurgião. Nesses casos, seria interessante que o cidadão já soubesse o que está fazendo antes de começar. E ainda assim… acontece.</p>
+    <p>Mas na nossa profissão, felizmente, as chances de ferrar alguma coisa de forma irreversível são um pouco menores. Quando desenhamos alguma coisa, podemos testar possibilidades, errar, voltar, mudar e descobrir que aquela ideia maravilhosa que tivemos às 2h da manhã talvez não fosse tão maravilhosa assim.</p>
+</div>
+
+<div class="caixa-texto">
+    <p>Foi pensando nisso que dei uma olhada em alguns artigos espalhados pela internet.</p>
+    <p>E, ao contrário do meu site, que mal aparece, encontrei uma variedade enorme de artigos maravilhosos. Alguns bastante úteis. Outros extremamente sérios. Alguns até um pouco pretensiosos.</p>
+    <p>Mas pretensão aqui, felizmente, não temos.</p>
+    <p>A nossa pretensão é fazer um pouco de humor misturado com crítica.</p>
+    <p>E já que o assunto é UX, vamos fazer o contrário:</p>
+    <p><strong>10 práticas não recomendadas de UX.</strong></p>
+    <p>Porque se é errando que se aprende, vamos errar direito.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>1. Comece com pesquisas tiradas da sua cabeça</h2>
+    <p>Entrevista qualitativa? Pra quê?</p>
+    <p>Você já conhece várias pessoas. Comece pensando no que seu avô responderia. Depois imagine o que sua mãe usaria. Seu vizinho provavelmente representa uma boa parte da população.</p>
+    <p>E se precisar de dados quantitativos, invente uma porcentagem convincente.</p>
+    <p>“Segundo nossa pesquisa, 87% dos usuários…”</p>
+    <p>Qual pesquisa? Aquela. A que está na sua cabeça.</p>
+    <p>Se alguém perguntar quantas pessoas participaram, responda: “Estamos levantando.”</p>
+    <p>Pronto. Research concluído.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>2. Arregace na carga cognitiva do seu usuário</h2>
+    <p>Esse negócio de simplicidade está muito superestimado.</p>
+    <p>Se existem milhões de cores, por que usar quatro? Se existem centenas de fontes, por que escolher duas?</p>
+    <p>Coloque tudo. Bold. Itálico. Sublinhado. CAIXA ALTA. Gradiente. Sombra. Borda. Ícone. Mais um ícone. E, se possível, um gif.</p>
+    <p>Faça a pessoa olhar para a tela e pensar: “Por onde eu começo?”</p>
+    <p>É praticamente um Onde Está Wally? corporativo. Todo mundo gosta de procurar coisas.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>3. Já disse e repito: quem gosta de feedback? Ninguém.</h2>
+    <p>O usuário clicou? Silêncio.</p>
+    <p>Enviou alguma coisa? Silêncio.</p>
+    <p>Está carregando? Silêncio.</p>
+    <p>Terminou? Continue em silêncio.</p>
+    <p>O usuário não precisa saber se o sistema recebeu o comando. Deixe ele refletir. Talvez ele tenha clicado. Talvez não. Talvez o sistema esteja processando. Talvez tenha travado.</p>
+    <p>UX também é sobre criar suspense.</p>
+    <p>Se ele clicar cinco vezes, melhor ainda. Você acabou de descobrir uma nova funcionalidade: o botão ficou muito mais eficiente.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>4. Reconhecimento em vez de memorização? Sei…</h2>
+    <p>O Nielsen vive falando disso. Mas o Nielsen é o Nielsen. Você não. Ele não pode errar. Você pode.</p>
+    <p>Então deixe tudo por conta da memória do usuário.</p>
+    <p>Quem não gosta de brincar de memória? Lembra onde estava aquele botão? Lembra qual menu você abriu? Lembra qual filtro estava selecionado? Lembra aquela informação que apareceu uma vez e nunca mais?</p>
+    <p>É quase um exercício cognitivo.</p>
+    <p>E se o usuário precisar acordar às 2h da manhã para lembrar como fazia alguma coisa na plataforma… parabéns. Você criou uma experiência memorável.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>5. Erros acontecem</h2>
+    <p>Talvez um deles esteja sendo cometido neste exato momento. Inclusive por mim.</p>
+    <p>Mas lembre-se: é errando que se aprende.</p>
+    <p>Quem nunca pegou o ônibus errado não sabe o que é conhecer uma cidade inteira sem planejamento.</p>
+    <p>Então não precisa prevenir todos os erros. Deixe acontecer.</p>
+    <p>Clicou no botão errado? Experiência.</p>
+    <p>Apagou tudo? Experiência.</p>
+    <p>Saiu da tela e perdeu o formulário? Experiência premium.</p>
+    <p>O importante é aprender. Depois que alguém descobrir como desfazer, a gente coloca um botão.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>6. Experiências acessíveis? O que é isso?</h2>
+    <p>Que que foi? Que que foi? Que que hááá?</p>
+    <p>Se está na internet, já está acessível. Tem botão? Acessível. Tem texto? Acessível. Tem imagem? Acessível. Tem um vídeo de 40 minutos sem legenda? Também.</p>
+    <p>Afinal, quem não consegue ouvir pode simplesmente… Bom. Talvez esse exemplo não tenha funcionado.</p>
+    <p>Mas depois a gente vê isso.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>7. Simplifique a interface do usuário</h2>
+    <p>Se a paleta tem dezenas de milhões de cores, por que usar só três? Quantas fontes existem? Use todas.</p>
+    <p>Espaço em branco? Tem espaço sobrando? Preencha.</p>
+    <p>Ícone sem função? Coloque também. Banner? Claro. Carrossel? Óbvio. Pop-up? Sempre cabe mais um.</p>
+    <p>A regra é simples: se está disponível no Figma, existe um motivo para usar.</p>
+    <p>E se a tela estiver muito cheia… Aumente o monitor.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>8. Mobile first?</h2>
+    <p>Como fazer mobile first se você constrói o protótipo em uma tela de 28 polegadas?</p>
+    <p>Se desse para fazer tudo primeiro no celular, eu faria. Mas estou aqui. Na frente de um monitor gigante.</p>
+    <p>Então vamos começar pelo desktop mesmo. Depois a gente pega tudo que está na tela e tenta colocar em 6 polegadas.</p>
+    <p>Não coube? Diminui. Ainda não? Scroll horizontal.</p>
+    <p>Problema resolvido.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>9. Personalização para experiências relevantes</h2>
+    <p>Adaptação? Preferência do usuário? Contexto? Não precisa disso tudo.</p>
+    <p>O usuário precisa descobrir coisas novas.</p>
+    <p>Está pesquisando pantufas de bichinho? Mostre uma roçadeira a gasolina.</p>
+    <p>Ele procurou uma passagem para Curitiba? Ofereça uma geladeira.</p>
+    <p>Pesquisou ração para cachorro? Curso de Excel.</p>
+    <p>Isso é diversidade de conteúdo. O usuário nunca sabe o que precisa até o algoritmo contar para ele.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>10. Testes com usuários reais</h2>
+    <p>As pessoas estão muito ocupadas para testar sua plataforma.</p>
+    <p>O único teste que elas gostam é degustação em supermercado. Você dá queijo? Elas testam. Dá salame? Testam também.</p>
+    <p>Agora, abrir uma plataforma e procurar um botão durante 15 minutos? Aí já é exploração científica.</p>
+    <p>E não precisa testar. Você conhece o sistema. Sua equipe conhece. O gerente conhece. O pessoal do TI conhece. O sobrinho do gerente conhece.</p>
+    <p>Está validado.</p>
+</div>
+
+<div class="caixa-texto">
+    <h2>Finalmente acabou</h2>
+    <p>Se você chegou até aqui, parabéns. Você acabou de ler um texto inteiro defendendo exatamente o contrário do que deveria ser feito.</p>
+    <p>E não, nada disso deve ser levado muito a sério.</p>
+    <p>Erramos e aprendemos. Aprendemos e ensinamos. E talvez esse seja justamente o espírito da coisa.</p>
+    <p>Mas uma coisa que falei aqui merece ser levada bem a sério: <strong>acessibilidade</strong>.</p>
+    <p>É um assunto que me interessa há muito tempo e que, na minha opinião, deveria estar presente em todas as esferas da sociedade.</p>
+    <p>Deveríamos levar acessibilidade a sério em qualquer situação.</p>
+    <p>Porque é muito bonito uma empresa dizer que segue WCAG, ter contraste perfeito, navegação por teclado e leitor de tela… e não ter uma rampa para entrar na própria empresa.</p>
+    <p>Aí fica difícil.</p>
+    <p>No digital, acessível. Na porta, boa sorte.</p>
+</div>
+
+
+</article>
+
+<!-- ===== BANNER ROLETA DA SORTE UPIXEL (estilo Tigrinho) ===== -->
+<a href="roleta-do-acaso.html" id="upx-banner-tigrinho" style="
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 380px;
+  margin: 28px auto;
+  padding: 11px 13px 11px 11px;
+  background: linear-gradient(145deg, #1c1200 0%, #0e0e0e 50%, #1a0808 100%);
+  border: 2px solid #ff9500;
+  border-radius: 12px;
+  text-decoration: none;
+  font-family: 'Pixelify Sans', system-ui, sans-serif;
+  box-shadow: 0 0 0 1px #111, 0 0 18px rgba(255,149,0,0.28);
+  transition: transform 0.15s, box-shadow 0.15s;
+  overflow: hidden;
+  position: relative;
+" onmouseover="this.style.transform='scale(1.025)'; this.style.boxShadow='0 0 0 1px #111, 0 0 26px rgba(255,149,0,0.45)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 0 1px #111, 0 0 18px rgba(255,149,0,0.28)'">
+
+  <div style="position: relative; width: 52px; height: 52px; flex-shrink: 0;">
+    <div class="upx-mini-roleta" style="
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 3px solid #ff9500;
+      background: conic-gradient(
+        #ff2d55 0deg 45deg,
+        #ff9500 45deg 90deg,
+        #ffe566 90deg 135deg,
+        #ff2d55 135deg 180deg,
+        #ff9500 180deg 225deg,
+        #ffe566 225deg 270deg,
+        #ff2d55 270deg 315deg,
+        #ff9500 315deg 360deg
+      );
+      animation: upx-spin 3.8s linear infinite;
+      box-shadow: 0 0 10px rgba(255,149,0,0.4);
+    "></div>
+    <div style="
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 9px solid #fff;
+      z-index: 2;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+    "></div>
+    <div style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
+      background: #111;
+      border: 2px solid #ffe566;
+      border-radius: 50%;
+      z-index: 2;
+    "></div>
+  </div>
+
+  <div style="flex: 1; min-width: 0;">
+    <div style="font-size: 0.62rem; font-weight: 800; letter-spacing: 0.8px; text-transform: uppercase; color: #ff6b6b; margin-bottom: 2px;">🔥 Ao vivo agora</div>
+    <div style="font-size: 0.88rem; font-weight: 800; line-height: 1.15; background: linear-gradient(90deg, #ffe566, #ff9500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Roleta da Sorte Upixel</div>
+    <div style="font-size: 0.68rem; color: #bbb; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Gire e ganhe sua missão →</div>
+  </div>
+
+  <span style="
+    background: linear-gradient(180deg, #ffe566 0%, #ff9500 60%, #ff6200 100%);
+    color: #000;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 8px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(255,149,0,0.35);
+    flex-shrink: 0;
+  ">GIRAR</span>
+</a>
+
+<style>
+  @keyframes upx-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>
+<!-- ===== FIM DO BANNER ===== -->
+
+<section class="compartilhar-linkedin">
+    <h2>Não clique em compartilhe</h2>
+    <p>É exatamente isso que o algoritmo espera.</p>
+    <a href="#" class="botao-linkedin" id="upubli-btn-compartilhar">🔗 Compartilhar</a>
+</section>
+
+
+
+
+<section class="navegacao-artigos">
+
+
+<!--
+    <a href="artigo-10-praticas-nao-recomendadas-ux.html" class="card-nav card-nav-anterior">
+        <span class="nav-label">&larr; Artigo anterior</span>
+        <h3 class="nav-titulo">10 práticas não recomendadas de UX</h3>
+        <p class="nav-descricao">É errando que se aprende. 10 práticas de UX que você não deveria seguir (mas que ajudam a entender o que realmente importa).</p>
+    </a>
+  -->
+
+    <a href="artigo-como-nao-usar-figma.html" class="card-nav card-nav-proximo">
+        <span class="nav-label">Mais artigos &rarr;</span>
+        <h3 class="nav-titulo">Como NÃO usar o Figma</h3>
+        <p class="nav-descricao">Tutorial completo e inútil sobre o que fazer de errado no Figma.</p>
+    </a>
+</section>
+
+</main>
+
+<div class="divisor-secao"></div>
+
+<footer class="footer">
+    <div class="footer-esquerda">
+        <img src="logobranca.png" alt="Upixel" class="footer-logo">
+        <p class="copyright">Upixel. Todos os direitos reservados.</p>
