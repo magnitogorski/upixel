@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roleta do Acaso: gire e receba uma missão | Upixel</title>
+<meta name="description" content="Gire a roleta e descubra sua missão no Upixel: ler artigo, dissecar termo do Grossário, fazer o quiz, explorar o RIP, desenhar no Picaxel ou um desafio de coragem.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://upixel.com.br/roleta-do-acaso.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+
+<style>
+  .rlt-page { background: #000; color: #fff; }
+  .rlt-page main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .rlt-page .upx-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Roleta */
+  .rlt-wrap {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin: 20px auto 30px;
+  }
+  .rlt-roleta {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 6px solid #FA397A;
+    position: relative;
+    overflow: hidden;
+    transition: transform 4.2s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    box-shadow: 0 0 0 8px #111, 0 0 40px rgba(250,57,122,.25);
+  }
+  .rlt-fatia {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 0;
+    left: 50%;
+    transform-origin: 0% 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 18px;
+    font-size: 1.5rem;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+  .rlt-ponteiro {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 28px solid #FA397A;
+    z-index: 10;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,.6));
+  }
+  .rlt-centro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 64px;
+    height: 64px;
+    margin: -32px 0 0 -32px;
+    background: #111;
+    border: 4px solid #FA397A;
+    border-radius: 50%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+  }
+
+  /* Controles */
+  .rlt-controles {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .rlt-botao-girar {
+    background: #FA397A;
+    border: none;
+    color: #000;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform .12s, background .18s;
+  }
+  .rlt-botao-girar:hover { background: #fff; }
+  .rlt-botao-girar:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+  }
+  .rlt-botao-reiniciar {
+    background: transparent;
+    border: 1px solid #333;
+    color: #B5B5B5;
+    font-family: inherit;
+    font-size: .85rem;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .rlt-botao-reiniciar:hover {
+    border-color: #FA397A;
+    color: #fff;
+  }
+  .rlt-dica {
+    color: #5c5c5c;
+    font-size: .78rem;
+    margin-bottom: 28px;
+  }
+
+  /* Placar */
+  .rlt-placar {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    color: #5c5c5c;
+    font-size: .74rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .rlt-placar strong {
+    display: block;
+    color: #fff;
+    font-size: 1.05rem;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  /* Resultado */
+  .rlt-resultado {
+    display: none;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 50px;
+    border: 1px solid #262626;
+    border-radius: 14px;
+    padding: 28px 24px;
+    background: #050505;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .35s, transform .35s;
+  }
+  .rlt-resultado.rlt-ativo { display: block; }
+  .rlt-resultado.rlt-visivel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .rlt-eyebrow {
+    display: block;
+    color: #FA397A;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .rlt-emoji { font-size: 3.2rem; display: block; margin-bottom: 6px; }
+  .rlt-nome {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+  .rlt-missao {
+    color: #B5B5B5;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 38ch;
+    margin: 0 auto 22px;
+  }
+  .rlt-acoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .rlt-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #FA397A;
+    color: #FA397A;
+    font-family: inherit;
+    font-size: .88rem;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .18s, color .18s;
+  }
+  .rlt-link:hover {
+    background: #FA397A;
+    color: #000;
+  }
+  .rlt-outra {
+    background: none;
+    border: none;
+    color: #5c5c5c;
+    font-family: inherit;
+    font-size: .8rem;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .rlt-outra:hover { color: #fff; }
+  .rlt-aviso {
+    display: block;
+    margin-top: 4px;
+    color: #828282;
+    font-size: .78rem;
+    min-height: 1.2em;
+  }
+
+  @media (max-width: 400px) {
+    .rlt-wrap { width: 280px; height: 280px; }
+  }
+</style>
+</head>
+<body class="rlt-page">
+
+<header class="meu-header">
+  <div class="logo">
+    <img src="logobranca.png" alt="Upixel">
+  </div>
+  <nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="artigos.html">Artigos</a>
+    <a href="ux-challenge.html">UX Challenge</a>
+    <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+    <a href="rip.html">RIP</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="besteirol.html">Besteirol</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+</header>
+
+<main>
+  <section class="upx-conteudo" style="padding-top: 88px;">
+    <span class="texto-menor" style="margin-bottom: 20px;">
+      <img src="raio.png" class="icone-raio" alt="">
+      Achado por acaso
+    </span>
+    <h1 class="upx-titulo-pagina">🎰 Roleta do Acaso</h1>
+    <p class="upx-subtitulo-pagina">Gire. Pare. Receba a missão.</p>
+    <div class="upx-texto-pagina">
+      <p>A roleta não tem pena. Ela escolhe uma missão pelo site e você decide se cumpre ou se finge que não viu. Pelo menos aqui ela não rouba seu dinheiro.</p>
+    </div>
+  </section>
+
+  <section class="upx-conteudo" style="max-width: 480px;">
+    <div class="rlt-placar">
+      <span>Giros<strong id="rlt-giros">0</strong></span>
+      <span>Missões<strong id="rlt-missoes">0</strong></span>
+    </div>
+
+    <div class="rlt-wrap">
+      <div class="rlt-ponteiro"></div>
+      <div class="rlt-roleta" id="rlt-roleta"></div>
+      <div class="rlt-centro">🎲</div>
+    </div>
+
+    <div class="rlt-controles">
+      <button type="button" class="rlt-botao-girar" id="rlt-girar">Girar a roleta</button>
+      <button type="button" class="rlt-botao-reiniciar" id="rlt-reiniciar">↺ Reiniciar</button>
+    </div>
+    <p class="rlt-dica">Clique ou aperte Espaço · R para reiniciar</p>
+  </section>
+
+  <section class="upx-conteudo" style="max-width: 480px;" id="rlt-secao-resultado">
+    <div class="rlt-resultado" id="rlt-resultado">
+      <span class="rlt-eyebrow">A roleta parou em</span>
+      <span class="rlt-emoji" id="rlt-emoji">🐸</span>
+      <p class="rlt-nome" id="rlt-nome">Nome</p>
+      <p class="rlt-missao" id="rlt-missao">Missão.</p>
+      <div class="rlt-acoes">
+        <a class="rlt-link" id="rlt-link" href="#">Cumprir missão</a>
+        <button type="button" class="rlt-outra" id="rlt-outra">🎲 Girar de novo</button>
+        <span class="rlt-aviso" id="rlt-aviso"></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<hr class="divisor-secao">
+
+<footer class="footer">
+  <div class="footer-esquerda">
+    <img src="logobranca.png" alt="Upixel" class="footer-logo">
+    <p class="copyright">Upixel. Todos os direitos reservados.</p>
+  </div>
+  <div class="footer-centro">
+    <nav class="footer-menu">
+      <a href="index.html">Home</a>
+      <a href="artigos.html">Artigos</a>
+      <a href="ux-challenge.html">UX Challenge</a>
+      <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+      <a href="rip.html">RIP</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="besteirol.html">Besteirol</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </div>
+</footer>
+<div class="footer-ilustracao">
+  <img src="rodape.png" alt="">
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var TERMOS = [
+    'Dark Pattern', 'MVP', 'Persona Fake', 'Onboarding Infinito',
+    'Botão Fantasma', 'Scroll Infinito da Vergonha', 'CTA Passivo-Agressivo',
+    'Carga Cognitiva', 'Empty State', 'Atomic Design', 'Design Thinking',
+    'Backlog', 'Fricção', 'Handoff', 'Bounce Rate', 'Alinhamento'
+  ];
+
+  var POSTS_RIP = [
+    'o botão "Voltar" que ninguém usa mais',
+    'a barra de progresso que nunca chega a 100%',
+    'aquele formulário de 40 campos',
+    'o "clique aqui" que não dizia pra onde',
+    'a modal que ninguém pediu',
+    'o carrossel que ninguém passa'
+  ];
+
+  function rand(lista) {
+    return lista[Math.floor(Math.random() * lista.length)];
+  }
+
+  // 12 fatias visíveis (a roleta mostra 12, o sorteio usa o array completo)
+  var MISSOES = [
+    { emoji: '🦉', nome: 'Coruja Sábia', missao: 'Vá ler um artigo. Depois finja que já sabia de tudo.', linkTexto: 'Ler artigo', link: 'artigos.html' },
+    { emoji: '🦔', nome: 'Ouriço Nerd', missao: 'Escolha um termo do Grossário e mande pra alguém que faz isso sem saber o nome.', linkTexto: 'Ir pro Grossário', acao: 'termo' },
+    { emoji: '🐸', nome: 'Sapo Curioso', missao: 'Faça o quiz e descubra o quanto você realmente sabe (ou só confia demais).', linkTexto: 'Fazer o quiz', link: 'quiz.html' },
+    { emoji: '🐧', nome: 'Pinguim Investigativo', missao: 'Encare o UX Challenge. Telas reais, problemas reais.', linkTexto: 'Ir pro Challenge', link: 'ux-challenge.html' },
+    { emoji: '🐦', nome: 'Corvo Necrófilo', missao: 'Vá ao RIP e mande um obituário pra quem ainda usa aquela tecnologia morta.', linkTexto: 'Entrar no cemitério', acao: 'rip' },
+    { emoji: '🦥', nome: 'Preguiça Zen', missao: 'Perca uns minutos no Besteirol. Você merece. O chefe não precisa saber.', linkTexto: 'Ir pro Besteirol', link: 'besteirol.html' },
+    { emoji: '🐢', nome: 'Tartaruga Artista', missao: 'Desenhe no Picaxel e deixe a IA julgar sua alma pixel a pixel.', linkTexto: 'Desenhar agora', link: 'picaxel.html' },
+    { emoji: '🐙', nome: 'Polvo Vendedor', missao: 'Ignore o aviso e desça pro UPUBLI™. Os anúncios cavernosos te esperam.', linkTexto: 'Descer pro UPUBLI', link: 'pagina-produtos.html' },
+    { emoji: '🦎', nome: 'Camaleão Chato', missao: 'Compartilhe o site com alguém chato. Ele merece. Você decide se manda.', linkTexto: 'Compartilhar (se quiser)', acao: 'compartilhar' },
+    { emoji: '📱', nome: 'Morcego Fofoqueiro', missao: 'Manda o site no WhatsApp de quem vive reclamando de site ruim. Ou não.', linkTexto: 'Abrir WhatsApp', acao: 'whatsapp' },
+    { emoji: '🦧', nome: 'Gorila Direto', missao: 'Vai no Contato e manda um oi, sem motivo nenhum. Ou só um emoji.', linkTexto: 'Mandar um oi', link: 'contato.html' },
+    { emoji: '🦄', nome: 'Unicórnio Cético', missao: 'Leia o Grossário até achar o termo que descreve exatamente seu último projeto.', linkTexto: 'Abrir Grossário', link: 'glossario-dissecado-de-ux.html' },
+    { emoji: '🦂', nome: 'Escorpião Provocador', missao: 'Duvido você postar no LinkedIn marcando a gente. Só se quiser.', linkTexto: 'Ver LinkedIn', link: 'https://www.linkedin.com/company/the-upixel-project/', externo: true },
+    { emoji: '📖', nome: 'Livro Desobediente', missao: 'Abra “Como NÃO usar o Figma” e marque quantos erros você já cometeu.', linkTexto: 'Ler o artigo', link: 'artigo-como-nao-usar-figma.html' },
+    { emoji: '🔬', nome: 'Microscópio Crítico', missao: 'Disseque “Design Thinking” no Grossário. Depois tente explicar sem post-it.', linkTexto: 'Dissecar termo', link: 'glossario-dissecado-de-ux.html' },
+    { emoji: '☕', nome: 'Café do Designer', missao: 'Vá tomar um café. Depois volte e gire de novo. Produtividade é relativa.', linkTexto: 'Girar depois do café', acao: 'girar' },
+    { emoji: '🪞', nome: 'Espelho do Ego', missao: 'Role até o footer e diga em voz alta: “Upixel. Todos os direitos reservados.”', linkTexto: 'Só cumprir mentalmente', link: '#' },
+    { emoji: '🎲', nome: 'Dado do Destino', missao: 'A roleta te mandou girar de novo. O universo está te testando.', linkTexto: 'Girar de novo', acao: 'girar' },
+    { emoji: '🦊', nome: 'Raposa do Dark Pattern', missao: 'Leia o que é Dark Pattern no Grossário e tente achar um no site (spoiler: a gente evita).', linkTexto: 'Ir pro Grossário', link: 'glossario-dissecado-de-ux.html' },
+    { emoji: '🦖', nome: 'T-Rex de Interface', missao: 'Entre no RIP e chore pela morte do “clique aqui”. Era uma época mais simples.', linkTexto: 'Chorar no cemitério', link: 'rip.html' },
+    { emoji: '🐿️', nome: 'Esquilo do Backlog', missao: 'Abra seu backlog mental. Agora feche. Vá pro Besteirol e esqueça por 5 minutos.', linkTexto: 'Esquecer no Besteirol', link: 'besteirol.html' },
+    { emoji: '🐘', nome: 'Elefante da Memória', missao: 'Lembre do pior formulário de 40 campos. Depois vá pro RIP e deixe uma flor.', linkTexto: 'Ir pro RIP', link: 'rip.html' },
+    { emoji: '🦩', nome: 'Flamingo do Carrossel', missao: 'Nunca mais use carrossel sem pensar duas vezes. Agora vá ler um artigo pra compensar.', linkTexto: 'Compensar lendo', link: 'artigos.html' },
+    { emoji: '🦜', nome: 'Papagaio do Alinhamento', missao: 'Repita: “Alinhamento não é concordar, é fingir que concordou.” Depois vá pro Grossário.', linkTexto: 'Ir pro Grossário', link: 'glossario-dissecado-de-ux.html' }
+  ];
+
+  // Cores alternadas das fatias
+  var CORES = ['#1a1a1a', '#111', '#1f1f1f', '#0d0d0d', '#181818', '#121212'];
+
+  var roletaEl = document.getElementById('rlt-roleta');
+  var btnGirar = document.getElementById('rlt-girar');
+  var btnReiniciar = document.getElementById('rlt-reiniciar');
+  var btnOutra = document.getElementById('rlt-outra');
+  var resultadoEl = document.getElementById('rlt-resultado');
+  var elEmoji = document.getElementById('rlt-emoji');
+  var elNome = document.getElementById('rlt-nome');
+  var elMissao = document.getElementById('rlt-missao');
+  var elLink = document.getElementById('rlt-link');
+  var elAviso = document.getElementById('rlt-aviso');
+  var secaoResultado = document.getElementById('rlt-secao-resultado');
+  var placarGiros = document.getElementById('rlt-giros');
+  var placarMissoes = document.getElementById('rlt-missoes');
+
+  var girando = false;
+  var rotacaoAtual = 0;
+  var totalGiros = 0;
+  var totalMissoes = 0;
+
+  // Monta as 12 fatias visuais (usa as 12 primeiras missões)
+  function montarRoleta() {
+    var html = '';
+    var n = 12;
+    var angulo = 360 / n;
+    for (var i = 0; i < n; i++) {
+      var m = MISSOES[i % MISSOES.length];
+      var rot = i * angulo;
+      html += '<div class="rlt-fatia" style="transform: rotate(' + rot + 'deg); background:' + CORES[i % CORES.length] + ';">' +
+        m.emoji + '</div>';
+    }
+    roletaEl.innerHTML = html;
+  }
+
+  function compartilhar(texto, url) {
+    if (navigator.share) {
+      navigator.share({ title: 'Upixel', text: texto, url: url }).catch(function () {});
+      elAviso.textContent = 'Se mandou, ótimo. Se cancelou, também vale.';
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto + ' ' + url).then(function () {
+        elAviso.textContent = 'Copiado. Cola se (e quando) quiser.';
+      }).catch(function () {
+        elAviso.textContent = 'Copia se quiser: ' + url;
+      });
+      return;
+    }
+    elAviso.textContent = 'Copia se quiser: ' + url;
+  }
+
+  function executarAcao(acao) {
+    var base = 'https://upixel.com.br';
+    if (acao === 'termo') {
+      var termo = rand(TERMOS);
+      window.open(base + '/glossario-dissecado-de-ux.html', '_blank', 'noopener');
+      setTimeout(function () {
+        compartilhar('Você provavelmente já sofreu com "' + termo + '" e nem sabia o nome. Olha o Grossário:', base + '/glossario-dissecado-de-ux.html');
+      }, 350);
+      elAviso.textContent = 'Abri o Grossário. Compartilhar o termo é opcional.';
+    } else if (acao === 'rip') {
+      var post = rand(POSTS_RIP);
+      window.open(base + '/rip.html', '_blank', 'noopener');
+      setTimeout(function () {
+        compartilhar('RIP pra ' + post + '. Nunca vamos esquecer (ou vamos).', base + '/rip.html');
+      }, 350);
+      elAviso.textContent = 'Abri o RIP. O obituário é opcional.';
+    } else if (acao === 'compartilhar') {
+      compartilhar('Achei essa roleta de missões no Upixel. Bora ver se você aguenta.', base + '/roleta-do-acaso.html');
+    } else if (acao === 'whatsapp') {
+      var t = encodeURIComponent('Achei um site que te dá missões absurdas via roleta. Só olha se quiser: ' + base);
+      window.open('https://wa.me/?text=' + t, '_blank', 'noopener');
+      elAviso.textContent = 'WhatsApp aberto. Manda só se fizer sentido.';
+    } else if (acao === 'girar') {
+      girar();
+    }
+  }
+
+  function revelar(missao) {
+    elEmoji.textContent = missao.emoji;
+    elNome.textContent = missao.nome;
+    elMissao.textContent = missao.missao;
+    elAviso.textContent = '';
+
+    if (missao.acao) {
+      elLink.textContent = missao.linkTexto;
+      elLink.href = '#';
+      elLink.removeAttribute('target');
+      elLink.onclick = function (e) {
+        e.preventDefault();
+        executarAcao(missao.acao);
+      };
+    } else {
+      elLink.textContent = missao.linkTexto;
+      elLink.href = missao.link || '#';
+      elLink.onclick = null;
+      if (missao.externo) {
+        elLink.setAttribute('target', '_blank');
+        elLink.setAttribute('rel', 'noopener');
+      } else {
+        elLink.removeAttribute('target');
+        elLink.removeAttribute('rel');
+      }
+    }
+
+    resultadoEl.classList.add('rlt-ativo');
+    requestAnimationFrame(function () {
+      resultadoEl.classList.add('rlt-visivel');
+    });
+    secaoResultado.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function girar() {
+    if (girando) return;
+    girando = true;
+    btnGirar.disabled = true;
+    resultadoEl.classList.remove('rlt-visivel');
+
+    // Sorteia uma missão do array completo
+    var indice = Math.floor(Math.random() * MISSOES.length);
+    var missao = MISSOES[indice];
+
+    // Calcula rotação: várias voltas + posição da fatia correspondente (módulo 12)
+    var fatiaVisual = indice % 12;
+    var anguloPorFatia = 360 / 12;
+    // O ponteiro está no topo. Queremos que a fatia fique sob o ponteiro.
+    var anguloFinal = 360 - (fatiaVisual * anguloPorFatia) - (anguloPorFatia / 2);
+    var voltas = 5 + Math.floor(Math.random() * 3); // 5 a 7 voltas
+    var novaRotacao = rotacaoAtual + (voltas * 360) + anguloFinal - (rotacaoAtual % 360);
+
+    roletaEl.style.transform = 'rotate(' + novaRotacao + 'deg)';
+    rotacaoAtual = novaRotacao;
+
+    totalGiros += 1;
+    placarGiros.textContent = totalGiros;
+
+    setTimeout(function () {
+      totalMissoes += 1;
+      placarMissoes.textContent = totalMissoes;
+      revelar(missao);
+      girando = false;
+      btnGirar.disabled = false;
+    }, 4300);
+  }
+
+  function reiniciar() {
+    if (girando) return;
+    resultadoEl.classList.remove('rlt-visivel');
+    setTimeout(function () { resultadoEl.classList.remove('rlt-ativo'); }, 300);
+    totalGiros = 0;
+    totalMissoes = 0;
+    placarGiros.textContent = '0';
+    placarMissoes.textContent = '0';
+    elAviso.textContent = '';
+    rotacaoAtual = 0;
+    roletaEl.style.transition = 'none';
+    roletaEl.style.transform = 'rotate(0deg)';
+    setTimeout(function () {
+      roletaEl.style.transition = 'transform 4.2s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+    }, 50);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  btnGirar.addEventListener('click', girar);
+  btnReiniciar.addEventListener('click', reiniciar);
+  btnOutra.addEventListener('click', function () {
+    resultadoEl.classList.remove('rlt-visivel');
+    setTimeout(function () {
+      resultadoEl.classList.remove('rlt-ativo');
+      girar();
+    }, 280);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      if (!girando) girar();
+    }
+    if (e.key === 'r' || e.key === 'R') reiniciar();
+  });
+
+  montarRoleta();
+})();
+</script>
+</body>
+</html>
