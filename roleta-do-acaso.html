@@ -4,10 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Roleta do Acaso: gire e receba uma missão | Upixel</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Meta Tags de SEO Primárias -->
 <meta name="description" content="Gire a roleta e descubra sua missão no Upixel: ler artigo, dissecar termo do Grossário, fazer o quiz, explorar o RIP, desenhar no Picaxel ou um desafio de coragem.">
-<meta name="robots" content="noindex, follow">
+<meta name="keywords" content="Upixel, Roleta do Acaso, UX, Design, Jogos de UX, Desafios de Design, Quiz UX, Grossário UX">
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://upixel.com.br/roleta-do-acaso.html">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://upixel.com.br/roleta-do-acaso.html">
+<meta property="og:title" content="Roleta do Acaso: gire e receba uma missão | Upixel">
+<meta property="og:description" content="Gire a roleta e descubra sua missão no Upixel: desafios interativos, quizzes, artigos e boas doses de sarcasmo sobre UX.">
+<meta property="og:image" content="https://upixel.com.br/logobranca.png">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Upixel">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://upixel.com.br/roleta-do-acaso.html">
+<meta name="twitter:title" content="Roleta do Acaso: gire e receba uma missão | Upixel">
+<meta name="twitter:description" content="Gire a roleta e descubra sua missão no Upixel: desafios interativos, quizzes, artigos e boas doses de sarcasmo sobre UX.">
+<meta name="twitter:image" content="https://upixel.com.br/logobranca.png">
+
+<!-- Dados Estruturados (Schema.org) em JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Roleta do Acaso | Upixel",
+  "url": "https://upixel.com.br/roleta-do-acaso.html",
+  "description": "Uma roleta interativa que atribui missões divertidas e educativas sobre UX e design.",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Upixel",
+    "url": "https://upixel.com.br",
+    "logo": "https://upixel.com.br/logobranca.png"
+  }
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -248,9 +291,9 @@
 
 <header class="meu-header">
   <div class="logo">
-    <img src="logobranca.png" alt="Upixel">
+    <a href="index.html"><img src="logobranca.png" alt="Logotipo do Upixel"></a>
   </div>
-  <nav class="menu">
+  <nav class="menu" aria-label="Navegação Principal">
     <a href="index.html">Home</a>
     <a href="artigos.html">Artigos</a>
     <a href="ux-challenge.html">UX Challenge</a>
@@ -265,7 +308,7 @@
 <main>
   <section class="upx-conteudo" style="padding-top: 88px;">
     <span class="texto-menor" style="margin-bottom: 20px;">
-      <img src="raio.png" class="icone-raio" alt="">
+      <img src="raio.png" class="icone-raio" alt="Ícone de raio representando sorteio instantâneo">
       Achado por acaso
     </span>
     <h1 class="upx-titulo-pagina">🎰 Roleta do Acaso</h1>
@@ -276,25 +319,25 @@
   </section>
 
   <section class="upx-conteudo" style="max-width: 480px;">
-    <div class="rlt-placar">
+    <div class="rlt-placar" aria-label="Placar da roleta">
       <span>Giros<strong id="rlt-giros">0</strong></span>
       <span>Missões<strong id="rlt-missoes">0</strong></span>
     </div>
 
-    <div class="rlt-wrap">
+    <div class="rlt-wrap" aria-hidden="true">
       <div class="rlt-ponteiro"></div>
       <div class="rlt-roleta" id="rlt-roleta"></div>
       <div class="rlt-centro">🎲</div>
     </div>
 
     <div class="rlt-controles">
-      <button type="button" class="rlt-botao-girar" id="rlt-girar">Girar a roleta</button>
-      <button type="button" class="rlt-botao-reiniciar" id="rlt-reiniciar">↺ Reiniciar</button>
+      <button type="button" class="rlt-botao-girar" id="rlt-girar" aria-label="Girar a roleta do acaso">Girar a roleta</button>
+      <button type="button" class="rlt-botao-reiniciar" id="rlt-reiniciar" aria-label="Reiniciar contador da roleta">↺ Reiniciar</button>
     </div>
     <p class="rlt-dica">Clique ou aperte Espaço · R para reiniciar</p>
   </section>
 
-  <section class="upx-conteudo" style="max-width: 480px;" id="rlt-secao-resultado">
+  <section class="upx-conteudo" style="max-width: 480px;" id="rlt-secao-resultado" aria-live="polite">
     <div class="rlt-resultado" id="rlt-resultado">
       <span class="rlt-eyebrow">A roleta parou em</span>
       <span class="rlt-emoji" id="rlt-emoji">🐸</span>
@@ -313,11 +356,11 @@
 
 <footer class="footer">
   <div class="footer-esquerda">
-    <img src="logobranca.png" alt="Upixel" class="footer-logo">
+    <img src="logobranca.png" alt="Logotipo Upixel Rodapé" class="footer-logo">
     <p class="copyright">Upixel. Todos os direitos reservados.</p>
   </div>
   <div class="footer-centro">
-    <nav class="footer-menu">
+    <nav class="footer-menu" aria-label="Navegação do Rodapé">
       <a href="index.html">Home</a>
       <a href="artigos.html">Artigos</a>
       <a href="ux-challenge.html">UX Challenge</a>
@@ -330,7 +373,7 @@
   </div>
 </footer>
 <div class="footer-ilustracao">
-  <img src="rodape.png" alt="">
+  <img src="rodape.png" alt="" aria-hidden="true">
 </div>
 
 <script>
@@ -365,7 +408,7 @@
     { emoji: '🐧', nome: 'Pinguim Investigativo', missao: 'Encare o UX Challenge. Telas reais, problemas reais.', linkTexto: 'Ir pro Challenge', link: 'ux-challenge.html' },
     { emoji: '🐦', nome: 'Corvo Necrófilo', missao: 'Vá ao RIP e mande um obituário pra quem ainda usa aquela tecnologia morta.', linkTexto: 'Entrar no cemitério', acao: 'rip' },
     { emoji: '🦥', nome: 'Preguiça Zen', missao: 'Perca uns minutos no Besteirol. Você merece. O chefe não precisa saber.', linkTexto: 'Ir pro Besteirol', link: 'besteirol.html' },
-    { emoji: '🐢', nome: 'Tartaruga Artista', missao: 'Desenhe no Picaxel e deixe a IA julgar sua alma pixel a pixel.', linkTexto: 'Desenhar agora', link: 'picaxel.html' },
+    { emoji: '🐢', nome: 'Tartaruga Artista', missao: 'Desenhe no Picaxel e deixe a IA julgar sua alma pixel a pixel.', linkTexto: 'Desenhar agora', link: 'orquestra-do-pixel.html' },
     { emoji: '🐙', nome: 'Polvo Vendedor', missao: 'Ignore o aviso e desça pro UPUBLI™. Os anúncios cavernosos te esperam.', linkTexto: 'Descer pro UPUBLI', link: 'pagina-produtos.html' },
     { emoji: '🦎', nome: 'Camaleão Chato', missao: 'Compartilhe o site com alguém chato. Ele merece. Você decide se manda.', linkTexto: 'Compartilhar (se quiser)', acao: 'compartilhar' },
     { emoji: '📱', nome: 'Morcego Fofoqueiro', missao: 'Manda o site no WhatsApp de quem vive reclamando de site ruim. Ou não.', linkTexto: 'Abrir WhatsApp', acao: 'whatsapp' },
