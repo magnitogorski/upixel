@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== SEO ===== -->
+<title>INSTAGRILLO™ | Rede social fictícia da Upixel</title>
+<meta name="description" content="INSTAGRILLO™ é uma experiência satírica da Upixel: influencers fictícios vendendo produtos absurdos com a maior cara de pau digital da internet. Opinião sobre tudo, conhecimento sobre nada.">
+<meta name="keywords" content="Instagrillo, Upixel, rede social fictícia, influencers fake, sátira digital, marketing absurdo">
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FA397A">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="INSTAGRILLO™ | Uma experiência Upixel que ninguém pediu">
+<meta property="og:description" content="Onde 10 influencers imaginários vendem produtos absurdos da Upixel com a maior cara de pau digital que a internet já viu.">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="INSTAGRILLO™">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="INSTAGRILLO™ | Rede social fictícia da Upixel">
+<meta name="twitter:description" content="Opinião sobre tudo. Conhecimento sobre nada. Uma experiência satírica da Upixel.">
+<meta name="twitter:image" content="og-image.jpg">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#000;
+    --fg:#fff;
+    --muted:#999;
+    --muted-2:#666;
+    --pink:#FA397A;
+    --pink-dim: rgba(250,57,122,0.15);
+    --border:#262626;
+    --border-strong:#333;
+    --card:#0a0a0a;
+    --card-2:#111;
+    --font-pixel:"Segoe UI", arial, sans-serif;
+    --font-clean:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    --maxw: 620px;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--font-clean);
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:80px;
+  }
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  img{max-width:100%;display:block;}
+
+  /* ===== TOP BAR ===== */
+  .ig-topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(0,0,0,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--border);
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .ig-logo{
+    font-family:var(--font-pixel);
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:1px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .ig-logo span{color:var(--pink);}
+
+  /* ===== HERO ===== */
+  .ig-hero{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:28px 16px 8px;
+    text-align:center;
+  }
+  .ig-hero-eyebrow{
+    font-family:var(--font-pixel);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:var(--pink);
+    margin-bottom:10px;
+  }
+  .ig-hero h1{
+    font-family:var(--font-pixel);
+    font-size:clamp(28px,7vw,40px);
+    margin:0 0 8px;
+    line-height:1.1;
+  }
+  .ig-hero h1 .glitch{color:var(--pink);}
+  .ig-hero p{
+    color:var(--muted);
+    font-size:14px;
+    max-width:440px;
+    margin:0 auto;
+    line-height:1.5;
+  }
+
+  /* fake stat bar */
+  .ig-stats{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    margin:22px 0 4px;
+    font-family:var(--font-pixel);
+  }
+  .ig-stat{text-align:center;}
+  .ig-stat b{display:block;font-size:18px;color:var(--fg);}
+  .ig-stat span{font-size:10px;color:var(--muted-2);text-transform:uppercase;letter-spacing:1px;}
+
+  /* ===== STORIES ===== */
+  .ig-stories{
+    max-width:var(--maxw);
+    margin:24px auto 0;
+    padding:0 16px;
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .ig-stories::-webkit-scrollbar{display:none;}
+  .ig-story{
+    flex:0 0 auto;
+    width:68px;
+    text-align:center;
+    background:none;
+    border:none;
+    color:var(--fg);
+  }
+  .ig-story-ring{
+    width:60px;height:60px;
+    border-radius:50%;
+    padding:2.5px;
+    background: conic-gradient(var(--pink), #ffd166, var(--pink));
+    margin:0 auto 6px;
+  }
+  .ig-story-ring.seen{background:var(--border-strong);}
+  .ig-story-avatar{
+    width:100%;height:100%;
+    border-radius:50%;
+    background:var(--card);
+    border:2.5px solid #000;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;
+    overflow:hidden;
+  }
+  .ig-story-avatar img{
+    width:100%;height:100%;
+    object-fit:cover;
+    border-radius:50%;
+  }
+  .ig-story-name{
+    font-size:10.5px;
+    color:var(--muted);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:68px;
+  }
+
+  /* ===== DIVIDER ===== */
+  .ig-divider{
+    border:none;
+    border-top:1px solid var(--border);
+    max-width:var(--maxw);
+    margin:26px auto;
+  }
+
+  /* ===== FEED ===== */
+  .ig-feed{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 16px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+
+  .ig-post{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+
+  .ig-post-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 14px;
+  }
+  .ig-avatar{
+    width:38px;height:38px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--pink), #7a1240);
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;
+    flex-shrink:0;
+    overflow:hidden;
+  }
+  .ig-avatar img{
+    width:100%;height:100%;
+    object-fit:cover;
+    border-radius:50%;
+  }
+  .ig-post-headinfo{flex:1;min-width:0;}
+  .ig-post-name{
+    display:flex;align-items:center;gap:5px;
+    font-weight:700;
+    font-size:13.5px;
+  }
+  .ig-verif{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:14px;height:14px;
+    background:var(--pink);
+    border-radius:50%;
+    font-size:9px;
+    color:#000;
+    font-weight:900;
+  }
+  .ig-post-meta{
+    font-size:11px;
+    color:var(--muted-2);
+  }
+  .ig-follow-btn{
+    background:transparent;
+    border:1px solid var(--pink);
+    color:var(--pink);
+    font-size:12px;
+    font-weight:700;
+    padding:6px 12px;
+    border-radius:20px;
+    white-space:nowrap;
+    transition: all .15s ease;
+  }
+  .ig-follow-btn.following{
+    background:var(--border);
+    border-color:var(--border-strong);
+    color:var(--muted);
+  }
+
+  .ig-post-badges{
+    display:flex;
+    gap:6px;
+    padding:0 14px 8px;
+    flex-wrap:wrap;
+  }
+  .ig-badge{
+    font-family:var(--font-pixel);
+    font-size:9.5px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    padding:3px 8px;
+    border-radius:20px;
+    background:var(--pink-dim);
+    border:1px solid var(--pink);
+    color:var(--pink);
+  }
+  .ig-badge.publi{
+    background:rgba(255,200,0,0.08);
+    border-color:#ffcf4a;
+    color:#ffcf4a;
+  }
+
+  .ig-post-media{
+    position:relative;
+    aspect-ratio: 1 / 1;
+    background:linear-gradient(160deg,#161616,#050505);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    user-select:none;
+  }
+  .ig-post-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .ig-post-media .emoji-art{
+    font-size:64px;
+    filter: drop-shadow(0 6px 18px rgba(250,57,122,0.25));
+  }
+  .ig-post-media .caption-on-image{
+    position:absolute;
+    bottom:14px;left:14px;right:14px;
+    font-family:var(--font-pixel);
+    font-size:13px;
+    color:#fff;
+    text-shadow:0 2px 6px rgba(0,0,0,0.8);
+  }
+  .ig-heart-pop{
+    position:absolute;
+    inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:90px;
+    opacity:0;
+    pointer-events:none;
+    transition: opacity .15s ease, transform .3s ease;
+    transform:scale(0.6);
+  }
+  .ig-heart-pop.show{
+    opacity:1;
+    transform:scale(1.1);
+  }
+
+  .ig-post-actions{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:12px 14px 6px;
+    font-size:22px;
+  }
+  .ig-icon-btn{
+    background:none;border:none;color:var(--fg);
+    display:flex;align-items:center;gap:6px;
+    font-size:20px;
+    padding:0;
+  }
+  .ig-icon-btn.liked{color:var(--pink);}
+  .ig-icon-btn .count{
+    font-family:var(--font-clean);
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--muted);
+  }
+  .ig-icon-btn.liked .count{color:var(--pink);}
+
+  .ig-likes-line{
+    padding:0 14px;
+    font-size:13px;
+    font-weight:700;
+    margin-top:2px;
+  }
+  .ig-likes-line.rare{
+    color:var(--muted-2);
+    font-weight:400;
+    font-style:italic;
+  }
+
+  .ig-caption{
+    padding:8px 14px 4px;
+    font-size:13.5px;
+    line-height:1.55;
+    white-space:pre-line;
+  }
+  .ig-caption b{font-weight:700;margin-right:5px;}
+  .ig-caption .hash{color:var(--pink);}
+
+  .ig-comments{
+    padding:2px 14px 14px;
+    font-size:13px;
+  }
+  .ig-comments-toggle{
+    background:none;border:none;color:var(--muted-2);
+    font-size:12.5px;
+    padding:4px 0;
+  }
+  .ig-comment{
+    display:none;
+    padding:5px 0;
+    line-height:1.4;
+    border-top:1px solid var(--border);
+  }
+  .ig-comment:first-of-type{border-top:none;padding-top:8px;}
+  .ig-comment.open{display:block;}
+  .ig-comment b{color:var(--pink);font-weight:700;margin-right:4px;}
+
+  .ig-post-time{
+    padding:2px 14px 14px;
+    font-size:10.5px;
+    color:var(--muted-2);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+
+  /* toast */
+  .ig-toast{
+    position:fixed;
+    left:50%;
+    bottom:26px;
+    transform:translateX(-50%) translateY(20px);
+    background:#fff;
+    color:#000;
+    font-weight:700;
+    font-size:13px;
+    padding:12px 18px;
+    border-radius:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    opacity:0;
+    pointer-events:none;
+    transition: all .25s ease;
+    z-index:200;
+    max-width:86%;
+    text-align:center;
+  }
+  .ig-toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+
+  /* load more */
+  .ig-loadmore-wrap{
+    max-width:var(--maxw);
+    margin:10px auto 0;
+    padding:10px 16px 0;
+    text-align:center;
+  }
+  .ig-loadmore{
+    font-family:var(--font-pixel);
+    background:var(--pink);
+    color:#000;
+    border:none;
+    padding:14px 26px;
+    border-radius:30px;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    box-shadow:0 8px 24px rgba(250,57,122,0.25);
+  }
+  .ig-loadmore:active{transform:scale(0.98);}
+
+  /* ===== STORY MODAL ===== */
+  .ig-modal-overlay{
+    position:fixed;inset:0;
+    background:rgba(0,0,0,0.9);
+    display:none;
+    align-items:center;justify-content:center;
+    z-index:300;
+    padding:20px;
+  }
+  .ig-modal-overlay.open{display:flex;}
+  .ig-story-modal{
+    width:100%;
+    max-width:360px;
+    aspect-ratio: 9/16;
+    max-height:88vh;
+    background:linear-gradient(160deg,#1a1a1a,#050505);
+    border-radius:16px;
+    border:1px solid var(--border-strong);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    padding:16px;
+    overflow:hidden;
+  }
+  .ig-story-progress{
+    display:flex;gap:4px;
+    margin-bottom:12px;
+  }
+  .ig-story-progress span{
+    flex:1;height:2.5px;background:var(--border-strong);border-radius:2px;overflow:hidden;
+  }
+  .ig-story-progress span.active i{
+    display:block;height:100%;width:100%;background:#fff;
+  }
+  .ig-story-modal-head{
+    display:flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:700;
+    margin-bottom:16px;
+  }
+  .ig-story-modal-close{
+    margin-left:auto;
+    background:none;border:none;color:#fff;font-size:20px;
+  }
+  .ig-story-modal-body{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-family:var(--font-pixel);
+    font-size:19px;
+    line-height:1.4;
+    padding:10px;
+  }
+  .ig-story-modal-foot{
+    font-size:11px;
+    color:var(--muted-2);
+    text-align:center;
+    padding-top:10px;
+    border-top:1px solid var(--border);
+  }
+  .ig-story-nav{
+    position:absolute;
+    top:60px;bottom:60px;
+    width:35%;
+    background:transparent;border:none;
+  }
+  .ig-story-nav.prev{left:0;}
+  .ig-story-nav.next{right:0;}
+
+  /* ===== FOOTER ===== */
+  .ig-footer{
+    max-width:var(--maxw);
+    margin:50px auto 0;
+    padding:24px 16px 0;
+    text-align:center;
+    border-top:1px solid var(--border);
+    padding-top:30px;
+  }
+  .ig-footer-logo{
+    font-family:var(--font-pixel);
+    font-size:16px;
+    letter-spacing:1px;
+  }
+  .ig-footer-logo span{color:var(--pink);}
+  .ig-footer p{
+    font-size:12px;
+    color:var(--muted-2);
+    margin:8px 0 0;
+  }
+  .ig-footer .quote{
+    font-style:italic;
+    color:var(--muted);
+    margin-top:14px;
+  }
+  .ig-back-link{
+    display:inline-block;
+    margin-top:20px;
+    font-size:12px;
+    color:var(--pink);
+    border:1px solid var(--pink);
+    padding:8px 16px;
+    border-radius:20px;
+  }
+
+  @media (max-width:480px){
+    .ig-stats{gap:18px;}
+  }
+</style>
+</head>
+<body>
+
+<script src="/js/smart-back.js" defer></script>
+
+  <div class="ig-topbar">
+    <div class="ig-logo">INSTAGRI<span>LLO</span>™</div>
+  </div>
+
+  <div class="ig-hero">
+    <div class="ig-hero-eyebrow">⚡ Uma rede social 100% fictícia</div>
+    <h1>Opinião sobre tudo.<br>Conhecimento sobre <span class="glitch">nada</span>.</h1>
+    <p>Não acha que vou forçar a barra com mídia social, né? Eu criei a minha própria rede mentirosa. O Instagrillo e seja Bem-vindo ao INSTAGRILLO™, onde 10 influencers imaginários vendem produtos absurdos da Upixel com a maior cara de pau digital que a internet já viu.</p>
+
+    <div class="ig-stats">
+      <div class="ig-stat"><b id="stat-followers">14.028.311</b><span>Seguidores fake</span></div>
+      <div class="ig-stat"><b>0</b><span>Verdades ditas</span></div>
+      <div class="ig-stat"><b>∞</b><span>Frases de coach</span></div>
+    </div>
+  </div>
+
+  <!-- STORIES -->
+  <div class="ig-stories" id="stories-row">
+    <!-- filled by JS -->
+  </div>
+
+  <hr class="ig-divider">
+
+  <!-- FEED -->
+  <div class="ig-feed" id="feed"></div>
+
+  <div class="ig-loadmore-wrap">
+    <button class="ig-loadmore" id="loadmore-btn">Ver mais absurdos</button>
+  </div>
+
+  <!-- STORY MODAL -->
+  <div class="ig-modal-overlay" id="story-modal">
+    <div class="ig-story-modal">
+      <div class="ig-story-progress" id="story-progress"></div>
+      <div class="ig-story-modal-head">
+        <div class="ig-avatar" style="width:26px;height:26px;font-size:12px;" id="story-modal-avatar">🧠</div>
+        <span id="story-modal-name">Nome</span>
+        <button class="ig-story-modal-close" id="story-modal-close">✕</button>
+      </div>
+      <button class="ig-story-nav prev" id="story-prev" aria-label="Anterior"></button>
+      <button class="ig-story-nav next" id="story-next" aria-label="Próximo"></button>
+      <div class="ig-story-modal-body" id="story-modal-body">Texto do story</div>
+      <div class="ig-story-modal-foot" id="story-modal-foot">Produto indisponível.</div>
+    </div>
+  </div>
+
+  <div class="ig-toast" id="toast"></div>
+
+  <footer class="ig-footer">
+    <div class="ig-footer-logo">INSTAGRI<span>LLO</span>™</div>
+    <p>Uma experiência Upixel que ninguém pediu.</p>
+    <p class="quote">"Faça você mesmo. Questione-se. Não tenha ídolos."</p>
+    <a href="index.html" class="ig-back-link">← Voltar pro mundo real (Upixel)</a>
+  </footer>
+
+<script>
+(function(){
+
+  // ================= DATA =================
+  const influencers = [
+    { id:"vaginia", name:"Vaginia Fonmolhada", emoji:"💅", followers:"14,2 mi", loc:"Sala de estar, mas parece Dubai" },
+    { id:"jessika", name:"Jéssika Milionária", emoji:"💸", followers:"8,7 mi", loc:"Aeroporto (sempre)" },
+    { id:"maicon", name:"Maicon Influencer", emoji:"🕶️", followers:"3,1 mi", loc:"Fila do banco, mas com filtro" },
+    { id:"barbara", name:"Bárbara Mentex", emoji:"🧬", followers:"5,6 mi", loc:"Local não verificado" },
+    { id:"kleiton", name:"Kleiton Motivacional", emoji:"🔥", followers:"9,9 mi", loc:"Dentro da sua cabeça, sempre" },
+    { id:"thais", name:"Thais Filtro Solar", emoji:"🧴", followers:"2,4 mi", loc:"Debaixo de um guarda-sol de mentira" },
+    { id:"enzo", name:"Enzo Premium", emoji:"💎", followers:"6,3 mi", loc:"Sala VIP que ele mesmo criou" },
+    { id:"priscilla", name:"Priscilla Mindset", emoji:"🧠", followers:"4,8 mi", loc:"Plano astral / São Paulo" },
+    { id:"rodrigo", name:"Rodrigo Gratidão", emoji:"🙏", followers:"7,2 mi", loc:"Escritório em casa (cadeira à venda)" },
+    { id:"suelen", name:"Suelen Networking", emoji:"🤝", followers:"1,9 mi", loc:"Evento de empreendedorismo genérico" },
+  ];
+
+  function inf(id){ return influencers.find(i => i.id === id); }
+
+  const posts = [
+    {
+      inf:"vaginia",
+      emoji:"🧠✨",
+      image: "imagens/extensor-cerebral.png",   // ← DESCOMENTE e coloque o caminho da imagem
+      time:"há 12 min",
+      badges:["publi"],
+      caption:"Gente, vocês sabem que eu não indico qualquer coisa.\nHoje eu descobri uma coisa que mudou completamente minha rotina:\no **EXTENSOR CEREBRAL** da Upixel.\n\nDepois que comecei a usar, passei a ter opiniões sobre assuntos que eu nem conhecia.\n\nCupom: VAGINIA\n(que não dá desconto nenhum porque eu esqueci de negociar)\n<hash>#publi #naoeobrigada #mudeisuavida</hash>",
+      likes: 48200,
+      comments:[
+        {u:"mamaeempreendedora", t:"AMOOOOO, preciso pra ontem 😍"},
+        {u:"kleitonmotivacional", t:"Mas ele funciona para ansiedade financeira?"},
+        {u:"vaginiafonmolhada", t:"Não sei, amor. Mas fica lindo na mesa."},
+      ]
+    },
+    {
+      inf:"kleiton",
+      emoji:"✋😌",
+      image: "imagens/nielsen-slap.png",
+      time:"há 41 min",
+      badges:["verificado"],
+      caption:"Você não precisa de terapia.\nVocê precisa de uma heurística bem aplicada.\n\nHoje eu apanhei do **Nielsen Slap** e foi libertador.\n\n<hash>#gratidao #ux #mindset #proposito</hash>",
+      likes: 91300,
+      comments:[
+        {u:"rodrigogratidao", t:"Irmão isso é uma metáfora ou ele bateu em você mesmo?"},
+        {u:"kleitonmotivacional", t:"As duas coisas. É disso que se trata o crescimento."},
+      ]
+    },
+    {
+      inf:"jessika",
+      emoji:"⏰💸",
+      image: "imagens/relogio-que-atrasa.png",
+      time:"há 1 h",
+      badges:["publi"],
+      caption:"Meu maior segredo para produtividade:\nparei de aceitar que o relógio determine minha realidade.\n\nDesde que comecei a usar o **Relógio que Atrasa** da Upixel, chego atrasada com propósito.\n\n<hash>#produtividade #donadomeutempo #publi</hash>",
+      likes: 12900,
+      comments:[
+        {u:"suelennetworking", t:"Isso explica MUITA coisa, Jéssika."},
+        {u:"jessikamilionaria", t:"Explica e endossa 💅"},
+      ]
+    },
+    {
+      inf:"enzo",
+      emoji:"📊💎",
+      image: "imagens/dashboar-de-sentimento.jpg",
+      time:"há 2 h",
+      badges:["premium"],
+      caption:"Descobri que meu sentimento de hoje é 73% premium.\n\nO restante é boleto.\n\n<hash>#dashboarddesentimentos #enzomindset</hash>",
+      likes: 3400,
+      comments:[
+        {u:"maiconinfluencer", t:"Mas esse produto tem NFC?"},
+        {u:"enzopremium", t:"Não faço ideia."},
+        {u:"maiconinfluencer", t:"Então não compro."},
+      ]
+    },
+    {
+      inf:"priscilla",
+      emoji:"🧠🌀",
+      time:"há 3 h",
+      badges:["publi","verificado"],
+      caption:"Não é uma extensão.\nÉ uma expansão de consciência.\n\nArrasta pra cima.\nMentira.\nAqui não tem arrasta pra cima.\n\n<hash>#expansao #upixel #naoeoquevoceachaqueeacaba sendo exatamente isso</hash>",
+      likes: 210,
+      comments:[
+        {u:"barbaramentex", t:"Priscilla isso não faz sentido nenhum e eu amei"},
+      ]
+    },
+    {
+      inf:"rodrigo",
+      emoji:"🪑💰",
+      image: "imagens/cadeira-ergonomica.png",
+      time:"há 5 h",
+      badges:["publi"],
+      caption:"Faturei R$ 87 mil sentado nessa **Cadeira Ergonômica**.\n\nO fato de eu ter faturado isso vendendo curso sobre como faturar sentado é apenas um detalhe.\n\n<hash>#mindset #cadeiradosucesso #detalheirrelevante</hash>",
+      likes: 55000,
+      comments:[
+        {u:"suelennetworking", t:"Rodrigo você é uma inspiração circular"},
+        {u:"rodrigogratidao", t:"Obrigado, obrigado. Aceito elogios e permutas."},
+      ]
+    },
+  ];
+
+  const extraPosts = [
+    {
+      inf:"thais",
+      emoji:"🧴☀️",
+      image: "imagens/filtro-solar.jpg",
+      time:"agora",
+      badges:["publi"],
+      caption:"Passei o **Filtro Solar Upixel** e finalmente entendi o UX da minha própria pele.\n\nZero atrito. Zero SPF de verdade. Só vibe.\n\n<hash>#skincare #ux #issonaoprotegenada</hash>",
+      likes: 7600,
+      comments:[
+        {u:"thaisfiltrosolar", t:"Respondendo aos comentários: não, não tem FPS. É simbólico."},
+      ]
+    },
+    {
+      inf:"barbara",
+      emoji:"📈🧬",
+      time:"agora",
+      badges:["verificado"],
+      caption:"Testei o **Algoritmo de Autoestima** da Upixel por 3 dias.\n\nResultado: meu ego cresceu 400%, minha conta bancária não.\n\n<hash>#crescimentopessoal #metricafalsa</hash>",
+      likes: 1200,
+      comments:[
+        {u:"jessikamilionaria", t:"Isso aí é só terça-feira normal pra mim"},
+      ]
+    },
+    {
+      inf:"suelen",
+      emoji:"🤝📎",
+      time:"agora",
+      badges:["publi"],
+      caption:"Fiz **Networking** com o Clipe de Papel Upixel Edition™ e já recebi 3 propostas de sociedade.\n\nNenhuma séria, mas todas com PowerPoint.\n\n<hash>#networking #parceria #powerpointeamor</hash>",
+      likes: 640,
+      comments:[
+        {u:"enzopremium", t:"Me manda o link do produto"},
+        {u:"suelennetworking", t:"Não tem link. É um clipe. Você tem em casa."},
+      ]
+    },
+    {
+      inf:"maicon",
+      emoji:"🕶️📵",
+      time:"agora",
+      badges:[],
+      caption:"[Conteúdo não disponível porque o influencer ficou sem assunto]",
+      likes: 0,
+      commentsCount: 87000,
+      comments:[
+        {u:"vaginiafonmolhada", t:"Maicon isso é uma crítica social ou você travou mesmo?"},
+      ]
+    },
+  ];
+
+  let likeIdCounter = 0;
+  let extraLoaded = false;
+
+  function badgeLabel(b){
+    if(b === "publi") return "PUBLI";
+    if(b === "verificado") return "PARCERIA REAL™ (não)";
+    if(b === "premium") return "PREMIUM";
+    return b.toUpperCase();
+  }
+
+  function renderCaption(text, name){
+    let html = text
+      .replace(/\*\*(.*?)\*\*/g, "<b style='color:#fff'>$1</b>")
+      .replace(/<hash>(.*?)<\/hash>/g, "<span class='hash'>$1</span>")
+      .replace(/\n/g, "<br>");
+    return `<b>${name.toLowerCase().replace(/\s+/g,"")}</b>${html}`;
+  }
+
+  function buildPost(p, idx){
+    const i = inf(p.inf);
+    const uid = `post-${idx}-${likeIdCounter++}`;
+    const badgesHtml = (p.badges||[]).map(b => `<span class="ig-badge ${b==='publi'?'publi':''}">${badgeLabel(b)}</span>`).join("");
+    const commentsCount = p.commentsCount !== undefined ? p.commentsCount : p.comments.length;
+    const likesLine = p.likes === 0
+      ? `<div class="ig-likes-line rare">0 curtidas — o algoritmo também desistiu</div>`
+      : (p.likes === 1
+        ? `<div class="ig-likes-line rare">1 curtida — provavelmente da mãe</div>`
+        : `<div class="ig-likes-line">${formatNum(p.likes)} curtidas</div>`);
+
+    const commentsHtml = p.comments.map((c,ci) => `
+      <div class="ig-comment ${ci < 2 ? 'open' : ''}"><b>@${c.u}</b>${escapeHtml(c.t)}</div>
+    `).join("");
+
+    // ===== SUPORTE A IMAGEM =====
+    // Se o post tiver a propriedade "image", mostra a imagem.
+    // Caso contrário, mostra o emoji grande (comportamento original).
+    const mediaContent = p.image
+      ? `<img src="${p.image}" alt="${escapeHtml(i.name)} - post" loading="lazy">`
+      : `<div class="emoji-art">${p.emoji}</div>`;
+
+    return `
+    <article class="ig-post" data-post="${uid}">
+      <div class="ig-post-head">
+        <div class="ig-avatar">${i.emoji}</div>
+        <div class="ig-post-headinfo">
+          <div class="ig-post-name">${i.name} <span class="ig-verif" title="Verificado (mentira)">✓</span></div>
+          <div class="ig-post-meta">${i.loc} · ${p.time}</div>
+        </div>
+        <button class="ig-follow-btn" data-follow>Seguir</button>
+      </div>
+
+      ${badgesHtml ? `<div class="ig-post-badges">${badgesHtml}</div>` : ""}
+
+      <div class="ig-post-media" data-like-toggle>
+        ${mediaContent}
+        <div class="ig-heart-pop">❤️</div>
+      </div>
+
+      <div class="ig-post-actions">
+        <button class="ig-icon-btn" data-like-btn>🤍 <span class="count" data-like-count>${formatNum(p.likes)}</span></button>
+        <button class="ig-icon-btn" data-comment-btn>💬 <span class="count">${formatNum(commentsCount)}</span></button>
+        <button class="ig-icon-btn" data-share-btn>📤</button>
+      </div>
+
+      ${likesLine}
+
+      <div class="ig-caption">${renderCaption(p.caption, i.name)}</div>
+
+      <div class="ig-comments" data-comments-block>
+        ${commentsHtml}
+        ${p.comments.length > 2 ? `<button class="ig-comments-toggle" data-toggle-comments>Ver todos os ${commentsCount} comentários (mentira, só tem ${p.comments.length})</button>` : ""}
+      </div>
+
+      <div class="ig-post-time">${p.time.toUpperCase()}</div>
+    </article>`;
+  }
+
+  function formatNum(n){
+    if(n >= 1000) return (n/1000).toFixed(n % 1000 === 0 ? 0 : 1).replace(".", ",") + " mil";
+    return String(n);
+  }
+
+  function escapeHtml(s){
+    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+
+  const feedEl = document.getElementById("feed");
+
+  function renderPosts(list){
+    list.forEach((p, idx) => {
+      feedEl.insertAdjacentHTML("beforeend", buildPost(p, idx + Math.random()*1000|0));
+    });
+    attachPostHandlers();
+  }
+
+  renderPosts(posts);
+
+  // ================= STORIES =================
+  const storiesRow = document.getElementById("stories-row");
+  const storyScripts = {
+    vaginia: [
+      "Bom dia, seguidores. Hoje vou ensinar vocês a acordarem às 5h.",
+      "São 14h37 e eu acabei de acordar.",
+      "De qualquer forma, isso também é disciplina, gente."
+    ],
+    jessika: [
+      "Gente, vocês perguntaram muito onde comprei minha humildade.",
+      "Produto indisponível.",
+      "Mas dá pra fazer um curso de 12x sobre isso."
+    ],
+    kleiton: [
+      "Levantei da cama hoje e o universo aplaudiu de pé.",
+      "(o universo era só o despertador tocando de novo)"
+    ],
+    barbara: [
+      "Testei minha genética contra o algoritmo do Instagrillo.",
+      "Perdi. O algoritmo tem mais engajamento que meu DNA."
+    ],
+    thais: [
+      "FPS da vida: não existe. Só existe FPS do jogo.",
+      "Passem protetor mesmo assim, por favor, isso aqui é piada."
+    ],
+    enzo: [
+      "Hoje acordei 100% premium.",
+      "Agora às 15h já sou versão trial de mim mesmo."
+    ],
+    priscilla: [
+      "Vim contar que expandi minha consciência.",
+      "Ela voltou ao tamanho normal depois do almoço."
+    ],
+    rodrigo: [
+      "GRATIDÃO por mais um dia sentado gerando resultado.",
+      "O resultado, no caso, sou eu. Sentado."
+    ],
+    maicon: [
+      "Alguém sabe se isso aqui tem NFC?",
+      "Ninguém respondeu. Segue o jogo."
+    ],
+    suelen: [
+      "Fiz 4 conexões estratégicas hoje.",
+      "3 eram vendedores de curso. 1 era eu no espelho."
+    ],
+  };
+
+  influencers.forEach(i => {
+    storiesRow.insertAdjacentHTML("beforeend", `
+      <button class="ig-story" data-story="${i.id}">
+        <div class="ig-story-ring"><div class="ig-story-avatar">${i.emoji}</div></div>
+        <div class="ig-story-name">${i.name.split(" ")[0]}</div>
+      </button>
+    `);
+  });
+
+  const modal = document.getElementById("story-modal");
+  const modalBody = document.getElementById("story-modal-body");
+  const modalName = document.getElementById("story-modal-name");
+  const modalAvatar = document.getElementById("story-modal-avatar");
+  const modalFoot = document.getElementById("story-modal-foot");
+  const modalProgress = document.getElementById("story-progress");
+  let currentStoryId = null;
+  let currentSlide = 0;
+
+  function openStory(id){
+    currentStoryId = id;
+    currentSlide = 0;
+    const i = inf(id);
+    modalName.textContent = i.name;
+    modalAvatar.textContent = i.emoji;
+    renderSlide();
+    modal.classList.add("open");
+  }
+
+  function renderSlide(){
+    const script = storyScripts[currentStoryId] || ["..."];
+    modalBody.textContent = script[currentSlide];
+    modalFoot.textContent = currentSlide === script.length - 1
+      ? "Produto indisponível."
+      : "Arraste para o próximo (mentira, clique).";
+    modalProgress.innerHTML = script.map((_,i) => `<span class="${i===currentSlide?'active':''}"><i></i></span>`).join("");
+
+    document.getElementById("stories-row").querySelectorAll("[data-story]").forEach(el => {
+      if(el.dataset.story === currentStoryId) el.querySelector(".ig-story-ring").classList.add("seen");
+    });
+  }
+
+  document.getElementById("stories-row").addEventListener("click", e => {
+    const btn = e.target.closest("[data-story]");
+    if(btn) openStory(btn.dataset.story);
+  });
+
+  document.getElementById("story-modal-close").addEventListener("click", () => modal.classList.remove("open"));
+  modal.addEventListener("click", e => { if(e.target === modal) modal.classList.remove("open"); });
+
+  document.getElementById("story-next").addEventListener("click", () => {
+    const script = storyScripts[currentStoryId] || ["..."];
+    if(currentSlide < script.length - 1){ currentSlide++; renderSlide(); }
+    else modal.classList.remove("open");
+  });
+  document.getElementById("story-prev").addEventListener("click", () => {
+    if(currentSlide > 0){ currentSlide--; renderSlide(); }
+  });
+
+  // ================= TOAST =================
+  const toastEl = document.getElementById("toast");
+  let toastTimer;
+  function showToast(msg){
+    clearTimeout(toastTimer);
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2600);
+  }
+
+  const shareMessages = [
+    "Link copiado! (não copiou nada, relaxa)",
+    "Compartilhado com 0 pessoas. Sucesso absoluto.",
+    "Enviado para o WhatsApp da sua tia. Sem volta.",
+    "Isso foi parar num grupo de família. Boa sorte.",
+    "Compartilhamento cancelado por falta de propósito.",
+  ];
+
+  const unfollowConfirms = "Tem certeza? Você perderá acesso a 14 frases motivacionais por dia.";
+
+  // ================= POST HANDLERS =================
+  function attachPostHandlers(){
+    document.querySelectorAll(".ig-post").forEach(post => {
+      if(post.dataset.wired) return;
+      post.dataset.wired = "1";
+
+      const likeBtn = post.querySelector("[data-like-btn]");
+      const likeCountEl = post.querySelector("[data-like-count]");
+      const mediaEl = post.querySelector("[data-like-toggle]");
+      const heart = post.querySelector(".ig-heart-pop");
+      const followBtn = post.querySelector("[data-follow]");
+      const commentBtn = post.querySelector("[data-comment-btn]");
+      const shareBtn = post.querySelector("[data-share-btn]");
+      const toggleComments = post.querySelector("[data-toggle-comments]");
+
+      let liked = false;
+      let baseLikes = parseFriendlyNumber(likeCountEl.textContent);
+
+      function setLiked(v){
+        liked = v;
+        likeBtn.classList.toggle("liked", liked);
+        likeBtn.querySelector("span").textContent = formatNum(baseLikes + (liked ? 1 : 0));
+        likeBtn.firstChild.textContent = liked ? "❤️ " : "🤍 ";
+      }
+
+      likeBtn.addEventListener("click", () => setLiked(!liked));
+
+      mediaEl.addEventListener("click", () => {
+        if(!liked){
+          setLiked(true);
+          heart.classList.add("show");
+          setTimeout(() => heart.classList.remove("show"), 500);
+        }
+      });
+
+      if(followBtn){
+        followBtn.addEventListener("click", () => {
+          if(followBtn.classList.contains("following")){
+            if(confirm(unfollowConfirms)){
+              followBtn.classList.remove("following");
+              followBtn.textContent = "Seguir";
+            }
+          } else {
+            followBtn.classList.add("following");
+            followBtn.textContent = "Seguindo";
+          }
+        });
+      }
+
+      if(commentBtn){
+        commentBtn.addEventListener("click", () => {
+          const block = post.querySelector("[data-comments-block]");
+          block.querySelectorAll(".ig-comment").forEach(c => c.classList.add("open"));
+          if(toggleComments) toggleComments.style.display = "none";
+        });
+      }
+
+      if(toggleComments){
+        toggleComments.addEventListener("click", () => {
+          post.querySelectorAll(".ig-comment").forEach(c => c.classList.add("open"));
+          toggleComments.style.display = "none";
+        });
+      }
+
+      if(shareBtn){
+        shareBtn.addEventListener("click", () => {
+          showToast(shareMessages[Math.floor(Math.random()*shareMessages.length)]);
+        });
+      }
+    });
+  }
+
+  function parseFriendlyNumber(s){
+    s = s.trim();
+    if(s.includes("mil")){
+      return Math.round(parseFloat(s.replace(",", ".")) * 1000);
+    }
+    return parseInt(s.replace(/\D/g,""), 10) || 0;
+  }
+
+  // ================= LOAD MORE =================
+  document.getElementById("loadmore-btn").addEventListener("click", function(){
+    if(extraLoaded){
+      showToast("Não tem mais absurdo. Ou tem, mas guardamos pra depois.");
+      return;
+    }
+    renderPosts(extraPosts);
+    extraLoaded = true;
+    this.textContent = "Isso é tudo (por enquanto)";
+    this.disabled = true;
+    this.style.opacity = "0.5";
+  });
+
+  // ================= EASTER EGG: follower counter creeping up =================
+  const statFollowers = document.getElementById("stat-followers");
+  let followerBase = 14028311;
+  setInterval(() => {
+    followerBase += Math.floor(Math.random()*37);
+    statFollowers.textContent = followerBase.toLocaleString("pt-BR");
+  }, 4000);
+
+})();
+</script>
+
+</body>
+</html>
