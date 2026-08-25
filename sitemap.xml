@@ -62,6 +62,26 @@
     <loc>https://upixel.com.br/artigo-seu-barriga-e-o-airbnb.html</loc>
   </url>
 
+  <!-- Novos artigos -->
+  <url>
+    <loc>https://upixel.com.br/artigo-10-lugares-aprender-ux-ui-programacao-gratis.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/artigo-power-bi-paineis.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/artigo-ninguem-se-impressiona.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/artigo-eu-nao-tenho-paciencia.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/artigo-como-nao-usar-figma.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/artigo-10-praticas-nao-recomendadas-ux.html</loc>
+  </url>
+
   <!-- UX -->
   <url>
     <loc>https://upixel.com.br/ux-challenge.html</loc>
@@ -240,7 +260,7 @@
     <loc>https://upixel.com.br/glossario-dissecado-de-ux.html?termo=zero-friccao</loc>
   </url>
 
-  <!-- RIP — coisas que morreram -->
+  <!-- RIP -->
   <url>
     <loc>https://upixel.com.br/rip.html?item=hamburger-menu</loc>
   </url>
@@ -424,6 +444,9 @@
   <!-- Outras páginas -->
   <url>
     <loc>https://upixel.com.br/orquestra-do-pixel.html</loc>
+  </url>
+  <url>
+    <loc>https://upixel.com.br/roleta-do-acaso.html</loc>
   </url>
 
 </urlset>
