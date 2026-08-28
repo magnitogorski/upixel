@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Candidato 171 — Sua vida, mas com UX melhor | Sátira Upixel</title>
+
+<meta name="description" content="Bruno Silva Souza Jr., o Candidato 171 do PIX. Campanha 100% fictícia e satírica do Upixel sobre promessas vazias, jargão corporativo e dark patterns na política.">
+<meta name="keywords" content="candidato 171, sátira política, UX, dark patterns, jargão corporativo, Upixel, campanha fictícia, Bruno Silva Souza Jr, PIX partido">
+<meta name="author" content="Upixel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000000">
+
+<link rel="canonical" href="https://upixel.com.br/candidato-171.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Upixel">
+<meta property="og:title" content="Candidato 171 — Sua vida, mas com UX melhor | Upixel">
+<meta property="og:description" content="Campanha 100% fictícia e satírica. Promessas vazias, jargão de produto e dark patterns aplicados à urna.">
+<meta property="og:url" content="https://upixel.com.br/candidato-171.html">
+<meta property="og:image" content="https://upixel.com.br/imagens/capa-candidato-171.png">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Candidato 171 — Sua vida, mas com UX melhor | Upixel">
+<meta name="twitter:description" content="Campanha 100% fictícia e satírica do Upixel. Promessas vazias com boa UI.">
+<meta name="twitter:image" content="https://upixel.com.br/imagens/capa-candidato-171.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXQS02C898"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-EXQS02C898');
+</script>
+
+<style>
+  :root{
+    --upx-bg: #000000;
+    --upx-fg: #ffffff;
+    --upx-muted: #999999;
+    --upx-pink: #FA397A;
+    --upx-border: #262626;
+    --upx-border-strong: #333333;
+    --upx-card-bg: #0a0a0a;
+    --font-clean: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+    --font-pixel: "Pixelify Sans", sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background: var(--upx-bg);
+    color: var(--upx-fg);
+    font-family: var(--font-clean);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+
+  ::selection{ background: var(--upx-pink); color:#000; }
+
+  h1,h2,h3,h4{
+    font-family: var(--font-clean);
+    font-weight:700;
+    text-align:center;
+  }
+
+  /* ===== BOTÃO VOLTAR (ancorado / sticky) ===== */
+  .btn-voltar-fix{
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--upx-pink);
+    color: #000;
+    font-family: var(--font-clean);
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 12px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 4px 18px rgba(250,57,122,0.4);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-voltar-fix:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(250,57,122,0.55);
+  }
+  @media (max-width:600px){
+    .btn-voltar-fix{
+      bottom: 16px;
+      left: 16px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+    }
+  }
+
+  .disclaimer-bar{
+    background: var(--upx-card-bg);
+    border-bottom:1px solid var(--upx-border);
+    color: var(--upx-muted);
+    text-align:center;
+    font-family: var(--font-clean);
+    font-size:0.78rem;
+    letter-spacing:0.02em;
+    padding:10px 16px;
+  }
+  .disclaimer-bar strong{ color: var(--upx-pink); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding: 64px clamp(20px,5vw,64px) 40px;
+    background: var(--upx-bg);
+    text-align:center;
+    max-width:900px;
+    margin:0 auto;
+  }
+
+  .badge-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(250,57,122,0.1);
+    border:1px solid var(--upx-pink);
+    color:var(--upx-pink);
+    font-family: var(--font-clean);
+    font-weight:600;
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border-radius:100px;
+    margin-bottom:22px;
+  }
+  .badge-eyebrow .dot{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--upx-pink);
+    animation: pulse 1.4s infinite;
+  }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.3;} }
+
+  .hero h1{
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .hl{ color: var(--upx-pink); }
+
+  .hero-slogan{
+    margin:20px auto 0;
+    font-size:1.1rem;
+    max-width:560px;
+    color:#cfcfcf;
+  }
+
+  .hero-cta-row{
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .btn{
+    font-family: var(--font-clean);
+    font-weight:700;
+    padding:14px 24px;
+    border-radius:24px;
+    border:none;
+    cursor:pointer;
+    font-size:0.95rem;
+    text-decoration:none;
+    display:inline-block;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-primary{ background: var(--upx-pink); color: #000; box-shadow:0 4px 14px rgba(250,57,122,0.3); }
+  .btn-ghost{ background:transparent; color:var(--upx-fg); border:1.5px solid var(--upx-border-strong); }
+
+  .fineprint{
+    margin-top:14px;
+    font-family: var(--font-clean);
+    font-size:0.72rem;
+    color:#666;
+  }
+
+  /* ---------- TICKER ---------- */
+  .ticker-wrap{
+    background: var(--upx-card-bg);
+    border-top:1px solid var(--upx-border);
+    border-bottom:1px solid var(--upx-border);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:10px 0;
+  }
+  .ticker{
+    display:inline-block;
+    font-family: var(--font-clean);
+    font-size:0.8rem;
+    color: var(--upx-pink);
+    animation: scroll-left 32s linear infinite;
+  }
+  @keyframes scroll-left{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+  .ticker span{ margin-right:48px; color:#aaaaaa; }
+  .ticker span b{ color: var(--upx-pink); }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding: 70px clamp(20px,5vw,64px); max-width:1100px; margin:0 auto; }
+  .section-label{
+    font-family: var(--font-clean);
+    font-weight:600;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color: var(--upx-pink);
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    margin-bottom:14px;
+    text-align:center;
+  }
+  h2.section-title{
+    font-size:clamp(1.6rem,3.2vw,2.4rem);
+    max-width:760px;
+    margin:0 auto 12px;
+  }
+  .section-sub{
+    color:var(--upx-muted);
+    max-width:620px;
+    font-size:1rem;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  .promises{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:36px;
+  }
+  .promise-card{
+    background:var(--upx-card-bg);
+    border:1px solid var(--upx-border-strong);
+    border-radius:12px;
+    padding:24px;
+    text-align:center;
+    transition: transform .2s, border-color .2s;
+  }
+  .promise-card:hover{ transform:translateY(-3px); border-color:var(--upx-pink); }
+  .promise-icon{
+    font-size:1.6rem;
+    display:inline-block;
+    background:#141414;
+    border-radius:8px;
+    padding:8px 10px;
+    margin-bottom:14px;
+  }
+  .promise-card h3{
+    font-size:1.05rem;
+    margin-bottom:8px;
+    text-decoration: line-through;
+    text-decoration-color: var(--upx-pink);
+    text-decoration-thickness:2px;
+  }
+  .promise-card p{ color:#cfcfcf; font-size:0.92rem; }
+  .promise-real{
+    font-size:0.88rem;
+    color:var(--upx-fg);
+    background: rgba(250,57,122,0.08);
+    border-left:3px solid var(--upx-pink);
+    padding:10px 12px;
+    border-radius:4px;
+    margin-top:12px;
+    text-align:left;
+  }
+  .promise-real b{ color:var(--upx-pink); font-family:var(--font-clean); font-size:0.68rem; text-transform:uppercase; display:block; margin-bottom:4px; }
+
+  .quotes-band{
+    background: var(--upx-card-bg);
+    border-top:1px solid var(--upx-border);
+    border-bottom:1px solid var(--upx-border);
+    max-width:none;
+  }
+  .quotes-band > *{ max-width:1100px; margin-left:auto; margin-right:auto; }
+  .quote-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+    margin-top:34px;
+  }
+  .quote-item{
+    background: #111111;
+    border:1px solid var(--upx-border-strong);
+    border-radius:10px;
+    padding:20px;
+    font-size:1.02rem;
+    line-height:1.5;
+    color:#e6e6e6;
+  }
+  .quote-item::before{ content:"“"; color:var(--upx-pink); font-size:1.5rem; }
+
+  .speech{
+    background: var(--upx-card-bg);
+    border:1.5px dashed var(--upx-pink);
+    border-radius:14px;
+    padding:34px clamp(20px,4vw,44px);
+    margin:36px auto 0;
+    max-width:800px;
+    position:relative;
+    text-align:center;
+  }
+  .speech::before{
+    content:"DISCURSO OFICIAL — TRECHO";
+    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+    background:var(--upx-bg);
+    padding:2px 12px;
+    font-family: var(--font-clean);
+    font-weight:600;
+    font-size:0.68rem;
+    color:var(--upx-pink);
+    white-space:nowrap;
+  }
+  .speech p{ margin-bottom:14px; font-size:1.05rem; line-height:1.6; color:#e6e6e6; }
+  .speech .mic{ text-align:center; font-family: var(--font-clean); font-size:0.72rem; color:var(--upx-muted); }
+
+  .qa-list{ margin-top:36px; display:flex; flex-direction:column; gap:16px; }
+  .qa-item{
+    background:var(--upx-card-bg);
+    border-radius:10px;
+    border:1px solid var(--upx-border-strong);
+    overflow:hidden;
+  }
+  .qa-q{
+    padding:16px 20px;
+    font-weight:700;
+    display:flex; gap:10px;
+    background: #141414;
+    font-size:0.95rem;
+  }
+  .qa-q span{ color:var(--upx-pink); }
+  .qa-a{ padding:16px 20px; font-size:0.95rem; color:#cfcfcf; }
+  .qa-a b{ color: var(--upx-pink); font-family: var(--font-clean); font-size:0.7rem; display:block; margin-bottom:6px; text-transform:uppercase;}
+
+  .excuses{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    gap:16px;
+    margin-top:36px;
+  }
+  .excuse-card{
+    background: var(--upx-card-bg);
+    border:1px solid var(--upx-border-strong);
+    color: var(--upx-fg);
+    border-radius:10px;
+    padding:20px;
+    font-size:0.9rem;
+    text-align:center;
+  }
+  .excuse-card .situacao{
+    font-family: var(--font-clean);
+    font-weight:600;
+    font-size:0.68rem;
+    color: var(--upx-muted);
+    text-transform:uppercase;
+    margin-bottom:8px;
+    display:block;
+  }
+  .excuse-card .fala{
+    font-style:italic;
+    font-size:1rem;
+    color:var(--upx-pink);
+  }
+
+  .bridge{
+    background: var(--upx-card-bg);
+    border-top:1px solid var(--upx-border);
+    max-width:none;
+  }
+  .bridge > *{ max-width:1100px; margin-left:auto; margin-right:auto; }
+  .bridge-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    gap:22px;
+    margin-top:36px;
+  }
+  .bridge-card{
+    background:#111111;
+    border:1px solid var(--upx-border-strong);
+    border-radius:10px;
+    padding:22px;
+    text-align:center;
+  }
+  .bridge-card .tag{
+    font-family: var(--font-clean);
+    font-weight:600;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    color:var(--upx-pink);
+    letter-spacing:0.05em;
+  }
+  .bridge-card h4{
+    font-size:1.1rem;
+    margin:8px 0 10px;
+  }
+  .bridge-card p{ font-size:0.92rem; color:var(--upx-muted); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<script src="smart-back.js" defer></script>
+
+<!-- ===== BOTÃO VOLTAR ANCORADO ===== -->
+<a href="index.html" class="btn-voltar-fix" aria-label="Voltar para index">
+  ← Voltar
+</a>
+
+<div class="disclaimer-bar">
+  ⚠️ CONTEÚDO 100% FICTÍCIO E SATÍRICO — produzido pelo <strong>Upixel</strong>. Não existe candidato, partido, número ou promessa aqui. Qualquer semelhança é culpa do LinkedIn de vocês.
+</div>
+
+<!-- ===== HEADER PADRÃO DO SITE ===== -->
+<header class="meu-header">
+    <div class="logo">
+        <img src="logobranca.png" alt="Upixel">
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="ux-challenge.html">UX Challenge</a>
+        <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+        <a href="rip.html">RIP</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="besteirol.html" class="ativo">Besteirol</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+</header>
+
+<section class="hero">
+  <div class="badge-eyebrow"><span class="dot"></span> AO VIVO: RECEBENDO SEU VOTO EM TEMPO REAL</div>
+  <h1>Sua vida, mas com <span class="hl">UX melhor.</span></h1>
+  <p class="hero-slogan">Bruno Silva Souza Jr. não vem prometer mudança. Vem entregar uma <em>jornada de resolução centrada no cidadão.</em> Sem botão voltar (proposital). Entrou não tem como sair.</p>
+  <div class="hero-cta-row">
+    <a class="btn btn-primary" href="#promessas">Ver o que ele "promete" →</a>
+    <a class="btn btn-ghost" href="#discurso" id="upubli-btn-compartilhar">
+  🔗 Compartilhar
+</a>
+  </div>
+  <p class="fineprint">Candidato 171 · PIX — Partido Inovação e eXperiência · Personagem 100% fictício do Upixel</p>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>💬 "Não vou resolver, vou <b>iterar na percepção do problema</b>."</span>
+    <span>📉 Fome reposicionada como <b>oportunidade de resiliência</b></span>
+    <span>🗳️ Candidato 171 o candidato <b>mobile-first</b></span>
+    <span>🔥 Confiança subindo, dados <b>não verificados</b></span>
+    <span>🧠 Governo <b>data-driven</b>, decisões no intestino</span>
+    <span>💬 "Não vou resolver, vou <b>iterar na percepção do problema</b>."</span>
+    <span>📉 Fome reposicionada como <b>oportunidade de resiliência</b></span>
+    <span>🗳️ Candidato 171 o candidato <b>mobile-first</b></span>
+    <span>🔥 Confiança subindo, dados <b>não verificados</b></span>
+    <span>🧠 Governo <b>data-driven</b>, decisões no intestino</span>
+  </div>
+</div>
+
+<section id="promessas">
+  <div class="section-label">Programa de governo</div>
+  <h2 class="section-title">A promessa e a tradução real, lado a lado.</h2>
+  <p class="section-sub">Todo bom pitch começa com uma promessa de valor. O problema é quando ela é maior do que qualquer coisa que exista no roadmap.</p>
+
+  <div class="promises">
+    <div class="promise-card">
+      <span class="promise-icon">💼</span>
+      <h3>Emprego para todos</h3>
+      <p>Vamos criar um ecossistema de oportunidades escalável, com onboarding facilitado e zero fricção até sua primeira reunião de RH.</p>
+      <div class="promise-real"><b>Tradução real</b>Formulário de 14 campos e uma vaga que nunca é preenchida.</div>
+    </div>
+    <div class="promise-card">
+      <span class="promise-icon">🏥</span>
+      <h3>Fim da fila do SUS</h3>
+      <p>Não vamos acabar com a fila. Vamos redesenhar a jornada de espera pra ela parecer 40% mais curta.</p>
+      <div class="promise-real"><b>Tradução real</b>Mesma fila, cadeira mais confortável, cor pastel na parede.</div>
+    </div>
+    <div class="promise-card">
+      <span class="promise-icon">🛡️</span>
+      <h3>Segurança pública</h3>
+      <p>Machine learning preditivo para prever a criminalidade antes que ela aconteça — tipo aquele filme, só que sem o filme.</p>
+      <div class="promise-real"><b>Tradução real</b>Um dashboard bonito, exibido uma vez, nunca mais atualizado.</div>
+    </div>
+    <div class="promise-card">
+      <span class="promise-icon">🎓</span>
+      <h3>Educação de qualidade</h3>
+      <p>Cada escola vai ter um dashboard institucional de acompanhamento pedagógico em tempo real.</p>
+      <div class="promise-real"><b>Tradução real</b>Não vai ter merenda. Mas vai ter dashboard.</div>
+    </div>
+  </div>
+</section>
+
+<section class="quotes-band">
+  <div>
+    <div class="section-label">Frases de campanha</div>
+    <h2 class="section-title">O dicionário de eufemismos aplicado à urna.</h2>
+    <div class="quote-list">
+      <div class="quote-item">Não vamos resolver o problema. Vamos criar uma jornada de resolução centrada no cidadão.”</div>
+      <div class="quote-item">Desemprego não existe. Existe um funil de conversão de talentos mal calibrado.”</div>
+      <div class="quote-item">Eu não minto. Eu itero na verdade até ela performar melhor.”</div>
+      <div class="quote-item">Corrupção é só um dark pattern do sistema antigo. No meu governo, o dark pattern vai ser outro.”</div>
+    </div>
+  </div>
+</section>
+
+<section id="discurso">
+  <div class="section-label">Comício simulado</div>
+  <h2 class="section-title">O discurso (trecho selecionado, porque o completo daria enxaqueca)</h2>
+  <div class="speech">
+    <p>Brasileiros, brasileiras e stakeholders da nação. Eu não vim aqui prometer. Eu vim aqui entregar uma experiência.</p>
+    <p>Vocês querem saúde? Eu vou dar a vocês um app de saúde. Vocês querem educação? Um onboarding educacional gamificado. Vocês querem respeito? Uma régua de tom de voz institucional mais empática.</p>
+    <p>Eu sou o candidato do agora. Do disruptivo. Do centrado no eleitor-persona.</p>
+    <p><strong>Vote 171.</strong> Porque 170 já era o passado, e 172 ainda não validamos com o público.</p>
+    <p class="mic">(aplausos automatizados via bot)</p>
+  </div>
+</section>
+
+<section id="perguntas">
+  <div class="section-label">Sabatina fictícia</div>
+  <h2 class="section-title">Respostas absurdas para problemas reais</h2>
+  <div class="qa-list">
+    <div class="qa-item">
+      <div class="qa-q"><span>P:</span> Como o senhor pretende resolver a crise da moradia?</div>
+      <div class="qa-a"><b>Bruno responde</b>Uma solução mobile-first: um app pra visualizar sua casa própria em realidade aumentada. A casa em si é questão de próxima sprint.</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q"><span>P:</span> E a inflação?</div>
+      <div class="qa-a"><b>Bruno responde</b>Inflação é feedback do mercado. E feedback a gente não ignora: coloca no Trello e prioriza depois.</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q"><span>P:</span> O senhor se contradisse ontem.</div>
+      <div class="qa-a"><b>Bruno responde</b>Não foi contradição. Foi um pivot estratégico de narrativa baseado em dados de sentimento em tempo real.</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-q"><span>P:</span> O senhor prometeu isso há um mês e nada aconteceu.</div>
+      <div class="qa-a"><b>Bruno responde</b>Correto, e estamos muito satisfeitos com o engajamento da promessa. A entrega é uma fase posterior da jornada.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Quando a mentira precisa de deck</div>
+  <h2 class="section-title">Justificativas corporativas em tempo real</h2>
+  <div class="excuses">
+    <div class="excuse-card">
+      <span class="situacao">Verba de campanha nebulosa</span>
+      <span class="fala">"Foi uma realocação de budget entre squads."</span>
+    </div>
+    <div class="excuse-card">
+      <span class="situacao">Mudou de posição do dia pra noite</span>
+      <span class="fala">"Estamos testando A/B a nossa própria coerência ideológica."</span>
+    </div>
+    <div class="excuse-card">
+      <span class="situacao">Rejeição alta em pesquisa</span>
+      <span class="fala">"Métrica de vaidade. O que importa é o LTV do eleitor."</span>
+    </div>
+    <div class="excuse-card">
+      <span class="situacao">Esqueceu promessa antiga</span>
+      <span class="fala">"Foi descontinuada silenciosamente, como toda boa feature legada."</span>
+    </div>
+  </div>
+</section>
+
+<section id="ux" class="bridge">
+  <div>
+    <div class="section-label">Bastidor pra quem trabalha com produto</div>
+    <h2 class="section-title">Por que o Candidato 171 não é engraçado por ser absurdo, é engraçado por ser familiar</h2>
+    <p class="section-sub">Toda campanha de sucesso, assim como todo produto digital de sucesso, se apoia nos mesmos pilares. A diferença é a escala, não o mecanismo.</p>
+    <div class="bridge-grid">
+      <div class="bridge-card">
+        <span class="tag">Persona</span>
+        <h4>Personagem antes de proposta</h4>
+        <p>Um candidato vende um personagem consistente o suficiente pra caber numa frase de efeito — a mesma simplificação que fazemos ao desenhar personas de usuário.</p>
+      </div>
+      <div class="bridge-card">
+        <span class="tag">Dark patterns</span>
+        <h4>Promessa vazia com boa UI</h4>
+        <p>Uma promessa de campanha vazia embrulhada em linguagem bonita é a versão política do botão de cancelar escondido num canto cinza da tela.</p>
+      </div>
+      <div class="bridge-card">
+        <span class="tag">Métricas de vaidade</span>
+        <h4>Alcance não é resultado</h4>
+        <p>Bruno mede sucesso em impressão, nunca em entrega — o mesmo erro de otimizar um produto pro número que impressiona, não pro que importa.</p>
+      </div>
+      <div class="bridge-card">
+        <span class="tag">Imagem vs. experiência</span>
+        <h4>Marca bonita sem entrega</h4>
+        <p>Uma imagem bem construída gera desejo. Só a experiência real — o que a pessoa vive depois do clique ou do voto — constrói confiança de verdade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER PADRÃO DO SITE ===== -->
+<footer class="footer">
+    <div class="footer-esquerda">
+        <img src="logobranca.png" alt="Upixel" class="footer-logo">
+        <p class="copyright">Upixel. Todos os direitos reservados.</p>
+    </div>
+
+    <div class="footer-centro">
+        <nav class="footer-menu">
+            <a href="index.html">Home</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="ux-challenge.html">UX Challenge</a>
+            <a href="glossario-dissecado-de-ux.html">Grossário UX</a>
+            <a href="rip.html">RIP</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="besteirol.html" class="ativo">Besteirol</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </div>
+</footer>
+
+<div class="footer-ilustracao">
+    <img src="rodape.png" alt="Ilustração Footer">
+</div>
+
+<script src="compartilhar.js"></script>
+
+</body>
+</html>
